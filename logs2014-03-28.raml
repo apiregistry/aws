@@ -1,0 +1,1322 @@
+#%RAML 1.0
+title: Amazon CloudWatch Logs
+version: '2014-03-28'
+description: ' You can use Amazon CloudWatch Logs to monitor, store, and access your
+  log files from Amazon Elastic Compute Cloud (Amazon EC2) instances, Amazon CloudTrail,
+  or other sources. You can then retrieve the associated log data from CloudWatch
+  Logs using the Amazon CloudWatch console, the CloudWatch Logs commands in the AWS
+  CLI, the CloudWatch Logs API, or the CloudWatch Logs SDK.  You can use CloudWatch
+  Logs to: <ul> <li>   <b>Monitor Logs from Amazon EC2 Instances in Real-time</b>:
+  You can use CloudWatch Logs to monitor applications and systems using log data.
+  For example, CloudWatch Logs can track the number of errors that occur in your application
+  logs and send you a notification whenever the rate of errors exceeds a threshold
+  you specify. CloudWatch Logs uses your log data for monitoring; so, no code changes
+  are required. For example, you can monitor application logs for specific literal
+  terms (such as "NullReferenceException") or count the number of occurrences of a
+  literal term at a particular position in log data (such as "404" status codes in
+  an Apache access log). When the term you are searching for is found, CloudWatch
+  Logs reports the data to a Amazon CloudWatch metric that you specify. </li> <li>   <b>Monitor
+  Amazon CloudTrail Logged Events</b>: You can create alarms in Amazon CloudWatch
+  and receive notifications of particular API activity as captured by CloudTrail and
+  use the notification to perform troubleshooting. </li> <li>   <b>Archive Log Data</b>:
+  You can use CloudWatch Logs to store your log data in highly durable storage. You
+  can change the log retention setting so that any log events older than this setting
+  are automatically deleted. The CloudWatch Logs agent makes it easy to quickly send
+  both rotated and non-rotated log data off of a host and into the log service. You
+  can then access the raw log data when you need it. </li> </ul>'
+mediaType:
+- application/json
+types:
+  AccessPolicy:
+    type: string
+    minLength: 1
+  Arn:
+    type: string
+  Days:
+    type: integer
+    format: int
+    description: '<p>Specifies the number of days you want to retain log events in
+      the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120,
+      150, 180, 365, 400, 545, 731, 1827, 3653.</p>'
+  DefaultValue:
+    type: number
+    format: double
+  Descending:
+    type: boolean
+  DescribeLimit:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 50
+    description: <p>The maximum number of results to return.</p>
+  DestinationArn:
+    type: string
+    minLength: 1
+  DestinationName:
+    type: string
+    pattern: '[^:*]*'
+    minLength: 1
+    maxLength: 512
+  Destinations:
+    type: array
+    items:
+      type: Destination
+  EventId:
+    type: string
+  EventMessage:
+    type: string
+    minLength: 1
+  EventNumber:
+    type: integer
+    format: long
+  EventsLimit:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 10000
+    description: <p>The maximum number of events to return.</p>
+  ExportDestinationBucket:
+    type: string
+    minLength: 1
+    maxLength: 512
+  ExportDestinationPrefix:
+    type: string
+  ExportTaskId:
+    type: string
+    minLength: 1
+    maxLength: 512
+  ExportTaskName:
+    type: string
+    minLength: 1
+    maxLength: 512
+  ExportTaskStatusCode:
+    type: string
+    enum:
+    - CANCELLED
+    - COMPLETED
+    - FAILED
+    - PENDING
+    - PENDING_CANCEL
+    - RUNNING
+  ExportTaskStatusMessage:
+    type: string
+  ExportTasks:
+    type: array
+    items:
+      type: ExportTask
+    description: <p>A list of export tasks.</p>
+  FilterCount:
+    type: integer
+    format: int
+    description: <p>The number of metric filters associated with the log group.</p>
+  FilterName:
+    type: string
+    pattern: '[^:*]*'
+    minLength: 1
+    maxLength: 512
+    description: <p>A name for a metric or subscription filter.</p>
+  FilterPattern:
+    type: string
+    minLength: 0
+    maxLength: 1024
+    description: <p>A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event may contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.</p>
+  FilteredLogEvents:
+    type: array
+    items:
+      type: FilteredLogEvent
+    description: <p>A list of matched <code>FilteredLogEvent</code> objects returned from a <code>FilterLogEvents</code> request.</p>
+  InputLogEvents:
+    type: array
+    minItems: 1
+    maxItems: 10000
+    items:
+      type: InputLogEvent
+    description: <p>A list of log events belonging to a log stream.</p>
+  InputLogStreamNames:
+    type: array
+    minItems: 1
+    maxItems: 100
+    items:
+      type: LogStreamName
+    description: <p>A list of log stream names.</p>
+  Interleaved:
+    type: boolean
+  LogEventIndex:
+    type: integer
+    format: int
+  LogGroupName:
+    type: string
+    pattern: '[\.\-_/#A-Za-z0-9]+'
+    minLength: 1
+    maxLength: 512
+  LogGroups:
+    type: array
+    items:
+      type: LogGroup
+    description: <p>A list of log groups.</p>
+  LogStreamName:
+    type: string
+    pattern: '[^:*]*'
+    minLength: 1
+    maxLength: 512
+  LogStreamSearchedCompletely:
+    type: boolean
+  LogStreams:
+    type: array
+    items:
+      type: LogStream
+    description: <p>A list of log streams.</p>
+  MetricFilterMatches:
+    type: array
+    items:
+      type: MetricFilterMatchRecord
+  MetricFilters:
+    type: array
+    items:
+      type: MetricFilter
+  MetricName:
+    type: string
+    pattern: '[^:*$]*'
+    maxLength: 255
+    description: <p>The name of the CloudWatch metric to which the monitored log information should be published. For example, you may publish to a metric called ErrorCount.</p>
+  MetricNamespace:
+    type: string
+    pattern: '[^:*$]*'
+    maxLength: 255
+    description: <p>The destination namespace of the new CloudWatch metric.</p>
+  MetricTransformations:
+    type: array
+    minItems: 1
+    maxItems: 1
+    items:
+      type: MetricTransformation
+  MetricValue:
+    type: string
+    maxLength: 100
+    description: <p>What to publish to the metric. For example, if you're counting the occurrences of a particular term like "Error", the value will be "1" for each occurrence. If you're counting the bytes transferred the published value will be the value in the log event.</p>
+  NextToken:
+    type: string
+    minLength: 1
+    description: <p>A string token used for pagination that points to the next page of results. It must be a value obtained from the response of the previous request. The token expires after 24 hours.</p>
+  OrderBy:
+    type: string
+    enum:
+    - LogStreamName
+    - LastEventTime
+  OutputLogEvents:
+    type: array
+    items:
+      type: OutputLogEvent
+  RoleArn:
+    type: string
+    minLength: 1
+  SearchedLogStreams:
+    type: array
+    items:
+      type: SearchedLogStream
+    description: <p>A list of <code>SearchedLogStream</code> objects indicating the search status for log streams in a <code>FilterLogEvents</code> request.</p>
+  SequenceToken:
+    type: string
+    minLength: 1
+    description: <p>A string token used for making PutLogEvents requests. A <code>sequenceToken</code> can only be used once, and PutLogEvents requests must include the <code>sequenceToken</code> obtained from the response of the previous request.</p>
+  StartFromHead:
+    type: boolean
+  StoredBytes:
+    type: integer
+    format: long
+    minimum: 0
+  SubscriptionFilters:
+    type: array
+    items:
+      type: SubscriptionFilter
+  TargetArn:
+    type: string
+    minLength: 1
+  TestEventMessages:
+    type: array
+    minItems: 1
+    maxItems: 50
+    items:
+      type: EventMessage
+  Timestamp:
+    type: integer
+    format: long
+    minimum: 0
+    description: <p>A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+  Token:
+    type: string
+  Value:
+    type: string
+  CancelExportTaskRequest:
+    type: object
+    properties:
+      taskId:
+        type: ExportTaskId
+        description: <p>Id of the export task to cancel.</p>
+  CreateExportTaskRequest:
+    type: object
+    properties:
+      taskName?:
+        type: ExportTaskName
+        description: <p>The name of the export task.</p>
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group to export.</p>
+      logStreamNamePrefix?:
+        type: LogStreamName
+        description: <p>Will only export log streams that match the provided logStreamNamePrefix. If you don't specify a value, no prefix filter is applied.</p>
+      from:
+        type: Timestamp
+        description: <p>A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. It indicates the start time of the range for the request. Events with a timestamp prior to this time will not be exported.</p>
+      to:
+        type: Timestamp
+        description: <p>A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. It indicates the end time of the range for the request. Events with a timestamp later than this time will not be exported.</p>
+      destination:
+        type: ExportDestinationBucket
+        description: <p>Name of Amazon S3 bucket to which the log data will be exported.</p> <p> <b>Note:</b> Only buckets in the same AWS region are supported.</p>
+      destinationPrefix?:
+        type: ExportDestinationPrefix
+        description: <p>Prefix that will be used as the start of Amazon S3 key for every object exported. If not specified, this defaults to 'exportedlogs'.</p>
+  CreateExportTaskResponse:
+    type: object
+    properties:
+      taskId?:
+        type: ExportTaskId
+        description: <p>Id of the export task that got created.</p>
+  CreateLogGroupRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group to create.</p>
+  CreateLogStreamRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group under which the log stream is to be created.</p>
+      logStreamName:
+        type: LogStreamName
+        description: <p>The name of the log stream to create.</p>
+  DeleteDestinationRequest:
+    type: object
+    properties:
+      destinationName:
+        type: DestinationName
+        description: <p>The name of destination to delete.</p>
+  DeleteLogGroupRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group to delete.</p>
+  DeleteLogStreamRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group under which the log stream to delete belongs.</p>
+      logStreamName:
+        type: LogStreamName
+        description: <p>The name of the log stream to delete.</p>
+  DeleteMetricFilterRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group that is associated with the metric filter to delete.</p>
+      filterName:
+        type: FilterName
+        description: <p>The name of the metric filter to delete.</p>
+  DeleteRetentionPolicyRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group that is associated with the retention policy to delete.</p>
+  DeleteSubscriptionFilterRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group that is associated with the subscription filter to delete.</p>
+      filterName:
+        type: FilterName
+        description: <p>The name of the subscription filter to delete.</p>
+  DescribeDestinationsRequest:
+    type: object
+    properties:
+      DestinationNamePrefix?:
+        type: DestinationName
+        description: <p>Will only return destinations that match the provided destinationNamePrefix. If you don't specify a value, no prefix is applied.</p>
+      nextToken?:
+        type: NextToken
+      limit?:
+        type: DescribeLimit
+  DescribeDestinationsResponse:
+    type: object
+    properties:
+      destinations?:
+        type: Destinations
+      nextToken?:
+        type: NextToken
+  DescribeExportTasksRequest:
+    type: object
+    properties:
+      taskId?:
+        type: ExportTaskId
+        description: <p>Export task that matches the specified task Id will be returned. This can result in zero or one export task.</p>
+      statusCode?:
+        type: ExportTaskStatusCode
+        description: <p>All export tasks that matches the specified status code will be returned. This can return zero or more export tasks.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>A string token used for pagination that points to the next page of results. It must be a value obtained from the response of the previous <code>DescribeExportTasks</code> request.</p>
+      limit?:
+        type: DescribeLimit
+        description: <p>The maximum number of items returned in the response. If you don't specify a value, the request would return up to 50 items.</p>
+  DescribeExportTasksResponse:
+    type: object
+    properties:
+      exportTasks?:
+        type: ExportTasks
+      nextToken?:
+        type: NextToken
+  DescribeLogGroupsRequest:
+    type: object
+    properties:
+      logGroupNamePrefix?:
+        type: LogGroupName
+        description: <p>Will only return log groups that match the provided logGroupNamePrefix. If you don't specify a value, no prefix filter is applied.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>A string token used for pagination that points to the next page of results. It must be a value obtained from the response of the previous <code>DescribeLogGroups</code> request.</p>
+      limit?:
+        type: DescribeLimit
+        description: <p>The maximum number of items returned in the response. If you don't specify a value, the request would return up to 50 items.</p>
+  DescribeLogGroupsResponse:
+    type: object
+    properties:
+      logGroups?:
+        type: LogGroups
+      nextToken?:
+        type: NextToken
+  DescribeLogStreamsRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The log group name for which log streams are to be listed.</p>
+      logStreamNamePrefix?:
+        type: LogStreamName
+        description: <p>Will only return log streams that match the provided logStreamNamePrefix. If you don't specify a value, no prefix filter is applied.</p>
+      orderBy?:
+        type: OrderBy
+        description: <p>Specifies what to order the returned log streams by. Valid arguments are 'LogStreamName' or 'LastEventTime'. If you don't specify a value, results are ordered by LogStreamName. If 'LastEventTime' is chosen, the request cannot also contain a logStreamNamePrefix.</p>
+      descending?:
+        type: Descending
+        description: <p>If set to true, results are returned in descending order. If you don't specify a value or set it to false, results are returned in ascending order.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>A string token used for pagination that points to the next page of results. It must be a value obtained from the response of the previous <code>DescribeLogStreams</code> request.</p>
+      limit?:
+        type: DescribeLimit
+        description: <p>The maximum number of items returned in the response. If you don't specify a value, the request would return up to 50 items.</p>
+  DescribeLogStreamsResponse:
+    type: object
+    properties:
+      logStreams?:
+        type: LogStreams
+      nextToken?:
+        type: NextToken
+  DescribeMetricFiltersRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The log group name for which metric filters are to be listed.</p>
+      filterNamePrefix?:
+        type: FilterName
+        description: <p>Will only return metric filters that match the provided filterNamePrefix. If you don't specify a value, no prefix filter is applied.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>A string token used for pagination that points to the next page of results. It must be a value obtained from the response of the previous <code>DescribeMetricFilters</code> request.</p>
+      limit?:
+        type: DescribeLimit
+        description: <p>The maximum number of items returned in the response. If you don't specify a value, the request would return up to 50 items.</p>
+  DescribeMetricFiltersResponse:
+    type: object
+    properties:
+      metricFilters?:
+        type: MetricFilters
+      nextToken?:
+        type: NextToken
+  DescribeSubscriptionFiltersRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The log group name for which subscription filters are to be listed.</p>
+      filterNamePrefix?:
+        type: FilterName
+        description: <p>Will only return subscription filters that match the provided filterNamePrefix. If you don't specify a value, no prefix filter is applied.</p>
+      nextToken?:
+        type: NextToken
+      limit?:
+        type: DescribeLimit
+  DescribeSubscriptionFiltersResponse:
+    type: object
+    properties:
+      subscriptionFilters?:
+        type: SubscriptionFilters
+      nextToken?:
+        type: NextToken
+  Destination:
+    type: object
+    properties:
+      destinationName?:
+        type: DestinationName
+        description: <p>Name of the destination.</p>
+      targetArn?:
+        type: TargetArn
+        description: <p>ARN of the physical target where the log events will be delivered (eg. ARN of a Kinesis stream).</p>
+      roleArn?:
+        type: RoleArn
+        description: <p>A role for impersonation for delivering log events to the target.</p>
+      accessPolicy?:
+        type: AccessPolicy
+        description: <p>An IAM policy document that governs which AWS accounts can create subscription filters against this destination.</p>
+      arn?:
+        type: Arn
+        description: <p>ARN of this destination.</p>
+      creationTime?:
+        type: Timestamp
+        description: <p>A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC specifying when this destination was created.</p>
+    description: <p>A cross account destination that is the recipient of subscription log events.</p>
+  ExportTask:
+    type: object
+    properties:
+      taskId?:
+        type: ExportTaskId
+        description: <p>Id of the export task.</p>
+      taskName?:
+        type: ExportTaskName
+        description: <p>The name of the export task.</p>
+      logGroupName?:
+        type: LogGroupName
+        description: <p>The name of the log group from which logs data was exported.</p>
+      from?:
+        type: Timestamp
+        description: <p>A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this time are not exported.</p>
+      to?:
+        type: Timestamp
+        description: <p>A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.</p>
+      destination?:
+        type: ExportDestinationBucket
+        description: <p>Name of Amazon S3 bucket to which the log data was exported.</p>
+      destinationPrefix?:
+        type: ExportDestinationPrefix
+        description: <p>Prefix that was used as the start of Amazon S3 key for every object exported.</p>
+      status?:
+        type: ExportTaskStatus
+        description: <p>Status of the export task.</p>
+      executionInfo?:
+        type: ExportTaskExecutionInfo
+        description: <p>Execution info about the export task.</p>
+    description: <p>Represents an export task.</p>
+  ExportTaskExecutionInfo:
+    type: object
+    properties:
+      creationTime?:
+        type: Timestamp
+        description: <p>A point in time when the export task got created.</p>
+      completionTime?:
+        type: Timestamp
+        description: <p>A point in time when the export task got completed.</p>
+    description: <p>Represents the status of an export task.</p>
+  ExportTaskStatus:
+    type: object
+    properties:
+      code?:
+        type: ExportTaskStatusCode
+        description: <p>Status code of the export task.</p>
+      message?:
+        type: ExportTaskStatusMessage
+        description: <p>Status message related to the <code>code</code>.</p>
+    description: <p>Represents the status of an export task.</p>
+  ExtractedValues:
+    type: object
+    properties:
+      //:
+        type: Value
+  FilterLogEventsRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group to query.</p>
+      logStreamNames?:
+        type: InputLogStreamNames
+        description: <p>Optional list of log stream names within the specified log group to search. Defaults to all the log streams in the log group.</p>
+      startTime?:
+        type: Timestamp
+        description: <p>A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided, events with a timestamp prior to this time are not returned.</p>
+      endTime?:
+        type: Timestamp
+        description: <p>A point in time expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. If provided, events with a timestamp later than this time are not returned.</p>
+      filterPattern?:
+        type: FilterPattern
+        description: <p>A valid CloudWatch Logs filter pattern to use for filtering the response. If not provided, all the events are matched.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>A pagination token obtained from a <code>FilterLogEvents</code> response to continue paginating the FilterLogEvents results. This token is omitted from the response when there are no other events to display.</p>
+      limit?:
+        type: EventsLimit
+        description: <p>The maximum number of events to return in a page of results. Default is 10,000 events.</p>
+      interleaved?:
+        type: Interleaved
+        description: <p>If provided, the API will make a best effort to provide responses that contain events from multiple log streams within the log group interleaved in a single response. If not provided, all the matched log events in the first log stream will be searched first, then those in the next log stream, etc.</p>
+  FilterLogEventsResponse:
+    type: object
+    properties:
+      events?:
+        type: FilteredLogEvents
+        description: <p>A list of <code>FilteredLogEvent</code> objects representing the matched events from the request.</p>
+      searchedLogStreams?:
+        type: SearchedLogStreams
+        description: <p>A list of <code>SearchedLogStream</code> objects indicating which log streams have been searched in this request and whether each has been searched completely or still has more to be paginated.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>A pagination token obtained from a <code>FilterLogEvents</code> response to continue paginating the FilterLogEvents results. This token is omitted from the response when there are no other events to display.</p>
+  FilteredLogEvent:
+    type: object
+    properties:
+      logStreamName?:
+        type: LogStreamName
+        description: <p>The name of the log stream this event belongs to.</p>
+      timestamp?:
+        type: Timestamp
+      message?:
+        type: EventMessage
+        description: <p>The data contained in the log event.</p>
+      ingestionTime?:
+        type: Timestamp
+      eventId?:
+        type: EventId
+        description: <p>A unique identifier for this event.</p>
+    description: <p>Represents a matched event from a <code>FilterLogEvents</code> request.</p>
+  GetLogEventsRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group to query.</p>
+      logStreamName:
+        type: LogStreamName
+        description: <p>The name of the log stream to query.</p>
+      startTime?:
+        type: Timestamp
+      endTime?:
+        type: Timestamp
+      nextToken?:
+        type: NextToken
+        description: <p>A string token used for pagination that points to the next page of results. It must be a value obtained from the <code>nextForwardToken</code> or <code>nextBackwardToken</code> fields in the response of the previous <code>GetLogEvents</code> request.</p>
+      limit?:
+        type: EventsLimit
+        description: <p>The maximum number of log events returned in the response. If you don't specify a value, the request would return as many log events as can fit in a response size of 1MB, up to 10,000 log events.</p>
+      startFromHead?:
+        type: StartFromHead
+        description: <p>If set to true, the earliest log events would be returned first. The default is false (the latest log events are returned first).</p>
+  GetLogEventsResponse:
+    type: object
+    properties:
+      events?:
+        type: OutputLogEvents
+      nextForwardToken?:
+        type: NextToken
+      nextBackwardToken?:
+        type: NextToken
+  InputLogEvent:
+    type: object
+    properties:
+      timestamp:
+        type: Timestamp
+      message:
+        type: EventMessage
+    description: '<p>A log event is a record of some activity that was recorded by
+      the application or resource being monitored. The log event record that CloudWatch
+      Logs understands contains two properties: the timestamp of when the event occurred,
+      and the raw event message.</p>'
+  LogGroup:
+    type: object
+    properties:
+      logGroupName?:
+        type: LogGroupName
+      creationTime?:
+        type: Timestamp
+      retentionInDays?:
+        type: Days
+      metricFilterCount?:
+        type: FilterCount
+      arn?:
+        type: Arn
+      storedBytes?:
+        type: StoredBytes
+  LogStream:
+    type: object
+    properties:
+      logStreamName?:
+        type: LogStreamName
+      creationTime?:
+        type: Timestamp
+      firstEventTimestamp?:
+        type: Timestamp
+      lastEventTimestamp?:
+        type: Timestamp
+      lastIngestionTime?:
+        type: Timestamp
+      uploadSequenceToken?:
+        type: SequenceToken
+      arn?:
+        type: Arn
+      storedBytes?:
+        type: StoredBytes
+    description: <p>A log stream is sequence of log events from a single emitter of logs.</p>
+  MetricFilter:
+    type: object
+    properties:
+      filterName?:
+        type: FilterName
+      filterPattern?:
+        type: FilterPattern
+      metricTransformations?:
+        type: MetricTransformations
+      creationTime?:
+        type: Timestamp
+    description: <p>Metric filters can be used to express how CloudWatch Logs would extract metric observations from ingested log events and transform them to metric data in a CloudWatch metric.</p>
+  MetricFilterMatchRecord:
+    type: object
+    properties:
+      eventNumber?:
+        type: EventNumber
+      eventMessage?:
+        type: EventMessage
+      extractedValues?:
+        type: ExtractedValues
+  MetricTransformation:
+    type: object
+    properties:
+      metricName:
+        type: MetricName
+        description: <p>Name of the metric.</p>
+      metricNamespace:
+        type: MetricNamespace
+        description: <p>Namespace to which the metric belongs.</p>
+      metricValue:
+        type: MetricValue
+        description: <p> A string representing a value to publish to this metric when a filter pattern matches a log event. </p>
+      defaultValue?:
+        type: DefaultValue
+        description: <p>(Optional) A default value to emit when a filter pattern does not match a log event. Can be null.</p>
+  OutputLogEvent:
+    type: object
+    properties:
+      timestamp?:
+        type: Timestamp
+      message?:
+        type: EventMessage
+      ingestionTime?:
+        type: Timestamp
+  PutDestinationPolicyRequest:
+    type: object
+    properties:
+      destinationName:
+        type: DestinationName
+        description: <p>A name for an existing destination.</p>
+      accessPolicy:
+        type: AccessPolicy
+        description: <p>An IAM policy document that authorizes cross-account users to deliver their log events to associated destination.</p>
+  PutDestinationRequest:
+    type: object
+    properties:
+      destinationName:
+        type: DestinationName
+        description: <p>A name for the destination.</p>
+      targetArn:
+        type: TargetArn
+        description: <p>The ARN of an Amazon Kinesis stream to deliver matching log events to.</p>
+      roleArn:
+        type: RoleArn
+        description: <p>The ARN of an IAM role that grants CloudWatch Logs permissions to do Amazon Kinesis PutRecord requests on the destination stream.</p>
+  PutDestinationResponse:
+    type: object
+    properties:
+      destination?:
+        type: Destination
+  PutLogEventsRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group to put log events to.</p>
+      logStreamName:
+        type: LogStreamName
+        description: <p>The name of the log stream to put log events to.</p>
+      logEvents:
+        type: InputLogEvents
+      sequenceToken?:
+        type: SequenceToken
+        description: <p>A string token that must be obtained from the response of the previous <code>PutLogEvents</code> request.</p>
+  PutLogEventsResponse:
+    type: object
+    properties:
+      nextSequenceToken?:
+        type: SequenceToken
+      rejectedLogEventsInfo?:
+        type: RejectedLogEventsInfo
+  PutMetricFilterRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group to associate the metric filter with.</p>
+      filterName:
+        type: FilterName
+        description: <p>A name for the metric filter.</p>
+      filterPattern:
+        type: FilterPattern
+        description: <p>A valid CloudWatch Logs filter pattern for extracting metric data out of ingested log events.</p>
+      metricTransformations:
+        type: MetricTransformations
+        description: <p>A collection of information needed to define how metric data gets emitted.</p>
+  PutRetentionPolicyRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group to associate the retention policy with.</p>
+      retentionInDays:
+        type: Days
+  PutSubscriptionFilterRequest:
+    type: object
+    properties:
+      logGroupName:
+        type: LogGroupName
+        description: <p>The name of the log group to associate the subscription filter with.</p>
+      filterName:
+        type: FilterName
+        description: <p>A name for the subscription filter.</p>
+      filterPattern:
+        type: FilterPattern
+        description: <p>A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events.</p>
+      destinationArn:
+        type: DestinationArn
+        description: <p>The ARN of the destination to deliver matching log events to. Currently, the supported destinations are:</p> <ul> <li> <p>An Amazon Kinesis stream belonging to the same account as the subscription filter, for same-account delivery.</p> </li> <li> <p>A logical destination (used via an ARN of <code>Destination</code>) belonging to a different account, for cross-account delivery.</p> </li> <li> <p>An Amazon Kinesis Firehose stream belonging to the same account as the subscription filter, for same-account delivery.</p> </li> <li> <p>An AWS Lambda function belonging to the same account as the subscription filter, for same-account delivery.</p> </li> </ul>
+      roleArn?:
+        type: RoleArn
+        description: <p>The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination (used via an ARN of <code>Destination</code>) for cross-account delivery.</p>
+  RejectedLogEventsInfo:
+    type: object
+    properties:
+      tooNewLogEventStartIndex?:
+        type: LogEventIndex
+      tooOldLogEventEndIndex?:
+        type: LogEventIndex
+      expiredLogEventEndIndex?:
+        type: LogEventIndex
+  SearchedLogStream:
+    type: object
+    properties:
+      logStreamName?:
+        type: LogStreamName
+        description: <p>The name of the log stream.</p>
+      searchedCompletely?:
+        type: LogStreamSearchedCompletely
+        description: <p>Indicates whether all the events in this log stream were searched or more data exists to search by paginating further.</p>
+    description: <p>An object indicating the search status of a log stream in a <code>FilterLogEvents</code> request.</p>
+  SubscriptionFilter:
+    type: object
+    properties:
+      filterName?:
+        type: FilterName
+      logGroupName?:
+        type: LogGroupName
+      filterPattern?:
+        type: FilterPattern
+      destinationArn?:
+        type: DestinationArn
+      roleArn?:
+        type: RoleArn
+      creationTime?:
+        type: Timestamp
+  TestMetricFilterRequest:
+    type: object
+    properties:
+      filterPattern:
+        type: FilterPattern
+      logEventMessages:
+        type: TestEventMessages
+        description: <p>A list of log event messages to test.</p>
+  TestMetricFilterResponse:
+    type: object
+    properties:
+      matches?:
+        type: MetricFilterMatches
+/{CancelExportTask}:
+  uriParameters:
+    CancelExportTask?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Cancels an export task if it is in <code>PENDING</code> or <code>RUNNING</code> state.
+  post:
+    body:
+      application/json: CancelExportTaskRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{CreateExportTask}:
+  uriParameters:
+    CreateExportTask?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates an <code>ExportTask</code> which allows you to efficiently export data from a Log Group to your Amazon S3 bucket. This is an asynchronous call. If all the required information is provided, this API will initiate an export task and respond with the task Id. Once started, <code>DescribeExportTasks</code> can be used to get the status of an export task. You can only have one active (<code>RUNNING</code> or <code>PENDING</code>) export task at a time, per account. You can export logs from multiple log groups or multiple time ranges to the same Amazon S3 bucket. To separate out log data for each export task, you can specify a prefix that will be used as the Amazon S3 key prefix for all exported objects.
+  post:
+    body:
+      application/json: CreateExportTaskRequest
+    responses:
+      200:
+        body:
+          application/json: CreateExportTaskResponse
+      400:
+        description: InvalidParameterException
+/{CreateLogGroup}:
+  uriParameters:
+    CreateLogGroup?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Creates a new log group with the specified name. The name of the log
+    group must be unique within a region for an AWS account. You can create up to
+    500 log groups per account. You must use the following guidelines when naming
+    a log group: <ul> <li> Log group names can be between 1 and 512 characters long.
+    </li> <li> Allowed characters are a-z, A-Z, 0-9, ''_'' (underscore), ''-'' (hyphen),
+    ''/'' (forward slash), and ''.'' (period). </li> </ul>'
+  post:
+    body:
+      application/json: CreateLogGroupRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{CreateLogStream}:
+  uriParameters:
+    CreateLogStream?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Creates a new log stream in the specified log group. The name of the
+    log stream must be unique within the log group. There is no limit on the number
+    of log streams that can exist in a log group. You must use the following guidelines
+    when naming a log stream: <ul> <li> Log stream names can be between 1 and 512
+    characters long. </li> <li> The '':'' colon character is not allowed. </li> </ul>'
+  post:
+    body:
+      application/json: CreateLogStreamRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{DeleteDestination}:
+  uriParameters:
+    DeleteDestination?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the destination with the specified name and eventually disables all the subscription filters that publish to it. This will not delete the physical resource encapsulated by the destination.
+  post:
+    body:
+      application/json: DeleteDestinationRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{DeleteLogGroup}:
+  uriParameters:
+    DeleteLogGroup?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the log group with the specified name and permanently deletes all the archived log events associated with it.
+  post:
+    body:
+      application/json: DeleteLogGroupRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{DeleteLogStream}:
+  uriParameters:
+    DeleteLogStream?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a log stream and permanently deletes all the archived log events associated with it.
+  post:
+    body:
+      application/json: DeleteLogStreamRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{DeleteMetricFilter}:
+  uriParameters:
+    DeleteMetricFilter?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a metric filter associated with the specified log group.
+  post:
+    body:
+      application/json: DeleteMetricFilterRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{DeleteRetentionPolicy}:
+  uriParameters:
+    DeleteRetentionPolicy?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the retention policy of the specified log group. Log events would not expire if they belong to log groups without a retention policy.
+  post:
+    body:
+      application/json: DeleteRetentionPolicyRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{DeleteSubscriptionFilter}:
+  uriParameters:
+    DeleteSubscriptionFilter?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a subscription filter associated with the specified log group.
+  post:
+    body:
+      application/json: DeleteSubscriptionFilterRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{DescribeDestinations}:
+  uriParameters:
+    DescribeDestinations?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns all the destinations that are associated with the AWS account making the request. The list returned in the response is ASCII-sorted by destination name. By default, this operation returns up to 50 destinations. If there are more destinations to list, the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of destinations returned in the response by specifying the <code>limit</code> parameter in the request.
+  post:
+    body:
+      application/json: DescribeDestinationsRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeDestinationsResponse
+      400:
+        description: InvalidParameterException
+/{DescribeExportTasks}:
+  uriParameters:
+    DescribeExportTasks?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns all the export tasks that are associated with the AWS account making the request. The export tasks can be filtered based on <code>TaskId</code> or <code>TaskStatus</code>. By default, this operation returns up to 50 export tasks that satisfy the specified filters. If there are more export tasks to list, the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of export tasks returned in the response by specifying the <code>limit</code> parameter in the request.
+  post:
+    body:
+      application/json: DescribeExportTasksRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeExportTasksResponse
+      400:
+        description: InvalidParameterException
+/{DescribeLogGroups}:
+  uriParameters:
+    DescribeLogGroups?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns all the log groups that are associated with the AWS account making the request. The list returned in the response is ASCII-sorted by log group name. By default, this operation returns up to 50 log groups. If there are more log groups to list, the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of log groups returned in the response by specifying the <code>limit</code> parameter in the request.
+  post:
+    body:
+      application/json: DescribeLogGroupsRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeLogGroupsResponse
+      400:
+        description: InvalidParameterException
+/{DescribeLogStreams}:
+  uriParameters:
+    DescribeLogStreams?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns all the log streams that are associated with the specified log group. The list returned in the response is ASCII-sorted by log stream name. By default, this operation returns up to 50 log streams. If there are more log streams to list, the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of log streams returned in the response by specifying the <code>limit</code> parameter in the request. This operation has a limit of five transactions per second, after which transactions are throttled.
+  post:
+    body:
+      application/json: DescribeLogStreamsRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeLogStreamsResponse
+      400:
+        description: InvalidParameterException
+/{DescribeMetricFilters}:
+  uriParameters:
+    DescribeMetricFilters?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns all the metrics filters associated with the specified log group. The list returned in the response is ASCII-sorted by filter name. By default, this operation returns up to 50 metric filters. If there are more metric filters to list, the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of metric filters returned in the response by specifying the <code>limit</code> parameter in the request.
+  post:
+    body:
+      application/json: DescribeMetricFiltersRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeMetricFiltersResponse
+      400:
+        description: InvalidParameterException
+/{DescribeSubscriptionFilters}:
+  uriParameters:
+    DescribeSubscriptionFilters?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns all the subscription filters associated with the specified log group. The list returned in the response is ASCII-sorted by filter name. By default, this operation returns up to 50 subscription filters. If there are more subscription filters to list, the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of subscription filters returned in the response by specifying the <code>limit</code> parameter in the request.
+  post:
+    body:
+      application/json: DescribeSubscriptionFiltersRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeSubscriptionFiltersResponse
+      400:
+        description: InvalidParameterException
+/{FilterLogEvents}:
+  uriParameters:
+    FilterLogEvents?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves log events, optionally filtered by a filter pattern from the specified log group. You can provide an optional time range to filter the results on the event <code>timestamp</code>. You can limit the streams searched to an explicit list of <code>logStreamNames</code>. By default, this operation returns as much matching log events as can fit in a response size of 1MB, up to 10,000 log events, or all the events found within a time-bounded scan window. If the response includes a <code>nextToken</code>, then there is more data to search, and the search can be resumed with a new request providing the nextToken. The response will contain a list of <code>searchedLogStreams</code> that contains information about which streams were searched in the request and whether they have been searched completely or require further pagination. The <code>limit</code> parameter in the request can be used to specify the maximum number of events to return in a page.
+  post:
+    body:
+      application/json: FilterLogEventsRequest
+    responses:
+      200:
+        body:
+          application/json: FilterLogEventsResponse
+      400:
+        description: InvalidParameterException
+/{GetLogEvents}:
+  uriParameters:
+    GetLogEvents?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves log events from the specified log stream. You can provide an optional time range to filter the results on the event <code>timestamp</code>. By default, this operation returns as much log events as can fit in a response size of 1MB, up to 10,000 log events. The response will always include a <code>nextForwardToken</code> and a <code>nextBackwardToken</code> in the response body. You can use any of these tokens in subsequent <code>GetLogEvents</code> requests to paginate through events in either forward or backward direction. You can also limit the number of log events returned in the response by specifying the <code>limit</code> parameter in the request.
+  post:
+    body:
+      application/json: GetLogEventsRequest
+    responses:
+      200:
+        body:
+          application/json: GetLogEventsResponse
+      400:
+        description: InvalidParameterException
+/{PutDestination}:
+  uriParameters:
+    PutDestination?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates or updates a <code>Destination</code>. A destination encapsulates a physical resource (such as a Kinesis stream) and allows you to subscribe to a real-time stream of log events of a different account, ingested through <code>PutLogEvents</code> requests. Currently, the only supported physical resource is a Amazon Kinesis stream belonging to the same account as the destination. A destination controls what is written to its Amazon Kinesis stream through an access policy. By default, PutDestination does not set any access policy with the destination, which means a cross-account user will not be able to call <code>PutSubscriptionFilter</code> against this destination. To enable that, the destination owner must call <code>PutDestinationPolicy</code> after PutDestination.
+  post:
+    body:
+      application/json: PutDestinationRequest
+    responses:
+      200:
+        body:
+          application/json: PutDestinationResponse
+      400:
+        description: InvalidParameterException
+/{PutDestinationPolicy}:
+  uriParameters:
+    PutDestinationPolicy?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates or updates an access policy associated with an existing <code>Destination</code>. An access policy is an <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html">IAM policy document</a> that is used to authorize claims to register a subscription filter against a given destination.
+  post:
+    body:
+      application/json: PutDestinationPolicyRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{PutLogEvents}:
+  uriParameters:
+    PutLogEvents?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Uploads a batch of log events to the specified log stream. Every PutLogEvents
+    request must include the <code>sequenceToken</code> obtained from the response
+    of the previous request. An upload in a newly created log stream does not require
+    a <code>sequenceToken</code>. You can also get the <code>sequenceToken</code>
+    using <a>DescribeLogStreams</a>. The batch of events must satisfy the following
+    constraints: <ul> <li> The maximum batch size is 1,048,576 bytes, and this size
+    is calculated as the sum of all event messages in UTF-8, plus 26 bytes for each
+    log event. </li> <li> None of the log events in the batch can be more than 2 hours
+    in the future. </li> <li> None of the log events in the batch can be older than
+    14 days or the retention period of the log group. </li> <li> The log events in
+    the batch must be in chronological ordered by their <code>timestamp</code>. </li>
+    <li> The maximum number of log events in a batch is 10,000. </li> <li> A batch
+    of log events in a single PutLogEvents request cannot span more than 24 hours.
+    Otherwise, the PutLogEvents operation will fail. </li> </ul>'
+  post:
+    body:
+      application/json: PutLogEventsRequest
+    responses:
+      200:
+        body:
+          application/json: PutLogEventsResponse
+      400:
+        description: InvalidParameterException
+/{PutMetricFilter}:
+  uriParameters:
+    PutMetricFilter?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates or updates a metric filter and associates it with the specified log group. Metric filters allow you to configure rules to extract metric data from log events ingested through <code>PutLogEvents</code> requests. The maximum number of metric filters that can be associated with a log group is 100.
+  post:
+    body:
+      application/json: PutMetricFilterRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{PutRetentionPolicy}:
+  uriParameters:
+    PutRetentionPolicy?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sets the retention of the specified log group. A retention policy allows you to configure the number of days you want to retain log events in the specified log group.
+  post:
+    body:
+      application/json: PutRetentionPolicyRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{PutSubscriptionFilter}:
+  uriParameters:
+    PutSubscriptionFilter?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Creates or updates a subscription filter and associates it with the
+    specified log group. Subscription filters allow you to subscribe to a real-time
+    stream of log events ingested through <code>PutLogEvents</code> requests and have
+    them delivered to a specific destination. Currently, the supported destinations
+    are: <ul> <li> An Amazon Kinesis stream belonging to the same account as the subscription
+    filter, for same-account delivery. </li> <li>  A logical destination (used via
+    an ARN of <code>Destination</code>) belonging to a different account, for cross-account
+    delivery. </li> <li> An Amazon Kinesis Firehose stream belonging to the same account
+    as the subscription filter, for same-account delivery. </li> <li> An AWS Lambda
+    function belonging to the same account as the subscription filter, for same-account
+    delivery. </li> </ul> Currently there can only be one subscription filter associated
+    with a log group.'
+  post:
+    body:
+      application/json: PutSubscriptionFilterRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{TestMetricFilter}:
+  uriParameters:
+    TestMetricFilter?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Tests the filter pattern of a metric filter against a sample of log event messages. You can use this operation to validate the correctness of a metric filter pattern.
+  post:
+    body:
+      application/json: TestMetricFilterRequest
+    responses:
+      200:
+        body:
+          application/json: TestMetricFilterResponse
+      400:
+        description: InvalidParameterException

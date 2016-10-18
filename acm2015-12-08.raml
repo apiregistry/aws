@@ -1,0 +1,508 @@
+#%RAML 1.0
+title: AWS Certificate Manager
+version: '2015-12-08'
+description: '  Welcome to the AWS Certificate Manager (ACM) Command Reference. This
+  guide provides descriptions, syntax, and usage examples for each ACM command. You
+  can use AWS Certificate Manager to request ACM Certificates for your AWS-based websites
+  and applications. For general information about using ACM and for more information
+  about using the console, see the <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html">AWS
+  Certificate Manager User Guide</a>. For more information about using the ACM API,
+  see the <a href="http://docs.aws.amazon.com/acm/latest/APIReference/Welcome.html">AWS
+  Certificate Manager API Reference</a>.'
+mediaType:
+- application/json
+types:
+  Arn:
+    type: string
+    pattern: arn:[\w+=/,.@-]+:[\w+=/,.@-]+:[\w+=/,.@-]*:[0-9]+:[\w+=,.@-]+(/[\w+=/,.@-]+)*
+    minLength: 20
+    maxLength: 2048
+  CertificateBody:
+    type: string
+    pattern: -{5}BEGIN CERTIFICATE-{5}\u000D?\u000A([A-Za-z0-9/+]{64}\u000D?\u000A)*[A-Za-z0-9/+]{1,64}={0,2}\u000D?\u000A-{5}END CERTIFICATE-{5}(\u000D?\u000A)?
+    minLength: 1
+    maxLength: 524288
+  CertificateChain:
+    type: string
+    pattern: (-{5}BEGIN CERTIFICATE-{5}\u000D?\u000A([A-Za-z0-9/+]{64}\u000D?\u000A)*[A-Za-z0-9/+]{1,64}={0,2}\u000D?\u000A-{5}END CERTIFICATE-{5}\u000D?\u000A)*-{5}BEGIN CERTIFICATE-{5}\u000D?\u000A([A-Za-z0-9/+]{64}\u000D?\u000A)*[A-Za-z0-9/+]{1,64}={0,2}\u000D?\u000A-{5}END CERTIFICATE-{5}(\u000D?\u000A)?
+    minLength: 1
+    maxLength: 2097152
+  CertificateStatus:
+    type: string
+    enum:
+    - PENDING_VALIDATION
+    - ISSUED
+    - INACTIVE
+    - EXPIRED
+    - VALIDATION_TIMED_OUT
+    - REVOKED
+    - FAILED
+  CertificateStatuses:
+    type: array
+    items:
+      type: CertificateStatus
+  CertificateSummaryList:
+    type: array
+    items:
+      type: CertificateSummary
+  DomainList:
+    type: array
+    minItems: 1
+    maxItems: 100
+    items:
+      type: DomainNameString
+  DomainNameString:
+    type: string
+    pattern: ^(\*\.)?(((?!-)[A-Za-z0-9-]{0,62}[A-Za-z0-9])\.)+((?!-)[A-Za-z0-9-]{1,62}[A-Za-z0-9])$
+    minLength: 1
+    maxLength: 253
+  DomainValidationList:
+    type: array
+    minItems: 1
+    maxItems: 1000
+    items:
+      type: DomainValidation
+  DomainValidationOptionList:
+    type: array
+    minItems: 1
+    maxItems: 100
+    items:
+      type: DomainValidationOption
+  FailureReason:
+    type: string
+    enum:
+    - NO_AVAILABLE_CONTACTS
+    - ADDITIONAL_VERIFICATION_REQUIRED
+    - DOMAIN_NOT_ALLOWED
+    - INVALID_PUBLIC_DOMAIN
+    - OTHER
+  IdempotencyToken:
+    type: string
+    pattern: \w+
+    minLength: 1
+    maxLength: 32
+  InUseList:
+    type: array
+    items:
+      type: String
+  KeyAlgorithm:
+    type: string
+    enum:
+    - RSA_2048
+    - EC_prime256v1
+  MaxItems:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 1000
+  NextToken:
+    type: string
+    pattern: '[\u0009\u000A\u000D\u0020-\u00FF]*'
+    minLength: 1
+    maxLength: 320
+  RevocationReason:
+    type: string
+    enum:
+    - UNSPECIFIED
+    - KEY_COMPROMISE
+    - CA_COMPROMISE
+    - AFFILIATION_CHANGED
+    - SUPERCEDED
+    - CESSATION_OF_OPERATION
+    - CERTIFICATE_HOLD
+    - REMOVE_FROM_CRL
+    - PRIVILEGE_WITHDRAWN
+    - A_A_COMPROMISE
+  String:
+    type: string
+  TStamp:
+    type: datetime
+  TagKey:
+    type: string
+    pattern: '[\p{L}\p{Z}\p{N}_.:\/=+\-@]*'
+    minLength: 1
+    maxLength: 128
+  TagList:
+    type: array
+    minItems: 1
+    maxItems: 50
+    items:
+      type: Tag
+  TagValue:
+    type: string
+    pattern: '[\p{L}\p{Z}\p{N}_.:\/=+\-@]*'
+    minLength: 0
+    maxLength: 256
+  ValidationEmailList:
+    type: array
+    items:
+      type: String
+  AddTagsToCertificateRequest:
+    type: object
+    properties:
+      CertificateArn:
+        type: Arn
+        description: <p>String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+      Tags:
+        type: TagList
+        description: <p>The key-value pair that defines the tag. The tag value is optional.</p>
+  CertificateDetail:
+    type: object
+    properties:
+      CertificateArn?:
+        type: Arn
+        description: <p>The Amazon Resource Name (ARN) of the certificate. For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+      DomainName?:
+        type: DomainNameString
+        description: <p>The fully qualified domain name (FQDN) for the certificate, such as www.example.com or example.com.</p>
+      SubjectAlternativeNames?:
+        type: DomainList
+        description: <p>One or more domain names (subject alternative names) included in the certificate request. After the certificate is issued, this list includes the domain names bound to the public key contained in the certificate. The subject alternative names include the canonical domain name (CN) of the certificate and additional domain names that can be used to connect to the website.</p>
+      DomainValidationOptions?:
+        type: DomainValidationList
+        description: <p>Contains information about the email address or addresses used for domain validation.</p>
+      Serial?:
+        type: String
+        description: <p>The serial number of the certificate.</p>
+      Subject?:
+        type: String
+        description: <p>The X.500 distinguished name of the entity associated with the public key contained in the certificate.</p>
+      Issuer?:
+        type: String
+        description: <p>The X.500 distinguished name of the CA that issued and signed the certificate.</p>
+      CreatedAt?:
+        type: TStamp
+        description: <p>The time at which the certificate was requested.</p>
+      IssuedAt?:
+        type: TStamp
+        description: <p>The time at which the certificate was issued.</p>
+      Status?:
+        type: CertificateStatus
+        description: <p>The status of the certificate.</p>
+      RevokedAt?:
+        type: TStamp
+        description: <p>The time at which the certificate was revoked. This value exists only when the certificate status is <code>REVOKED</code>.</p>
+      RevocationReason?:
+        type: RevocationReason
+        description: <p>The reason the certificate was revoked. This value exists only when the certificate status is <code>REVOKED</code>.</p>
+      NotBefore?:
+        type: TStamp
+        description: <p>The time before which the certificate is not valid.</p>
+      NotAfter?:
+        type: TStamp
+        description: <p>The time after which the certificate is not valid.</p>
+      KeyAlgorithm?:
+        type: KeyAlgorithm
+        description: <p>The algorithm used to generate the key pair (the public and private key). Currently the only supported value is <code>RSA_2048</code>.</p>
+      SignatureAlgorithm?:
+        type: String
+        description: <p>The algorithm used to generate a signature. Currently the only supported value is <code>SHA256WITHRSA</code>.</p>
+      InUseBy?:
+        type: InUseList
+        description: <p>A list of ARNs for the resources that are using the certificate. An ACM Certificate can be used by multiple AWS resources.</p>
+      FailureReason?:
+        type: FailureReason
+        description: <p>The reason the certificate request failed. This value exists only when the structure's <code>Status</code> is <code>FAILED</code>. For more information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed">Certificate Request Failed</a> in the <i>AWS Certificate Manager User Guide</i>.</p>
+    description: <p>Contains detailed metadata about an ACM Certificate. This structure is returned in the response to a <a>DescribeCertificate</a> request.</p>
+  CertificateSummary:
+    type: object
+    properties:
+      CertificateArn?:
+        type: Arn
+        description: <p>Amazon Resource Name (ARN) of the certificate. This is of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+      DomainName?:
+        type: DomainNameString
+        description: <p>Fully qualified domain name (FQDN), such as www.example.com or example.com, for the certificate.</p>
+    description: <p>This structure is returned in the response object of <a>ListCertificates</a> action.</p>
+  DeleteCertificateRequest:
+    type: object
+    properties:
+      CertificateArn:
+        type: Arn
+        description: <p>String that contains the ARN of the ACM Certificate to be deleted. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+  DescribeCertificateRequest:
+    type: object
+    properties:
+      CertificateArn:
+        type: Arn
+        description: <p>String that contains an ACM Certificate ARN. The ARN must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+  DescribeCertificateResponse:
+    type: object
+    properties:
+      Certificate?:
+        type: CertificateDetail
+        description: <p>Contains a <a>CertificateDetail</a> structure that lists the fields of an ACM Certificate.</p>
+  DomainValidation:
+    type: object
+    properties:
+      DomainName:
+        type: DomainNameString
+        description: <p>Fully Qualified Domain Name (FQDN) of the form <code>www.example.com or </code> <code>example.com</code>.</p>
+      ValidationEmails?:
+        type: ValidationEmailList
+        description: <p>A list of contact address for the domain registrant.</p>
+      ValidationDomain?:
+        type: DomainNameString
+        description: <p>The base validation domain that acts as the suffix of the email addresses that are used to send the emails.</p>
+    description: <p>Structure that contains the domain name, the base validation domain to which validation email is sent, and the email addresses used to validate the domain identity.</p>
+  DomainValidationOption:
+    type: object
+    properties:
+      DomainName:
+        type: DomainNameString
+        description: <p>Fully Qualified Domain Name (FQDN) of the certificate being requested.</p>
+      ValidationDomain:
+        type: DomainNameString
+        description: <p>The domain to which validation email is sent. This is the base validation domain that will act as the suffix of the email addresses. This must be the same as the <code>DomainName</code> value or a superdomain of the <code>DomainName</code> value. For example, if you requested a certificate for <code>site.subdomain.example.com</code> and specify a <b>ValidationDomain</b> of <code>subdomain.example.com</code>, ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS for the base domain and the following five addresses:</p> <ul> <li> <p>admin@subdomain.example.com</p> </li> <li> <p>administrator@subdomain.example.com</p> </li> <li> <p>hostmaster@subdomain.example.com</p> </li> <li> <p>postmaster@subdomain.example.com</p> </li> <li> <p>webmaster@subdomain.example.com</p> </li> </ul>
+    description: <p>This structure is used in the request object of the <a>RequestCertificate</a> action.</p>
+  GetCertificateRequest:
+    type: object
+    properties:
+      CertificateArn:
+        type: Arn
+        description: <p>String that contains a certificate ARN in the following format:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+  GetCertificateResponse:
+    type: object
+    properties:
+      Certificate?:
+        type: CertificateBody
+        description: <p>String that contains the ACM Certificate represented by the ARN specified at input.</p>
+      CertificateChain?:
+        type: CertificateChain
+        description: <p>The certificate chain that contains the root certificate issued by the certificate authority (CA).</p>
+  ListCertificatesRequest:
+    type: object
+    properties:
+      CertificateStatuses?:
+        type: CertificateStatuses
+        description: <p>The status or statuses on which to filter the list of ACM Certificates.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>Use this parameter only when paginating results and only in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextToken</code> from the response you just received.</p>
+      MaxItems?:
+        type: MaxItems
+        description: <p>Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the <code>NextToken</code> element is sent in the response. Use this <code>NextToken</code> value in a subsequent request to retrieve additional items.</p>
+  ListCertificatesResponse:
+    type: object
+    properties:
+      NextToken?:
+        type: NextToken
+        description: <p>When the list is truncated, this value is present and contains the value to use for the <code>NextToken</code> parameter in a subsequent pagination request.</p>
+      CertificateSummaryList?:
+        type: CertificateSummaryList
+        description: <p>A list of ACM Certificates.</p>
+  ListTagsForCertificateRequest:
+    type: object
+    properties:
+      CertificateArn:
+        type: Arn
+        description: <p>String that contains the ARN of the ACM Certificate for which you want to list the tags. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+  ListTagsForCertificateResponse:
+    type: object
+    properties:
+      Tags?:
+        type: TagList
+        description: <p>The key-value pairs that define the applied tags.</p>
+  RemoveTagsFromCertificateRequest:
+    type: object
+    properties:
+      CertificateArn:
+        type: Arn
+        description: <p>String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+      Tags:
+        type: TagList
+        description: <p>The key-value pair that defines the tag to remove.</p>
+  RequestCertificateRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainNameString
+        description: <p>Fully qualified domain name (FQDN), such as www.example.com, of the site you want to secure with an ACM Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com.</p>
+      SubjectAlternativeNames?:
+        type: DomainList
+        description: <p>Additional FQDNs to be included in the Subject Alternative Name extension of the ACM Certificate. For example, add the name www.example.net to a certificate for which the <code>DomainName</code> field is www.example.com if users can reach your site by using either name.</p>
+      IdempotencyToken?:
+        type: IdempotencyToken
+        description: <p>Customer chosen string that can be used to distinguish between calls to <code>RequestCertificate</code>. Idempotency tokens time out after one hour. Therefore, if you call <code>RequestCertificate</code> multiple times with the same idempotency token within one hour, ACM recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, ACM recognizes that you are requesting multiple certificates.</p>
+      DomainValidationOptions?:
+        type: DomainValidationOptionList
+        description: <p>The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code> value. For example, if you requested a certificate for <code>test.example.com</code> and specify <b>DomainValidationOptions</b> of <code>example.com</code>, ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:</p> <ul> <li> <p>admin@example.com</p> </li> <li> <p>administrator@example.com</p> </li> <li> <p>hostmaster@example.com</p> </li> <li> <p>postmaster@example.com</p> </li> <li> <p>webmaster@example.com</p> </li> </ul>
+  RequestCertificateResponse:
+    type: object
+    properties:
+      CertificateArn?:
+        type: Arn
+        description: <p>String that contains the ARN of the issued certificate. This must be of the form:</p> <p> <code>arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p>
+  ResendValidationEmailRequest:
+    type: object
+    properties:
+      CertificateArn:
+        type: Arn
+        description: <p>String that contains the ARN of the requested certificate. The certificate ARN is generated and returned by the <a>RequestCertificate</a> action as soon as the request is made. By default, using this parameter causes email to be sent to all top-level domains you specified in the certificate request.</p> <p>The ARN must be of the form:</p> <p> <code>arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p>
+      Domain:
+        type: DomainNameString
+        description: <p>The Fully Qualified Domain Name (FQDN) of the certificate that needs to be validated.</p>
+      ValidationDomain:
+        type: DomainNameString
+        description: <p>The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code> value. For example, if you requested a certificate for <code>site.subdomain.example.com</code> and specify a <b>ValidationDomain</b> of <code>subdomain.example.com</code>, ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:</p> <ul> <li> <p>admin@subdomain.example.com</p> </li> <li> <p>administrator@subdomain.example.com</p> </li> <li> <p>hostmaster@subdomain.example.com</p> </li> <li> <p>postmaster@subdomain.example.com</p> </li> <li> <p>webmaster@subdomain.example.com</p> </li> </ul>
+  Tag:
+    type: object
+    properties:
+      Key:
+        type: TagKey
+        description: <p>The key of the tag.</p>
+      Value?:
+        type: TagValue
+        description: <p>The value of the tag.</p>
+    description: <p>A key-value pair that identifies or specifies metadata about an ACM resource.</p>
+/{AddTagsToCertificate}:
+  uriParameters:
+    AddTagsToCertificate?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Adds one or more tags to an ACM Certificate. Tags are labels that you can use to identify and organize your AWS resources. Each tag consists of a <code>key</code> and an optional <code>value</code>. You specify the certificate on input by its Amazon Resource Name (ARN). You specify the tag by using a key-value pair. You can apply a tag to just one certificate if you want to identify a specific characteristic of that certificate, or you can apply the same tag to multiple certificates if you want to filter for a common relationship among those certificates. Similarly, you can apply the same tag to multiple resources if you want to specify a relationship among those resources. For example, you can add the same tag to an ACM Certificate and an Elastic Load Balancing load balancer to indicate that they are both used by the same website. For more information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/tags.html">Tagging ACM Certificates</a>. To remove one or more tags, use the <a>RemoveTagsFromCertificate</a> action. To view all of the tags that have been applied to the certificate, use the <a>ListTagsForCertificate</a> action.
+  post:
+    body:
+      application/json: AddTagsToCertificateRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ResourceNotFoundException
+/{DeleteCertificate}:
+  uriParameters:
+    DeleteCertificate?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes an ACM Certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list of ACM Certificates that can be displayed by calling the <a>ListCertificates</a> action or be retrieved by calling the <a>GetCertificate</a> action. The certificate will not be available for use by other AWS services. <note> You cannot delete an ACM Certificate that is being used by another AWS service. To delete a certificate that is in use, the certificate association must first be removed. </note>
+  post:
+    body:
+      application/json: DeleteCertificateRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ResourceNotFoundException
+/{DescribeCertificate}:
+  uriParameters:
+    DescribeCertificate?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns a list of the fields contained in the specified ACM Certificate. For example, this action returns the certificate status, a flag that indicates whether the certificate is associated with any other AWS service, and the date at which the certificate request was created. You specify the ACM Certificate on input by its Amazon Resource Name (ARN).
+  post:
+    body:
+      application/json: DescribeCertificateRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeCertificateResponse
+      400:
+        description: ResourceNotFoundException
+/{GetCertificate}:
+  uriParameters:
+    GetCertificate?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves an ACM Certificate and certificate chain for the certificate specified by an ARN. The chain is an ordered list of certificates that contains the root certificate, intermediate certificates of subordinate CAs, and the ACM Certificate. The certificate and certificate chain are base64 encoded. If you want to decode the certificate chain to see the individual certificate fields, you can use OpenSSL. <note> Currently, ACM Certificates can be used only with Elastic Load Balancing and Amazon CloudFront. </note>
+  post:
+    body:
+      application/json: GetCertificateRequest
+    responses:
+      200:
+        body:
+          application/json: GetCertificateResponse
+      400:
+        description: ResourceNotFoundException
+/{ListCertificates}:
+  uriParameters:
+    ListCertificates?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves a list of ACM Certificates and the domain name for each. You can optionally filter the list to return only the certificates that match the specified status.
+  post:
+    body:
+      application/json: ListCertificatesRequest
+    responses:
+      200:
+        body:
+          application/json: ListCertificatesResponse
+/{ListTagsForCertificate}:
+  uriParameters:
+    ListTagsForCertificate?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the tags that have been applied to the ACM Certificate. Use the certificate ARN to specify the certificate. To add a tag to an ACM Certificate, use the <a>AddTagsToCertificate</a> action. To delete a tag, use the <a>RemoveTagsFromCertificate</a> action.
+  post:
+    body:
+      application/json: ListTagsForCertificateRequest
+    responses:
+      200:
+        body:
+          application/json: ListTagsForCertificateResponse
+      400:
+        description: ResourceNotFoundException
+/{RemoveTagsFromCertificate}:
+  uriParameters:
+    RemoveTagsFromCertificate?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Remove one or more tags from an ACM Certificate. A tag consists of a key-value pair. If you do not specify the value portion of the tag when calling this function, the tag will be removed regardless of value. If you specify a value, the tag is removed only if it is associated with the specified value. To add tags to a certificate, use the <a>AddTagsToCertificate</a> action. To view all of the tags that have been applied to a specific ACM Certificate, use the <a>ListTagsForCertificate</a> action.
+  post:
+    body:
+      application/json: RemoveTagsFromCertificateRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ResourceNotFoundException
+/{RequestCertificate}:
+  uriParameters:
+    RequestCertificate?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Requests an ACM Certificate for use with other AWS services. To request an ACM Certificate, you must specify the fully qualified domain name (FQDN) for your site. You can also specify additional FQDNs if users can reach your site by using other names. For each domain name you specify, email is sent to the domain owner to request approval to issue the certificate. After receiving approval from the domain owner, the ACM Certificate is issued. For more information, see the <a href="http://docs.aws.amazon.com/acm/latest/userguide/overview.html">AWS Certificate Manager User Guide </a>.
+  post:
+    body:
+      application/json: RequestCertificateRequest
+    responses:
+      200:
+        body:
+          application/json: RequestCertificateResponse
+      400:
+        description: LimitExceededException
+/{ResendValidationEmail}:
+  uriParameters:
+    ResendValidationEmail?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Resends the email that requests domain ownership validation. The domain owner or an authorized representative must approve the ACM Certificate before it can be issued. The certificate can be approved by clicking a link in the mail to navigate to the Amazon certificate approval website and then clicking <b>I Approve</b>. However, the validation email can be blocked by spam filters. Therefore, if you do not receive the original mail, you can request that the mail be resent within 72 hours of requesting the ACM Certificate. If more than 72 hours have elapsed since your original request or since your last attempt to resend validation mail, you must request a new certificate.
+  post:
+    body:
+      application/json: ResendValidationEmailRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ResourceNotFoundException

@@ -1,0 +1,1157 @@
+#%RAML 1.0
+title: Amazon Kinesis Analytics
+version: '2015-08-14'
+mediaType:
+- application/json
+types:
+  ApplicationCode:
+    type: string
+    minLength: 0
+    maxLength: 51200
+  ApplicationDescription:
+    type: string
+    minLength: 0
+    maxLength: 1024
+  ApplicationName:
+    type: string
+    pattern: '[a-zA-Z0-9_.-]+'
+    minLength: 1
+    maxLength: 128
+  ApplicationStatus:
+    type: string
+    enum:
+    - DELETING
+    - STARTING
+    - STOPPING
+    - READY
+    - RUNNING
+    - UPDATING
+  ApplicationSummaries:
+    type: array
+    items:
+      type: ApplicationSummary
+  ApplicationVersionId:
+    type: integer
+    format: long
+    minimum: 1
+    maximum: 999999999
+  BooleanObject:
+    type: boolean
+  BucketARN:
+    type: string
+    pattern: arn:.*
+    minLength: 1
+    maxLength: 2048
+  FileKey:
+    type: string
+  Id:
+    type: string
+    pattern: '[a-zA-Z0-9_.-]+'
+    minLength: 1
+    maxLength: 50
+  InAppStreamName:
+    type: string
+    pattern: '[a-zA-Z][a-zA-Z0-9_]+'
+    minLength: 1
+    maxLength: 32
+  InAppStreamNames:
+    type: array
+    items:
+      type: InAppStreamName
+  InAppTableName:
+    type: string
+    pattern: '[a-zA-Z][a-zA-Z0-9_]+'
+    minLength: 1
+    maxLength: 32
+  InputConfigurations:
+    type: array
+    items:
+      type: InputConfiguration
+  InputDescriptions:
+    type: array
+    items:
+      type: InputDescription
+  InputParallelismCount:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 10
+  InputStartingPosition:
+    type: string
+    enum:
+    - NOW
+    - TRIM_HORIZON
+    - LAST_STOPPED_POINT
+  InputUpdates:
+    type: array
+    items:
+      type: InputUpdate
+  Inputs:
+    type: array
+    items:
+      type: Input
+  ListApplicationsInputLimit:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 50
+  OutputDescriptions:
+    type: array
+    items:
+      type: OutputDescription
+  OutputUpdates:
+    type: array
+    items:
+      type: OutputUpdate
+  Outputs:
+    type: array
+    items:
+      type: Output
+  ParsedInputRecord:
+    type: array
+    items:
+      type: ParsedInputRecordField
+  ParsedInputRecordField:
+    type: string
+  ParsedInputRecords:
+    type: array
+    items:
+      type: ParsedInputRecord
+  RawInputRecord:
+    type: string
+  RawInputRecords:
+    type: array
+    items:
+      type: RawInputRecord
+  RecordColumnDelimiter:
+    type: string
+  RecordColumnMapping:
+    type: string
+  RecordColumnName:
+    type: string
+    pattern: '[a-zA-Z][a-zA-Z0-9_]+'
+  RecordColumnSqlType:
+    type: string
+  RecordColumns:
+    type: array
+    minItems: 1
+    maxItems: 1000
+    items:
+      type: RecordColumn
+  RecordEncoding:
+    type: string
+    pattern: UTF-8
+  RecordFormatType:
+    type: string
+    enum:
+    - JSON
+    - CSV
+  RecordRowDelimiter:
+    type: string
+  RecordRowPath:
+    type: string
+  ReferenceDataSourceDescriptions:
+    type: array
+    items:
+      type: ReferenceDataSourceDescription
+  ReferenceDataSourceUpdates:
+    type: array
+    items:
+      type: ReferenceDataSourceUpdate
+  ResourceARN:
+    type: string
+    pattern: arn:[a-zA-Z0-9\-]+:[a-zA-Z0-9\-]+:[a-zA-Z0-9\-]*:\d{12}:[a-zA-Z_0-9+=,.@\-_/:]+
+    minLength: 1
+    maxLength: 2048
+  RoleARN:
+    type: string
+    pattern: arn:aws:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+
+    minLength: 1
+    maxLength: 2048
+  Timestamp:
+    type: datetime
+  AddApplicationInputRequest:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Name of your existing Amazon Kinesis Analytics application to which you want to add the streaming source.</p>
+      CurrentApplicationVersionId:
+        type: ApplicationVersionId
+        description: <p>Current version of your Amazon Kinesis Analytics application. You can use the <a>DescribeApplication</a> operation to find the current application version.</p>
+      Input:
+        type: Input
+    description: <p/>
+  AddApplicationInputResponse:
+    type: object
+    description: <p/>
+  AddApplicationOutputRequest:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Name of the application to which you want to add the output configuration.</p>
+      CurrentApplicationVersionId:
+        type: ApplicationVersionId
+        description: <p>Version of the application to which you want add the output configuration. You can use the <a>DescribeApplication</a> operation to get the current application version. If the version specified is not the current version, the <code>ConcurrentModificationException</code> is returned. </p>
+      Output:
+        type: Output
+        description: <p>An array of objects, each describing one output configuration. In the output configuration, you specify the name of an in-application stream, a destination (that is, an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream), and record the formation to use when writing to the destination.</p>
+    description: <p/>
+  AddApplicationOutputResponse:
+    type: object
+    description: <p/>
+  AddApplicationReferenceDataSourceRequest:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Name of an existing application.</p>
+      CurrentApplicationVersionId:
+        type: ApplicationVersionId
+        description: <p>Version of the application for which you are adding the reference data source. You can use the <a>DescribeApplication</a> operation to get the current application version. If the version specified is not the current version, the <code>ConcurrentModificationException</code> is returned.</p>
+      ReferenceDataSource:
+        type: ReferenceDataSource
+        description: <p>The reference data source can be an object in your Amazon S3 bucket. Amazon Kinesis Analytics reads the object and copies the data into the in-application table that is created. You provide an S3 bucket, object key name, and the resulting in-application table that is created. You must also provide an IAM role with the necessary permissions that Amazon Kinesis Analytics can assume to read the object from your S3 bucket on your behalf.</p>
+    description: <p/>
+  AddApplicationReferenceDataSourceResponse:
+    type: object
+    description: <p/>
+  ApplicationDetail:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Name of the application.</p>
+      ApplicationDescription?:
+        type: ApplicationDescription
+        description: <p>Description of the application.</p>
+      ApplicationARN:
+        type: ResourceARN
+        description: <p>ARN of the application.</p>
+      ApplicationStatus:
+        type: ApplicationStatus
+        description: <p>Status of the application.</p>
+      CreateTimestamp?:
+        type: Timestamp
+        description: <p>Timestamp when the application version was created.</p>
+      LastUpdateTimestamp?:
+        type: Timestamp
+        description: <p>Timestamp when the application was last updated.</p>
+      InputDescriptions?:
+        type: InputDescriptions
+        description: <p>Describes the application input configuration. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
+      OutputDescriptions?:
+        type: OutputDescriptions
+        description: <p>Describes the application output configuration. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html">Configuring Application Output</a>. </p>
+      ReferenceDataSourceDescriptions?:
+        type: ReferenceDataSourceDescriptions
+        description: <p>Describes reference data sources configured for the application. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
+      ApplicationCode?:
+        type: ApplicationCode
+        description: <p>Returns the application code that you provided to perform data analysis on any of the in-application streams in your application.</p>
+      ApplicationVersionId:
+        type: ApplicationVersionId
+        description: <p>Provides the current application version.</p>
+    description: <p>Provides a description of the application, including the application Amazon Resource Name (ARN), status, latest version, and input and output configuration.</p>
+  ApplicationSummary:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Name of the application.</p>
+      ApplicationARN:
+        type: ResourceARN
+        description: <p>ARN of the application.</p>
+      ApplicationStatus:
+        type: ApplicationStatus
+        description: <p>Status of the application.</p>
+    description: <p>Provides application summary information, including the application Amazon Resource Name (ARN), name, and status.</p>
+  ApplicationUpdate:
+    type: object
+    properties:
+      InputUpdates?:
+        type: InputUpdates
+        description: <p>Describes application input configuration updates.</p>
+      ApplicationCodeUpdate?:
+        type: ApplicationCode
+        description: <p>Describes application code updates.</p>
+      OutputUpdates?:
+        type: OutputUpdates
+        description: <p>Describes application output configuration updates.</p>
+      ReferenceDataSourceUpdates?:
+        type: ReferenceDataSourceUpdates
+        description: <p>Describes application reference data source updates.</p>
+    description: <p>Describes updates to apply to an existing Kinesis Analytics application.</p>
+  CSVMappingParameters:
+    type: object
+    properties:
+      RecordRowDelimiter:
+        type: RecordRowDelimiter
+        description: <p>Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical row delimiter.</p>
+      RecordColumnDelimiter:
+        type: RecordColumnDelimiter
+        description: <p>Column delimiter. For example, in a CSV format, a comma (",") is the typical column delimiter.</p>
+    description: '<p>Provides additional mapping information when the record format
+      uses delimiters, such as CSV. For example, the following sample records use
+      CSV format, where the records use the <i>''\n''</i> as the row delimiter and
+      a comma (",") as the column delimiter: </p> <p> <code>"name1", "address1" </code>
+      </p> <p> <code>"name2, "address2"</code> </p>'
+  CreateApplicationRequest:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Name of your Amazon Kinesis Analytics application (for example, <code>sample-app</code>).</p>
+      ApplicationDescription?:
+        type: ApplicationDescription
+        description: <p>Summary description of the application.</p>
+      Inputs?:
+        type: Inputs
+        description: <p>Use this parameter to configure the application input.</p> <p>You can configure your application to receive input from a single streaming source. In this configuration, you map this streaming source to an in-application stream that is created. Your application code can then query the in-application stream like a table (you can think of it as a constantly updating table).</p> <p>For the streaming source, you provide its Amazon Resource Name (ARN) and format of data on the stream (for example, JSON, CSV, etc). You also must provide an IAM role that Amazon Kinesis Analytics can assume to read this stream on your behalf.</p> <p>To create the in-application stream, you need to specify a schema to transform your data into a schematized version used in SQL. In the schema, you provide the necessary mapping of the data elements in the streaming source to record columns in the in-app stream.</p>
+      Outputs?:
+        type: Outputs
+        description: <p>You can configure application output to write data from any of the in-application streams to up to five destinations.</p> <p>These destinations can be Amazon Kinesis streams, Amazon Kinesis Firehose delivery streams, or both.</p> <p>In the configuration, you specify the in-application stream name, the destination stream Amazon Resource Name (ARN), and the format to use when writing data. You must also provide an IAM role that Amazon Kinesis Analytics can assume to write to the destination stream on your behalf.</p> <p>In the output configuration, you also provide the output stream Amazon Resource Name (ARN) and the format of data in the stream (for example, JSON, CSV). You also must provide an IAM role that Amazon Kinesis Analytics can assume to write to this stream on your behalf.</p>
+      ApplicationCode?:
+        type: ApplicationCode
+        description: <p>One or more SQL statements that read input data, transform it, and generate output. For example, you can write a SQL statement that reads input data and generates a running average of the number of advertisement clicks by vendor.</p> <p>You can also provide a series of SQL statements, where output of one statement can be used as the input for the next statement.</p> <p>Note that the application code must create the streams with names specified in the <code>Outputs</code>. For example, if your <code>Outputs</code> defines output streams named <code>ExampleOutputStream1</code> and <code>ExampleOutputStream2</code>, then your application code must create these streams. </p>
+    description: <p>TBD</p>
+  CreateApplicationResponse:
+    type: object
+    properties:
+      ApplicationSummary:
+        type: ApplicationSummary
+        description: <p>In response to your <code>CreateApplication</code> request, Amazon Kinesis Analytics returns a response with a summary of the application it created, including the application Amazon Resource Name (ARN), name, and status.</p>
+    description: <p>TBD</p>
+  DeleteApplicationOutputRequest:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Amazon Kinesis Analytics application name.</p>
+      CurrentApplicationVersionId:
+        type: ApplicationVersionId
+        description: <p>Amazon Kinesis Analytics application version. You can use the <a>DescribeApplication</a> operation to get the current application version. If the version specified is not the current version, the <code>ConcurrentModificationException</code> is returned. </p>
+      OutputId:
+        type: Id
+        description: <p>The ID of the configuration to delete. Each output configuration that is added to the application, either when the application is created or later using the <a>AddApplicationOutput</a> operation, has a unique ID. You need to provide the ID to uniquely identify the output configuration that you want to delete from the application configuration. You can use the <a>DescribeApplication</a> operation to get the specific <code>OutputId</code>. </p>
+    description: <p/>
+  DeleteApplicationOutputResponse:
+    type: object
+    description: <p/>
+  DeleteApplicationReferenceDataSourceRequest:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Name of an existing application.</p>
+      CurrentApplicationVersionId:
+        type: ApplicationVersionId
+        description: <p>Version of the application. You can use the <a>DescribeApplication</a> operation to get the current application version. If the version specified is not the current version, the <code>ConcurrentModificationException</code> is returned.</p>
+      ReferenceId:
+        type: Id
+        description: <p>ID of the reference data source. When you add a reference data source to your application using the <a>AddApplicationReferenceDataSource</a>, Amazon Kinesis Analytics assigns an ID. You can use the <a>DescribeApplication</a> operation to get the reference ID. </p>
+  DeleteApplicationReferenceDataSourceResponse:
+    type: object
+  DeleteApplicationRequest:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Name of the Amazon Kinesis Analytics application to delete.</p>
+      CreateTimestamp:
+        type: Timestamp
+        description: <p> You can use the <code>DescribeApplication</code> operation to get this value. </p>
+    description: <p/>
+  DeleteApplicationResponse:
+    type: object
+    description: <p/>
+  DescribeApplicationRequest:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Name of the application.</p>
+    description: <p/>
+  DescribeApplicationResponse:
+    type: object
+    properties:
+      ApplicationDetail:
+        type: ApplicationDetail
+        description: <p>Provides a description of the application, such as the application Amazon Resource Name (ARN), status, latest version, and input and output configuration details.</p>
+    description: <p/>
+  DestinationSchema:
+    type: object
+    properties:
+      RecordFormatType?:
+        type: RecordFormatType
+        description: <p>Specifies the format of the records on the output stream.</p>
+    description: <p>Describes the data format when records are written to the destination. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html">Configuring Application Output</a>. </p>
+  DiscoverInputSchemaRequest:
+    type: object
+    properties:
+      ResourceARN:
+        type: ResourceARN
+        description: <p>Amazon Resource Name (ARN) of the streaming source.</p>
+      RoleARN:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf.</p>
+      InputStartingPositionConfiguration:
+        type: InputStartingPositionConfiguration
+        description: <p>Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming source discovery purposes.</p>
+    description: <p/>
+  DiscoverInputSchemaResponse:
+    type: object
+    properties:
+      InputSchema?:
+        type: SourceSchema
+        description: <p>Schema inferred from the streaming source. It identifies the format of the data in the streaming source and how each data element maps to corresponding columns in the in-application stream that you can create.</p>
+      ParsedInputRecords?:
+        type: ParsedInputRecords
+        description: <p>An array of elements, where each element corresponds to a row in a stream record (a stream record can have more than one row).</p>
+      RawInputRecords?:
+        type: RawInputRecords
+        description: <p>Raw stream data that was sampled to infer the schema.</p>
+    description: <p/>
+  Input:
+    type: object
+    properties:
+      NamePrefix:
+        type: InAppStreamName
+        description: <p>Name prefix to use when creating in-application stream. Suppose you specify a prefix "MyInApplicationStream". Kinesis Analytics will then create one or more (as per the <code>InputParallelism</code> count you specified) in-application streams with names "MyInApplicationStream_001", "MyInApplicationStream_002" and so on. </p>
+      KinesisStreamsInput?:
+        type: KinesisStreamsInput
+        description: <p>If the streaming source is an Amazon Kinesis stream, identifies the stream's Amazon Resource Name (ARN) and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
+      KinesisFirehoseInput?:
+        type: KinesisFirehoseInput
+        description: <p>If the streaming source is an Amazon Kinesis Firehose delivery stream, identifies the Firehose delivery stream's ARN and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
+      InputParallelism?:
+        type: InputParallelism
+        description: <p>Describes the number of in-application streams to create. </p> <p>Data from your source will be routed to these in-application input streams.</p> <p> (see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>.</p>
+      InputSchema?:
+        type: SourceSchema
+        description: <p>Describes the format of the data in the streaming source, and how each data element maps to corresponding columns in the in-application stream that is being created.</p> <p>Also used to describe the format of the reference data source.</p>
+    description: <p>When you configure the application input, you specify the streaming source, the in-application stream name that is created, and the mapping between the two. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
+  InputConfiguration:
+    type: object
+    properties:
+      Id:
+        type: Id
+        description: <p>Input source ID. You can get this ID by calling the <a>DescribeApplication</a> operation.</p>
+      InputStartingPositionConfiguration:
+        type: InputStartingPositionConfiguration
+        description: <p>Point at which you want the application to start processing records from the streaming source.</p>
+    description: <p>When you start your application, you provide this configuration, which identifies the input source and the point in the input source at which you want the application to start processing records.</p>
+  InputDescription:
+    type: object
+    properties:
+      InputId?:
+        type: Id
+        description: <p>Input ID associated with the application input. This is the ID that Amazon Kinesis Analytics assigns to each input configuration you add to your application. </p>
+      NamePrefix?:
+        type: InAppStreamName
+        description: <p>In-application name prefix.</p>
+      InAppStreamNames?:
+        type: InAppStreamNames
+        description: <p>Returns the in-application stream names that are mapped to the stream source.</p>
+      KinesisStreamsInputDescription?:
+        type: KinesisStreamsInputDescription
+        description: <p>If an Amazon Kinesis stream is configured as streaming source, provides Amazon Kinesis stream's ARN and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
+      KinesisFirehoseInputDescription?:
+        type: KinesisFirehoseInputDescription
+        description: <p>If an Amazon Kinesis Firehose delivery stream is configured as a streaming source, provides the Firehose delivery stream's Amazon Resource Name (ARN) and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
+      InputSchema?:
+        type: SourceSchema
+      InputParallelism?:
+        type: InputParallelism
+        description: <p>Describes the configured parallelism (number of in-application streams mapped to the streaming source).</p>
+      InputStartingPositionConfiguration?:
+        type: InputStartingPositionConfiguration
+        description: <p>Point at which the application is configured to read from the input stream.</p>
+    description: <p>Describes the application input configuration. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
+  InputParallelism:
+    type: object
+    properties:
+      Count?:
+        type: InputParallelismCount
+        description: <p>Number of in-application streams to create. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>. </p>
+    description: <p>Describes the number of in-application streams to create for a given streaming source. For information about parallellism, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
+  InputParallelismUpdate:
+    type: object
+    properties:
+      CountUpdate?:
+        type: InputParallelismCount
+        description: <p>Number of in-application streams to create for the specified streaming source.</p>
+    description: <p>Provides updates to the parallelism count.</p>
+  InputSchemaUpdate:
+    type: object
+    properties:
+      RecordFormatUpdate?:
+        type: RecordFormat
+        description: <p>Specifies the format of the records on the streaming source.</p>
+      RecordEncodingUpdate?:
+        type: RecordEncoding
+        description: <p>Specifies the encoding of the records in the streaming source. For example, UTF-8.</p>
+      RecordColumnUpdates?:
+        type: RecordColumns
+        description: <p>A list of <code>RecordColumn</code> objects. Each object describes the mapping of the streaming source element to the corresponding column in the in-application stream. </p>
+    description: <p> Describes updates for the application's input schema. </p>
+  InputStartingPositionConfiguration:
+    type: object
+    properties:
+      InputStartingPosition?:
+        type: InputStartingPosition
+        description: <p>The starting position on the stream.</p> <ul> <li> <p> <code>LATEST</code> - Start reading just after the most recent record in the stream.</p> </li> <li> <p> <code>TRIM_HORIZON</code> - Start reading at the last untrimmed record in the stream, which is the oldest record available in the stream. This option is not available for an Amazon Kinesis Firehose delivery stream.</p> </li> <li> <p> <code>LAST_STOPPED_POINT</code> - Resume reading from where the application last stopped reading.</p> </li> </ul>
+    description: <p>Describes the point at which the application reads from the streaming source.</p>
+  InputUpdate:
+    type: object
+    properties:
+      InputId:
+        type: Id
+        description: <p>Input ID of the application input to be updated.</p>
+      NamePrefixUpdate?:
+        type: InAppStreamName
+        description: <p>Name prefix for in-application stream(s) that Kinesis Analytics creates for the specific streaming source.</p>
+      KinesisStreamsInputUpdate?:
+        type: KinesisStreamsInputUpdate
+        description: <p>If a Amazon Kinesis stream is the streaming source to be updated, provides an updated stream ARN and IAM role ARN.</p>
+      KinesisFirehoseInputUpdate?:
+        type: KinesisFirehoseInputUpdate
+        description: <p>If an Amazon Kinesis Firehose delivery stream is the streaming source to be updated, provides an updated stream Amazon Resource Name (ARN) and IAM role ARN.</p>
+      InputSchemaUpdate?:
+        type: InputSchemaUpdate
+        description: <p>Describes the data format on the streaming source, and how record elements on the streaming source map to columns of the in-application stream that is created.</p>
+      InputParallelismUpdate?:
+        type: InputParallelismUpdate
+        description: <p>Describes the parallelism updates (the number in-application streams Kinesis Analytics creates for the specific streaming source).</p>
+    description: <p>Describes updates to a specific input configuration (identified by the <code>InputId</code> of an application). </p>
+  JSONMappingParameters:
+    type: object
+    properties:
+      RecordRowPath:
+        type: RecordRowPath
+        description: <p>Path to the top-level parent that contains the records.</p> <p>For example, consider the following JSON record:</p> <p>In the <code>RecordRowPath</code>, <code>"$"</code> refers to the root and path <code>"$.vehicle.Model"</code> refers to the specific <code>"Model"</code> key in the JSON.</p>
+    description: <p>Provides additional mapping information when JSON is the record format on the streaming source.</p>
+  KinesisFirehoseInput:
+    type: object
+    properties:
+      ResourceARN:
+        type: ResourceARN
+        description: <p>ARN of the input Firehose delivery stream.</p>
+      RoleARN:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to make sure the role has necessary permissions to access the stream.</p>
+    description: <p> Identifies an Amazon Kinesis Firehose delivery stream as the streaming source. You provide the Firehose delivery stream's Amazon Resource Name (ARN) and an IAM role ARN that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
+  KinesisFirehoseInputDescription:
+    type: object
+    properties:
+      ResourceARN?:
+        type: ResourceARN
+        description: <p>Amazon Resource Name (ARN) of the Amazon Kinesis Firehose delivery stream.</p>
+      RoleARN?:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics assumes to access the stream.</p>
+    description: <p> Describes the Amazon Kinesis Firehose delivery stream that is configured as the streaming source in the application input configuration. </p>
+  KinesisFirehoseInputUpdate:
+    type: object
+    properties:
+      ResourceARNUpdate?:
+        type: ResourceARN
+        description: <p>ARN of the input Amazon Kinesis Firehose delivery stream to read.</p>
+      RoleARNUpdate?:
+        type: RoleARN
+        description: <p>Amazon Resource Name (ARN) of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant necessary permissions to this role.</p>
+    description: <p>When updating application input configuration, provides information about an Amazon Kinesis Firehose delivery stream as the streaming source.</p>
+  KinesisFirehoseOutput:
+    type: object
+    properties:
+      ResourceARN:
+        type: ResourceARN
+        description: <p>ARN of the destination Amazon Kinesis Firehose delivery stream to write to.</p>
+      RoleARN:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the destination stream on your behalf. You need to grant the necessary permissions to this role.</p>
+    description: <p>When configuring application output, identifies an Amazon Kinesis Firehose delivery stream as the destination. You provide the stream Amazon Resource Name (ARN) and an IAM role that enables Amazon Kinesis Analytics to write to the stream on your behalf.</p>
+  KinesisFirehoseOutputDescription:
+    type: object
+    properties:
+      ResourceARN?:
+        type: ResourceARN
+        description: <p>Amazon Resource Name (ARN) of the Amazon Kinesis Firehose delivery stream.</p>
+      RoleARN?:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.</p>
+    description: <p> For an application output, describes the Amazon Kinesis Firehose delivery stream configured as its destination. </p>
+  KinesisFirehoseOutputUpdate:
+    type: object
+    properties:
+      ResourceARNUpdate?:
+        type: ResourceARN
+        description: <p>Amazon Resource Name (ARN) of the Amazon Kinesis Firehose delivery stream to write to.</p>
+      RoleARNUpdate?:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant necessary permissions to this role.</p>
+    description: <p> When updating an output configuration using the <a>UpdateApplication</a> operation, provides information about an Amazon Kinesis Firehose delivery stream configured as the destination. </p>
+  KinesisStreamsInput:
+    type: object
+    properties:
+      ResourceARN:
+        type: ResourceARN
+        description: <p>ARN of the input Amazon Kinesis stream to read.</p>
+      RoleARN:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant the necessary permissions to this role.</p>
+    description: <p> Identifies an Amazon Kinesis stream as the streaming source. You provide the stream's ARN and an IAM role ARN that enables Amazon Kinesis Analytics to access the stream on your behalf.</p>
+  KinesisStreamsInputDescription:
+    type: object
+    properties:
+      ResourceARN?:
+        type: ResourceARN
+        description: <p>Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
+      RoleARN?:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.</p>
+    description: <p> Describes the Amazon Kinesis stream that is configured as the streaming source in the application input configuration. </p>
+  KinesisStreamsInputUpdate:
+    type: object
+    properties:
+      ResourceARNUpdate?:
+        type: ResourceARN
+        description: <p>Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.</p>
+      RoleARNUpdate?:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant the necessary permissions to this role.</p>
+    description: <p>When updating application input configuration, provides information about an Amazon Kinesis stream as the streaming source.</p>
+  KinesisStreamsOutput:
+    type: object
+    properties:
+      ResourceARN:
+        type: ResourceARN
+        description: <p>ARN of the destination Amazon Kinesis stream to write to.</p>
+      RoleARN:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the destination stream on your behalf. You need to grant the necessary permissions to this role.</p>
+    description: <p>When configuring application output, identifies a Amazon Kinesis stream as the destination. You provide the stream Amazon Resource Name (ARN) and also an IAM role ARN that Amazon Kinesis Analytics can use to write to the stream on your behalf.</p>
+  KinesisStreamsOutputDescription:
+    type: object
+    properties:
+      ResourceARN?:
+        type: ResourceARN
+        description: <p>Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
+      RoleARN?:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.</p>
+    description: <p> For an application output, describes the Amazon Kinesis stream configured as its destination. </p>
+  KinesisStreamsOutputUpdate:
+    type: object
+    properties:
+      ResourceARNUpdate?:
+        type: ResourceARN
+        description: <p>Amazon Resource Name (ARN) of the Amazon Kinesis stream where you want to write the output.</p>
+      RoleARNUpdate?:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant the necessary permissions to this role.</p>
+    description: <p> When updating an output configuration using the <a>UpdateApplication</a> operation, provides information about an Amazon Kinesis stream configured as the destination. </p>
+  ListApplicationsRequest:
+    type: object
+    properties:
+      Limit?:
+        type: ListApplicationsInputLimit
+        description: <p>Maximum number of applications to list.</p>
+      ExclusiveStartApplicationName?:
+        type: ApplicationName
+        description: <p>Name of the application to start the list with. When using pagination to retrieve the list, you don't need to specify this parameter in the first request. However, in subsequent requests, you add the last application name from the previous response to get the next page of applications.</p>
+    description: <p/>
+  ListApplicationsResponse:
+    type: object
+    properties:
+      ApplicationSummaries:
+        type: ApplicationSummaries
+        description: <p>List of <code>ApplicationSummary</code> objects. </p>
+      HasMoreApplications:
+        type: BooleanObject
+        description: <p>Returns true if there are more applications to retrieve.</p>
+    description: <p/>
+  MappingParameters:
+    type: object
+    properties:
+      JSONMappingParameters?:
+        type: JSONMappingParameters
+        description: <p>Provides additional mapping information when JSON is the record format on the streaming source.</p>
+      CSVMappingParameters?:
+        type: CSVMappingParameters
+        description: <p>Provides additional mapping information when the record format uses delimiters (for example, CSV).</p>
+    description: <p>When configuring application input at the time of creating or updating an application, provides additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source.</p>
+  Output:
+    type: object
+    properties:
+      Name:
+        type: InAppStreamName
+        description: <p>Name of the in-application stream.</p>
+      KinesisStreamsOutput?:
+        type: KinesisStreamsOutput
+        description: <p>Identifies an Amazon Kinesis stream as the destination.</p>
+      KinesisFirehoseOutput?:
+        type: KinesisFirehoseOutput
+        description: <p>Identifies an Amazon Kinesis Firehose delivery stream as the destination.</p>
+      DestinationSchema:
+        type: DestinationSchema
+    description: <p> Describes application output configuration in which you identify an in-application stream and a destination where you want the in-application stream data to be written. The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream. </p> <p/> <p>You can configure your application to write output to up to five destinations.</p>
+  OutputDescription:
+    type: object
+    properties:
+      OutputId?:
+        type: Id
+        description: <p>A unique identifier for the output configuration.</p>
+      Name?:
+        type: InAppStreamName
+        description: <p>Name of the in-application stream configured as output.</p>
+      KinesisStreamsOutputDescription?:
+        type: KinesisStreamsOutputDescription
+        description: <p>Describes Amazon Kinesis stream configured as the destination where output is written.</p>
+      KinesisFirehoseOutputDescription?:
+        type: KinesisFirehoseOutputDescription
+        description: <p>Describes the Amazon Kinesis Firehose delivery stream configured as the destination where output is written.</p>
+      DestinationSchema?:
+        type: DestinationSchema
+        description: <p>Data format used for writing data to the destination.</p>
+    description: <p>Describes the application output configuration, which includes the in-application stream name and the destination where the stream data is written. The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream. </p>
+  OutputUpdate:
+    type: object
+    properties:
+      OutputId:
+        type: Id
+        description: <p>Identifies the specific output configuration that you want to update.</p>
+      NameUpdate?:
+        type: InAppStreamName
+        description: <p>If you want to specify a different in-application stream for this output configuration, use this field to specify the new in-application stream name.</p>
+      KinesisStreamsOutputUpdate?:
+        type: KinesisStreamsOutputUpdate
+        description: <p>Describes an Amazon Kinesis stream as the destination for the output.</p>
+      KinesisFirehoseOutputUpdate?:
+        type: KinesisFirehoseOutputUpdate
+        description: <p>Describes a Amazon Kinesis Firehose delivery stream as the destination for the output.</p>
+      DestinationSchemaUpdate?:
+        type: DestinationSchema
+    description: <p> Describes updates to the output configuration identified by the <code>OutputId</code>. </p>
+  RecordColumn:
+    type: object
+    properties:
+      Name:
+        type: RecordColumnName
+        description: <p>Name of the column created in the in-application input stream or reference table.</p>
+      Mapping?:
+        type: RecordColumnMapping
+        description: <p>Reference to the data element in the streaming input of the reference data source.</p>
+      SqlType:
+        type: RecordColumnSqlType
+        description: <p>Type of column created in the in-application input stream or reference table.</p>
+    description: <p>Describes the mapping of each data element in the streaming source to the corresponding column in the in-application stream.</p> <p>Also used to describe the format of the reference data source.</p>
+  RecordFormat:
+    type: object
+    properties:
+      RecordFormatType:
+        type: RecordFormatType
+        description: <p>The type of record format.</p>
+      MappingParameters?:
+        type: MappingParameters
+    description: <p> Describes the record format and relevant mapping information that should be applied to schematize the records on the stream. </p>
+  ReferenceDataSource:
+    type: object
+    properties:
+      TableName:
+        type: InAppTableName
+        description: <p>Name of the in-application table to create.</p>
+      S3ReferenceDataSource?:
+        type: S3ReferenceDataSource
+      ReferenceSchema:
+        type: SourceSchema
+    description: <p>Describes the reference data source by providing the source information (S3 bucket name and object key name), the resulting in-application table name that is created, and the necessary schema to map the data elements in the Amazon S3 object to the in-application table.</p>
+  ReferenceDataSourceDescription:
+    type: object
+    properties:
+      ReferenceId:
+        type: Id
+        description: <p>ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the reference data source to your application using the <a>AddApplicationReferenceDataSource</a> operation.</p>
+      TableName:
+        type: InAppTableName
+        description: <p>The in-application table name created by the specific reference data source configuration.</p>
+      S3ReferenceDataSourceDescription:
+        type: S3ReferenceDataSourceDescription
+        description: <p>Provides the S3 bucket name, the object key name that contains the reference data. It also provides the Amazon Resource Name (ARN) of the IAM role that Amazon Kinesis Analytics can assume to read the Amazon S3 object and populate the in-application reference table.</p>
+      ReferenceSchema?:
+        type: SourceSchema
+    description: <p>Describes the reference data source configured for an application.</p>
+  ReferenceDataSourceUpdate:
+    type: object
+    properties:
+      ReferenceId:
+        type: Id
+        description: <p>ID of the reference data source being updated. You can use the <a>DescribeApplication</a> operation to get this value.</p>
+      TableNameUpdate?:
+        type: InAppTableName
+        description: <p>In-application table name that is created by this update.</p>
+      S3ReferenceDataSourceUpdate?:
+        type: S3ReferenceDataSourceUpdate
+        description: <p>Describes the S3 bucket name, object key name, and IAM role that Amazon Kinesis Analytics can assume to read the Amazon S3 object on your behalf and populate the in-application reference table.</p>
+      ReferenceSchemaUpdate?:
+        type: SourceSchema
+    description: <p>When you update a reference data source configuration for an application, this object provides all the updated values (such as the source bucket name and object key name), the in-application table name that is created, and updated mapping information that maps the data in the Amazon S3 object to the in-application reference table that is created.</p>
+  S3ReferenceDataSource:
+    type: object
+    properties:
+      BucketARN:
+        type: BucketARN
+        description: <p>Amazon Resource Name (ARN) of the S3 bucket.</p>
+      FileKey:
+        type: FileKey
+        description: <p>Object key name containing reference data.</p>
+      ReferenceRoleARN:
+        type: RoleARN
+        description: <p>ARN of the IAM role that the service can assume to read data on your behalf. This role must have permission for the <code>s3:GetObject</code> action on the object and trust policy that allows Amazon Kinesis Analytics service principal to assume this role.</p>
+    description: <p>Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon Kinesis Analytics can assume to read this object on your behalf.</p> <p>An Amazon Kinesis Analytics application loads reference data only once. If the data changes, you call the <a>UpdateApplication</a> operation to trigger reloading of data into your application.</p>
+  S3ReferenceDataSourceDescription:
+    type: object
+    properties:
+      BucketARN:
+        type: BucketARN
+        description: <p>Amazon Resource Name (ARN) of the S3 bucket.</p>
+      FileKey:
+        type: FileKey
+        description: <p>Amazon S3 object key name.</p>
+      ReferenceRoleARN:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to read the Amazon S3 object on your behalf to populate the in-application reference table.</p>
+    description: <p>Provides the bucket name and object key name that stores the reference data.</p>
+  S3ReferenceDataSourceUpdate:
+    type: object
+    properties:
+      BucketARNUpdate?:
+        type: BucketARN
+        description: <p>Amazon Resource Name (ARN) of the S3 bucket.</p>
+      FileKeyUpdate?:
+        type: FileKey
+        description: <p>Object key name.</p>
+      ReferenceRoleARNUpdate?:
+        type: RoleARN
+        description: <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to read the Amazon S3 object and populate the in-application.</p>
+    description: <p>Describes the S3 bucket name, object key name, and IAM role that Amazon Kinesis Analytics can assume to read the Amazon S3 object on your behalf and populate the in-application reference table.</p>
+  SourceSchema:
+    type: object
+    properties:
+      RecordFormat:
+        type: RecordFormat
+        description: <p>Specifies the format of the records on the streaming source.</p>
+      RecordEncoding?:
+        type: RecordEncoding
+        description: <p>Specifies the encoding of the records in the streaming source. For example, UTF-8.</p>
+      RecordColumns:
+        type: RecordColumns
+        description: <p>A list of <code>RecordColumn</code> objects.</p>
+    description: <p>Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.</p>
+  StartApplicationRequest:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Name of the application.</p>
+      InputConfigurations:
+        type: InputConfigurations
+        description: <p>Identifies the specific input, by ID, that the application starts consuming. Amazon Kinesis Analytics starts reading the streaming source associated with the input. You can also specify where in the streaming source you want Amazon Kinesis Analytics to start reading.</p>
+    description: <p/>
+  StartApplicationResponse:
+    type: object
+    description: <p/>
+  StopApplicationRequest:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Name of the running application to stop.</p>
+    description: <p/>
+  StopApplicationResponse:
+    type: object
+    description: <p/>
+  UpdateApplicationRequest:
+    type: object
+    properties:
+      ApplicationName:
+        type: ApplicationName
+        description: <p>Name of the Kinesis Analytics application to update.</p>
+      CurrentApplicationVersionId:
+        type: ApplicationVersionId
+        description: <p>The current application version ID. You can use the <a>DescribeApplication</a> operation to get this value.</p>
+      ApplicationUpdate:
+        type: ApplicationUpdate
+        description: <p>Describes application updates.</p>
+  UpdateApplicationResponse:
+    type: object
+/{AddApplicationInput}:
+  uriParameters:
+    AddApplicationInput?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: ' Adds a streaming source to your Amazon Kinesis application. For conceptual
+    information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring
+    Application Input</a>.  You can add a streaming source either when you create
+    an application or you can use this operation to add a streaming source after you
+    create an application. For more information, see <a>CreateApplication</a>. Any
+    configuration update, including adding a streaming source using this operation,
+    results in a new version of the application. You can use the <a>DescribeApplication</a>
+    operation to find the current application version.  This operation requires permissions
+    to perform the <code>kinesisanalytics:AddApplicationInput</code> action.'
+  post:
+    body:
+      application/json: AddApplicationInputRequest
+    responses:
+      200:
+        body:
+          application/json: AddApplicationInputResponse
+      400:
+        description: ResourceNotFoundException
+/{AddApplicationOutput}:
+  uriParameters:
+    AddApplicationOutput?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Adds an external destination to your Amazon Kinesis Analytics application. If you want Amazon Kinesis Analytics to deliver data from an in-application stream within your application to an external destination (such as an Amazon Kinesis stream or a Firehose delivery stream), you add the relevant configuration to your application using this operation. You can configure one or more outputs for your application. Each output configuration maps an in-application stream and an external destination.  You can use one of the output configurations to deliver data from your in-application error stream to an external destination so that you can analyze the errors. For conceptual information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html">Understanding Application Output (Destination)</a>.   Note that any configuration update, including adding a streaming source using this operation, results in a new version of the application. You can use the <a>DescribeApplication</a> operation to find the current application version. For the limits on the number of application inputs and outputs you can configure, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>. This operation requires permissions to perform the <code>kinesisanalytics:AddApplicationOutput</code> action.
+  post:
+    body:
+      application/json: AddApplicationOutputRequest
+    responses:
+      200:
+        body:
+          application/json: AddApplicationOutputResponse
+      400:
+        description: ResourceNotFoundException
+/{AddApplicationReferenceDataSource}:
+  uriParameters:
+    AddApplicationReferenceDataSource?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Adds a reference data source to an existing application. Amazon Kinesis
+    Analytics reads reference data (that is, an Amazon S3 object) and creates an in-application
+    table within your application. In the request, you provide the source (S3 bucket
+    name and object key name), name of the in-application table to create, and the
+    necessary mapping information that describes how data in Amazon S3 object maps
+    to columns in the resulting in-application table.  For conceptual information,
+    see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring
+    Application Input</a>. For the limits on data sources you can add to your application,
+    see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.   This
+    operation requires permissions to perform the <code>kinesisanalytics:AddApplicationOutput</code>
+    action. '
+  post:
+    body:
+      application/json: AddApplicationReferenceDataSourceRequest
+    responses:
+      200:
+        body:
+          application/json: AddApplicationReferenceDataSourceResponse
+      400:
+        description: ResourceNotFoundException
+/{CreateApplication}:
+  uriParameters:
+    CreateApplication?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: ' Creates an Amazon Kinesis Analytics application. You can configure
+    each application with one streaming source as input, application code to process
+    the input, and up to five streaming destinations where you want Amazon Kinesis
+    Analytics to write the output data from your application. For an overview, see
+    <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works.html">How
+    it Works</a>.  In the input configuration, you map the streaming source to an
+    in-application stream, which you can think of as a constantly updating table.
+    In the mapping, you must provide a schema for the in-application stream and map
+    each data column in the in-application stream to a data element in the streaming
+    source, with the option of renaming, casting and dropping columns as desired.
+    Your application code is one or more SQL statements that read input data, transform
+    it, and generate output. Your application code can create one or more SQL artifacts
+    like SQL streams or pumps. In the output configuration, you can configure the
+    application to write data from in-application streams created in your applications
+    to up to five streaming destinations.  To read data from your source stream or
+    write data to destination streams, Amazon Kinesis Analytics needs your permissions.
+    You grant these permissions by creating IAM roles. This operation requires permissions
+    to perform the <code>kinesisanalytics:CreateApplication</code> action.   For introductory
+    exercises to create an Amazon Kinesis Analytics application, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html">Getting
+    Started</a>. '
+  post:
+    body:
+      application/json: CreateApplicationRequest
+    responses:
+      200:
+        body:
+          application/json: CreateApplicationResponse
+      400:
+        description: CodeValidationException
+/{DeleteApplication}:
+  uriParameters:
+    DeleteApplication?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the specified application. Amazon Kinesis Analytics halts application execution and deletes the application, including any application artifacts (such as in-application streams, reference table, and application code). This operation requires permissions to perform the <code>kinesisanalytics:DeleteApplication</code> action.
+  post:
+    body:
+      application/json: DeleteApplicationRequest
+    responses:
+      200:
+        body:
+          application/json: DeleteApplicationResponse
+      400:
+        description: ConcurrentModificationException
+/{DeleteApplicationOutput}:
+  uriParameters:
+    DeleteApplicationOutput?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes output destination configuration from your application configuration. Amazon Kinesis Analytics will no longer write data from the corresponding in-application stream to the external output destination. This operation requires permissions to perform the <code>kinesisanalytics:DeleteApplicationOutput</code> action.
+  post:
+    body:
+      application/json: DeleteApplicationOutputRequest
+    responses:
+      200:
+        body:
+          application/json: DeleteApplicationOutputResponse
+      400:
+        description: ResourceNotFoundException
+/{DeleteApplicationReferenceDataSource}:
+  uriParameters:
+    DeleteApplicationReferenceDataSource?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a reference data source configuration from the specified application configuration. If the application is running, Amazon Kinesis Analytics immediately removes the in-application table that you created using the <a>AddApplicationReferenceDataSource</a> operation.  This operation requires permissions to perform the <code>kinesisanalytics.DeleteApplicationReferenceDataSource</code> action.
+  post:
+    body:
+      application/json: DeleteApplicationReferenceDataSourceRequest
+    responses:
+      200:
+        body:
+          application/json: DeleteApplicationReferenceDataSourceResponse
+      400:
+        description: ResourceNotFoundException
+/{DescribeApplication}:
+  uriParameters:
+    DescribeApplication?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Returns information about a specific Amazon Kinesis Analytics application.
+    If you want to retrieve a list of all applications in your account, use the <a>ListApplications</a>
+    operation. This operation requires permissions to perform the <code>kinesisanalytics:DescribeApplication</code>
+    action. You can use <code>DescribeApplication</code> to get the current application
+    versionId, which you need to call other operations such as <code>Update</code>. '
+  post:
+    body:
+      application/json: DescribeApplicationRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeApplicationResponse
+      400:
+        description: ResourceNotFoundException
+/{DiscoverInputSchema}:
+  uriParameters:
+    DiscoverInputSchema?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Infers a schema by evaluating sample records on the specified streaming
+    source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery stream). In
+    the response, the operation returns the inferred schema and also the sample records
+    that the operation used to infer the schema.  You can use the inferred schema
+    when configuring a streaming source for your application. For conceptual information,
+    see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring
+    Application Input</a>. Note that when you create an application using the Amazon
+    Kinesis Analytics console, the console uses this operation to infer a schema and
+    show it in the console user interface.   This operation requires permissions to
+    perform the <code>kinesisanalytics:DiscoverInputSchema</code> action. '
+  post:
+    body:
+      application/json: DiscoverInputSchemaRequest
+    responses:
+      200:
+        body:
+          application/json: DiscoverInputSchemaResponse
+      400:
+        description: InvalidArgumentException
+/{ListApplications}:
+  uriParameters:
+    ListApplications?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns a list of Amazon Kinesis Analytics applications in your account. For each application, the response includes the application name, Amazon Resource Name (ARN), and status. If the response returns the <code>HasMoreApplications</code> value as true, you can send another request by adding the <code>ExclusiveStartApplicationName</code> in the request body, and set the value of this to the last application name from the previous response.  If you want detailed information about a specific application, use <a>DescribeApplication</a>. This operation requires permissions to perform the <code>kinesisanalytics:ListApplications</code> action.
+  post:
+    body:
+      application/json: ListApplicationsRequest
+    responses:
+      200:
+        body:
+          application/json: ListApplicationsResponse
+/{StartApplication}:
+  uriParameters:
+    StartApplication?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Starts the specified Amazon Kinesis Analytics application. After creating an application, you must exclusively call this operation to start your application. After the application starts, it begins consuming the input data, processes it, and writes the output to the configured destination.  The application status must be <code>READY</code> for you to start an application. You can get the application status in the console or using the <a>DescribeApplication</a> operation. After you start the application, you can stop the application from processing the input by calling the <a>StopApplication</a> operation. This operation requires permissions to perform the <code>kinesisanalytics:StartApplication</code> action.
+  post:
+    body:
+      application/json: StartApplicationRequest
+    responses:
+      200:
+        body:
+          application/json: StartApplicationResponse
+      400:
+        description: ResourceNotFoundException
+/{StopApplication}:
+  uriParameters:
+    StopApplication?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Stops the application from processing input data. You can stop an application only if it is in the running state. You can use the <a>DescribeApplication</a> operation to find the application state. After the application is stopped, Amazon Kinesis Analytics stops reading data from the input, the application stops processing data, and there is no output written to the destination.  This operation requires permissions to perform the <code>kinesisanalytics:StopApplication</code> action.
+  post:
+    body:
+      application/json: StopApplicationRequest
+    responses:
+      200:
+        body:
+          application/json: StopApplicationResponse
+      400:
+        description: ResourceNotFoundException
+/{UpdateApplication}:
+  uriParameters:
+    UpdateApplication?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates an existing Kinesis Analytics application. Using this API, you can update application code, input configuration, and output configuration.  Note that Kinesis Analytics updates the <code>CurrentApplicationVersionId</code> each time you update your application.  This opeation requires permission for the <code>kinesisanalytics:UpdateApplication</code> action.
+  post:
+    body:
+      application/json: UpdateApplicationRequest
+    responses:
+      200:
+        body:
+          application/json: UpdateApplicationResponse
+      400:
+        description: CodeValidationException

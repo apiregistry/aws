@@ -1,0 +1,1881 @@
+#%RAML 1.0
+title: Amazon CloudSearch
+version: '2013-01-01'
+description: '  You use the Amazon CloudSearch configuration service to create, configure,
+  and manage search domains. Configuration service requests are submitted using the
+  AWS Query protocol. AWS Query requests are HTTP or HTTPS requests submitted via
+  HTTP GET or POST with a query parameter named Action.  The endpoint for configuration
+  service requests is region-specific: cloudsearch.<i>region</i>.amazonaws.com. For
+  example, cloudsearch.us-east-1.amazonaws.com. For a current list of supported regions
+  and endpoints, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region"
+  target="_blank">Regions and Endpoints</a>.'
+mediaType:
+- application/xml
+types:
+  APIVersion:
+    type: string
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: '<p>The Amazon CloudSearch API version for a domain: 2011-02-01 or
+      2013-01-01.</p>'
+  ARN:
+    type: string
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The Amazon Resource Name (ARN) of the search domain. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html" target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information.</p>
+  AlgorithmicStemming:
+    type: string
+    enum:
+    - none
+    - minimal
+    - light
+    - full
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  AnalysisSchemeLanguage:
+    type: string
+    enum:
+    - ar
+    - bg
+    - ca
+    - cs
+    - da
+    - de
+    - el
+    - en
+    - es
+    - eu
+    - fa
+    - fi
+    - fr
+    - ga
+    - gl
+    - he
+    - hi
+    - hu
+    - hy
+    - id
+    - it
+    - ja
+    - ko
+    - lv
+    - mul
+    - nl
+    - 'no'
+    - pt
+    - ro
+    - ru
+    - sv
+    - th
+    - tr
+    - zh-Hans
+    - zh-Hant
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>An <a href="http://tools.ietf.org/html/rfc4646" target="_blank">IETF RFC 4646</a> language code or <code>mul</code> for multiple languages.</p>
+  AnalysisSchemeStatusList:
+    type: array
+    items:
+      type: AnalysisSchemeStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>A list of the analysis schemes configured for a domain.</p>
+  Boolean:
+    type: boolean
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  DomainId:
+    type: string
+    minLength: 1
+    maxLength: 64
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>An internally generated unique identifier for a domain.</p>
+  DomainName:
+    type: string
+    pattern: '[a-z][a-z0-9\-]+'
+    minLength: 3
+    maxLength: 28
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: '<p>A string that represents the name of a domain. Domain names are
+      unique across the domains owned by an account within an AWS region. Domain names
+      start with a letter or number and can contain the following characters: a-z
+      (lowercase), 0-9, and - (hyphen).</p>'
+  DomainNameList:
+    type: array
+    items:
+      type: DomainName
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>A list of domain names.</p>
+  DomainStatusList:
+    type: array
+    items:
+      type: DomainStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>A list that contains the status of each requested domain.</p>
+  Double:
+    type: number
+    format: double
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  DynamicFieldName:
+    type: string
+    pattern: ([a-z][a-z0-9_]*\*?|\*[a-z0-9_]*)
+    minLength: 1
+    maxLength: 64
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  DynamicFieldNameList:
+    type: array
+    items:
+      type: DynamicFieldName
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  ExpressionStatusList:
+    type: array
+    items:
+      type: ExpressionStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Contains the status of multiple expressions.</p>
+  ExpressionValue:
+    type: string
+    minLength: 1
+    maxLength: 10240
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The expression to evaluate for sorting while processing a search request. The <code>Expression</code> syntax is based on JavaScript expressions. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
+  FieldName:
+    type: string
+    pattern: '[a-z][a-z0-9_]*'
+    minLength: 1
+    maxLength: 64
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: '<p>A string that represents the name of an index field. CloudSearch
+      supports regular index fields as well as dynamic fields. A dynamic field''s
+      name defines a pattern that begins or ends with a wildcard. Any document fields
+      that don''t map to a regular index field but do match a dynamic field''s pattern
+      are configured with the dynamic field''s indexing options. </p> <p>Regular field
+      names begin with a letter and can contain the following characters: a-z (lowercase),
+      0-9, and _ (underscore). Dynamic field names must begin or end with a wildcard
+      (*). The wildcard can also be the only character in a dynamic field name. Multiple
+      wildcards, and wildcards embedded within a string are not supported. </p> <p>The
+      name <code>score</code> is reserved and cannot be used as a field name. To reference
+      a document''s ID, you can use the name <code>_id</code>. </p>'
+  FieldNameCommaList:
+    type: string
+    pattern: \s*[a-z*][a-z0-9_]*\*?\s*(,\s*[a-z*][a-z0-9_]*\*?\s*)*
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  FieldNameList:
+    type: array
+    items:
+      type: FieldName
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>A list of field names.</p>
+  FieldValue:
+    type: string
+    minLength: 0
+    maxLength: 1024
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The value of a field attribute.</p>
+  IndexFieldStatusList:
+    type: array
+    items:
+      type: IndexFieldStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Contains the status of multiple index fields.</p>
+  IndexFieldType:
+    type: string
+    enum:
+    - int
+    - double
+    - literal
+    - text
+    - date
+    - latlon
+    - int-array
+    - double-array
+    - literal-array
+    - text-array
+    - date-array
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The type of field. The valid options for a field depend on the field type. For more information about the supported field types, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html" target="_blank">Configuring Index Fields</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
+  InstanceCount:
+    type: integer
+    format: int
+    minimum: 1
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  Long:
+    type: integer
+    format: long
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  MaximumPartitionCount:
+    type: integer
+    format: int
+    minimum: 1
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  MaximumReplicationCount:
+    type: integer
+    format: int
+    minimum: 1
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  MultiAZ:
+    type: boolean
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  OptionState:
+    type: string
+    enum:
+    - RequiresIndexDocuments
+    - Processing
+    - Active
+    - FailedToValidate
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: '<p>The state of processing a change to an option. One of:</p> <ul>
+      <li>RequiresIndexDocuments: The option''s latest value will not be deployed
+      until <a>IndexDocuments</a> has been called and indexing is complete.</li> <li>Processing:
+      The option''s latest value is in the process of being activated.</li> <li>Active:
+      The option''s latest value is fully deployed. </li> <li>FailedToValidate: The
+      option value is not compatible with the domain''s data and cannot be used to
+      index the data. You must either modify the option value or update or remove
+      the incompatible documents.</li> </ul>'
+  PartitionCount:
+    type: integer
+    format: int
+    minimum: 1
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The number of partitions used to hold the domain's index.</p>
+  PartitionInstanceType:
+    type: string
+    enum:
+    - search.m1.small
+    - search.m1.large
+    - search.m2.xlarge
+    - search.m2.2xlarge
+    - search.m3.medium
+    - search.m3.large
+    - search.m3.xlarge
+    - search.m3.2xlarge
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The instance type (such as <code>search.m1.small</code>) on which an index partition is hosted.</p>
+  PolicyDocument:
+    type: string
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Access rules for a domain's document or search service endpoints. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">Configuring Access for a Search Domain</a> in the <i>Amazon CloudSearch Developer Guide</i>. The maximum size of a policy document is 100 KB.</p>
+  SearchInstanceType:
+    type: string
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The instance type (such as <code>search.m1.small</code>) that is being used to process search requests.</p>
+  ServiceUrl:
+    type: string
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The endpoint to which service requests can be submitted. For example, <code>search-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.cloudsearch.amazonaws.com</code> or <code>doc-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.cloudsearch.amazonaws.com</code>.</p>
+  StandardName:
+    type: string
+    pattern: '[a-z][a-z0-9_]*'
+    minLength: 1
+    maxLength: 64
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: '<p>Names must begin with a letter and can contain the following
+      characters: a-z (lowercase), 0-9, and _ (underscore).</p>'
+  StandardNameList:
+    type: array
+    items:
+      type: StandardName
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  String:
+    type: string
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  SuggesterFuzzyMatching:
+    type: string
+    enum:
+    - none
+    - low
+    - high
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  SuggesterStatusList:
+    type: array
+    items:
+      type: SuggesterStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Contains the status of multiple suggesters.</p>
+  UIntValue:
+    type: integer
+    format: int
+    minimum: 0
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  UpdateTimestamp:
+    type: datetime
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  Word:
+    type: string
+    pattern: '[\S]+'
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  AccessPoliciesStatus:
+    type: object
+    properties:
+      Options:
+        type: PolicyDocument
+      Status:
+        type: OptionStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The configured access rules for the domain's document and search endpoints, and the current status of those rules.</p>
+  AnalysisOptions:
+    type: object
+    properties:
+      Synonyms?:
+        type: String
+        description: <p>A JSON object that defines synonym groups and aliases. A synonym group is an array of arrays, where each sub-array is a group of terms where each term in the group is considered a synonym of every other term in the group. The aliases value is an object that contains a collection of string:value pairs where the string specifies a term and the array of values specifies each of the aliases for that term. An alias is considered a synonym of the specified term, but the term is not considered a synonym of the alias. For more information about specifying synonyms, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html#synonyms">Synonyms</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
+      Stopwords?:
+        type: String
+        description: <p>A JSON array of terms to ignore during indexing and searching. For example, <code>["a", "an", "the", "of"]</code>. The stopwords dictionary must explicitly list each word you want to ignore. Wildcards and regular expressions are not supported. </p>
+      StemmingDictionary?:
+        type: String
+        description: '<p>A JSON object that contains a collection of string:value
+          pairs that each map a term to its stem. For example, <code>{"term1": "stem1",
+          "term2": "stem2", "term3": "stem3"}</code>. The stemming dictionary is applied
+          in addition to any algorithmic stemming. This enables you to override the
+          results of the algorithmic stemming to correct specific cases of overstemming
+          or understemming. The maximum size of a stemming dictionary is 500 KB.</p>'
+      JapaneseTokenizationDictionary?:
+        type: String
+        description: <p>A JSON array that contains a collection of terms, tokens, readings and part of speech for Japanese Tokenizaiton. The Japanese tokenization dictionary enables you to override the default tokenization for selected terms. This is only valid for Japanese language fields.</p>
+      AlgorithmicStemming?:
+        type: AlgorithmicStemming
+        description: '<p>The level of algorithmic stemming to perform: <code>none</code>,
+          <code>minimal</code>, <code>light</code>, or <code>full</code>. The available
+          levels vary depending on the language. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/text-processing.html#text-processing-settings"
+          target="_blank">Language Specific Text Processing Settings</a> in the <i>Amazon
+          CloudSearch Developer Guide</i> </p>'
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Synonyms, stopwords, and stemming options for an analysis scheme. Includes tokenization dictionary for Japanese.</p>
+  AnalysisScheme:
+    type: object
+    properties:
+      AnalysisSchemeName:
+        type: StandardName
+      AnalysisSchemeLanguage:
+        type: AnalysisSchemeLanguage
+      AnalysisOptions?:
+        type: AnalysisOptions
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: '<p>Configuration information for an analysis scheme. Each analysis
+      scheme has a unique name and specifies the language of the text to be processed.
+      The following options can be configured for an analysis scheme: <code>Synonyms</code>,
+      <code>Stopwords</code>, <code>StemmingDictionary</code>, <code>JapaneseTokenizationDictionary</code>
+      and <code>AlgorithmicStemming</code>.</p>'
+  AnalysisSchemeStatus:
+    type: object
+    properties:
+      Options:
+        type: AnalysisScheme
+      Status:
+        type: OptionStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The status and configuration of an <code>AnalysisScheme</code>.</p>
+  AvailabilityOptionsStatus:
+    type: object
+    properties:
+      Options:
+        type: MultiAZ
+        description: <p>The availability options configured for the domain.</p>
+      Status:
+        type: OptionStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The status and configuration of the domain's availability options.</p>
+  BuildSuggestersRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>BuildSuggester</a></code> operation. Specifies the name of the domain you want to update.</p>
+  BuildSuggestersResponse:
+    type: object
+    properties:
+      FieldNames?:
+        type: FieldNameList
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>BuildSuggester</code> request. Contains a list of the fields used for suggestions.</p>
+  CreateDomainRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+        description: <p>A name for the domain you are creating. Allowed characters are a-z (lower-case letters), 0-9, and hyphen (-). Domain names must start with a letter or number and be at least 3 and no more than 28 characters long.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>CreateDomain</a></code> operation. Specifies a name for the new search domain.</p>
+  CreateDomainResponse:
+    type: object
+    properties:
+      DomainStatus?:
+        type: DomainStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>CreateDomainRequest</code>. Contains the status of a newly created domain.</p>
+  DateArrayOptions:
+    type: object
+    properties:
+      DefaultValue?:
+        type: FieldValue
+        description: A value to use for the field if the field isn't specified for a document.
+      SourceFields?:
+        type: FieldNameCommaList
+        description: <p>A list of source fields to map to the field. </p>
+      FacetEnabled?:
+        type: Boolean
+        description: <p>Whether facet information can be returned for the field.</p>
+      SearchEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field are searchable.</p>
+      ReturnEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field can be returned in the search results.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Options for a field that contains an array of dates. Present if <code>IndexFieldType</code> specifies the field is of type <code>date-array</code>. All options are enabled by default.</p>
+  DateOptions:
+    type: object
+    properties:
+      DefaultValue?:
+        type: FieldValue
+        description: A value to use for the field if the field isn't specified for a document.
+      SourceField?:
+        type: FieldName
+      FacetEnabled?:
+        type: Boolean
+        description: <p>Whether facet information can be returned for the field.</p>
+      SearchEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field are searchable.</p>
+      ReturnEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field can be returned in the search results.</p>
+      SortEnabled?:
+        type: Boolean
+        description: <p>Whether the field can be used to sort the search results.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: '<p>Options for a date field. Dates and times are specified in UTC
+      (Coordinated Universal Time) according to IETF RFC3339: yyyy-mm-ddT00:00:00Z.
+      Present if <code>IndexFieldType</code> specifies the field is of type <code>date</code>.
+      All options are enabled by default.</p>'
+  DefineAnalysisSchemeRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+      AnalysisScheme:
+        type: AnalysisScheme
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DefineAnalysisScheme</a></code> operation. Specifies the name of the domain you want to update and the analysis scheme configuration.</p>
+  DefineAnalysisSchemeResponse:
+    type: object
+    properties:
+      AnalysisScheme:
+        type: AnalysisSchemeStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code><a>DefineAnalysisScheme</a></code> request. Contains the status of the newly-configured analysis scheme.</p>
+  DefineExpressionRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+      Expression:
+        type: Expression
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DefineExpression</a></code> operation. Specifies the name of the domain you want to update and the expression you want to configure.</p>
+  DefineExpressionResponse:
+    type: object
+    properties:
+      Expression:
+        type: ExpressionStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DefineExpression</code> request. Contains the status of the newly-configured expression.</p>
+  DefineIndexFieldRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+      IndexField:
+        type: IndexField
+        description: <p>The index field and field options you want to configure. </p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DefineIndexField</a></code> operation. Specifies the name of the domain you want to update and the index field configuration.</p>
+  DefineIndexFieldResponse:
+    type: object
+    properties:
+      IndexField:
+        type: IndexFieldStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code><a>DefineIndexField</a></code> request. Contains the status of the newly-configured index field.</p>
+  DefineSuggesterRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+      Suggester:
+        type: Suggester
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DefineSuggester</a></code> operation. Specifies the name of the domain you want to update and the suggester configuration.</p>
+  DefineSuggesterResponse:
+    type: object
+    properties:
+      Suggester:
+        type: SuggesterStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DefineSuggester</code> request. Contains the status of the newly-configured suggester.</p>
+  DeleteAnalysisSchemeRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+      AnalysisSchemeName:
+        type: StandardName
+        description: <p>The name of the analysis scheme you want to delete.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DeleteAnalysisScheme</a></code> operation. Specifies the name of the domain you want to update and the analysis scheme you want to delete. </p>
+  DeleteAnalysisSchemeResponse:
+    type: object
+    properties:
+      AnalysisScheme:
+        type: AnalysisSchemeStatus
+        description: <p>The status of the analysis scheme being deleted.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DeleteAnalysisScheme</code> request. Contains the status of the deleted analysis scheme.</p>
+  DeleteDomainRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+        description: <p>The name of the domain you want to permanently delete.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DeleteDomain</a></code> operation. Specifies the name of the domain you want to delete.</p>
+  DeleteDomainResponse:
+    type: object
+    properties:
+      DomainStatus?:
+        type: DomainStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DeleteDomain</code> request. Contains the status of a newly deleted domain, or no status if the domain has already been completely deleted.</p>
+  DeleteExpressionRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+      ExpressionName:
+        type: StandardName
+        description: <p>The name of the <code><a>Expression</a></code> to delete.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DeleteExpression</a></code> operation. Specifies the name of the domain you want to update and the name of the expression you want to delete.</p>
+  DeleteExpressionResponse:
+    type: object
+    properties:
+      Expression:
+        type: ExpressionStatus
+        description: <p>The status of the expression being deleted.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code><a>DeleteExpression</a></code> request. Specifies the expression being deleted.</p>
+  DeleteIndexFieldRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+      IndexFieldName:
+        type: DynamicFieldName
+        description: <p>The name of the index field your want to remove from the domain's indexing options.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DeleteIndexField</a></code> operation. Specifies the name of the domain you want to update and the name of the index field you want to delete.</p>
+  DeleteIndexFieldResponse:
+    type: object
+    properties:
+      IndexField:
+        type: IndexFieldStatus
+        description: <p>The status of the index field being deleted.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code><a>DeleteIndexField</a></code> request.</p>
+  DeleteSuggesterRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+      SuggesterName:
+        type: StandardName
+        description: <p>Specifies the name of the suggester you want to delete.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DeleteSuggester</a></code> operation. Specifies the name of the domain you want to update and name of the suggester you want to delete.</p>
+  DeleteSuggesterResponse:
+    type: object
+    properties:
+      Suggester:
+        type: SuggesterStatus
+        description: <p>The status of the suggester being deleted.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DeleteSuggester</code> request. Contains the status of the deleted suggester.</p>
+  DescribeAnalysisSchemesRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+        description: <p>The name of the domain you want to describe.</p>
+      AnalysisSchemeNames?:
+        type: StandardNameList
+        description: <p>The analysis schemes you want to describe.</p>
+      Deployed?:
+        type: Boolean
+        description: <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DescribeAnalysisSchemes</a></code> operation. Specifies the name of the domain you want to describe. To limit the response to particular analysis schemes, specify the names of the analysis schemes you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>. </p>
+  DescribeAnalysisSchemesResponse:
+    type: object
+    properties:
+      AnalysisSchemes:
+        type: AnalysisSchemeStatusList
+        description: <p>The analysis scheme descriptions.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DescribeAnalysisSchemes</code> request. Contains the analysis schemes configured for the domain specified in the request.</p>
+  DescribeAvailabilityOptionsRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+        description: <p>The name of the domain you want to describe.</p>
+      Deployed?:
+        type: Boolean
+        description: <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DescribeAvailabilityOptions</a></code> operation. Specifies the name of the domain you want to describe. To show the active configuration and exclude any pending changes, set the Deployed option to <code>true</code>.</p>
+  DescribeAvailabilityOptionsResponse:
+    type: object
+    properties:
+      AvailabilityOptions?:
+        type: AvailabilityOptionsStatus
+        description: <p>The availability options configured for the domain. Indicates whether Multi-AZ is enabled for the domain. </p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DescribeAvailabilityOptions</code> request. Indicates whether or not the Multi-AZ option is enabled for the domain specified in the request. </p>
+  DescribeDomainsRequest:
+    type: object
+    properties:
+      DomainNames?:
+        type: DomainNameList
+        description: <p>The names of the domains you want to include in the response.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DescribeDomains</a></code> operation. By default shows the status of all domains. To restrict the response to particular domains, specify the names of the domains you want to describe.</p>
+  DescribeDomainsResponse:
+    type: object
+    properties:
+      DomainStatusList:
+        type: DomainStatusList
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DescribeDomains</code> request. Contains the status of the domains specified in the request or all domains owned by the account.</p>
+  DescribeExpressionsRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+        description: <p>The name of the domain you want to describe.</p>
+      ExpressionNames?:
+        type: StandardNameList
+        description: <p>Limits the <code><a>DescribeExpressions</a></code> response to the specified expressions. If not specified, all expressions are shown.</p>
+      Deployed?:
+        type: Boolean
+        description: <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DescribeDomains</a></code> operation. Specifies the name of the domain you want to describe. To restrict the response to particular expressions, specify the names of the expressions you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>.</p>
+  DescribeExpressionsResponse:
+    type: object
+    properties:
+      Expressions:
+        type: ExpressionStatusList
+        description: <p>The expressions configured for the domain.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DescribeExpressions</code> request. Contains the expressions configured for the domain specified in the request.</p>
+  DescribeIndexFieldsRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+        description: <p>The name of the domain you want to describe.</p>
+      FieldNames?:
+        type: DynamicFieldNameList
+        description: <p>A list of the index fields you want to describe. If not specified, information is returned for all configured index fields.</p>
+      Deployed?:
+        type: Boolean
+        description: <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DescribeIndexFields</a></code> operation. Specifies the name of the domain you want to describe. To restrict the response to particular index fields, specify the names of the index fields you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>.</p>
+  DescribeIndexFieldsResponse:
+    type: object
+    properties:
+      IndexFields:
+        type: IndexFieldStatusList
+        description: <p>The index fields configured for the domain.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DescribeIndexFields</code> request. Contains the index fields configured for the domain specified in the request.</p>
+  DescribeScalingParametersRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DescribeScalingParameters</a></code> operation. Specifies the name of the domain you want to describe. </p>
+  DescribeScalingParametersResponse:
+    type: object
+    properties:
+      ScalingParameters:
+        type: ScalingParametersStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DescribeScalingParameters</code> request. Contains the scaling parameters configured for the domain specified in the request.</p>
+  DescribeServiceAccessPoliciesRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+        description: <p>The name of the domain you want to describe.</p>
+      Deployed?:
+        type: Boolean
+        description: <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DescribeServiceAccessPolicies</a></code> operation. Specifies the name of the domain you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>.</p>
+  DescribeServiceAccessPoliciesResponse:
+    type: object
+    properties:
+      AccessPolicies:
+        type: AccessPoliciesStatus
+        description: <p>The access rules configured for the domain specified in the request.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DescribeServiceAccessPolicies</code> request.</p>
+  DescribeSuggestersRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+        description: <p>The name of the domain you want to describe.</p>
+      SuggesterNames?:
+        type: StandardNameList
+        description: <p>The suggesters you want to describe.</p>
+      Deployed?:
+        type: Boolean
+        description: <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>DescribeSuggester</a></code> operation. Specifies the name of the domain you want to describe. To restrict the response to particular suggesters, specify the names of the suggesters you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>.</p>
+  DescribeSuggestersResponse:
+    type: object
+    properties:
+      Suggesters:
+        type: SuggesterStatusList
+        description: <p>The suggesters configured for the domain specified in the request.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>DescribeSuggesters</code> request.</p>
+  DocumentSuggesterOptions:
+    type: object
+    properties:
+      SourceField:
+        type: FieldName
+        description: <p>The name of the index field you want to use for suggestions. </p>
+      FuzzyMatching?:
+        type: SuggesterFuzzyMatching
+        description: '<p>The level of fuzziness allowed when suggesting matches for
+          a string: <code>none</code>, <code>low</code>, or <code>high</code>. With
+          none, the specified string is treated as an exact prefix. With low, suggestions
+          must differ from the specified string by no more than one character. With
+          high, suggestions can differ by up to two characters. The default is none.
+          </p>'
+      SortExpression?:
+        type: String
+        description: <p>An expression that computes a score for each suggestion to control how they are sorted. The scores are rounded to the nearest integer, with a floor of 0 and a ceiling of 2^31-1. A document's relevance score is not computed for suggestions, so sort expressions cannot reference the <code>_score</code> value. To sort suggestions using a numeric field or existing expression, simply specify the name of the field or expression. If no expression is configured for the suggester, the suggestions are sorted with the closest matches listed first.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Options for a search suggester.</p>
+  DomainNameMap:
+    type: object
+    properties:
+      //:
+        type: APIVersion
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>A collection of domain names.</p>
+  DomainStatus:
+    type: object
+    properties:
+      DomainId:
+        type: DomainId
+      DomainName:
+        type: DomainName
+      ARN?:
+        type: ARN
+      Created?:
+        type: Boolean
+        description: <p>True if the search domain is created. It can take several minutes to initialize a domain when <a>CreateDomain</a> is called. Newly created search domains are returned from <a>DescribeDomains</a> with a false value for Created until domain creation is complete.</p>
+      Deleted?:
+        type: Boolean
+        description: <p>True if the search domain has been deleted. The system must clean up resources dedicated to the search domain when <a>DeleteDomain</a> is called. Newly deleted search domains are returned from <a>DescribeDomains</a> with a true value for IsDeleted for several minutes until resource cleanup is complete.</p>
+      DocService?:
+        type: ServiceEndpoint
+        description: <p>The service endpoint for updating documents in a search domain.</p>
+      SearchService?:
+        type: ServiceEndpoint
+        description: <p>The service endpoint for requesting search results from a search domain.</p>
+      RequiresIndexDocuments:
+        type: Boolean
+        description: <p>True if <a>IndexDocuments</a> needs to be called to activate the current domain configuration.</p>
+      Processing?:
+        type: Boolean
+        description: <p>True if processing is being done to activate the current domain configuration.</p>
+      SearchInstanceType?:
+        type: SearchInstanceType
+        description: <p>The instance type that is being used to process search requests.</p>
+      SearchPartitionCount?:
+        type: PartitionCount
+        description: <p>The number of partitions across which the search index is spread.</p>
+      SearchInstanceCount?:
+        type: InstanceCount
+        description: <p>The number of search instances that are available to process search requests.</p>
+      Limits?:
+        type: Limits
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The current status of the search domain.</p>
+  DoubleArrayOptions:
+    type: object
+    properties:
+      DefaultValue?:
+        type: Double
+        description: A value to use for the field if the field isn't specified for a document.
+      SourceFields?:
+        type: FieldNameCommaList
+        description: <p>A list of source fields to map to the field. </p>
+      FacetEnabled?:
+        type: Boolean
+        description: <p>Whether facet information can be returned for the field.</p>
+      SearchEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field are searchable.</p>
+      ReturnEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field can be returned in the search results.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Options for a field that contains an array of double-precision 64-bit floating point values. Present if <code>IndexFieldType</code> specifies the field is of type <code>double-array</code>. All options are enabled by default.</p>
+  DoubleOptions:
+    type: object
+    properties:
+      DefaultValue?:
+        type: Double
+        description: <p>A value to use for the field if the field isn't specified for a document. This can be important if you are using the field in an expression and that field is not present in every document.</p>
+      SourceField?:
+        type: FieldName
+        description: <p>The name of the source field to map to the field. </p>
+      FacetEnabled?:
+        type: Boolean
+        description: <p>Whether facet information can be returned for the field.</p>
+      SearchEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field are searchable.</p>
+      ReturnEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field can be returned in the search results.</p>
+      SortEnabled?:
+        type: Boolean
+        description: <p>Whether the field can be used to sort the search results.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Options for a double-precision 64-bit floating point field. Present if <code>IndexFieldType</code> specifies the field is of type <code>double</code>. All options are enabled by default.</p>
+  Expression:
+    type: object
+    properties:
+      ExpressionName:
+        type: StandardName
+      ExpressionValue:
+        type: ExpressionValue
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>A named expression that can be evaluated at search time. Can be used to sort the search results, define other expressions, or return computed information in the search results. </p>
+  ExpressionStatus:
+    type: object
+    properties:
+      Options:
+        type: Expression
+        description: <p>The expression that is evaluated for sorting while processing a search request.</p>
+      Status:
+        type: OptionStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The value of an <code>Expression</code> and its current status.</p>
+  IndexDocumentsRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>IndexDocuments</a></code> operation. Specifies the name of the domain you want to re-index.</p>
+  IndexDocumentsResponse:
+    type: object
+    properties:
+      FieldNames?:
+        type: FieldNameList
+        description: <p>The names of the fields that are currently being indexed.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of an <code>IndexDocuments</code> request. Contains the status of the indexing operation, including the fields being indexed.</p>
+  IndexField:
+    type: object
+    properties:
+      IndexFieldName:
+        type: DynamicFieldName
+        description: '<p>A string that represents the name of an index field. CloudSearch
+          supports regular index fields as well as dynamic fields. A dynamic field''s
+          name defines a pattern that begins or ends with a wildcard. Any document
+          fields that don''t map to a regular index field but do match a dynamic field''s
+          pattern are configured with the dynamic field''s indexing options. </p>
+          <p>Regular field names begin with a letter and can contain the following
+          characters: a-z (lowercase), 0-9, and _ (underscore). Dynamic field names
+          must begin or end with a wildcard (*). The wildcard can also be the only
+          character in a dynamic field name. Multiple wildcards, and wildcards embedded
+          within a string are not supported. </p> <p>The name <code>score</code> is
+          reserved and cannot be used as a field name. To reference a document''s
+          ID, you can use the name <code>_id</code>. </p>'
+      IndexFieldType:
+        type: IndexFieldType
+      IntOptions?:
+        type: IntOptions
+      DoubleOptions?:
+        type: DoubleOptions
+      LiteralOptions?:
+        type: LiteralOptions
+      TextOptions?:
+        type: TextOptions
+      DateOptions?:
+        type: DateOptions
+      LatLonOptions?:
+        type: LatLonOptions
+      IntArrayOptions?:
+        type: IntArrayOptions
+      DoubleArrayOptions?:
+        type: DoubleArrayOptions
+      LiteralArrayOptions?:
+        type: LiteralArrayOptions
+      TextArrayOptions?:
+        type: TextArrayOptions
+      DateArrayOptions?:
+        type: DateArrayOptions
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+  IndexFieldStatus:
+    type: object
+    properties:
+      Options:
+        type: IndexField
+      Status:
+        type: OptionStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The value of an <code>IndexField</code> and its current status.</p>
+  IntArrayOptions:
+    type: object
+    properties:
+      DefaultValue?:
+        type: Long
+        description: A value to use for the field if the field isn't specified for a document.
+      SourceFields?:
+        type: FieldNameCommaList
+        description: <p>A list of source fields to map to the field. </p>
+      FacetEnabled?:
+        type: Boolean
+        description: <p>Whether facet information can be returned for the field.</p>
+      SearchEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field are searchable.</p>
+      ReturnEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field can be returned in the search results.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Options for a field that contains an array of 64-bit signed integers. Present if <code>IndexFieldType</code> specifies the field is of type <code>int-array</code>. All options are enabled by default.</p>
+  IntOptions:
+    type: object
+    properties:
+      DefaultValue?:
+        type: Long
+        description: A value to use for the field if the field isn't specified for a document. This can be important if you are using the field in an expression and that field is not present in every document.
+      SourceField?:
+        type: FieldName
+        description: <p>The name of the source field to map to the field. </p>
+      FacetEnabled?:
+        type: Boolean
+        description: <p>Whether facet information can be returned for the field.</p>
+      SearchEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field are searchable.</p>
+      ReturnEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field can be returned in the search results.</p>
+      SortEnabled?:
+        type: Boolean
+        description: <p>Whether the field can be used to sort the search results.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Options for a 64-bit signed integer field. Present if <code>IndexFieldType</code> specifies the field is of type <code>int</code>. All options are enabled by default.</p>
+  LatLonOptions:
+    type: object
+    properties:
+      DefaultValue?:
+        type: FieldValue
+        description: A value to use for the field if the field isn't specified for a document.
+      SourceField?:
+        type: FieldName
+      FacetEnabled?:
+        type: Boolean
+        description: <p>Whether facet information can be returned for the field.</p>
+      SearchEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field are searchable.</p>
+      ReturnEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field can be returned in the search results.</p>
+      SortEnabled?:
+        type: Boolean
+        description: <p>Whether the field can be used to sort the search results.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Options for a latlon field. A latlon field contains a location stored as a latitude and longitude value pair. Present if <code>IndexFieldType</code> specifies the field is of type <code>latlon</code>. All options are enabled by default.</p>
+  Limits:
+    type: object
+    properties:
+      MaximumReplicationCount:
+        type: MaximumReplicationCount
+      MaximumPartitionCount:
+        type: MaximumPartitionCount
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+  ListDomainNamesResponse:
+    type: object
+    properties:
+      DomainNames?:
+        type: DomainNameMap
+        description: <p>The names of the search domains owned by an account.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>ListDomainNames</code> request. Contains a list of the domains owned by an account.</p>
+  LiteralArrayOptions:
+    type: object
+    properties:
+      DefaultValue?:
+        type: FieldValue
+        description: A value to use for the field if the field isn't specified for a document.
+      SourceFields?:
+        type: FieldNameCommaList
+        description: <p>A list of source fields to map to the field. </p>
+      FacetEnabled?:
+        type: Boolean
+        description: <p>Whether facet information can be returned for the field.</p>
+      SearchEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field are searchable.</p>
+      ReturnEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field can be returned in the search results.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Options for a field that contains an array of literal strings. Present if <code>IndexFieldType</code> specifies the field is of type <code>literal-array</code>. All options are enabled by default.</p>
+  LiteralOptions:
+    type: object
+    properties:
+      DefaultValue?:
+        type: FieldValue
+        description: A value to use for the field if the field isn't specified for a document.
+      SourceField?:
+        type: FieldName
+      FacetEnabled?:
+        type: Boolean
+        description: <p>Whether facet information can be returned for the field.</p>
+      SearchEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field are searchable.</p>
+      ReturnEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field can be returned in the search results.</p>
+      SortEnabled?:
+        type: Boolean
+        description: <p>Whether the field can be used to sort the search results.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Options for literal field. Present if <code>IndexFieldType</code> specifies the field is of type <code>literal</code>. All options are enabled by default.</p>
+  OptionStatus:
+    type: object
+    properties:
+      CreationDate:
+        type: UpdateTimestamp
+        description: <p>A timestamp for when this option was created.</p>
+      UpdateDate:
+        type: UpdateTimestamp
+        description: <p>A timestamp for when this option was last updated.</p>
+      UpdateVersion?:
+        type: UIntValue
+        description: <p>A unique integer that indicates when this option was last updated.</p>
+      State:
+        type: OptionState
+        description: '<p>The state of processing a change to an option. Possible values:</p>
+          <ul> <li> <code>RequiresIndexDocuments</code>: the option''s latest value
+          will not be deployed until <a>IndexDocuments</a> has been called and indexing
+          is complete.</li> <li> <code>Processing</code>: the option''s latest value
+          is in the process of being activated. </li> <li> <code>Active</code>: the
+          option''s latest value is completely deployed.</li> <li> <code>FailedToValidate</code>:
+          the option value is not compatible with the domain''s data and cannot be
+          used to index the data. You must either modify the option value or update
+          or remove the incompatible documents.</li> </ul>'
+      PendingDeletion?:
+        type: Boolean
+        description: <p>Indicates that the option will be deleted once processing is complete.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The status of domain configuration option.</p>
+  ScalingParameters:
+    type: object
+    properties:
+      DesiredInstanceType?:
+        type: PartitionInstanceType
+        description: <p>The instance type that you want to preconfigure for your domain. For example, <code>search.m1.small</code>.</p>
+      DesiredReplicationCount?:
+        type: UIntValue
+        description: <p>The number of replicas you want to preconfigure for each index partition.</p>
+      DesiredPartitionCount?:
+        type: UIntValue
+        description: <p>The number of partitions you want to preconfigure for your domain. Only valid when you select <code>m2.2xlarge</code> as the desired instance type.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The desired instance type and desired number of replicas of each index partition.</p>
+  ScalingParametersStatus:
+    type: object
+    properties:
+      Options:
+        type: ScalingParameters
+      Status:
+        type: OptionStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The status and configuration of a search domain's scaling parameters. </p>
+  ServiceEndpoint:
+    type: object
+    properties:
+      Endpoint?:
+        type: ServiceUrl
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The endpoint to which service requests can be submitted.</p>
+  Suggester:
+    type: object
+    properties:
+      SuggesterName:
+        type: StandardName
+      DocumentSuggesterOptions:
+        type: DocumentSuggesterOptions
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: '<p>Configuration information for a search suggester. Each suggester
+      has a unique name and specifies the text field you want to use for suggestions.
+      The following options can be configured for a suggester: <code>FuzzyMatching</code>,
+      <code>SortExpression</code>. </p>'
+  SuggesterStatus:
+    type: object
+    properties:
+      Options:
+        type: Suggester
+      Status:
+        type: OptionStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The value of a <code>Suggester</code> and its current status.</p>
+  TextArrayOptions:
+    type: object
+    properties:
+      DefaultValue?:
+        type: FieldValue
+        description: A value to use for the field if the field isn't specified for a document.
+      SourceFields?:
+        type: FieldNameCommaList
+        description: <p>A list of source fields to map to the field. </p>
+      ReturnEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field can be returned in the search results.</p>
+      HighlightEnabled?:
+        type: Boolean
+        description: <p>Whether highlights can be returned for the field.</p>
+      AnalysisScheme?:
+        type: Word
+        description: <p>The name of an analysis scheme for a <code>text-array</code> field.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Options for a field that contains an array of text strings. Present if <code>IndexFieldType</code> specifies the field is of type <code>text-array</code>. A <code>text-array</code> field is always searchable. All options are enabled by default.</p>
+  TextOptions:
+    type: object
+    properties:
+      DefaultValue?:
+        type: FieldValue
+        description: A value to use for the field if the field isn't specified for a document.
+      SourceField?:
+        type: FieldName
+      ReturnEnabled?:
+        type: Boolean
+        description: <p>Whether the contents of the field can be returned in the search results.</p>
+      SortEnabled?:
+        type: Boolean
+        description: <p>Whether the field can be used to sort the search results.</p>
+      HighlightEnabled?:
+        type: Boolean
+        description: <p>Whether highlights can be returned for the field.</p>
+      AnalysisScheme?:
+        type: Word
+        description: <p>The name of an analysis scheme for a <code>text</code> field.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Options for text field. Present if <code>IndexFieldType</code> specifies the field is of type <code>text</code>. A <code>text</code> field is always searchable. All options are enabled by default.</p>
+  UpdateAvailabilityOptionsRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+      MultiAZ:
+        type: Boolean
+        description: <p>You expand an existing search domain to a second Availability Zone by setting the Multi-AZ option to true. Similarly, you can turn off the Multi-AZ option to downgrade the domain to a single Availability Zone by setting the Multi-AZ option to <code>false</code>. </p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>UpdateAvailabilityOptions</a></code> operation. Specifies the name of the domain you want to update and the Multi-AZ availability option.</p>
+  UpdateAvailabilityOptionsResponse:
+    type: object
+    properties:
+      AvailabilityOptions?:
+        type: AvailabilityOptionsStatus
+        description: <p>The newly-configured availability options. Indicates whether Multi-AZ is enabled for the domain. </p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>UpdateAvailabilityOptions</code> request. Contains the status of the domain's availability options. </p>
+  UpdateScalingParametersRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+      ScalingParameters:
+        type: ScalingParameters
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>UpdateScalingParameters</a></code> operation. Specifies the name of the domain you want to update and the scaling parameters you want to configure.</p>
+  UpdateScalingParametersResponse:
+    type: object
+    properties:
+      ScalingParameters:
+        type: ScalingParametersStatus
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of a <code>UpdateScalingParameters</code> request. Contains the status of the newly-configured scaling parameters.</p>
+  UpdateServiceAccessPoliciesRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+      AccessPolicies:
+        type: PolicyDocument
+        description: <p>The access rules you want to configure. These rules replace any existing rules. </p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>Container for the parameters to the <code><a>UpdateServiceAccessPolicies</a></code> operation. Specifies the name of the domain you want to update and the access rules you want to configure.</p>
+  UpdateServiceAccessPoliciesResponse:
+    type: object
+    properties:
+      AccessPolicies:
+        type: AccessPoliciesStatus
+        description: <p>The access rules configured for the domain.</p>
+    xml:
+      namespace: http://cloudsearch.amazonaws.com/doc/2013-01-01/
+    description: <p>The result of an <code>UpdateServiceAccessPolicies</code> request. Contains the new access policies.</p>
+/{BuildSuggesters}:
+  uriParameters:
+    BuildSuggesters?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Indexes the search suggestions. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters">Configuring Suggesters</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: BuildSuggestersRequest
+    responses:
+      200:
+        body:
+          application/xml: BuildSuggestersResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: ResourceNotFound
+/{CreateDomain}:
+  uriParameters:
+    CreateDomain?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a new search domain. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html" target="_blank">Creating a Search Domain</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: CreateDomainRequest
+    responses:
+      200:
+        body:
+          application/xml: CreateDomainResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: LimitExceeded
+/{DefineAnalysisScheme}:
+  uriParameters:
+    DefineAnalysisScheme?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Configures an analysis scheme that can be applied to a <code>text</code> or <code>text-array</code> field to define language-specific text processing options. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DefineAnalysisSchemeRequest
+    responses:
+      200:
+        body:
+          application/xml: DefineAnalysisSchemeResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: LimitExceeded
+/{DefineExpression}:
+  uriParameters:
+    DefineExpression?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Configures an <code><a>Expression</a></code> for the search domain. Used to create new expressions and modify existing ones. If the expression exists, the new configuration replaces the old one. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DefineExpressionRequest
+    responses:
+      200:
+        body:
+          application/xml: DefineExpressionResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: LimitExceeded
+/{DefineIndexField}:
+  uriParameters:
+    DefineIndexField?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Configures an <code><a>IndexField</a></code> for the search domain.
+    Used to create new fields and modify existing ones. You must specify the name
+    of the domain you are configuring and an index field configuration. The index
+    field configuration specifies a unique name, the index field type, and the options
+    you want to configure for the field. The options you can specify depend on the
+    <code><a>IndexFieldType</a></code>. If the field exists, the new configuration
+    replaces the old one. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html"
+    target="_blank">Configuring Index Fields</a> in the <i>Amazon CloudSearch Developer
+    Guide</i>. '
+  post:
+    body:
+      application/xml: DefineIndexFieldRequest
+    responses:
+      200:
+        body:
+          application/xml: DefineIndexFieldResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: LimitExceeded
+/{DefineSuggester}:
+  uriParameters:
+    DefineSuggester?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Configures a suggester for a domain. A suggester enables you to display possible matches before users finish typing their queries. When you configure a suggester, you must specify the name of the text field you want to search for possible matches and a unique name for the suggester. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DefineSuggesterRequest
+    responses:
+      200:
+        body:
+          application/xml: DefineSuggesterResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: LimitExceeded
+/{DeleteAnalysisScheme}:
+  uriParameters:
+    DeleteAnalysisScheme?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Deletes an analysis scheme. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html"
+    target="_blank">Configuring Analysis Schemes</a> in the <i>Amazon CloudSearch
+    Developer Guide</i>. '
+  post:
+    body:
+      application/xml: DeleteAnalysisSchemeRequest
+    responses:
+      200:
+        body:
+          application/xml: DeleteAnalysisSchemeResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: InvalidType
+/{DeleteDomain}:
+  uriParameters:
+    DeleteDomain?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Permanently deletes a search domain and all of its data. Once a domain
+    has been deleted, it cannot be recovered. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html"
+    target="_blank">Deleting a Search Domain</a> in the <i>Amazon CloudSearch Developer
+    Guide</i>. '
+  post:
+    body:
+      application/xml: DeleteDomainRequest
+    responses:
+      200:
+        body:
+          application/xml: DeleteDomainResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+/{DeleteExpression}:
+  uriParameters:
+    DeleteExpression?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Removes an <code><a>Expression</a></code> from the search domain. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DeleteExpressionRequest
+    responses:
+      200:
+        body:
+          application/xml: DeleteExpressionResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: InvalidType
+/{DeleteIndexField}:
+  uriParameters:
+    DeleteIndexField?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Removes an <code><a>IndexField</a></code> from the search domain. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html" target="_blank">Configuring Index Fields</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DeleteIndexFieldRequest
+    responses:
+      200:
+        body:
+          application/xml: DeleteIndexFieldResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: InvalidType
+/{DeleteSuggester}:
+  uriParameters:
+    DeleteSuggester?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a suggester. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DeleteSuggesterRequest
+    responses:
+      200:
+        body:
+          application/xml: DeleteSuggesterResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: InvalidType
+/{DescribeAnalysisSchemes}:
+  uriParameters:
+    DescribeAnalysisSchemes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets the analysis schemes configured for a domain. An analysis scheme defines language-specific text processing options for a <code>text</code> field. Can be limited to specific analysis schemes by name. By default, shows all analysis schemes and includes any pending changes to the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DescribeAnalysisSchemesRequest
+    responses:
+      200:
+        body:
+          application/xml: DescribeAnalysisSchemesResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: ResourceNotFound
+/{DescribeAvailabilityOptions}:
+  uriParameters:
+    DescribeAvailabilityOptions?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets the availability options configured for a domain. By default, shows the configuration with any pending changes. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DescribeAvailabilityOptionsRequest
+    responses:
+      200:
+        body:
+          application/xml: DescribeAvailabilityOptionsResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: InvalidType
+/{DescribeDomains}:
+  uriParameters:
+    DescribeDomains?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Gets information about the search domains owned by this account. Can
+    be limited to specific domains. Shows all domains by default. To get the number
+    of searchable documents in a domain, use the console or submit a <code>matchall</code>
+    request to your domain''s search endpoint: <code>q=matchall&amp;amp;q.parser=structured&amp;amp;size=0</code>.
+    For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html"
+    target="_blank">Getting Information about a Search Domain</a> in the <i>Amazon
+    CloudSearch Developer Guide</i>.'
+  post:
+    body:
+      application/xml: DescribeDomainsRequest
+    responses:
+      200:
+        body:
+          application/xml: DescribeDomainsResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+/{DescribeExpressions}:
+  uriParameters:
+    DescribeExpressions?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets the expressions configured for the search domain. Can be limited to specific expressions by name. By default, shows all expressions and includes any pending changes to the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DescribeExpressionsRequest
+    responses:
+      200:
+        body:
+          application/xml: DescribeExpressionsResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: ResourceNotFound
+/{DescribeIndexFields}:
+  uriParameters:
+    DescribeIndexFields?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets information about the index fields configured for the search domain. Can be limited to specific fields by name. By default, shows all fields and includes any pending changes to the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html" target="_blank">Getting Domain Information</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DescribeIndexFieldsRequest
+    responses:
+      200:
+        body:
+          application/xml: DescribeIndexFieldsResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: ResourceNotFound
+/{DescribeScalingParameters}:
+  uriParameters:
+    DescribeScalingParameters?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets the scaling parameters configured for a domain. A domain's scaling parameters specify the desired search instance type and replication count. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html" target="_blank">Configuring Scaling Options</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DescribeScalingParametersRequest
+    responses:
+      200:
+        body:
+          application/xml: DescribeScalingParametersResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: ResourceNotFound
+/{DescribeServiceAccessPolicies}:
+  uriParameters:
+    DescribeServiceAccessPolicies?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets information about the access policies that control access to the domain's document and search endpoints. By default, shows the configuration with any pending changes. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">Configuring Access for a Search Domain</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DescribeServiceAccessPoliciesRequest
+    responses:
+      200:
+        body:
+          application/xml: DescribeServiceAccessPoliciesResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: ResourceNotFound
+/{DescribeSuggesters}:
+  uriParameters:
+    DescribeSuggesters?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets the suggesters configured for a domain. A suggester enables you to display possible matches before users finish typing their queries. Can be limited to specific suggesters by name. By default, shows all suggesters and includes any pending changes to the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: DescribeSuggestersRequest
+    responses:
+      200:
+        body:
+          application/xml: DescribeSuggestersResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: ResourceNotFound
+/{IndexDocuments}:
+  uriParameters:
+    IndexDocuments?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Tells the search domain to start indexing its documents using the latest indexing options. This operation must be invoked to activate options whose <a>OptionStatus</a> is <code>RequiresIndexDocuments</code>.
+  post:
+    body:
+      application/xml: IndexDocumentsRequest
+    responses:
+      200:
+        body:
+          application/xml: IndexDocumentsResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: ResourceNotFound
+/{ListDomainNames}:
+  uriParameters:
+    ListDomainNames?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists all search domains owned by an account.
+  post:
+    responses:
+      200:
+        body:
+          application/xml: ListDomainNamesResponse
+      400:
+        description: BaseException
+/{UpdateAvailabilityOptions}:
+  uriParameters:
+    UpdateAvailabilityOptions?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Configures the availability options for a domain. Enabling the Multi-AZ option expands an Amazon CloudSearch domain to an additional Availability Zone in the same Region to increase fault tolerance in the event of a service disruption. Changes to the Multi-AZ option can take about half an hour to become active. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the <i>Amazon CloudSearch Developer Guide</i>.
+  post:
+    body:
+      application/xml: UpdateAvailabilityOptionsRequest
+    responses:
+      200:
+        body:
+          application/xml: UpdateAvailabilityOptionsResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: InvalidType
+/{UpdateScalingParameters}:
+  uriParameters:
+    UpdateScalingParameters?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Configures scaling parameters for a domain. A domain''s scaling parameters
+    specify the desired search instance type and replication count. Amazon CloudSearch
+    will still automatically scale your domain based on the volume of data and traffic,
+    but not below the desired instance type and replication count. If the Multi-AZ
+    option is enabled, these values control the resources used per Availability Zone.
+    For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html"
+    target="_blank">Configuring Scaling Options</a> in the <i>Amazon CloudSearch Developer
+    Guide</i>. '
+  post:
+    body:
+      application/xml: UpdateScalingParametersRequest
+    responses:
+      200:
+        body:
+          application/xml: UpdateScalingParametersResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: LimitExceeded
+/{UpdateServiceAccessPolicies}:
+  uriParameters:
+    UpdateServiceAccessPolicies?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Configures the access rules that control access to the domain's document and search endpoints. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank"> Configuring Access for an Amazon CloudSearch Domain</a>.
+  post:
+    body:
+      application/xml: UpdateServiceAccessPoliciesRequest
+    responses:
+      200:
+        body:
+          application/xml: UpdateServiceAccessPoliciesResponse
+      400:
+        description: BaseException
+      500:
+        description: InternalException
+      409:
+        description: LimitExceeded

@@ -1,0 +1,1795 @@
+#%RAML 1.0
+title: Amazon CloudFront
+version: '2016-09-07'
+description: '  Amazon CloudFront is a global content delivery network (CDN) service
+  that accelerates delivery of your websites, APIs, video content or other web assets.
+  It integrates with other Amazon Web Services products to give developers and businesses
+  an easy way to accelerate content to end users with no minimum usage commitments.'
+mediaType:
+- application/xml
+types:
+  AliasList:
+    type: array
+    items:
+      type: string
+  AwsAccountNumberList:
+    type: array
+    items:
+      type: string
+  CacheBehaviorList:
+    type: array
+    items:
+      type: CacheBehavior
+  CertificateSource:
+    type: string
+    enum:
+    - cloudfront
+    - iam
+    - acm
+  CloudFrontOriginAccessIdentitySummaryList:
+    type: array
+    items:
+      type: CloudFrontOriginAccessIdentitySummary
+  CookieNameList:
+    type: array
+    items:
+      type: string
+  CustomErrorResponseList:
+    type: array
+    items:
+      type: CustomErrorResponse
+  DistributionSummaryList:
+    type: array
+    items:
+      type: DistributionSummary
+  GeoRestrictionType:
+    type: string
+    enum:
+    - blacklist
+    - whitelist
+    - none
+  HeaderList:
+    type: array
+    items:
+      type: string
+  HttpVersion:
+    type: string
+    enum:
+    - http1.1
+    - http2
+  InvalidationSummaryList:
+    type: array
+    items:
+      type: InvalidationSummary
+  ItemSelection:
+    type: string
+    enum:
+    - none
+    - whitelist
+    - all
+  KeyPairIdList:
+    type: array
+    items:
+      type: string
+  LocationList:
+    type: array
+    items:
+      type: string
+  Method:
+    type: string
+    enum:
+    - GET
+    - HEAD
+    - POST
+    - PUT
+    - PATCH
+    - OPTIONS
+    - DELETE
+  MethodsList:
+    type: array
+    items:
+      type: Method
+  MinimumProtocolVersion:
+    type: string
+    enum:
+    - SSLv3
+    - TLSv1
+  OriginCustomHeadersList:
+    type: array
+    items:
+      type: OriginCustomHeader
+  OriginList:
+    type: array
+    minItems: 1
+    items:
+      type: Origin
+  OriginProtocolPolicy:
+    type: string
+    enum:
+    - http-only
+    - match-viewer
+    - https-only
+  PathList:
+    type: array
+    items:
+      type: string
+  PriceClass:
+    type: string
+    enum:
+    - PriceClass_100
+    - PriceClass_200
+    - PriceClass_All
+  QueryStringCacheKeysList:
+    type: array
+    items:
+      type: string
+  ResourceARN:
+    type: string
+    pattern: arn:aws:cloudfront::[0-9]+:.*
+  SSLSupportMethod:
+    type: string
+    enum:
+    - sni-only
+    - vip
+  SignerList:
+    type: array
+    items:
+      type: Signer
+  SslProtocol:
+    type: string
+    enum:
+    - SSLv3
+    - TLSv1
+    - TLSv1.1
+    - TLSv1.2
+  SslProtocolsList:
+    type: array
+    items:
+      type: SslProtocol
+  StreamingDistributionSummaryList:
+    type: array
+    items:
+      type: StreamingDistributionSummary
+  TagKey:
+    type: string
+    pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+    minLength: 1
+    maxLength: 128
+    description: 'A string that contains Tag key. The string length should be between
+      1 and 128 characters. Valid characters include a-z, A-Z, 0-9, space, and the
+      special characters _ - . : / = + @.'
+  TagKeyList:
+    type: array
+    items:
+      type: TagKey
+  TagList:
+    type: array
+    items:
+      type: Tag
+  TagValue:
+    type: string
+    pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+    minLength: 0
+    maxLength: 256
+  ViewerProtocolPolicy:
+    type: string
+    enum:
+    - allow-all
+    - https-only
+    - redirect-to-https
+  long:
+    type: integer
+    format: long
+  timestamp:
+    type: datetime
+  ActiveTrustedSigners:
+    type: object
+    properties:
+      Enabled:
+        type: boolean
+        description: Each active trusted signer.
+      Quantity:
+        type: integer
+        description: The number of unique trusted signers included in all cache behaviors. For example, if three cache behaviors all list the same three AWS accounts, the value of Quantity for ActiveTrustedSigners will be 3.
+      Items?:
+        type: SignerList
+        description: A complex type that contains one Signer complex type for each unique trusted signer that is specified in the TrustedSigners complex type, including trusted signers in the default cache behavior and in all of the other cache behaviors.
+    description: A complex type that lists the AWS accounts, if any, that you included in the TrustedSigners complex type for the default cache behavior or for any of the other cache behaviors for this distribution. These are accounts that you want to allow to create signed URLs for private content.
+  Aliases:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of CNAMEs, if any, for this distribution.
+      Items?:
+        type: AliasList
+        description: 'Optional: A complex type that contains CNAME elements, if any,
+          for this distribution. If Quantity is 0, you can omit Items.'
+    description: A complex type that contains information about CNAMEs (alternate domain names), if any, for this distribution.
+  AllowedMethods:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of HTTP methods that you want CloudFront to forward to your origin. Valid values are 2 (for GET and HEAD requests), 3 (for GET, HEAD and OPTIONS requests) and 7 (for GET, HEAD, OPTIONS, PUT, PATCH, POST, and DELETE requests).
+      Items:
+        type: MethodsList
+        description: A complex type that contains the HTTP methods that you want CloudFront to process and forward to your origin.
+      CachedMethods?:
+        type: CachedMethods
+    description: 'A complex type that controls which HTTP methods CloudFront processes
+      and forwards to your Amazon S3 bucket or your custom origin. There are three
+      choices: - CloudFront forwards only GET and HEAD requests. - CloudFront forwards
+      only GET, HEAD and OPTIONS requests. - CloudFront forwards GET, HEAD, OPTIONS,
+      PUT, PATCH, POST, and DELETE requests. If you pick the third choice, you may
+      need to restrict access to your Amazon S3 bucket or to your custom origin so
+      users can''t perform operations that you don''t want them to. For example, you
+      may not want users to have permission to delete objects from your origin.'
+  CacheBehavior:
+    type: object
+    properties:
+      PathPattern:
+        type: string
+        description: The pattern (for example, images/*.jpg) that specifies which requests you want this cache behavior to apply to. When CloudFront receives an end-user request, the requested path is compared with path patterns in the order in which cache behaviors are listed in the distribution. The path pattern for the default cache behavior is * and cannot be changed. If the request for an object does not match the path pattern for any cache behaviors, CloudFront applies the behavior in the default cache behavior.
+      TargetOriginId:
+        type: string
+        description: The value of ID for the origin that you want CloudFront to route requests to when a request matches the path pattern either for a cache behavior or for the default cache behavior.
+      ForwardedValues:
+        type: ForwardedValues
+        description: A complex type that specifies how CloudFront handles query strings, cookies and headers.
+      TrustedSigners:
+        type: TrustedSigners
+        description: A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content. If you want to require signed URLs in requests for objects in the target origin that match the PathPattern for this cache behavior, specify true for Enabled, and specify the applicable values for Quantity and Items. For more information, go to Using a Signed URL to Serve Private Content in the Amazon CloudFront Developer Guide. If you don't want to require signed URLs in requests for objects that match PathPattern, specify false for Enabled and 0 for Quantity. Omit Items. To add, change, or remove one or more trusted signers, change Enabled to true (if it's currently false), change Quantity as applicable, and specify all of the trusted signers that you want to include in the updated distribution.
+      ViewerProtocolPolicy:
+        type: ViewerProtocolPolicy
+        description: Use this element to specify the protocol that users can use to access the files in the origin specified by TargetOriginId when a request matches the path pattern in PathPattern. If you want CloudFront to allow end users to use any available protocol, specify allow-all. If you want CloudFront to require HTTPS, specify https. If you want CloudFront to respond to an HTTP request with an HTTP status code of 301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https. The viewer then resubmits the request using the HTTPS URL.
+      MinTTL:
+        type: long
+        description: The minimum amount of time that you want objects to stay in CloudFront caches before CloudFront queries your origin to see whether the object has been updated.You can specify a value from 0 to 3,153,600,000 seconds (100 years).
+      AllowedMethods?:
+        type: AllowedMethods
+      SmoothStreaming?:
+        type: boolean
+        description: Indicates whether you want to distribute media files in Microsoft Smooth Streaming format using the origin that is associated with this cache behavior. If so, specify true; if not, specify false.
+      DefaultTTL?:
+        type: long
+        description: If you don't configure your origin to add a Cache-Control max-age directive or an Expires header, DefaultTTL is the default amount of time (in seconds) that an object is in a CloudFront cache before CloudFront forwards another request to your origin to determine whether the object has been updated. The value that you specify applies only when your origin does not add HTTP headers such as Cache-Control max-age, Cache-Control s-maxage, and Expires to objects. You can specify a value from 0 to 3,153,600,000 seconds (100 years).
+      MaxTTL?:
+        type: long
+        description: The maximum amount of time (in seconds) that an object is in a CloudFront cache before CloudFront forwards another request to your origin to determine whether the object has been updated. The value that you specify applies only when your origin adds HTTP headers such as Cache-Control max-age, Cache-Control s-maxage, and Expires to objects. You can specify a value from 0 to 3,153,600,000 seconds (100 years).
+      Compress?:
+        type: boolean
+        description: 'Whether you want CloudFront to automatically compress content
+          for web requests that include Accept-Encoding: gzip in the request header.
+          If so, specify true; if not, specify false. CloudFront compresses files
+          larger than 1000 bytes and less than 1 megabyte for both Amazon S3 and custom
+          origins. When a CloudFront edge location is unusually busy, some files might
+          not be compressed. The value of the Content-Type header must be on the list
+          of file types that CloudFront will compress. For the current list, see <a
+          href="http://docs.aws.amazon.com/console/cloudfront/compressed-content">Serving
+          Compressed Content</a> in the Amazon CloudFront Developer Guide. If you
+          configure CloudFront to compress content, CloudFront removes the ETag response
+          header from the objects that it compresses. The ETag header indicates that
+          the version in a CloudFront edge cache is identical to the version on the
+          origin server, but after compression the two versions are no longer identical.
+          As a result, for compressed objects, CloudFront can''t use the ETag header
+          to determine whether an expired object in the CloudFront edge cache is still
+          the latest version.'
+    description: A complex type that describes how CloudFront processes requests. You can create up to 10 cache behaviors.You must create at least as many cache behaviors (including the default cache behavior) as you have origins if you want CloudFront to distribute objects from all of the origins. Each cache behavior specifies the one origin from which you want CloudFront to get objects. If you have two origins and only the default cache behavior, the default cache behavior will cause CloudFront to get objects from one of the origins, but the other origin will never be used. If you don't want to specify any cache behaviors, include only an empty CacheBehaviors element. Don't include an empty CacheBehavior element, or CloudFront returns a MalformedXML error. To delete all cache behaviors in an existing distribution, update the distribution configuration and include only an empty CacheBehaviors element. To add, change, or remove one or more cache behaviors, update the distribution configuration and specify all of the cache behaviors that you want to include in the updated distribution.
+  CacheBehaviors:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of cache behaviors for this distribution.
+      Items?:
+        type: CacheBehaviorList
+        description: 'Optional: A complex type that contains cache behaviors for this
+          distribution. If Quantity is 0, you can omit Items.'
+    description: A complex type that contains zero or more CacheBehavior elements.
+  CachedMethods:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of HTTP methods for which you want CloudFront to cache responses. Valid values are 2 (for caching responses to GET and HEAD requests) and 3 (for caching responses to GET, HEAD, and OPTIONS requests).
+      Items:
+        type: MethodsList
+        description: A complex type that contains the HTTP methods that you want CloudFront to cache responses to.
+    description: 'A complex type that controls whether CloudFront caches the response
+      to requests using the specified HTTP methods. There are two choices: - CloudFront
+      caches responses to GET and HEAD requests. - CloudFront caches responses to
+      GET, HEAD, and OPTIONS requests. If you pick the second choice for your S3 Origin,
+      you may need to forward Access-Control-Request-Method, Access-Control-Request-Headers
+      and Origin headers for the responses to be cached correctly.'
+  CloudFrontOriginAccessIdentity:
+    type: object
+    properties:
+      Id:
+        type: string
+        description: 'The ID for the origin access identity. For example: E74FTE3AJFJ256A.'
+      S3CanonicalUserId:
+        type: string
+        description: The Amazon S3 canonical user ID for the origin access identity, which you use when giving the origin access identity read permission to an object in Amazon S3.
+      CloudFrontOriginAccessIdentityConfig?:
+        type: CloudFrontOriginAccessIdentityConfig
+        description: The current configuration information for the identity.
+    description: CloudFront origin access identity.
+  CloudFrontOriginAccessIdentityConfig:
+    type: object
+    properties:
+      CallerReference:
+        type: string
+        description: A unique number that ensures the request can't be replayed. If the CallerReference is new (no matter the content of the CloudFrontOriginAccessIdentityConfig object), a new origin access identity is created. If the CallerReference is a value you already sent in a previous request to create an identity, and the content of the CloudFrontOriginAccessIdentityConfig is identical to the original request (ignoring white space), the response includes the same information returned to the original request. If the CallerReference is a value you already sent in a previous request to create an identity but the content of the CloudFrontOriginAccessIdentityConfig is different from the original request, CloudFront returns a CloudFrontOriginAccessIdentityAlreadyExists error.
+      Comment:
+        type: string
+        description: Any comments you want to include about the origin access identity.
+    description: Origin access identity configuration.
+  CloudFrontOriginAccessIdentityList:
+    type: object
+    properties:
+      Marker:
+        type: string
+        description: The value you provided for the Marker request parameter.
+      NextMarker?:
+        type: string
+        description: If IsTruncated is true, this element is present and contains the value you can use for the Marker request parameter to continue listing your origin access identities where they left off.
+      MaxItems:
+        type: integer
+        description: The value you provided for the MaxItems request parameter.
+      IsTruncated:
+        type: boolean
+        description: A flag that indicates whether more origin access identities remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more items in the list.
+      Quantity:
+        type: integer
+        description: The number of CloudFront origin access identities that were created by the current AWS account.
+      Items?:
+        type: CloudFrontOriginAccessIdentitySummaryList
+        description: A complex type that contains one CloudFrontOriginAccessIdentitySummary element for each origin access identity that was created by the current AWS account.
+    description: The CloudFrontOriginAccessIdentityList type.
+  CloudFrontOriginAccessIdentitySummary:
+    type: object
+    properties:
+      Id:
+        type: string
+        description: 'The ID for the origin access identity. For example: E74FTE3AJFJ256A.'
+      S3CanonicalUserId:
+        type: string
+        description: The Amazon S3 canonical user ID for the origin access identity, which you use when giving the origin access identity read permission to an object in Amazon S3.
+      Comment:
+        type: string
+        description: The comment for this origin access identity, as originally specified when created.
+    description: Summary of the information about a CloudFront origin access identity.
+  CookieNames:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of whitelisted cookies for this cache behavior.
+      Items?:
+        type: CookieNameList
+        description: 'Optional: A complex type that contains whitelisted cookies for
+          this cache behavior. If Quantity is 0, you can omit Items.'
+    description: A complex type that specifies the whitelisted cookies, if any, that you want CloudFront to forward to your origin that is associated with this cache behavior.
+  CookiePreference:
+    type: object
+    properties:
+      Forward:
+        type: ItemSelection
+        description: Use this element to specify whether you want CloudFront to forward cookies to the origin that is associated with this cache behavior. You can specify all, none or whitelist. If you choose All, CloudFront forwards all cookies regardless of how many your application uses.
+      WhitelistedNames?:
+        type: CookieNames
+        description: A complex type that specifies the whitelisted cookies, if any, that you want CloudFront to forward to your origin that is associated with this cache behavior.
+    description: A complex type that specifies the cookie preferences associated with this cache behavior.
+  CustomErrorResponse:
+    type: object
+    properties:
+      ErrorCode:
+        type: integer
+        description: The 4xx or 5xx HTTP status code that you want to customize. For a list of HTTP status codes that you can customize, see CloudFront documentation.
+      ResponsePagePath?:
+        type: string
+        description: The path of the custom error page (for example, /custom_404.html). The path is relative to the distribution and must begin with a slash (/). If the path includes any non-ASCII characters or unsafe characters as defined in RFC 1783 (http://www.ietf.org/rfc/rfc1738.txt), URL encode those characters. Do not URL encode any other characters in the path, or CloudFront will not return the custom error page to the viewer.
+      ResponseCode?:
+        type: string
+        description: The HTTP status code that you want CloudFront to return with the custom error page to the viewer. For a list of HTTP status codes that you can replace, see CloudFront Documentation.
+      ErrorCachingMinTTL?:
+        type: long
+        description: The minimum amount of time you want HTTP error codes to stay in CloudFront caches before CloudFront queries your origin to see whether the object has been updated. You can specify a value from 0 to 31,536,000.
+    description: A complex type that describes how you'd prefer CloudFront to respond to requests that result in either a 4xx or 5xx response. You can control whether a custom error page should be displayed, what the desired response code should be for this error page and how long should the error response be cached by CloudFront. If you don't want to specify any custom error responses, include only an empty CustomErrorResponses element. To delete all custom error responses in an existing distribution, update the distribution configuration and include only an empty CustomErrorResponses element. To add, change, or remove one or more custom error responses, update the distribution configuration and specify all of the custom error responses that you want to include in the updated distribution.
+  CustomErrorResponses:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of custom error responses for this distribution.
+      Items?:
+        type: CustomErrorResponseList
+        description: 'Optional: A complex type that contains custom error responses
+          for this distribution. If Quantity is 0, you can omit Items.'
+    description: A complex type that contains zero or more CustomErrorResponse elements.
+  CustomHeaders:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of custom headers for this origin.
+      Items?:
+        type: OriginCustomHeadersList
+        description: A complex type that contains the custom headers for this Origin.
+    description: A complex type that contains the list of Custom Headers for each origin.
+  CustomOriginConfig:
+    type: object
+    properties:
+      HTTPPort:
+        type: integer
+        description: The HTTP port the custom origin listens on.
+      HTTPSPort:
+        type: integer
+        description: The HTTPS port the custom origin listens on.
+      OriginProtocolPolicy:
+        type: OriginProtocolPolicy
+        description: The origin protocol policy to apply to your origin.
+      OriginSslProtocols?:
+        type: OriginSslProtocols
+        description: The SSL/TLS protocols that you want CloudFront to use when communicating with your origin over HTTPS.
+    description: A customer origin.
+  DefaultCacheBehavior:
+    type: object
+    properties:
+      TargetOriginId:
+        type: string
+        description: The value of ID for the origin that you want CloudFront to route requests to when a request matches the path pattern either for a cache behavior or for the default cache behavior.
+      ForwardedValues:
+        type: ForwardedValues
+        description: A complex type that specifies how CloudFront handles query strings, cookies and headers.
+      TrustedSigners:
+        type: TrustedSigners
+        description: A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content. If you want to require signed URLs in requests for objects in the target origin that match the PathPattern for this cache behavior, specify true for Enabled, and specify the applicable values for Quantity and Items. For more information, go to Using a Signed URL to Serve Private Content in the Amazon CloudFront Developer Guide. If you don't want to require signed URLs in requests for objects that match PathPattern, specify false for Enabled and 0 for Quantity. Omit Items. To add, change, or remove one or more trusted signers, change Enabled to true (if it's currently false), change Quantity as applicable, and specify all of the trusted signers that you want to include in the updated distribution.
+      ViewerProtocolPolicy:
+        type: ViewerProtocolPolicy
+        description: Use this element to specify the protocol that users can use to access the files in the origin specified by TargetOriginId when a request matches the path pattern in PathPattern. If you want CloudFront to allow end users to use any available protocol, specify allow-all. If you want CloudFront to require HTTPS, specify https. If you want CloudFront to respond to an HTTP request with an HTTP status code of 301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https. The viewer then resubmits the request using the HTTPS URL.
+      MinTTL:
+        type: long
+        description: The minimum amount of time that you want objects to stay in CloudFront caches before CloudFront queries your origin to see whether the object has been updated.You can specify a value from 0 to 3,153,600,000 seconds (100 years).
+      AllowedMethods?:
+        type: AllowedMethods
+      SmoothStreaming?:
+        type: boolean
+        description: Indicates whether you want to distribute media files in Microsoft Smooth Streaming format using the origin that is associated with this cache behavior. If so, specify true; if not, specify false.
+      DefaultTTL?:
+        type: long
+        description: If you don't configure your origin to add a Cache-Control max-age directive or an Expires header, DefaultTTL is the default amount of time (in seconds) that an object is in a CloudFront cache before CloudFront forwards another request to your origin to determine whether the object has been updated. The value that you specify applies only when your origin does not add HTTP headers such as Cache-Control max-age, Cache-Control s-maxage, and Expires to objects. You can specify a value from 0 to 3,153,600,000 seconds (100 years).
+      MaxTTL?:
+        type: long
+        description: The maximum amount of time (in seconds) that an object is in a CloudFront cache before CloudFront forwards another request to your origin to determine whether the object has been updated. The value that you specify applies only when your origin adds HTTP headers such as Cache-Control max-age, Cache-Control s-maxage, and Expires to objects. You can specify a value from 0 to 3,153,600,000 seconds (100 years).
+      Compress?:
+        type: boolean
+        description: 'Whether you want CloudFront to automatically compress content
+          for web requests that include Accept-Encoding: gzip in the request header.
+          If so, specify true; if not, specify false. CloudFront compresses files
+          larger than 1000 bytes and less than 1 megabyte for both Amazon S3 and custom
+          origins. When a CloudFront edge location is unusually busy, some files might
+          not be compressed. The value of the Content-Type header must be on the list
+          of file types that CloudFront will compress. For the current list, see <a
+          href="http://docs.aws.amazon.com/console/cloudfront/compressed-content">Serving
+          Compressed Content</a> in the Amazon CloudFront Developer Guide. If you
+          configure CloudFront to compress content, CloudFront removes the ETag response
+          header from the objects that it compresses. The ETag header indicates that
+          the version in a CloudFront edge cache is identical to the version on the
+          origin server, but after compression the two versions are no longer identical.
+          As a result, for compressed objects, CloudFront can''t use the ETag header
+          to determine whether an expired object in the CloudFront edge cache is still
+          the latest version.'
+    description: A complex type that describes the default cache behavior if you do not specify a CacheBehavior element or if files don't match any of the values of PathPattern in CacheBehavior elements.You must create exactly one default cache behavior.
+  Distribution:
+    type: object
+    properties:
+      Id:
+        type: string
+        description: 'The identifier for the distribution. For example: EDFDVBD632BHDS5.'
+      ARN:
+        type: string
+        description: 'The ARN (Amazon Resource Name) for the distribution. For example:
+          arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5, where 123456789012
+          is your AWS account Id.'
+      Status:
+        type: string
+        description: This response element indicates the current status of the distribution. When the status is Deployed, the distribution's information is fully propagated throughout the Amazon CloudFront system.
+      LastModifiedTime:
+        type: timestamp
+        description: The date and time the distribution was last modified.
+      InProgressInvalidationBatches:
+        type: integer
+        description: The number of invalidation batches currently in progress.
+      DomainName:
+        type: string
+        description: 'The domain name corresponding to the distribution. For example:
+          d604721fxaaqy9.cloudfront.net.'
+      ActiveTrustedSigners:
+        type: ActiveTrustedSigners
+        description: CloudFront automatically adds this element to the response only if you've set up the distribution to serve private content with signed URLs. The element lists the key pair IDs that CloudFront is aware of for each trusted signer. The Signer child element lists the AWS account number of the trusted signer (or an empty Self element if the signer is you). The Signer element also includes the IDs of any active key pairs associated with the trusted signer's AWS account. If no KeyPairId element appears for a Signer, that signer can't create working signed URLs.
+      DistributionConfig:
+        type: DistributionConfig
+        description: The current configuration information for the distribution.
+    description: A distribution.
+  DistributionConfig:
+    type: object
+    properties:
+      CallerReference:
+        type: string
+        description: A unique number that ensures the request can't be replayed. If the CallerReference is new (no matter the content of the DistributionConfig object), a new distribution is created. If the CallerReference is a value you already sent in a previous request to create a distribution, and the content of the DistributionConfig is identical to the original request (ignoring white space), the response includes the same information returned to the original request. If the CallerReference is a value you already sent in a previous request to create a distribution but the content of the DistributionConfig is different from the original request, CloudFront returns a DistributionAlreadyExists error.
+      Aliases?:
+        type: Aliases
+        description: A complex type that contains information about CNAMEs (alternate domain names), if any, for this distribution.
+      DefaultRootObject?:
+        type: string
+        description: The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL for your distribution (http://www.example.com) instead of an object in your distribution (http://www.example.com/index.html). Specifying a default root object avoids exposing the contents of your distribution. If you don't want to specify a default root object when you create a distribution, include an empty DefaultRootObject element. To delete the default root object from an existing distribution, update the distribution configuration and include an empty DefaultRootObject element. To replace the default root object, update the distribution configuration and specify the new object.
+      Origins:
+        type: Origins
+        description: A complex type that contains information about origins for this distribution.
+      DefaultCacheBehavior:
+        type: DefaultCacheBehavior
+        description: A complex type that describes the default cache behavior if you do not specify a CacheBehavior element or if files don't match any of the values of PathPattern in CacheBehavior elements.You must create exactly one default cache behavior.
+      CacheBehaviors?:
+        type: CacheBehaviors
+        description: A complex type that contains zero or more CacheBehavior elements.
+      CustomErrorResponses?:
+        type: CustomErrorResponses
+        description: A complex type that contains zero or more CustomErrorResponse elements.
+      Comment:
+        type: string
+        description: Any comments you want to include about the distribution.
+      Logging?:
+        type: LoggingConfig
+        description: A complex type that controls whether access logs are written for the distribution.
+      PriceClass?:
+        type: PriceClass
+        description: A complex type that contains information about price class for this distribution.
+      Enabled:
+        type: boolean
+        description: Whether the distribution is enabled to accept end user requests for content.
+      ViewerCertificate?:
+        type: ViewerCertificate
+      Restrictions?:
+        type: Restrictions
+      WebACLId?:
+        type: string
+        description: (Optional) If you're using AWS WAF to filter CloudFront requests, the Id of the AWS WAF web ACL that is associated with the distribution.
+      HttpVersion?:
+        type: HttpVersion
+        description: (Optional) Specify the maximum HTTP version that you want viewers to use to communicate with CloudFront. The default value for new web distributions is http2. Viewers that don't support HTTP/2 will automatically use an earlier version.
+    description: A distribution Configuration.
+  DistributionConfigWithTags:
+    type: object
+    properties:
+      DistributionConfig:
+        type: DistributionConfig
+        description: A distribution Configuration.
+      Tags:
+        type: Tags
+        description: A complex type that contains zero or more Tag elements.
+    description: A distribution Configuration and a list of tags to be associated with the distribution.
+  DistributionList:
+    type: object
+    properties:
+      Marker:
+        type: string
+        description: The value you provided for the Marker request parameter.
+      NextMarker?:
+        type: string
+        description: If IsTruncated is true, this element is present and contains the value you can use for the Marker request parameter to continue listing your distributions where they left off.
+      MaxItems:
+        type: integer
+        description: The value you provided for the MaxItems request parameter.
+      IsTruncated:
+        type: boolean
+        description: A flag that indicates whether more distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more distributions in the list.
+      Quantity:
+        type: integer
+        description: The number of distributions that were created by the current AWS account.
+      Items?:
+        type: DistributionSummaryList
+        description: A complex type that contains one DistributionSummary element for each distribution that was created by the current AWS account.
+    description: A distribution list.
+  DistributionSummary:
+    type: object
+    properties:
+      Id:
+        type: string
+        description: 'The identifier for the distribution. For example: EDFDVBD632BHDS5.'
+      ARN:
+        type: string
+        description: 'The ARN (Amazon Resource Name) for the distribution. For example:
+          arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5, where 123456789012
+          is your AWS account Id.'
+      Status:
+        type: string
+        description: This response element indicates the current status of the distribution. When the status is Deployed, the distribution's information is fully propagated throughout the Amazon CloudFront system.
+      LastModifiedTime:
+        type: timestamp
+        description: The date and time the distribution was last modified.
+      DomainName:
+        type: string
+        description: 'The domain name corresponding to the distribution. For example:
+          d604721fxaaqy9.cloudfront.net.'
+      Aliases:
+        type: Aliases
+        description: A complex type that contains information about CNAMEs (alternate domain names), if any, for this distribution.
+      Origins:
+        type: Origins
+        description: A complex type that contains information about origins for this distribution.
+      DefaultCacheBehavior:
+        type: DefaultCacheBehavior
+        description: A complex type that describes the default cache behavior if you do not specify a CacheBehavior element or if files don't match any of the values of PathPattern in CacheBehavior elements.You must create exactly one default cache behavior.
+      CacheBehaviors:
+        type: CacheBehaviors
+        description: A complex type that contains zero or more CacheBehavior elements.
+      CustomErrorResponses:
+        type: CustomErrorResponses
+        description: A complex type that contains zero or more CustomErrorResponses elements.
+      Comment:
+        type: string
+        description: The comment originally specified when this distribution was created.
+      PriceClass:
+        type: PriceClass
+      Enabled:
+        type: boolean
+        description: Whether the distribution is enabled to accept end user requests for content.
+      ViewerCertificate:
+        type: ViewerCertificate
+      Restrictions:
+        type: Restrictions
+      WebACLId:
+        type: string
+        description: The Web ACL Id (if any) associated with the distribution.
+      HttpVersion:
+        type: HttpVersion
+        description: Specify the maximum HTTP version that you want viewers to use to communicate with CloudFront. The default value for new web distributions is http2. Viewers that don't support HTTP/2 will automatically use an earlier version.
+    description: A summary of the information for an Amazon CloudFront distribution.
+  ForwardedValues:
+    type: object
+    properties:
+      QueryString:
+        type: boolean
+        description: <p>Indicates whether you want CloudFront to forward query strings to the origin that is associated with this cache behavior and cache based on the query string parameters. CloudFront behavior depends on the value of QueryString and on the values that you specify for QueryStringCacheKeys, if any:</p> <ul> <li>If you specify true for QueryString and you don't specify any values for QueryStringCacheKeys, CloudFront forwards all query string parameters to the origin and caches based on all query string parameters. Depending on how many query string parameters and values you have, this can adversely affect performance because CloudFront must forward more requests to the origin.</li> <li>If you specify true for QueryString and you specify one or more values for QueryStringCacheKeys, CloudFront forwards all query string parameters to the origin, but it only caches based on the query string parameters that you specify.</li> <li>If you specify false for QueryString, CloudFront doesn't forward any query string parameters to the origin, and doesn't cache based on query string parameters.</li> </ul>
+      Cookies:
+        type: CookiePreference
+        description: A complex type that specifies how CloudFront handles cookies.
+      Headers?:
+        type: Headers
+        description: A complex type that specifies the Headers, if any, that you want CloudFront to vary upon for this cache behavior.
+      QueryStringCacheKeys?:
+        type: QueryStringCacheKeys
+        description: <p>A complex type that contains information about the query string parameters that you want CloudFront to use for caching for this cache behavior.</p>
+    description: A complex type that specifies how CloudFront handles query strings, cookies and headers.
+  GeoRestriction:
+    type: object
+    properties:
+      RestrictionType:
+        type: GeoRestrictionType
+        description: 'The method that you want to use to restrict distribution of
+          your content by country: - none: No geo restriction is enabled, meaning
+          access to content is not restricted by client geo location. - blacklist:
+          The Location elements specify the countries in which you do not want CloudFront
+          to distribute your content. - whitelist: The Location elements specify the
+          countries in which you want CloudFront to distribute your content.'
+      Quantity:
+        type: integer
+        description: When geo restriction is enabled, this is the number of countries in your whitelist or blacklist. Otherwise, when it is not enabled, Quantity is 0, and you can omit Items.
+      Items?:
+        type: LocationList
+        description: A complex type that contains a Location element for each country in which you want CloudFront either to distribute your content (whitelist) or not distribute your content (blacklist). The Location element is a two-letter, uppercase country code for a country that you want to include in your blacklist or whitelist. Include one Location element for each country. CloudFront and MaxMind both use ISO 3166 country codes. For the current list of countries and the corresponding codes, see ISO 3166-1-alpha-2 code on the International Organization for Standardization website. You can also refer to the country list in the CloudFront console, which includes both country names and codes.
+    description: A complex type that controls the countries in which your content is distributed. For more information about geo restriction, go to Customizing Error Responses in the Amazon CloudFront Developer Guide. CloudFront determines the location of your users using MaxMind GeoIP databases. For information about the accuracy of these databases, see How accurate are your GeoIP databases? on the MaxMind website.
+  Headers:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of different headers that you want CloudFront to forward to the origin and to vary on for this cache behavior. The maximum number of headers that you can specify by name is 10. If you want CloudFront to forward all headers to the origin and vary on all of them, specify 1 for Quantity and * for Name. If you don't want CloudFront to forward any additional headers to the origin or to vary on any headers, specify 0 for Quantity and omit Items.
+      Items?:
+        type: HeaderList
+        description: 'Optional: A complex type that contains a Name element for each
+          header that you want CloudFront to forward to the origin and to vary on
+          for this cache behavior. If Quantity is 0, omit Items.'
+    description: A complex type that specifies the headers that you want CloudFront to forward to the origin for this cache behavior. For the headers that you specify, CloudFront also caches separate versions of a given object based on the header values in viewer requests; this is known as varying on headers. For example, suppose viewer requests for logo.jpg contain a custom Product header that has a value of either Acme or Apex, and you configure CloudFront to vary on the Product header. CloudFront forwards the Product header to the origin and caches the response from the origin once for each header value.
+  Invalidation:
+    type: object
+    properties:
+      Id:
+        type: string
+        description: 'The identifier for the invalidation request. For example: IDFDVBD632BHDS5.'
+      Status:
+        type: string
+        description: The status of the invalidation request. When the invalidation batch is finished, the status is Completed.
+      CreateTime:
+        type: timestamp
+        description: The date and time the invalidation request was first made.
+      InvalidationBatch:
+        type: InvalidationBatch
+        description: The current invalidation information for the batch request.
+    description: An invalidation.
+  InvalidationBatch:
+    type: object
+    properties:
+      Paths:
+        type: Paths
+        description: The path of the object to invalidate. The path is relative to the distribution and must begin with a slash (/). You must enclose each invalidation object with the Path element tags. If the path includes non-ASCII characters or unsafe characters as defined in RFC 1783 (http://www.ietf.org/rfc/rfc1738.txt), URL encode those characters. Do not URL encode any other characters in the path, or CloudFront will not invalidate the old version of the updated object.
+      CallerReference:
+        type: string
+        description: A unique name that ensures the request can't be replayed. If the CallerReference is new (no matter the content of the Path object), a new distribution is created. If the CallerReference is a value you already sent in a previous request to create an invalidation batch, and the content of each Path element is identical to the original request, the response includes the same information returned to the original request. If the CallerReference is a value you already sent in a previous request to create a distribution but the content of any Path is different from the original request, CloudFront returns an InvalidationBatchAlreadyExists error.
+    description: An invalidation batch.
+  InvalidationList:
+    type: object
+    properties:
+      Marker:
+        type: string
+        description: The value you provided for the Marker request parameter.
+      NextMarker?:
+        type: string
+        description: If IsTruncated is true, this element is present and contains the value you can use for the Marker request parameter to continue listing your invalidation batches where they left off.
+      MaxItems:
+        type: integer
+        description: The value you provided for the MaxItems request parameter.
+      IsTruncated:
+        type: boolean
+        description: A flag that indicates whether more invalidation batch requests remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more invalidation batches in the list.
+      Quantity:
+        type: integer
+        description: The number of invalidation batches that were created by the current AWS account.
+      Items?:
+        type: InvalidationSummaryList
+        description: A complex type that contains one InvalidationSummary element for each invalidation batch that was created by the current AWS account.
+    description: An invalidation list.
+  InvalidationSummary:
+    type: object
+    properties:
+      Id:
+        type: string
+        description: The unique ID for an invalidation request.
+      CreateTime:
+        type: timestamp
+      Status:
+        type: string
+        description: The status of an invalidation request.
+    description: Summary of an invalidation request.
+  KeyPairIds:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of active CloudFront key pairs for AwsAccountNumber.
+      Items?:
+        type: KeyPairIdList
+        description: A complex type that lists the active CloudFront key pairs, if any, that are associated with AwsAccountNumber.
+    description: A complex type that lists the active CloudFront key pairs, if any, that are associated with AwsAccountNumber.
+  LoggingConfig:
+    type: object
+    properties:
+      Enabled:
+        type: boolean
+        description: Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket. If you do not want to enable logging when you create a distribution or if you want to disable logging for an existing distribution, specify false for Enabled, and specify empty Bucket and Prefix elements. If you specify false for Enabled but you specify values for Bucket, prefix and IncludeCookies, the values are automatically deleted.
+      IncludeCookies:
+        type: boolean
+        description: Specifies whether you want CloudFront to include cookies in access logs, specify true for IncludeCookies. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you do not want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify false for IncludeCookies.
+      Bucket:
+        type: string
+        description: The Amazon S3 bucket to store the access logs in, for example, myawslogbucket.s3.amazonaws.com.
+      Prefix:
+        type: string
+        description: An optional string that you want CloudFront to prefix to the access log filenames for this distribution, for example, myprefix/. If you want to enable logging, but you do not want to specify a prefix, you still must include an empty Prefix element in the Logging element.
+    description: A complex type that controls whether access logs are written for the distribution.
+  Origin:
+    type: object
+    properties:
+      Id:
+        type: string
+        description: A unique identifier for the origin. The value of Id must be unique within the distribution. You use the value of Id when you create a cache behavior. The Id identifies the origin that CloudFront routes a request to when the request matches the path pattern for that cache behavior.
+      DomainName:
+        type: string
+        description: 'Amazon S3 origins: The DNS name of the Amazon S3 bucket from
+          which you want CloudFront to get objects for this origin, for example, myawsbucket.s3.amazonaws.com.
+          Custom origins: The DNS domain name for the HTTP server from which you want
+          CloudFront to get objects for this origin, for example, www.example.com.'
+      OriginPath?:
+        type: string
+        description: An optional element that causes CloudFront to request your content from a directory in your Amazon S3 bucket or your custom origin. When you include the OriginPath element, specify the directory name, beginning with a /. CloudFront appends the directory name to the value of DomainName.
+      CustomHeaders?:
+        type: CustomHeaders
+        description: A complex type that contains information about the custom headers associated with this Origin.
+      S3OriginConfig?:
+        type: S3OriginConfig
+        description: A complex type that contains information about the Amazon S3 origin. If the origin is a custom origin, use the CustomOriginConfig element instead.
+      CustomOriginConfig?:
+        type: CustomOriginConfig
+        description: A complex type that contains information about a custom origin. If the origin is an Amazon S3 bucket, use the S3OriginConfig element instead.
+    description: A complex type that describes the Amazon S3 bucket or the HTTP server (for example, a web server) from which CloudFront gets your files.You must create at least one origin.
+  OriginCustomHeader:
+    type: object
+    properties:
+      HeaderName:
+        type: string
+        description: The header's name.
+      HeaderValue:
+        type: string
+        description: The header's value.
+    description: A complex type that contains information related to a Header
+  OriginSslProtocols:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of SSL/TLS protocols that you want to allow CloudFront to use when establishing an HTTPS connection with this origin.
+      Items:
+        type: SslProtocolsList
+        description: A complex type that contains one SslProtocol element for each SSL/TLS protocol that you want to allow CloudFront to use when establishing an HTTPS connection with this origin.
+    description: A complex type that contains the list of SSL/TLS protocols that you want CloudFront to use when communicating with your origin over HTTPS.
+  Origins:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of origins for this distribution.
+      Items?:
+        type: OriginList
+        description: A complex type that contains origins for this distribution.
+    description: A complex type that contains information about origins for this distribution.
+  Paths:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of objects that you want to invalidate.
+      Items?:
+        type: PathList
+        description: A complex type that contains a list of the objects that you want to invalidate.
+    description: A complex type that contains information about the objects that you want to invalidate.
+  QueryStringCacheKeys:
+    type: object
+    properties:
+      Quantity:
+        type: integer
+        description: The number of whitelisted query string parameters for this cache behavior.
+      Items?:
+        type: QueryStringCacheKeysList
+        description: 'Optional: A list that contains the query string parameters that
+          you want CloudFront to use as a basis for caching for this cache behavior.
+          If Quantity is 0, you can omit Items.'
+  Restrictions:
+    type: object
+    properties:
+      GeoRestriction:
+        type: GeoRestriction
+    description: A complex type that identifies ways in which you want to restrict distribution of your content.
+  S3Origin:
+    type: object
+    properties:
+      DomainName:
+        type: string
+        description: The DNS name of the S3 origin.
+      OriginAccessIdentity:
+        type: string
+        description: Your S3 origin's origin access identity.
+    description: A complex type that contains information about the Amazon S3 bucket from which you want CloudFront to get your media files for distribution.
+  S3OriginConfig:
+    type: object
+    properties:
+      OriginAccessIdentity:
+        type: string
+        description: The CloudFront origin access identity to associate with the origin. Use an origin access identity to configure the origin so that end users can only access objects in an Amazon S3 bucket through CloudFront. If you want end users to be able to access objects using either the CloudFront URL or the Amazon S3 URL, specify an empty OriginAccessIdentity element. To delete the origin access identity from an existing distribution, update the distribution configuration and include an empty OriginAccessIdentity element. To replace the origin access identity, update the distribution configuration and specify the new origin access identity. Use the format origin-access-identity/cloudfront/Id where Id is the value that CloudFront returned in the Id element when you created the origin access identity.
+    description: A complex type that contains information about the Amazon S3 origin. If the origin is a custom origin, use the CustomOriginConfig element instead.
+  Signer:
+    type: object
+    properties:
+      AwsAccountNumber?:
+        type: string
+        description: 'Specifies an AWS account that can create signed URLs. Values:
+          self, which indicates that the AWS account that was used to create the distribution
+          can created signed URLs, or an AWS account number. Omit the dashes in the
+          account number.'
+      KeyPairIds?:
+        type: KeyPairIds
+        description: A complex type that lists the active CloudFront key pairs, if any, that are associated with AwsAccountNumber.
+    description: A complex type that lists the AWS accounts that were included in the TrustedSigners complex type, as well as their active CloudFront key pair IDs, if any.
+  StreamingDistribution:
+    type: object
+    properties:
+      Id:
+        type: string
+        description: 'The identifier for the streaming distribution. For example:
+          EGTXBD79H29TRA8.'
+      ARN:
+        type: string
+        description: 'The ARN (Amazon Resource Name) for the streaming distribution.
+          For example: arn:aws:cloudfront::123456789012:streaming-distribution/EDFDVBD632BHDS5,
+          where 123456789012 is your AWS account Id.'
+      Status:
+        type: string
+        description: The current status of the streaming distribution. When the status is Deployed, the distribution's information is fully propagated throughout the Amazon CloudFront system.
+      LastModifiedTime?:
+        type: timestamp
+        description: The date and time the distribution was last modified.
+      DomainName:
+        type: string
+        description: 'The domain name corresponding to the streaming distribution.
+          For example: s5c39gqb8ow64r.cloudfront.net.'
+      ActiveTrustedSigners:
+        type: ActiveTrustedSigners
+        description: CloudFront automatically adds this element to the response only if you've set up the distribution to serve private content with signed URLs. The element lists the key pair IDs that CloudFront is aware of for each trusted signer. The Signer child element lists the AWS account number of the trusted signer (or an empty Self element if the signer is you). The Signer element also includes the IDs of any active key pairs associated with the trusted signer's AWS account. If no KeyPairId element appears for a Signer, that signer can't create working signed URLs.
+      StreamingDistributionConfig:
+        type: StreamingDistributionConfig
+        description: The current configuration information for the streaming distribution.
+    description: A streaming distribution.
+  StreamingDistributionConfig:
+    type: object
+    properties:
+      CallerReference:
+        type: string
+        description: A unique number that ensures the request can't be replayed. If the CallerReference is new (no matter the content of the StreamingDistributionConfig object), a new streaming distribution is created. If the CallerReference is a value you already sent in a previous request to create a streaming distribution, and the content of the StreamingDistributionConfig is identical to the original request (ignoring white space), the response includes the same information returned to the original request. If the CallerReference is a value you already sent in a previous request to create a streaming distribution but the content of the StreamingDistributionConfig is different from the original request, CloudFront returns a DistributionAlreadyExists error.
+      S3Origin:
+        type: S3Origin
+        description: A complex type that contains information about the Amazon S3 bucket from which you want CloudFront to get your media files for distribution.
+      Aliases?:
+        type: Aliases
+        description: A complex type that contains information about CNAMEs (alternate domain names), if any, for this streaming distribution.
+      Comment:
+        type: string
+        description: Any comments you want to include about the streaming distribution.
+      Logging?:
+        type: StreamingLoggingConfig
+        description: A complex type that controls whether access logs are written for the streaming distribution.
+      TrustedSigners:
+        type: TrustedSigners
+        description: A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content. If you want to require signed URLs in requests for objects in the target origin that match the PathPattern for this cache behavior, specify true for Enabled, and specify the applicable values for Quantity and Items. For more information, go to Using a Signed URL to Serve Private Content in the Amazon CloudFront Developer Guide. If you don't want to require signed URLs in requests for objects that match PathPattern, specify false for Enabled and 0 for Quantity. Omit Items. To add, change, or remove one or more trusted signers, change Enabled to true (if it's currently false), change Quantity as applicable, and specify all of the trusted signers that you want to include in the updated distribution.
+      PriceClass?:
+        type: PriceClass
+        description: A complex type that contains information about price class for this streaming distribution.
+      Enabled:
+        type: boolean
+        description: Whether the streaming distribution is enabled to accept end user requests for content.
+    description: The configuration for the streaming distribution.
+  StreamingDistributionConfigWithTags:
+    type: object
+    properties:
+      StreamingDistributionConfig:
+        type: StreamingDistributionConfig
+        description: A streaming distribution Configuration.
+      Tags:
+        type: Tags
+        description: A complex type that contains zero or more Tag elements.
+    description: A streaming distribution Configuration and a list of tags to be associated with the streaming distribution.
+  StreamingDistributionList:
+    type: object
+    properties:
+      Marker:
+        type: string
+        description: The value you provided for the Marker request parameter.
+      NextMarker?:
+        type: string
+        description: If IsTruncated is true, this element is present and contains the value you can use for the Marker request parameter to continue listing your streaming distributions where they left off.
+      MaxItems:
+        type: integer
+        description: The value you provided for the MaxItems request parameter.
+      IsTruncated:
+        type: boolean
+        description: A flag that indicates whether more streaming distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the Marker request parameter to retrieve more distributions in the list.
+      Quantity:
+        type: integer
+        description: The number of streaming distributions that were created by the current AWS account.
+      Items?:
+        type: StreamingDistributionSummaryList
+        description: A complex type that contains one StreamingDistributionSummary element for each distribution that was created by the current AWS account.
+    description: A streaming distribution list.
+  StreamingDistributionSummary:
+    type: object
+    properties:
+      Id:
+        type: string
+        description: 'The identifier for the distribution. For example: EDFDVBD632BHDS5.'
+      ARN:
+        type: string
+        description: 'The ARN (Amazon Resource Name) for the streaming distribution.
+          For example: arn:aws:cloudfront::123456789012:streaming-distribution/EDFDVBD632BHDS5,
+          where 123456789012 is your AWS account Id.'
+      Status:
+        type: string
+        description: Indicates the current status of the distribution. When the status is Deployed, the distribution's information is fully propagated throughout the Amazon CloudFront system.
+      LastModifiedTime:
+        type: timestamp
+        description: The date and time the distribution was last modified.
+      DomainName:
+        type: string
+        description: 'The domain name corresponding to the distribution. For example:
+          d604721fxaaqy9.cloudfront.net.'
+      S3Origin:
+        type: S3Origin
+        description: A complex type that contains information about the Amazon S3 bucket from which you want CloudFront to get your media files for distribution.
+      Aliases:
+        type: Aliases
+        description: A complex type that contains information about CNAMEs (alternate domain names), if any, for this streaming distribution.
+      TrustedSigners:
+        type: TrustedSigners
+        description: A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content. If you want to require signed URLs in requests for objects in the target origin that match the PathPattern for this cache behavior, specify true for Enabled, and specify the applicable values for Quantity and Items. For more information, go to Using a Signed URL to Serve Private Content in the Amazon CloudFront Developer Guide. If you don't want to require signed URLs in requests for objects that match PathPattern, specify false for Enabled and 0 for Quantity. Omit Items. To add, change, or remove one or more trusted signers, change Enabled to true (if it's currently false), change Quantity as applicable, and specify all of the trusted signers that you want to include in the updated distribution.
+      Comment:
+        type: string
+        description: The comment originally specified when this distribution was created.
+      PriceClass:
+        type: PriceClass
+      Enabled:
+        type: boolean
+        description: Whether the distribution is enabled to accept end user requests for content.
+    description: A summary of the information for an Amazon CloudFront streaming distribution.
+  StreamingLoggingConfig:
+    type: object
+    properties:
+      Enabled:
+        type: boolean
+        description: Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket. If you do not want to enable logging when you create a streaming distribution or if you want to disable logging for an existing streaming distribution, specify false for Enabled, and specify empty Bucket and Prefix elements. If you specify false for Enabled but you specify values for Bucket and Prefix, the values are automatically deleted.
+      Bucket:
+        type: string
+        description: The Amazon S3 bucket to store the access logs in, for example, myawslogbucket.s3.amazonaws.com.
+      Prefix:
+        type: string
+        description: An optional string that you want CloudFront to prefix to the access log filenames for this streaming distribution, for example, myprefix/. If you want to enable logging, but you do not want to specify a prefix, you still must include an empty Prefix element in the Logging element.
+    description: A complex type that controls whether access logs are written for this streaming distribution.
+  Tag:
+    type: object
+    properties:
+      Key:
+        type: TagKey
+        description: 'A string that contains Tag key. The string length should be
+          between 1 and 128 characters. Valid characters include a-z, A-Z, 0-9, space,
+          and the special characters _ - . : / = + @.'
+      Value?:
+        type: TagValue
+        description: 'A string that contains an optional Tag value. The string length
+          should be between 0 and 256 characters. Valid characters include a-z, A-Z,
+          0-9, space, and the special characters _ - . : / = + @.'
+    description: A complex type that contains Tag key and Tag value.
+  TagKeys:
+    type: object
+    properties:
+      Items?:
+        type: TagKeyList
+        description: A complex type that contains Tag key elements
+    description: A complex type that contains zero or more Tag elements.
+  Tags:
+    type: object
+    properties:
+      Items?:
+        type: TagList
+        description: A complex type that contains Tag elements
+    description: A complex type that contains zero or more Tag elements.
+  TrustedSigners:
+    type: object
+    properties:
+      Enabled:
+        type: boolean
+        description: Specifies whether you want to require end users to use signed URLs to access the files specified by PathPattern and TargetOriginId.
+      Quantity:
+        type: integer
+        description: The number of trusted signers for this cache behavior.
+      Items?:
+        type: AwsAccountNumberList
+        description: 'Optional: A complex type that contains trusted signers for this
+          cache behavior. If Quantity is 0, you can omit Items.'
+    description: A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content. If you want to require signed URLs in requests for objects in the target origin that match the PathPattern for this cache behavior, specify true for Enabled, and specify the applicable values for Quantity and Items. For more information, go to Using a Signed URL to Serve Private Content in the Amazon CloudFront Developer Guide. If you don't want to require signed URLs in requests for objects that match PathPattern, specify false for Enabled and 0 for Quantity. Omit Items. To add, change, or remove one or more trusted signers, change Enabled to true (if it's currently false), change Quantity as applicable, and specify all of the trusted signers that you want to include in the updated distribution.
+  ViewerCertificate:
+    type: object
+    properties:
+      CloudFrontDefaultCertificate?:
+        type: boolean
+        description: If you want viewers to use HTTPS to request your objects and you're using the CloudFront domain name of your distribution in your object URLs (for example, https://d111111abcdef8.cloudfront.net/logo.jpg), set to true. Omit this value if you are setting an ACMCertificateArn or IAMCertificateId.
+      IAMCertificateId?:
+        type: string
+        description: If you want viewers to use HTTPS to request your objects and you're using an alternate domain name in your object URLs (for example, https://example.com/logo.jpg), specify the IAM certificate identifier of the custom viewer certificate for this distribution. Specify either this value, ACMCertificateArn, or CloudFrontDefaultCertificate.
+      ACMCertificateArn?:
+        type: string
+        description: If you want viewers to use HTTPS to request your objects and you're using an alternate domain name in your object URLs (for example, https://example.com/logo.jpg), specify the ACM certificate ARN of the custom viewer certificate for this distribution. Specify either this value, IAMCertificateId, or CloudFrontDefaultCertificate.
+      SSLSupportMethod?:
+        type: SSLSupportMethod
+        description: If you specify a value for IAMCertificateId, you must also specify how you want CloudFront to serve HTTPS requests. Valid values are vip and sni-only. If you specify vip, CloudFront uses dedicated IP addresses for your content and can respond to HTTPS requests from any viewer. However, you must request permission to use this feature, and you incur additional monthly charges. If you specify sni-only, CloudFront can only respond to HTTPS requests from viewers that support Server Name Indication (SNI). All modern browsers support SNI, but some browsers still in use don't support SNI. Do not specify a value for SSLSupportMethod if you specified true for CloudFrontDefaultCertificate.
+      MinimumProtocolVersion?:
+        type: MinimumProtocolVersion
+        description: Specify the minimum version of the SSL protocol that you want CloudFront to use, SSLv3 or TLSv1, for HTTPS connections. CloudFront will serve your objects only to browsers or devices that support at least the SSL version that you specify. The TLSv1 protocol is more secure, so we recommend that you specify SSLv3 only if your users are using browsers or devices that don't support TLSv1. If you're using a custom certificate (if you specify a value for IAMCertificateId) and if you're using dedicated IP (if you specify vip for SSLSupportMethod), you can choose SSLv3 or TLSv1 as the MinimumProtocolVersion. If you're using a custom certificate (if you specify a value for IAMCertificateId) and if you're using SNI (if you specify sni-only for SSLSupportMethod), you must specify TLSv1 for MinimumProtocolVersion.
+      Certificate?:
+        type: string
+        description: 'Note: this field is deprecated. Please use one of [ACMCertificateArn,
+          IAMCertificateId, CloudFrontDefaultCertificate].'
+      CertificateSource?:
+        type: CertificateSource
+        description: 'Note: this field is deprecated. Please use one of [ACMCertificateArn,
+          IAMCertificateId, CloudFrontDefaultCertificate].'
+    description: A complex type that contains information about viewer certificates for this distribution.
+/2016-09-07:
+  /distribution:
+    description: List distributions.
+    /{DistributionId}:
+      uriParameters:
+        DistributionId?:
+          type: string
+          description: The distribution's id.
+      /invalidation:
+        description: Create a new invalidation.
+        /{Id}:
+          uriParameters:
+            Id?:
+              type: string
+              description: The invalidation's id.
+          description: Get the information about an invalidation.
+          get:
+            headers:
+              DistributionId?:
+                type: string
+                description: The distribution's id.
+              Id?:
+                type: string
+                description: The invalidation's id.
+            responses:
+              200:
+                body:
+                  application/xml:
+                    type: Invalidation
+                    description: The invalidation's information.
+              404:
+                description: NoSuchInvalidation | NoSuchDistribution
+              403:
+                description: AccessDenied
+        get:
+          queryParameters:
+            Marker:
+              type: string
+              description: Use this parameter when paginating results to indicate where to begin in your list of invalidation batches. Because the results are returned in decreasing order from most recent to oldest, the most recent results are on the first page, the second page will contain earlier results, and so on. To get the next page of results, set the Marker to the value of the NextMarker from the current page's response. This value is the same as the ID of the last invalidation batch on that page.
+            MaxItems:
+              type: string
+              description: The maximum number of invalidation batches you want in the response body.
+          headers:
+            DistributionId?:
+              type: string
+              description: The distribution's id.
+          responses:
+            200:
+              body:
+                application/xml:
+                  type: InvalidationList
+                  description: Information about invalidation batches.
+            400:
+              description: InvalidArgument
+            404:
+              description: NoSuchDistribution
+            403:
+              description: AccessDenied
+        post:
+          headers:
+            DistributionId?:
+              type: string
+              description: The distribution's id.
+          body:
+            application/xml:
+              type: InvalidationBatch
+              xml:
+                namespace: http://cloudfront.amazonaws.com/doc/2016-09-07/
+              description: The batch information for the invalidation.
+          responses:
+            201:
+              headers:
+                Location:
+                  type: string
+                  description: The fully qualified URI of the distribution and invalidation batch request, including the Invalidation ID.
+              body:
+                application/xml:
+                  type: Invalidation
+                  description: The invalidation's information.
+            403:
+              description: AccessDenied
+            400:
+              description: MissingBody | InvalidArgument | TooManyInvalidationsInProgress | InconsistentQuantities
+            404:
+              description: NoSuchDistribution
+            413:
+              description: BatchTooLarge
+    /{Id}:
+      uriParameters:
+        Id?:
+          type: string
+          description: The distribution id.
+      description: Get the information about a distribution.
+      /config:
+        description: Update a distribution.
+        get:
+          headers:
+            Id?:
+              type: string
+              description: The distribution's id.
+          responses:
+            200:
+              headers:
+                ETag:
+                  type: string
+                  description: 'The current version of the configuration. For example:
+                    E2QWRUHAPOMQZL.'
+              body:
+                application/xml:
+                  type: DistributionConfig
+                  description: The distribution's configuration information.
+            404:
+              description: NoSuchDistribution
+            403:
+              description: AccessDenied
+        put:
+          headers:
+            Id?:
+              type: string
+              description: The distribution's id.
+            If-Match:
+              type: string
+              description: 'The value of the ETag header you received when retrieving
+                the distribution''s configuration. For example: E2QWRUHAPOMQZL.'
+          body:
+            application/xml:
+              type: DistributionConfig
+              xml:
+                namespace: http://cloudfront.amazonaws.com/doc/2016-09-07/
+              description: The distribution's configuration information.
+          responses:
+            200:
+              headers:
+                ETag:
+                  type: string
+                  description: 'The current version of the configuration. For example:
+                    E2QWRUHAPOMQZL.'
+              body:
+                application/xml:
+                  type: Distribution
+                  description: The distribution's information.
+            403:
+              description: AccessDenied
+            409:
+              description: CNAMEAlreadyExists
+            400:
+              description: IllegalUpdate | InvalidIfMatchVersion | MissingBody | TooManyDistributionCNAMEs | InvalidDefaultRootObject | InvalidRelativePath | InvalidErrorCode | InvalidResponseCode | InvalidArgument | InvalidOriginAccessIdentity | TooManyTrustedSigners | TrustedSignerDoesNotExist | InvalidViewerCertificate | InvalidMinimumProtocolVersion | InvalidRequiredProtocol | TooManyOrigins | TooManyCacheBehaviors | TooManyCookieNamesInWhiteList | InvalidForwardCookies | TooManyHeadersInForwardedValues | InvalidHeadersForS3Origin | InconsistentQuantities | TooManyCertificates | InvalidLocationCode | InvalidGeoRestrictionParameter | InvalidTTLOrder | InvalidWebACLId | TooManyOriginCustomHeaders | TooManyQueryStringParameters | InvalidQueryStringParameters
+            404:
+              description: NoSuchDistribution | NoSuchOrigin
+            412:
+              description: PreconditionFailed
+      delete:
+        headers:
+          Id?:
+            type: string
+            description: The distribution id.
+          If-Match:
+            type: string
+            description: 'The value of the ETag header you received when you disabled
+              the distribution. For example: E2QWRUHAPOMQZL.'
+        responses:
+          204:
+            body:
+              application/xml: null
+          403:
+            description: AccessDenied
+          409:
+            description: DistributionNotDisabled
+          400:
+            description: InvalidIfMatchVersion
+          404:
+            description: NoSuchDistribution
+          412:
+            description: PreconditionFailed
+      get:
+        headers:
+          Id?:
+            type: string
+            description: The distribution's id.
+        responses:
+          200:
+            headers:
+              ETag:
+                type: string
+                description: 'The current version of the distribution''s information.
+                  For example: E2QWRUHAPOMQZL.'
+            body:
+              application/xml:
+                type: Distribution
+                description: The distribution's information.
+          404:
+            description: NoSuchDistribution
+          403:
+            description: AccessDenied
+    post:
+      body:
+        application/xml:
+          type: DistributionConfig
+          xml:
+            namespace: http://cloudfront.amazonaws.com/doc/2016-09-07/
+          description: The distribution's configuration information.
+      responses:
+        201:
+          headers:
+            Location:
+              type: string
+              description: 'The fully qualified URI of the new distribution resource
+                just created. For example: https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5.'
+            ETag:
+              type: string
+              description: The current version of the distribution created.
+          body:
+            application/xml:
+              type: Distribution
+              description: The distribution's information.
+        409:
+          description: CNAMEAlreadyExists | DistributionAlreadyExists
+        400:
+          description: InvalidOrigin | InvalidOriginAccessIdentity | TooManyTrustedSigners | TrustedSignerDoesNotExist | InvalidViewerCertificate | InvalidMinimumProtocolVersion | MissingBody | TooManyDistributionCNAMEs | TooManyDistributions | InvalidDefaultRootObject | InvalidRelativePath | InvalidErrorCode | InvalidResponseCode | InvalidArgument | InvalidRequiredProtocol | TooManyOrigins | TooManyCacheBehaviors | TooManyCookieNamesInWhiteList | InvalidForwardCookies | TooManyHeadersInForwardedValues | InvalidHeadersForS3Origin | InconsistentQuantities | TooManyCertificates | InvalidLocationCode | InvalidGeoRestrictionParameter | InvalidProtocolSettings | InvalidTTLOrder | InvalidWebACLId | TooManyOriginCustomHeaders | TooManyQueryStringParameters | InvalidQueryStringParameters
+        403:
+          description: AccessDenied
+        404:
+          description: NoSuchOrigin
+    get:
+      queryParameters:
+        Marker:
+          type: string
+          description: Use Marker and MaxItems to control pagination of results. If you have more than MaxItems distributions that satisfy the request, the response includes a NextMarker element. To get the next page of results, submit another request. For the value of Marker, specify the value of NextMarker from the last response. (For the first request, omit Marker.)
+        MaxItems:
+          type: string
+          description: The maximum number of distributions that you want CloudFront to return in the response body. The maximum and default values are both 100.
+      responses:
+        200:
+          body:
+            application/xml:
+              type: DistributionList
+              description: The DistributionList type.
+        400:
+          description: InvalidArgument
+  /origin-access-identity:
+    /cloudfront:
+      description: List origin access identities.
+      /{Id}:
+        uriParameters:
+          Id?:
+            type: string
+            description: The identity's id.
+        description: Delete an origin access identity.
+        /config:
+          description: Get the configuration information about an origin access identity.
+          put:
+            headers:
+              Id?:
+                type: string
+                description: The identity's id.
+              If-Match:
+                type: string
+                description: 'The value of the ETag header you received when retrieving
+                  the identity''s configuration. For example: E2QWRUHAPOMQZL.'
+            body:
+              application/xml:
+                type: CloudFrontOriginAccessIdentityConfig
+                xml:
+                  namespace: http://cloudfront.amazonaws.com/doc/2016-09-07/
+                description: The identity's configuration information.
+            responses:
+              200:
+                headers:
+                  ETag:
+                    type: string
+                    description: 'The current version of the configuration. For example:
+                      E2QWRUHAPOMQZL.'
+                body:
+                  application/xml:
+                    type: CloudFrontOriginAccessIdentity
+                    description: The origin access identity's information.
+              403:
+                description: AccessDenied
+              400:
+                description: IllegalUpdate | InvalidIfMatchVersion | MissingBody | InvalidArgument | InconsistentQuantities
+              404:
+                description: NoSuchCloudFrontOriginAccessIdentity
+              412:
+                description: PreconditionFailed
+          get:
+            headers:
+              Id?:
+                type: string
+                description: The identity's id.
+            responses:
+              200:
+                headers:
+                  ETag:
+                    type: string
+                    description: 'The current version of the configuration. For example:
+                      E2QWRUHAPOMQZL.'
+                body:
+                  application/xml:
+                    type: CloudFrontOriginAccessIdentityConfig
+                    description: The origin access identity's configuration information.
+              404:
+                description: NoSuchCloudFrontOriginAccessIdentity
+              403:
+                description: AccessDenied
+        get:
+          headers:
+            Id?:
+              type: string
+              description: The identity's id.
+          responses:
+            200:
+              headers:
+                ETag:
+                  type: string
+                  description: 'The current version of the origin access identity''s
+                    information. For example: E2QWRUHAPOMQZL.'
+              body:
+                application/xml:
+                  type: CloudFrontOriginAccessIdentity
+                  description: The origin access identity's information.
+            404:
+              description: NoSuchCloudFrontOriginAccessIdentity
+            403:
+              description: AccessDenied
+        delete:
+          headers:
+            Id?:
+              type: string
+              description: The origin access identity's id.
+            If-Match:
+              type: string
+              description: 'The value of the ETag header you received from a previous
+                GET or PUT request. For example: E2QWRUHAPOMQZL.'
+          responses:
+            204:
+              body:
+                application/xml: null
+            403:
+              description: AccessDenied
+            400:
+              description: InvalidIfMatchVersion
+            404:
+              description: NoSuchCloudFrontOriginAccessIdentity
+            412:
+              description: PreconditionFailed
+            409:
+              description: CloudFrontOriginAccessIdentityInUse
+      post:
+        body:
+          application/xml:
+            type: CloudFrontOriginAccessIdentityConfig
+            xml:
+              namespace: http://cloudfront.amazonaws.com/doc/2016-09-07/
+            description: The origin access identity's configuration information.
+        responses:
+          201:
+            headers:
+              Location:
+                type: string
+                description: 'The fully qualified URI of the new origin access identity
+                  just created. For example: https://cloudfront.amazonaws.com/2010-11-01/origin-access-identity/cloudfront/E74FTE3AJFJ256A.'
+              ETag:
+                type: string
+                description: The current version of the origin access identity created.
+            body:
+              application/xml:
+                type: CloudFrontOriginAccessIdentity
+                description: The origin access identity's information.
+          409:
+            description: CloudFrontOriginAccessIdentityAlreadyExists
+          400:
+            description: MissingBody | TooManyCloudFrontOriginAccessIdentities | InvalidArgument | InconsistentQuantities
+      get:
+        queryParameters:
+          Marker:
+            type: string
+            description: Use this when paginating results to indicate where to begin in your list of origin access identities. The results include identities in the list that occur after the marker. To get the next page of results, set the Marker to the value of the NextMarker from the current page's response (which is also the ID of the last identity on that page).
+          MaxItems:
+            type: string
+            description: The maximum number of origin access identities you want in the response body.
+        responses:
+          200:
+            body:
+              application/xml:
+                type: CloudFrontOriginAccessIdentityList
+                description: The CloudFrontOriginAccessIdentityList type.
+          400:
+            description: InvalidArgument
+  /streaming-distribution:
+    description: List streaming distributions.
+    /{Id}:
+      uriParameters:
+        Id?:
+          type: string
+          description: The distribution id.
+      description: Get the information about a streaming distribution.
+      /config:
+        description: Update a streaming distribution.
+        get:
+          headers:
+            Id?:
+              type: string
+              description: The streaming distribution's id.
+          responses:
+            200:
+              headers:
+                ETag:
+                  type: string
+                  description: 'The current version of the configuration. For example:
+                    E2QWRUHAPOMQZL.'
+              body:
+                application/xml:
+                  type: StreamingDistributionConfig
+                  description: The streaming distribution's configuration information.
+            404:
+              description: NoSuchStreamingDistribution
+            403:
+              description: AccessDenied
+        put:
+          headers:
+            Id?:
+              type: string
+              description: The streaming distribution's id.
+            If-Match:
+              type: string
+              description: 'The value of the ETag header you received when retrieving
+                the streaming distribution''s configuration. For example: E2QWRUHAPOMQZL.'
+          body:
+            application/xml:
+              type: StreamingDistributionConfig
+              xml:
+                namespace: http://cloudfront.amazonaws.com/doc/2016-09-07/
+              description: The streaming distribution's configuration information.
+          responses:
+            200:
+              headers:
+                ETag:
+                  type: string
+                  description: 'The current version of the configuration. For example:
+                    E2QWRUHAPOMQZL.'
+              body:
+                application/xml:
+                  type: StreamingDistribution
+                  description: The streaming distribution's information.
+            403:
+              description: AccessDenied
+            409:
+              description: CNAMEAlreadyExists
+            400:
+              description: IllegalUpdate | InvalidIfMatchVersion | MissingBody | TooManyStreamingDistributionCNAMEs | InvalidArgument | InvalidOriginAccessIdentity | TooManyTrustedSigners | TrustedSignerDoesNotExist | InconsistentQuantities
+            404:
+              description: NoSuchStreamingDistribution
+            412:
+              description: PreconditionFailed
+      delete:
+        headers:
+          Id?:
+            type: string
+            description: The distribution id.
+          If-Match:
+            type: string
+            description: 'The value of the ETag header you received when you disabled
+              the streaming distribution. For example: E2QWRUHAPOMQZL.'
+        responses:
+          204:
+            body:
+              application/xml: null
+          403:
+            description: AccessDenied
+          409:
+            description: StreamingDistributionNotDisabled
+          400:
+            description: InvalidIfMatchVersion
+          404:
+            description: NoSuchStreamingDistribution
+          412:
+            description: PreconditionFailed
+      get:
+        headers:
+          Id?:
+            type: string
+            description: The streaming distribution's id.
+        responses:
+          200:
+            headers:
+              ETag:
+                type: string
+                description: 'The current version of the streaming distribution''s
+                  information. For example: E2QWRUHAPOMQZL.'
+            body:
+              application/xml:
+                type: StreamingDistribution
+                description: The streaming distribution's information.
+          404:
+            description: NoSuchStreamingDistribution
+          403:
+            description: AccessDenied
+    post:
+      body:
+        application/xml:
+          type: StreamingDistributionConfig
+          xml:
+            namespace: http://cloudfront.amazonaws.com/doc/2016-09-07/
+          description: The streaming distribution's configuration information.
+      responses:
+        201:
+          headers:
+            Location:
+              type: string
+              description: 'The fully qualified URI of the new streaming distribution
+                resource just created. For example: https://cloudfront.amazonaws.com/2010-11-01/streaming-distribution/EGTXBD79H29TRA8.'
+            ETag:
+              type: string
+              description: The current version of the streaming distribution created.
+          body:
+            application/xml:
+              type: StreamingDistribution
+              description: The streaming distribution's information.
+        409:
+          description: CNAMEAlreadyExists | StreamingDistributionAlreadyExists
+        400:
+          description: InvalidOrigin | InvalidOriginAccessIdentity | TooManyTrustedSigners | TrustedSignerDoesNotExist | MissingBody | TooManyStreamingDistributionCNAMEs | TooManyStreamingDistributions | InvalidArgument | InconsistentQuantities
+        403:
+          description: AccessDenied
+    get:
+      queryParameters:
+        Marker:
+          type: string
+          description: Use this when paginating results to indicate where to begin in your list of streaming distributions. The results include distributions in the list that occur after the marker. To get the next page of results, set the Marker to the value of the NextMarker from the current page's response (which is also the ID of the last distribution on that page).
+        MaxItems:
+          type: string
+          description: The maximum number of streaming distributions you want in the response body.
+      responses:
+        200:
+          body:
+            application/xml:
+              type: StreamingDistributionList
+              description: The StreamingDistributionList type.
+        400:
+          description: InvalidArgument
+  /tagging?Operation=Tag:
+    description: Add tags to a CloudFront resource.
+    post:
+      queryParameters:
+        Resource?:
+          type: ResourceARN
+          description: An ARN of a CloudFront resource.
+      body:
+        application/xml:
+          type: Tags
+          xml:
+            namespace: http://cloudfront.amazonaws.com/doc/2016-09-07/
+          description: A complex type that contains zero or more Tag elements.
+      responses:
+        204:
+          body:
+            application/xml: null
+        403:
+          description: AccessDenied
+        400:
+          description: InvalidArgument | InvalidTagging
+        404:
+          description: NoSuchResource
+  /streaming-distribution?WithTags:
+    description: Create a new streaming distribution with tags.
+    post:
+      body:
+        application/xml:
+          type: StreamingDistributionConfigWithTags
+          xml:
+            namespace: http://cloudfront.amazonaws.com/doc/2016-09-07/
+          description: The streaming distribution's configuration information.
+      responses:
+        201:
+          headers:
+            Location:
+              type: string
+              description: 'The fully qualified URI of the new streaming distribution
+                resource just created. For example: https://cloudfront.amazonaws.com/2010-11-01/streaming-distribution/EGTXBD79H29TRA8.'
+            ETag:
+              type: string
+              description: The current version of the streaming distribution created.
+          body:
+            application/xml:
+              type: StreamingDistribution
+              description: The streaming distribution's information.
+        409:
+          description: CNAMEAlreadyExists | StreamingDistributionAlreadyExists
+        400:
+          description: InvalidOrigin | InvalidOriginAccessIdentity | TooManyTrustedSigners | TrustedSignerDoesNotExist | MissingBody | TooManyStreamingDistributionCNAMEs | TooManyStreamingDistributions | InvalidArgument | InconsistentQuantities | InvalidTagging
+        403:
+          description: AccessDenied
+  /distribution?WithTags:
+    description: Create a new distribution with tags.
+    post:
+      body:
+        application/xml:
+          type: DistributionConfigWithTags
+          xml:
+            namespace: http://cloudfront.amazonaws.com/doc/2016-09-07/
+          description: The distribution's configuration information.
+      responses:
+        201:
+          headers:
+            Location:
+              type: string
+              description: 'The fully qualified URI of the new distribution resource
+                just created. For example: https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5.'
+            ETag:
+              type: string
+              description: The current version of the distribution created.
+          body:
+            application/xml:
+              type: Distribution
+              description: The distribution's information.
+        409:
+          description: CNAMEAlreadyExists | DistributionAlreadyExists
+        400:
+          description: InvalidOrigin | InvalidOriginAccessIdentity | TooManyTrustedSigners | TrustedSignerDoesNotExist | InvalidViewerCertificate | InvalidMinimumProtocolVersion | MissingBody | TooManyDistributionCNAMEs | TooManyDistributions | InvalidDefaultRootObject | InvalidRelativePath | InvalidErrorCode | InvalidResponseCode | InvalidArgument | InvalidRequiredProtocol | TooManyOrigins | TooManyCacheBehaviors | TooManyCookieNamesInWhiteList | InvalidForwardCookies | TooManyHeadersInForwardedValues | InvalidHeadersForS3Origin | InconsistentQuantities | TooManyCertificates | InvalidLocationCode | InvalidGeoRestrictionParameter | InvalidProtocolSettings | InvalidTTLOrder | InvalidWebACLId | TooManyOriginCustomHeaders | InvalidTagging | TooManyQueryStringParameters | InvalidQueryStringParameters
+        403:
+          description: AccessDenied
+        404:
+          description: NoSuchOrigin
+  /distributionsByWebACLId:
+    /{WebACLId}:
+      uriParameters:
+        WebACLId?:
+          type: string
+          description: The Id of the AWS WAF web ACL for which you want to list the associated distributions. If you specify "null" for the Id, the request returns a list of the distributions that aren't associated with a web ACL.
+      description: List the distributions that are associated with a specified AWS WAF web ACL.
+      get:
+        queryParameters:
+          Marker:
+            type: string
+            description: Use Marker and MaxItems to control pagination of results. If you have more than MaxItems distributions that satisfy the request, the response includes a NextMarker element. To get the next page of results, submit another request. For the value of Marker, specify the value of NextMarker from the last response. (For the first request, omit Marker.)
+          MaxItems:
+            type: string
+            description: The maximum number of distributions that you want CloudFront to return in the response body. The maximum and default values are both 100.
+        headers:
+          WebACLId?:
+            type: string
+            description: The Id of the AWS WAF web ACL for which you want to list the associated distributions. If you specify "null" for the Id, the request returns a list of the distributions that aren't associated with a web ACL.
+        responses:
+          200:
+            body:
+              application/xml:
+                type: DistributionList
+                description: The DistributionList type.
+          400:
+            description: InvalidArgument | InvalidWebACLId
+  /tagging:
+    description: List tags for a CloudFront resource.
+    get:
+      queryParameters:
+        Resource?:
+          type: ResourceARN
+          description: An ARN of a CloudFront resource.
+      responses:
+        200:
+          body:
+            application/xml:
+              type: Tags
+              description: A complex type that contains zero or more Tag elements.
+        403:
+          description: AccessDenied
+        400:
+          description: InvalidArgument | InvalidTagging
+        404:
+          description: NoSuchResource
+  /tagging?Operation=Untag:
+    description: Remove tags from a CloudFront resource.
+    post:
+      queryParameters:
+        Resource?:
+          type: ResourceARN
+          description: An ARN of a CloudFront resource.
+      body:
+        application/xml:
+          type: TagKeys
+          xml:
+            namespace: http://cloudfront.amazonaws.com/doc/2016-09-07/
+          description: A complex type that contains zero or more Tag key elements.
+      responses:
+        204:
+          body:
+            application/xml: null
+        403:
+          description: AccessDenied
+        400:
+          description: InvalidArgument | InvalidTagging
+        404:
+          description: NoSuchResource

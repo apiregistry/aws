@@ -1,0 +1,618 @@
+#%RAML 1.0
+title: Amazon Elasticsearch Service
+version: '2015-01-01'
+description: '  Use the Amazon Elasticsearch configuration API to create, configure,
+  and manage Elasticsearch domains.  The endpoint for configuration service requests
+  is region-specific: es.<i>region</i>.amazonaws.com. For example, es.us-east-1.amazonaws.com.
+  For a current list of supported regions and endpoints, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions"
+  target="_blank">Regions and Endpoints</a>.'
+mediaType:
+- application/json
+types:
+  ARN:
+    type: string
+    description: <p>The Amazon Resource Name (ARN) of the Elasticsearch domain. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html" target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information.</p>
+  Boolean:
+    type: boolean
+  DomainId:
+    type: string
+    minLength: 1
+    maxLength: 64
+    description: <p>Unique identifier for an Elasticsearch domain.</p>
+  DomainInfoList:
+    type: array
+    items:
+      type: DomainInfo
+    description: <p> Contains the list of Elasticsearch domain information.</p>
+  DomainName:
+    type: string
+    pattern: '[a-z][a-z0-9\-]+'
+    minLength: 3
+    maxLength: 28
+    description: '<p>The name of an Elasticsearch domain. Domain names are unique
+      across the domains owned by an account within an AWS region. Domain names start
+      with a letter or number and can contain the following characters: a-z (lowercase),
+      0-9, and - (hyphen).</p>'
+  DomainNameList:
+    type: array
+    items:
+      type: DomainName
+    description: <p>A list of Elasticsearch domain names.</p>
+  ESPartitionInstanceType:
+    type: string
+    enum:
+    - m3.medium.elasticsearch
+    - m3.large.elasticsearch
+    - m3.xlarge.elasticsearch
+    - m3.2xlarge.elasticsearch
+    - m4.large.elasticsearch
+    - m4.xlarge.elasticsearch
+    - m4.2xlarge.elasticsearch
+    - m4.4xlarge.elasticsearch
+    - m4.10xlarge.elasticsearch
+    - t2.micro.elasticsearch
+    - t2.small.elasticsearch
+    - t2.medium.elasticsearch
+    - r3.large.elasticsearch
+    - r3.xlarge.elasticsearch
+    - r3.2xlarge.elasticsearch
+    - r3.4xlarge.elasticsearch
+    - r3.8xlarge.elasticsearch
+    - i2.xlarge.elasticsearch
+    - i2.2xlarge.elasticsearch
+  ElasticsearchDomainStatusList:
+    type: array
+    items:
+      type: ElasticsearchDomainStatus
+    description: <p>A list that contains the status of each requested Elasticsearch domain.</p>
+  ElasticsearchVersionString:
+    type: string
+  IntegerClass:
+    type: integer
+    format: int
+  OptionState:
+    type: string
+    enum:
+    - RequiresIndexDocuments
+    - Processing
+    - Active
+    description: '<p>The state of a requested change. One of the following:</p> <ul>
+      <li>Processing: The request change is still in-process.</li> <li>Active: The
+      request change is processed and deployed to the Elasticsearch domain.</li> </ul>'
+  PolicyDocument:
+    type: string
+    description: <p>Access policy rules for an Elasticsearch domain service endpoints. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies" target="_blank">Configuring Access Policies</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>. The maximum size of a policy document is 100 KB.</p>
+  ServiceUrl:
+    type: string
+    description: <p>The endpoint to which service requests are submitted. For example, <code>search-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com</code> or <code>doc-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com</code>.</p>
+  String:
+    type: string
+  StringList:
+    type: array
+    items:
+      type: String
+  TagKey:
+    type: string
+    minLength: 1
+    maxLength: 128
+    description: <p>A string of length from 1 to 128 characters that specifies the key for a Tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.</p>
+  TagList:
+    type: array
+    items:
+      type: Tag
+    description: <p>A list of <code>Tag</code> </p>
+  TagValue:
+    type: string
+    minLength: 0
+    maxLength: 256
+    description: <p>A string of length from 0 to 256 characters that specifies the value for a Tag. Tag values can be null and do not have to be unique in a tag set.</p>
+  UIntValue:
+    type: integer
+    format: int
+    minimum: 0
+  UpdateTimestamp:
+    type: datetime
+  VolumeType:
+    type: string
+    enum:
+    - standard
+    - gp2
+    - io1
+    description: <p> The type of EBS volume, standard, gp2, or io1. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank">Configuring EBS-based Storage</a>for more information.</p>
+  AccessPoliciesStatus:
+    type: object
+    properties:
+      Options:
+        type: PolicyDocument
+        description: <p>The access policy configured for the Elasticsearch domain. Access policies may be resource-based, IP-based, or IAM-based. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies" target="_blank"> Configuring Access Policies</a>for more information.</p>
+      Status:
+        type: OptionStatus
+        description: <p>The status of the access policy for the Elasticsearch domain. See <code>OptionStatus</code> for the status information that's included. </p>
+    description: <p>The configured access rules for the domain's document and search endpoints, and the current status of those rules.</p>
+  AddTagsRequest:
+    type: object
+    properties:
+      ARN:
+        type: ARN
+        description: <p> Specify the <code>ARN</code> for which you want to add the tags.</p>
+      TagList:
+        type: TagList
+        description: <p> List of <code>Tag</code> that need to be added for the Elasticsearch domain. </p>
+    description: <p>Container for the parameters to the <code><a>AddTags</a></code> operation. Specify the tags that you want to attach to the Elasticsearch domain.</p>
+  AdvancedOptions:
+    type: object
+    properties:
+      //:
+        type: String
+    description: <p> Exposes select native Elasticsearch configuration values from <code>elasticsearch.yml</code>. Currently, the following advanced options are available:</p> <ul> <li>Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</li> <li>Option to specify the percentage of heap space that is allocated to field data. By default, this setting is unbounded.</li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options">Configuring Advanced Options</a>.</p>
+  AdvancedOptionsStatus:
+    type: object
+    properties:
+      Options:
+        type: AdvancedOptions
+        description: <p> Specifies the status of advanced options for the specified Elasticsearch domain.</p>
+      Status:
+        type: OptionStatus
+        description: <p> Specifies the status of <code>OptionStatus</code> for advanced options for the specified Elasticsearch domain.</p>
+    description: <p> Status of the advanced options for the specified Elasticsearch domain. Currently, the following advanced options are available:</p> <ul> <li>Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</li> <li>Option to specify the percentage of heap space that is allocated to field data. By default, this setting is unbounded.</li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options">Configuring Advanced Options</a>.</p>
+  CreateElasticsearchDomainRequest:
+    type: object
+    properties:
+      DomainName:
+        type: DomainName
+        description: '<p>The name of the Elasticsearch domain that you are creating.
+          Domain names are unique across the domains owned by an account within an
+          AWS region. Domain names must start with a letter or number and can contain
+          the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>'
+      ElasticsearchVersion?:
+        type: ElasticsearchVersionString
+        description: <p>String of format X.Y to specify version for the Elasticsearch domain eg. "1.5" or "2.3". For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>.</p>
+      ElasticsearchClusterConfig?:
+        type: ElasticsearchClusterConfig
+        description: <p>Configuration options for an Elasticsearch domain. Specifies the instance type and number of instances in the domain cluster. </p>
+      EBSOptions?:
+        type: EBSOptions
+        description: <p>Options to enable, disable and specify the type and size of EBS storage volumes. </p>
+      AccessPolicies?:
+        type: PolicyDocument
+        description: <p> IAM access policy as a JSON-formatted string.</p>
+      SnapshotOptions?:
+        type: SnapshotOptions
+        description: <p>Option to set time, in UTC format, of the daily automated snapshot. Default value is 0 hours. </p>
+      AdvancedOptions?:
+        type: AdvancedOptions
+        description: <p> Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</p>
+  CreateElasticsearchDomainResponse:
+    type: object
+    properties:
+      DomainStatus?:
+        type: ElasticsearchDomainStatus
+        description: <p>The status of the newly created Elasticsearch domain. </p>
+    description: <p>The result of a <code>CreateElasticsearchDomain</code> operation. Contains the status of the newly created Elasticsearch domain.</p>
+  DeleteElasticsearchDomainResponse:
+    type: object
+    properties:
+      DomainStatus?:
+        type: ElasticsearchDomainStatus
+        description: <p>The status of the Elasticsearch domain being deleted.</p>
+    description: <p>The result of a <code>DeleteElasticsearchDomain</code> request. Contains the status of the pending deletion, or no status if the domain and all of its resources have been deleted.</p>
+  DescribeElasticsearchDomainConfigResponse:
+    type: object
+    properties:
+      DomainConfig:
+        type: ElasticsearchDomainConfig
+        description: <p>The configuration information of the domain requested in the <code>DescribeElasticsearchDomainConfig</code> request.</p>
+    description: <p>The result of a <code>DescribeElasticsearchDomainConfig</code> request. Contains the configuration information of the requested domain.</p>
+  DescribeElasticsearchDomainResponse:
+    type: object
+    properties:
+      DomainStatus:
+        type: ElasticsearchDomainStatus
+        description: <p>The current status of the Elasticsearch domain.</p>
+    description: <p>The result of a <code>DescribeElasticsearchDomain</code> request. Contains the status of the domain specified in the request.</p>
+  DescribeElasticsearchDomainsRequest:
+    type: object
+    properties:
+      DomainNames:
+        type: DomainNameList
+        description: <p>The Elasticsearch domains for which you want information.</p>
+    description: <p>Container for the parameters to the <code><a>DescribeElasticsearchDomains</a></code> operation. By default, the API returns the status of all Elasticsearch domains.</p>
+  DescribeElasticsearchDomainsResponse:
+    type: object
+    properties:
+      DomainStatusList:
+        type: ElasticsearchDomainStatusList
+        description: <p>The status of the domains requested in the <code>DescribeElasticsearchDomains</code> request.</p>
+    description: <p>The result of a <code>DescribeElasticsearchDomains</code> request. Contains the status of the specified domains or all domains owned by the account.</p>
+  DomainInfo:
+    type: object
+    properties:
+      DomainName?:
+        type: DomainName
+        description: <p> Specifies the <code>DomainName</code>.</p>
+  EBSOptions:
+    type: object
+    properties:
+      EBSEnabled?:
+        type: Boolean
+        description: <p>Specifies whether EBS-based storage is enabled.</p>
+      VolumeType?:
+        type: VolumeType
+        description: <p> Specifies the volume type for EBS-based storage.</p>
+      VolumeSize?:
+        type: IntegerClass
+        description: <p> Integer to specify the size of an EBS volume.</p>
+      Iops?:
+        type: IntegerClass
+        description: <p>Specifies the IOPD for a Provisioned IOPS EBS volume (SSD).</p>
+    description: <p>Options to enable, disable, and specify the properties of EBS storage volumes. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank"> Configuring EBS-based Storage</a>.</p>
+  EBSOptionsStatus:
+    type: object
+    properties:
+      Options:
+        type: EBSOptions
+        description: <p> Specifies the EBS options for the specified Elasticsearch domain.</p>
+      Status:
+        type: OptionStatus
+        description: <p> Specifies the status of the EBS options for the specified Elasticsearch domain.</p>
+    description: <p> Status of the EBS options for the specified Elasticsearch domain.</p>
+  ElasticsearchClusterConfig:
+    type: object
+    properties:
+      InstanceType?:
+        type: ESPartitionInstanceType
+        description: <p>The instance type for an Elasticsearch cluster.</p>
+      InstanceCount?:
+        type: IntegerClass
+        description: <p>The number of instances in the specified domain cluster.</p>
+      DedicatedMasterEnabled?:
+        type: Boolean
+        description: <p>A boolean value to indicate whether a dedicated master node is enabled. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-dedicatedmasternodes" target="_blank">About Dedicated Master Nodes</a> for more information.</p>
+      ZoneAwarenessEnabled?:
+        type: Boolean
+        description: <p>A boolean value to indicate whether zone awareness is enabled. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-zoneawareness" target="_blank">About Zone Awareness</a> for more information.</p>
+      DedicatedMasterType?:
+        type: ESPartitionInstanceType
+        description: <p>The instance type for a dedicated master node.</p>
+      DedicatedMasterCount?:
+        type: IntegerClass
+        description: <p>Total number of dedicated master nodes, active and on standby, for the cluster.</p>
+    description: <p>Specifies the configuration for the domain cluster, such as the type and number of instances.</p>
+  ElasticsearchClusterConfigStatus:
+    type: object
+    properties:
+      Options:
+        type: ElasticsearchClusterConfig
+        description: <p> Specifies the cluster configuration for the specified Elasticsearch domain.</p>
+      Status:
+        type: OptionStatus
+        description: <p> Specifies the status of the configuration for the specified Elasticsearch domain.</p>
+    description: <p> Specifies the configuration status for the specified Elasticsearch domain.</p>
+  ElasticsearchDomainConfig:
+    type: object
+    properties:
+      ElasticsearchVersion?:
+        type: ElasticsearchVersionStatus
+        description: <p>String of format X.Y to specify version for the Elasticsearch domain.</p>
+      ElasticsearchClusterConfig?:
+        type: ElasticsearchClusterConfigStatus
+        description: <p>Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch domain.</p>
+      EBSOptions?:
+        type: EBSOptionsStatus
+        description: <p>Specifies the <code>EBSOptions</code> for the Elasticsearch domain.</p>
+      AccessPolicies?:
+        type: AccessPoliciesStatus
+        description: <p>IAM access policy as a JSON-formatted string.</p>
+      SnapshotOptions?:
+        type: SnapshotOptionsStatus
+        description: <p>Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain.</p>
+      AdvancedOptions?:
+        type: AdvancedOptionsStatus
+        description: <p>Specifies the <code>AdvancedOptions</code> for the domain. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuring Advanced Options</a> for more information.</p>
+    description: <p>The configuration of an Elasticsearch domain.</p>
+  ElasticsearchDomainStatus:
+    type: object
+    properties:
+      DomainId:
+        type: DomainId
+        description: <p>The unique identifier for the specified Elasticsearch domain.</p>
+      DomainName:
+        type: DomainName
+        description: '<p>The name of an Elasticsearch domain. Domain names are unique
+          across the domains owned by an account within an AWS region. Domain names
+          start with a letter or number and can contain the following characters:
+          a-z (lowercase), 0-9, and - (hyphen).</p>'
+      ARN:
+        type: ARN
+        description: <p>The Amazon resource name (ARN) of an Elasticsearch domain. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html" target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information.</p>
+      Created?:
+        type: Boolean
+        description: <p>The domain creation status. <code>True</code> if the creation of an Elasticsearch domain is complete. <code>False</code> if domain creation is still in progress.</p>
+      Deleted?:
+        type: Boolean
+        description: <p>The domain deletion status. <code>True</code> if a delete request has been received for the domain but resource cleanup is still in progress. <code>False</code> if the domain has not been deleted. Once domain deletion is complete, the status of the domain is no longer returned.</p>
+      Endpoint?:
+        type: ServiceUrl
+        description: <p>The Elasticsearch domain endpoint that you use to submit index and search requests.</p>
+      Processing?:
+        type: Boolean
+        description: <p>The status of the Elasticsearch domain configuration. <code>True</code> if Amazon Elasticsearch Service is processing configuration changes. <code>False</code> if the configuration is active.</p>
+      ElasticsearchVersion?:
+        type: ElasticsearchVersionString
+      ElasticsearchClusterConfig:
+        type: ElasticsearchClusterConfig
+        description: <p>The type and number of instances in the domain cluster.</p>
+      EBSOptions?:
+        type: EBSOptions
+        description: <p>The <code>EBSOptions</code> for the specified domain. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank">Configuring EBS-based Storage</a> for more information.</p>
+      AccessPolicies?:
+        type: PolicyDocument
+        description: <p> IAM access policy as a JSON-formatted string.</p>
+      SnapshotOptions?:
+        type: SnapshotOptions
+        description: <p>Specifies the status of the <code>SnapshotOptions</code></p>
+      AdvancedOptions?:
+        type: AdvancedOptions
+        description: <p>Specifies the status of the <code>AdvancedOptions</code></p>
+    description: <p>The current status of an Elasticsearch domain.</p>
+  ElasticsearchVersionStatus:
+    type: object
+    properties:
+      Options:
+        type: ElasticsearchVersionString
+        description: <p> Specifies the Elasticsearch version for the specified Elasticsearch domain.</p>
+      Status:
+        type: OptionStatus
+        description: <p> Specifies the status of the Elasticsearch version options for the specified Elasticsearch domain.</p>
+    description: <p> Status of the Elasticsearch version options for the specified Elasticsearch domain.</p>
+  ListDomainNamesResponse:
+    type: object
+    properties:
+      DomainNames?:
+        type: DomainInfoList
+        description: <p>List of Elasticsearch domain names.</p>
+    description: <p>The result of a <code>ListDomainNames</code> operation. Contains the names of all Elasticsearch domains owned by this account.</p>
+  ListTagsResponse:
+    type: object
+    properties:
+      TagList?:
+        type: TagList
+        description: <p> List of <code>Tag</code> for the requested Elasticsearch domain.</p>
+    description: <p>The result of a <code>ListTags</code> operation. Contains tags for all requested Elasticsearch domains.</p>
+  OptionStatus:
+    type: object
+    properties:
+      CreationDate:
+        type: UpdateTimestamp
+        description: <p>Timestamp which tells the creation date for the entity.</p>
+      UpdateDate:
+        type: UpdateTimestamp
+        description: <p>Timestamp which tells the last updated time for the entity.</p>
+      UpdateVersion?:
+        type: UIntValue
+        description: <p>Specifies the latest version for the entity.</p>
+      State:
+        type: OptionState
+        description: <p>Provides the <code>OptionState</code> for the Elasticsearch domain.</p>
+      PendingDeletion?:
+        type: Boolean
+        description: <p>Indicates whether the Elasticsearch domain is being deleted.</p>
+    description: <p>Provides the current status of the entity.</p>
+  RemoveTagsRequest:
+    type: object
+    properties:
+      ARN:
+        type: ARN
+        description: <p>Specifies the <code>ARN</code> for the Elasticsearch domain from which you want to delete the specified tags.</p>
+      TagKeys:
+        type: StringList
+        description: <p>Specifies the <code>TagKey</code> list which you want to remove from the Elasticsearch domain.</p>
+    description: <p>Container for the parameters to the <code><a>RemoveTags</a></code> operation. Specify the <code>ARN</code> for the Elasticsearch domain from which you want to remove the specified <code>TagKey</code>.</p>
+  SnapshotOptions:
+    type: object
+    properties:
+      AutomatedSnapshotStartHour?:
+        type: IntegerClass
+        description: <p>Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is <code>0</code> hours.</p>
+    description: <p>Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is <code>0</code> hours.</p>
+  SnapshotOptionsStatus:
+    type: object
+    properties:
+      Options:
+        type: SnapshotOptions
+        description: <p>Specifies the daily snapshot options specified for the Elasticsearch domain.</p>
+      Status:
+        type: OptionStatus
+        description: <p>Specifies the status of a daily automated snapshot.</p>
+    description: <p>Status of a daily automated snapshot.</p>
+  Tag:
+    type: object
+    properties:
+      Key:
+        type: TagKey
+        description: <p>Specifies the <code>TagKey</code>, the name of the tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.</p>
+      Value:
+        type: TagValue
+        description: '<p>Specifies the <code>TagValue</code>, the value assigned to
+          the corresponding tag key. Tag values can be null and do not have to be
+          unique in a tag set. For example, you can have a key value pair in a tag
+          set of <code>project : Trinity</code> and <code>cost-center : Trinity</code></p>'
+    description: <p>Specifies a key value pair for a resource tag.</p>
+  UpdateElasticsearchDomainConfigResponse:
+    type: object
+    properties:
+      DomainConfig:
+        type: ElasticsearchDomainConfig
+        description: <p>The status of the updated Elasticsearch domain. </p>
+    description: <p>The result of an <code>UpdateElasticsearchDomain</code> request. Contains the status of the Elasticsearch domain being updated.</p>
+/2015-01-01:
+  /es:
+    /domain:
+      description: Creates a new Elasticsearch domain. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>.
+      /{DomainName}:
+        uriParameters:
+          DomainName?:
+            type: DomainName
+            description: <p>The Elasticsearch domain that you want to get information about.</p>
+        description: Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN.
+        /config:
+          description: 'Modifies the cluster configuration of the specified Elasticsearch
+            domain, setting as setting the instance type and the number of instances. '
+          get:
+            headers:
+              DomainName?:
+                type: DomainName
+                description: <p>The Elasticsearch domain that you want to get information about.</p>
+            responses:
+              200:
+                body:
+                  application/json: DescribeElasticsearchDomainConfigResponse
+              400:
+                description: BaseException | ValidationException
+              500:
+                description: InternalException
+              409:
+                description: ResourceNotFoundException
+          post:
+            headers:
+              DomainName?:
+                type: DomainName
+                description: <p>The name of the Elasticsearch domain that you are updating. </p>
+            body:
+              application/json:
+                type: object
+                properties:
+                  ElasticsearchClusterConfig?:
+                    type: ElasticsearchClusterConfig
+                    description: <p>The type and number of instances to instantiate for the domain cluster.</p>
+                  EBSOptions?:
+                    type: EBSOptions
+                    description: <p>Specify the type and size of the EBS volume that you want to use. </p>
+                  SnapshotOptions?:
+                    type: SnapshotOptions
+                    description: <p>Option to set the time, in UTC format, for the daily automated snapshot. Default value is <code>0</code> hours. </p>
+                  AdvancedOptions?:
+                    type: AdvancedOptions
+                    description: <p>Modifies the advanced option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</p>
+                  AccessPolicies?:
+                    type: PolicyDocument
+                    description: <p>IAM access policy as a JSON-formatted string.</p>
+            responses:
+              200:
+                body:
+                  application/json: UpdateElasticsearchDomainConfigResponse
+              400:
+                description: BaseException | ValidationException
+              500:
+                description: InternalException
+              409:
+                description: InvalidTypeException | LimitExceededException | ResourceNotFoundException
+        delete:
+          headers:
+            DomainName?:
+              type: DomainName
+              description: <p>The name of the Elasticsearch domain that you want to permanently delete.</p>
+          responses:
+            200:
+              body:
+                application/json: DeleteElasticsearchDomainResponse
+            400:
+              description: BaseException | ValidationException
+            500:
+              description: InternalException
+            409:
+              description: ResourceNotFoundException
+        get:
+          headers:
+            DomainName?:
+              type: DomainName
+              description: <p>The name of the Elasticsearch domain for which you want information.</p>
+          responses:
+            200:
+              body:
+                application/json: DescribeElasticsearchDomainResponse
+            400:
+              description: BaseException | ValidationException
+            500:
+              description: InternalException
+            409:
+              description: ResourceNotFoundException
+      post:
+        body:
+          application/json: CreateElasticsearchDomainRequest
+        responses:
+          200:
+            body:
+              application/json: CreateElasticsearchDomainResponse
+          400:
+            description: BaseException | ValidationException
+          409:
+            description: DisabledOperationException | InvalidTypeException | LimitExceededException | ResourceAlreadyExistsException
+          500:
+            description: InternalException
+    /domain-info:
+      description: Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN.
+      post:
+        body:
+          application/json: DescribeElasticsearchDomainsRequest
+        responses:
+          200:
+            body:
+              application/json: DescribeElasticsearchDomainsResponse
+          400:
+            description: BaseException | ValidationException
+          500:
+            description: InternalException
+  /tags:
+    description: Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value pairs. An Elasticsearch domain may have up to 10 tags. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging" target="_blank"> Tagging Amazon Elasticsearch Service Domains for more information.</a>
+    get:
+      queryParameters:
+        arn?:
+          type: ARN
+          description: <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags are attached that you want to view.</p>
+      responses:
+        200:
+          body:
+            application/json: ListTagsResponse
+        400:
+          description: BaseException | ValidationException
+        409:
+          description: ResourceNotFoundException
+        500:
+          description: InternalException
+    post:
+      body:
+        application/json: AddTagsRequest
+      responses:
+        200:
+          body:
+            application/json: null
+        400:
+          description: BaseException | ValidationException
+        409:
+          description: LimitExceededException
+        500:
+          description: InternalException
+  /domain:
+    description: 'Returns the name of all Elasticsearch domains owned by the current
+      user''s account. '
+    get:
+      responses:
+        200:
+          body:
+            application/json: ListDomainNamesResponse
+        400:
+          description: BaseException | ValidationException
+  /tags-removal:
+    description: Removes the specified set of tags from the specified Elasticsearch domain.
+    post:
+      body:
+        application/json: RemoveTagsRequest
+      responses:
+        200:
+          body:
+            application/json: null
+        400:
+          description: BaseException | ValidationException
+        500:
+          description: InternalException

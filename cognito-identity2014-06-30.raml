@@ -1,0 +1,914 @@
+#%RAML 1.0
+title: Amazon Cognito Identity
+version: '2014-06-30'
+description: '  Amazon Cognito is a web service that delivers scoped temporary credentials
+  to mobile devices and other untrusted environments. Amazon Cognito uniquely identifies
+  a device and supplies the user with a consistent identity over the lifetime of an
+  application.  Using Amazon Cognito, you can enable authentication with one or more
+  third-party identity providers (Facebook, Google, or Login with Amazon), and you
+  can also choose to support unauthenticated access from your app. Cognito delivers
+  a unique identifier for each user and acts as an OpenID token provider trusted by
+  AWS Security Token Service (STS) to access temporary, limited-privilege AWS credentials.  To
+  provide end-user credentials, first make an unsigned call to <a>GetId</a>. If the
+  end user is authenticated with one of the supported identity providers, set the
+  <code>Logins</code> map with the identity provider token. <code>GetId</code> returns
+  a unique identifier for the user.  Next, make an unsigned call to <a>GetCredentialsForIdentity</a>.
+  This call expects the same <code>Logins</code> map as the <code>GetId</code> call,
+  as well as the <code>IdentityID</code> originally returned by <code>GetId</code>.
+  Assuming your identity pool has been configured via the <a>SetIdentityPoolRoles</a>
+  operation, <code>GetCredentialsForIdentity</code> will return AWS credentials for
+  your use. If your pool has not been configured with <code>SetIdentityPoolRoles</code>,
+  or if you want to follow legacy flow, make an unsigned call to <a>GetOpenIdToken</a>,
+  which returns the OpenID token necessary to call STS and retrieve AWS credentials.
+  This call expects the same <code>Logins</code> map as the <code>GetId</code> call,
+  as well as the <code>IdentityID</code> originally returned by <code>GetId</code>.
+  The token returned by <code>GetOpenIdToken</code> can be passed to the STS operation
+  <a href="http://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html">AssumeRoleWithWebIdentity</a>
+  to retrieve AWS credentials.  If you want to use Amazon Cognito in an Android, iOS,
+  or Unity application, you will probably want to make API calls via the AWS Mobile
+  SDK. To learn more, see the <a href="http://docs.aws.amazon.com/mobile/index.html">AWS
+  Mobile SDK Developer Guide</a>.'
+mediaType:
+- application/json
+types:
+  ARNString:
+    type: string
+    minLength: 20
+    maxLength: 2048
+  AccessKeyString:
+    type: string
+  AccountId:
+    type: string
+    pattern: \d+
+    minLength: 1
+    maxLength: 15
+  CognitoIdentityProviderClientId:
+    type: string
+    pattern: '[\w_]+'
+    minLength: 1
+    maxLength: 128
+  CognitoIdentityProviderList:
+    type: array
+    items:
+      type: CognitoIdentityProvider
+  CognitoIdentityProviderName:
+    type: string
+    pattern: '[\w._:/-]+'
+    minLength: 1
+    maxLength: 128
+  DateType:
+    type: datetime
+  DeveloperProviderName:
+    type: string
+    pattern: '[\w._-]+'
+    minLength: 1
+    maxLength: 128
+  DeveloperUserIdentifier:
+    type: string
+    pattern: '[\w.@_-]+'
+    minLength: 1
+    maxLength: 1024
+  DeveloperUserIdentifierList:
+    type: array
+    items:
+      type: DeveloperUserIdentifier
+  ErrorCode:
+    type: string
+    enum:
+    - AccessDenied
+    - InternalServerError
+  HideDisabled:
+    type: boolean
+  IdentitiesList:
+    type: array
+    items:
+      type: IdentityDescription
+  IdentityId:
+    type: string
+    pattern: '[\w-]+:[0-9a-f-]+'
+    minLength: 1
+    maxLength: 55
+  IdentityIdList:
+    type: array
+    minItems: 1
+    maxItems: 60
+    items:
+      type: IdentityId
+  IdentityPoolId:
+    type: string
+    pattern: '[\w-]+:[0-9a-f-]+'
+    minLength: 1
+    maxLength: 55
+  IdentityPoolName:
+    type: string
+    pattern: '[\w ]+'
+    minLength: 1
+    maxLength: 128
+  IdentityPoolUnauthenticated:
+    type: boolean
+  IdentityPoolsList:
+    type: array
+    items:
+      type: IdentityPoolShortDescription
+  IdentityProviderId:
+    type: string
+    pattern: '[\w.;_/-]+'
+    minLength: 1
+    maxLength: 128
+  IdentityProviderName:
+    type: string
+    minLength: 1
+    maxLength: 128
+  IdentityProviderToken:
+    type: string
+    minLength: 1
+    maxLength: 50000
+  LoginsList:
+    type: array
+    items:
+      type: IdentityProviderName
+  OIDCProviderList:
+    type: array
+    items:
+      type: ARNString
+  OIDCToken:
+    type: string
+  PaginationKey:
+    type: string
+    pattern: '[\S]+'
+    minLength: 1
+  QueryLimit:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 60
+  RoleType:
+    type: string
+    pattern: (un)?authenticated
+  SAMLProviderList:
+    type: array
+    items:
+      type: ARNString
+  SecretKeyString:
+    type: string
+  SessionTokenString:
+    type: string
+  TokenDuration:
+    type: integer
+    format: long
+    minimum: 1
+    maximum: 86400
+  UnprocessedIdentityIdList:
+    type: array
+    maxItems: 60
+    items:
+      type: UnprocessedIdentityId
+  CognitoIdentityProvider:
+    type: object
+    properties:
+      ProviderName?:
+        type: CognitoIdentityProviderName
+        description: <p>The provider name for an Amazon Cognito Identity User Pool. For example, <code>cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789</code>.</p>
+      ClientId?:
+        type: CognitoIdentityProviderClientId
+        description: <p>The client ID for the Amazon Cognito Identity User Pool.</p>
+    description: <p>A provider representing an Amazon Cognito Identity User Pool and its client ID.</p>
+  CreateIdentityPoolInput:
+    type: object
+    properties:
+      IdentityPoolName:
+        type: IdentityPoolName
+        description: <p>A string that you provide.</p>
+      AllowUnauthenticatedIdentities:
+        type: IdentityPoolUnauthenticated
+        description: <p>TRUE if the identity pool supports unauthenticated logins.</p>
+      SupportedLoginProviders?:
+        type: IdentityProviders
+        description: <p>Optional key:value pairs mapping provider names to provider app IDs.</p>
+      DeveloperProviderName?:
+        type: DeveloperProviderName
+        description: <p>The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the <code>DeveloperProviderName</code>, you can use letters as well as period (<code>.</code>), underscore (<code>_</code>), and dash (<code>-</code>).</p> <p>Once you have set a developer provider name, you cannot change it. Please take care in setting this parameter.</p>
+      OpenIdConnectProviderARNs?:
+        type: OIDCProviderList
+        description: <p>A list of OpendID Connect provider ARNs.</p>
+      CognitoIdentityProviders?:
+        type: CognitoIdentityProviderList
+        description: <p>An array of Amazon Cognito Identity user pools.</p>
+      SamlProviderARNs?:
+        type: SAMLProviderList
+        description: <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</p>
+    description: <p>Input to the CreateIdentityPool action.</p>
+  Credentials:
+    type: object
+    properties:
+      AccessKeyId?:
+        type: AccessKeyString
+        description: <p>The Access Key portion of the credentials.</p>
+      SecretKey?:
+        type: SecretKeyString
+        description: <p>The Secret Access Key portion of the credentials</p>
+      SessionToken?:
+        type: SessionTokenString
+        description: <p>The Session Token portion of the credentials</p>
+      Expiration?:
+        type: DateType
+        description: <p>The date at which these credentials will expire.</p>
+    description: <p>Credentials for the provided identity ID.</p>
+  DeleteIdentitiesInput:
+    type: object
+    properties:
+      IdentityIdsToDelete:
+        type: IdentityIdList
+        description: <p>A list of 1-60 identities that you want to delete.</p>
+    description: <p>Input to the <code>DeleteIdentities</code> action.</p>
+  DeleteIdentitiesResponse:
+    type: object
+    properties:
+      UnprocessedIdentityIds?:
+        type: UnprocessedIdentityIdList
+        description: <p>An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.</p>
+    description: <p>Returned in response to a successful <code>DeleteIdentities</code> operation.</p>
+  DeleteIdentityPoolInput:
+    type: object
+    properties:
+      IdentityPoolId:
+        type: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID.
+    description: <p>Input to the DeleteIdentityPool action.</p>
+  DescribeIdentityInput:
+    type: object
+    properties:
+      IdentityId:
+        type: IdentityId
+        description: <p>A unique identifier in the format REGION:GUID.</p>
+    description: <p>Input to the <code>DescribeIdentity</code> action.</p>
+  DescribeIdentityPoolInput:
+    type: object
+    properties:
+      IdentityPoolId:
+        type: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID.
+    description: Input to the DescribeIdentityPool action.
+  GetCredentialsForIdentityInput:
+    type: object
+    properties:
+      IdentityId:
+        type: IdentityId
+        description: <p>A unique identifier in the format REGION:GUID.</p>
+      Logins?:
+        type: LoginsMap
+        description: <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
+      CustomRoleArn?:
+        type: ARNString
+        description: <p>The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers that do not support role customization.</p>
+    description: <p>Input to the <code>GetCredentialsForIdentity</code> action.</p>
+  GetCredentialsForIdentityResponse:
+    type: object
+    properties:
+      IdentityId?:
+        type: IdentityId
+        description: <p>A unique identifier in the format REGION:GUID.</p>
+      Credentials?:
+        type: Credentials
+        description: <p>Credentials for the provided identity ID.</p>
+    description: <p>Returned in response to a successful <code>GetCredentialsForIdentity</code> operation.</p>
+  GetIdInput:
+    type: object
+    properties:
+      AccountId?:
+        type: AccountId
+        description: A standard AWS account ID (9+ digits).
+      IdentityPoolId:
+        type: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID.
+      Logins?:
+        type: LoginsMap
+        description: '<p>A set of optional name-value pairs that map provider names
+          to provider tokens.</p> <p>The available provider names for <code>Logins</code>
+          are as follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li>
+          <li>Google: <code>accounts.google.com</code></li> <li>Amazon: <code>www.amazon.com</code></li>
+          <li>Twitter: <code>api.twitter.com</code></li> <li>Digits: <code>www.digits.com</code></li>
+          </ul> </p>'
+    description: Input to the GetId action.
+  GetIdResponse:
+    type: object
+    properties:
+      IdentityId?:
+        type: IdentityId
+        description: A unique identifier in the format REGION:GUID.
+    description: Returned in response to a GetId request.
+  GetIdentityPoolRolesInput:
+    type: object
+    properties:
+      IdentityPoolId:
+        type: IdentityPoolId
+        description: <p>An identity pool ID in the format REGION:GUID.</p>
+    description: <p>Input to the <code>GetIdentityPoolRoles</code> action.</p>
+  GetIdentityPoolRolesResponse:
+    type: object
+    properties:
+      IdentityPoolId?:
+        type: IdentityPoolId
+        description: <p>An identity pool ID in the format REGION:GUID.</p>
+      Roles?:
+        type: RolesMap
+        description: <p>The map of roles associated with this pool. Currently only authenticated and unauthenticated roles are supported.</p>
+    description: <p>Returned in response to a successful <code>GetIdentityPoolRoles</code> operation.</p>
+  GetOpenIdTokenForDeveloperIdentityInput:
+    type: object
+    properties:
+      IdentityPoolId:
+        type: IdentityPoolId
+        description: <p>An identity pool ID in the format REGION:GUID.</p>
+      IdentityId?:
+        type: IdentityId
+        description: <p>A unique identifier in the format REGION:GUID.</p>
+      Logins:
+        type: LoginsMap
+        description: '<p>A set of optional name-value pairs that map provider names
+          to provider tokens. Each name-value pair represents a user from a public
+          provider or developer provider. If the user is from a developer provider,
+          the name-value pair will follow the syntax <code>"developer_provider_name":
+          "developer_user_identifier"</code>. The developer provider is the "domain"
+          by which Cognito will refer to your users; you provided this domain while
+          creating/updating the identity pool. The developer user identifier is an
+          identifier from your backend that uniquely identifies a user. When you create
+          an identity pool, you can specify the supported logins.</p>'
+      TokenDuration?:
+        type: TokenDuration
+        description: '<p>The expiration time of the token, in seconds. You can specify
+          a custom expiration time for the token so that you can cache it. If you
+          don''t provide an expiration time, the token is valid for 15 minutes. You
+          can exchange the token with Amazon STS for temporary AWS credentials, which
+          are valid for a maximum of one hour. The maximum token duration you can
+          set is 24 hours. You should take care in setting the expiration time for
+          a token, as there are significant security implications: an attacker could
+          use a leaked token to access your AWS resources for the token''s duration.</p>'
+    description: <p>Input to the <code>GetOpenIdTokenForDeveloperIdentity</code> action.</p>
+  GetOpenIdTokenForDeveloperIdentityResponse:
+    type: object
+    properties:
+      IdentityId?:
+        type: IdentityId
+        description: <p>A unique identifier in the format REGION:GUID.</p>
+      Token?:
+        type: OIDCToken
+        description: <p>An OpenID token.</p>
+    description: <p>Returned in response to a successful <code>GetOpenIdTokenForDeveloperIdentity</code> request.</p>
+  GetOpenIdTokenInput:
+    type: object
+    properties:
+      IdentityId:
+        type: IdentityId
+        description: A unique identifier in the format REGION:GUID.
+      Logins?:
+        type: LoginsMap
+        description: A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com or any other OpenId Connect provider, always include the id_token.
+    description: Input to the GetOpenIdToken action.
+  GetOpenIdTokenResponse:
+    type: object
+    properties:
+      IdentityId?:
+        type: IdentityId
+        description: A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on input.
+      Token?:
+        type: OIDCToken
+        description: An OpenID token, valid for 15 minutes.
+    description: Returned in response to a successful GetOpenIdToken request.
+  IdentityDescription:
+    type: object
+    properties:
+      IdentityId?:
+        type: IdentityId
+        description: A unique identifier in the format REGION:GUID.
+      Logins?:
+        type: LoginsList
+        description: A set of optional name-value pairs that map provider names to provider tokens.
+      CreationDate?:
+        type: DateType
+        description: <p>Date on which the identity was created.</p>
+      LastModifiedDate?:
+        type: DateType
+        description: <p>Date on which the identity was last modified.</p>
+    description: A description of the identity.
+  IdentityPool:
+    type: object
+    properties:
+      IdentityPoolId:
+        type: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID.
+      IdentityPoolName:
+        type: IdentityPoolName
+        description: <p>A string that you provide.</p>
+      AllowUnauthenticatedIdentities:
+        type: IdentityPoolUnauthenticated
+        description: TRUE if the identity pool supports unauthenticated logins.
+      SupportedLoginProviders?:
+        type: IdentityProviders
+        description: <p>Optional key:value pairs mapping provider names to provider app IDs.</p>
+      DeveloperProviderName?:
+        type: DeveloperProviderName
+        description: <p>The "domain" by which Cognito will refer to your users.</p>
+      OpenIdConnectProviderARNs?:
+        type: OIDCProviderList
+        description: <p>A list of OpendID Connect provider ARNs.</p>
+      CognitoIdentityProviders?:
+        type: CognitoIdentityProviderList
+        description: <p>A list representing an Amazon Cognito Identity User Pool and its client ID.</p>
+      SamlProviderARNs?:
+        type: SAMLProviderList
+        description: <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</p>
+    description: An object representing a Cognito identity pool.
+  IdentityPoolShortDescription:
+    type: object
+    properties:
+      IdentityPoolId?:
+        type: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID.
+      IdentityPoolName?:
+        type: IdentityPoolName
+        description: A string that you provide.
+    description: A description of the identity pool.
+  IdentityProviders:
+    type: object
+    properties:
+      //:
+        type: IdentityProviderId
+    maxProperties: 10
+  ListIdentitiesInput:
+    type: object
+    properties:
+      IdentityPoolId:
+        type: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID.
+      MaxResults:
+        type: QueryLimit
+        description: The maximum number of identities to return.
+      NextToken?:
+        type: PaginationKey
+        description: A pagination token.
+      HideDisabled?:
+        type: HideDisabled
+        description: <p>An optional boolean parameter that allows you to hide disabled identities. If omitted, the ListIdentities API will include disabled identities in the response.</p>
+    description: Input to the ListIdentities action.
+  ListIdentitiesResponse:
+    type: object
+    properties:
+      IdentityPoolId?:
+        type: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID.
+      Identities?:
+        type: IdentitiesList
+        description: An object containing a set of identities and associated mappings.
+      NextToken?:
+        type: PaginationKey
+        description: A pagination token.
+    description: The response to a ListIdentities request.
+  ListIdentityPoolsInput:
+    type: object
+    properties:
+      MaxResults:
+        type: QueryLimit
+        description: The maximum number of identities to return.
+      NextToken?:
+        type: PaginationKey
+        description: A pagination token.
+    description: Input to the ListIdentityPools action.
+  ListIdentityPoolsResponse:
+    type: object
+    properties:
+      IdentityPools?:
+        type: IdentityPoolsList
+        description: The identity pools returned by the ListIdentityPools action.
+      NextToken?:
+        type: PaginationKey
+        description: A pagination token.
+    description: The result of a successful ListIdentityPools action.
+  LoginsMap:
+    type: object
+    properties:
+      //:
+        type: IdentityProviderToken
+    maxProperties: 10
+  LookupDeveloperIdentityInput:
+    type: object
+    properties:
+      IdentityPoolId:
+        type: IdentityPoolId
+        description: <p>An identity pool ID in the format REGION:GUID.</p>
+      IdentityId?:
+        type: IdentityId
+        description: <p>A unique identifier in the format REGION:GUID.</p>
+      DeveloperUserIdentifier?:
+        type: DeveloperUserIdentifier
+        description: <p>A unique ID used by your backend authentication process to identify a user. Typically, a developer identity provider would issue many developer user identifiers, in keeping with the number of users.</p>
+      MaxResults?:
+        type: QueryLimit
+        description: <p>The maximum number of identities to return.</p>
+      NextToken?:
+        type: PaginationKey
+        description: <p>A pagination token. The first call you make will have <code>NextToken</code> set to null. After that the service will return <code>NextToken</code> values as needed. For example, let's say you make a request with <code>MaxResults</code> set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.</p>
+    description: <p>Input to the <code>LookupDeveloperIdentityInput</code> action.</p>
+  LookupDeveloperIdentityResponse:
+    type: object
+    properties:
+      IdentityId?:
+        type: IdentityId
+        description: <p>A unique identifier in the format REGION:GUID.</p>
+      DeveloperUserIdentifierList?:
+        type: DeveloperUserIdentifierList
+        description: <p>This is the list of developer user identifiers associated with an identity ID. Cognito supports the association of multiple developer user identifiers with an identity ID.</p>
+      NextToken?:
+        type: PaginationKey
+        description: <p>A pagination token. The first call you make will have <code>NextToken</code> set to null. After that the service will return <code>NextToken</code> values as needed. For example, let's say you make a request with <code>MaxResults</code> set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.</p>
+    description: <p>Returned in response to a successful <code>LookupDeveloperIdentity</code> action.</p>
+  MergeDeveloperIdentitiesInput:
+    type: object
+    properties:
+      SourceUserIdentifier:
+        type: DeveloperUserIdentifier
+        description: <p>User identifier for the source user. The value should be a <code>DeveloperUserIdentifier</code>.</p>
+      DestinationUserIdentifier:
+        type: DeveloperUserIdentifier
+        description: <p>User identifier for the destination user. The value should be a <code>DeveloperUserIdentifier</code>.</p>
+      DeveloperProviderName:
+        type: DeveloperProviderName
+        description: <p>The "domain" by which Cognito will refer to your users. This is a (pseudo) domain name that you provide while creating an identity pool. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the <code>DeveloperProviderName</code>, you can use letters as well as period (.), underscore (_), and dash (-).</p>
+      IdentityPoolId:
+        type: IdentityPoolId
+        description: <p>An identity pool ID in the format REGION:GUID.</p>
+    description: <p>Input to the <code>MergeDeveloperIdentities</code> action.</p>
+  MergeDeveloperIdentitiesResponse:
+    type: object
+    properties:
+      IdentityId?:
+        type: IdentityId
+        description: <p>A unique identifier in the format REGION:GUID.</p>
+    description: <p>Returned in response to a successful <code>MergeDeveloperIdentities</code> action.</p>
+  RolesMap:
+    type: object
+    properties:
+      //:
+        type: ARNString
+    maxProperties: 2
+  SetIdentityPoolRolesInput:
+    type: object
+    properties:
+      IdentityPoolId:
+        type: IdentityPoolId
+        description: <p>An identity pool ID in the format REGION:GUID.</p>
+      Roles:
+        type: RolesMap
+        description: <p>The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.</p>
+    description: <p>Input to the <code>SetIdentityPoolRoles</code> action.</p>
+  UnlinkDeveloperIdentityInput:
+    type: object
+    properties:
+      IdentityId:
+        type: IdentityId
+        description: <p>A unique identifier in the format REGION:GUID.</p>
+      IdentityPoolId:
+        type: IdentityPoolId
+        description: <p>An identity pool ID in the format REGION:GUID.</p>
+      DeveloperProviderName:
+        type: DeveloperProviderName
+        description: <p>The "domain" by which Cognito will refer to your users.</p>
+      DeveloperUserIdentifier:
+        type: DeveloperUserIdentifier
+        description: A unique ID used by your backend authentication process to identify a user.
+    description: <p>Input to the <code>UnlinkDeveloperIdentity</code> action.</p>
+  UnlinkIdentityInput:
+    type: object
+    properties:
+      IdentityId:
+        type: IdentityId
+        description: A unique identifier in the format REGION:GUID.
+      Logins:
+        type: LoginsMap
+        description: A set of optional name-value pairs that map provider names to provider tokens.
+      LoginsToRemove:
+        type: LoginsList
+        description: Provider names to unlink from this identity.
+    description: Input to the UnlinkIdentity action.
+  UnprocessedIdentityId:
+    type: object
+    properties:
+      IdentityId?:
+        type: IdentityId
+        description: <p>A unique identifier in the format REGION:GUID.</p>
+      ErrorCode?:
+        type: ErrorCode
+        description: <p>The error code indicating the type of error that occurred.</p>
+    description: <p>An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.</p>
+/{CreateIdentityPool}:
+  uriParameters:
+    CreateIdentityPool?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Creates a new identity pool. The identity pool is a store of user
+    identity information that is specific to your AWS account. The limit on identity
+    pools is 60 per account. The keys for <code>SupportedLoginProviders</code> are
+    as follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+    <code>accounts.google.com</code></li> <li>Amazon: <code>www.amazon.com</code></li>
+    <li>Twitter: <code>api.twitter.com</code></li> <li>Digits: <code>www.digits.com</code></li>
+    </ul> You must use AWS Developer credentials to call this API.'
+  post:
+    body:
+      application/json: CreateIdentityPoolInput
+    responses:
+      200:
+        body:
+          application/json: IdentityPool
+      400:
+        description: InvalidParameterException
+/{DeleteIdentities}:
+  uriParameters:
+    DeleteIdentities?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes identities from an identity pool. You can specify a list of 1-60 identities that you want to delete.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: DeleteIdentitiesInput
+    responses:
+      200:
+        body:
+          application/json: DeleteIdentitiesResponse
+      400:
+        description: InvalidParameterException
+/{DeleteIdentityPool}:
+  uriParameters:
+    DeleteIdentityPool?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a user pool. Once a pool is deleted, users will not be able to authenticate with the pool.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: DeleteIdentityPoolInput
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{DescribeIdentity}:
+  uriParameters:
+    DescribeIdentity?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns metadata related to the given identity, including when the identity was created and any associated linked logins.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: DescribeIdentityInput
+    responses:
+      200:
+        body:
+          application/json: IdentityDescription
+      400:
+        description: InvalidParameterException
+/{DescribeIdentityPool}:
+  uriParameters:
+    DescribeIdentityPool?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: DescribeIdentityPoolInput
+    responses:
+      200:
+        body:
+          application/json: IdentityPool
+      400:
+        description: InvalidParameterException
+/{GetCredentialsForIdentity}:
+  uriParameters:
+    GetCredentialsForIdentity?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns credentials for the provided identity ID. Any provided logins will be validated against supported login providers. If the token is for cognito-identity.amazonaws.com, it will be passed through to AWS Security Token Service with the appropriate role for the token.This is a public API. You do not need any credentials to call this API.
+  post:
+    body:
+      application/json: GetCredentialsForIdentityInput
+    responses:
+      200:
+        body:
+          application/json: GetCredentialsForIdentityResponse
+      400:
+        description: InvalidParameterException
+/{GetId}:
+  uriParameters:
+    GetId?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Generates (or retrieves) a Cognito ID. Supplying multiple logins will create an implicit linked account.This is a public API. You do not need any credentials to call this API.
+  post:
+    body:
+      application/json: GetIdInput
+    responses:
+      200:
+        body:
+          application/json: GetIdResponse
+      400:
+        description: InvalidParameterException
+/{GetIdentityPoolRoles}:
+  uriParameters:
+    GetIdentityPoolRoles?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets the roles for an identity pool.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: GetIdentityPoolRolesInput
+    responses:
+      200:
+        body:
+          application/json: GetIdentityPoolRolesResponse
+      400:
+        description: InvalidParameterException
+/{GetOpenIdToken}:
+  uriParameters:
+    GetOpenIdToken?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets an OpenID token, using a known Cognito ID. This known Cognito ID is returned by <a>GetId</a>. You can optionally add additional logins for the identity. Supplying multiple logins creates an implicit link. The OpenId token is valid for 15 minutes.This is a public API. You do not need any credentials to call this API.
+  post:
+    body:
+      application/json: GetOpenIdTokenInput
+    responses:
+      200:
+        body:
+          application/json: GetOpenIdTokenResponse
+      400:
+        description: InvalidParameterException
+/{GetOpenIdTokenForDeveloperIdentity}:
+  uriParameters:
+    GetOpenIdTokenForDeveloperIdentity?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Registers (or retrieves) a Cognito <code>IdentityId</code> and an OpenID Connect token for a user authenticated by your backend authentication process. Supplying multiple logins will create an implicit linked account. You can only specify one developer provider as part of the <code>Logins</code> map, which is linked to the identity pool. The developer provider is the "domain" by which Cognito will refer to your users. You can use <code>GetOpenIdTokenForDeveloperIdentity</code> to create a new identity and to link new logins (that is, user credentials issued by a public provider or developer provider) to an existing identity. When you want to create a new identity, the <code>IdentityId</code> should be null. When you want to associate a new login with an existing authenticated/unauthenticated identity, you can do so by providing the existing <code>IdentityId</code>. This API will create the identity in the specified <code>IdentityPoolId</code>.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: GetOpenIdTokenForDeveloperIdentityInput
+    responses:
+      200:
+        body:
+          application/json: GetOpenIdTokenForDeveloperIdentityResponse
+      400:
+        description: InvalidParameterException
+/{ListIdentities}:
+  uriParameters:
+    ListIdentities?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the identities in a pool.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: ListIdentitiesInput
+    responses:
+      200:
+        body:
+          application/json: ListIdentitiesResponse
+      400:
+        description: InvalidParameterException
+/{ListIdentityPools}:
+  uriParameters:
+    ListIdentityPools?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists all of the Cognito identity pools registered for your account.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: ListIdentityPoolsInput
+    responses:
+      200:
+        body:
+          application/json: ListIdentityPoolsResponse
+      400:
+        description: InvalidParameterException
+/{LookupDeveloperIdentity}:
+  uriParameters:
+    LookupDeveloperIdentity?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves the <code>IdentityID</code> associated with a <code>DeveloperUserIdentifier</code> or the list of <code>DeveloperUserIdentifier</code>s associated with an <code>IdentityId</code> for an existing identity. Either <code>IdentityID</code> or <code>DeveloperUserIdentifier</code> must not be null. If you supply only one of these values, the other value will be searched in the database and returned as a part of the response. If you supply both, <code>DeveloperUserIdentifier</code> will be matched against <code>IdentityID</code>. If the values are verified against the database, the response returns both values and is the same as the request. Otherwise a <code>ResourceConflictException</code> is thrown.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: LookupDeveloperIdentityInput
+    responses:
+      200:
+        body:
+          application/json: LookupDeveloperIdentityResponse
+      400:
+        description: InvalidParameterException
+/{MergeDeveloperIdentities}:
+  uriParameters:
+    MergeDeveloperIdentities?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Merges two users having different <code>IdentityId</code>s, existing in the same identity pool, and identified by the same developer provider. You can use this action to request that discrete users be merged and identified as a single user in the Cognito environment. Cognito associates the given source user (<code>SourceUserIdentifier</code>) with the <code>IdentityId</code> of the <code>DestinationUserIdentifier</code>. Only developer-authenticated users can be merged. If the users to be merged are associated with the same public provider, but as two different users, an exception will be thrown.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: MergeDeveloperIdentitiesInput
+    responses:
+      200:
+        body:
+          application/json: MergeDeveloperIdentitiesResponse
+      400:
+        description: InvalidParameterException
+/{SetIdentityPoolRoles}:
+  uriParameters:
+    SetIdentityPoolRoles?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sets the roles for an identity pool. These roles are used when making calls to <code>GetCredentialsForIdentity</code> action.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: SetIdentityPoolRolesInput
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{UnlinkDeveloperIdentity}:
+  uriParameters:
+    UnlinkDeveloperIdentity?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Unlinks a <code>DeveloperUserIdentifier</code> from an existing identity. Unlinked developer users will be considered new identities next time they are seen. If, for a given Cognito identity, you remove all federated identities as well as the developer user identifier, the Cognito identity becomes inaccessible.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: UnlinkDeveloperIdentityInput
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{UnlinkIdentity}:
+  uriParameters:
+    UnlinkIdentity?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Unlinks a federated identity from an existing account. Unlinked logins will be considered new identities next time they are seen. Removing the last linked login will make this identity inaccessible.This is a public API. You do not need any credentials to call this API.
+  post:
+    body:
+      application/json: UnlinkIdentityInput
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InvalidParameterException
+/{UpdateIdentityPool}:
+  uriParameters:
+    UpdateIdentityPool?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates a user pool.You must use AWS Developer credentials to call this API.
+  post:
+    body:
+      application/json: IdentityPool
+    responses:
+      200:
+        body:
+          application/json: IdentityPool
+      400:
+        description: InvalidParameterException

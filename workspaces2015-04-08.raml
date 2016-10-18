@@ -1,0 +1,973 @@
+#%RAML 1.0
+title: Amazon WorkSpaces
+version: '2015-04-08'
+description: '  This reference provides detailed information about the Amazon WorkSpaces
+  operations.'
+mediaType:
+- application/json
+types:
+  ARN:
+    type: string
+    pattern: ^arn:aws:[A-Za-z0-9][A-za-z0-9_/.-]{0,62}:[A-za-z0-9_/.-]{0,63}:[A-za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-za-z0-9_/.-]{0,127}$
+  Alias:
+    type: string
+  BooleanObject:
+    type: boolean
+  BundleId:
+    type: string
+    pattern: ^wsb-[0-9a-z]{8,63}$
+  BundleIdList:
+    type: array
+    minItems: 1
+    maxItems: 25
+    items:
+      type: BundleId
+  BundleList:
+    type: array
+    items:
+      type: WorkspaceBundle
+  BundleOwner:
+    type: string
+  Compute:
+    type: string
+    enum:
+    - VALUE
+    - STANDARD
+    - PERFORMANCE
+  ComputerName:
+    type: string
+  ConnectionState:
+    type: string
+    enum:
+    - CONNECTED
+    - DISCONNECTED
+    - UNKNOWN
+  DefaultOu:
+    type: string
+  Description:
+    type: string
+  DirectoryId:
+    type: string
+    pattern: ^d-[0-9a-f]{8,63}$
+  DirectoryIdList:
+    type: array
+    minItems: 1
+    maxItems: 25
+    items:
+      type: DirectoryId
+  DirectoryList:
+    type: array
+    items:
+      type: WorkspaceDirectory
+  DirectoryName:
+    type: string
+  DnsIpAddresses:
+    type: array
+    items:
+      type: IpAddress
+  ErrorType:
+    type: string
+  FailedCreateWorkspaceRequests:
+    type: array
+    items:
+      type: FailedCreateWorkspaceRequest
+  FailedRebootWorkspaceRequests:
+    type: array
+    items:
+      type: FailedWorkspaceChangeRequest
+  FailedRebuildWorkspaceRequests:
+    type: array
+    items:
+      type: FailedWorkspaceChangeRequest
+  FailedStartWorkspaceRequests:
+    type: array
+    items:
+      type: FailedWorkspaceChangeRequest
+  FailedStopWorkspaceRequests:
+    type: array
+    items:
+      type: FailedWorkspaceChangeRequest
+  FailedTerminateWorkspaceRequests:
+    type: array
+    items:
+      type: FailedWorkspaceChangeRequest
+  IpAddress:
+    type: string
+  Limit:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 25
+  NonEmptyString:
+    type: string
+    minLength: 1
+  PaginationToken:
+    type: string
+    minLength: 1
+    maxLength: 63
+  RebootWorkspaceRequests:
+    type: array
+    minItems: 1
+    maxItems: 25
+    items:
+      type: RebootRequest
+  RebuildWorkspaceRequests:
+    type: array
+    minItems: 1
+    maxItems: 1
+    items:
+      type: RebuildRequest
+  RegistrationCode:
+    type: string
+    minLength: 1
+    maxLength: 20
+  RunningMode:
+    type: string
+    enum:
+    - AUTO_STOP
+    - ALWAYS_ON
+  RunningModeAutoStopTimeoutInMinutes:
+    type: integer
+    format: int
+  SecurityGroupId:
+    type: string
+    pattern: ^(sg-[0-9a-f]{8})$
+  StartWorkspaceRequests:
+    type: array
+    minItems: 1
+    maxItems: 25
+    items:
+      type: StartRequest
+  StopWorkspaceRequests:
+    type: array
+    minItems: 1
+    maxItems: 25
+    items:
+      type: StopRequest
+  SubnetId:
+    type: string
+    pattern: ^(subnet-[0-9a-f]{8})$
+  SubnetIds:
+    type: array
+    items:
+      type: SubnetId
+  TagKey:
+    type: string
+    minLength: 1
+    maxLength: 127
+  TagKeyList:
+    type: array
+    items:
+      type: NonEmptyString
+  TagList:
+    type: array
+    items:
+      type: Tag
+  TagValue:
+    type: string
+    maxLength: 255
+  TerminateWorkspaceRequests:
+    type: array
+    minItems: 1
+    maxItems: 25
+    items:
+      type: TerminateRequest
+  Timestamp:
+    type: datetime
+  UserName:
+    type: string
+    minLength: 1
+    maxLength: 63
+  VolumeEncryptionKey:
+    type: string
+  WorkspaceConnectionStatusList:
+    type: array
+    items:
+      type: WorkspaceConnectionStatus
+  WorkspaceDirectoryState:
+    type: string
+    enum:
+    - REGISTERING
+    - REGISTERED
+    - DEREGISTERING
+    - DEREGISTERED
+    - ERROR
+  WorkspaceDirectoryType:
+    type: string
+    enum:
+    - SIMPLE_AD
+    - AD_CONNECTOR
+  WorkspaceErrorCode:
+    type: string
+  WorkspaceId:
+    type: string
+    pattern: ^ws-[0-9a-z]{8,63}$
+  WorkspaceIdList:
+    type: array
+    minItems: 1
+    maxItems: 25
+    items:
+      type: WorkspaceId
+  WorkspaceList:
+    type: array
+    items:
+      type: Workspace
+  WorkspaceRequestList:
+    type: array
+    minItems: 1
+    maxItems: 25
+    items:
+      type: WorkspaceRequest
+  WorkspaceState:
+    type: string
+    enum:
+    - PENDING
+    - AVAILABLE
+    - IMPAIRED
+    - UNHEALTHY
+    - REBOOTING
+    - STARTING
+    - REBUILDING
+    - MAINTENANCE
+    - TERMINATING
+    - TERMINATED
+    - SUSPENDED
+    - STOPPING
+    - STOPPED
+    - ERROR
+  ComputeType:
+    type: object
+    properties:
+      Name?:
+        type: Compute
+        description: <p>The name of the compute type for the bundle.</p>
+    description: <p>Contains information about the compute type of a WorkSpace bundle.</p>
+  CreateTagsRequest:
+    type: object
+    properties:
+      ResourceId:
+        type: NonEmptyString
+        description: <p>The resource ID of the request.</p>
+      Tags:
+        type: TagList
+        description: <p>The tags of the request.</p>
+    description: <p>The request of the <a>CreateTags</a> operation.</p>
+  CreateTagsResult:
+    type: object
+    description: <p>The result of the <a>CreateTags</a> operation.</p>
+  CreateWorkspacesRequest:
+    type: object
+    properties:
+      Workspaces:
+        type: WorkspaceRequestList
+        description: <p>An array of structures that specify the WorkSpaces to create.</p>
+    description: <p>Contains the inputs for the <a>CreateWorkspaces</a> operation.</p>
+  CreateWorkspacesResult:
+    type: object
+    properties:
+      FailedRequests?:
+        type: FailedCreateWorkspaceRequests
+        description: <p>An array of structures that represent the WorkSpaces that could not be created.</p>
+      PendingRequests?:
+        type: WorkspaceList
+        description: <p>An array of structures that represent the WorkSpaces that were created.</p> <p>Because this operation is asynchronous, the identifier in <code>WorkspaceId</code> is not immediately available. If you immediately call <a>DescribeWorkspaces</a> with this identifier, no information will be returned.</p>
+    description: <p>Contains the result of the <a>CreateWorkspaces</a> operation.</p>
+  DefaultWorkspaceCreationProperties:
+    type: object
+    properties:
+      EnableWorkDocs?:
+        type: BooleanObject
+        description: <p>Specifies if the directory is enabled for Amazon WorkDocs.</p>
+      EnableInternetAccess?:
+        type: BooleanObject
+        description: <p>A public IP address will be attached to all WorkSpaces that are created or rebuilt.</p>
+      DefaultOu?:
+        type: DefaultOu
+        description: <p>The organizational unit (OU) in the directory that the WorkSpace machine accounts are placed in.</p>
+      CustomSecurityGroupId?:
+        type: SecurityGroupId
+        description: <p>The identifier of any custom security groups that are applied to the WorkSpaces when they are created.</p>
+      UserEnabledAsLocalAdministrator?:
+        type: BooleanObject
+        description: <p>The WorkSpace user is an administrator on the WorkSpace.</p>
+    description: <p>Contains default WorkSpace creation information.</p>
+  DeleteTagsRequest:
+    type: object
+    properties:
+      ResourceId:
+        type: NonEmptyString
+        description: <p>The resource ID of the request.</p>
+      TagKeys:
+        type: TagKeyList
+        description: <p>The tag keys of the request.</p>
+    description: <p>The request of the <a>DeleteTags</a> operation.</p>
+  DeleteTagsResult:
+    type: object
+    description: <p>The result of the <a>DeleteTags</a> operation.</p>
+  DescribeTagsRequest:
+    type: object
+    properties:
+      ResourceId:
+        type: NonEmptyString
+        description: <p>The resource ID of the request.</p>
+    description: <p>The request of the <a>DescribeTags</a> operation.</p>
+  DescribeTagsResult:
+    type: object
+    properties:
+      TagList?:
+        type: TagList
+        description: <p>The list of tags.</p>
+    description: <p>The result of the <a>DescribeTags</a> operation.</p>
+  DescribeWorkspaceBundlesRequest:
+    type: object
+    properties:
+      BundleIds?:
+        type: BundleIdList
+        description: <p>An array of strings that contains the identifiers of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p>
+      Owner?:
+        type: BundleOwner
+        description: <p>The owner of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p> <p>This contains one of the following values:</p> <ul> <li> <p>null- Retrieves the bundles that belong to the account making the call.</p> </li> <li> <p> <code>AMAZON</code>- Retrieves the bundles that are provided by AWS.</p> </li> </ul>
+      NextToken?:
+        type: PaginationToken
+        description: <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
+    description: <p>Contains the inputs for the <a>DescribeWorkspaceBundles</a> operation.</p>
+  DescribeWorkspaceBundlesResult:
+    type: object
+    properties:
+      Bundles?:
+        type: BundleList
+        description: <p>An array of structures that contain information about the bundles.</p>
+      NextToken?:
+        type: PaginationToken
+        description: <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
+    description: <p>Contains the results of the <a>DescribeWorkspaceBundles</a> operation.</p>
+  DescribeWorkspaceDirectoriesRequest:
+    type: object
+    properties:
+      DirectoryIds?:
+        type: DirectoryIdList
+        description: <p>An array of strings that contains the directory identifiers to retrieve information for. If this member is null, all directories are retrieved.</p>
+      NextToken?:
+        type: PaginationToken
+        description: <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
+    description: <p>Contains the inputs for the <a>DescribeWorkspaceDirectories</a> operation.</p>
+  DescribeWorkspaceDirectoriesResult:
+    type: object
+    properties:
+      Directories?:
+        type: DirectoryList
+        description: <p>An array of structures that contain information about the directories.</p>
+      NextToken?:
+        type: PaginationToken
+        description: <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
+    description: <p>Contains the results of the <a>DescribeWorkspaceDirectories</a> operation.</p>
+  DescribeWorkspacesConnectionStatusRequest:
+    type: object
+    properties:
+      WorkspaceIds?:
+        type: WorkspaceIdList
+        description: <p>An array of strings that contain the identifiers of the WorkSpaces.</p>
+      NextToken?:
+        type: PaginationToken
+        description: <p>The next token of the request.</p>
+  DescribeWorkspacesConnectionStatusResult:
+    type: object
+    properties:
+      WorkspacesConnectionStatus?:
+        type: WorkspaceConnectionStatusList
+        description: <p>The connection status of the WorkSpace.</p>
+      NextToken?:
+        type: PaginationToken
+        description: <p>The next token of the result.</p>
+  DescribeWorkspacesRequest:
+    type: object
+    properties:
+      WorkspaceIds?:
+        type: WorkspaceIdList
+        description: <p>An array of strings that contain the identifiers of the WorkSpaces for which to retrieve information. This parameter cannot be combined with any other filter parameter.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, the identifier it returns is not immediately available. If you immediately call <a>DescribeWorkspaces</a> with this identifier, no information is returned.</p>
+      DirectoryId?:
+        type: DirectoryId
+        description: <p>Specifies the directory identifier to which to limit the WorkSpaces. Optionally, you can specify a specific directory user with the <code>UserName</code> parameter. This parameter cannot be combined with any other filter parameter.</p>
+      UserName?:
+        type: UserName
+        description: <p>Used with the <code>DirectoryId</code> parameter to specify the directory user for whom to obtain the WorkSpace.</p>
+      BundleId?:
+        type: BundleId
+        description: <p>The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces that are created from this bundle will be retrieved. This parameter cannot be combined with any other filter parameter.</p>
+      Limit?:
+        type: Limit
+        description: <p>The maximum number of items to return.</p>
+      NextToken?:
+        type: PaginationToken
+        description: <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
+    description: <p>Contains the inputs for the <a>DescribeWorkspaces</a> operation.</p>
+  DescribeWorkspacesResult:
+    type: object
+    properties:
+      Workspaces?:
+        type: WorkspaceList
+        description: <p>An array of structures that contain the information about the WorkSpaces.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, some of this information may be incomplete for a newly-created WorkSpace.</p>
+      NextToken?:
+        type: PaginationToken
+        description: <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
+    description: <p>Contains the results for the <a>DescribeWorkspaces</a> operation.</p>
+  FailedCreateWorkspaceRequest:
+    type: object
+    properties:
+      WorkspaceRequest?:
+        type: WorkspaceRequest
+        description: <p>A <a>FailedCreateWorkspaceRequest$WorkspaceRequest</a> object that contains the information about the WorkSpace that could not be created.</p>
+      ErrorCode?:
+        type: ErrorType
+        description: <p>The error code.</p>
+      ErrorMessage?:
+        type: Description
+        description: <p>The textual error message.</p>
+    description: <p>Contains information about a WorkSpace that could not be created.</p>
+  FailedWorkspaceChangeRequest:
+    type: object
+    properties:
+      WorkspaceId?:
+        type: WorkspaceId
+        description: <p>The identifier of the WorkSpace.</p>
+      ErrorCode?:
+        type: ErrorType
+        description: <p>The error code.</p>
+      ErrorMessage?:
+        type: Description
+        description: <p>The textual error message.</p>
+    description: <p>Contains information about a WorkSpace that could not be rebooted (<a>RebootWorkspaces</a>), rebuilt (<a>RebuildWorkspaces</a>), terminated (<a>TerminateWorkspaces</a>), started (<a>StartWorkspaces</a>), or stopped (<a>StopWorkspaces</a>).</p>
+  ModifyWorkspacePropertiesRequest:
+    type: object
+    properties:
+      WorkspaceId:
+        type: WorkspaceId
+        description: <p>The ID of the WorkSpace.</p>
+      WorkspaceProperties:
+        type: WorkspaceProperties
+        description: <p>The WorkSpace properties of the request.</p>
+  ModifyWorkspacePropertiesResult:
+    type: object
+  RebootRequest:
+    type: object
+    properties:
+      WorkspaceId:
+        type: WorkspaceId
+        description: <p>The identifier of the WorkSpace to reboot.</p>
+    description: <p>Contains information used with the <a>RebootWorkspaces</a> operation to reboot a WorkSpace.</p>
+  RebootWorkspacesRequest:
+    type: object
+    properties:
+      RebootWorkspaceRequests:
+        type: RebootWorkspaceRequests
+        description: <p>An array of structures that specify the WorkSpaces to reboot.</p>
+    description: <p>Contains the inputs for the <a>RebootWorkspaces</a> operation.</p>
+  RebootWorkspacesResult:
+    type: object
+    properties:
+      FailedRequests?:
+        type: FailedRebootWorkspaceRequests
+        description: <p>An array of structures representing any WorkSpaces that could not be rebooted.</p>
+    description: <p>Contains the results of the <a>RebootWorkspaces</a> operation.</p>
+  RebuildRequest:
+    type: object
+    properties:
+      WorkspaceId:
+        type: WorkspaceId
+        description: <p>The identifier of the WorkSpace to rebuild.</p>
+    description: <p>Contains information used with the <a>RebuildWorkspaces</a> operation to rebuild a WorkSpace.</p>
+  RebuildWorkspacesRequest:
+    type: object
+    properties:
+      RebuildWorkspaceRequests:
+        type: RebuildWorkspaceRequests
+        description: <p>An array of structures that specify the WorkSpaces to rebuild.</p>
+    description: <p>Contains the inputs for the <a>RebuildWorkspaces</a> operation.</p>
+  RebuildWorkspacesResult:
+    type: object
+    properties:
+      FailedRequests?:
+        type: FailedRebuildWorkspaceRequests
+        description: <p>An array of structures representing any WorkSpaces that could not be rebuilt.</p>
+    description: <p>Contains the results of the <a>RebuildWorkspaces</a> operation.</p>
+  StartRequest:
+    type: object
+    properties:
+      WorkspaceId?:
+        type: WorkspaceId
+        description: <p>The ID of the WorkSpace.</p>
+    description: <p>Describes the start request.</p>
+  StartWorkspacesRequest:
+    type: object
+    properties:
+      StartWorkspaceRequests:
+        type: StartWorkspaceRequests
+        description: <p>The requests.</p>
+  StartWorkspacesResult:
+    type: object
+    properties:
+      FailedRequests?:
+        type: FailedStartWorkspaceRequests
+        description: <p>The failed requests.</p>
+  StopRequest:
+    type: object
+    properties:
+      WorkspaceId?:
+        type: WorkspaceId
+        description: <p>The ID of the WorkSpace.</p>
+    description: <p>Describes the stop request.</p>
+  StopWorkspacesRequest:
+    type: object
+    properties:
+      StopWorkspaceRequests:
+        type: StopWorkspaceRequests
+        description: <p>The requests.</p>
+  StopWorkspacesResult:
+    type: object
+    properties:
+      FailedRequests?:
+        type: FailedStopWorkspaceRequests
+        description: <p>The failed requests.</p>
+  Tag:
+    type: object
+    properties:
+      Key:
+        type: TagKey
+        description: <p>The key of the tag.</p>
+      Value?:
+        type: TagValue
+        description: <p>The value of the tag.</p>
+    description: <p>Describes the tag of the WorkSpace.</p>
+  TerminateRequest:
+    type: object
+    properties:
+      WorkspaceId:
+        type: WorkspaceId
+        description: <p>The identifier of the WorkSpace to terminate.</p>
+    description: <p>Contains information used with the <a>TerminateWorkspaces</a> operation to terminate a WorkSpace.</p>
+  TerminateWorkspacesRequest:
+    type: object
+    properties:
+      TerminateWorkspaceRequests:
+        type: TerminateWorkspaceRequests
+        description: <p>An array of structures that specify the WorkSpaces to terminate.</p>
+    description: <p>Contains the inputs for the <a>TerminateWorkspaces</a> operation.</p>
+  TerminateWorkspacesResult:
+    type: object
+    properties:
+      FailedRequests?:
+        type: FailedTerminateWorkspaceRequests
+        description: <p>An array of structures representing any WorkSpaces that could not be terminated.</p>
+    description: <p>Contains the results of the <a>TerminateWorkspaces</a> operation.</p>
+  UserStorage:
+    type: object
+    properties:
+      Capacity?:
+        type: NonEmptyString
+        description: <p>The amount of user storage for the bundle.</p>
+    description: <p>Contains information about the user storage for a WorkSpace bundle.</p>
+  Workspace:
+    type: object
+    properties:
+      WorkspaceId?:
+        type: WorkspaceId
+        description: <p>The identifier of the WorkSpace.</p>
+      DirectoryId?:
+        type: DirectoryId
+        description: <p>The identifier of the AWS Directory Service directory that the WorkSpace belongs to.</p>
+      UserName?:
+        type: UserName
+        description: <p>The user that the WorkSpace is assigned to.</p>
+      IpAddress?:
+        type: IpAddress
+        description: <p>The IP address of the WorkSpace.</p>
+      State?:
+        type: WorkspaceState
+        description: <p>The operational state of the WorkSpace.</p>
+      BundleId?:
+        type: BundleId
+        description: <p>The identifier of the bundle that the WorkSpace was created from.</p>
+      SubnetId?:
+        type: SubnetId
+        description: <p>The identifier of the subnet that the WorkSpace is in.</p>
+      ErrorMessage?:
+        type: Description
+        description: <p>If the WorkSpace could not be created, this contains a textual error message that describes the failure.</p>
+      ErrorCode?:
+        type: WorkspaceErrorCode
+        description: <p>If the WorkSpace could not be created, this contains the error code.</p>
+      ComputerName?:
+        type: ComputerName
+        description: <p>The name of the WorkSpace as seen by the operating system.</p>
+      VolumeEncryptionKey?:
+        type: VolumeEncryptionKey
+        description: <p>The KMS key used to encrypt data stored on your WorkSpace.</p>
+      UserVolumeEncryptionEnabled?:
+        type: BooleanObject
+        description: '<p>Specifies whether the data stored on the user volume, or
+          D: drive, is encrypted.</p>'
+      RootVolumeEncryptionEnabled?:
+        type: BooleanObject
+        description: '<p>Specifies whether the data stored on the root volume, or
+          C: drive, is encrypted.</p>'
+      WorkspaceProperties?:
+        type: WorkspaceProperties
+    description: <p>Contains information about a WorkSpace.</p>
+  WorkspaceBundle:
+    type: object
+    properties:
+      BundleId?:
+        type: BundleId
+        description: <p>The bundle identifier.</p>
+      Name?:
+        type: NonEmptyString
+        description: <p>The name of the bundle.</p>
+      Owner?:
+        type: BundleOwner
+        description: <p>The owner of the bundle. This contains the owner's account identifier, or <code>AMAZON</code> if the bundle is provided by AWS.</p>
+      Description?:
+        type: Description
+        description: <p>The bundle description.</p>
+      UserStorage?:
+        type: UserStorage
+        description: <p>A <a>UserStorage</a> object that specifies the amount of user storage that the bundle contains.</p>
+      ComputeType?:
+        type: ComputeType
+        description: <p>A <a>ComputeType</a> object that specifies the compute type for the bundle.</p>
+    description: <p>Contains information about a WorkSpace bundle.</p>
+  WorkspaceConnectionStatus:
+    type: object
+    properties:
+      WorkspaceId?:
+        type: WorkspaceId
+        description: <p>The ID of the WorkSpace.</p>
+      ConnectionState?:
+        type: ConnectionState
+        description: <p>The connection state of the WorkSpace. Returns UNKOWN if the WorkSpace is in a Stopped state.</p>
+      ConnectionStateCheckTimestamp?:
+        type: Timestamp
+        description: <p>The timestamp of the connection state check.</p>
+      LastKnownUserConnectionTimestamp?:
+        type: Timestamp
+        description: <p>The timestamp of the last known user connection.</p>
+    description: <p>Describes the connection status of a WorkSpace.</p>
+  WorkspaceDirectory:
+    type: object
+    properties:
+      DirectoryId?:
+        type: DirectoryId
+        description: <p>The directory identifier.</p>
+      Alias?:
+        type: Alias
+        description: <p>The directory alias.</p>
+      DirectoryName?:
+        type: DirectoryName
+        description: <p>The name of the directory.</p>
+      RegistrationCode?:
+        type: RegistrationCode
+        description: <p>The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.</p>
+      SubnetIds?:
+        type: SubnetIds
+        description: <p>An array of strings that contains the identifiers of the subnets used with the directory.</p>
+      DnsIpAddresses?:
+        type: DnsIpAddresses
+        description: <p>An array of strings that contains the IP addresses of the DNS servers for the directory.</p>
+      CustomerUserName?:
+        type: UserName
+        description: <p>The user name for the service account.</p>
+      IamRoleId?:
+        type: ARN
+        description: <p>The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.</p>
+      DirectoryType?:
+        type: WorkspaceDirectoryType
+        description: <p>The directory type.</p>
+      WorkspaceSecurityGroupId?:
+        type: SecurityGroupId
+        description: <p>The identifier of the security group that is assigned to new WorkSpaces.</p>
+      State?:
+        type: WorkspaceDirectoryState
+        description: <p>The state of the directory's registration with Amazon WorkSpaces</p>
+      WorkspaceCreationProperties?:
+        type: DefaultWorkspaceCreationProperties
+        description: <p>A structure that specifies the default creation properties for all WorkSpaces in the directory.</p>
+    description: <p>Contains information about an AWS Directory Service directory for use with Amazon WorkSpaces.</p>
+  WorkspaceProperties:
+    type: object
+    properties:
+      RunningMode?:
+        type: RunningMode
+        description: <p>The running mode of the WorkSpace. AlwaysOn WorkSpaces are billed monthly. AutoStop WorkSpaces are billed by the hour and stopped when no longer being used in order to save on costs.</p>
+      RunningModeAutoStopTimeoutInMinutes?:
+        type: RunningModeAutoStopTimeoutInMinutes
+        description: <p>The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60 minute intervals.</p>
+    description: <p>Describes the properties of a WorkSpace.</p>
+  WorkspaceRequest:
+    type: object
+    properties:
+      DirectoryId:
+        type: DirectoryId
+        description: <p>The identifier of the AWS Directory Service directory to create the WorkSpace in. You can use the <a>DescribeWorkspaceDirectories</a> operation to obtain a list of the directories that are available.</p>
+      UserName:
+        type: UserName
+        description: <p>The username that the WorkSpace is assigned to. This username must exist in the AWS Directory Service directory specified by the <code>DirectoryId</code> member.</p>
+      BundleId:
+        type: BundleId
+        description: <p>The identifier of the bundle to create the WorkSpace from. You can use the <a>DescribeWorkspaceBundles</a> operation to obtain a list of the bundles that are available.</p>
+      VolumeEncryptionKey?:
+        type: VolumeEncryptionKey
+        description: <p>The KMS key used to encrypt data stored on your WorkSpace.</p>
+      UserVolumeEncryptionEnabled?:
+        type: BooleanObject
+        description: '<p>Specifies whether the data stored on the user volume, or
+          D: drive, is encrypted.</p>'
+      RootVolumeEncryptionEnabled?:
+        type: BooleanObject
+        description: '<p>Specifies whether the data stored on the root volume, or
+          C: drive, is encrypted.</p>'
+      WorkspaceProperties?:
+        type: WorkspaceProperties
+      Tags?:
+        type: TagList
+        description: <p>The tags of the WorkSpace request.</p>
+    description: <p>Contains information about a WorkSpace creation request.</p>
+/{CreateTags}:
+  uriParameters:
+    CreateTags?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates tags for a WorkSpace.
+  post:
+    body:
+      application/json: CreateTagsRequest
+    responses:
+      200:
+        body:
+          application/json: CreateTagsResult
+      400:
+        description: ResourceNotFoundException
+/{CreateWorkspaces}:
+  uriParameters:
+    CreateWorkspaces?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates one or more WorkSpaces. <note> This operation is asynchronous and returns before the WorkSpaces are created. </note>
+  post:
+    body:
+      application/json: CreateWorkspacesRequest
+    responses:
+      200:
+        body:
+          application/json: CreateWorkspacesResult
+      400:
+        description: ResourceLimitExceededException
+/{DeleteTags}:
+  uriParameters:
+    DeleteTags?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes tags from a WorkSpace.
+  post:
+    body:
+      application/json: DeleteTagsRequest
+    responses:
+      200:
+        body:
+          application/json: DeleteTagsResult
+      400:
+        description: ResourceNotFoundException
+/{DescribeTags}:
+  uriParameters:
+    DescribeTags?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes tags for a WorkSpace.
+  post:
+    body:
+      application/json: DescribeTagsRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeTagsResult
+      400:
+        description: ResourceNotFoundException
+/{DescribeWorkspaceBundles}:
+  uriParameters:
+    DescribeWorkspaceBundles?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Obtains information about the WorkSpace bundles that are available to your account in the specified region. You can filter the results with either the <code>BundleIds</code> parameter, or the <code>Owner</code> parameter, but not both. This operation supports pagination with the use of the <code>NextToken</code> request and response parameters. If more results are available, the <code>NextToken</code> response member contains a token that you pass in the next call to this operation to retrieve the next set of items.
+  post:
+    body:
+      application/json: DescribeWorkspaceBundlesRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeWorkspaceBundlesResult
+      400:
+        description: InvalidParameterValuesException
+/{DescribeWorkspaceDirectories}:
+  uriParameters:
+    DescribeWorkspaceDirectories?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves information about the AWS Directory Service directories in the region that are registered with Amazon WorkSpaces and are available to your account. This operation supports pagination with the use of the <code>NextToken</code> request and response parameters. If more results are available, the <code>NextToken</code> response member contains a token that you pass in the next call to this operation to retrieve the next set of items.
+  post:
+    body:
+      application/json: DescribeWorkspaceDirectoriesRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeWorkspaceDirectoriesResult
+      400:
+        description: InvalidParameterValuesException
+/{DescribeWorkspaces}:
+  uriParameters:
+    DescribeWorkspaces?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Obtains information about the specified WorkSpaces. Only one of the filter parameters, such as <code>BundleId</code>, <code>DirectoryId</code>, or <code>WorkspaceIds</code>, can be specified at a time. This operation supports pagination with the use of the <code>NextToken</code> request and response parameters. If more results are available, the <code>NextToken</code> response member contains a token that you pass in the next call to this operation to retrieve the next set of items.
+  post:
+    body:
+      application/json: DescribeWorkspacesRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeWorkspacesResult
+      400:
+        description: InvalidParameterValuesException
+/{DescribeWorkspacesConnectionStatus}:
+  uriParameters:
+    DescribeWorkspacesConnectionStatus?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the connection status of a specified WorkSpace.
+  post:
+    body:
+      application/json: DescribeWorkspacesConnectionStatusRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeWorkspacesConnectionStatusResult
+      400:
+        description: InvalidParameterValuesException
+/{ModifyWorkspaceProperties}:
+  uriParameters:
+    ModifyWorkspaceProperties?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Modifies the WorkSpace properties, including the RunningMode and AutoStop time.
+  post:
+    body:
+      application/json: ModifyWorkspacePropertiesRequest
+    responses:
+      200:
+        body:
+          application/json: ModifyWorkspacePropertiesResult
+      400:
+        description: InvalidParameterValuesException
+/{RebootWorkspaces}:
+  uriParameters:
+    RebootWorkspaces?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Reboots the specified WorkSpaces. To be able to reboot a WorkSpace, the WorkSpace must have a <b>State</b> of <code>AVAILABLE</code>, <code>IMPAIRED</code>, or <code>INOPERABLE</code>. <note> This operation is asynchronous and returns before the WorkSpaces have rebooted. </note>
+  post:
+    body:
+      application/json: RebootWorkspacesRequest
+    responses:
+      200:
+        body:
+          application/json: RebootWorkspacesResult
+/{RebuildWorkspaces}:
+  uriParameters:
+    RebuildWorkspaces?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Rebuilds the specified WorkSpaces. Rebuilding a WorkSpace is a potentially
+    destructive action that can result in the loss of data. Rebuilding a WorkSpace
+    causes the following to occur: <ul> <li> The system is restored to the image of
+    the bundle that the WorkSpace is created from. Any applications that have been
+    installed, or system settings that have been made since the WorkSpace was created
+    will be lost. </li> <li> The data drive (D drive) is re-created from the last
+    automatic snapshot taken of the data drive. The current contents of the data drive
+    are overwritten. Automatic snapshots of the data drive are taken every 12 hours,
+    so the snapshot can be as much as 12 hours old. </li> </ul> To be able to rebuild
+    a WorkSpace, the WorkSpace must have a <b>State</b> of <code>AVAILABLE</code>
+    or <code>ERROR</code>. <note> This operation is asynchronous and returns before
+    the WorkSpaces have been completely rebuilt. </note>'
+  post:
+    body:
+      application/json: RebuildWorkspacesRequest
+    responses:
+      200:
+        body:
+          application/json: RebuildWorkspacesResult
+/{StartWorkspaces}:
+  uriParameters:
+    StartWorkspaces?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Starts the specified WorkSpaces. The API only works with WorkSpaces that have RunningMode configured as AutoStop and the State set to “STOPPED.”
+  post:
+    body:
+      application/json: StartWorkspacesRequest
+    responses:
+      200:
+        body:
+          application/json: StartWorkspacesResult
+/{StopWorkspaces}:
+  uriParameters:
+    StopWorkspaces?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: ' Stops the specified WorkSpaces. The API only works with WorkSpaces
+    that have RunningMode configured as AutoStop and the State set to AVAILABLE, IMPAIRED,
+    UNHEALTHY, or ERROR.'
+  post:
+    body:
+      application/json: StopWorkspacesRequest
+    responses:
+      200:
+        body:
+          application/json: StopWorkspacesResult
+/{TerminateWorkspaces}:
+  uriParameters:
+    TerminateWorkspaces?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Terminates the specified WorkSpaces. Terminating a WorkSpace is a permanent action and cannot be undone. The user's data is not maintained and will be destroyed. If you need to archive any user data, contact Amazon Web Services before terminating the WorkSpace. You can terminate a WorkSpace that is in any state except <code>SUSPENDED</code>. <note> This operation is asynchronous and returns before the WorkSpaces have been completely terminated. </note>
+  post:
+    body:
+      application/json: TerminateWorkspacesRequest
+    responses:
+      200:
+        body:
+          application/json: TerminateWorkspacesResult

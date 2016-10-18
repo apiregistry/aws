@@ -1,0 +1,155 @@
+#%RAML 1.0
+title: AWS IoT Data Plane
+version: '2015-05-28'
+description: '  AWS IoT-Data enables secure, bi-directional communication between
+  Internet-connected things (such as sensors, actuators, embedded devices, or smart
+  appliances) and the AWS cloud. It implements a broker for applications and things
+  to publish messages over HTTP (Publish) and retrieve, update, and delete thing shadows.
+  A thing shadow is a persistent representation of your things and their state in
+  the AWS cloud.'
+mediaType:
+- application/json
+types:
+  JsonDocument:
+    type: file
+  Payload:
+    type: file
+  Qos:
+    type: integer
+    format: int
+    minimum: 0
+    maximum: 1
+  ThingName:
+    type: string
+    pattern: '[a-zA-Z0-9_-]+'
+    minLength: 1
+    maxLength: 128
+  Topic:
+    type: string
+/things:
+  /{thingName}:
+    uriParameters:
+      thingName?:
+        type: ThingName
+        description: <p>The name of the thing.</p>
+    /shadow:
+      description: Deletes the thing shadow for the specified thing. For more information, see <a href="http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html">DeleteThingShadow</a> in the <i>AWS IoT Developer Guide</i>.
+      get:
+        headers:
+          thingName?:
+            type: ThingName
+            description: <p>The name of the thing.</p>
+        responses:
+          200:
+            body:
+              application/json:
+                type: JsonDocument
+                description: <p>The state information, in JSON format.</p>
+          400:
+            description: InvalidRequestException
+          404:
+            description: ResourceNotFoundException
+          429:
+            description: ThrottlingException
+          401:
+            description: UnauthorizedException
+          503:
+            description: ServiceUnavailableException
+          500:
+            description: InternalFailureException
+          405:
+            description: MethodNotAllowedException
+          415:
+            description: UnsupportedDocumentEncodingException
+      post:
+        headers:
+          thingName?:
+            type: ThingName
+            description: <p>The name of the thing.</p>
+        body:
+          application/json:
+            type: JsonDocument
+            description: <p>The state information, in JSON format.</p>
+        responses:
+          200:
+            body:
+              application/json:
+                type: JsonDocument
+                description: <p>The state information, in JSON format.</p>
+          409:
+            description: ConflictException
+          413:
+            description: RequestEntityTooLargeException
+          400:
+            description: InvalidRequestException
+          429:
+            description: ThrottlingException
+          401:
+            description: UnauthorizedException
+          503:
+            description: ServiceUnavailableException
+          500:
+            description: InternalFailureException
+          405:
+            description: MethodNotAllowedException
+          415:
+            description: UnsupportedDocumentEncodingException
+      delete:
+        headers:
+          thingName?:
+            type: ThingName
+            description: <p>The name of the thing.</p>
+        responses:
+          200:
+            body:
+              application/json:
+                type: JsonDocument
+                description: <p>The state information, in JSON format.</p>
+          404:
+            description: ResourceNotFoundException
+          400:
+            description: InvalidRequestException
+          429:
+            description: ThrottlingException
+          401:
+            description: UnauthorizedException
+          503:
+            description: ServiceUnavailableException
+          500:
+            description: InternalFailureException
+          405:
+            description: MethodNotAllowedException
+          415:
+            description: UnsupportedDocumentEncodingException
+/topics:
+  /{topic}:
+    uriParameters:
+      topic?:
+        type: Topic
+        description: <p>The name of the MQTT topic.</p>
+    description: Publishes state information. For more information, see <a href="http://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http">HTTP Protocol</a> in the <i>AWS IoT Developer Guide</i>.
+    post:
+      queryParameters:
+        qos:
+          type: Qos
+          description: <p>The Quality of Service (QoS) level.</p>
+      headers:
+        topic?:
+          type: Topic
+          description: <p>The name of the MQTT topic.</p>
+      body:
+        application/json:
+          type: Payload
+          description: <p>The state information, in JSON format.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        500:
+          description: InternalFailureException
+        400:
+          description: InvalidRequestException
+        401:
+          description: UnauthorizedException
+        405:
+          description: MethodNotAllowedException

@@ -1,0 +1,1994 @@
+#%RAML 1.0
+title: Elastic Load Balancing
+version: '2015-12-01'
+description: '  A load balancer distributes incoming traffic across targets, such
+  as your EC2 instances. This enables you to increase the availability of your application.
+  The load balancer also monitors the health of its registered targets and ensures
+  that it routes traffic only to healthy targets. You configure your load balancer
+  to accept incoming traffic by specifying one or more listeners, which are configured
+  with a protocol and port number for connections from clients to the load balancer.
+  You configure a target group with a protocol and port number for connections from
+  the load balancer to the targets, and with health check settings to be used when
+  checking the health status of the targets.  Elastic Load Balancing supports two
+  types of load balancers: Classic load balancers and Application load balancers (new).
+  A Classic load balancer makes routing and load balancing decisions either at the
+  transport layer (TCP/SSL) or the application layer (HTTP/HTTPS), and supports either
+  EC2-Classic or a VPC. An Application load balancer makes routing and load balancing
+  decisions at the application layer (HTTP/HTTPS), supports path-based routing, and
+  can route requests to one or more ports on each EC2 instance or container instance
+  in your virtual private cloud (VPC). For more information, see the <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/">Elastic
+  Load Balancing User Guide</a>.  This reference covers the 2015-12-01 API, which
+  supports Application load balancers. The 2012-06-01 API supports Classic load balancers.  To
+  get started with an Application load balancer, complete the following tasks: <ol>
+  <li>  Create a load balancer using <a>CreateLoadBalancer</a>. </li> <li>  Create
+  a target group using <a>CreateTargetGroup</a>. </li> <li>  Register targets for
+  the target group using <a>RegisterTargets</a>. </li> <li>  Create one or more listeners
+  for your load balancer using <a>CreateListener</a>. </li> <li>  (Optional) Create
+  one or more rules for content routing based on URL using <a>CreateRule</a>. </li>
+  </ol>  To delete an Application load balancer and its related resources, complete
+  the following tasks: <ol> <li>  Delete the load balancer using <a>DeleteLoadBalancer</a>.
+  </li> <li>  Delete the target group using <a>DeleteTargetGroup</a>. </li> </ol>  All
+  Elastic Load Balancing operations are idempotent, which means that they complete
+  at most one time. If you repeat an operation, it succeeds.'
+mediaType:
+- application/xml
+types:
+  ActionTypeEnum:
+    type: string
+    enum:
+    - forward
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  Actions:
+    type: array
+    items:
+      type: Action
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  AvailabilityZones:
+    type: array
+    items:
+      type: AvailabilityZone
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  CanonicalHostedZoneId:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  CertificateArn:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  CertificateList:
+    type: array
+    items:
+      type: Certificate
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  CipherName:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  CipherPriority:
+    type: integer
+    format: int
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  Ciphers:
+    type: array
+    items:
+      type: Cipher
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  ConditionFieldName:
+    type: string
+    maxLength: 64
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  CreatedTime:
+    type: datetime
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  DNSName:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  Description:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  HealthCheckIntervalSeconds:
+    type: integer
+    format: int
+    minimum: 5
+    maximum: 300
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  HealthCheckPort:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  HealthCheckThresholdCount:
+    type: integer
+    format: int
+    minimum: 2
+    maximum: 10
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  HealthCheckTimeoutSeconds:
+    type: integer
+    format: int
+    minimum: 2
+    maximum: 60
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  HttpCode:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  IsDefault:
+    type: boolean
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  ListOfString:
+    type: array
+    items:
+      type: StringValue
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  ListenerArn:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  ListenerArns:
+    type: array
+    items:
+      type: ListenerArn
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  Listeners:
+    type: array
+    items:
+      type: Listener
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  LoadBalancerArn:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  LoadBalancerArns:
+    type: array
+    items:
+      type: LoadBalancerArn
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  LoadBalancerAttributeKey:
+    type: string
+    pattern: ^[a-zA-Z0-9._]+$
+    maxLength: 256
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  LoadBalancerAttributeValue:
+    type: string
+    maxLength: 1024
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  LoadBalancerAttributes:
+    type: array
+    maxItems: 20
+    items:
+      type: LoadBalancerAttribute
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  LoadBalancerName:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  LoadBalancerNames:
+    type: array
+    items:
+      type: LoadBalancerName
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  LoadBalancerSchemeEnum:
+    type: string
+    enum:
+    - internet-facing
+    - internal
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  LoadBalancerStateEnum:
+    type: string
+    enum:
+    - active
+    - provisioning
+    - failed
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  LoadBalancerTypeEnum:
+    type: string
+    enum:
+    - application
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  LoadBalancers:
+    type: array
+    items:
+      type: LoadBalancer
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  Marker:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  PageSize:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 400
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  Path:
+    type: string
+    minLength: 1
+    maxLength: 1024
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  Port:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 65535
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  ProtocolEnum:
+    type: string
+    enum:
+    - HTTP
+    - HTTPS
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  ResourceArn:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  ResourceArns:
+    type: array
+    items:
+      type: ResourceArn
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  RuleArn:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  RuleArns:
+    type: array
+    items:
+      type: RuleArn
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  RuleConditionList:
+    type: array
+    items:
+      type: RuleCondition
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  RulePriority:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 99999
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  RulePriorityList:
+    type: array
+    items:
+      type: RulePriorityPair
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  Rules:
+    type: array
+    items:
+      type: Rule
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  SecurityGroupId:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  SecurityGroups:
+    type: array
+    items:
+      type: SecurityGroupId
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  SslPolicies:
+    type: array
+    items:
+      type: SslPolicy
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  SslPolicyName:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  SslPolicyNames:
+    type: array
+    items:
+      type: SslPolicyName
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  SslProtocol:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  SslProtocols:
+    type: array
+    items:
+      type: SslProtocol
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  StateReason:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  String:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  StringValue:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  SubnetId:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  Subnets:
+    type: array
+    items:
+      type: SubnetId
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TagDescriptions:
+    type: array
+    items:
+      type: TagDescription
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TagKey:
+    type: string
+    pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+    minLength: 1
+    maxLength: 128
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TagKeys:
+    type: array
+    items:
+      type: TagKey
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TagList:
+    type: array
+    minItems: 1
+    items:
+      type: Tag
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TagValue:
+    type: string
+    pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+    minLength: 0
+    maxLength: 256
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetDescriptions:
+    type: array
+    items:
+      type: TargetDescription
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetGroupArn:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetGroupArns:
+    type: array
+    items:
+      type: TargetGroupArn
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetGroupAttributeKey:
+    type: string
+    pattern: ^[a-zA-Z0-9._]+$
+    maxLength: 256
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetGroupAttributeValue:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetGroupAttributes:
+    type: array
+    items:
+      type: TargetGroupAttribute
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetGroupName:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetGroupNames:
+    type: array
+    items:
+      type: TargetGroupName
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetGroups:
+    type: array
+    items:
+      type: TargetGroup
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetHealthDescriptions:
+    type: array
+    items:
+      type: TargetHealthDescription
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetHealthReasonEnum:
+    type: string
+    enum:
+    - Elb.RegistrationInProgress
+    - Elb.InitialHealthChecking
+    - Target.ResponseCodeMismatch
+    - Target.Timeout
+    - Target.FailedHealthChecks
+    - Target.NotRegistered
+    - Target.NotInUse
+    - Target.DeregistrationInProgress
+    - Target.InvalidState
+    - Elb.InternalError
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetHealthStateEnum:
+    type: string
+    enum:
+    - initial
+    - healthy
+    - unhealthy
+    - unused
+    - draining
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  TargetId:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  VpcId:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  ZoneName:
+    type: string
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+  Action:
+    type: object
+    properties:
+      Type:
+        type: ActionTypeEnum
+        description: <p>The type of action.</p>
+      TargetGroupArn:
+        type: TargetGroupArn
+        description: <p>The Amazon Resource Name (ARN) of the target group.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about an action.</p>
+  AddTagsInput:
+    type: object
+    properties:
+      ResourceArns:
+        type: ResourceArns
+        description: <p>The Amazon Resource Name (ARN) of the resource.</p>
+      Tags:
+        type: TagList
+        description: <p>The tags. Each resource can have a maximum of 10 tags.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for AddTags.</p>
+  AddTagsOutput:
+    type: object
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of AddTags.</p>
+  AvailabilityZone:
+    type: object
+    properties:
+      ZoneName?:
+        type: ZoneName
+        description: <p>The name of the Availability Zone.</p>
+      SubnetId?:
+        type: SubnetId
+        description: <p>The ID of the subnet.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about an Availability Zone.</p>
+  Certificate:
+    type: object
+    properties:
+      CertificateArn?:
+        type: CertificateArn
+        description: <p>The Amazon Resource Name (ARN) of the certificate.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about an SSL server certificate deployed on a load balancer.</p>
+  Cipher:
+    type: object
+    properties:
+      Name?:
+        type: CipherName
+        description: <p>The name of the cipher.</p>
+      Priority?:
+        type: CipherPriority
+        description: <p>The priority of the cipher.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about a cipher used in a policy.</p>
+  CreateListenerInput:
+    type: object
+    properties:
+      LoadBalancerArn:
+        type: LoadBalancerArn
+        description: <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+      Protocol:
+        type: ProtocolEnum
+        description: <p>The protocol for connections from clients to the load balancer.</p>
+      Port:
+        type: Port
+        description: <p>The port on which the load balancer is listening.</p>
+      SslPolicy?:
+        type: SslPolicyName
+        description: <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
+      Certificates?:
+        type: CertificateList
+        description: <p>The SSL server certificate. You must provide exactly one certificate if the protocol is HTTPS.</p>
+      DefaultActions:
+        type: Actions
+        description: <p>The default actions for the listener.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for CreateListener.</p>
+  CreateListenerOutput:
+    type: object
+    properties:
+      Listeners?:
+        type: Listeners
+        description: <p>Information about the listener.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of CreateListener.</p>
+  CreateLoadBalancerInput:
+    type: object
+    properties:
+      Name:
+        type: LoadBalancerName
+        description: <p>The name of the load balancer.</p> <p>This name must be unique within your AWS account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.</p>
+      Subnets:
+        type: Subnets
+        description: <p>The IDs of the subnets to attach to the load balancer. You can specify only one subnet per Availability Zone. You must specify subnets from at least two Availability Zones.</p>
+      SecurityGroups?:
+        type: SecurityGroups
+        description: <p>The IDs of the security groups to assign to the load balancer.</p>
+      Scheme?:
+        type: LoadBalancerSchemeEnum
+        description: <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p> <p>The default is an Internet-facing load balancer.</p>
+      Tags?:
+        type: TagList
+        description: <p>One or more tags to assign to the load balancer.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for CreateLoadBalancer.</p>
+  CreateLoadBalancerOutput:
+    type: object
+    properties:
+      LoadBalancers?:
+        type: LoadBalancers
+        description: <p>Information about the load balancer.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of CreateLoadBalancer.</p>
+  CreateRuleInput:
+    type: object
+    properties:
+      ListenerArn:
+        type: ListenerArn
+        description: <p>The Amazon Resource Name (ARN) of the listener.</p>
+      Conditions:
+        type: RuleConditionList
+        description: <p>The conditions.</p>
+      Priority:
+        type: RulePriority
+        description: <p>The priority for the rule. A listener can't have multiple rules with the same priority.</p>
+      Actions:
+        type: Actions
+        description: <p>The actions for the rule.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for CreateRule.</p>
+  CreateRuleOutput:
+    type: object
+    properties:
+      Rules?:
+        type: Rules
+        description: <p>Information about the rule.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of CreateRule.</p>
+  CreateTargetGroupInput:
+    type: object
+    properties:
+      Name:
+        type: TargetGroupName
+        description: <p>The name of the target group.</p>
+      Protocol:
+        type: ProtocolEnum
+        description: <p>The protocol to use for routing traffic to the targets.</p>
+      Port:
+        type: Port
+        description: <p>The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target.</p>
+      VpcId:
+        type: VpcId
+        description: <p>The identifier of the virtual private cloud (VPC).</p>
+      HealthCheckProtocol?:
+        type: ProtocolEnum
+        description: <p>The protocol the load balancer uses when performing health checks on targets. The default is the HTTP protocol.</p>
+      HealthCheckPort?:
+        type: HealthCheckPort
+        description: <p>The port the load balancer uses when performing health checks on targets. The default is <code>traffic-port</code>, which indicates the port on which each target receives traffic from the load balancer.</p>
+      HealthCheckPath?:
+        type: Path
+        description: <p>The ping path that is the destination on the targets for health checks. The default is /.</p>
+      HealthCheckIntervalSeconds?:
+        type: HealthCheckIntervalSeconds
+        description: <p>The approximate amount of time, in seconds, between health checks of an individual target. The default is 30 seconds.</p>
+      HealthCheckTimeoutSeconds?:
+        type: HealthCheckTimeoutSeconds
+        description: <p>The amount of time, in seconds, during which no response from a target means a failed health check. The default is 5 seconds.</p>
+      HealthyThresholdCount?:
+        type: HealthCheckThresholdCount
+        description: <p>The number of consecutive health checks successes required before considering an unhealthy target healthy. The default is 5.</p>
+      UnhealthyThresholdCount?:
+        type: HealthCheckThresholdCount
+        description: <p>The number of consecutive health check failures required before considering a target unhealthy. The default is 2.</p>
+      Matcher?:
+        type: Matcher
+        description: <p>The HTTP codes to use when checking for a successful response from a target. The default is 200.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for CreateTargetGroup.</p>
+  CreateTargetGroupOutput:
+    type: object
+    properties:
+      TargetGroups?:
+        type: TargetGroups
+        description: <p>Information about the target group.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of CreateTargetGroup.</p>
+  DeleteListenerInput:
+    type: object
+    properties:
+      ListenerArn:
+        type: ListenerArn
+        description: <p>The Amazon Resource Name (ARN) of the listener.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DeleteListener.</p>
+  DeleteListenerOutput:
+    type: object
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DeleteListener.</p>
+  DeleteLoadBalancerInput:
+    type: object
+    properties:
+      LoadBalancerArn:
+        type: LoadBalancerArn
+        description: <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DeleteLoadBalancer.</p>
+  DeleteLoadBalancerOutput:
+    type: object
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DeleteLoadBalancer.</p>
+  DeleteRuleInput:
+    type: object
+    properties:
+      RuleArn:
+        type: RuleArn
+        description: <p>The Amazon Resource Name (ARN) of the rule.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DeleteRule.</p>
+  DeleteRuleOutput:
+    type: object
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DeleteRule.</p>
+  DeleteTargetGroupInput:
+    type: object
+    properties:
+      TargetGroupArn:
+        type: TargetGroupArn
+        description: <p>The Amazon Resource Name (ARN) of the target group.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DeleteTargetGroup.</p>
+  DeleteTargetGroupOutput:
+    type: object
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DeleteTargetGroup.</p>
+  DeregisterTargetsInput:
+    type: object
+    properties:
+      TargetGroupArn:
+        type: TargetGroupArn
+        description: <p>The Amazon Resource Name (ARN) of the target group.</p>
+      Targets:
+        type: TargetDescriptions
+        description: <p>The targets.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DeregisterTargets.</p>
+  DeregisterTargetsOutput:
+    type: object
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DeregisterTargets.</p>
+  DescribeListenersInput:
+    type: object
+    properties:
+      LoadBalancerArn?:
+        type: LoadBalancerArn
+        description: <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+      ListenerArns?:
+        type: ListenerArns
+        description: <p>The Amazon Resource Names (ARN) of the listeners.</p>
+      Marker?:
+        type: Marker
+        description: <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+      PageSize?:
+        type: PageSize
+        description: <p>The maximum number of results to return with this call.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DescribeListeners.</p>
+  DescribeListenersOutput:
+    type: object
+    properties:
+      Listeners?:
+        type: Listeners
+        description: <p>Information about the listeners.</p>
+      NextMarker?:
+        type: Marker
+        description: <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DescribeListeners.</p>
+  DescribeLoadBalancerAttributesInput:
+    type: object
+    properties:
+      LoadBalancerArn:
+        type: LoadBalancerArn
+        description: <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DescribeLoadBalancerAttributes.</p>
+  DescribeLoadBalancerAttributesOutput:
+    type: object
+    properties:
+      Attributes?:
+        type: LoadBalancerAttributes
+        description: <p>Information about the load balancer attributes.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DescribeLoadBalancerAttributes.</p>
+  DescribeLoadBalancersInput:
+    type: object
+    properties:
+      LoadBalancerArns?:
+        type: LoadBalancerArns
+        description: <p>The Amazon Resource Names (ARN) of the load balancers.</p>
+      Names?:
+        type: LoadBalancerNames
+        description: <p>The names of the load balancers.</p>
+      Marker?:
+        type: Marker
+        description: <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+      PageSize?:
+        type: PageSize
+        description: <p>The maximum number of results to return with this call.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DescribeLoadBalancers.</p>
+  DescribeLoadBalancersOutput:
+    type: object
+    properties:
+      LoadBalancers?:
+        type: LoadBalancers
+        description: <p>Information about the load balancers.</p>
+      NextMarker?:
+        type: Marker
+        description: <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DescribeLoadBalancers.</p>
+  DescribeRulesInput:
+    type: object
+    properties:
+      ListenerArn?:
+        type: ListenerArn
+        description: <p>The Amazon Resource Name (ARN) of the listener.</p>
+      RuleArns?:
+        type: RuleArns
+        description: <p>The Amazon Resource Names (ARN) of the rules.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DescribeRules.</p>
+  DescribeRulesOutput:
+    type: object
+    properties:
+      Rules?:
+        type: Rules
+        description: <p>Information about the rules.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DescribeRules.</p>
+  DescribeSSLPoliciesInput:
+    type: object
+    properties:
+      Names?:
+        type: SslPolicyNames
+        description: <p>The names of the policies.</p>
+      Marker?:
+        type: Marker
+        description: <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+      PageSize?:
+        type: PageSize
+        description: <p>The maximum number of results to return with this call.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DescribeSSLPolicies.</p>
+  DescribeSSLPoliciesOutput:
+    type: object
+    properties:
+      SslPolicies?:
+        type: SslPolicies
+        description: <p>Information about the policies.</p>
+      NextMarker?:
+        type: Marker
+        description: <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DescribeSSLPolicies.</p>
+  DescribeTagsInput:
+    type: object
+    properties:
+      ResourceArns:
+        type: ResourceArns
+        description: <p>The Amazon Resource Names (ARN) of the resources.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DescribeTags.</p>
+  DescribeTagsOutput:
+    type: object
+    properties:
+      TagDescriptions?:
+        type: TagDescriptions
+        description: <p>Information about the tags.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DescribeTags.</p>
+  DescribeTargetGroupAttributesInput:
+    type: object
+    properties:
+      TargetGroupArn:
+        type: TargetGroupArn
+        description: <p>The Amazon Resource Name (ARN) of the target group.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DescribeTargetGroupAttributes.</p>
+  DescribeTargetGroupAttributesOutput:
+    type: object
+    properties:
+      Attributes?:
+        type: TargetGroupAttributes
+        description: <p>Information about the target group attributes</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DescribeTargetGroupAttributes.</p>
+  DescribeTargetGroupsInput:
+    type: object
+    properties:
+      LoadBalancerArn?:
+        type: LoadBalancerArn
+        description: <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+      TargetGroupArns?:
+        type: TargetGroupArns
+        description: <p>The Amazon Resource Names (ARN) of the target groups.</p>
+      Names?:
+        type: TargetGroupNames
+        description: <p>The names of the target groups.</p>
+      Marker?:
+        type: Marker
+        description: <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+      PageSize?:
+        type: PageSize
+        description: <p>The maximum number of results to return with this call.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DescribeTargetGroups.</p>
+  DescribeTargetGroupsOutput:
+    type: object
+    properties:
+      TargetGroups?:
+        type: TargetGroups
+        description: <p>Information about the target groups.</p>
+      NextMarker?:
+        type: Marker
+        description: <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DescribeTargetGroups.</p>
+  DescribeTargetHealthInput:
+    type: object
+    properties:
+      TargetGroupArn:
+        type: TargetGroupArn
+        description: <p>The Amazon Resource Name (ARN) of the target group.</p>
+      Targets?:
+        type: TargetDescriptions
+        description: <p>The targets.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for DescribeTargetHealth.</p>
+  DescribeTargetHealthOutput:
+    type: object
+    properties:
+      TargetHealthDescriptions?:
+        type: TargetHealthDescriptions
+        description: <p>Information about the health of the targets.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of DescribeTargetHealth.</p>
+  Listener:
+    type: object
+    properties:
+      ListenerArn?:
+        type: ListenerArn
+        description: <p>The Amazon Resource Name (ARN) of the listener.</p>
+      LoadBalancerArn?:
+        type: LoadBalancerArn
+        description: <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+      Port?:
+        type: Port
+        description: <p>The port on which the load balancer is listening.</p>
+      Protocol?:
+        type: ProtocolEnum
+        description: <p>The protocol for connections from clients to the load balancer.</p>
+      Certificates?:
+        type: CertificateList
+        description: <p>The SSL server certificate. You must provide a certificate if the protocol is HTTPS.</p>
+      SslPolicy?:
+        type: SslPolicyName
+        description: <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
+      DefaultActions?:
+        type: Actions
+        description: <p>The default actions for the listener.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about a listener.</p>
+  LoadBalancer:
+    type: object
+    properties:
+      LoadBalancerArn?:
+        type: LoadBalancerArn
+        description: <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+      DNSName?:
+        type: DNSName
+        description: <p>The public DNS name of the load balancer.</p>
+      CanonicalHostedZoneId?:
+        type: CanonicalHostedZoneId
+        description: <p>The ID of the Amazon Route 53 hosted zone associated with the load balancer.</p>
+      CreatedTime?:
+        type: CreatedTime
+        description: <p>The date and time the load balancer was created.</p>
+      LoadBalancerName?:
+        type: LoadBalancerName
+        description: <p>The name of the load balancer.</p>
+      Scheme?:
+        type: LoadBalancerSchemeEnum
+        description: <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p>
+      VpcId?:
+        type: VpcId
+        description: <p>The ID of the VPC for the load balancer.</p>
+      State?:
+        type: LoadBalancerState
+        description: <p>The state of the load balancer.</p>
+      Type?:
+        type: LoadBalancerTypeEnum
+        description: <p>The type of load balancer.</p>
+      AvailabilityZones?:
+        type: AvailabilityZones
+        description: <p>The Availability Zones for the load balancer.</p>
+      SecurityGroups?:
+        type: SecurityGroups
+        description: <p>The IDs of the security groups for the load balancer.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about a load balancer.</p>
+  LoadBalancerAttribute:
+    type: object
+    properties:
+      Key?:
+        type: LoadBalancerAttributeKey
+        description: <p>The name of the attribute.</p> <ul> <li> <p> <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled.</p> </li> <li> <p> <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is required if access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load balancer and have a bucket policy that grants Elastic Load Balancing permission to write to the bucket.</p> </li> <li> <p> <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a prefix, the access logs are stored in the root of the bucket.</p> </li> <li> <p> <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled.</p> </li> <li> <p> <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600. The default is 60 seconds.</p> </li> </ul>
+      Value?:
+        type: LoadBalancerAttributeValue
+        description: <p>The value of the attribute.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about a load balancer attribute.</p>
+  LoadBalancerState:
+    type: object
+    properties:
+      Code?:
+        type: LoadBalancerStateEnum
+        description: <p>The state code. The initial state of the load balancer is <code>provisioning</code>. After the load balancer is fully set up and ready to route traffic, its state is <code>active</code>. If the load balancer could not be set up, its state is <code>failed</code>.</p>
+      Reason?:
+        type: StateReason
+        description: <p>A description of the state.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about the state of the load balancer.</p>
+  Matcher:
+    type: object
+    properties:
+      HttpCode:
+        type: HttpCode
+        description: <p>The HTTP codes. The default value is 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information to use when checking for a successful response from a target.</p>
+  ModifyListenerInput:
+    type: object
+    properties:
+      ListenerArn:
+        type: ListenerArn
+        description: <p>The Amazon Resource Name (ARN) of the listener.</p>
+      Port?:
+        type: Port
+        description: <p>The port for connections from clients to the load balancer.</p>
+      Protocol?:
+        type: ProtocolEnum
+        description: <p>The protocol for connections from clients to the load balancer.</p>
+      SslPolicy?:
+        type: SslPolicyName
+        description: <p>The security policy that defines which ciphers and protocols are supported.</p>
+      Certificates?:
+        type: CertificateList
+        description: <p>The SSL server certificate.</p>
+      DefaultActions?:
+        type: Actions
+        description: <p>The default actions.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for ModifyListener.</p>
+  ModifyListenerOutput:
+    type: object
+    properties:
+      Listeners?:
+        type: Listeners
+        description: <p>Information about the modified listeners.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of ModifyListener.</p>
+  ModifyLoadBalancerAttributesInput:
+    type: object
+    properties:
+      LoadBalancerArn:
+        type: LoadBalancerArn
+        description: <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+      Attributes:
+        type: LoadBalancerAttributes
+        description: <p>The load balancer attributes.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for ModifyLoadBalancerAttributes.</p>
+  ModifyLoadBalancerAttributesOutput:
+    type: object
+    properties:
+      Attributes?:
+        type: LoadBalancerAttributes
+        description: <p>Information about the load balancer attributes.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of ModifyLoadBalancerAttributes.</p>
+  ModifyRuleInput:
+    type: object
+    properties:
+      RuleArn:
+        type: RuleArn
+        description: <p>The Amazon Resource Name (ARN) of the rule.</p>
+      Conditions?:
+        type: RuleConditionList
+        description: <p>The conditions.</p>
+      Actions?:
+        type: Actions
+        description: <p>The actions.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for ModifyRules.</p>
+  ModifyRuleOutput:
+    type: object
+    properties:
+      Rules?:
+        type: Rules
+        description: <p>Information about the rule.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of ModifyRules.</p>
+  ModifyTargetGroupAttributesInput:
+    type: object
+    properties:
+      TargetGroupArn:
+        type: TargetGroupArn
+        description: <p>The Amazon Resource Name (ARN) of the target group.</p>
+      Attributes:
+        type: TargetGroupAttributes
+        description: <p>The attributes.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for ModifyTargetGroupAttributes.</p>
+  ModifyTargetGroupAttributesOutput:
+    type: object
+    properties:
+      Attributes?:
+        type: TargetGroupAttributes
+        description: <p>Information about the attributes.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of ModifyTargetGroupAttributes.</p>
+  ModifyTargetGroupInput:
+    type: object
+    properties:
+      TargetGroupArn:
+        type: TargetGroupArn
+        description: <p>The Amazon Resource Name (ARN) of the target group.</p>
+      HealthCheckProtocol?:
+        type: ProtocolEnum
+        description: <p>The protocol to use to connect with the target.</p>
+      HealthCheckPort?:
+        type: HealthCheckPort
+        description: <p>The port to use to connect with the target.</p>
+      HealthCheckPath?:
+        type: Path
+        description: <p>The ping path that is the destination for the health check request.</p>
+      HealthCheckIntervalSeconds?:
+        type: HealthCheckIntervalSeconds
+        description: <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
+      HealthCheckTimeoutSeconds?:
+        type: HealthCheckTimeoutSeconds
+        description: <p>The amount of time, in seconds, during which no response means a failed health check.</p>
+      HealthyThresholdCount?:
+        type: HealthCheckThresholdCount
+        description: <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
+      UnhealthyThresholdCount?:
+        type: HealthCheckThresholdCount
+        description: <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
+      Matcher?:
+        type: Matcher
+        description: <p>The HTTP codes to use when checking for a successful response from a target.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for ModifyTargetGroup.</p>
+  ModifyTargetGroupOutput:
+    type: object
+    properties:
+      TargetGroups?:
+        type: TargetGroups
+        description: <p>Information about the target group.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of ModifyTargetGroup.</p>
+  RegisterTargetsInput:
+    type: object
+    properties:
+      TargetGroupArn:
+        type: TargetGroupArn
+        description: <p>The Amazon Resource Name (ARN) of the target group.</p>
+      Targets:
+        type: TargetDescriptions
+        description: <p>The targets.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for RegisterTargets.</p>
+  RegisterTargetsOutput:
+    type: object
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of RegisterTargets.</p>
+  RemoveTagsInput:
+    type: object
+    properties:
+      ResourceArns:
+        type: ResourceArns
+        description: <p>The Amazon Resource Name (ARN) of the resource.</p>
+      TagKeys:
+        type: TagKeys
+        description: <p>The tag keys for the tags to remove.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for RemoveTags.</p>
+  RemoveTagsOutput:
+    type: object
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of RemoveTags.</p>
+  Rule:
+    type: object
+    properties:
+      RuleArn?:
+        type: RuleArn
+        description: <p>The Amazon Resource Name (ARN) of the rule.</p>
+      Priority?:
+        type: String
+        description: <p>The priority.</p>
+      Conditions?:
+        type: RuleConditionList
+        description: <p>The conditions.</p>
+      Actions?:
+        type: Actions
+        description: <p>The actions.</p>
+      IsDefault?:
+        type: IsDefault
+        description: <p>Indicates whether this is the default rule.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about a rule.</p>
+  RuleCondition:
+    type: object
+    properties:
+      Field?:
+        type: ConditionFieldName
+        description: <p>The name of the field. The possible value is <code>path-pattern</code>.</p>
+      Values?:
+        type: ListOfString
+        description: '<p>The values for the field.</p> <p>A path pattern is case sensitive,
+          can be up to 255 characters in length, and can contain any of the following
+          characters:</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~
+          " '' @ : +</p> </li> <li> <p>&amp;amp; (using &amp;amp;amp;)</p> </li> <li>
+          <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly
+          1 character)</p> </li> </ul>'
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about a condition for a rule.</p>
+  RulePriorityPair:
+    type: object
+    properties:
+      RuleArn?:
+        type: RuleArn
+        description: <p>The Amazon Resource Name (ARN) of the rule.</p>
+      Priority?:
+        type: RulePriority
+        description: <p>The rule priority.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about the priorities for the rules for a listener.</p>
+  SetRulePrioritiesInput:
+    type: object
+    properties:
+      RulePriorities:
+        type: RulePriorityList
+        description: <p>The rule priorities.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for SetRulePriorities.</p>
+  SetRulePrioritiesOutput:
+    type: object
+    properties:
+      Rules?:
+        type: Rules
+        description: <p>Information about the rules.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of SetRulePriorities.</p>
+  SetSecurityGroupsInput:
+    type: object
+    properties:
+      LoadBalancerArn:
+        type: LoadBalancerArn
+        description: <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+      SecurityGroups:
+        type: SecurityGroups
+        description: <p>The IDs of the security groups.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for SetSecurityGroups.</p>
+  SetSecurityGroupsOutput:
+    type: object
+    properties:
+      SecurityGroupIds?:
+        type: SecurityGroups
+        description: <p>The IDs of the security groups associated with the load balancer.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of SetSecurityGroups.</p>
+  SetSubnetsInput:
+    type: object
+    properties:
+      LoadBalancerArn:
+        type: LoadBalancerArn
+        description: <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+      Subnets:
+        type: Subnets
+        description: <p>The IDs of the subnets. You must specify at least two subnets. You can add only one subnet per Availability Zone.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the parameters for SetSubnets.</p>
+  SetSubnetsOutput:
+    type: object
+    properties:
+      AvailabilityZones?:
+        type: AvailabilityZones
+        description: <p>Information about the subnet and Availability Zone.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Contains the output of SetSubnets.</p>
+  SslPolicy:
+    type: object
+    properties:
+      SslProtocols?:
+        type: SslProtocols
+        description: <p>The protocols.</p>
+      Ciphers?:
+        type: Ciphers
+        description: <p>The ciphers.</p>
+      Name?:
+        type: SslPolicyName
+        description: <p>The name of the policy.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about a policy used for SSL negotiation.</p>
+  Tag:
+    type: object
+    properties:
+      Key:
+        type: TagKey
+        description: <p>The key of the tag.</p>
+      Value?:
+        type: TagValue
+        description: <p>The value of the tag.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about a tag.</p>
+  TagDescription:
+    type: object
+    properties:
+      ResourceArn?:
+        type: ResourceArn
+        description: <p>The Amazon Resource Name (ARN) of the resource.</p>
+      Tags?:
+        type: TagList
+        description: <p>Information about the tags.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>The tags associated with a resource.</p>
+  TargetDescription:
+    type: object
+    properties:
+      Id:
+        type: TargetId
+        description: <p>The ID of the target.</p>
+      Port?:
+        type: Port
+        description: <p>The port on which the target is listening.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about a target.</p>
+  TargetGroup:
+    type: object
+    properties:
+      TargetGroupArn?:
+        type: TargetGroupArn
+        description: <p>The Amazon Resource Name (ARN) of the target group.</p>
+      TargetGroupName?:
+        type: TargetGroupName
+        description: <p>The name of the target group.</p>
+      Protocol?:
+        type: ProtocolEnum
+        description: <p>The protocol to use for routing traffic to the targets.</p>
+      Port?:
+        type: Port
+        description: <p>The port on which the targets are listening.</p>
+      VpcId?:
+        type: VpcId
+        description: <p>The ID of the VPC for the targets.</p>
+      HealthCheckProtocol?:
+        type: ProtocolEnum
+        description: <p>The protocol to use to connect with the target.</p>
+      HealthCheckPort?:
+        type: HealthCheckPort
+        description: <p>The port to use to connect with the target.</p>
+      HealthCheckIntervalSeconds?:
+        type: HealthCheckIntervalSeconds
+        description: <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
+      HealthCheckTimeoutSeconds?:
+        type: HealthCheckTimeoutSeconds
+        description: <p>The amount of time, in seconds, during which no response means a failed health check.</p>
+      HealthyThresholdCount?:
+        type: HealthCheckThresholdCount
+        description: <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
+      UnhealthyThresholdCount?:
+        type: HealthCheckThresholdCount
+        description: <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
+      HealthCheckPath?:
+        type: Path
+        description: <p>The destination for the health check request.</p>
+      Matcher?:
+        type: Matcher
+        description: <p>The HTTP codes to use when checking for a successful response from a target.</p>
+      LoadBalancerArns?:
+        type: LoadBalancerArns
+        description: <p>The Amazon Resource Names (ARN) of the load balancers that route traffic to this target group.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about a target group.</p>
+  TargetGroupAttribute:
+    type: object
+    properties:
+      Key?:
+        type: TargetGroupAttributeKey
+        description: <p>The name of the attribute.</p> <ul> <li> <p> <code>deregistration_delay.timeout_seconds</code> - The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from <code>draining</code> to <code>unused</code>. The range is 0-3600 seconds. The default value is 300 seconds.</p> </li> <li> <p> <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled.</p> </li> <li> <p> <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.</p> </li> <li> <p> <code>stickiness.lb_cookie.duration_seconds</code> - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds).</p> </li> </ul>
+      Value?:
+        type: TargetGroupAttributeValue
+        description: <p>The value of the attribute.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about a target group attribute.</p>
+  TargetHealth:
+    type: object
+    properties:
+      State?:
+        type: TargetHealthStateEnum
+        description: <p>The state of the target.</p>
+      Reason?:
+        type: TargetHealthReasonEnum
+        description: <p>The reason code. If the target state is <code>healthy</code>, a reason code is not provided.</p> <p>If the target state is <code>initial</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Elb.RegistrationInProgress</code> - The target is in the process of being registered with the load balancer.</p> </li> <li> <p> <code>Elb.InitialHealthChecking</code> - The load balancer is still sending the target the minimum number of health checks required to determine its health status.</p> </li> </ul> <p>If the target state is <code>unhealthy</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.</p> </li> <li> <p> <code>Target.Timeout</code> - The health check requests timed out.</p> </li> <li> <p> <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out, the target response was malformed, or the target failed the health check for an unknown reason.</p> </li> <li> <p> <code>Elb.InternalError</code> - The health checks failed due to an internal error.</p> </li> </ul> <p>If the target state is <code>unused</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.NotRegistered</code> - The target is not registered with the target group.</p> </li> <li> <p> <code>Target.NotInUse</code> - The target group is not used by any load balancer or the target is in an Availability Zone that is not enabled for its load balancer.</p> </li> <li> <p> <code>Target.InvalidState</code> - The target is in the stopped or terminated state.</p> </li> </ul> <p>If the target state is <code>draining</code>, the reason code can be the following value:</p> <ul> <li> <p> <code>Target.DeregistrationInProgress</code> - The target is in the process of being deregistered and the deregistration delay period has not expired.</p> </li> </ul>
+      Description?:
+        type: Description
+        description: <p>A description of the target health that provides additional details. If the state is <code>healthy</code>, a description is not provided.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about the current health of a target.</p>
+  TargetHealthDescription:
+    type: object
+    properties:
+      Target?:
+        type: TargetDescription
+        description: <p>The description of the target.</p>
+      HealthCheckPort?:
+        type: HealthCheckPort
+        description: <p>The port to use to connect with the target.</p>
+      TargetHealth?:
+        type: TargetHealth
+        description: <p>The health information for the target.</p>
+    xml:
+      namespace: http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/
+    description: <p>Information about the health of a target.</p>
+/{AddTags}:
+  uriParameters:
+    AddTags?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Adds the specified tags to the specified resource. You can tag your Application load balancers and your target groups. Each tag consists of a key and an optional value. If a resource already has a tag with the same key, <code>AddTags</code> updates its value. To list the current tags for your resources, use <a>DescribeTags</a>. To remove tags from your resources, use <a>RemoveTags</a>.
+  post:
+    body:
+      application/xml: AddTagsInput
+    responses:
+      200:
+        body:
+          application/xml: AddTagsOutput
+      400:
+        description: DuplicateTagKeys
+/{CreateListener}:
+  uriParameters:
+    CreateListener?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a listener for the specified Application load balancer. To update a listener, use <a>ModifyListener</a>. When you are finished with a listener, you can delete it using <a>DeleteListener</a>. If you are finished with both the listener and the load balancer, you can delete them both using <a>DeleteLoadBalancer</a>. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html">Listeners for Your Application Load Balancers</a> in the <i>Application Load Balancers Guide</i>.
+  post:
+    body:
+      application/xml: CreateListenerInput
+    responses:
+      200:
+        body:
+          application/xml: CreateListenerOutput
+      400:
+        description: DuplicateListener
+/{CreateLoadBalancer}:
+  uriParameters:
+    CreateLoadBalancer?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates an Application load balancer. To create listeners for your load balancer, use <a>CreateListener</a>. You can add security groups, subnets, and tags when you create your load balancer, or you can add them later using <a>SetSecurityGroups</a>, <a>SetSubnets</a>, and <a>AddTags</a>. To describe your current load balancers, see <a>DescribeLoadBalancers</a>. When you are finished with a load balancer, you can delete it using <a>DeleteLoadBalancer</a>. You can create up to 20 load balancers per region per account. You can request an increase for the number of load balancers for your account. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html">Limits for Your Application Load Balancer</a> in the <i>Application Load Balancers Guide</i>.
+  post:
+    body:
+      application/xml: CreateLoadBalancerInput
+    responses:
+      200:
+        body:
+          application/xml: CreateLoadBalancerOutput
+      400:
+        description: DuplicateLoadBalancerName
+/{CreateRule}:
+  uriParameters:
+    CreateRule?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a rule for the specified listener. A rule consists conditions and actions. Rules are evaluated in priority order, from the lowest value to the highest value. When the conditions for a rule are met, the specified actions are taken. If no rule's conditions are met, the default actions for the listener are taken. To view your current rules, use <a>DescribeRules</a>. To update a rule, use <a>ModifyRule</a>. To set the priorities of your rules, use <a>SetRulePriorities</a>. To delete a rule, use <a>DeleteRule</a>.
+  post:
+    body:
+      application/xml: CreateRuleInput
+    responses:
+      200:
+        body:
+          application/xml: CreateRuleOutput
+      400:
+        description: PriorityInUse
+/{CreateTargetGroup}:
+  uriParameters:
+    CreateTargetGroup?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a target group. To register targets with the target group, use <a>RegisterTargets</a>. To update the health check settings for the target group, use <a>ModifyTargetGroup</a>. To monitor the health of targets in the target group, use <a>DescribeTargetHealth</a>. To route traffic to the targets in a target group, specify the target group in an action using <a>CreateListener</a> or <a>CreateRule</a>. To delete a target group, use <a>DeleteTargetGroup</a>. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html">Target Groups for Your Application Load Balancers</a> in the <i>Application Load Balancers Guide</i>.
+  post:
+    body:
+      application/xml: CreateTargetGroupInput
+    responses:
+      200:
+        body:
+          application/xml: CreateTargetGroupOutput
+      400:
+        description: DuplicateTargetGroupName
+/{DeleteListener}:
+  uriParameters:
+    DeleteListener?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the specified listener. Alternatively, your listener is deleted when you delete the load balancer it is attached to using <a>DeleteLoadBalancer</a>.
+  post:
+    body:
+      application/xml: DeleteListenerInput
+    responses:
+      200:
+        body:
+          application/xml: DeleteListenerOutput
+      400:
+        description: ListenerNotFound
+/{DeleteLoadBalancer}:
+  uriParameters:
+    DeleteLoadBalancer?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the specified load balancer and its attached listeners. You can't delete a load balancer if deletion protection is enabled. If the load balancer does not exist or has already been deleted, the call succeeds. Deleting a load balancer does not affect its registered targets. For example, your EC2 instances continue to run and are still registered to their target groups. If you no longer need these EC2 instances, you can stop or terminate them.
+  post:
+    body:
+      application/xml: DeleteLoadBalancerInput
+    responses:
+      200:
+        body:
+          application/xml: DeleteLoadBalancerOutput
+      400:
+        description: LoadBalancerNotFound
+/{DeleteRule}:
+  uriParameters:
+    DeleteRule?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the specified rule.
+  post:
+    body:
+      application/xml: DeleteRuleInput
+    responses:
+      200:
+        body:
+          application/xml: DeleteRuleOutput
+      400:
+        description: RuleNotFound
+/{DeleteTargetGroup}:
+  uriParameters:
+    DeleteTargetGroup?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the specified target group. You can delete a target group if it is not referenced by any actions. Deleting a target group also deletes any associated health checks.
+  post:
+    body:
+      application/xml: DeleteTargetGroupInput
+    responses:
+      200:
+        body:
+          application/xml: DeleteTargetGroupOutput
+      400:
+        description: ResourceInUse
+/{DeregisterTargets}:
+  uriParameters:
+    DeregisterTargets?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deregisters the specified targets from the specified target group. After the targets are deregistered, they no longer receive traffic from the load balancer.
+  post:
+    body:
+      application/xml: DeregisterTargetsInput
+    responses:
+      200:
+        body:
+          application/xml: DeregisterTargetsOutput
+      400:
+        description: TargetGroupNotFound
+/{DescribeListeners}:
+  uriParameters:
+    DescribeListeners?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the specified listeners or the listeners for the specified load balancer. You must specify either a load balancer or one or more listeners.
+  post:
+    body:
+      application/xml: DescribeListenersInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeListenersOutput
+      400:
+        description: ListenerNotFound
+/{DescribeLoadBalancerAttributes}:
+  uriParameters:
+    DescribeLoadBalancerAttributes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the attributes for the specified load balancer.
+  post:
+    body:
+      application/xml: DescribeLoadBalancerAttributesInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeLoadBalancerAttributesOutput
+      400:
+        description: LoadBalancerNotFound
+/{DescribeLoadBalancers}:
+  uriParameters:
+    DescribeLoadBalancers?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the specified Application load balancers or all of your Application load balancers. To describe the listeners for a load balancer, use <a>DescribeListeners</a>. To describe the attributes for a load balancer, use <a>DescribeLoadBalancerAttributes</a>.
+  post:
+    body:
+      application/xml: DescribeLoadBalancersInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeLoadBalancersOutput
+      400:
+        description: LoadBalancerNotFound
+/{DescribeRules}:
+  uriParameters:
+    DescribeRules?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.
+  post:
+    body:
+      application/xml: DescribeRulesInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeRulesOutput
+      400:
+        description: ListenerNotFound
+/{DescribeSSLPolicies}:
+  uriParameters:
+    DescribeSSLPolicies?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the specified policies or all policies used for SSL negotiation. Note that the only supported policy at this time is ELBSecurityPolicy-2015-05.
+  post:
+    body:
+      application/xml: DescribeSSLPoliciesInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeSSLPoliciesOutput
+      400:
+        description: SSLPolicyNotFound
+/{DescribeTags}:
+  uriParameters:
+    DescribeTags?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the tags for the specified resources.
+  post:
+    body:
+      application/xml: DescribeTagsInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeTagsOutput
+      400:
+        description: LoadBalancerNotFound
+/{DescribeTargetGroupAttributes}:
+  uriParameters:
+    DescribeTargetGroupAttributes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the attributes for the specified target group.
+  post:
+    body:
+      application/xml: DescribeTargetGroupAttributesInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeTargetGroupAttributesOutput
+      400:
+        description: TargetGroupNotFound
+/{DescribeTargetGroups}:
+  uriParameters:
+    DescribeTargetGroups?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Describes the specified target groups or all of your target groups.
+    By default, all target groups are described. Alternatively, you can specify one
+    of the following to filter the results: the ARN of the load balancer, the names
+    of one or more target groups, or the ARNs of one or more target groups. To describe
+    the targets for a target group, use <a>DescribeTargetHealth</a>. To describe the
+    attributes of a target group, use <a>DescribeTargetGroupAttributes</a>.'
+  post:
+    body:
+      application/xml: DescribeTargetGroupsInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeTargetGroupsOutput
+      400:
+        description: LoadBalancerNotFound
+/{DescribeTargetHealth}:
+  uriParameters:
+    DescribeTargetHealth?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the health of the specified targets or all of your targets.
+  post:
+    body:
+      application/xml: DescribeTargetHealthInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeTargetHealthOutput
+      400:
+        description: InvalidTarget
+      500:
+        description: HealthUnavailable
+/{ModifyListener}:
+  uriParameters:
+    ModifyListener?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Modifies the specified properties of the specified listener. Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to HTTP removes the security policy and SSL certificate properties. If you change the protocol from HTTP to HTTPS, you must add the security policy.
+  post:
+    body:
+      application/xml: ModifyListenerInput
+    responses:
+      200:
+        body:
+          application/xml: ModifyListenerOutput
+      400:
+        description: DuplicateListener
+/{ModifyLoadBalancerAttributes}:
+  uriParameters:
+    ModifyLoadBalancerAttributes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Modifies the specified attributes of the specified load balancer. If any of the specified attributes can't be modified as requested, the call fails. Any existing attributes that you do not modify retain their current values.
+  post:
+    body:
+      application/xml: ModifyLoadBalancerAttributesInput
+    responses:
+      200:
+        body:
+          application/xml: ModifyLoadBalancerAttributesOutput
+      400:
+        description: LoadBalancerNotFound
+/{ModifyRule}:
+  uriParameters:
+    ModifyRule?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Modifies the specified rule. Any existing properties that you do not modify retain their current values. To modify the default action, use <a>ModifyListener</a>.
+  post:
+    body:
+      application/xml: ModifyRuleInput
+    responses:
+      200:
+        body:
+          application/xml: ModifyRuleOutput
+      400:
+        description: TargetGroupAssociationLimit
+/{ModifyTargetGroup}:
+  uriParameters:
+    ModifyTargetGroup?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Modifies the health checks used when evaluating the health state of the targets in the specified target group. To monitor the health of the targets, use <a>DescribeTargetHealth</a>.
+  post:
+    body:
+      application/xml: ModifyTargetGroupInput
+    responses:
+      200:
+        body:
+          application/xml: ModifyTargetGroupOutput
+      400:
+        description: TargetGroupNotFound
+/{ModifyTargetGroupAttributes}:
+  uriParameters:
+    ModifyTargetGroupAttributes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Modifies the specified attributes of the specified target group.
+  post:
+    body:
+      application/xml: ModifyTargetGroupAttributesInput
+    responses:
+      200:
+        body:
+          application/xml: ModifyTargetGroupAttributesOutput
+      400:
+        description: TargetGroupNotFound
+/{RegisterTargets}:
+  uriParameters:
+    RegisterTargets?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Registers the specified targets with the specified target group. The target must be in the virtual private cloud (VPC) that you specified for the target group. To remove a target from a target group, use <a>DeregisterTargets</a>.
+  post:
+    body:
+      application/xml: RegisterTargetsInput
+    responses:
+      200:
+        body:
+          application/xml: RegisterTargetsOutput
+      400:
+        description: TargetGroupNotFound
+/{RemoveTags}:
+  uriParameters:
+    RemoveTags?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Removes the specified tags from the specified resource. To list the current tags for your resources, use <a>DescribeTags</a>.
+  post:
+    body:
+      application/xml: RemoveTagsInput
+    responses:
+      200:
+        body:
+          application/xml: RemoveTagsOutput
+      400:
+        description: LoadBalancerNotFound
+/{SetRulePriorities}:
+  uriParameters:
+    SetRulePriorities?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sets the priorities of the specified rules. You can reorder the rules as long as there are no priority conflicts in the new order. Any existing rules that you do not specify retain their current priority.
+  post:
+    body:
+      application/xml: SetRulePrioritiesInput
+    responses:
+      200:
+        body:
+          application/xml: SetRulePrioritiesOutput
+      400:
+        description: RuleNotFound
+/{SetSecurityGroups}:
+  uriParameters:
+    SetSecurityGroups?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Associates the specified security groups with the specified load balancer. The specified security groups override the previously associated security groups.
+  post:
+    body:
+      application/xml: SetSecurityGroupsInput
+    responses:
+      200:
+        body:
+          application/xml: SetSecurityGroupsOutput
+      400:
+        description: LoadBalancerNotFound
+/{SetSubnets}:
+  uriParameters:
+    SetSubnets?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Enables the Availability Zone for the specified subnets for the specified load balancer. The specified subnets replace the previously enabled subnets.
+  post:
+    body:
+      application/xml: SetSubnetsInput
+    responses:
+      200:
+        body:
+          application/xml: SetSubnetsOutput
+      400:
+        description: LoadBalancerNotFound

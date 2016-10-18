@@ -1,0 +1,2946 @@
+#%RAML 1.0
+title: Amazon Cognito Identity Provider
+version: '2016-04-18'
+description: ' Using the Amazon Cognito Your User Pools API, you can create a user
+  pool to manage directories and users. You can authenticate a user to obtain tokens
+  related to user identity and access policies.  This API reference provides information
+  about user pools in Amazon Cognito Your User Pools.  For more information, see the
+  Amazon Cognito Documentation.'
+mediaType:
+- application/json
+types:
+  AdminCreateUserUnusedAccountValidityDaysType:
+    type: integer
+    format: int
+    minimum: 0
+    maximum: 90
+  AliasAttributeType:
+    type: string
+    enum:
+    - phone_number
+    - email
+    - preferred_username
+  AliasAttributesListType:
+    type: array
+    items:
+      type: AliasAttributeType
+  ArnType:
+    type: string
+    pattern: arn:[\w+=/,.@-]+:[\w+=/,.@-]+:([\w+=/,.@-]*)?:[0-9]+:[\w+=/,.@-]+(:[\w+=/,.@-]+)?(:[\w+=/,.@-]+)?
+    minLength: 20
+    maxLength: 2048
+  AttributeDataType:
+    type: string
+    enum:
+    - String
+    - Number
+    - DateTime
+    - Boolean
+  AttributeListType:
+    type: array
+    items:
+      type: AttributeType
+  AttributeNameListType:
+    type: array
+    items:
+      type: AttributeNameType
+  AttributeNameType:
+    type: string
+    pattern: '[\p{L}\p{M}\p{S}\p{N}\p{P}]+'
+    minLength: 1
+    maxLength: 32
+  AttributeValueType:
+    type: string
+    maxLength: 2048
+  AuthFlowType:
+    type: string
+    enum:
+    - USER_SRP_AUTH
+    - REFRESH_TOKEN_AUTH
+    - REFRESH_TOKEN
+    - CUSTOM_AUTH
+    - ADMIN_NO_SRP_AUTH
+  BooleanType:
+    type: boolean
+  ChallengeNameType:
+    type: string
+    enum:
+    - SMS_MFA
+    - PASSWORD_VERIFIER
+    - CUSTOM_CHALLENGE
+    - DEVICE_SRP_AUTH
+    - DEVICE_PASSWORD_VERIFIER
+    - ADMIN_NO_SRP_AUTH
+    - NEW_PASSWORD_REQUIRED
+  ClientIdType:
+    type: string
+    pattern: '[\w+]+'
+    minLength: 1
+    maxLength: 128
+  ClientNameType:
+    type: string
+    pattern: '[\w\s+=,.@-]+'
+    minLength: 1
+    maxLength: 128
+  ClientPermissionListType:
+    type: array
+    items:
+      type: ClientPermissionType
+  ClientPermissionType:
+    type: string
+    minLength: 1
+    maxLength: 2048
+  ClientSecretType:
+    type: string
+    pattern: '[\w+]+'
+    minLength: 1
+    maxLength: 64
+  CodeDeliveryDetailsListType:
+    type: array
+    items:
+      type: CodeDeliveryDetailsType
+  CompletionMessageType:
+    type: string
+    pattern: '[\w]+'
+    minLength: 1
+    maxLength: 128
+  ConfirmationCodeType:
+    type: string
+    pattern: '[\S]+'
+    minLength: 1
+    maxLength: 2048
+  CustomAttributeNameType:
+    type: string
+    pattern: '[\p{L}\p{M}\p{S}\p{N}\p{P}]+'
+    minLength: 1
+    maxLength: 20
+  CustomAttributesListType:
+    type: array
+    minItems: 1
+    maxItems: 25
+    items:
+      type: SchemaAttributeType
+  DateType:
+    type: datetime
+  DeliveryMediumListType:
+    type: array
+    items:
+      type: DeliveryMediumType
+  DeliveryMediumType:
+    type: string
+    enum:
+    - SMS
+    - EMAIL
+  DeviceKeyType:
+    type: string
+    pattern: '[\w-]+_[0-9a-f-]+'
+    minLength: 1
+    maxLength: 55
+  DeviceListType:
+    type: array
+    items:
+      type: DeviceType
+  DeviceNameType:
+    type: string
+    minLength: 1
+    maxLength: 1024
+  DeviceRememberedStatusType:
+    type: string
+    enum:
+    - remembered
+    - not_remembered
+  EmailAddressType:
+    type: string
+    pattern: '[\p{L}\p{M}\p{S}\p{N}\p{P}]+@[\p{L}\p{M}\p{S}\p{N}\p{P}]+'
+  EmailVerificationMessageType:
+    type: string
+    pattern: '[\p{L}\p{M}\p{S}\p{N}\p{P}\s*]*\{####\}[\p{L}\p{M}\p{S}\p{N}\p{P}\s*]*'
+    minLength: 6
+    maxLength: 2048
+  EmailVerificationSubjectType:
+    type: string
+    pattern: '[\p{L}\p{M}\p{S}\p{N}\p{P}\s]+'
+    minLength: 1
+    maxLength: 140
+  ExplicitAuthFlowsListType:
+    type: array
+    items:
+      type: ExplicitAuthFlowsType
+  ExplicitAuthFlowsType:
+    type: string
+    enum:
+    - ADMIN_NO_SRP_AUTH
+    - CUSTOM_AUTH_FLOW_ONLY
+  ForceAliasCreation:
+    type: boolean
+  GenerateSecret:
+    type: boolean
+  IntegerType:
+    type: integer
+    format: int
+  ListOfStringTypes:
+    type: array
+    items:
+      type: StringType
+  LongType:
+    type: integer
+    format: long
+  MFAOptionListType:
+    type: array
+    items:
+      type: MFAOptionType
+  MessageActionType:
+    type: string
+    enum:
+    - RESEND
+    - SUPPRESS
+  PaginationKey:
+    type: string
+    pattern: '[\S]+'
+    minLength: 1
+  PaginationKeyType:
+    type: string
+    pattern: '[\S]+'
+    minLength: 1
+  PasswordPolicyMinLengthType:
+    type: integer
+    format: int
+    minimum: 6
+    maximum: 99
+  PasswordType:
+    type: string
+    pattern: '[\S]+'
+    minLength: 6
+    maxLength: 256
+  PoolQueryLimitType:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 60
+  PreSignedUrlType:
+    type: string
+    minLength: 0
+    maxLength: 2048
+  QueryLimit:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 60
+  QueryLimitType:
+    type: integer
+    format: int
+    minimum: 0
+    maximum: 60
+  RefreshTokenValidityType:
+    type: integer
+    format: int
+    minimum: 0
+    maximum: 3650
+  SchemaAttributesListType:
+    type: array
+    minItems: 1
+    maxItems: 50
+    items:
+      type: SchemaAttributeType
+  SearchPaginationTokenType:
+    type: string
+    pattern: '[\S]+'
+    minLength: 1
+  SearchedAttributeNamesListType:
+    type: array
+    items:
+      type: AttributeNameType
+  SecretHashType:
+    type: string
+    pattern: '[\w+=/]+'
+    minLength: 1
+    maxLength: 128
+  SessionType:
+    type: string
+    minLength: 20
+    maxLength: 2048
+  SmsVerificationMessageType:
+    type: string
+    pattern: .*\{####\}.*
+    minLength: 6
+    maxLength: 140
+  StatusType:
+    type: string
+    enum:
+    - Enabled
+    - Disabled
+  StringType:
+    type: string
+  TokenModelType:
+    type: string
+    pattern: '[A-Za-z0-9-_=.]+'
+  UserFilterType:
+    type: string
+    maxLength: 256
+  UserImportJobIdType:
+    type: string
+    pattern: import-[0-9a-zA-Z-]+
+    minLength: 1
+    maxLength: 55
+  UserImportJobNameType:
+    type: string
+    pattern: '[\w\s+=,.@-]+'
+    minLength: 1
+    maxLength: 128
+  UserImportJobStatusType:
+    type: string
+    enum:
+    - Created
+    - Pending
+    - InProgress
+    - Stopping
+    - Expired
+    - Stopped
+    - Failed
+    - Succeeded
+  UserImportJobsListType:
+    type: array
+    minItems: 1
+    maxItems: 50
+    items:
+      type: UserImportJobType
+  UserPoolClientListType:
+    type: array
+    items:
+      type: UserPoolClientDescription
+  UserPoolIdType:
+    type: string
+    pattern: '[\w-]+_[0-9a-zA-Z]+'
+    minLength: 1
+    maxLength: 55
+  UserPoolListType:
+    type: array
+    items:
+      type: UserPoolDescriptionType
+  UserPoolMfaType:
+    type: string
+    enum:
+    - 'OFF'
+    - 'ON'
+    - OPTIONAL
+  UserPoolNameType:
+    type: string
+    pattern: '[\w\s+=,.@-]+'
+    minLength: 1
+    maxLength: 128
+  UserStatusType:
+    type: string
+    enum:
+    - UNCONFIRMED
+    - CONFIRMED
+    - ARCHIVED
+    - COMPROMISED
+    - UNKNOWN
+    - RESET_REQUIRED
+    - FORCE_CHANGE_PASSWORD
+  UsernameType:
+    type: string
+    pattern: '[\p{L}\p{M}\p{S}\p{N}\p{P}]+'
+    minLength: 1
+    maxLength: 128
+  UsersListType:
+    type: array
+    items:
+      type: UserType
+  VerifiedAttributeType:
+    type: string
+    enum:
+    - phone_number
+    - email
+  VerifiedAttributesListType:
+    type: array
+    items:
+      type: VerifiedAttributeType
+  AddCustomAttributesRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to add custom attributes.</p>
+      CustomAttributes:
+        type: CustomAttributesListType
+        description: <p>An array of custom attributes, such as Mutable and Name.</p>
+    description: <p>Represents the request to add custom attributes.</p>
+  AddCustomAttributesResponse:
+    type: object
+    description: <p>Represents the response from the server for the request to add custom attributes.</p>
+  AdminConfirmSignUpRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for which you want to confirm user registration.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name for which you want to confirm user registration.</p>
+    description: <p>Represents the request to confirm user registration.</p>
+  AdminConfirmSignUpResponse:
+    type: object
+    description: <p>Represents the response from the server for the request to confirm registration.</p>
+  AdminCreateUserConfigType:
+    type: object
+    properties:
+      AllowAdminCreateUserOnly?:
+        type: BooleanType
+        description: <p>Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.</p>
+      UnusedAccountValidityDays?:
+        type: AdminCreateUserUnusedAccountValidityDaysType
+        description: <p>The user account expiration limit, in days, after which the account is no longer usable. To reset the account after that time limit, you must call AdminCreateUser again, specifying "RESEND" for the MessageAction parameter.</p>
+      InviteMessageTemplate?:
+        type: MessageTemplateType
+        description: <p>The message template to be used for the welcome message to new users.</p>
+    description: <p>The type of configuration for creating a new user profile.</p>
+  AdminCreateUserRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where the user will be created.</p>
+      Username:
+        type: UsernameType
+        description: <p>The username for the user. Must be unique within the user pool. Must be a UTF-8 string between 1 and 128 characters. After the user is created, the username cannot be changed.</p>
+      UserAttributes?:
+        type: AttributeListType
+        description: '<p>An array of name-value pairs that contain user attributes
+          and attribute values to be set for the user to be created. You can create
+          a user without specifying any attributes other than Username. However, any
+          attributes that you specify as required (in CreateUserPool or in the <b>Attributes</b>
+          tab of the console) must be supplied either by you (in your call to AdminCreateUser)
+          or by the user (when he or she signs up in response to your welcome message).</p>
+          <p>To send a message inviting the user to sign up, you must specify the
+          user''s email address or phone number. This can be done in your call to
+          AdminCreateUser or in the <b>Users</b> tab of the Amazon Cognito console
+          for managing your user pools.</p> <p>In your call to AdminCreateUser, you
+          can set the email_verified attribute to True, and you can set the phone_number_verified
+          attribute to True. (You cannot do this by calling other operations such
+          as AdminUpdateUserAttributes.)</p> <ul> <li> <p> <b>email</b>: The email
+          address of the user to whom the message that contains the code and username
+          will be sent. Required if the email_verified attribute is set to True, or
+          if "EMAIL" is specified in the DesiredDeliveryMediums parameter.</p> </li>
+          <li> <p> <b>phone_number</b>: The phone number of the user to whom the message
+          that contains the code and username will be sent. Required if the phone_number_verified
+          attribute is set to True, or if "SMS" is specified in the DesiredDeliveryMediums
+          parameter.</p> </li> </ul>'
+      ValidationData?:
+        type: AttributeListType
+        description: <p>The user's validation data. This is an array of name-value pairs that contain user attributes and attribute values that you can use for custom validation, such as restricting the types of user accounts that can be registered. For example, you might choose to allow or disallow user sign-up based on the user's domain.</p> <p>To configure custom validation, you must create a Pre Sign-up Lambda trigger for the user pool as described in the Amazon Cognito Developer Guide. The Lambda trigger receives the validation data and uses it in the validation process.</p> <p>The user's validation data is not persisted.</p>
+      TemporaryPassword?:
+        type: PasswordType
+        description: <p>The user's temporary password. This password must conform to the password policy that you specified when you created the user pool.</p> <p>The temporary password is valid only once. To complete the Admin Create User flow, the user must enter the temporary password in the sign-in page along with a new password to be used in all future sign-ins.</p> <p>This parameter is not required. If you do not specify a value, Amazon Cognito generates one for you.</p> <p>The temporary password can only be used until the user account expiration limit that you specified when you created the user pool. To reset the account after that time limit, you must call AdminCreateUser again, specifying "RESEND" for the MessageAction parameter.</p>
+      ForceAliasCreation?:
+        type: ForceAliasCreation
+        description: <p>This parameter is only used if the phone_number_verified or email_verified attribute is set to True. Otherwise, it is ignored.</p> <p>If this parameter is set to True and the phone number or email address specified in the UserAttributes parameter already exists as an alias with a different user, the API call will migrate the alias from the previous user to the newly created user. The previous user will no longer be able to log in using that alias.</p> <p>If this parameter is set to False, the API throws an AliasExistsException error if the alias already exists. The default value is False.</p>
+      MessageAction?:
+        type: MessageActionType
+        description: <p>Set to "RESEND" to resend the invitation message to a user that already exists and reset the expiration limit on the user's account. Set to "SUPPRESS" to suppress sending the message. Only one value can be specified.</p>
+      DesiredDeliveryMediums?:
+        type: DeliveryMediumListType
+        description: <p>Specify "EMAIL" if email will be used to send the welcome message. Specify "SMS" if the phone number will be used. The default value is "SMS". More than one value can be specified.</p>
+    description: <p>Represents the request to create a user in the specified user pool.</p>
+  AdminCreateUserResponse:
+    type: object
+    properties:
+      User?:
+        type: UserType
+        description: <p>The user returned in the request to create a new user.</p>
+    description: <p>Represents the response from the server to the request to create the user.</p>
+  AdminDeleteUserAttributesRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to delete user attributes.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user from which you would like to delete attributes.</p>
+      UserAttributeNames:
+        type: AttributeNameListType
+        description: <p>An array of strings representing the user attribute names you wish to delete.</p>
+    description: <p>Represents the request to delete user attributes as an administrator.</p>
+  AdminDeleteUserAttributesResponse:
+    type: object
+    description: <p>Represents the response received from the server for a request to delete user attributes.</p>
+  AdminDeleteUserRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to delete the user.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user you wish to delete.</p>
+    description: <p>Represents the request to delete a user as an administrator.</p>
+  AdminDisableUserRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to disable the user.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user you wish to disable.</p>
+    description: <p>Represents the request to disable any user as an administrator.</p>
+  AdminDisableUserResponse:
+    type: object
+    description: <p>Represents the response received from the server to disable the user as an administrator.</p>
+  AdminEnableUserRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to enable the user.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user you wish to ebable.</p>
+    description: <p>Represents the request that enables the user as an administrator.</p>
+  AdminEnableUserResponse:
+    type: object
+    description: <p>Represents the response from the server for the request to enable a user as an administrator.</p>
+  AdminForgetDeviceRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name.</p>
+      DeviceKey:
+        type: DeviceKeyType
+        description: <p>The device key.</p>
+    description: <p>Sends the forgot device request, as an administrator.</p>
+  AdminGetDeviceRequest:
+    type: object
+    properties:
+      DeviceKey:
+        type: DeviceKeyType
+        description: <p>The device key.</p>
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name.</p>
+    description: <p>Represents the request to get the device, as an administrator.</p>
+  AdminGetDeviceResponse:
+    type: object
+    properties:
+      Device:
+        type: DeviceType
+        description: <p>The device.</p>
+    description: <p>Gets the device response, as an administrator.</p>
+  AdminGetUserRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to get information about the user.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user you wish to retrieve.</p>
+    description: <p>Represents the request to get the specified user as an administrator.</p>
+  AdminGetUserResponse:
+    type: object
+    properties:
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user about whom you are receiving information.</p>
+      UserAttributes?:
+        type: AttributeListType
+        description: <p>An array of name-value pairs representing user attributes.</p>
+      UserCreateDate?:
+        type: DateType
+        description: <p>The date the user was created.</p>
+      UserLastModifiedDate?:
+        type: DateType
+        description: <p>The date the user was last modified.</p>
+      Enabled?:
+        type: BooleanType
+        description: <p>Indicates that the status is enabled.</p>
+      UserStatus?:
+        type: UserStatusType
+        description: <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li> <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p> </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
+      MFAOptions?:
+        type: MFAOptionListType
+        description: <p>Specifies the options for MFA (e.g., email or phone number).</p>
+    description: <p>Represents the response from the server from the request to get the specified user as an administrator.</p>
+  AdminInitiateAuthRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The ID of the Amazon Cognito user pool.</p>
+      ClientId:
+        type: ClientIdType
+        description: <p>The client app ID.</p>
+      AuthFlow:
+        type: AuthFlowType
+        description: <p>The authentication flow.</p>
+      AuthParameters?:
+        type: AuthParametersType
+        description: <p>The authentication parameters.</p>
+      ClientMetadata?:
+        type: ClientMetadataType
+        description: <p>The client app metadata.</p>
+    description: <p>Initiates the authorization request, as an administrator.</p>
+  AdminInitiateAuthResponse:
+    type: object
+    properties:
+      ChallengeName?:
+        type: ChallengeNameType
+        description: <p>The name of the challenge.</p>
+      Session?:
+        type: SessionType
+        description: <p>The session.</p>
+      ChallengeParameters?:
+        type: ChallengeParametersType
+        description: <p>The challenge parameters.</p>
+      AuthenticationResult?:
+        type: AuthenticationResultType
+    description: <p>Initiates the authentication response, as an administrator.</p>
+  AdminListDevicesRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name.</p>
+      Limit?:
+        type: QueryLimitType
+        description: <p>The limit of the devices request.</p>
+      PaginationToken?:
+        type: SearchPaginationTokenType
+        description: <p>The pagination token.</p>
+    description: <p>Represents the request to list devices, as an administrator.</p>
+  AdminListDevicesResponse:
+    type: object
+    properties:
+      Devices?:
+        type: DeviceListType
+        description: <p>The devices in the list of devices response.</p>
+      PaginationToken?:
+        type: SearchPaginationTokenType
+        description: <p>The pagination token.</p>
+    description: <p>Lists the device's response, as an administrator.</p>
+  AdminResetUserPasswordRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to reset the user's password.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user whose password you wish to reset.</p>
+    description: <p>Represents the request to reset a user's password as an administrator.</p>
+  AdminResetUserPasswordResponse:
+    type: object
+    description: <p>Represents the response from the server to reset a user password as an administrator.</p>
+  AdminRespondToAuthChallengeRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The ID of the Amazon Cognito user pool.</p>
+      ClientId:
+        type: ClientIdType
+        description: <p>The client ID.</p>
+      ChallengeName:
+        type: ChallengeNameType
+        description: <p>The name of the challenge.</p>
+      ChallengeResponses?:
+        type: ChallengeResponsesType
+        description: <p>The challenge response.</p>
+      Session?:
+        type: SessionType
+        description: <p>The session.</p>
+    description: <p>The request to respond to the authentication challenge, as an administrator.</p>
+  AdminRespondToAuthChallengeResponse:
+    type: object
+    properties:
+      ChallengeName?:
+        type: ChallengeNameType
+        description: <p>The name of the challenge.</p>
+      Session?:
+        type: SessionType
+        description: <p>The session.</p>
+      ChallengeParameters?:
+        type: ChallengeParametersType
+        description: <p>The challenge parameters.</p>
+      AuthenticationResult?:
+        type: AuthenticationResultType
+    description: <p>Responds to the authentication challenge, as an administrator.</p>
+  AdminSetUserSettingsRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to set the user's settings, such as MFA options.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user for whom you wish to set user settings.</p>
+      MFAOptions:
+        type: MFAOptionListType
+        description: <p>Specifies the options for MFA (e.g., email or phone number).</p>
+    description: <p>Represents the request to set user settings as an administrator.</p>
+  AdminSetUserSettingsResponse:
+    type: object
+    description: <p>Represents the response from the server to set user settings as an administrator.</p>
+  AdminUpdateDeviceStatusRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID&gt;</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name.</p>
+      DeviceKey:
+        type: DeviceKeyType
+        description: <p>The device key.</p>
+      DeviceRememberedStatus?:
+        type: DeviceRememberedStatusType
+        description: <p>The status indicating whether a device has been remembered or not.</p>
+    description: <p>The request to update the device status, as an administrator.</p>
+  AdminUpdateDeviceStatusResponse:
+    type: object
+    description: <p>The status response from the request to update the device, as an administrator.</p>
+  AdminUpdateUserAttributesRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to update user attributes.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user for whom you want to update user attributes.</p>
+      UserAttributes:
+        type: AttributeListType
+        description: <p>An array of name-value pairs representing user attributes.</p>
+    description: <p>Represents the request to update the user's attributes as an administrator.</p>
+  AdminUpdateUserAttributesResponse:
+    type: object
+    description: <p>Represents the response from the server for the request to update user attributes as an administrator.</p>
+  AdminUserGlobalSignOutRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name.</p>
+    description: <p>The request to sign out of all devices, as an administrator.</p>
+  AdminUserGlobalSignOutResponse:
+    type: object
+    description: <p>The global sign-out response, as an administrator.</p>
+  AttributeType:
+    type: object
+    properties:
+      Name:
+        type: AttributeNameType
+        description: <p>The name of the attribute.</p>
+      Value?:
+        type: AttributeValueType
+        description: <p>The value of the attribute.</p>
+    description: <p>Specifies whether the attribute is standard or custom.</p>
+  AuthParametersType:
+    type: object
+    properties:
+      //:
+        type: StringType
+  AuthenticationResultType:
+    type: object
+    properties:
+      AccessToken?:
+        type: TokenModelType
+        description: <p>The access token of the authentication result.</p>
+      ExpiresIn?:
+        type: IntegerType
+        description: <p>The expiration period of the authentication result.</p>
+      TokenType?:
+        type: StringType
+        description: <p>The token type of the authentication result.</p>
+      RefreshToken?:
+        type: TokenModelType
+        description: <p>The refresh token of the authentication result.</p>
+      IdToken?:
+        type: TokenModelType
+        description: <p>The ID token of the authentication result.</p>
+      NewDeviceMetadata?:
+        type: NewDeviceMetadataType
+        description: <p>The new device metadata from an authentication result.</p>
+    description: <p>The result type of the authentication result.</p>
+  ChallengeParametersType:
+    type: object
+    properties:
+      //:
+        type: StringType
+  ChallengeResponsesType:
+    type: object
+    properties:
+      //:
+        type: StringType
+  ChangePasswordRequest:
+    type: object
+    properties:
+      PreviousPassword:
+        type: PasswordType
+        description: <p>The old password in the change password request.</p>
+      ProposedPassword:
+        type: PasswordType
+        description: <p>The new password in the change password request.</p>
+      AccessToken?:
+        type: TokenModelType
+        description: <p>The access token in the change password request.</p>
+    description: <p>Represents the request to change a user password.</p>
+  ChangePasswordResponse:
+    type: object
+    description: <p>The response from the server to the change password request.</p>
+  ClientMetadataType:
+    type: object
+    properties:
+      //:
+        type: StringType
+  CodeDeliveryDetailsType:
+    type: object
+    properties:
+      Destination?:
+        type: StringType
+        description: <p>The destination for the code delivery details.</p>
+      DeliveryMedium?:
+        type: DeliveryMediumType
+        description: <p>The delivery medium (email message or phone number).</p>
+      AttributeName?:
+        type: AttributeNameType
+        description: <p>The name of the attribute in the code delivery details type.</p>
+    description: <p>The type of code delivery details being returned from the server.</p>
+  ConfirmDeviceRequest:
+    type: object
+    properties:
+      AccessToken:
+        type: TokenModelType
+        description: <p>The access token.</p>
+      DeviceKey:
+        type: DeviceKeyType
+        description: <p>The device key.</p>
+      DeviceSecretVerifierConfig?:
+        type: DeviceSecretVerifierConfigType
+        description: <p>The configuration of the device secret verifier.</p>
+      DeviceName?:
+        type: DeviceNameType
+        description: <p>The device name.</p>
+    description: <p>Confirms the device request.</p>
+  ConfirmDeviceResponse:
+    type: object
+    properties:
+      UserConfirmationNecessary?:
+        type: BooleanType
+        description: <p>Indicates whether the user confirmation is necessary to confirm the device response.</p>
+    description: <p>Confirms the device response.</p>
+  ConfirmForgotPasswordRequest:
+    type: object
+    properties:
+      ClientId:
+        type: ClientIdType
+        description: <p>The ID of the client associated with the user pool.</p>
+      SecretHash?:
+        type: SecretHashType
+        description: <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user for whom you want to enter a code to retrieve a forgotten password.</p>
+      ConfirmationCode:
+        type: ConfirmationCodeType
+        description: <p>The confirmation code sent by a user's request to retrieve a forgotten password.</p>
+      Password:
+        type: PasswordType
+        description: <p>The password sent by sent by a user's request to retrieve a forgotten password.</p>
+    description: <p>The request representing the confirmation for a password reset.</p>
+  ConfirmForgotPasswordResponse:
+    type: object
+    description: <p>The response from the server that results from a user's request to retrieve a forgotten password.</p>
+  ConfirmSignUpRequest:
+    type: object
+    properties:
+      ClientId:
+        type: ClientIdType
+        description: <p>The ID of the client associated with the user pool.</p>
+      SecretHash?:
+        type: SecretHashType
+        description: <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user whose registration you wish to confirm.</p>
+      ConfirmationCode:
+        type: ConfirmationCodeType
+        description: <p>The confirmation code sent by a user's request to confirm registration.</p>
+      ForceAliasCreation?:
+        type: ForceAliasCreation
+        description: <p>Boolean to be specified to force user confirmation irrespective of existing alias. By default set to False. If this parameter is set to True and the phone number/email used for sign up confirmation already exists as an alias with a different user, the API call will migrate the alias from the previous user to the newly created user being confirmed. If set to False, the API will throw an <b>AliasExistsException</b> error.</p>
+    description: <p>Represents the request to confirm registration of a user.</p>
+  ConfirmSignUpResponse:
+    type: object
+    description: <p>Represents the response from the server for the registration confirmation.</p>
+  CreateUserImportJobRequest:
+    type: object
+    properties:
+      JobName:
+        type: UserImportJobNameType
+        description: <p>The job name for the user import job.</p>
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool that the users are being imported into.</p>
+      CloudWatchLogsRoleArn:
+        type: ArnType
+        description: <p>The role ARN for the Amazon CloudWatch Logging role for the user import job.</p>
+    description: <p>Represents the request to create the user import job.</p>
+  CreateUserImportJobResponse:
+    type: object
+    properties:
+      UserImportJob?:
+        type: UserImportJobType
+        description: <p>The job object that represents the user import job.</p>
+    description: <p>Represents the response from the server to the request to create the user import job.</p>
+  CreateUserPoolClientRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to create a user pool client.</p>
+      ClientName:
+        type: ClientNameType
+        description: <p>The client name for the user pool client you would like to create.</p>
+      GenerateSecret?:
+        type: GenerateSecret
+        description: <p>Boolean to specify whether you want to generate a secret for the user pool client being created.</p>
+      RefreshTokenValidity?:
+        type: RefreshTokenValidityType
+        description: <p>Refreshes the token validity.</p>
+      ReadAttributes?:
+        type: ClientPermissionListType
+        description: <p>The read attributes.</p>
+      WriteAttributes?:
+        type: ClientPermissionListType
+        description: <p>The write attributes.</p>
+      ExplicitAuthFlows?:
+        type: ExplicitAuthFlowsListType
+        description: <p>The explicit authentication flows.</p>
+    description: <p>Represents the request to create a user pool client.</p>
+  CreateUserPoolClientResponse:
+    type: object
+    properties:
+      UserPoolClient?:
+        type: UserPoolClientType
+        description: <p>The user pool client that was just created.</p>
+    description: <p>Represents the response from the server to create a user pool client.</p>
+  CreateUserPoolRequest:
+    type: object
+    properties:
+      PoolName:
+        type: UserPoolNameType
+        description: <p>A string used to name the user pool.</p>
+      Policies?:
+        type: UserPoolPolicyType
+        description: <p>The policies associated with the new user pool.</p>
+      LambdaConfig?:
+        type: LambdaConfigType
+        description: <p>The Lambda trigger configuration information for the new user pool.</p>
+      AutoVerifiedAttributes?:
+        type: VerifiedAttributesListType
+        description: '<p>The attributes to be auto-verified. Possible values: <b>email</b>,
+          <b>phone_number</b>.</p>'
+      AliasAttributes?:
+        type: AliasAttributesListType
+        description: '<p>Attributes supported as an alias for this user pool. Possible
+          values: <b>phone_number</b>, <b>email</b>, or <b>preferred_username</b>.</p>'
+      SmsVerificationMessage?:
+        type: SmsVerificationMessageType
+        description: <p>A string representing the SMS verification message.</p>
+      EmailVerificationMessage?:
+        type: EmailVerificationMessageType
+        description: <p>A string representing the email verification message.</p>
+      EmailVerificationSubject?:
+        type: EmailVerificationSubjectType
+        description: <p>A string representing the email verification subject.</p>
+      SmsAuthenticationMessage?:
+        type: SmsVerificationMessageType
+        description: <p>A string representing the SMS authentication message.</p>
+      MfaConfiguration?:
+        type: UserPoolMfaType
+        description: <p>Specifies MFA configuration details.</p>
+      DeviceConfiguration?:
+        type: DeviceConfigurationType
+        description: <p>The device configuration.</p>
+      EmailConfiguration?:
+        type: EmailConfigurationType
+        description: <p>The email configuration.</p>
+      SmsConfiguration?:
+        type: SmsConfigurationType
+        description: <p>The SMS configuration.</p>
+      AdminCreateUserConfig?:
+        type: AdminCreateUserConfigType
+        description: <p>The configuration for AdminCreateUser requests.</p>
+    description: <p>Represents the request to create a user pool.</p>
+  CreateUserPoolResponse:
+    type: object
+    properties:
+      UserPool?:
+        type: UserPoolType
+        description: <p>A container for the user pool details.</p>
+    description: <p>Represents the response from the server for the request to create a user pool.</p>
+  DeleteUserAttributesRequest:
+    type: object
+    properties:
+      UserAttributeNames:
+        type: AttributeNameListType
+        description: <p>An array of strings representing the user attribute names you wish to delete.</p>
+      AccessToken?:
+        type: TokenModelType
+        description: <p>The access token used in the request to delete user attributes.</p>
+    description: <p>Represents the request to delete user attributes.</p>
+  DeleteUserAttributesResponse:
+    type: object
+    description: <p>Represents the response from the server to delete user attributes.</p>
+  DeleteUserPoolClientRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to delete the client.</p>
+      ClientId:
+        type: ClientIdType
+        description: <p>The ID of the client associated with the user pool.</p>
+    description: <p>Represents the request to delete a user pool client.</p>
+  DeleteUserPoolRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool you want to delete.</p>
+    description: <p>Represents the request to delete a user pool.</p>
+  DeleteUserRequest:
+    type: object
+    properties:
+      AccessToken?:
+        type: TokenModelType
+        description: <p>The access token from a request to delete a user.</p>
+    description: <p>Represents the request to delete a user.</p>
+  DescribeUserImportJobRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool that the users are being imported into.</p>
+      JobId:
+        type: UserImportJobIdType
+        description: <p>The job ID for the user import job.</p>
+    description: <p>Represents the request to describe the user import job.</p>
+  DescribeUserImportJobResponse:
+    type: object
+    properties:
+      UserImportJob?:
+        type: UserImportJobType
+        description: <p>The job object that represents the user import job.</p>
+    description: <p>Represents the response from the server to the request to describe the user import job.</p>
+  DescribeUserPoolClientRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool you want to describe.</p>
+      ClientId:
+        type: ClientIdType
+        description: <p>The ID of the client associated with the user pool.</p>
+    description: <p>Represents the request to describe a user pool client.</p>
+  DescribeUserPoolClientResponse:
+    type: object
+    properties:
+      UserPoolClient?:
+        type: UserPoolClientType
+        description: <p>The user pool client from a server response to describe the user pool client.</p>
+    description: <p>Represents the response from the server from a request to describe the user pool client.</p>
+  DescribeUserPoolRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool you want to describe.</p>
+    description: <p>Represents the request to describe the user pool.</p>
+  DescribeUserPoolResponse:
+    type: object
+    properties:
+      UserPool?:
+        type: UserPoolType
+        description: <p>The container of metadata returned by the server to describe the pool.</p>
+    description: <p>Represents the response to describe the user pool.</p>
+  DeviceConfigurationType:
+    type: object
+    properties:
+      ChallengeRequiredOnNewDevice?:
+        type: BooleanType
+        description: <p>Indicates whether a challenge is required on a new device. Only applicable to a new device.</p>
+      DeviceOnlyRememberedOnUserPrompt?:
+        type: BooleanType
+        description: <p>If true, a device is only remembered on user prompt.</p>
+    description: <p>The type of configuration for the user pool's device tracking.</p>
+  DeviceSecretVerifierConfigType:
+    type: object
+    properties:
+      PasswordVerifier?:
+        type: StringType
+        description: <p>The password verifier.</p>
+      Salt?:
+        type: StringType
+        description: <p>The salt.</p>
+    description: <p>The device verifier against which it will be authenticated.</p>
+  DeviceType:
+    type: object
+    properties:
+      DeviceKey?:
+        type: DeviceKeyType
+        description: <p>The device key.</p>
+      DeviceAttributes?:
+        type: AttributeListType
+        description: <p>The device attributes.</p>
+      DeviceCreateDate?:
+        type: DateType
+        description: <p>The creation date of the device.</p>
+      DeviceLastModifiedDate?:
+        type: DateType
+        description: <p>The last modified date of the device.</p>
+      DeviceLastAuthenticatedDate?:
+        type: DateType
+        description: <p>The date in which the device was last authenticated.</p>
+    description: <p>The device type.</p>
+  EmailConfigurationType:
+    type: object
+    properties:
+      SourceArn?:
+        type: ArnType
+        description: <p>The Amazon Resource Name (ARN) of the email source.</p>
+      ReplyToEmailAddress?:
+        type: EmailAddressType
+        description: <p>The REPLY-TO email address.</p>
+    description: <p>The email configuration type.</p>
+  ForgetDeviceRequest:
+    type: object
+    properties:
+      AccessToken?:
+        type: TokenModelType
+        description: <p>The access token for the forgotten device request.</p>
+      DeviceKey:
+        type: DeviceKeyType
+        description: <p>The device key.</p>
+    description: <p>Represents the request to forget the device.</p>
+  ForgotPasswordRequest:
+    type: object
+    properties:
+      ClientId:
+        type: ClientIdType
+        description: <p>The ID of the client associated with the user pool.</p>
+      SecretHash?:
+        type: SecretHashType
+        description: <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user for whom you want to enter a code to retrieve a forgotten password.</p>
+    description: <p>Represents the request to reset a user's password.</p>
+  ForgotPasswordResponse:
+    type: object
+    properties:
+      CodeDeliveryDetails?:
+        type: CodeDeliveryDetailsType
+    description: <p>Respresents the response from the server regarding the request to reset a password.</p>
+  GetCSVHeaderRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool that the users are to be imported into.</p>
+    description: <p>Represents the request to get the header information for the .csv file for the user import job.</p>
+  GetCSVHeaderResponse:
+    type: object
+    properties:
+      UserPoolId?:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool that the users are to be imported into.</p>
+      CSVHeader?:
+        type: ListOfStringTypes
+        description: <p>The header information for the .csv file for the user import job.</p>
+    description: <p>Represents the response from the server to the request to get the header information for the .csv file for the user import job.</p>
+  GetDeviceRequest:
+    type: object
+    properties:
+      DeviceKey:
+        type: DeviceKeyType
+        description: <p>The device key.</p>
+      AccessToken?:
+        type: TokenModelType
+        description: <p>The access token.</p>
+    description: <p>Represents the request to get the device.</p>
+  GetDeviceResponse:
+    type: object
+    properties:
+      Device:
+        type: DeviceType
+        description: <p>The device.</p>
+    description: <p>Gets the device response.</p>
+  GetUserAttributeVerificationCodeRequest:
+    type: object
+    properties:
+      AccessToken?:
+        type: TokenModelType
+        description: <p>The access token returned by the server response to get the user attribute verification code.</p>
+      AttributeName:
+        type: AttributeNameType
+        description: <p>The attribute name returned by the server response to get the user attribute verification code.</p>
+    description: <p>Represents the request to get user attribute verification.</p>
+  GetUserAttributeVerificationCodeResponse:
+    type: object
+    properties:
+      CodeDeliveryDetails?:
+        type: CodeDeliveryDetailsType
+        description: <p>The code delivery details returned by the server response to get the user attribute verification code.</p>
+    description: <p>The verification code response returned by the server response to get the user attribute verification code.</p>
+  GetUserRequest:
+    type: object
+    properties:
+      AccessToken?:
+        type: TokenModelType
+        description: <p>The access token returned by the server response to get information about the user.</p>
+    description: <p>Represents the request to get information about the user.</p>
+  GetUserResponse:
+    type: object
+    properties:
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user you wish to retrieve from the get user request.</p>
+      UserAttributes:
+        type: AttributeListType
+        description: <p>An array of name-value pairs representing user attributes.</p>
+      MFAOptions?:
+        type: MFAOptionListType
+        description: <p>Specifies the options for MFA (e.g., email or phone number).</p>
+    description: <p>Represents the response from the server from the request to get information about the user.</p>
+  GlobalSignOutRequest:
+    type: object
+    properties:
+      AccessToken?:
+        type: TokenModelType
+        description: <p>The access token.</p>
+    description: <p>Represents the request to sign out all devices.</p>
+  GlobalSignOutResponse:
+    type: object
+    description: <p>The response to the request to sign out all devices.</p>
+  InitiateAuthRequest:
+    type: object
+    properties:
+      AuthFlow:
+        type: AuthFlowType
+        description: <p>The authentication flow.</p>
+      AuthParameters?:
+        type: AuthParametersType
+        description: <p>The authentication parameters.</p>
+      ClientMetadata?:
+        type: ClientMetadataType
+        description: <p>The client app's metadata.</p>
+      ClientId:
+        type: ClientIdType
+        description: <p>The client ID.</p>
+    description: <p>Initiates the authentication request.</p>
+  InitiateAuthResponse:
+    type: object
+    properties:
+      ChallengeName?:
+        type: ChallengeNameType
+        description: <p>The name of the challenge.</p>
+      Session?:
+        type: SessionType
+        description: <p>The session.</p>
+      ChallengeParameters?:
+        type: ChallengeParametersType
+        description: <p>The challenge parameters.</p>
+      AuthenticationResult?:
+        type: AuthenticationResultType
+    description: <p>Initiates the authentication response.</p>
+  LambdaConfigType:
+    type: object
+    properties:
+      PreSignUp?:
+        type: ArnType
+        description: <p>A pre-registration AWS Lambda trigger.</p>
+      CustomMessage?:
+        type: ArnType
+        description: <p>A custom Message AWS Lambda trigger.</p>
+      PostConfirmation?:
+        type: ArnType
+        description: <p>A post-confirmation AWS Lambda trigger.</p>
+      PreAuthentication?:
+        type: ArnType
+        description: <p>A pre-authentication AWS Lambda trigger.</p>
+      PostAuthentication?:
+        type: ArnType
+        description: <p>A post-authentication AWS Lambda trigger.</p>
+      DefineAuthChallenge?:
+        type: ArnType
+        description: <p>Defines the authentication challenge.</p>
+      CreateAuthChallenge?:
+        type: ArnType
+        description: <p>Creates an authentication challenge.</p>
+      VerifyAuthChallengeResponse?:
+        type: ArnType
+        description: <p>Verifies the authentication challenge response.</p>
+    description: <p>Specifies the type of configuration for AWS Lambda triggers.</p>
+  ListDevicesRequest:
+    type: object
+    properties:
+      AccessToken:
+        type: TokenModelType
+        description: <p>The access tokens for the request to list devices.</p>
+      Limit?:
+        type: QueryLimitType
+        description: <p>The limit of the device request.</p>
+      PaginationToken?:
+        type: SearchPaginationTokenType
+        description: <p>The pagination token for the list request.</p>
+    description: <p>Represents the request to list the devices.</p>
+  ListDevicesResponse:
+    type: object
+    properties:
+      Devices?:
+        type: DeviceListType
+        description: <p>The devices returned in the list devices response.</p>
+      PaginationToken?:
+        type: SearchPaginationTokenType
+        description: <p>The pagination token for the list device response.</p>
+    description: <p>Represents the response to list devices.</p>
+  ListUserImportJobsRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool that the users are being imported into.</p>
+      MaxResults:
+        type: PoolQueryLimitType
+        description: <p>The maximum number of import jobs you want the request to return.</p>
+      PaginationToken?:
+        type: PaginationKeyType
+        description: <p>An identifier that was returned from the previous call to ListUserImportJobs, which can be used to return the next set of import jobs in the list.</p>
+    description: <p>Represents the request to list the user import jobs.</p>
+  ListUserImportJobsResponse:
+    type: object
+    properties:
+      UserImportJobs?:
+        type: UserImportJobsListType
+        description: <p>The user import jobs.</p>
+      PaginationToken?:
+        type: PaginationKeyType
+        description: <p>An identifier that can be used to return the next set of user import jobs in the list.</p>
+    description: <p>Represents the response from the server to the request to list the user import jobs.</p>
+  ListUserPoolClientsRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to list user pool clients.</p>
+      MaxResults?:
+        type: QueryLimit
+        description: <p>The maximum number of results you want the request to return when listing the user pool clients.</p>
+      NextToken?:
+        type: PaginationKey
+        description: <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+    description: <p>Represents the request to list the user pool clients.</p>
+  ListUserPoolClientsResponse:
+    type: object
+    properties:
+      UserPoolClients?:
+        type: UserPoolClientListType
+        description: <p>The user pool clients in the response that lists user pool clients.</p>
+      NextToken?:
+        type: PaginationKey
+        description: <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+    description: <p>Represents the response from the server that lists user pool clients.</p>
+  ListUserPoolsRequest:
+    type: object
+    properties:
+      NextToken?:
+        type: PaginationKeyType
+        description: <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+      MaxResults:
+        type: PoolQueryLimitType
+        description: <p>The maximum number of results you want the request to return when listing the user pools.</p>
+    description: <p>Represents the request to list user pools.</p>
+  ListUserPoolsResponse:
+    type: object
+    properties:
+      UserPools?:
+        type: UserPoolListType
+        description: <p>The user pools from the response to list users.</p>
+      NextToken?:
+        type: PaginationKeyType
+        description: <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+    description: <p>Represents the response to list user pools.</p>
+  ListUsersRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for which you want to list users.</p>
+      AttributesToGet?:
+        type: SearchedAttributeNamesListType
+        description: <p>The attributes to get from the request to list users.</p>
+      Limit?:
+        type: QueryLimitType
+        description: <p>The limit of the request to list users.</p>
+      PaginationToken?:
+        type: SearchPaginationTokenType
+        description: <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+      Filter?:
+        type: UserFilterType
+        description: <p>The filter for the list users request.</p>
+    description: <p>Represents the request to list users.</p>
+  ListUsersResponse:
+    type: object
+    properties:
+      Users?:
+        type: UsersListType
+        description: <p>The users returned in the request to list users.</p>
+      PaginationToken?:
+        type: SearchPaginationTokenType
+        description: <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+    description: <p>The response from the request to list users.</p>
+  MFAOptionType:
+    type: object
+    properties:
+      DeliveryMedium?:
+        type: DeliveryMediumType
+        description: <p>The delivery medium (email message or SMS message) to send the MFA code.</p>
+      AttributeName?:
+        type: AttributeNameType
+        description: <p>The attribute name of the MFA option type.</p>
+    description: <p>Specifies the different settings for multi-factor authentication (MFA).</p>
+  MessageTemplateType:
+    type: object
+    properties:
+      SMSMessage?:
+        type: SmsVerificationMessageType
+        description: <p>The message template for SMS messages.</p>
+      EmailMessage?:
+        type: EmailVerificationMessageType
+        description: <p>The message template for email messages.</p>
+      EmailSubject?:
+        type: EmailVerificationSubjectType
+        description: <p>The subject line for email messages.</p>
+    description: <p>The message template structure.</p>
+  NewDeviceMetadataType:
+    type: object
+    properties:
+      DeviceKey?:
+        type: DeviceKeyType
+        description: <p>The device key.</p>
+      DeviceGroupKey?:
+        type: StringType
+        description: <p>The device group key.</p>
+    description: <p>The new device metadata type.</p>
+  NumberAttributeConstraintsType:
+    type: object
+    properties:
+      MinValue?:
+        type: StringType
+        description: <p>The minimum value of an attribute that is of the number data type.</p>
+      MaxValue?:
+        type: StringType
+        description: <p>The maximum value of an attribute that is of the number data type.</p>
+    description: <p>The minimum and maximum value of an attribute that is of the number data type.</p>
+  PasswordPolicyType:
+    type: object
+    properties:
+      MinimumLength?:
+        type: PasswordPolicyMinLengthType
+        description: <p>The minimum length of the password policy that you have set. Cannot be less than 6.</p>
+      RequireUppercase?:
+        type: BooleanType
+        description: <p>In the password policy that you have set, refers to whether you have required users to use at least one uppercase letter in their password.</p>
+      RequireLowercase?:
+        type: BooleanType
+        description: <p>In the password policy that you have set, refers to whether you have required users to use at least one lowercase letter in their password.</p>
+      RequireNumbers?:
+        type: BooleanType
+        description: <p>In the password policy that you have set, refers to whether you have required users to use at least one number in their password.</p>
+      RequireSymbols?:
+        type: BooleanType
+        description: <p>In the password policy that you have set, refers to whether you have required users to use at least one symbol in their password.</p>
+    description: <p>The password policy type.</p>
+  ResendConfirmationCodeRequest:
+    type: object
+    properties:
+      ClientId:
+        type: ClientIdType
+        description: <p>The ID of the client associated with the user pool.</p>
+      SecretHash?:
+        type: SecretHashType
+        description: <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user to whom you wish to resend a confirmation code.</p>
+    description: <p>Represents the request to resend the confirmation code.</p>
+  ResendConfirmationCodeResponse:
+    type: object
+    properties:
+      CodeDeliveryDetails?:
+        type: CodeDeliveryDetailsType
+    description: <p>The response from the server when the Amazon Cognito service makes the request to resend a confirmation code.</p>
+  RespondToAuthChallengeRequest:
+    type: object
+    properties:
+      ClientId:
+        type: ClientIdType
+        description: <p>The client ID.</p>
+      ChallengeName:
+        type: ChallengeNameType
+        description: <p>The name of the challenge.</p>
+      Session?:
+        type: SessionType
+        description: <p>The session.</p>
+      ChallengeResponses?:
+        type: ChallengeResponsesType
+        description: <p>The responses to the authentication challenge.</p>
+    description: <p>The request to respond to an authentication challenge.</p>
+  RespondToAuthChallengeResponse:
+    type: object
+    properties:
+      ChallengeName?:
+        type: ChallengeNameType
+        description: <p>The challenge name.</p>
+      Session?:
+        type: SessionType
+        description: <p>The session.</p>
+      ChallengeParameters?:
+        type: ChallengeParametersType
+        description: <p>The challenge parameters.</p>
+      AuthenticationResult?:
+        type: AuthenticationResultType
+    description: <p>The response to respond to the authentication challenge.</p>
+  SchemaAttributeType:
+    type: object
+    properties:
+      Name?:
+        type: CustomAttributeNameType
+        description: <p>A schema attribute of the name type.</p>
+      AttributeDataType?:
+        type: AttributeDataType
+        description: <p>The attribute data type.</p>
+      DeveloperOnlyAttribute?:
+        type: BooleanType
+        description: <p>Specifies whether the attribute type is developer only.</p>
+      Mutable?:
+        type: BooleanType
+        description: <p>Specifies whether the attribute can be changed once it has been created.</p>
+      Required?:
+        type: BooleanType
+        description: <p>Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.</p>
+      NumberAttributeConstraints?:
+        type: NumberAttributeConstraintsType
+        description: <p>Specifies the constraints for an attribute of the number type.</p>
+      StringAttributeConstraints?:
+        type: StringAttributeConstraintsType
+        description: <p>Specifies the constraints for an attribute of the string type.</p>
+    description: <p>Contains information about the schema attribute.</p>
+  SetUserSettingsRequest:
+    type: object
+    properties:
+      AccessToken:
+        type: TokenModelType
+        description: <p>The access token for the set user settings request.</p>
+      MFAOptions:
+        type: MFAOptionListType
+        description: <p>Specifies the options for MFA (e.g., email or phone number).</p>
+    description: <p>Represents the request to set user settings.</p>
+  SetUserSettingsResponse:
+    type: object
+    description: <p>The response from the server for a set user settings request.</p>
+  SignUpRequest:
+    type: object
+    properties:
+      ClientId:
+        type: ClientIdType
+        description: <p>The ID of the client associated with the user pool.</p>
+      SecretHash?:
+        type: SecretHashType
+        description: <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+      Username:
+        type: UsernameType
+        description: <p>The user name of the user you wish to register.</p>
+      Password:
+        type: PasswordType
+        description: <p>The password of the user you wish to register.</p>
+      UserAttributes?:
+        type: AttributeListType
+        description: <p>An array of name-value pairs representing user attributes.</p>
+      ValidationData?:
+        type: AttributeListType
+        description: <p>The validation data in the request to register a user.</p>
+    description: <p>Represents the request to register a user.</p>
+  SignUpResponse:
+    type: object
+    properties:
+      UserConfirmed?:
+        type: BooleanType
+        description: <p>A response from the server indicating that a user registration has been confirmed.</p>
+      CodeDeliveryDetails?:
+        type: CodeDeliveryDetailsType
+    description: <p>The response from the server for a registration request.</p>
+  SmsConfigurationType:
+    type: object
+    properties:
+      SnsCallerArn?:
+        type: ArnType
+        description: <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) caller.</p>
+      ExternalId?:
+        type: StringType
+        description: <p>The external ID.</p>
+    description: <p>The SMS configuratoin type.</p>
+  StartUserImportJobRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool that the users are being imported into.</p>
+      JobId:
+        type: UserImportJobIdType
+        description: <p>The job ID for the user import job.</p>
+    description: <p>Represents the request to start the user import job.</p>
+  StartUserImportJobResponse:
+    type: object
+    properties:
+      UserImportJob?:
+        type: UserImportJobType
+        description: <p>The job object that represents the user import job.</p>
+    description: <p>Represents the response from the server to the request to start the user import job.</p>
+  StopUserImportJobRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool that the users are being imported into.</p>
+      JobId:
+        type: UserImportJobIdType
+        description: <p>The job ID for the user import job.</p>
+    description: <p>Represents the request to stop the user import job.</p>
+  StopUserImportJobResponse:
+    type: object
+    properties:
+      UserImportJob?:
+        type: UserImportJobType
+        description: <p>The job object that represents the user import job.</p>
+    description: <p>Represents the response from the server to the request to stop the user import job.</p>
+  StringAttributeConstraintsType:
+    type: object
+    properties:
+      MinLength?:
+        type: StringType
+        description: <p>The minimum length of an attribute value of the string type.</p>
+      MaxLength?:
+        type: StringType
+        description: <p>The maximum length of an attribute value of the string type.</p>
+    description: <p>The type of constraints associated with an attribute of the string type.</p>
+  UpdateDeviceStatusRequest:
+    type: object
+    properties:
+      AccessToken:
+        type: TokenModelType
+        description: <p>The access token.</p>
+      DeviceKey:
+        type: DeviceKeyType
+        description: <p>The device key.</p>
+      DeviceRememberedStatus?:
+        type: DeviceRememberedStatusType
+        description: <p>The status of whether a device is remembered.</p>
+    description: <p>Represents the request to update the device status.</p>
+  UpdateDeviceStatusResponse:
+    type: object
+    description: <p>The response to the request to update the device status.</p>
+  UpdateUserAttributesRequest:
+    type: object
+    properties:
+      UserAttributes:
+        type: AttributeListType
+        description: <p>An array of name-value pairs representing user attributes.</p>
+      AccessToken?:
+        type: TokenModelType
+        description: <p>The access token for the request to update user attributes.</p>
+    description: <p>Represents the request to update user attributes.</p>
+  UpdateUserAttributesResponse:
+    type: object
+    properties:
+      CodeDeliveryDetailsList?:
+        type: CodeDeliveryDetailsListType
+        description: <p>The code delivery details list from the server for the request to update user attributes.</p>
+    description: <p>Represents the response from the server for the request to update user attributes.</p>
+  UpdateUserPoolClientRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to update the user pool client.</p>
+      ClientId:
+        type: ClientIdType
+        description: <p>The ID of the client associated with the user pool.</p>
+      ClientName?:
+        type: ClientNameType
+        description: <p>The client name from the update user pool client request.</p>
+      RefreshTokenValidity?:
+        type: RefreshTokenValidityType
+        description: <p>The validity of the refresh token.</p>
+      ReadAttributes?:
+        type: ClientPermissionListType
+        description: <p>The read-only attributes of the user pool.</p>
+      WriteAttributes?:
+        type: ClientPermissionListType
+        description: <p>The writeable attributes of the user pool.</p>
+      ExplicitAuthFlows?:
+        type: ExplicitAuthFlowsListType
+        description: <p>Explicit authentication flows.</p>
+    description: <p>Represents the request to update the user pool client.</p>
+  UpdateUserPoolClientResponse:
+    type: object
+    properties:
+      UserPoolClient?:
+        type: UserPoolClientType
+        description: <p>The user pool client value from the response from the server when an update user pool client request is made.</p>
+    description: <p>Represents the response from the server to the request to update the user pool client.</p>
+  UpdateUserPoolRequest:
+    type: object
+    properties:
+      UserPoolId:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool you want to update.</p>
+      Policies?:
+        type: UserPoolPolicyType
+        description: <p>A container with the policies you wish to update in a user pool.</p>
+      LambdaConfig?:
+        type: LambdaConfigType
+        description: <p>The AWS Lambda configuration information from the request to update the user pool.</p>
+      AutoVerifiedAttributes?:
+        type: VerifiedAttributesListType
+        description: <p>The attributes that are automatically verified when the Amazon Cognito service makes a request to update user pools.</p>
+      SmsVerificationMessage?:
+        type: SmsVerificationMessageType
+        description: <p>A container with information about the SMS verification message.</p>
+      EmailVerificationMessage?:
+        type: EmailVerificationMessageType
+        description: <p>The contents of the email verification message.</p>
+      EmailVerificationSubject?:
+        type: EmailVerificationSubjectType
+        description: <p>The subject of the email verfication message.</p>
+      SmsAuthenticationMessage?:
+        type: SmsVerificationMessageType
+        description: <p>The contents of the SMS authentication message.</p>
+      MfaConfiguration?:
+        type: UserPoolMfaType
+        description: <p>Can be one of the following values:</p> <ul> <li> <p> <code>OFF</code> - MFA tokens are not required and cannot be specified during user registration.</p> </li> <li> <p> <code>ON</code> - MFA tokens are required for all user registrations. You can only specify required when you are initially creating a user pool.</p> </li> <li> <p> <code>OPTIONAL</code> - Users have the option when registering to create an MFA token.</p> </li> </ul>
+      DeviceConfiguration?:
+        type: DeviceConfigurationType
+        description: <p>Device configuration.</p>
+      EmailConfiguration?:
+        type: EmailConfigurationType
+        description: <p>Email configuration.</p>
+      SmsConfiguration?:
+        type: SmsConfigurationType
+        description: <p>SMS configuration.</p>
+      AdminCreateUserConfig?:
+        type: AdminCreateUserConfigType
+        description: <p>The configuration for AdminCreateUser requests.</p>
+    description: <p>Represents the request to update the user pool.</p>
+  UpdateUserPoolResponse:
+    type: object
+    description: <p>Represents the response from the server when you make a request to update the user pool.</p>
+  UserImportJobType:
+    type: object
+    properties:
+      JobName?:
+        type: UserImportJobNameType
+        description: <p>The job name for the user import job.</p>
+      JobId?:
+        type: UserImportJobIdType
+        description: <p>The job ID for the user import job.</p>
+      UserPoolId?:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool that the users are being imported into.</p>
+      PreSignedUrl?:
+        type: PreSignedUrlType
+        description: <p>The pre-signed URL to be used to upload the .csv file.</p>
+      CreationDate?:
+        type: DateType
+        description: <p>The date when the user import job was created.</p>
+      StartDate?:
+        type: DateType
+        description: <p>The date when the user import job was started.</p>
+      CompletionDate?:
+        type: DateType
+        description: <p>The date when the user imoprt job was completed.</p>
+      Status?:
+        type: UserImportJobStatusType
+        description: <p>The status of the user import job. One of the following:</p> <ul> <li> <p>Created - The job was created but not started.</p> </li> <li> <p>Pending - A transition state. You have started the job, but it has not begun importing users yet.</p> </li> <li> <p>InProgress - The job has started, and users are being imported.</p> </li> <li> <p>Stopping - You have stopped the job, but the job has not stopped importing users yet.</p> </li> <li> <p>Stopped - You have stopped the job, and the job has stopped importing users.</p> </li> <li> <p>Succeeded - The job has completed successfully.</p> </li> <li> <p>Failed - The job has stopped due to an error.</p> </li> <li> <p>Expired - You created a job, but did not start the job within 24-48 hours. All data associated with the job was deleted, and the job cannot be started.</p> </li> </ul>
+      CloudWatchLogsRoleArn?:
+        type: ArnType
+        description: <p>The role ARN for the Amazon CloudWatch Logging role for the user import job. For more information, see "Creating the CloudWatch Logs IAM Role" in the Amazon Cognito Developer Guide.</p>
+      ImportedUsers?:
+        type: LongType
+        description: <p>The number of users that were successfully imported.</p>
+      SkippedUsers?:
+        type: LongType
+        description: <p>The number of users that were skipped.</p>
+      FailedUsers?:
+        type: LongType
+        description: <p>The number of users that could not be imported.</p>
+      CompletionMessage?:
+        type: CompletionMessageType
+        description: <p>The message returned when the user import job is completed.</p>
+    description: <p>The user import job type.</p>
+  UserPoolClientDescription:
+    type: object
+    properties:
+      ClientId?:
+        type: ClientIdType
+        description: <p>The ID of the client associated with the user pool.</p>
+      UserPoolId?:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool where you want to describe the user pool client.</p>
+      ClientName?:
+        type: ClientNameType
+        description: <p>The client name from the user pool client description.</p>
+    description: <p>The description of the user poool client.</p>
+  UserPoolClientType:
+    type: object
+    properties:
+      UserPoolId?:
+        type: UserPoolIdType
+        description: <p>The user pool ID for the user pool client.</p>
+      ClientName?:
+        type: ClientNameType
+        description: <p>The client name from the user pool request of the client type.</p>
+      ClientId?:
+        type: ClientIdType
+        description: <p>The ID of the client associated with the user pool.</p>
+      ClientSecret?:
+        type: ClientSecretType
+        description: <p>The client secret from the user pool request of the client type.</p>
+      LastModifiedDate?:
+        type: DateType
+        description: <p>The last modified date from the user pool request of the client type.</p>
+      CreationDate?:
+        type: DateType
+        description: <p>The creation date from the user pool request of the client type.</p>
+      RefreshTokenValidity?:
+        type: RefreshTokenValidityType
+        description: <p>The validity of the refresh token.</p>
+      ReadAttributes?:
+        type: ClientPermissionListType
+        description: <p>The Read-only attributes.</p>
+      WriteAttributes?:
+        type: ClientPermissionListType
+        description: <p>The writeable attributes.</p>
+      ExplicitAuthFlows?:
+        type: ExplicitAuthFlowsListType
+        description: <p>The explicit authentication flows.</p>
+    description: <p>A user pool of the client type.</p>
+  UserPoolDescriptionType:
+    type: object
+    properties:
+      Id?:
+        type: UserPoolIdType
+        description: <p>The ID in a user pool description.</p>
+      Name?:
+        type: UserPoolNameType
+        description: <p>The name in a user pool description.</p>
+      LambdaConfig?:
+        type: LambdaConfigType
+        description: <p>The AWS Lambda configuration information in a user pool description.</p>
+      Status?:
+        type: StatusType
+        description: <p>The user pool status in a user pool description.</p>
+      LastModifiedDate?:
+        type: DateType
+        description: <p>The last modified date in a user pool description.</p>
+      CreationDate?:
+        type: DateType
+        description: <p>The creation date in a user pool description.</p>
+    description: <p>A user pool description.</p>
+  UserPoolPolicyType:
+    type: object
+    properties:
+      PasswordPolicy?:
+        type: PasswordPolicyType
+        description: <p>A container with information about the user pool password policy.</p>
+    description: <p>The type of policy in a user pool.</p>
+  UserPoolType:
+    type: object
+    properties:
+      Id?:
+        type: UserPoolIdType
+        description: <p>The ID of the user pool.</p>
+      Name?:
+        type: UserPoolNameType
+        description: <p>The name of the user pool.</p>
+      Policies?:
+        type: UserPoolPolicyType
+        description: <p>A container describing the policies associated with a user pool.</p>
+      LambdaConfig?:
+        type: LambdaConfigType
+        description: <p>A container describing the AWS Lambda triggers associated with a user pool.</p>
+      Status?:
+        type: StatusType
+        description: <p>The status of a user pool.</p>
+      LastModifiedDate?:
+        type: DateType
+        description: <p>The last modified date of a user pool.</p>
+      CreationDate?:
+        type: DateType
+        description: <p>The creation date of a user pool.</p>
+      SchemaAttributes?:
+        type: SchemaAttributesListType
+        description: <p>A container with the schema attributes of a user pool.</p>
+      AutoVerifiedAttributes?:
+        type: VerifiedAttributesListType
+        description: <p>Specifies the attributes that are auto-verified in a user pool.</p>
+      AliasAttributes?:
+        type: AliasAttributesListType
+        description: <p>Specifies the attributes that are aliased in a user pool.</p>
+      SmsVerificationMessage?:
+        type: SmsVerificationMessageType
+        description: <p>The contents of the SMS verification message.</p>
+      EmailVerificationMessage?:
+        type: EmailVerificationMessageType
+        description: <p>The contents of the email verification message.</p>
+      EmailVerificationSubject?:
+        type: EmailVerificationSubjectType
+        description: <p>The subject of the email verification message.</p>
+      SmsAuthenticationMessage?:
+        type: SmsVerificationMessageType
+        description: <p>The contents of the SMS authentication message.</p>
+      MfaConfiguration?:
+        type: UserPoolMfaType
+        description: <p>Can be one of the following values:</p> <ul> <li> <p> <code>OFF</code> - MFA tokens are not required and cannot be specified during user registration.</p> </li> <li> <p> <code>ON</code> - MFA tokens are required for all user registrations. You can only specify required when you are initially creating a user pool.</p> </li> <li> <p> <code>OPTIONAL</code> - Users have the option when registering to create an MFA token.</p> </li> </ul>
+      DeviceConfiguration?:
+        type: DeviceConfigurationType
+        description: <p>The device configuration.</p>
+      EstimatedNumberOfUsers?:
+        type: IntegerType
+        description: <p>A number estimating the size of the user pool.</p>
+      EmailConfiguration?:
+        type: EmailConfigurationType
+        description: <p>The email configuration.</p>
+      SmsConfiguration?:
+        type: SmsConfigurationType
+        description: <p>The SMS configuration.</p>
+      SmsConfigurationFailure?:
+        type: StringType
+        description: <p>The reason why the SMS configuration cannot send the message(s) to your users.</p>
+      EmailConfigurationFailure?:
+        type: StringType
+        description: <p>The reason why the email configuration cannot send the messages to your users.</p>
+      AdminCreateUserConfig?:
+        type: AdminCreateUserConfigType
+        description: <p>The configuration for AdminCreateUser requests.</p>
+    description: <p>A container with information about the user pool type.</p>
+  UserType:
+    type: object
+    properties:
+      Username?:
+        type: UsernameType
+        description: <p>The user name of the user you wish to describe.</p>
+      Attributes?:
+        type: AttributeListType
+        description: <p>A container with information about the user type attributes.</p>
+      UserCreateDate?:
+        type: DateType
+        description: <p>The creation date of the user.</p>
+      UserLastModifiedDate?:
+        type: DateType
+        description: <p>The last modified date of the user.</p>
+      Enabled?:
+        type: BooleanType
+        description: <p>Specifies whether the user is enabled.</p>
+      UserStatus?:
+        type: UserStatusType
+        description: <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li> <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p> </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
+      MFAOptions?:
+        type: MFAOptionListType
+        description: <p>The MFA options for the user.</p>
+    description: <p>The user type.</p>
+  VerifyUserAttributeRequest:
+    type: object
+    properties:
+      AccessToken?:
+        type: TokenModelType
+        description: <p>Represents the access token of the request to verify user attributes.</p>
+      AttributeName:
+        type: AttributeNameType
+        description: <p>The attribute name in the request to verify user attributes.</p>
+      Code:
+        type: ConfirmationCodeType
+        description: <p>The verification code in the request to verify user attributes.</p>
+    description: <p>Represents the request to verify user attributes.</p>
+  VerifyUserAttributeResponse:
+    type: object
+    description: <p>A container representing the response from the server from the request to verify user attributes.</p>
+/{AddCustomAttributes}:
+  uriParameters:
+    AddCustomAttributes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Adds additional user attributes to the user pool schema.
+  post:
+    body:
+      application/json: AddCustomAttributesRequest
+    responses:
+      200:
+        body:
+          application/json: AddCustomAttributesResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminConfirmSignUp}:
+  uriParameters:
+    AdminConfirmSignUp?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Confirms user registration as an admin without using a confirmation code. Works on any user.
+  post:
+    body:
+      application/json: AdminConfirmSignUpRequest
+    responses:
+      200:
+        body:
+          application/json: AdminConfirmSignUpResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminCreateUser}:
+  uriParameters:
+    AdminCreateUser?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a new user in the specified user pool and sends a welcome message via email or phone (SMS). This message is based on a template that you configured in your call to CreateUserPool or UpdateUserPool. This template includes your custom sign-up instructions and placeholders for user name and temporary password. Requires developer credentials.
+  post:
+    body:
+      application/json: AdminCreateUserRequest
+    responses:
+      200:
+        body:
+          application/json: AdminCreateUserResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminDeleteUser}:
+  uriParameters:
+    AdminDeleteUser?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a user as an administrator. Works on any user.
+  post:
+    body:
+      application/json: AdminDeleteUserRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ResourceNotFoundException
+/{AdminDeleteUserAttributes}:
+  uriParameters:
+    AdminDeleteUserAttributes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the user attributes in a user pool as an administrator. Works on any user.
+  post:
+    body:
+      application/json: AdminDeleteUserAttributesRequest
+    responses:
+      200:
+        body:
+          application/json: AdminDeleteUserAttributesResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminDisableUser}:
+  uriParameters:
+    AdminDisableUser?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Disables the specified user as an administrator. Works on any user.
+  post:
+    body:
+      application/json: AdminDisableUserRequest
+    responses:
+      200:
+        body:
+          application/json: AdminDisableUserResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminEnableUser}:
+  uriParameters:
+    AdminEnableUser?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Enables the specified user as an administrator. Works on any user.
+  post:
+    body:
+      application/json: AdminEnableUserRequest
+    responses:
+      200:
+        body:
+          application/json: AdminEnableUserResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminForgetDevice}:
+  uriParameters:
+    AdminForgetDevice?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Forgets the device, as an administrator.
+  post:
+    body:
+      application/json: AdminForgetDeviceRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ResourceNotFoundException
+/{AdminGetDevice}:
+  uriParameters:
+    AdminGetDevice?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets the device, as an administrator.
+  post:
+    body:
+      application/json: AdminGetDeviceRequest
+    responses:
+      200:
+        body:
+          application/json: AdminGetDeviceResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminGetUser}:
+  uriParameters:
+    AdminGetUser?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets the specified user by user name in a user pool as an administrator. Works on any user.
+  post:
+    body:
+      application/json: AdminGetUserRequest
+    responses:
+      200:
+        body:
+          application/json: AdminGetUserResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminInitiateAuth}:
+  uriParameters:
+    AdminInitiateAuth?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Initiates the authentication flow, as an administrator.
+  post:
+    body:
+      application/json: AdminInitiateAuthRequest
+    responses:
+      200:
+        body:
+          application/json: AdminInitiateAuthResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminListDevices}:
+  uriParameters:
+    AdminListDevices?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists devices, as an administrator.
+  post:
+    body:
+      application/json: AdminListDevicesRequest
+    responses:
+      200:
+        body:
+          application/json: AdminListDevicesResponse
+      400:
+        description: InvalidParameterException
+/{AdminResetUserPassword}:
+  uriParameters:
+    AdminResetUserPassword?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Resets the specified user's password in a user pool as an administrator. Works on any user. When a developer calls this API, the current password is invalidated, so it must be changed. If a user tries to sign in after the API is called, the app will get a PasswordResetRequiredException exception back and should direct the user down the flow to reset the password, which is the same as the forgot password flow. In addition, if the user pool has phone verification selected and a verified phone number exists for the user, or if email verification is selected and a verified email exists for the user, calling this API will also result in sending a message to the end user with the code to change their password.
+  post:
+    body:
+      application/json: AdminResetUserPasswordRequest
+    responses:
+      200:
+        body:
+          application/json: AdminResetUserPasswordResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminRespondToAuthChallenge}:
+  uriParameters:
+    AdminRespondToAuthChallenge?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Responds to an authentication challenge, as an administrator.
+  post:
+    body:
+      application/json: AdminRespondToAuthChallengeRequest
+    responses:
+      200:
+        body:
+          application/json: AdminRespondToAuthChallengeResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminSetUserSettings}:
+  uriParameters:
+    AdminSetUserSettings?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sets all the user settings for a specified user name. Works on any user.
+  post:
+    body:
+      application/json: AdminSetUserSettingsRequest
+    responses:
+      200:
+        body:
+          application/json: AdminSetUserSettingsResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminUpdateDeviceStatus}:
+  uriParameters:
+    AdminUpdateDeviceStatus?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates the device status as an administrator.
+  post:
+    body:
+      application/json: AdminUpdateDeviceStatusRequest
+    responses:
+      200:
+        body:
+          application/json: AdminUpdateDeviceStatusResponse
+      400:
+        description: InvalidParameterException
+/{AdminUpdateUserAttributes}:
+  uriParameters:
+    AdminUpdateUserAttributes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates the specified user's attributes, including developer attributes, as an administrator. Works on any user.
+  post:
+    body:
+      application/json: AdminUpdateUserAttributesRequest
+    responses:
+      200:
+        body:
+          application/json: AdminUpdateUserAttributesResponse
+      400:
+        description: ResourceNotFoundException
+/{AdminUserGlobalSignOut}:
+  uriParameters:
+    AdminUserGlobalSignOut?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Signs out users from all devices, as an administrator.
+  post:
+    body:
+      application/json: AdminUserGlobalSignOutRequest
+    responses:
+      200:
+        body:
+          application/json: AdminUserGlobalSignOutResponse
+      400:
+        description: ResourceNotFoundException
+/{ChangePassword}:
+  uriParameters:
+    ChangePassword?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Changes the password for a specified user in a user pool.
+  post:
+    body:
+      application/json: ChangePasswordRequest
+    responses:
+      200:
+        body:
+          application/json: ChangePasswordResponse
+      400:
+        description: ResourceNotFoundException
+/{ConfirmDevice}:
+  uriParameters:
+    ConfirmDevice?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Confirms tracking of the device. This API call is the call that beings device tracking.
+  post:
+    body:
+      application/json: ConfirmDeviceRequest
+    responses:
+      200:
+        body:
+          application/json: ConfirmDeviceResponse
+      400:
+        description: ResourceNotFoundException
+/{ConfirmForgotPassword}:
+  uriParameters:
+    ConfirmForgotPassword?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Allows a user to enter a code provided when they reset their password to update their password.
+  post:
+    body:
+      application/json: ConfirmForgotPasswordRequest
+    responses:
+      200:
+        body:
+          application/json: ConfirmForgotPasswordResponse
+      400:
+        description: ResourceNotFoundException
+/{ConfirmSignUp}:
+  uriParameters:
+    ConfirmSignUp?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Confirms registration of a user and handles the existing alias from a previous user.
+  post:
+    body:
+      application/json: ConfirmSignUpRequest
+    responses:
+      200:
+        body:
+          application/json: ConfirmSignUpResponse
+      400:
+        description: ResourceNotFoundException
+/{CreateUserImportJob}:
+  uriParameters:
+    CreateUserImportJob?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates the user import job.
+  post:
+    body:
+      application/json: CreateUserImportJobRequest
+    responses:
+      200:
+        body:
+          application/json: CreateUserImportJobResponse
+      400:
+        description: ResourceNotFoundException
+/{CreateUserPool}:
+  uriParameters:
+    CreateUserPool?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a new Amazon Cognito user pool and sets the password policy for the pool.
+  post:
+    body:
+      application/json: CreateUserPoolRequest
+    responses:
+      200:
+        body:
+          application/json: CreateUserPoolResponse
+      400:
+        description: InvalidParameterException
+/{CreateUserPoolClient}:
+  uriParameters:
+    CreateUserPoolClient?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates the user pool client.
+  post:
+    body:
+      application/json: CreateUserPoolClientRequest
+    responses:
+      200:
+        body:
+          application/json: CreateUserPoolClientResponse
+      400:
+        description: InvalidParameterException
+/{DeleteUser}:
+  uriParameters:
+    DeleteUser?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Allows a user to delete one's self.
+  post:
+    body:
+      application/json: DeleteUserRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ResourceNotFoundException
+/{DeleteUserAttributes}:
+  uriParameters:
+    DeleteUserAttributes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the attributes for a user.
+  post:
+    body:
+      application/json: DeleteUserAttributesRequest
+    responses:
+      200:
+        body:
+          application/json: DeleteUserAttributesResponse
+      400:
+        description: ResourceNotFoundException
+/{DeleteUserPool}:
+  uriParameters:
+    DeleteUserPool?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the specified Amazon Cognito user pool.
+  post:
+    body:
+      application/json: DeleteUserPoolRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ResourceNotFoundException
+/{DeleteUserPoolClient}:
+  uriParameters:
+    DeleteUserPoolClient?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Allows the developer to delete the user pool client.
+  post:
+    body:
+      application/json: DeleteUserPoolClientRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ResourceNotFoundException
+/{DescribeUserImportJob}:
+  uriParameters:
+    DescribeUserImportJob?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the user import job.
+  post:
+    body:
+      application/json: DescribeUserImportJobRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeUserImportJobResponse
+      400:
+        description: ResourceNotFoundException
+/{DescribeUserPool}:
+  uriParameters:
+    DescribeUserPool?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns the configuration information and metadata of the specified user pool.
+  post:
+    body:
+      application/json: DescribeUserPoolRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeUserPoolResponse
+      400:
+        description: ResourceNotFoundException
+/{DescribeUserPoolClient}:
+  uriParameters:
+    DescribeUserPoolClient?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Client method for returning the configuration information and metadata of the specified user pool client.
+  post:
+    body:
+      application/json: DescribeUserPoolClientRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeUserPoolClientResponse
+      400:
+        description: ResourceNotFoundException
+/{ForgetDevice}:
+  uriParameters:
+    ForgetDevice?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Forgets the specified device.
+  post:
+    body:
+      application/json: ForgetDeviceRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ResourceNotFoundException
+/{ForgotPassword}:
+  uriParameters:
+    ForgotPassword?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves the password for the specified client ID or username.
+  post:
+    body:
+      application/json: ForgotPasswordRequest
+    responses:
+      200:
+        body:
+          application/json: ForgotPasswordResponse
+      400:
+        description: ResourceNotFoundException
+/{GetCSVHeader}:
+  uriParameters:
+    GetCSVHeader?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets the header information for the .csv file to be used as input for the user import job.
+  post:
+    body:
+      application/json: GetCSVHeaderRequest
+    responses:
+      200:
+        body:
+          application/json: GetCSVHeaderResponse
+      400:
+        description: ResourceNotFoundException
+/{GetDevice}:
+  uriParameters:
+    GetDevice?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets the device.
+  post:
+    body:
+      application/json: GetDeviceRequest
+    responses:
+      200:
+        body:
+          application/json: GetDeviceResponse
+      400:
+        description: ResourceNotFoundException
+/{GetUser}:
+  uriParameters:
+    GetUser?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets the user attributes and metadata for a user.
+  post:
+    body:
+      application/json: GetUserRequest
+    responses:
+      200:
+        body:
+          application/json: GetUserResponse
+      400:
+        description: ResourceNotFoundException
+/{GetUserAttributeVerificationCode}:
+  uriParameters:
+    GetUserAttributeVerificationCode?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets the user attribute verification code for the specified attribute name.
+  post:
+    body:
+      application/json: GetUserAttributeVerificationCodeRequest
+    responses:
+      200:
+        body:
+          application/json: GetUserAttributeVerificationCodeResponse
+      400:
+        description: ResourceNotFoundException
+/{GlobalSignOut}:
+  uriParameters:
+    GlobalSignOut?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Signs out users from all devices.
+  post:
+    body:
+      application/json: GlobalSignOutRequest
+    responses:
+      200:
+        body:
+          application/json: GlobalSignOutResponse
+      400:
+        description: ResourceNotFoundException
+/{InitiateAuth}:
+  uriParameters:
+    InitiateAuth?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Initiates the authentication flow.
+  post:
+    body:
+      application/json: InitiateAuthRequest
+    responses:
+      200:
+        body:
+          application/json: InitiateAuthResponse
+      400:
+        description: ResourceNotFoundException
+/{ListDevices}:
+  uriParameters:
+    ListDevices?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the devices.
+  post:
+    body:
+      application/json: ListDevicesRequest
+    responses:
+      200:
+        body:
+          application/json: ListDevicesResponse
+      400:
+        description: InvalidParameterException
+/{ListUserImportJobs}:
+  uriParameters:
+    ListUserImportJobs?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the user import jobs.
+  post:
+    body:
+      application/json: ListUserImportJobsRequest
+    responses:
+      200:
+        body:
+          application/json: ListUserImportJobsResponse
+      400:
+        description: ResourceNotFoundException
+/{ListUserPoolClients}:
+  uriParameters:
+    ListUserPoolClients?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the clients that have been created for the specified user pool.
+  post:
+    body:
+      application/json: ListUserPoolClientsRequest
+    responses:
+      200:
+        body:
+          application/json: ListUserPoolClientsResponse
+      400:
+        description: InvalidParameterException
+/{ListUserPools}:
+  uriParameters:
+    ListUserPools?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the user pools associated with an AWS account.
+  post:
+    body:
+      application/json: ListUserPoolsRequest
+    responses:
+      200:
+        body:
+          application/json: ListUserPoolsResponse
+      400:
+        description: InvalidParameterException
+/{ListUsers}:
+  uriParameters:
+    ListUsers?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the users in the Amazon Cognito user pool.
+  post:
+    body:
+      application/json: ListUsersRequest
+    responses:
+      200:
+        body:
+          application/json: ListUsersResponse
+      400:
+        description: InvalidParameterException
+/{ResendConfirmationCode}:
+  uriParameters:
+    ResendConfirmationCode?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Resends the confirmation (for confirmation of registration) to a specific user in the user pool.
+  post:
+    body:
+      application/json: ResendConfirmationCodeRequest
+    responses:
+      200:
+        body:
+          application/json: ResendConfirmationCodeResponse
+      400:
+        description: ResourceNotFoundException
+/{RespondToAuthChallenge}:
+  uriParameters:
+    RespondToAuthChallenge?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Responds to the authentication challenge.
+  post:
+    body:
+      application/json: RespondToAuthChallengeRequest
+    responses:
+      200:
+        body:
+          application/json: RespondToAuthChallengeResponse
+      400:
+        description: ResourceNotFoundException
+/{SetUserSettings}:
+  uriParameters:
+    SetUserSettings?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sets the user settings like multi-factor authentication (MFA). If MFA is to be removed for a particular attribute pass the attribute with code delivery as null. If null list is passed, all MFA options are removed.
+  post:
+    body:
+      application/json: SetUserSettingsRequest
+    responses:
+      200:
+        body:
+          application/json: SetUserSettingsResponse
+      400:
+        description: ResourceNotFoundException
+/{SignUp}:
+  uriParameters:
+    SignUp?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Registers the user in the specified user pool and creates a user name, password, and user attributes.
+  post:
+    body:
+      application/json: SignUpRequest
+    responses:
+      200:
+        body:
+          application/json: SignUpResponse
+      400:
+        description: ResourceNotFoundException
+/{StartUserImportJob}:
+  uriParameters:
+    StartUserImportJob?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Starts the user import.
+  post:
+    body:
+      application/json: StartUserImportJobRequest
+    responses:
+      200:
+        body:
+          application/json: StartUserImportJobResponse
+      400:
+        description: ResourceNotFoundException
+/{StopUserImportJob}:
+  uriParameters:
+    StopUserImportJob?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Stops the user import job.
+  post:
+    body:
+      application/json: StopUserImportJobRequest
+    responses:
+      200:
+        body:
+          application/json: StopUserImportJobResponse
+      400:
+        description: ResourceNotFoundException
+/{UpdateDeviceStatus}:
+  uriParameters:
+    UpdateDeviceStatus?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates the device status.
+  post:
+    body:
+      application/json: UpdateDeviceStatusRequest
+    responses:
+      200:
+        body:
+          application/json: UpdateDeviceStatusResponse
+      400:
+        description: InvalidParameterException
+/{UpdateUserAttributes}:
+  uriParameters:
+    UpdateUserAttributes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Allows a user to update a specific attribute (one at a time).
+  post:
+    body:
+      application/json: UpdateUserAttributesRequest
+    responses:
+      200:
+        body:
+          application/json: UpdateUserAttributesResponse
+      400:
+        description: ResourceNotFoundException
+/{UpdateUserPool}:
+  uriParameters:
+    UpdateUserPool?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates the specified user pool with the specified attributes.
+  post:
+    body:
+      application/json: UpdateUserPoolRequest
+    responses:
+      200:
+        body:
+          application/json: UpdateUserPoolResponse
+      400:
+        description: ResourceNotFoundException
+/{UpdateUserPoolClient}:
+  uriParameters:
+    UpdateUserPoolClient?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Allows the developer to update the specified user pool client and password policy.
+  post:
+    body:
+      application/json: UpdateUserPoolClientRequest
+    responses:
+      200:
+        body:
+          application/json: UpdateUserPoolClientResponse
+      400:
+        description: ResourceNotFoundException
+/{VerifyUserAttribute}:
+  uriParameters:
+    VerifyUserAttribute?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Verifies the specified user attributes in the user pool.
+  post:
+    body:
+      application/json: VerifyUserAttributeRequest
+    responses:
+      200:
+        body:
+          application/json: VerifyUserAttributeResponse
+      400:
+        description: ResourceNotFoundException

@@ -1,0 +1,2783 @@
+#%RAML 1.0
+title: AWS IoT
+version: '2015-05-28'
+description: '  AWS IoT provides secure, bi-directional communication between Internet-connected
+  things (such as sensors, actuators, embedded devices, or smart appliances) and the
+  AWS cloud. You can discover your custom IoT-Data endpoint to communicate with, configure
+  rules for data processing and integration with other services, organize resources
+  associated with each thing (Thing Registry), configure logging, and create and manage
+  policies and credentials to authenticate things.  For more information about how
+  AWS IoT works, see the <a href="http://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer
+  Guide</a>.'
+mediaType:
+- application/json
+types:
+  ActionList:
+    type: array
+    minItems: 0
+    maxItems: 10
+    items:
+      type: Action
+  AlarmName:
+    type: string
+  AllowAutoRegistration:
+    type: boolean
+  AscendingOrder:
+    type: boolean
+  AttributeName:
+    type: string
+    pattern: '[a-zA-Z0-9_.,@/:#-]+'
+    maxLength: 128
+  AttributeValue:
+    type: string
+    pattern: '[a-zA-Z0-9_.,@/:#-]*'
+    maxLength: 800
+    description: An attribute value for an Thing. An empty or null value in Update means that existing value for that attribute should be deleted. Empty and null values in create are ignored.
+  AutoRegistrationStatus:
+    type: string
+    enum:
+    - ENABLE
+    - DISABLE
+  AwsAccountId:
+    type: string
+    pattern: '[0-9]{12}'
+  AwsArn:
+    type: string
+  AwsIotSqlVersion:
+    type: string
+  Boolean:
+    type: boolean
+  BucketName:
+    type: string
+  CACertificateStatus:
+    type: string
+    enum:
+    - ACTIVE
+    - INACTIVE
+  CACertificates:
+    type: array
+    items:
+      type: CACertificate
+  CannedAccessControlList:
+    type: string
+    enum:
+    - private
+    - public-read
+    - public-read-write
+    - aws-exec-read
+    - authenticated-read
+    - bucket-owner-read
+    - bucket-owner-full-control
+    - log-delivery-write
+  CertificateArn:
+    type: string
+  CertificateId:
+    type: string
+    pattern: (0x)?[a-fA-F0-9]+
+    minLength: 64
+    maxLength: 64
+  CertificatePem:
+    type: string
+    minLength: 1
+    maxLength: 65536
+  CertificateSigningRequest:
+    type: string
+    minLength: 1
+  CertificateStatus:
+    type: string
+    enum:
+    - ACTIVE
+    - INACTIVE
+    - REVOKED
+    - PENDING_TRANSFER
+    - REGISTER_INACTIVE
+    - PENDING_ACTIVATION
+  Certificates:
+    type: array
+    items:
+      type: Certificate
+  ClientId:
+    type: string
+  CreatedAtDate:
+    type: datetime
+  CreationDate:
+    type: datetime
+  DateType:
+    type: datetime
+  DeliveryStreamName:
+    type: string
+  DeprecationDate:
+    type: datetime
+  Description:
+    type: string
+  DynamoKeyType:
+    type: string
+    enum:
+    - STRING
+    - NUMBER
+  DynamoOperation:
+    type: string
+  ElasticsearchEndpoint:
+    type: string
+    pattern: https?://.*
+  ElasticsearchId:
+    type: string
+  ElasticsearchIndex:
+    type: string
+  ElasticsearchType:
+    type: string
+  EndpointAddress:
+    type: string
+  FirehoseSeparator:
+    type: string
+    pattern: ([\n\t])|(\r\n)|(,)
+  Flag:
+    type: boolean
+  FunctionArn:
+    type: string
+  HashKeyField:
+    type: string
+  HashKeyValue:
+    type: string
+  IsDefaultVersion:
+    type: boolean
+  IsDisabled:
+    type: boolean
+  Key:
+    type: string
+  LogLevel:
+    type: string
+    enum:
+    - DEBUG
+    - INFO
+    - ERROR
+    - WARN
+    - DISABLED
+  Marker:
+    type: string
+  MaxResults:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 10000
+  Message:
+    type: string
+    maxLength: 128
+  MessageFormat:
+    type: string
+    enum:
+    - RAW
+    - JSON
+  MetricName:
+    type: string
+  MetricNamespace:
+    type: string
+  MetricTimestamp:
+    type: string
+  MetricUnit:
+    type: string
+  MetricValue:
+    type: string
+  NextToken:
+    type: string
+  OptionalVersion:
+    type: integer
+    format: long
+  OutgoingCertificates:
+    type: array
+    items:
+      type: OutgoingCertificate
+  PageSize:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 250
+  PartitionKey:
+    type: string
+  PayloadField:
+    type: string
+  Policies:
+    type: array
+    items:
+      type: Policy
+  PolicyArn:
+    type: string
+  PolicyDocument:
+    type: string
+  PolicyName:
+    type: string
+    pattern: '[\w+=,.@-]+'
+    minLength: 1
+    maxLength: 128
+  PolicyVersionId:
+    type: string
+    pattern: '[0-9]+'
+  PolicyVersions:
+    type: array
+    items:
+      type: PolicyVersion
+  Principal:
+    type: string
+  PrincipalArn:
+    type: string
+  Principals:
+    type: array
+    items:
+      type: PrincipalArn
+  PrivateKey:
+    type: string
+    minLength: 1
+  PublicKey:
+    type: string
+    minLength: 1
+  QueueUrl:
+    type: string
+  RangeKeyField:
+    type: string
+  RangeKeyValue:
+    type: string
+  RegistrationCode:
+    type: string
+    pattern: (0x)?[a-fA-F0-9]+
+    minLength: 64
+    maxLength: 64
+  RemoveThingType:
+    type: boolean
+  RuleArn:
+    type: string
+  RuleName:
+    type: string
+    pattern: ^[a-zA-Z0-9_]+$
+    minLength: 1
+    maxLength: 128
+  SQL:
+    type: string
+  SearchableAttributes:
+    type: array
+    items:
+      type: AttributeName
+  SetAsActive:
+    type: boolean
+  SetAsActiveFlag:
+    type: boolean
+  SetAsDefault:
+    type: boolean
+  StateReason:
+    type: string
+  StateValue:
+    type: string
+  StreamName:
+    type: string
+  TableName:
+    type: string
+  ThingArn:
+    type: string
+  ThingAttributeList:
+    type: array
+    items:
+      type: ThingAttribute
+  ThingName:
+    type: string
+    pattern: '[a-zA-Z0-9:_-]+'
+    minLength: 1
+    maxLength: 128
+  ThingNameList:
+    type: array
+    items:
+      type: ThingName
+  ThingTypeArn:
+    type: string
+  ThingTypeDescription:
+    type: string
+    pattern: '[\p{Graph}\x20]*'
+    maxLength: 2028
+  ThingTypeList:
+    type: array
+    items:
+      type: ThingTypeDefinition
+  ThingTypeName:
+    type: string
+    pattern: '[a-zA-Z0-9:_-]+'
+    minLength: 1
+    maxLength: 128
+  Topic:
+    type: string
+  TopicPattern:
+    type: string
+  TopicRuleList:
+    type: array
+    items:
+      type: TopicRuleListItem
+  UndoDeprecate:
+    type: boolean
+  UseBase64:
+    type: boolean
+  Version:
+    type: integer
+    format: long
+  Action:
+    type: object
+    properties:
+      dynamoDB?:
+        type: DynamoDBAction
+        description: <p>Write to a DynamoDB table.</p>
+      lambda?:
+        type: LambdaAction
+        description: <p>Invoke a Lambda function.</p>
+      sns?:
+        type: SnsAction
+        description: <p>Publish to an Amazon SNS topic.</p>
+      sqs?:
+        type: SqsAction
+        description: <p>Publish to an Amazon SQS queue.</p>
+      kinesis?:
+        type: KinesisAction
+        description: <p>Write data to an Amazon Kinesis stream.</p>
+      republish?:
+        type: RepublishAction
+        description: <p>Publish to another MQTT topic.</p>
+      s3?:
+        type: S3Action
+        description: <p>Write to an Amazon S3 bucket.</p>
+      firehose?:
+        type: FirehoseAction
+        description: <p>Write to an Amazon Kinesis Firehose stream.</p>
+      cloudwatchMetric?:
+        type: CloudwatchMetricAction
+        description: <p>Capture a CloudWatch metric.</p>
+      cloudwatchAlarm?:
+        type: CloudwatchAlarmAction
+        description: <p>Change the state of a CloudWatch alarm.</p>
+      elasticsearch?:
+        type: ElasticsearchAction
+        description: <p>Write data to an Amazon Elasticsearch Service domain.</p>
+    description: <p>Describes the actions associated with a rule.</p>
+  AttachThingPrincipalResponse:
+    type: object
+    description: <p>The output from the AttachThingPrincipal operation.</p>
+  AttributePayload:
+    type: object
+    properties:
+      attributes?:
+        type: Attributes
+        description: <p>A JSON string containing up to three key-value pair in JSON format. For example:</p> <p><code>{\"attributes\":{\"string1\":\"string2\"}})</code></p>
+      merge?:
+        type: Flag
+        description: <p>Specifies whether the list of attributes provided in the <code>AttributePayload</code> is merged with the attributes stored in the registry, instead of overwriting them.</p> <p>To remove an attribute, call <code>UpdateThing</code> with an empty attribute value.</p> <note> <p>The <code>merge</code> attribute is only valid when calling <code>UpdateThing</code>.</p> </note>
+    description: <p>The attribute payload.</p>
+  Attributes:
+    type: object
+    properties:
+      //:
+        type: AttributeValue
+  CACertificate:
+    type: object
+    properties:
+      certificateArn?:
+        type: CertificateArn
+        description: <p>The ARN of the CA certificate.</p>
+      certificateId?:
+        type: CertificateId
+        description: <p>The ID of the CA certificate.</p>
+      status?:
+        type: CACertificateStatus
+        description: <p>The status of the CA certificate. </p> <p>The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
+      creationDate?:
+        type: DateType
+        description: <p>The date the CA certificate was created.</p>
+    description: <p>A CA certificate.</p>
+  CACertificateDescription:
+    type: object
+    properties:
+      certificateArn?:
+        type: CertificateArn
+        description: <p>The CA certificate ARN.</p>
+      certificateId?:
+        type: CertificateId
+        description: <p>The CA certificate ID.</p>
+      status?:
+        type: CACertificateStatus
+        description: <p>The status of a CA certificate.</p>
+      certificatePem?:
+        type: CertificatePem
+        description: <p>The CA certificate data, in PEM format.</p>
+      ownedBy?:
+        type: AwsAccountId
+        description: <p>The owner of the CA certificate.</p>
+      creationDate?:
+        type: DateType
+        description: <p>The date the CA certificate was created.</p>
+      autoRegistrationStatus?:
+        type: AutoRegistrationStatus
+        description: <p>Whether the CA certificate configured for auto registration of device certificates. Valid values are "ENABLE" and "DISABLE"</p>
+    description: <p>Describes a CA certificate.</p>
+  Certificate:
+    type: object
+    properties:
+      certificateArn?:
+        type: CertificateArn
+        description: <p>The ARN of the certificate.</p>
+      certificateId?:
+        type: CertificateId
+        description: <p>The ID of the certificate.</p>
+      status?:
+        type: CertificateStatus
+        description: <p>The status of the certificate.</p> <p>The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
+      creationDate?:
+        type: DateType
+        description: <p>The date and time the certificate was created.</p>
+    description: <p>Information about a certificate.</p>
+  CertificateDescription:
+    type: object
+    properties:
+      certificateArn?:
+        type: CertificateArn
+        description: <p>The ARN of the certificate.</p>
+      certificateId?:
+        type: CertificateId
+        description: <p>The ID of the certificate.</p>
+      caCertificateId?:
+        type: CertificateId
+        description: <p>The certificate ID of the CA certificate used to sign this certificate.</p>
+      status?:
+        type: CertificateStatus
+        description: <p>The status of the certificate.</p>
+      certificatePem?:
+        type: CertificatePem
+        description: <p>The certificate data, in PEM format.</p>
+      ownedBy?:
+        type: AwsAccountId
+        description: <p>The ID of the AWS account that owns the certificate.</p>
+      previousOwnedBy?:
+        type: AwsAccountId
+        description: <p>The ID of the AWS account of the previous owner of the certificate.</p>
+      creationDate?:
+        type: DateType
+        description: <p>The date and time the certificate was created.</p>
+      lastModifiedDate?:
+        type: DateType
+        description: <p>The date and time the certificate was last modified.</p>
+      transferData?:
+        type: TransferData
+        description: <p>The transfer data.</p>
+    description: <p>Describes a certificate.</p>
+  CloudwatchAlarmAction:
+    type: object
+    properties:
+      roleArn:
+        type: AwsArn
+        description: <p>The IAM role that allows access to the CloudWatch alarm.</p>
+      alarmName:
+        type: AlarmName
+        description: <p>The CloudWatch alarm name.</p>
+      stateReason:
+        type: StateReason
+        description: <p>The reason for the alarm change.</p>
+      stateValue:
+        type: StateValue
+        description: '<p>The value of the alarm state. Acceptable values are: OK,
+          ALARM, INSUFFICIENT_DATA.</p>'
+    description: <p>Describes an action that updates a CloudWatch alarm.</p>
+  CloudwatchMetricAction:
+    type: object
+    properties:
+      roleArn:
+        type: AwsArn
+        description: <p>The IAM role that allows access to the CloudWatch metric.</p>
+      metricNamespace:
+        type: MetricNamespace
+        description: <p>The CloudWatch metric namespace name.</p>
+      metricName:
+        type: MetricName
+        description: <p>The CloudWatch metric name.</p>
+      metricValue:
+        type: MetricValue
+        description: <p>The CloudWatch metric value.</p>
+      metricUnit:
+        type: MetricUnit
+        description: <p>The <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit">metric unit</a> supported by CloudWatch.</p>
+      metricTimestamp?:
+        type: MetricTimestamp
+        description: <p>An optional <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp">Unix timestamp</a>.</p>
+    description: <p>Describes an action that captures a CloudWatch metric.</p>
+  CreateCertificateFromCsrResponse:
+    type: object
+    properties:
+      certificateArn?:
+        type: CertificateArn
+        description: <p>The Amazon Resource Name (ARN) of the certificate. You can use the ARN as a principal for policy operations.</p>
+      certificateId?:
+        type: CertificateId
+        description: <p>The ID of the certificate. Certificate management operations only take a certificateId.</p>
+      certificatePem?:
+        type: CertificatePem
+        description: <p>The certificate data, in PEM format.</p>
+    description: <p>The output from the CreateCertificateFromCsr operation.</p>
+  CreateKeysAndCertificateResponse:
+    type: object
+    properties:
+      certificateArn?:
+        type: CertificateArn
+        description: <p>The ARN of the certificate.</p>
+      certificateId?:
+        type: CertificateId
+        description: <p>The ID of the certificate. AWS IoT issues a default subject name for the certificate (for example, AWS IoT Certificate).</p>
+      certificatePem?:
+        type: CertificatePem
+        description: <p>The certificate data, in PEM format.</p>
+      keyPair?:
+        type: KeyPair
+        description: <p>The generated key pair.</p>
+    description: <p>The output of the CreateKeysAndCertificate operation.</p>
+  CreatePolicyResponse:
+    type: object
+    properties:
+      policyName?:
+        type: PolicyName
+        description: <p>The policy name.</p>
+      policyArn?:
+        type: PolicyArn
+        description: <p>The policy ARN.</p>
+      policyDocument?:
+        type: PolicyDocument
+        description: <p>The JSON document that describes the policy.</p>
+      policyVersionId?:
+        type: PolicyVersionId
+        description: <p>The policy version ID.</p>
+    description: <p>The output from the CreatePolicy operation.</p>
+  CreatePolicyVersionResponse:
+    type: object
+    properties:
+      policyArn?:
+        type: PolicyArn
+        description: <p>The policy ARN.</p>
+      policyDocument?:
+        type: PolicyDocument
+        description: <p>The JSON document that describes the policy.</p>
+      policyVersionId?:
+        type: PolicyVersionId
+        description: <p>The policy version ID.</p>
+      isDefaultVersion?:
+        type: IsDefaultVersion
+        description: <p>Specifies whether the policy version is the default.</p>
+    description: <p>The output of the CreatePolicyVersion operation.</p>
+  CreateThingResponse:
+    type: object
+    properties:
+      thingName?:
+        type: ThingName
+        description: <p>The name of the new thing.</p>
+      thingArn?:
+        type: ThingArn
+        description: <p>The ARN of the new thing.</p>
+    description: <p>The output of the CreateThing operation.</p>
+  CreateThingTypeResponse:
+    type: object
+    properties:
+      thingTypeName?:
+        type: ThingTypeName
+        description: <p>The name of the thing type.</p>
+      thingTypeArn?:
+        type: ThingTypeArn
+        description: <p>The Amazon Resource Name (ARN) of the thing type.</p>
+    description: <p>The output of the CreateThingType operation.</p>
+  DeleteCACertificateResponse:
+    type: object
+    description: <p>The output for the DeleteCACertificate operation.</p>
+  DeleteRegistrationCodeRequest:
+    type: object
+    description: <p>The input for the DeleteRegistrationCode operation.</p>
+  DeleteRegistrationCodeResponse:
+    type: object
+    description: <p>The output for the DeleteRegistrationCode operation. </p>
+  DeleteThingResponse:
+    type: object
+    description: <p>The output of the DeleteThing operation.</p>
+  DeleteThingTypeResponse:
+    type: object
+    description: <p>The output for the DeleteThingType operation.</p>
+  DeprecateThingTypeResponse:
+    type: object
+    description: <p>The output for the DeprecateThingType operation.</p>
+  DescribeCACertificateResponse:
+    type: object
+    properties:
+      certificateDescription?:
+        type: CACertificateDescription
+        description: <p>The CA certificate description.</p>
+    description: <p>The output from the DescribeCACertificate operation.</p>
+  DescribeCertificateResponse:
+    type: object
+    properties:
+      certificateDescription?:
+        type: CertificateDescription
+        description: <p>The description of the certificate.</p>
+    description: <p>The output of the DescribeCertificate operation.</p>
+  DescribeEndpointRequest:
+    type: object
+    description: <p>The input for the DescribeEndpoint operation.</p>
+  DescribeEndpointResponse:
+    type: object
+    properties:
+      endpointAddress?:
+        type: EndpointAddress
+        description: '<p>The endpoint. The format of the endpoint is as follows: <i>identifier</i>.iot.<i>region</i>.amazonaws.com.</p>'
+    description: <p>The output from the DescribeEndpoint operation.</p>
+  DescribeThingResponse:
+    type: object
+    properties:
+      defaultClientId?:
+        type: ClientId
+        description: <p>The default client ID.</p>
+      thingName?:
+        type: ThingName
+        description: <p>The name of the thing.</p>
+      thingTypeName?:
+        type: ThingTypeName
+        description: <p>The thing type name.</p>
+      attributes?:
+        type: Attributes
+        description: <p>The thing attributes.</p>
+      version?:
+        type: Version
+        description: <p>The current version of the thing record in the registry.</p> <note> <p>To avoid unintentional changes to the information in the registry, you can pass the version information in the <code>expectedVersion</code> parameter of the <code>UpdateThing</code> and <code>DeleteThing</code> calls.</p> </note>
+    description: <p>The output from the DescribeThing operation.</p>
+  DescribeThingTypeResponse:
+    type: object
+    properties:
+      thingTypeName?:
+        type: ThingTypeName
+        description: <p>The name of the thing type.</p>
+      thingTypeProperties?:
+        type: ThingTypeProperties
+        description: <p>The ThingTypeProperties contains information about the thing type including description, and a list of searchable thing attribute names.</p>
+      thingTypeMetadata?:
+        type: ThingTypeMetadata
+    description: <p>The output for the DescribeThingType operation.</p>
+  DetachThingPrincipalResponse:
+    type: object
+    description: <p>The output from the DetachThingPrincipal operation.</p>
+  DynamoDBAction:
+    type: object
+    properties:
+      tableName:
+        type: TableName
+        description: <p>The name of the DynamoDB table.</p>
+      roleArn:
+        type: AwsArn
+        description: <p>The ARN of the IAM role that grants access to the DynamoDB table.</p>
+      operation?:
+        type: DynamoOperation
+        description: '<p>The type of operation to be performed. This follows the substitution
+          template, so it can be <code>${operation}</code>, but the substitution must
+          result in one of the following: <code>INSERT</code>, <code>UPDATE</code>,
+          or <code>DELETE</code>.</p>'
+      hashKeyField:
+        type: HashKeyField
+        description: <p>The hash key name.</p>
+      hashKeyValue:
+        type: HashKeyValue
+        description: <p>The hash key value.</p>
+      hashKeyType?:
+        type: DynamoKeyType
+        description: <p>The hash key type. Valid values are "STRING" or "NUMBER"</p>
+      rangeKeyField?:
+        type: RangeKeyField
+        description: <p>The range key name.</p>
+      rangeKeyValue?:
+        type: RangeKeyValue
+        description: <p>The range key value.</p>
+      rangeKeyType?:
+        type: DynamoKeyType
+        description: <p>The range key type. Valid values are "STRING" or "NUMBER"</p>
+      payloadField?:
+        type: PayloadField
+        description: <p>The action payload. This name can be customized.</p>
+    description: '<p>Describes an action to write to a DynamoDB table.</p> <p>The
+      <code>tableName</code>, <code>hashKeyField</code>, and <code>rangeKeyField</code>
+      values must match the values used when you created the table.</p> <p>The <code>hashKeyValue</code>
+      and <code>rangeKeyvalue</code> fields use a substitution template syntax. These
+      templates provide data at runtime. The syntax is as follows: ${<i>sql-expression</i>}.</p>
+      <p>You can specify any valid expression in a WHERE or SELECT clause, including
+      JSON properties, comparisons, calculations, and functions. For example, the
+      following field uses the third level of the topic:</p> <p><code>"hashKeyValue":
+      "${topic(3)}"</code></p> <p>The following field uses the timestamp:</p> <p><code>"rangeKeyValue":
+      "${timestamp()}"</code></p>'
+  ElasticsearchAction:
+    type: object
+    properties:
+      roleArn:
+        type: AwsArn
+        description: <p>The IAM role ARN that has access to Elasticsearch.</p>
+      endpoint:
+        type: ElasticsearchEndpoint
+        description: <p>The endpoint of your Elasticsearch domain.</p>
+      index:
+        type: ElasticsearchIndex
+        description: <p>The Elasticsearch index where you want to store your data.</p>
+      type:
+        type: ElasticsearchType
+        description: <p>The type of document you are storing.</p>
+      id:
+        type: ElasticsearchId
+        description: <p>The unique identifier for the document you are storing.</p>
+    description: <p>Describes an action that writes data to an Amazon Elasticsearch Service domain.</p>
+  FirehoseAction:
+    type: object
+    properties:
+      roleArn:
+        type: AwsArn
+        description: <p>The IAM role that grants access to the Amazon Kinesis Firehost stream.</p>
+      deliveryStreamName:
+        type: DeliveryStreamName
+        description: <p>The delivery stream name.</p>
+      separator?:
+        type: FirehoseSeparator
+        description: '<p>A character separator that will be used to separate records
+          written to the Firehose stream. Valid values are: ''\n'' (newline), ''\t''
+          (tab), ''\r\n'' (Windows newline), '','' (comma).</p>'
+    description: <p>Describes an action that writes data to an Amazon Kinesis Firehose stream.</p>
+  GetLoggingOptionsRequest:
+    type: object
+    description: <p>The input for the GetLoggingOptions operation.</p>
+  GetLoggingOptionsResponse:
+    type: object
+    properties:
+      roleArn?:
+        type: AwsArn
+        description: <p>The ARN of the IAM role that grants access.</p>
+      logLevel?:
+        type: LogLevel
+        description: <p>The logging level.</p>
+    description: <p>The output from the GetLoggingOptions operation.</p>
+  GetPolicyResponse:
+    type: object
+    properties:
+      policyName?:
+        type: PolicyName
+        description: <p>The policy name.</p>
+      policyArn?:
+        type: PolicyArn
+        description: <p>The policy ARN.</p>
+      policyDocument?:
+        type: PolicyDocument
+        description: <p>The JSON document that describes the policy.</p>
+      defaultVersionId?:
+        type: PolicyVersionId
+        description: <p>The default policy version ID.</p>
+    description: <p>The output from the GetPolicy operation.</p>
+  GetPolicyVersionResponse:
+    type: object
+    properties:
+      policyArn?:
+        type: PolicyArn
+        description: <p>The policy ARN.</p>
+      policyName?:
+        type: PolicyName
+        description: <p>The policy name.</p>
+      policyDocument?:
+        type: PolicyDocument
+        description: <p>The JSON document that describes the policy.</p>
+      policyVersionId?:
+        type: PolicyVersionId
+        description: <p>The policy version ID.</p>
+      isDefaultVersion?:
+        type: IsDefaultVersion
+        description: <p>Specifies whether the policy version is the default.</p>
+    description: <p>The output from the GetPolicyVersion operation.</p>
+  GetRegistrationCodeRequest:
+    type: object
+    description: <p>The input to the GetRegistrationCode operation.</p>
+  GetRegistrationCodeResponse:
+    type: object
+    properties:
+      registrationCode?:
+        type: RegistrationCode
+        description: <p>The CA certificate registration code.</p>
+    description: <p>The output from the GetRegistrationCode operation.</p>
+  GetTopicRuleResponse:
+    type: object
+    properties:
+      ruleArn?:
+        type: RuleArn
+        description: <p>The rule ARN.</p>
+      rule?:
+        type: TopicRule
+        description: <p>The rule.</p>
+    description: <p>The output from the GetTopicRule operation.</p>
+  KeyPair:
+    type: object
+    properties:
+      PublicKey?:
+        type: PublicKey
+        description: <p>The public key.</p>
+      PrivateKey?:
+        type: PrivateKey
+        description: <p>The private key.</p>
+    description: <p>Describes a key pair.</p>
+  KinesisAction:
+    type: object
+    properties:
+      roleArn:
+        type: AwsArn
+        description: <p>The ARN of the IAM role that grants access to the Amazon Kinesis stream.</p>
+      streamName:
+        type: StreamName
+        description: <p>The name of the Amazon Kinesis stream.</p>
+      partitionKey?:
+        type: PartitionKey
+        description: <p>The partition key.</p>
+    description: <p>Describes an action to write data to an Amazon Kinesis stream.</p>
+  LambdaAction:
+    type: object
+    properties:
+      functionArn:
+        type: FunctionArn
+        description: <p>The ARN of the Lambda function.</p>
+    description: <p>Describes an action to invoke a Lambda function.</p>
+  ListCACertificatesResponse:
+    type: object
+    properties:
+      certificates?:
+        type: CACertificates
+        description: <p>The CA certificates registered in your AWS account.</p>
+      nextMarker?:
+        type: Marker
+        description: <p>The current position within the list of CA certificates.</p>
+    description: <p>The output from the ListCACertificates operation.</p>
+  ListCertificatesByCAResponse:
+    type: object
+    properties:
+      certificates?:
+        type: Certificates
+        description: <p>The device certificates signed by the specified CA certificate.</p>
+      nextMarker?:
+        type: Marker
+        description: <p>The marker for the next set of results, or null if there are no additional results.</p>
+    description: <p>The output of the ListCertificatesByCA operation.</p>
+  ListCertificatesResponse:
+    type: object
+    properties:
+      certificates?:
+        type: Certificates
+        description: <p>The descriptions of the certificates.</p>
+      nextMarker?:
+        type: Marker
+        description: <p>The marker for the next set of results, or null if there are no additional results.</p>
+    description: <p>The output of the ListCertificates operation.</p>
+  ListOutgoingCertificatesResponse:
+    type: object
+    properties:
+      outgoingCertificates?:
+        type: OutgoingCertificates
+        description: <p>The certificates that are being transfered but not yet accepted.</p>
+      nextMarker?:
+        type: Marker
+        description: <p>The marker for the next set of results.</p>
+    description: <p>The output from the ListOutgoingCertificates operation.</p>
+  ListPoliciesResponse:
+    type: object
+    properties:
+      policies?:
+        type: Policies
+        description: <p>The descriptions of the policies.</p>
+      nextMarker?:
+        type: Marker
+        description: <p>The marker for the next set of results, or null if there are no additional results.</p>
+    description: <p>The output from the ListPolicies operation.</p>
+  ListPolicyPrincipalsResponse:
+    type: object
+    properties:
+      principals?:
+        type: Principals
+        description: <p>The descriptions of the principals.</p>
+      nextMarker?:
+        type: Marker
+        description: <p>The marker for the next set of results, or null if there are no additional results.</p>
+    description: <p>The output from the ListPolicyPrincipals operation.</p>
+  ListPolicyVersionsResponse:
+    type: object
+    properties:
+      policyVersions?:
+        type: PolicyVersions
+        description: <p>The policy versions.</p>
+    description: <p>The output from the ListPolicyVersions operation.</p>
+  ListPrincipalPoliciesResponse:
+    type: object
+    properties:
+      policies?:
+        type: Policies
+        description: <p>The policies.</p>
+      nextMarker?:
+        type: Marker
+        description: <p>The marker for the next set of results, or null if there are no additional results.</p>
+    description: <p>The output from the ListPrincipalPolicies operation.</p>
+  ListPrincipalThingsResponse:
+    type: object
+    properties:
+      things?:
+        type: ThingNameList
+        description: <p>The things.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+    description: <p>The output from the ListPrincipalThings operation.</p>
+  ListThingPrincipalsResponse:
+    type: object
+    properties:
+      principals?:
+        type: Principals
+        description: <p>The principals associated with the thing.</p>
+    description: <p>The output from the ListThingPrincipals operation.</p>
+  ListThingTypesResponse:
+    type: object
+    properties:
+      thingTypes?:
+        type: ThingTypeList
+        description: <p>The thing types.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+    description: <p>The output for the ListThingTypes operation.</p>
+  ListThingsResponse:
+    type: object
+    properties:
+      things?:
+        type: ThingAttributeList
+        description: <p>The things.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+    description: <p>The output from the ListThings operation.</p>
+  ListTopicRulesResponse:
+    type: object
+    properties:
+      rules?:
+        type: TopicRuleList
+        description: <p>The rules.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>A token used to retrieve the next value.</p>
+    description: <p>The output from the ListTopicRules operation.</p>
+  LoggingOptionsPayload:
+    type: object
+    properties:
+      roleArn:
+        type: AwsArn
+        description: <p>The ARN of the IAM role that grants access.</p>
+      logLevel?:
+        type: LogLevel
+        description: <p>The logging level.</p>
+    description: <p>Describes the logging options payload.</p>
+  OutgoingCertificate:
+    type: object
+    properties:
+      certificateArn?:
+        type: CertificateArn
+        description: <p>The certificate ARN.</p>
+      certificateId?:
+        type: CertificateId
+        description: <p>The certificate ID.</p>
+      transferredTo?:
+        type: AwsAccountId
+        description: <p>The AWS account to which the transfer was made.</p>
+      transferDate?:
+        type: DateType
+        description: <p>The date the transfer was initiated.</p>
+      transferMessage?:
+        type: Message
+        description: <p>The transfer message.</p>
+      creationDate?:
+        type: DateType
+        description: <p>The certificate creation date.</p>
+    description: <p>A certificate that has been transfered but not yet accepted.</p>
+  Policy:
+    type: object
+    properties:
+      policyName?:
+        type: PolicyName
+        description: <p>The policy name.</p>
+      policyArn?:
+        type: PolicyArn
+        description: <p>The policy ARN.</p>
+    description: <p>Describes an AWS IoT policy.</p>
+  PolicyVersion:
+    type: object
+    properties:
+      versionId?:
+        type: PolicyVersionId
+        description: <p>The policy version ID.</p>
+      isDefaultVersion?:
+        type: IsDefaultVersion
+        description: <p>Specifies whether the policy version is the default.</p>
+      createDate?:
+        type: DateType
+        description: <p>The date and time the policy was created.</p>
+    description: <p>Describes a policy version.</p>
+  RegisterCACertificateResponse:
+    type: object
+    properties:
+      certificateArn?:
+        type: CertificateArn
+        description: <p>The CA certificate ARN.</p>
+      certificateId?:
+        type: CertificateId
+        description: <p>The CA certificate identifier.</p>
+    description: <p>The output from the RegisterCACertificateResponse operation.</p>
+  RegisterCertificateResponse:
+    type: object
+    properties:
+      certificateArn?:
+        type: CertificateArn
+        description: <p>The certificate ARN.</p>
+      certificateId?:
+        type: CertificateId
+        description: <p>The certificate identifier.</p>
+    description: <p>The output from the RegisterCertificate operation.</p>
+  RepublishAction:
+    type: object
+    properties:
+      roleArn:
+        type: AwsArn
+        description: <p>The ARN of the IAM role that grants access.</p>
+      topic:
+        type: TopicPattern
+        description: <p>The name of the MQTT topic.</p>
+    description: <p>Describes an action to republish to another topic.</p>
+  S3Action:
+    type: object
+    properties:
+      roleArn:
+        type: AwsArn
+        description: <p>The ARN of the IAM role that grants access.</p>
+      bucketName:
+        type: BucketName
+        description: <p>The Amazon S3 bucket.</p>
+      key:
+        type: Key
+        description: <p>The object key.</p>
+      cannedAcl?:
+        type: CannedAccessControlList
+        description: <p>The Amazon S3 canned ACL that controls access to the object identified by the object key. For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl">S3 canned ACLs</a>.</p>
+    description: <p>Describes an action to write data to an Amazon S3 bucket.</p>
+  SnsAction:
+    type: object
+    properties:
+      targetArn:
+        type: AwsArn
+        description: <p>The ARN of the SNS topic.</p>
+      roleArn:
+        type: AwsArn
+        description: <p>The ARN of the IAM role that grants access.</p>
+      messageFormat?:
+        type: MessageFormat
+        description: <p>The message format of the message to publish. Optional. Accepted values are "JSON" and "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if the payload should be parsed and relevant platform-specific bits of the payload should be extracted. To read more about SNS message formats, see <a href="http://docs.aws.amazon.com/sns/latest/dg/json-formats.html"></a> refer to their official documentation.</p>
+    description: <p>Describes an action to publish to an Amazon SNS topic.</p>
+  SqsAction:
+    type: object
+    properties:
+      roleArn:
+        type: AwsArn
+        description: <p>The ARN of the IAM role that grants access.</p>
+      queueUrl:
+        type: QueueUrl
+        description: <p>The URL of the Amazon SQS queue.</p>
+      useBase64?:
+        type: UseBase64
+        description: <p>Specifies whether to use Base64 encoding.</p>
+    description: <p>Describes an action to publish data to an Amazon SQS queue.</p>
+  ThingAttribute:
+    type: object
+    properties:
+      thingName?:
+        type: ThingName
+        description: <p>The name of the thing.</p>
+      thingTypeName?:
+        type: ThingTypeName
+        description: <p>The name of the thing type, if the thing has been associated with a type.</p>
+      attributes?:
+        type: Attributes
+        description: <p>A list of thing attributes which are name-value pairs.</p>
+      version?:
+        type: Version
+        description: <p>The version of the thing record in the registry.</p>
+    description: <p>The properties of the thing, including thing name, thing type name, and a list of thing attributes.</p>
+  ThingTypeDefinition:
+    type: object
+    properties:
+      thingTypeName?:
+        type: ThingTypeName
+        description: <p>The name of the thing type.</p>
+      thingTypeProperties?:
+        type: ThingTypeProperties
+        description: <p>The ThingTypeProperties for the thing type.</p>
+      thingTypeMetadata?:
+        type: ThingTypeMetadata
+    description: <p>The definition of the thing type, including thing type name and description.</p>
+  ThingTypeMetadata:
+    type: object
+    properties:
+      deprecated?:
+        type: Boolean
+        description: <p>Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.</p>
+      deprecationDate?:
+        type: DeprecationDate
+        description: <p>The date and time when the thing type was deprecated.</p>
+      creationDate?:
+        type: CreationDate
+        description: <p>The date and time when the thing type was created.</p>
+    description: '<p>The ThingTypeMetadata contains additional information about the
+      thing type including: creation date and time, a value indicating whether the
+      thing type is deprecated, and a date and time when time was deprecated.</p>'
+  ThingTypeProperties:
+    type: object
+    properties:
+      thingTypeDescription?:
+        type: ThingTypeDescription
+        description: <p>The description of the thing type.</p>
+      searchableAttributes?:
+        type: SearchableAttributes
+        description: <p>A list of searchable thing attribute names.</p>
+    description: '<p>The ThingTypeProperties contains information about the thing
+      type including: a thing type description, and a list of searchable thing attribute
+      names.</p>'
+  TopicRule:
+    type: object
+    properties:
+      ruleName?:
+        type: RuleName
+        description: <p>The name of the rule.</p>
+      sql?:
+        type: SQL
+        description: <p>The SQL statement used to query the topic. When using a SQL query with multiple lines, be sure to escape the newline characters.</p>
+      description?:
+        type: Description
+        description: <p>The description of the rule.</p>
+      createdAt?:
+        type: CreatedAtDate
+        description: <p>The date and time the rule was created.</p>
+      actions?:
+        type: ActionList
+        description: <p>The actions associated with the rule.</p>
+      ruleDisabled?:
+        type: IsDisabled
+        description: <p>Specifies whether the rule is disabled.</p>
+      awsIotSqlVersion?:
+        type: AwsIotSqlVersion
+        description: <p>The version of the SQL rules engine to use when evaluating the rule.</p>
+    description: <p>Describes a rule.</p>
+  TopicRuleListItem:
+    type: object
+    properties:
+      ruleArn?:
+        type: RuleArn
+        description: <p>The rule ARN.</p>
+      ruleName?:
+        type: RuleName
+        description: <p>The name of the rule.</p>
+      topicPattern?:
+        type: TopicPattern
+        description: <p>The pattern for the topic names that apply.</p>
+      createdAt?:
+        type: CreatedAtDate
+        description: <p>The date and time the rule was created.</p>
+      ruleDisabled?:
+        type: IsDisabled
+        description: <p>Specifies whether the rule is disabled.</p>
+    description: <p>Describes a rule.</p>
+  TopicRulePayload:
+    type: object
+    properties:
+      sql:
+        type: SQL
+        description: <p>The SQL statement used to query the topic. For more information, see <a href="http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference">AWS IoT SQL Reference</a> in the <i>AWS IoT Developer Guide</i>.</p>
+      description?:
+        type: Description
+        description: <p>The description of the rule.</p>
+      actions:
+        type: ActionList
+        description: <p>The actions associated with the rule.</p>
+      ruleDisabled?:
+        type: IsDisabled
+        description: <p>Specifies whether the rule is disabled.</p>
+      awsIotSqlVersion?:
+        type: AwsIotSqlVersion
+        description: <p>The version of the SQL rules engine to use when evaluating the rule.</p>
+    description: <p>Describes a rule.</p>
+  TransferCertificateResponse:
+    type: object
+    properties:
+      transferredCertificateArn?:
+        type: CertificateArn
+        description: <p>The ARN of the certificate.</p>
+    description: <p>The output from the TransferCertificate operation.</p>
+  TransferData:
+    type: object
+    properties:
+      transferMessage?:
+        type: Message
+        description: <p>The transfer message.</p>
+      rejectReason?:
+        type: Message
+        description: <p>The reason why the transfer was rejected.</p>
+      transferDate?:
+        type: DateType
+        description: <p>The date the transfer took place.</p>
+      acceptDate?:
+        type: DateType
+        description: <p>The date the transfer was accepted.</p>
+      rejectDate?:
+        type: DateType
+        description: <p>The date the transfer was rejected.</p>
+    description: <p>Data used to transfer a certificate to an AWS account.</p>
+  UpdateThingResponse:
+    type: object
+    description: <p>The output from the UpdateThing operation.</p>
+/cacertificate:
+  description: Registers a CA certificate with AWS IoT. This CA certificate can then be used to sign device certificates, which can be then registered with AWS IoT. You can register up to 10 CA certificates per AWS account that have the same subject field and public key. This enables you to have up to 10 certificate authorities sign your device certificates. If you have more than one CA certificate registered, make sure you pass the CA certificate when you register your device certificates with the RegisterCertificate API.
+  /{caCertificateId}:
+    uriParameters:
+      caCertificateId?:
+        type: CertificateId
+        description: <p>The ID of the certificate to delete.</p>
+    description: Updates a registered CA certificate.
+    delete:
+      headers:
+        caCertificateId?:
+          type: CertificateId
+          description: <p>The ID of the certificate to delete.</p>
+      responses:
+        200:
+          body:
+            application/json: DeleteCACertificateResponse
+        400:
+          description: InvalidRequestException
+        406:
+          description: CertificateStateException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+        404:
+          description: ResourceNotFoundException
+    get:
+      headers:
+        caCertificateId?:
+          type: CertificateId
+          description: <p>The CA certificate identifier.</p>
+      responses:
+        200:
+          body:
+            application/json: DescribeCACertificateResponse
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+        404:
+          description: ResourceNotFoundException
+    put:
+      queryParameters:
+        newStatus:
+          type: CACertificateStatus
+          description: <p>The updated status of the CA certificate.</p> <p><b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
+        newAutoRegistrationStatus:
+          type: AutoRegistrationStatus
+          description: '<p>The new value for the auto registration status. Valid values
+            are: "ENABLE" or "DISABLE".</p>'
+      headers:
+        caCertificateId?:
+          type: CertificateId
+          description: <p>The CA certificate identifier.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        404:
+          description: ResourceNotFoundException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+  post:
+    queryParameters:
+      setAsActive:
+        type: SetAsActive
+        description: <p>A boolean value that specifies if the CA certificate is set to active.</p>
+      allowAutoRegistration:
+        type: AllowAutoRegistration
+        description: <p>Allows this CA certificate to be used for auto registration of device certificates.</p>
+    body:
+      application/json:
+        type: object
+        properties:
+          caCertificate:
+            type: CertificatePem
+            description: <p>The CA certificate.</p>
+          verificationCertificate:
+            type: CertificatePem
+            description: <p>The private key verification certificate.</p>
+    responses:
+      200:
+        body:
+          application/json: RegisterCACertificateResponse
+      409:
+        description: ResourceAlreadyExistsException
+      400:
+        description: RegistrationCodeValidationException | InvalidRequestException | CertificateValidationException
+      429:
+        description: ThrottlingException
+      410:
+        description: LimitExceededException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+/certificates-by-ca:
+  /{caCertificateId}:
+    uriParameters:
+      caCertificateId?:
+        type: CertificateId
+        description: <p>The ID of the CA certificate. This operation will list all registered device certificate that were signed by this CA certificate. </p>
+    description: List the device certificates signed by the specified CA certificate.
+    get:
+      queryParameters:
+        pageSize:
+          type: PageSize
+          description: <p>The result page size.</p>
+        marker:
+          type: Marker
+          description: <p>The marker for the next set of results.</p>
+        isAscendingOrder:
+          type: AscendingOrder
+          description: <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
+      headers:
+        caCertificateId?:
+          type: CertificateId
+          description: <p>The ID of the CA certificate. This operation will list all registered device certificate that were signed by this CA certificate. </p>
+      responses:
+        200:
+          body:
+            application/json: ListCertificatesByCAResponse
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+/thing-types:
+  description: Lists the existing thing types.
+  /{thingTypeName}:
+    uriParameters:
+      thingTypeName?:
+        type: ThingTypeName
+        description: <p>The name of the thing type.</p>
+    description: Creates a new thing type.
+    /deprecate:
+      description: Deprecates a thing type. You can not associate new things with deprecated thing type.
+      post:
+        headers:
+          thingTypeName?:
+            type: ThingTypeName
+            description: <p>The name of the thing type to deprecate.</p>
+        body:
+          application/json:
+            type: object
+            properties:
+              undoDeprecate?:
+                type: UndoDeprecate
+                description: <p>Whether to undeprecate a deprecated thing type. If <b>true</b>, the thing type will not be deprecated anymore and you can associate it with things.</p>
+        responses:
+          200:
+            body:
+              application/json: DeprecateThingTypeResponse
+          404:
+            description: ResourceNotFoundException
+          400:
+            description: InvalidRequestException
+          429:
+            description: ThrottlingException
+          401:
+            description: UnauthorizedException
+          503:
+            description: ServiceUnavailableException
+          500:
+            description: InternalFailureException
+    delete:
+      headers:
+        thingTypeName?:
+          type: ThingTypeName
+          description: <p>The name of the thing type.</p>
+      responses:
+        200:
+          body:
+            application/json: DeleteThingTypeResponse
+        404:
+          description: ResourceNotFoundException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+    get:
+      headers:
+        thingTypeName?:
+          type: ThingTypeName
+          description: <p>The name of the thing type.</p>
+      responses:
+        200:
+          body:
+            application/json: DescribeThingTypeResponse
+        404:
+          description: ResourceNotFoundException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+    post:
+      headers:
+        thingTypeName?:
+          type: ThingTypeName
+          description: <p>The name of the thing type.</p>
+      body:
+        application/json:
+          type: object
+          properties:
+            thingTypeProperties?:
+              type: ThingTypeProperties
+              description: <p>The ThingTypeProperties for the thing type to create. It contains information about the new thing type including a description, and a list of searchable thing attribute names.</p>
+      responses:
+        200:
+          body:
+            application/json: CreateThingTypeResponse
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+        409:
+          description: ResourceAlreadyExistsException
+  get:
+    queryParameters:
+      nextToken:
+        type: NextToken
+        description: <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+      maxResults:
+        type: MaxResults
+        description: <p>The maximum number of results to return in this operation.</p>
+      thingTypeName:
+        type: ThingTypeName
+        description: <p>The name of the thing type.</p>
+    responses:
+      200:
+        body:
+          application/json: ListThingTypesResponse
+      400:
+        description: InvalidRequestException
+      429:
+        description: ThrottlingException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+/principal-policies:
+  description: Lists the policies attached to the specified principal. If you use an Cognito identity, the ID must be in <a href="http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax">AmazonCognito Identity format</a>.
+  /{policyName}:
+    uriParameters:
+      policyName?:
+        type: PolicyName
+        description: <p>The name of the policy to detach.</p>
+    description: Attaches the specified policy to the specified principal (certificate or other credential).
+    delete:
+      headers:
+        policyName?:
+          type: PolicyName
+          description: <p>The name of the policy to detach.</p>
+        x-amzn-iot-principal?:
+          type: Principal
+          description: <p>The principal.</p> <p>If the principal is a certificate, specify the certificate ARN. If the principal is an Amazon Cognito identity, specify the identity ID.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        404:
+          description: ResourceNotFoundException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+    put:
+      headers:
+        policyName?:
+          type: PolicyName
+          description: <p>The policy name.</p>
+        x-amzn-iot-principal?:
+          type: Principal
+          description: <p>The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon Cognito ID.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        404:
+          description: ResourceNotFoundException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+        410:
+          description: LimitExceededException
+  get:
+    queryParameters:
+      marker:
+        type: Marker
+        description: <p>The marker for the next set of results.</p>
+      pageSize:
+        type: PageSize
+        description: <p>The result page size.</p>
+      isAscendingOrder:
+        type: AscendingOrder
+        description: <p>Specifies the order for results. If true, results are returned in ascending creation order.</p>
+    headers:
+      x-amzn-iot-principal?:
+        type: Principal
+        description: <p>The principal.</p>
+    responses:
+      200:
+        body:
+          application/json: ListPrincipalPoliciesResponse
+      404:
+        description: ResourceNotFoundException
+      400:
+        description: InvalidRequestException
+      429:
+        description: ThrottlingException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+/certificates:
+  description: 'Creates an X.509 certificate using the specified certificate signing
+    request. <b>Note</b> Reusing the same certificate signing request (CSR) results
+    in a distinct certificate. You can create multiple certificates in a batch by
+    creating a directory, copying multiple .csr files into that directory, and then
+    specifying that directory on the command line. The following commands show how
+    to create a batch of certificates given a batch of CSRs.  Assuming a set of CSRs
+    are located inside of the directory my-csr-directory: On Linux and OS X, the command
+    is: $ ls my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr --certificate-signing-request
+    file://my-csr-directory/{}  This command lists all of the CSRs in my-csr-directory
+    and pipes each CSR file name to the aws iot create-certificate-from-csr AWS CLI
+    command to create a certificate for the corresponding CSR.   The aws iot create-certificate-from-csr
+    part of the command can also be run in parallel to speed up the certificate creation
+    process:   $ ls my-csr-directory/ | xargs -P 10 -I {} aws iot create-certificate-from-csr
+    --certificate-signing-request file://my-csr-directory/{}   On Windows PowerShell,
+    the command to create certificates for all CSRs in my-csr-directory is:   &gt;
+    ls -Name my-csr-directory | %{aws iot create-certificate-from-csr --certificate-signing-request
+    file://my-csr-directory/$_}   On a Windows command prompt, the command to create
+    certificates for all CSRs in my-csr-directory is:   &gt; forfiles /p my-csr-directory
+    /c "cmd /c aws iot create-certificate-from-csr --certificate-signing-request file://@path"'
+  /{certificateId}:
+    uriParameters:
+      certificateId?:
+        type: CertificateId
+        description: <p>The ID of the certificate.</p>
+    description: Deletes the specified certificate. A certificate cannot be deleted if it has a policy attached to it or if its status is set to ACTIVE. To delete a certificate, first use the <a>DetachPrincipalPolicy</a> API to detach all policies. Next, use the <a>UpdateCertificate</a> API to set the certificate to the INACTIVE status.
+    get:
+      headers:
+        certificateId?:
+          type: CertificateId
+          description: <p>The ID of the certificate.</p>
+      responses:
+        200:
+          body:
+            application/json: DescribeCertificateResponse
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+        404:
+          description: ResourceNotFoundException
+    put:
+      queryParameters:
+        newStatus?:
+          type: CertificateStatus
+          description: <p>The new status.</p> <p><b>Note:</b> Setting the status to PENDING_TRANSFER will result in an exception being thrown. PENDING_TRANSFER is a status used internally by AWS IoT. It is not intended for developer use.</p> <p><b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
+      headers:
+        certificateId?:
+          type: CertificateId
+          description: <p>The ID of the certificate.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        404:
+          description: ResourceNotFoundException
+        406:
+          description: CertificateStateException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+    delete:
+      headers:
+        certificateId?:
+          type: CertificateId
+          description: <p>The ID of the certificate.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        406:
+          description: CertificateStateException
+        409:
+          description: DeleteConflictException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+        404:
+          description: ResourceNotFoundException
+  get:
+    queryParameters:
+      pageSize:
+        type: PageSize
+        description: <p>The result page size.</p>
+      marker:
+        type: Marker
+        description: <p>The marker for the next set of results.</p>
+      isAscendingOrder:
+        type: AscendingOrder
+        description: <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
+    responses:
+      200:
+        body:
+          application/json: ListCertificatesResponse
+      400:
+        description: InvalidRequestException
+      429:
+        description: ThrottlingException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+  post:
+    queryParameters:
+      setAsActive:
+        type: SetAsActive
+        description: <p>Specifies whether the certificate is active.</p>
+    body:
+      application/json:
+        type: object
+        properties:
+          certificateSigningRequest:
+            type: CertificateSigningRequest
+            description: <p>The certificate signing request (CSR).</p>
+    responses:
+      200:
+        body:
+          application/json: CreateCertificateFromCsrResponse
+      400:
+        description: InvalidRequestException
+      429:
+        description: ThrottlingException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+/principals:
+  /things:
+    description: Lists the things associated with the specified principal.
+    get:
+      queryParameters:
+        nextToken:
+          type: NextToken
+          description: <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+        maxResults:
+          type: MaxResults
+          description: <p>The maximum number of results to return in this operation.</p>
+      headers:
+        x-amzn-principal?:
+          type: Principal
+          description: <p>The principal.</p>
+      responses:
+        200:
+          body:
+            application/json: ListPrincipalThingsResponse
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+        404:
+          description: ResourceNotFoundException
+/rules:
+  description: Lists the rules for the specific topic.
+  /{ruleName}:
+    uriParameters:
+      ruleName?:
+        type: RuleName
+        description: <p>The name of the rule to disable.</p>
+    description: Replaces the specified rule. You must specify all parameters for the new rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.
+    /disable:
+      description: Disables the specified rule.
+      post:
+        headers:
+          ruleName?:
+            type: RuleName
+            description: <p>The name of the rule to disable.</p>
+        responses:
+          200:
+            body:
+              application/json: null
+          500:
+            description: InternalException
+          400:
+            description: InvalidRequestException
+          503:
+            description: ServiceUnavailableException
+          401:
+            description: UnauthorizedException
+    /enable:
+      description: Enables the specified rule.
+      post:
+        headers:
+          ruleName?:
+            type: RuleName
+            description: <p>The name of the topic rule to enable.</p>
+        responses:
+          200:
+            body:
+              application/json: null
+          500:
+            description: InternalException
+          400:
+            description: InvalidRequestException
+          503:
+            description: ServiceUnavailableException
+          401:
+            description: UnauthorizedException
+    delete:
+      headers:
+        ruleName?:
+          type: RuleName
+          description: <p>The name of the rule.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        500:
+          description: InternalException
+        400:
+          description: InvalidRequestException
+        503:
+          description: ServiceUnavailableException
+        401:
+          description: UnauthorizedException
+    get:
+      headers:
+        ruleName?:
+          type: RuleName
+          description: <p>The name of the rule.</p>
+      responses:
+        200:
+          body:
+            application/json: GetTopicRuleResponse
+        500:
+          description: InternalException
+        400:
+          description: InvalidRequestException
+        503:
+          description: ServiceUnavailableException
+        401:
+          description: UnauthorizedException
+    post:
+      headers:
+        ruleName?:
+          type: RuleName
+          description: <p>The name of the rule.</p>
+      body:
+        application/json:
+          type: TopicRulePayload
+          description: <p>The rule payload.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        400:
+          description: SqlParseException | InvalidRequestException
+        500:
+          description: InternalException
+        409:
+          description: ResourceAlreadyExistsException
+        503:
+          description: ServiceUnavailableException
+    patch:
+      headers:
+        ruleName?:
+          type: RuleName
+          description: <p>The name of the rule.</p>
+      body:
+        application/json:
+          type: TopicRulePayload
+          description: <p>The rule payload.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        400:
+          description: SqlParseException | InvalidRequestException
+        500:
+          description: InternalException
+        503:
+          description: ServiceUnavailableException
+        401:
+          description: UnauthorizedException
+  get:
+    queryParameters:
+      topic:
+        type: Topic
+        description: <p>The topic.</p>
+      maxResults:
+        type: MaxResults
+        description: <p>The maximum number of results to return.</p>
+      nextToken:
+        type: NextToken
+        description: <p>A token used to retrieve the next value.</p>
+      ruleDisabled:
+        type: IsDisabled
+        description: <p>Specifies whether the rule is disabled.</p>
+    responses:
+      200:
+        body:
+          application/json: ListTopicRulesResponse
+      500:
+        description: InternalException
+      400:
+        description: InvalidRequestException
+      503:
+        description: ServiceUnavailableException
+/cacertificates:
+  description: Lists the CA certificates registered for your AWS account. The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.
+  get:
+    queryParameters:
+      pageSize:
+        type: PageSize
+        description: <p>The result page size.</p>
+      marker:
+        type: Marker
+        description: <p>The marker for the next set of results.</p>
+      isAscendingOrder:
+        type: AscendingOrder
+        description: <p>Determines the order of the results.</p>
+    responses:
+      200:
+        body:
+          application/json: ListCACertificatesResponse
+      400:
+        description: InvalidRequestException
+      429:
+        description: ThrottlingException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+/registrationcode:
+  description: Gets a registration code used to register a CA certificate with AWS IoT.
+  delete:
+    body:
+      application/json: DeleteRegistrationCodeRequest
+    responses:
+      200:
+        body:
+          application/json: DeleteRegistrationCodeResponse
+      429:
+        description: ThrottlingException
+      404:
+        description: ResourceNotFoundException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+  get:
+    body:
+      application/json: GetRegistrationCodeRequest
+    responses:
+      200:
+        body:
+          application/json: GetRegistrationCodeResponse
+      429:
+        description: ThrottlingException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+      400:
+        description: InvalidRequestException
+/things:
+  description: 'Lists your things. Use the <b>attributeName</b> and <b>attributeValue</b>
+    parameters to filter your things. For example, calling <code>ListThings</code>
+    with attributeName=Color and attributeValue=Red retrieves all things in the registry
+    that contain an attribute <b>Color</b> with the value <b>Red</b>. '
+  /{thingName}:
+    uriParameters:
+      thingName?:
+        type: ThingName
+        description: <p>The name of the thing to create.</p>
+    description: Gets information about the specified thing.
+    /principals:
+      description: Lists the principals associated with the specified thing.
+      put:
+        headers:
+          thingName?:
+            type: ThingName
+            description: <p>The name of the thing.</p>
+          x-amzn-principal?:
+            type: Principal
+            description: <p>The principal, such as a certificate or other credential.</p>
+        responses:
+          200:
+            body:
+              application/json: AttachThingPrincipalResponse
+          404:
+            description: ResourceNotFoundException
+          400:
+            description: InvalidRequestException
+          429:
+            description: ThrottlingException
+          401:
+            description: UnauthorizedException
+          503:
+            description: ServiceUnavailableException
+          500:
+            description: InternalFailureException
+      delete:
+        headers:
+          thingName?:
+            type: ThingName
+            description: <p>The name of the thing.</p>
+          x-amzn-principal?:
+            type: Principal
+            description: <p>If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon Cognito identity, this value must be the ID of the Amazon Cognito identity.</p>
+        responses:
+          200:
+            body:
+              application/json: DetachThingPrincipalResponse
+          404:
+            description: ResourceNotFoundException
+          400:
+            description: InvalidRequestException
+          429:
+            description: ThrottlingException
+          401:
+            description: UnauthorizedException
+          503:
+            description: ServiceUnavailableException
+          500:
+            description: InternalFailureException
+      get:
+        headers:
+          thingName?:
+            type: ThingName
+            description: <p>The name of the thing.</p>
+        responses:
+          200:
+            body:
+              application/json: ListThingPrincipalsResponse
+          400:
+            description: InvalidRequestException
+          429:
+            description: ThrottlingException
+          401:
+            description: UnauthorizedException
+          503:
+            description: ServiceUnavailableException
+          500:
+            description: InternalFailureException
+          404:
+            description: ResourceNotFoundException
+    post:
+      headers:
+        thingName?:
+          type: ThingName
+          description: <p>The name of the thing to create.</p>
+      body:
+        application/json:
+          type: object
+          properties:
+            thingTypeName?:
+              type: ThingTypeName
+              description: <p>The name of the thing type associated with the new thing.</p>
+            attributePayload?:
+              type: AttributePayload
+              description: <p>The attribute payload, which consists of up to three name/value pairs in a JSON document. For example:</p> <p><code>{\"attributes\":{\"string1\":\"string2\"}})</code></p>
+      responses:
+        200:
+          body:
+            application/json: CreateThingResponse
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+        409:
+          description: ResourceAlreadyExistsException
+        404:
+          description: ResourceNotFoundException
+    patch:
+      headers:
+        thingName?:
+          type: ThingName
+          description: <p>The name of the thing to update.</p>
+      body:
+        application/json:
+          type: object
+          properties:
+            thingTypeName?:
+              type: ThingTypeName
+              description: <p>The name of the thing type.</p>
+            attributePayload?:
+              type: AttributePayload
+              description: <p>A list of thing attributes, a JSON string containing name-value pairs. For example:</p> <p><code>{\"attributes\":{\"name1\":\"value2\"}})</code></p> <p>This data is used to add new attributes or update existing attributes.</p>
+            expectedVersion?:
+              type: OptionalVersion
+              description: <p>The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the <code>UpdateThing</code> request is rejected with a <code>VersionConflictException</code>.</p>
+            removeThingType?:
+              type: RemoveThingType
+              description: <p>Remove a thing type association. If <b>true</b>, the assocation is removed.</p>
+      responses:
+        200:
+          body:
+            application/json: UpdateThingResponse
+        400:
+          description: InvalidRequestException
+        409:
+          description: VersionConflictException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+        404:
+          description: ResourceNotFoundException
+    delete:
+      queryParameters:
+        expectedVersion:
+          type: OptionalVersion
+          description: <p>The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the <code>DeleteThing</code> request is rejected with a <code>VersionConflictException</code>.</p>
+      headers:
+        thingName?:
+          type: ThingName
+          description: <p>The name of the thing to delete.</p>
+      responses:
+        200:
+          body:
+            application/json: DeleteThingResponse
+        404:
+          description: ResourceNotFoundException
+        409:
+          description: VersionConflictException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+    get:
+      headers:
+        thingName?:
+          type: ThingName
+          description: <p>The name of the thing.</p>
+      responses:
+        200:
+          body:
+            application/json: DescribeThingResponse
+        404:
+          description: ResourceNotFoundException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+  get:
+    queryParameters:
+      nextToken:
+        type: NextToken
+        description: <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+      maxResults:
+        type: MaxResults
+        description: <p>The maximum number of results to return in this operation.</p>
+      attributeName:
+        type: AttributeName
+        description: <p>The attribute name used to search for things.</p>
+      attributeValue:
+        type: AttributeValue
+        description: <p>The attribute value used to search for things.</p>
+      thingTypeName:
+        type: ThingTypeName
+        description: <p>The name of the thing type used to search for things.</p>
+    responses:
+      200:
+        body:
+          application/json: ListThingsResponse
+      400:
+        description: InvalidRequestException
+      429:
+        description: ThrottlingException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+/policies:
+  description: Lists your policies.
+  /{policyName}:
+    uriParameters:
+      policyName?:
+        type: PolicyName
+        description: <p>The policy name.</p>
+    description: Creates an AWS IoT policy. The created policy is the default version for the policy. This operation creates a policy version with a version identifier of <b>1</b> and sets <b>1</b> as the policy's default version.
+    /version:
+      description: Lists the versions of the specified policy and identifies the default version.
+      /{policyVersionId}:
+        uriParameters:
+          policyVersionId?:
+            type: PolicyVersionId
+            description: <p>The policy version ID.</p>
+        description: Gets information about the specified policy version.
+        patch:
+          headers:
+            policyName?:
+              type: PolicyName
+              description: <p>The policy name.</p>
+            policyVersionId?:
+              type: PolicyVersionId
+              description: <p>The policy version ID.</p>
+          responses:
+            200:
+              body:
+                application/json: null
+            404:
+              description: ResourceNotFoundException
+            400:
+              description: InvalidRequestException
+            429:
+              description: ThrottlingException
+            401:
+              description: UnauthorizedException
+            503:
+              description: ServiceUnavailableException
+            500:
+              description: InternalFailureException
+        delete:
+          headers:
+            policyName?:
+              type: PolicyName
+              description: <p>The name of the policy.</p>
+            policyVersionId?:
+              type: PolicyVersionId
+              description: <p>The policy version ID.</p>
+          responses:
+            200:
+              body:
+                application/json: null
+            409:
+              description: DeleteConflictException
+            404:
+              description: ResourceNotFoundException
+            400:
+              description: InvalidRequestException
+            429:
+              description: ThrottlingException
+            401:
+              description: UnauthorizedException
+            503:
+              description: ServiceUnavailableException
+            500:
+              description: InternalFailureException
+        get:
+          headers:
+            policyName?:
+              type: PolicyName
+              description: <p>The name of the policy.</p>
+            policyVersionId?:
+              type: PolicyVersionId
+              description: <p>The policy version ID.</p>
+          responses:
+            200:
+              body:
+                application/json: GetPolicyVersionResponse
+            404:
+              description: ResourceNotFoundException
+            400:
+              description: InvalidRequestException
+            429:
+              description: ThrottlingException
+            401:
+              description: UnauthorizedException
+            503:
+              description: ServiceUnavailableException
+            500:
+              description: InternalFailureException
+      post:
+        queryParameters:
+          setAsDefault:
+            type: SetAsDefault
+            description: <p>Specifies whether the policy version is set as the default. When this parameter is true, the new policy version becomes the operative version (that is, the version that is in effect for the certificates to which the policy is attached).</p>
+        headers:
+          policyName?:
+            type: PolicyName
+            description: <p>The policy name.</p>
+        body:
+          application/json:
+            type: object
+            properties:
+              policyDocument:
+                type: PolicyDocument
+                description: <p>The JSON document that describes the policy. Minimum length of 1. Maximum length of 2048, excluding whitespaces</p>
+        responses:
+          200:
+            body:
+              application/json: CreatePolicyVersionResponse
+          404:
+            description: ResourceNotFoundException
+          400:
+            description: MalformedPolicyException | InvalidRequestException
+          409:
+            description: VersionsLimitExceededException
+          429:
+            description: ThrottlingException
+          401:
+            description: UnauthorizedException
+          503:
+            description: ServiceUnavailableException
+          500:
+            description: InternalFailureException
+      get:
+        headers:
+          policyName?:
+            type: PolicyName
+            description: <p>The policy name.</p>
+        responses:
+          200:
+            body:
+              application/json: ListPolicyVersionsResponse
+          404:
+            description: ResourceNotFoundException
+          400:
+            description: InvalidRequestException
+          429:
+            description: ThrottlingException
+          401:
+            description: UnauthorizedException
+          503:
+            description: ServiceUnavailableException
+          500:
+            description: InternalFailureException
+    get:
+      headers:
+        policyName?:
+          type: PolicyName
+          description: <p>The name of the policy.</p>
+      responses:
+        200:
+          body:
+            application/json: GetPolicyResponse
+        404:
+          description: ResourceNotFoundException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+    delete:
+      headers:
+        policyName?:
+          type: PolicyName
+          description: <p>The name of the policy to delete.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        409:
+          description: DeleteConflictException
+        404:
+          description: ResourceNotFoundException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+    post:
+      headers:
+        policyName?:
+          type: PolicyName
+          description: <p>The policy name.</p>
+      body:
+        application/json:
+          type: object
+          properties:
+            policyDocument:
+              type: PolicyDocument
+              description: <p>The JSON document that describes the policy. <b>policyDocument</b> must have a minimum length of 1, with a maximum length of 2048, excluding whitespace.</p>
+      responses:
+        200:
+          body:
+            application/json: CreatePolicyResponse
+        409:
+          description: ResourceAlreadyExistsException
+        400:
+          description: MalformedPolicyException | InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+  get:
+    queryParameters:
+      marker:
+        type: Marker
+        description: <p>The marker for the next set of results.</p>
+      pageSize:
+        type: PageSize
+        description: <p>The result page size.</p>
+      isAscendingOrder:
+        type: AscendingOrder
+        description: <p>Specifies the order for results. If true, the results are returned in ascending creation order.</p>
+    responses:
+      200:
+        body:
+          application/json: ListPoliciesResponse
+      400:
+        description: InvalidRequestException
+      429:
+        description: ThrottlingException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+/loggingOptions:
+  description: Gets the logging options.
+  post:
+    body:
+      application/json:
+        type: LoggingOptionsPayload
+        description: <p>The logging options payload.</p>
+    responses:
+      200:
+        body:
+          application/json: null
+      500:
+        description: InternalException
+      400:
+        description: InvalidRequestException
+      503:
+        description: ServiceUnavailableException
+  get:
+    body:
+      application/json: GetLoggingOptionsRequest
+    responses:
+      200:
+        body:
+          application/json: GetLoggingOptionsResponse
+      500:
+        description: InternalException
+      400:
+        description: InvalidRequestException
+      503:
+        description: ServiceUnavailableException
+/reject-certificate-transfer:
+  /{certificateId}:
+    uriParameters:
+      certificateId?:
+        type: CertificateId
+        description: <p>The ID of the certificate.</p>
+    description: Rejects a pending certificate transfer. After AWS IoT rejects a certificate transfer, the certificate status changes from <b>PENDING_TRANSFER</b> to <b>INACTIVE</b>. To check for pending certificate transfers, call <a>ListCertificates</a> to enumerate your certificates. This operation can only be called by the transfer destination. After it is called, the certificate will be returned to the source's account in the INACTIVE state.
+    patch:
+      headers:
+        certificateId?:
+          type: CertificateId
+          description: <p>The ID of the certificate.</p>
+      body:
+        application/json:
+          type: object
+          properties:
+            rejectReason?:
+              type: Message
+              description: <p>The reason the certificate transfer was rejected.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        404:
+          description: ResourceNotFoundException
+        410:
+          description: TransferAlreadyCompletedException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+/policy-principals:
+  description: Lists the principals associated with the specified policy.
+  get:
+    queryParameters:
+      marker:
+        type: Marker
+        description: <p>The marker for the next set of results.</p>
+      pageSize:
+        type: PageSize
+        description: <p>The result page size.</p>
+      isAscendingOrder:
+        type: AscendingOrder
+        description: <p>Specifies the order for results. If true, the results are returned in ascending creation order.</p>
+    headers:
+      x-amzn-iot-policy?:
+        type: PolicyName
+        description: <p>The policy name.</p>
+    responses:
+      200:
+        body:
+          application/json: ListPolicyPrincipalsResponse
+      404:
+        description: ResourceNotFoundException
+      400:
+        description: InvalidRequestException
+      429:
+        description: ThrottlingException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+/endpoint:
+  description: Returns a unique endpoint specific to the AWS account making the call.
+  get:
+    body:
+      application/json: DescribeEndpointRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeEndpointResponse
+      500:
+        description: InternalFailureException
+      401:
+        description: UnauthorizedException
+      429:
+        description: ThrottlingException
+/accept-certificate-transfer:
+  /{certificateId}:
+    uriParameters:
+      certificateId?:
+        type: CertificateId
+        description: <p>The ID of the certificate.</p>
+    description: Accepts a pending certificate transfer. The default state of the certificate is INACTIVE. To check for pending certificate transfers, call <a>ListCertificates</a> to enumerate your certificates.
+    patch:
+      queryParameters:
+        setAsActive:
+          type: SetAsActive
+          description: <p>Specifies whether the certificate is active.</p>
+      headers:
+        certificateId?:
+          type: CertificateId
+          description: <p>The ID of the certificate.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        404:
+          description: ResourceNotFoundException
+        410:
+          description: TransferAlreadyCompletedException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+/cancel-certificate-transfer:
+  /{certificateId}:
+    uriParameters:
+      certificateId?:
+        type: CertificateId
+        description: <p>The ID of the certificate.</p>
+    description: Cancels a pending transfer for the specified certificate. <b>Note</b> Only the transfer source account can use this operation to cancel a transfer. (Transfer destinations can use <a>RejectCertificateTransfer</a> instead.) After transfer, AWS IoT returns the certificate to the source account in the INACTIVE state. After the destination account has accepted the transfer, the transfer cannot be cancelled. After a certificate transfer is cancelled, the status of the certificate changes from PENDING_TRANSFER to INACTIVE.
+    patch:
+      headers:
+        certificateId?:
+          type: CertificateId
+          description: <p>The ID of the certificate.</p>
+      responses:
+        200:
+          body:
+            application/json: null
+        404:
+          description: ResourceNotFoundException
+        410:
+          description: TransferAlreadyCompletedException
+        400:
+          description: InvalidRequestException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+/certificates-out-going:
+  description: Lists certificates that are being transfered but not yet accepted.
+  get:
+    queryParameters:
+      pageSize:
+        type: PageSize
+        description: <p>The result page size.</p>
+      marker:
+        type: Marker
+        description: <p>The marker for the next set of results.</p>
+      isAscendingOrder:
+        type: AscendingOrder
+        description: <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
+    responses:
+      200:
+        body:
+          application/json: ListOutgoingCertificatesResponse
+      400:
+        description: InvalidRequestException
+      429:
+        description: ThrottlingException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+/transfer-certificate:
+  /{certificateId}:
+    uriParameters:
+      certificateId?:
+        type: CertificateId
+        description: <p>The ID of the certificate.</p>
+    description: Transfers the specified certificate to the specified AWS account. You can cancel the transfer until it is acknowledged by the recipient. No notification is sent to the transfer destination's account. It is up to the caller to notify the transfer target. The certificate being transferred must not be in the ACTIVE state. You can use the UpdateCertificate API to deactivate it. The certificate must not have any policies attached to it. You can use the DetachPrincipalPolicy API to detach them.
+    patch:
+      queryParameters:
+        targetAwsAccount?:
+          type: AwsAccountId
+          description: <p>The AWS account.</p>
+      headers:
+        certificateId?:
+          type: CertificateId
+          description: <p>The ID of the certificate.</p>
+      body:
+        application/json:
+          type: object
+          properties:
+            transferMessage?:
+              type: Message
+              description: <p>The transfer message.</p>
+      responses:
+        200:
+          body:
+            application/json: TransferCertificateResponse
+        400:
+          description: InvalidRequestException
+        404:
+          description: ResourceNotFoundException
+        406:
+          description: CertificateStateException
+        409:
+          description: TransferConflictException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException
+/keys-and-certificate:
+  description: Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued public key. <b>Note</b> This is the only time AWS IoT issues the private key for this certificate, so it is important to keep it in a secure location.
+  post:
+    queryParameters:
+      setAsActive:
+        type: SetAsActive
+        description: <p>Specifies whether the certificate is active.</p>
+    responses:
+      200:
+        body:
+          application/json: CreateKeysAndCertificateResponse
+      400:
+        description: InvalidRequestException
+      429:
+        description: ThrottlingException
+      401:
+        description: UnauthorizedException
+      503:
+        description: ServiceUnavailableException
+      500:
+        description: InternalFailureException
+/certificate:
+  /register:
+    description: Registers a device certificate with AWS IoT. If you have more than one CA certificate that has the same subject field, you must specify the CA certificate that was used to sign the device certificate being registered.
+    post:
+      queryParameters:
+        setAsActive:
+          type: SetAsActiveFlag
+          description: <p>A boolean value that specifies if the CA certificate is set to active.</p>
+      body:
+        application/json:
+          type: object
+          properties:
+            certificatePem:
+              type: CertificatePem
+              description: <p>The certificate data, in PEM format.</p>
+            caCertificatePem?:
+              type: CertificatePem
+              description: <p>The CA certificate used to sign the device certificate being registered.</p>
+            status?:
+              type: CertificateStatus
+      responses:
+        200:
+          body:
+            application/json: RegisterCertificateResponse
+        409:
+          description: ResourceAlreadyExistsException | CertificateConflictException
+        400:
+          description: InvalidRequestException | CertificateValidationException
+        406:
+          description: CertificateStateException
+        429:
+          description: ThrottlingException
+        401:
+          description: UnauthorizedException
+        503:
+          description: ServiceUnavailableException
+        500:
+          description: InternalFailureException

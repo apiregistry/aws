@@ -1,0 +1,504 @@
+#%RAML 1.0
+title: AWS Import/Export
+version: '2010-06-01'
+description: ' AWS Import/Export accelerates transferring large amounts of data between
+  the AWS cloud and portable storage devices that you mail to us. AWS Import/Export
+  transfers data directly onto and off of your storage devices using Amazon''s high-speed
+  internal network and bypassing the Internet. For large data sets, AWS Import/Export
+  is often faster than Internet transfer and more cost effective than upgrading your
+  connectivity.'
+mediaType:
+- application/xml
+types:
+  APIVersion:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies the version of the client tool.
+  ArtifactList:
+    type: array
+    items:
+      type: Artifact
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: A collection of artifacts.
+  Carrier:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Name of the shipping company. This value is included when the LocationCode is "Returned".
+  CreationDate:
+    type: datetime
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Timestamp of the CreateJob request in ISO8601 date format. For example "2010-03-28T20:27:35Z".
+  CurrentManifest:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: The last manifest submitted, which will be used to process the job.
+  Description:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: The associated description for this object.
+  ErrorCount:
+    type: integer
+    format: int
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Number of errors. We return this value when the ProgressCode is Success or SuccessWithErrors.
+  GenericString:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+  IsCanceled:
+    type: boolean
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Indicates whether the job was canceled.
+  IsTruncated:
+    type: boolean
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Indicates whether the list of jobs was truncated. If true, then call ListJobs again using the last JobId element as the marker.
+  JobId:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: A unique identifier which refers to a particular job.
+  JobIdList:
+    type: array
+    items:
+      type: GenericString
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+  JobType:
+    type: string
+    enum:
+    - Import
+    - Export
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies whether the job to initiate is an import or export job.
+  JobsList:
+    type: array
+    items:
+      type: Job
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: A list container for Jobs returned by the ListJobs operation.
+  LocationCode:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: A token representing the location of the storage device, such as "AtAWS".
+  LocationMessage:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: A more human readable form of the physical location of the storage device.
+  LogBucket:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Amazon S3 bucket for user logs.
+  LogKey:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: The key where the user logs were stored.
+  Manifest:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: The UTF-8 encoded text of the manifest file.
+  ManifestAddendum:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: For internal use only.
+  Marker:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies the JOBID to start after when listing the jobs created with your account. AWS Import/Export lists your jobs in reverse chronological order. See MaxJobs.
+  MaxJobs:
+    type: integer
+    format: int
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Sets the maximum number of jobs returned in the response. If there are additional jobs that were not returned because MaxJobs was exceeded, the response contains &lt;IsTruncated&gt;true&lt;/IsTruncated&gt;. To return the additional jobs, see Marker.
+  ProgressCode:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: A token representing the state of the job, such as "Started".
+  ProgressMessage:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: A more human readable form of the job status.
+  Signature:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: An encrypted code used to authenticate the request and response, for example, "DV+TpDfx1/TdSE9ktyK9k/bDTVI=". Only use this value is you want to create the signature file yourself. Generally you should use the SignatureFileContents value.
+  SignatureFileContents:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: The actual text of the SIGNATURE file to be written to disk.
+  Success:
+    type: boolean
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies whether (true) or not (false) AWS Import/Export updated your job.
+  TrackingNumber:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: The shipping tracking number assigned by AWS Import/Export to the storage device when it's returned to you. We return this value when the LocationCode is "Returned".
+  URL:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: The URL for a given Artifact.
+  ValidateOnly:
+    type: boolean
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Validate the manifest and parameter values in the request but do not actually create a job.
+  WarningMessage:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: An optional message notifying you of non-fatal issues with the job, such as use of an incompatible Amazon S3 bucket name.
+  city:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies the name of your city for the return address.
+  company:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies the name of the company that will ship this package.
+  country:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies the name of your country for the return address.
+  name:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies the name of the person responsible for shipping this package.
+  phoneNumber:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies the phone number of the person responsible for shipping this package.
+  postalCode:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies the postal code for the return address.
+  stateOrProvince:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies the name of your state or your province for the return address.
+  street1:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies the first part of the street address for the return address, for example 1234 Main Street.
+  street2:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies the optional second part of the street address for the return address, for example Suite 100.
+  street3:
+    type: string
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Specifies the optional third part of the street address for the return address, for example c/o Jane Doe.
+  Artifact:
+    type: object
+    properties:
+      Description?:
+        type: Description
+      URL?:
+        type: URL
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: A discrete item that contains the description and URL of an artifact (such as a PDF).
+  CancelJobInput:
+    type: object
+    properties:
+      JobId:
+        type: JobId
+      APIVersion?:
+        type: APIVersion
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Input structure for the CancelJob operation.
+  CancelJobOutput:
+    type: object
+    properties:
+      Success?:
+        type: Success
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Output structure for the CancelJob operation.
+  CreateJobInput:
+    type: object
+    properties:
+      JobType:
+        type: JobType
+      Manifest:
+        type: Manifest
+      ManifestAddendum?:
+        type: ManifestAddendum
+      ValidateOnly:
+        type: ValidateOnly
+      APIVersion?:
+        type: APIVersion
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Input structure for the CreateJob operation.
+  CreateJobOutput:
+    type: object
+    properties:
+      JobId?:
+        type: JobId
+      JobType?:
+        type: JobType
+      Signature?:
+        type: Signature
+      SignatureFileContents?:
+        type: SignatureFileContents
+      WarningMessage?:
+        type: WarningMessage
+      ArtifactList?:
+        type: ArtifactList
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Output structure for the CreateJob operation.
+  GetShippingLabelInput:
+    type: object
+    properties:
+      jobIds:
+        type: JobIdList
+      name?:
+        type: name
+      company?:
+        type: company
+      phoneNumber?:
+        type: phoneNumber
+      country?:
+        type: country
+      stateOrProvince?:
+        type: stateOrProvince
+      city?:
+        type: city
+      postalCode?:
+        type: postalCode
+      street1?:
+        type: street1
+      street2?:
+        type: street2
+      street3?:
+        type: street3
+      APIVersion?:
+        type: APIVersion
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+  GetShippingLabelOutput:
+    type: object
+    properties:
+      ShippingLabelURL?:
+        type: GenericString
+      Warning?:
+        type: GenericString
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+  GetStatusInput:
+    type: object
+    properties:
+      JobId:
+        type: JobId
+      APIVersion?:
+        type: APIVersion
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Input structure for the GetStatus operation.
+  GetStatusOutput:
+    type: object
+    properties:
+      JobId?:
+        type: JobId
+      JobType?:
+        type: JobType
+      LocationCode?:
+        type: LocationCode
+      LocationMessage?:
+        type: LocationMessage
+      ProgressCode?:
+        type: ProgressCode
+      ProgressMessage?:
+        type: ProgressMessage
+      Carrier?:
+        type: Carrier
+      TrackingNumber?:
+        type: TrackingNumber
+      LogBucket?:
+        type: LogBucket
+      LogKey?:
+        type: LogKey
+      ErrorCount?:
+        type: ErrorCount
+      Signature?:
+        type: Signature
+      SignatureFileContents?:
+        type: Signature
+      CurrentManifest?:
+        type: CurrentManifest
+      CreationDate?:
+        type: CreationDate
+      ArtifactList?:
+        type: ArtifactList
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Output structure for the GetStatus operation.
+  Job:
+    type: object
+    properties:
+      JobId?:
+        type: JobId
+      CreationDate?:
+        type: CreationDate
+      IsCanceled?:
+        type: IsCanceled
+      JobType?:
+        type: JobType
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Representation of a job returned by the ListJobs operation.
+  ListJobsInput:
+    type: object
+    properties:
+      MaxJobs?:
+        type: MaxJobs
+      Marker?:
+        type: Marker
+      APIVersion?:
+        type: APIVersion
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Input structure for the ListJobs operation.
+  ListJobsOutput:
+    type: object
+    properties:
+      Jobs?:
+        type: JobsList
+      IsTruncated?:
+        type: IsTruncated
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Output structure for the ListJobs operation.
+  UpdateJobInput:
+    type: object
+    properties:
+      JobId:
+        type: JobId
+      Manifest:
+        type: Manifest
+      JobType:
+        type: JobType
+      ValidateOnly:
+        type: ValidateOnly
+      APIVersion?:
+        type: APIVersion
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Input structure for the UpateJob operation.
+  UpdateJobOutput:
+    type: object
+    properties:
+      Success?:
+        type: Success
+      WarningMessage?:
+        type: WarningMessage
+      ArtifactList?:
+        type: ArtifactList
+    xml:
+      namespace: http://importexport.amazonaws.com/doc/2010-06-01/
+    description: Output structure for the UpateJob operation.
+/?Operation=UpdateJob:
+  description: You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file. The manifest file attached to this request replaces the original manifest file. You can only use the operation after a CreateJob request but before the data transfer starts and you can only use it on jobs you own.
+  post:
+    body:
+      application/xml: UpdateJobInput
+    responses:
+      200:
+        body:
+          application/xml: UpdateJobOutput
+      400:
+        description: MissingParameterException | InvalidParameterException | InvalidAccessKeyIdException | InvalidAddressException | InvalidManifestFieldException | InvalidJobIdException | MissingManifestFieldException | NoSuchBucketException | ExpiredJobIdException | CanceledJobIdException | MissingCustomsException | InvalidCustomsException | InvalidFileSystemException | MultipleRegionsException | BucketPermissionException | MalformedManifestException | UnableToUpdateJobIdException | InvalidVersionException
+/?Operation=ListJobs:
+  description: This operation returns the jobs associated with the requester. AWS Import/Export lists the jobs in reverse chronological order based on the date of creation. For example if Job Test1 was created 2009Dec30 and Test2 was created 2010Feb05, the ListJobs operation would return Test2 followed by Test1.
+  post:
+    body:
+      application/xml: ListJobsInput
+    responses:
+      200:
+        body:
+          application/xml: ListJobsOutput
+      400:
+        description: InvalidParameterException | InvalidAccessKeyIdException | InvalidVersionException
+/?Operation=GetShippingLabel:
+  description: This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing.
+  post:
+    body:
+      application/xml: GetShippingLabelInput
+    responses:
+      200:
+        body:
+          application/xml: GetShippingLabelOutput
+      400:
+        description: InvalidJobIdException | ExpiredJobIdException | CanceledJobIdException | InvalidAccessKeyIdException | InvalidAddressException | InvalidVersionException | InvalidParameterException
+/?Operation=GetStatus:
+  description: This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job. You can only return information about jobs you own.
+  post:
+    body:
+      application/xml: GetStatusInput
+    responses:
+      200:
+        body:
+          application/xml: GetStatusOutput
+      400:
+        description: InvalidJobIdException | ExpiredJobIdException | CanceledJobIdException | InvalidAccessKeyIdException | InvalidVersionException
+/?Operation=CreateJob:
+  description: This operation initiates the process of scheduling an upload or download of your data. You include in the request a manifest that describes the data transfer specifics. The response to the request includes a job ID, which you can use in other operations, a signature that you use to identify your storage device, and the address where you should ship your storage device.
+  post:
+    body:
+      application/xml: CreateJobInput
+    responses:
+      200:
+        body:
+          application/xml: CreateJobOutput
+      400:
+        description: MissingParameterException | InvalidParameterException | InvalidAccessKeyIdException | InvalidAddressException | InvalidManifestFieldException | MissingManifestFieldException | NoSuchBucketException | MissingCustomsException | InvalidCustomsException | InvalidFileSystemException | MultipleRegionsException | BucketPermissionException | MalformedManifestException | CreateJobQuotaExceededException | InvalidJobIdException | InvalidVersionException
+/?Operation=CancelJob:
+  description: This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the job has already started or is complete.
+  post:
+    body:
+      application/xml: CancelJobInput
+    responses:
+      200:
+        body:
+          application/xml: CancelJobOutput
+      400:
+        description: InvalidJobIdException | ExpiredJobIdException | CanceledJobIdException | UnableToCancelJobIdException | InvalidAccessKeyIdException | InvalidVersionException

@@ -1,0 +1,870 @@
+#%RAML 1.0
+title: Amazon EC2 Container Registry
+version: '2015-09-21'
+description: ' Amazon EC2 Container Registry (Amazon ECR) is a managed AWS Docker
+  registry service. Customers can use the familiar Docker CLI to push, pull, and manage
+  images. Amazon ECR provides a secure, scalable, and reliable registry. Amazon ECR
+  supports private Docker repositories with resource-based permissions using AWS IAM
+  so that specific users or Amazon EC2 instances can access repositories and images.
+  Developers can use the Docker CLI to author and manage images.'
+mediaType:
+- application/json
+types:
+  Arn:
+    type: string
+  AuthorizationDataList:
+    type: array
+    items:
+      type: AuthorizationData
+  Base64:
+    type: string
+    pattern: ^\S+$
+  BatchedOperationLayerDigest:
+    type: string
+    minLength: 0
+    maxLength: 1000
+  BatchedOperationLayerDigestList:
+    type: array
+    minItems: 1
+    maxItems: 100
+    items:
+      type: BatchedOperationLayerDigest
+  ExpirationTimestamp:
+    type: datetime
+  ForceFlag:
+    type: boolean
+  GetAuthorizationTokenRegistryIdList:
+    type: array
+    minItems: 1
+    maxItems: 10
+    items:
+      type: RegistryId
+  ImageDigest:
+    type: string
+  ImageFailureCode:
+    type: string
+    enum:
+    - InvalidImageDigest
+    - InvalidImageTag
+    - ImageTagDoesNotMatchDigest
+    - ImageNotFound
+    - MissingDigestAndTag
+  ImageFailureList:
+    type: array
+    items:
+      type: ImageFailure
+  ImageFailureReason:
+    type: string
+  ImageIdentifierList:
+    type: array
+    minItems: 1
+    maxItems: 100
+    items:
+      type: ImageIdentifier
+  ImageList:
+    type: array
+    items:
+      type: Image
+  ImageManifest:
+    type: string
+  ImageTag:
+    type: string
+  LayerAvailability:
+    type: string
+    enum:
+    - AVAILABLE
+    - UNAVAILABLE
+  LayerDigest:
+    type: string
+    pattern: '[a-zA-Z0-9-_+.]+:[a-fA-F0-9]+'
+  LayerDigestList:
+    type: array
+    minItems: 1
+    maxItems: 100
+    items:
+      type: LayerDigest
+  LayerFailureCode:
+    type: string
+    enum:
+    - InvalidLayerDigest
+    - MissingLayerDigest
+  LayerFailureList:
+    type: array
+    items:
+      type: LayerFailure
+  LayerFailureReason:
+    type: string
+  LayerList:
+    type: array
+    items:
+      type: Layer
+  LayerPartBlob:
+    type: file
+  LayerSizeInBytes:
+    type: integer
+    format: long
+  MaxResults:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 100
+  NextToken:
+    type: string
+  PartSize:
+    type: integer
+    format: long
+    minimum: 0
+  ProxyEndpoint:
+    type: string
+  RegistryId:
+    type: string
+    pattern: '[0-9]{12}'
+  RepositoryList:
+    type: array
+    items:
+      type: Repository
+  RepositoryName:
+    type: string
+    pattern: (?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*
+    minLength: 2
+    maxLength: 256
+  RepositoryNameList:
+    type: array
+    minItems: 1
+    maxItems: 100
+    items:
+      type: RepositoryName
+  RepositoryPolicyText:
+    type: string
+    minLength: 0
+    maxLength: 10240
+  TagStatus:
+    type: string
+    enum:
+    - TAGGED
+    - UNTAGGED
+  UploadId:
+    type: string
+    pattern: '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}'
+  Url:
+    type: string
+  AuthorizationData:
+    type: object
+    properties:
+      authorizationToken?:
+        type: Base64
+        description: <p>A base64-encoded string that contains authorization data for the specified Amazon ECR registry. When the string is decoded, it is presented in the format <code>user:password</code> for private registry authentication using <code>docker login</code>.</p>
+      expiresAt?:
+        type: ExpirationTimestamp
+        description: <p>The Unix time in seconds and milliseconds when the authorization token expires. Authorization tokens are valid for 12 hours.</p>
+      proxyEndpoint?:
+        type: ProxyEndpoint
+        description: <p>The registry URL to use for this authorization token in a <code>docker login</code> command. The Amazon ECR registry URL format is <code>https://aws_account_id.dkr.ecr.region.amazonaws.com</code>. For example, <code>https://012345678910.dkr.ecr.us-east-1.amazonaws.com</code>.. </p>
+    description: <p>An object representing authorization data for an Amazon ECR registry.</p>
+  BatchCheckLayerAvailabilityRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that contains the image layers to check. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository that is associated with the image layers to check.</p>
+      layerDigests:
+        type: BatchedOperationLayerDigestList
+        description: <p>The digests of the image layers to check.</p>
+  BatchCheckLayerAvailabilityResponse:
+    type: object
+    properties:
+      layers?:
+        type: LayerList
+        description: <p>A list of image layer objects corresponding to the image layer references in the request.</p>
+      failures?:
+        type: LayerFailureList
+        description: <p>Any failures associated with the call.</p>
+  BatchDeleteImageRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that contains the image to delete. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The repository that contains the image to delete.</p>
+      imageIds:
+        type: ImageIdentifierList
+        description: <p>A list of image ID references that correspond to images to delete. The format of the <code>imageIds</code> reference is <code>imageTag=tag</code> or <code>imageDigest=digest</code>.</p>
+    description: <p>Deletes specified images within a specified repository. Images are specified with either the <code>imageTag</code> or <code>imageDigest</code>.</p>
+  BatchDeleteImageResponse:
+    type: object
+    properties:
+      imageIds?:
+        type: ImageIdentifierList
+        description: <p>The image IDs of the deleted images.</p>
+      failures?:
+        type: ImageFailureList
+        description: <p>Any failures associated with the call.</p>
+  BatchGetImageRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that contains the images to describe. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The repository that contains the images to describe.</p>
+      imageIds:
+        type: ImageIdentifierList
+        description: <p>A list of image ID references that correspond to images to describe. The format of the <code>imageIds</code> reference is <code>imageTag=tag</code> or <code>imageDigest=digest</code>.</p>
+  BatchGetImageResponse:
+    type: object
+    properties:
+      images?:
+        type: ImageList
+        description: <p>A list of image objects corresponding to the image references in the request.</p>
+      failures?:
+        type: ImageFailureList
+        description: <p>Any failures associated with the call.</p>
+  CompleteLayerUploadRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry to which to upload layers. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository to associate with the image layer.</p>
+      uploadId:
+        type: UploadId
+        description: <p>The upload ID from a previous <a>InitiateLayerUpload</a> operation to associate with the image layer.</p>
+      layerDigests:
+        type: LayerDigestList
+        description: <p>The <code>sha256</code> digest of the image layer.</p>
+  CompleteLayerUploadResponse:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The registry ID associated with the request.</p>
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The repository name associated with the request.</p>
+      uploadId?:
+        type: UploadId
+        description: <p>The upload ID associated with the layer.</p>
+      layerDigest?:
+        type: LayerDigest
+        description: <p>The <code>sha256</code> digest of the image layer.</p>
+  CreateRepositoryRequest:
+    type: object
+    properties:
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name to use for the repository. The repository name may be specified on its own (such as <code>nginx-web-app</code>) or it can be prepended with a namespace to group the repository into a category (such as <code>project-a/nginx-web-app</code>).</p>
+  CreateRepositoryResponse:
+    type: object
+    properties:
+      repository?:
+        type: Repository
+  DeleteRepositoryPolicyRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that contains the repository policy to delete. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository that is associated with the repository policy to delete.</p>
+  DeleteRepositoryPolicyResponse:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The registry ID associated with the request.</p>
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The repository name associated with the request.</p>
+      policyText?:
+        type: RepositoryPolicyText
+        description: <p>The JSON repository policy that was deleted from the repository.</p>
+  DeleteRepositoryRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that contains the repository to delete. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository to delete.</p>
+      force?:
+        type: ForceFlag
+        description: <p>Force the deletion of the repository if it contains images.</p>
+  DeleteRepositoryResponse:
+    type: object
+    properties:
+      repository?:
+        type: Repository
+  DescribeRepositoriesRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that contains the repositories to be described. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryNames?:
+        type: RepositoryNameList
+        description: <p>A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeRepositories</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+      maxResults?:
+        type: MaxResults
+        description: <p>The maximum number of repository results returned by <code>DescribeRepositories</code> in paginated output. When this parameter is used, <code>DescribeRepositories</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeRepositories</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeRepositories</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
+  DescribeRepositoriesResponse:
+    type: object
+    properties:
+      repositories?:
+        type: RepositoryList
+        description: <p>A list of repository objects corresponding to valid repositories.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>The <code>nextToken</code> value to include in a future <code>DescribeRepositories</code> request. When the results of a <code>DescribeRepositories</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+  GetAuthorizationTokenRequest:
+    type: object
+    properties:
+      registryIds?:
+        type: GetAuthorizationTokenRegistryIdList
+        description: <p>A list of AWS account IDs that are associated with the registries for which to get authorization tokens. If you do not specify a registry, the default registry is assumed.</p>
+  GetAuthorizationTokenResponse:
+    type: object
+    properties:
+      authorizationData?:
+        type: AuthorizationDataList
+        description: <p>A list of authorization token data objects that correspond to the <code>registryIds</code> values in the request.</p>
+  GetDownloadUrlForLayerRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that contains the image layer to download. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository that is associated with the image layer to download.</p>
+      layerDigest:
+        type: LayerDigest
+        description: <p>The digest of the image layer to download.</p>
+  GetDownloadUrlForLayerResponse:
+    type: object
+    properties:
+      downloadUrl?:
+        type: Url
+        description: <p>The pre-signed Amazon S3 download URL for the requested layer.</p>
+      layerDigest?:
+        type: LayerDigest
+        description: <p>The digest of the image layer to download.</p>
+  GetRepositoryPolicyRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository whose policy you want to retrieve.</p>
+  GetRepositoryPolicyResponse:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The registry ID associated with the request.</p>
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The repository name associated with the request.</p>
+      policyText?:
+        type: RepositoryPolicyText
+        description: <p>The JSON repository policy text associated with the repository.</p>
+  Image:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry containing the image.</p>
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The name of the repository associated with the image.</p>
+      imageId?:
+        type: ImageIdentifier
+        description: <p>An object containing the image tag and image digest associated with an image.</p>
+      imageManifest?:
+        type: ImageManifest
+        description: <p>The image manifest associated with the image.</p>
+    description: <p>An object representing an Amazon ECR image.</p>
+  ImageFailure:
+    type: object
+    properties:
+      imageId?:
+        type: ImageIdentifier
+        description: <p>The image ID associated with the failure.</p>
+      failureCode?:
+        type: ImageFailureCode
+        description: <p>The code associated with the failure.</p>
+      failureReason?:
+        type: ImageFailureReason
+        description: <p>The reason for the failure.</p>
+    description: <p>An object representing an Amazon ECR image failure.</p>
+  ImageIdentifier:
+    type: object
+    properties:
+      imageDigest?:
+        type: ImageDigest
+        description: <p>The <code>sha256</code> digest of the image manifest.</p>
+      imageTag?:
+        type: ImageTag
+        description: <p>The tag used for the image.</p>
+    description: <p>An object with identifying information for an Amazon ECR image.</p>
+  InitiateLayerUploadRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that you intend to upload layers to. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository that you intend to upload layers to.</p>
+  InitiateLayerUploadResponse:
+    type: object
+    properties:
+      uploadId?:
+        type: UploadId
+        description: <p>The upload ID for the layer upload. This parameter is passed to further <a>UploadLayerPart</a> and <a>CompleteLayerUpload</a> operations.</p>
+      partSize?:
+        type: PartSize
+        description: <p>The size, in bytes, that Amazon ECR expects future layer part uploads to be.</p>
+  Layer:
+    type: object
+    properties:
+      layerDigest?:
+        type: LayerDigest
+        description: <p>The <code>sha256</code> digest of the image layer.</p>
+      layerAvailability?:
+        type: LayerAvailability
+        description: <p>The availability status of the image layer. Valid values are <code>AVAILABLE</code> and <code>UNAVAILABLE</code>.</p>
+      layerSize?:
+        type: LayerSizeInBytes
+        description: <p>The size, in bytes, of the image layer.</p>
+    description: <p>An object representing an Amazon ECR image layer.</p>
+  LayerFailure:
+    type: object
+    properties:
+      layerDigest?:
+        type: BatchedOperationLayerDigest
+        description: <p>The layer digest associated with the failure.</p>
+      failureCode?:
+        type: LayerFailureCode
+        description: <p>The failure code associated with the failure.</p>
+      failureReason?:
+        type: LayerFailureReason
+        description: <p>The reason for the failure.</p>
+    description: <p>An object representing an Amazon ECR image layer failure.</p>
+  ListImagesFilter:
+    type: object
+    properties:
+      tagStatus?:
+        type: TagStatus
+        description: <p>The tag status with which to filter your <a>ListImages</a> results. You can filter results based on whether they are <code>TAGGED</code> or <code>UNTAGGED</code>.</p>
+    description: <p>An object representing a filter on a <a>ListImages</a> operation.</p>
+  ListImagesRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that contains the repository to list images in. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The repository whose image IDs are to be listed.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>The <code>nextToken</code> value returned from a previous paginated <code>ListImages</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+      maxResults?:
+        type: MaxResults
+        description: <p>The maximum number of image results returned by <code>ListImages</code> in paginated output. When this parameter is used, <code>ListImages</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListImages</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListImages</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
+      filter?:
+        type: ListImagesFilter
+        description: <p>The filter key and value with which to filter your <code>ListImages</code> results.</p>
+  ListImagesResponse:
+    type: object
+    properties:
+      imageIds?:
+        type: ImageIdentifierList
+        description: <p>The list of image IDs for the requested repository.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>The <code>nextToken</code> value to include in a future <code>ListImages</code> request. When the results of a <code>ListImages</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+  PutImageRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that contains the repository in which to put the image. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository in which to put the image.</p>
+      imageManifest:
+        type: ImageManifest
+        description: <p>The image manifest corresponding to the image to be uploaded.</p>
+  PutImageResponse:
+    type: object
+    properties:
+      image?:
+        type: Image
+        description: <p>Details of the image uploaded.</p>
+  Repository:
+    type: object
+    properties:
+      repositoryArn?:
+        type: Arn
+        description: <p>The Amazon Resource Name (ARN) that identifies the repository. The ARN contains the <code>arn:aws:ecr</code> namespace, followed by the region of the repository, the AWS account ID of the repository owner, the repository namespace, and then the repository name. For example, <code>arn:aws:ecr:region:012345678910:repository/test</code>.</p>
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that contains the repository.</p>
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The name of the repository.</p>
+      repositoryUri?:
+        type: Url
+        description: <p>The URI for the repository. You can use this URI for Docker <code>push</code> and <code>pull</code> operations.</p>
+    description: <p>An object representing a repository.</p>
+  SetRepositoryPolicyRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository to receive the policy.</p>
+      policyText:
+        type: RepositoryPolicyText
+        description: <p>The JSON repository policy text to apply to the repository.</p>
+      force?:
+        type: ForceFlag
+        description: <p>If the policy you are attempting to set on a repository policy would prevent you from setting another policy in the future, you must force the <a>SetRepositoryPolicy</a> operation. This is intended to prevent accidental repository lock outs.</p>
+  SetRepositoryPolicyResponse:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The registry ID associated with the request.</p>
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The repository name associated with the request.</p>
+      policyText?:
+        type: RepositoryPolicyText
+        description: <p>The JSON repository policy text applied to the repository.</p>
+  UploadLayerPartRequest:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The AWS account ID associated with the registry that you are uploading layer parts to. If you do not specify a registry, the default registry is assumed.</p>
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository that you are uploading layer parts to.</p>
+      uploadId:
+        type: UploadId
+        description: <p>The upload ID from a previous <a>InitiateLayerUpload</a> operation to associate with the layer part upload.</p>
+      partFirstByte:
+        type: PartSize
+        description: <p>The integer value of the first byte of the layer part.</p>
+      partLastByte:
+        type: PartSize
+        description: <p>The integer value of the last byte of the layer part.</p>
+      layerPartBlob:
+        type: LayerPartBlob
+        description: <p>The base64-encoded layer part payload.</p>
+  UploadLayerPartResponse:
+    type: object
+    properties:
+      registryId?:
+        type: RegistryId
+        description: <p>The registry ID associated with the request.</p>
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The repository name associated with the request.</p>
+      uploadId?:
+        type: UploadId
+        description: <p>The upload ID associated with the request.</p>
+      lastByteReceived?:
+        type: PartSize
+        description: <p>The integer value of the last byte received in the request.</p>
+/{BatchCheckLayerAvailability}:
+  uriParameters:
+    BatchCheckLayerAvailability?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Check the availability of multiple image layers in a specified registry and repository. <note> This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the <code>docker</code> CLI to pull, tag, and push images. </note>
+  post:
+    body:
+      application/json: BatchCheckLayerAvailabilityRequest
+    responses:
+      200:
+        body:
+          application/json: BatchCheckLayerAvailabilityResponse
+      400:
+        description: RepositoryNotFoundException
+/{BatchDeleteImage}:
+  uriParameters:
+    BatchDeleteImage?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a list of specified images within a specified repository. Images are specified with either <code>imageTag</code> or <code>imageDigest</code>.
+  post:
+    body:
+      application/json: BatchDeleteImageRequest
+    responses:
+      200:
+        body:
+          application/json: BatchDeleteImageResponse
+      400:
+        description: ServerException
+/{BatchGetImage}:
+  uriParameters:
+    BatchGetImage?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets detailed information for specified images within a specified repository. Images are specified with either <code>imageTag</code> or <code>imageDigest</code>.
+  post:
+    body:
+      application/json: BatchGetImageRequest
+    responses:
+      200:
+        body:
+          application/json: BatchGetImageResponse
+      400:
+        description: ServerException
+/{CompleteLayerUpload}:
+  uriParameters:
+    CompleteLayerUpload?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Inform Amazon ECR that the image layer upload for a specified registry, repository name, and upload ID, has completed. You can optionally provide a <code>sha256</code> digest of the image layer for data validation purposes. <note> This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the <code>docker</code> CLI to pull, tag, and push images. </note>
+  post:
+    body:
+      application/json: CompleteLayerUploadRequest
+    responses:
+      200:
+        body:
+          application/json: CompleteLayerUploadResponse
+      400:
+        description: ServerException
+/{CreateRepository}:
+  uriParameters:
+    CreateRepository?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates an image repository.
+  post:
+    body:
+      application/json: CreateRepositoryRequest
+    responses:
+      200:
+        body:
+          application/json: CreateRepositoryResponse
+      400:
+        description: ServerException
+/{DeleteRepository}:
+  uriParameters:
+    DeleteRepository?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes an existing image repository. If a repository contains images, you must use the <code>force</code> option to delete it.
+  post:
+    body:
+      application/json: DeleteRepositoryRequest
+    responses:
+      200:
+        body:
+          application/json: DeleteRepositoryResponse
+      400:
+        description: ServerException
+/{DeleteRepositoryPolicy}:
+  uriParameters:
+    DeleteRepositoryPolicy?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the repository policy from a specified repository.
+  post:
+    body:
+      application/json: DeleteRepositoryPolicyRequest
+    responses:
+      200:
+        body:
+          application/json: DeleteRepositoryPolicyResponse
+      400:
+        description: ServerException
+/{DescribeRepositories}:
+  uriParameters:
+    DescribeRepositories?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes image repositories in a registry.
+  post:
+    body:
+      application/json: DescribeRepositoriesRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeRepositoriesResponse
+      400:
+        description: ServerException
+/{GetAuthorizationToken}:
+  uriParameters:
+    GetAuthorizationToken?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves a token that is valid for a specified registry for 12 hours. This command allows you to use the <code>docker</code> CLI to push and pull images with Amazon ECR. If you do not specify a registry, the default registry is assumed. The <code>authorizationToken</code> returned for each registry specified is a base64 encoded string that can be decoded and used in a <code>docker login</code> command to authenticate to a registry. The AWS CLI offers an <code>aws ecr get-login</code> command that simplifies the login process.
+  post:
+    body:
+      application/json: GetAuthorizationTokenRequest
+    responses:
+      200:
+        body:
+          application/json: GetAuthorizationTokenResponse
+      400:
+        description: ServerException
+/{GetDownloadUrlForLayer}:
+  uriParameters:
+    GetDownloadUrlForLayer?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer. You can only get URLs for image layers that are referenced in an image. <note> This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the <code>docker</code> CLI to pull, tag, and push images. </note>
+  post:
+    body:
+      application/json: GetDownloadUrlForLayerRequest
+    responses:
+      200:
+        body:
+          application/json: GetDownloadUrlForLayerResponse
+      400:
+        description: ServerException
+/{GetRepositoryPolicy}:
+  uriParameters:
+    GetRepositoryPolicy?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves the repository policy for a specified repository.
+  post:
+    body:
+      application/json: GetRepositoryPolicyRequest
+    responses:
+      200:
+        body:
+          application/json: GetRepositoryPolicyResponse
+      400:
+        description: ServerException
+/{InitiateLayerUpload}:
+  uriParameters:
+    InitiateLayerUpload?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Notify Amazon ECR that you intend to upload an image layer. <note> This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the <code>docker</code> CLI to pull, tag, and push images. </note>
+  post:
+    body:
+      application/json: InitiateLayerUploadRequest
+    responses:
+      200:
+        body:
+          application/json: InitiateLayerUploadResponse
+      400:
+        description: ServerException
+/{ListImages}:
+  uriParameters:
+    ListImages?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists all the image IDs for a given repository. You can filter images based on whether or not they are tagged by setting the <code>tagStatus</code> parameter to <code>TAGGED</code> or <code>UNTAGGED</code>. For example, you can filter your results to return only <code>UNTAGGED</code> images and then pipe that result to a <a>BatchDeleteImage</a> operation to delete them. Or, you can filter your results to return only <code>TAGGED</code> images to list all of the tags in your repository.
+  post:
+    body:
+      application/json: ListImagesRequest
+    responses:
+      200:
+        body:
+          application/json: ListImagesResponse
+      400:
+        description: ServerException
+/{PutImage}:
+  uriParameters:
+    PutImage?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates or updates the image manifest associated with an image. <note> This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the <code>docker</code> CLI to pull, tag, and push images. </note>
+  post:
+    body:
+      application/json: PutImageRequest
+    responses:
+      200:
+        body:
+          application/json: PutImageResponse
+      400:
+        description: ServerException
+/{SetRepositoryPolicy}:
+  uriParameters:
+    SetRepositoryPolicy?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Applies a repository policy on a specified repository to control access permissions.
+  post:
+    body:
+      application/json: SetRepositoryPolicyRequest
+    responses:
+      200:
+        body:
+          application/json: SetRepositoryPolicyResponse
+      400:
+        description: ServerException
+/{UploadLayerPart}:
+  uriParameters:
+    UploadLayerPart?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Uploads an image layer part to Amazon ECR. <note> This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the <code>docker</code> CLI to pull, tag, and push images. </note>
+  post:
+    body:
+      application/json: UploadLayerPartRequest
+    responses:
+      200:
+        body:
+          application/json: UploadLayerPartResponse
+      400:
+        description: ServerException

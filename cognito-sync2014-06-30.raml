@@ -1,0 +1,920 @@
+#%RAML 1.0
+title: Amazon Cognito Sync
+version: '2014-06-30'
+description: '  Amazon Cognito Sync provides an AWS service and client library that
+  enable cross-device syncing of application-related user data. High-level client
+  libraries are available for both iOS and Android. You can use these libraries to
+  persist data locally so that it''s available even if the device is offline. Developer
+  credentials don''t need to be stored on the mobile device to access the service.
+  You can use Amazon Cognito to obtain a normalized user ID and credentials. User
+  data is persisted in a dataset that can store up to 1 MB of key-value pairs, and
+  you can have up to 20 datasets per user identity.  With Amazon Cognito Sync, the
+  data stored for each identity is accessible only to credentials assigned to that
+  identity. In order to use the Cognito Sync service, you need to make API calls using
+  credentials retrieved with <a href="http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/Welcome.html">Amazon
+  Cognito Identity service</a>.  If you want to use Cognito Sync in an Android or
+  iOS application, you will probably want to make API calls via the AWS Mobile SDK.
+  To learn more, see the <a href="http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/cognito-sync.html">Developer
+  Guide for Android</a> and the <a href="http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-sync.html">Developer
+  Guide for iOS</a>.'
+mediaType:
+- application/json
+types:
+  ApplicationArn:
+    type: string
+    pattern: arn:aws:sns:[-0-9a-z]+:\d+:app/[A-Z_]+/[a-zA-Z0-9_.-]+
+  ApplicationArnList:
+    type: array
+    items:
+      type: ApplicationArn
+  AssumeRoleArn:
+    type: string
+    pattern: arn:aws:iam::\d+:role/.*
+    minLength: 20
+    maxLength: 2048
+  Boolean:
+    type: boolean
+  BulkPublishStatus:
+    type: string
+    enum:
+    - NOT_STARTED
+    - IN_PROGRESS
+    - FAILED
+    - SUCCEEDED
+  ClientContext:
+    type: string
+  CognitoEventType:
+    type: string
+  DatasetList:
+    type: array
+    items:
+      type: Dataset
+  DatasetName:
+    type: string
+    pattern: '[a-zA-Z0-9_.:-]+'
+    minLength: 1
+    maxLength: 128
+  Date:
+    type: datetime
+  DeviceId:
+    type: string
+    minLength: 1
+    maxLength: 256
+  IdentityId:
+    type: string
+    pattern: '[\w-]+:[0-9a-f-]+'
+    minLength: 1
+    maxLength: 55
+  IdentityPoolId:
+    type: string
+    pattern: '[\w-]+:[0-9a-f-]+'
+    minLength: 1
+    maxLength: 55
+  IdentityPoolUsageList:
+    type: array
+    items:
+      type: IdentityPoolUsage
+  Integer:
+    type: integer
+    format: int
+  IntegerString:
+    type: integer
+    format: int
+  LambdaFunctionArn:
+    type: string
+  Long:
+    type: integer
+    format: long
+  MergedDatasetNameList:
+    type: array
+    items:
+      type: String
+  Operation:
+    type: string
+    enum:
+    - replace
+    - remove
+  Platform:
+    type: string
+    enum:
+    - APNS
+    - APNS_SANDBOX
+    - GCM
+    - ADM
+  PushToken:
+    type: string
+  RecordKey:
+    type: string
+    minLength: 1
+    maxLength: 1024
+  RecordList:
+    type: array
+    items:
+      type: Record
+  RecordPatchList:
+    type: array
+    items:
+      type: RecordPatch
+  RecordValue:
+    type: string
+    maxLength: 1048575
+  StreamName:
+    type: string
+    minLength: 1
+    maxLength: 128
+  StreamingStatus:
+    type: string
+    enum:
+    - ENABLED
+    - DISABLED
+  String:
+    type: string
+  SyncSessionToken:
+    type: string
+  BulkPublishResponse:
+    type: object
+    properties:
+      IdentityPoolId?:
+        type: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+    description: The output for the BulkPublish operation.
+  CognitoStreams:
+    type: object
+    properties:
+      StreamName?:
+        type: StreamName
+        description: The name of the Cognito stream to receive updates. This stream must be in the developers account and in the same region as the identity pool.
+      RoleArn?:
+        type: AssumeRoleArn
+        description: The ARN of the role Amazon Cognito can assume in order to publish to the stream. This role must grant access to Amazon Cognito (cognito-sync) to invoke PutRecord on your Cognito stream.
+      StreamingStatus?:
+        type: StreamingStatus
+        description: 'Status of the Cognito streams. Valid values are: <p>ENABLED
+          - Streaming of updates to identity pool is enabled.</p> <p>DISABLED - Streaming
+          of updates to identity pool is disabled. Bulk publish will also fail if
+          StreamingStatus is DISABLED.</p>'
+    description: Configuration options for configure Cognito streams.
+  Dataset:
+    type: object
+    properties:
+      IdentityId?:
+        type: IdentityId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+      DatasetName?:
+        type: DatasetName
+        description: A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+      CreationDate?:
+        type: Date
+        description: Date on which the dataset was created.
+      LastModifiedDate?:
+        type: Date
+        description: Date when the dataset was last modified.
+      LastModifiedBy?:
+        type: String
+        description: The device that made the last change to this dataset.
+      DataStorage?:
+        type: Long
+        description: Total size in bytes of the records in this dataset.
+      NumRecords?:
+        type: Long
+        description: Number of records in this dataset.
+    description: A collection of data for an identity pool. An identity pool can have multiple datasets. A dataset is per identity and can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
+  DeleteDatasetResponse:
+    type: object
+    properties:
+      Dataset?:
+        type: Dataset
+        description: A collection of data for an identity pool. An identity pool can have multiple datasets. A dataset is per identity and can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
+    description: Response to a successful DeleteDataset request.
+  DescribeDatasetResponse:
+    type: object
+    properties:
+      Dataset?:
+        type: Dataset
+        description: Meta data for a collection of data for an identity. An identity can have multiple datasets. A dataset can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
+    description: Response to a successful DescribeDataset request.
+  DescribeIdentityPoolUsageResponse:
+    type: object
+    properties:
+      IdentityPoolUsage?:
+        type: IdentityPoolUsage
+        description: Information about the usage of the identity pool.
+    description: Response to a successful DescribeIdentityPoolUsage request.
+  DescribeIdentityUsageResponse:
+    type: object
+    properties:
+      IdentityUsage?:
+        type: IdentityUsage
+        description: Usage information for the identity.
+    description: The response to a successful DescribeIdentityUsage request.
+  Events:
+    type: object
+    properties:
+      //:
+        type: LambdaFunctionArn
+    maxProperties: 1
+  GetBulkPublishDetailsResponse:
+    type: object
+    properties:
+      IdentityPoolId?:
+        type: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+      BulkPublishStartTime?:
+        type: Date
+        description: The date/time at which the last bulk publish was initiated.
+      BulkPublishCompleteTime?:
+        type: Date
+        description: If BulkPublishStatus is SUCCEEDED, the time the last bulk publish operation completed.
+      BulkPublishStatus?:
+        type: BulkPublishStatus
+        description: 'Status of the last bulk publish operation, valid values are:
+          <p>NOT_STARTED - No bulk publish has been requested for this identity pool</p>
+          <p>IN_PROGRESS - Data is being published to the configured stream</p> <p>SUCCEEDED
+          - All data for the identity pool has been published to the configured stream</p>
+          <p>FAILED - Some portion of the data has failed to publish, check FailureMessage
+          for the cause.</p>'
+      FailureMessage?:
+        type: String
+        description: If BulkPublishStatus is FAILED this field will contain the error message that caused the bulk publish to fail.
+    description: The output for the GetBulkPublishDetails operation.
+  GetCognitoEventsResponse:
+    type: object
+    properties:
+      Events?:
+        type: Events
+        description: <p>The Cognito Events returned from the GetCognitoEvents request</p>
+    description: <p>The response from the GetCognitoEvents request</p>
+  GetIdentityPoolConfigurationResponse:
+    type: object
+    properties:
+      IdentityPoolId?:
+        type: IdentityPoolId
+        description: <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.</p>
+      PushSync?:
+        type: PushSync
+        description: <p>Options to apply to this identity pool for push synchronization.</p>
+      CognitoStreams?:
+        type: CognitoStreams
+        description: Options to apply to this identity pool for Amazon Cognito streams.
+    description: <p>The output for the GetIdentityPoolConfiguration operation.</p>
+  IdentityPoolUsage:
+    type: object
+    properties:
+      IdentityPoolId?:
+        type: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+      SyncSessionsCount?:
+        type: Long
+        description: Number of sync sessions for the identity pool.
+      DataStorage?:
+        type: Long
+        description: Data storage information for the identity pool.
+      LastModifiedDate?:
+        type: Date
+        description: Date on which the identity pool was last modified.
+    description: Usage information for the identity pool.
+  IdentityUsage:
+    type: object
+    properties:
+      IdentityId?:
+        type: IdentityId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+      IdentityPoolId?:
+        type: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+      LastModifiedDate?:
+        type: Date
+        description: Date on which the identity was last modified.
+      DatasetCount?:
+        type: Integer
+        description: Number of datasets for the identity.
+      DataStorage?:
+        type: Long
+        description: Total data storage for this identity.
+    description: Usage information for the identity.
+  ListDatasetsResponse:
+    type: object
+    properties:
+      Datasets?:
+        type: DatasetList
+        description: A set of datasets.
+      Count?:
+        type: Integer
+        description: Number of datasets returned.
+      NextToken?:
+        type: String
+        description: A pagination token for obtaining the next page of results.
+    description: Returned for a successful ListDatasets request.
+  ListIdentityPoolUsageResponse:
+    type: object
+    properties:
+      IdentityPoolUsages?:
+        type: IdentityPoolUsageList
+        description: Usage information for the identity pools.
+      MaxResults?:
+        type: Integer
+        description: The maximum number of results to be returned.
+      Count?:
+        type: Integer
+        description: Total number of identities for the identity pool.
+      NextToken?:
+        type: String
+        description: A pagination token for obtaining the next page of results.
+    description: Returned for a successful ListIdentityPoolUsage request.
+  ListRecordsResponse:
+    type: object
+    properties:
+      Records?:
+        type: RecordList
+        description: A list of all records.
+      NextToken?:
+        type: String
+        description: A pagination token for obtaining the next page of results.
+      Count?:
+        type: Integer
+        description: Total number of records.
+      DatasetSyncCount?:
+        type: Long
+        description: Server sync count for this dataset.
+      LastModifiedBy?:
+        type: String
+        description: The user/device that made the last change to this record.
+      MergedDatasetNames?:
+        type: MergedDatasetNameList
+        description: Names of merged datasets.
+      DatasetExists?:
+        type: Boolean
+        description: Indicates whether the dataset exists.
+      DatasetDeletedAfterRequestedSyncCount?:
+        type: Boolean
+        description: A boolean value specifying whether to delete the dataset locally.
+      SyncSessionToken?:
+        type: String
+        description: A token containing a session ID, identity ID, and expiration.
+    description: Returned for a successful ListRecordsRequest.
+  PushSync:
+    type: object
+    properties:
+      ApplicationArns?:
+        type: ApplicationArnList
+        description: <p>List of SNS platform application ARNs that could be used by clients.</p>
+      RoleArn?:
+        type: AssumeRoleArn
+        description: <p>A role configured to allow Cognito to call SNS on behalf of the developer.</p>
+    description: <p>Configuration options to be applied to the identity pool.</p>
+  Record:
+    type: object
+    properties:
+      Key?:
+        type: RecordKey
+        description: The key for the record.
+      Value?:
+        type: RecordValue
+        description: The value for the record.
+      SyncCount?:
+        type: Long
+        description: The server sync count for this record.
+      LastModifiedDate?:
+        type: Date
+        description: The date on which the record was last modified.
+      LastModifiedBy?:
+        type: String
+        description: The user/device that made the last change to this record.
+      DeviceLastModifiedDate?:
+        type: Date
+        description: The last modified date of the client device.
+    description: The basic data structure of a dataset.
+  RecordPatch:
+    type: object
+    properties:
+      Op:
+        type: Operation
+        description: An operation, either replace or remove.
+      Key:
+        type: RecordKey
+        description: The key associated with the record patch.
+      Value?:
+        type: RecordValue
+        description: The value associated with the record patch.
+      SyncCount:
+        type: Long
+        description: Last known server sync count for this record. Set to 0 if unknown.
+      DeviceLastModifiedDate?:
+        type: Date
+        description: The last modified date of the client device.
+    description: An update operation for a record.
+  RegisterDeviceResponse:
+    type: object
+    properties:
+      DeviceId?:
+        type: DeviceId
+        description: <p>The unique ID generated for this device by Cognito.</p>
+    description: <p>Response to a RegisterDevice request.</p>
+  SetIdentityPoolConfigurationResponse:
+    type: object
+    properties:
+      IdentityPoolId?:
+        type: IdentityPoolId
+        description: <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.</p>
+      PushSync?:
+        type: PushSync
+        description: <p>Options to apply to this identity pool for push synchronization.</p>
+      CognitoStreams?:
+        type: CognitoStreams
+        description: Options to apply to this identity pool for Amazon Cognito streams.
+    description: <p>The output for the SetIdentityPoolConfiguration operation</p>
+  SubscribeToDatasetResponse:
+    type: object
+    description: <p>Response to a SubscribeToDataset request.</p>
+  UnsubscribeFromDatasetResponse:
+    type: object
+    description: <p>Response to an UnsubscribeFromDataset request.</p>
+  UpdateRecordsResponse:
+    type: object
+    properties:
+      Records?:
+        type: RecordList
+        description: A list of records that have been updated.
+    description: Returned for a successful UpdateRecordsRequest.
+/identitypools:
+  description: Gets a list of identity pools registered with Cognito. ListIdentityPoolUsage can only be called with developer credentials. You cannot make this API call with the temporary user credentials provided by Cognito Identity.
+  /{IdentityPoolId}:
+    uriParameters:
+      IdentityPoolId?:
+        type: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+    description: Gets usage details (for example, data storage) about a particular identity pool. This API can only be called with developer credentials. You cannot call this API with the temporary user credentials provided by Cognito Identity.
+    /identity:
+      /{IdentityId}:
+        uriParameters:
+          IdentityId?:
+            type: IdentityId
+            description: <p>The unique ID for this identity.</p>
+        /device:
+          description: Registers a device to receive push sync notifications. This API can only be called with temporary credentials provided by Cognito Identity. You cannot call this API with developer credentials.
+          post:
+            headers:
+              IdentityPoolId?:
+                type: IdentityPoolId
+                description: <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. Here, the ID of the pool that the identity belongs to.</p>
+              IdentityId?:
+                type: IdentityId
+                description: <p>The unique ID for this identity.</p>
+            body:
+              application/json:
+                type: object
+                properties:
+                  Platform:
+                    type: Platform
+                    description: <p>The SNS platform type (e.g. GCM, SDM, APNS, APNS_SANDBOX).</p>
+                  Token:
+                    type: PushToken
+                    description: <p>The push token.</p>
+            responses:
+              200:
+                body:
+                  application/json: RegisterDeviceResponse
+              403:
+                description: NotAuthorizedError
+              400:
+                description: InvalidParameter | InvalidConfiguration
+              404:
+                description: ResourceNotFound
+              500:
+                description: InternalError
+              429:
+                description: TooManyRequests
+    /events:
+      description: Gets the events and the corresponding Lambda functions associated with an identity pool. This API can only be called with developer credentials. You cannot call this API with the temporary user credentials provided by Cognito Identity.
+      post:
+        headers:
+          IdentityPoolId?:
+            type: IdentityPoolId
+            description: <p>The Cognito Identity Pool to use when configuring Cognito Events</p>
+        body:
+          application/json:
+            type: object
+            properties:
+              Events:
+                type: Events
+                description: <p>The events to configure</p>
+        responses:
+          200:
+            body:
+              application/json: null
+          400:
+            description: InvalidParameter
+          404:
+            description: ResourceNotFound
+          403:
+            description: NotAuthorizedError
+          500:
+            description: InternalError
+          429:
+            description: TooManyRequests
+      get:
+        headers:
+          IdentityPoolId?:
+            type: IdentityPoolId
+            description: <p>The Cognito Identity Pool ID for the request</p>
+        responses:
+          200:
+            body:
+              application/json: GetCognitoEventsResponse
+          400:
+            description: InvalidParameter
+          404:
+            description: ResourceNotFound
+          403:
+            description: NotAuthorizedError
+          500:
+            description: InternalError
+          429:
+            description: TooManyRequests
+    /identities:
+      /{IdentityId}:
+        uriParameters:
+          IdentityId?:
+            type: IdentityId
+            description: <p>Unique ID for this identity.</p>
+        description: Gets usage information for an identity, including number of datasets and data usage. This API can be called with temporary user credentials provided by Cognito Identity or with developer credentials.
+        /datasets:
+          description: Lists datasets for an identity. With Amazon Cognito Sync, each identity has access only to its own data. Thus, the credentials used to make this API call need to have access to the identity data. ListDatasets can be called with temporary user credentials provided by Cognito Identity or with developer credentials. You should use the Cognito Identity credentials to make this API call.
+          /{DatasetName}:
+            uriParameters:
+              DatasetName?:
+                type: DatasetName
+                description: <p>The name of the dataset from which to unsubcribe.</p>
+            description: Deletes the specific dataset. The dataset will be deleted permanently, and the action can't be undone. Datasets that this dataset was merged with will no longer report the merge. Any subsequent operation on this dataset will result in a ResourceNotFoundException. This API can be called with temporary user credentials provided by Cognito Identity or with developer credentials.
+            /subscriptions:
+              /{DeviceId}:
+                uriParameters:
+                  DeviceId?:
+                    type: DeviceId
+                    description: <p>The unique ID generated for this device by Cognito.</p>
+                description: Subscribes to receive notifications when a dataset is modified by another device. This API can only be called with temporary credentials provided by Cognito Identity. You cannot call this API with developer credentials.
+                delete:
+                  headers:
+                    IdentityPoolId?:
+                      type: IdentityPoolId
+                      description: <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which this identity belongs.</p>
+                    IdentityId?:
+                      type: IdentityId
+                      description: <p>Unique ID for this identity.</p>
+                    DatasetName?:
+                      type: DatasetName
+                      description: <p>The name of the dataset from which to unsubcribe.</p>
+                    DeviceId?:
+                      type: DeviceId
+                      description: <p>The unique ID generated for this device by Cognito.</p>
+                  responses:
+                    200:
+                      body:
+                        application/json: UnsubscribeFromDatasetResponse
+                    403:
+                      description: NotAuthorizedError
+                    400:
+                      description: InvalidParameter | InvalidConfiguration
+                    404:
+                      description: ResourceNotFound
+                    500:
+                      description: InternalError
+                    429:
+                      description: TooManyRequests
+                post:
+                  headers:
+                    IdentityPoolId?:
+                      type: IdentityPoolId
+                      description: <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which the identity belongs.</p>
+                    IdentityId?:
+                      type: IdentityId
+                      description: <p>Unique ID for this identity.</p>
+                    DatasetName?:
+                      type: DatasetName
+                      description: <p>The name of the dataset to subcribe to.</p>
+                    DeviceId?:
+                      type: DeviceId
+                      description: <p>The unique ID generated for this device by Cognito.</p>
+                  responses:
+                    200:
+                      body:
+                        application/json: SubscribeToDatasetResponse
+                    403:
+                      description: NotAuthorizedError
+                    400:
+                      description: InvalidParameter | InvalidConfiguration
+                    404:
+                      description: ResourceNotFound
+                    500:
+                      description: InternalError
+                    429:
+                      description: TooManyRequests
+            /records:
+              description: Gets paginated records, optionally changed after a particular sync count for a dataset and identity. With Amazon Cognito Sync, each identity has access only to its own data. Thus, the credentials used to make this API call need to have access to the identity data. ListRecords can be called with temporary user credentials provided by Cognito Identity or with developer credentials. You should use Cognito Identity credentials to make this API call.
+              get:
+                queryParameters:
+                  lastSyncCount:
+                    type: Long
+                    description: The last server sync count for this record.
+                  nextToken:
+                    type: String
+                    description: A pagination token for obtaining the next page of results.
+                  maxResults:
+                    type: IntegerString
+                    description: The maximum number of results to be returned.
+                  syncSessionToken:
+                    type: SyncSessionToken
+                    description: A token containing a session ID, identity ID, and expiration.
+                headers:
+                  IdentityPoolId?:
+                    type: IdentityPoolId
+                    description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+                  IdentityId?:
+                    type: IdentityId
+                    description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+                  DatasetName?:
+                    type: DatasetName
+                    description: A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+                responses:
+                  200:
+                    body:
+                      application/json: ListRecordsResponse
+                  400:
+                    description: InvalidParameter
+                  403:
+                    description: NotAuthorizedError
+                  429:
+                    description: TooManyRequests
+                  500:
+                    description: InternalError
+            get:
+              headers:
+                IdentityPoolId?:
+                  type: IdentityPoolId
+                  description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+                IdentityId?:
+                  type: IdentityId
+                  description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+                DatasetName?:
+                  type: DatasetName
+                  description: A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+              responses:
+                200:
+                  body:
+                    application/json: DescribeDatasetResponse
+                403:
+                  description: NotAuthorizedError
+                400:
+                  description: InvalidParameter
+                404:
+                  description: ResourceNotFound
+                500:
+                  description: InternalError
+                429:
+                  description: TooManyRequests
+            post:
+              headers:
+                IdentityPoolId?:
+                  type: IdentityPoolId
+                  description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+                IdentityId?:
+                  type: IdentityId
+                  description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+                DatasetName?:
+                  type: DatasetName
+                  description: A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+                x-amz-Client-Context:
+                  type: ClientContext
+                  description: Intended to supply a device ID that will populate the lastModifiedBy field referenced in other methods. The ClientContext field is not yet implemented.
+              body:
+                application/json:
+                  type: object
+                  properties:
+                    DeviceId?:
+                      type: DeviceId
+                      description: <p>The unique ID generated for this device by Cognito.</p>
+                    RecordPatches?:
+                      type: RecordPatchList
+                      description: A list of patch operations.
+                    SyncSessionToken:
+                      type: SyncSessionToken
+                      description: The SyncSessionToken returned by a previous call to ListRecords for this dataset and identity.
+              responses:
+                200:
+                  body:
+                    application/json: UpdateRecordsResponse
+                400:
+                  description: InvalidParameter | LimitExceeded | InvalidLambdaFunctionOutput
+                403:
+                  description: NotAuthorizedError
+                404:
+                  description: ResourceNotFound
+                409:
+                  description: ResourceConflict
+                429:
+                  description: LambdaThrottled | TooManyRequests
+                500:
+                  description: InternalError
+            delete:
+              headers:
+                IdentityPoolId?:
+                  type: IdentityPoolId
+                  description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+                IdentityId?:
+                  type: IdentityId
+                  description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+                DatasetName?:
+                  type: DatasetName
+                  description: A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+              responses:
+                200:
+                  body:
+                    application/json: DeleteDatasetResponse
+                403:
+                  description: NotAuthorizedError
+                400:
+                  description: InvalidParameter
+                404:
+                  description: ResourceNotFound
+                500:
+                  description: InternalError
+                429:
+                  description: TooManyRequests
+                409:
+                  description: ResourceConflict
+          get:
+            queryParameters:
+              nextToken:
+                type: String
+                description: A pagination token for obtaining the next page of results.
+              maxResults:
+                type: IntegerString
+                description: The maximum number of results to be returned.
+            headers:
+              IdentityPoolId?:
+                type: IdentityPoolId
+                description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+              IdentityId?:
+                type: IdentityId
+                description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+            responses:
+              200:
+                body:
+                  application/json: ListDatasetsResponse
+              403:
+                description: NotAuthorizedError
+              400:
+                description: InvalidParameter
+              500:
+                description: InternalError
+              429:
+                description: TooManyRequests
+        get:
+          headers:
+            IdentityPoolId?:
+              type: IdentityPoolId
+              description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+            IdentityId?:
+              type: IdentityId
+              description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+          responses:
+            200:
+              body:
+                application/json: DescribeIdentityUsageResponse
+            403:
+              description: NotAuthorizedError
+            400:
+              description: InvalidParameter
+            404:
+              description: ResourceNotFound
+            500:
+              description: InternalError
+            429:
+              description: TooManyRequests
+    /getBulkPublishDetails:
+      description: Get the status of the last BulkPublish operation for an identity pool. This API can only be called with developer credentials. You cannot call this API with the temporary user credentials provided by Cognito Identity.
+      post:
+        headers:
+          IdentityPoolId?:
+            type: IdentityPoolId
+            description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+        responses:
+          200:
+            body:
+              application/json: GetBulkPublishDetailsResponse
+          403:
+            description: NotAuthorizedError
+          400:
+            description: InvalidParameter
+          404:
+            description: ResourceNotFound
+          500:
+            description: InternalError
+    /configuration:
+      description: Gets the configuration settings of an identity pool. This API can only be called with developer credentials. You cannot call this API with the temporary user credentials provided by Cognito Identity.
+      post:
+        headers:
+          IdentityPoolId?:
+            type: IdentityPoolId
+            description: <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool to modify.</p>
+        body:
+          application/json:
+            type: object
+            properties:
+              PushSync?:
+                type: PushSync
+                description: <p>Options to apply to this identity pool for push synchronization.</p>
+              CognitoStreams?:
+                type: CognitoStreams
+                description: Options to apply to this identity pool for Amazon Cognito streams.
+        responses:
+          200:
+            body:
+              application/json: SetIdentityPoolConfigurationResponse
+          403:
+            description: NotAuthorizedError
+          400:
+            description: InvalidParameter | ConcurrentModification
+          404:
+            description: ResourceNotFound
+          500:
+            description: InternalError
+          429:
+            description: TooManyRequests
+      get:
+        headers:
+          IdentityPoolId?:
+            type: IdentityPoolId
+            description: <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool for which to return a configuration.</p>
+        responses:
+          200:
+            body:
+              application/json: GetIdentityPoolConfigurationResponse
+          403:
+            description: NotAuthorizedError
+          400:
+            description: InvalidParameter
+          404:
+            description: ResourceNotFound
+          500:
+            description: InternalError
+          429:
+            description: TooManyRequests
+    /bulkpublish:
+      description: Initiates a bulk publish of all existing datasets for an Identity Pool to the configured stream. Customers are limited to one successful bulk publish per 24 hours. Bulk publish is an asynchronous request, customers can see the status of the request via the GetBulkPublishDetails operation. This API can only be called with developer credentials. You cannot call this API with the temporary user credentials provided by Cognito Identity.
+      post:
+        headers:
+          IdentityPoolId?:
+            type: IdentityPoolId
+            description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+        responses:
+          200:
+            body:
+              application/json: BulkPublishResponse
+          403:
+            description: NotAuthorizedError
+          400:
+            description: InvalidParameter | DuplicateRequest | AlreadyStreamed
+          404:
+            description: ResourceNotFound
+          500:
+            description: InternalError
+    get:
+      headers:
+        IdentityPoolId?:
+          type: IdentityPoolId
+          description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+      responses:
+        200:
+          body:
+            application/json: DescribeIdentityPoolUsageResponse
+        403:
+          description: NotAuthorizedError
+        400:
+          description: InvalidParameter
+        404:
+          description: ResourceNotFound
+        500:
+          description: InternalError
+        429:
+          description: TooManyRequests
+  get:
+    queryParameters:
+      nextToken:
+        type: String
+        description: A pagination token for obtaining the next page of results.
+      maxResults:
+        type: IntegerString
+        description: The maximum number of results to be returned.
+    responses:
+      200:
+        body:
+          application/json: ListIdentityPoolUsageResponse
+      403:
+        description: NotAuthorizedError
+      400:
+        description: InvalidParameter
+      500:
+        description: InternalError
+      429:
+        description: TooManyRequests

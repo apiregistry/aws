@@ -1,0 +1,2197 @@
+#%RAML 1.0
+title: AWS CloudFormation
+version: '2010-05-15'
+description: '  AWS CloudFormation enables you to create and manage AWS infrastructure
+  deployments predictably and repeatedly. AWS CloudFormation helps you leverage AWS
+  products such as Amazon EC2, EBS, Amazon SNS, ELB, and Auto Scaling to build highly-reliable,
+  highly scalable, cost effective applications without worrying about creating and
+  configuring the underlying AWS infrastructure.  With AWS CloudFormation, you declare
+  all of your resources and dependencies in a template file. The template defines
+  a collection of resources as a single unit called a stack. AWS CloudFormation creates
+  and deletes all member resources of the stack together and manages all dependencies
+  between the resources for you.  For more information about this product, go to the
+  <a href="http://aws.amazon.com/cloudformation/">CloudFormation Product Page</a>.  Amazon
+  CloudFormation makes use of other AWS products. If you need additional technical
+  information about a specific AWS product, you can find the product''s technical
+  documentation at <a href="http://docs.aws.amazon.com/">http://docs.aws.amazon.com/</a>.'
+mediaType:
+- application/xml
+types:
+  AccountLimitList:
+    type: array
+    items:
+      type: AccountLimit
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  AllowedValue:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  AllowedValues:
+    type: array
+    items:
+      type: AllowedValue
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Capabilities:
+    type: array
+    items:
+      type: Capability
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  CapabilitiesReason:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Capability:
+    type: string
+    enum:
+    - CAPABILITY_IAM
+    - CAPABILITY_NAMED_IAM
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  CausingEntity:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ChangeAction:
+    type: string
+    enum:
+    - Add
+    - Modify
+    - Remove
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ChangeSetId:
+    type: string
+    pattern: arn:[-a-zA-Z0-9:/]*
+    minLength: 1
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ChangeSetName:
+    type: string
+    pattern: '[a-zA-Z][-a-zA-Z0-9]*'
+    minLength: 1
+    maxLength: 128
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ChangeSetNameOrId:
+    type: string
+    pattern: '[a-zA-Z][-a-zA-Z0-9]*|arn:[-a-zA-Z0-9:/]*'
+    minLength: 1
+    maxLength: 1600
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ChangeSetStatus:
+    type: string
+    enum:
+    - CREATE_PENDING
+    - CREATE_IN_PROGRESS
+    - CREATE_COMPLETE
+    - DELETE_COMPLETE
+    - FAILED
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ChangeSetStatusReason:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ChangeSetSummaries:
+    type: array
+    items:
+      type: ChangeSetSummary
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ChangeSource:
+    type: string
+    enum:
+    - ResourceReference
+    - ParameterReference
+    - ResourceAttribute
+    - DirectModification
+    - Automatic
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ChangeType:
+    type: string
+    enum:
+    - Resource
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Changes:
+    type: array
+    items:
+      type: Change
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ClientToken:
+    type: string
+    minLength: 1
+    maxLength: 128
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  CreationTime:
+    type: datetime
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  DeletionTime:
+    type: datetime
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Description:
+    type: string
+    minLength: 1
+    maxLength: 1024
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  DisableRollback:
+    type: boolean
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  EvaluationType:
+    type: string
+    enum:
+    - Static
+    - Dynamic
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  EventId:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ExecutionStatus:
+    type: string
+    enum:
+    - UNAVAILABLE
+    - AVAILABLE
+    - EXECUTE_IN_PROGRESS
+    - EXECUTE_COMPLETE
+    - EXECUTE_FAILED
+    - OBSOLETE
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  LastUpdatedTime:
+    type: datetime
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  LimitName:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  LimitValue:
+    type: integer
+    format: int
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  LogicalResourceId:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Metadata:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  NextToken:
+    type: string
+    minLength: 1
+    maxLength: 1024
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  NoEcho:
+    type: boolean
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  NotificationARN:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  NotificationARNs:
+    type: array
+    maxItems: 5
+    items:
+      type: NotificationARN
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  OnFailure:
+    type: string
+    enum:
+    - DO_NOTHING
+    - ROLLBACK
+    - DELETE
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  OutputKey:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  OutputValue:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Outputs:
+    type: array
+    items:
+      type: Output
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ParameterDeclarations:
+    type: array
+    items:
+      type: ParameterDeclaration
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ParameterKey:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ParameterType:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ParameterValue:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Parameters:
+    type: array
+    items:
+      type: Parameter
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  PhysicalResourceId:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  PropertyName:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Replacement:
+    type: string
+    enum:
+    - 'True'
+    - 'False'
+    - Conditional
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  RequiresRecreation:
+    type: string
+    enum:
+    - Never
+    - Conditionally
+    - Always
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ResourceAttribute:
+    type: string
+    enum:
+    - Properties
+    - Metadata
+    - CreationPolicy
+    - UpdatePolicy
+    - DeletionPolicy
+    - Tags
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ResourceChangeDetails:
+    type: array
+    items:
+      type: ResourceChangeDetail
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ResourceProperties:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ResourceSignalStatus:
+    type: string
+    enum:
+    - SUCCESS
+    - FAILURE
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ResourceSignalUniqueId:
+    type: string
+    minLength: 1
+    maxLength: 64
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ResourceStatus:
+    type: string
+    enum:
+    - CREATE_IN_PROGRESS
+    - CREATE_FAILED
+    - CREATE_COMPLETE
+    - DELETE_IN_PROGRESS
+    - DELETE_FAILED
+    - DELETE_COMPLETE
+    - DELETE_SKIPPED
+    - UPDATE_IN_PROGRESS
+    - UPDATE_FAILED
+    - UPDATE_COMPLETE
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ResourceStatusReason:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ResourceType:
+    type: string
+    minLength: 1
+    maxLength: 256
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  ResourceTypes:
+    type: array
+    items:
+      type: ResourceType
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  RetainResources:
+    type: array
+    items:
+      type: LogicalResourceId
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  RoleARN:
+    type: string
+    minLength: 20
+    maxLength: 2048
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Scope:
+    type: array
+    items:
+      type: ResourceAttribute
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackEvents:
+    type: array
+    items:
+      type: StackEvent
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackId:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackName:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackNameOrId:
+    type: string
+    pattern: ([a-zA-Z][-a-zA-Z0-9]*)|(arn:\b(aws|aws-us-gov|aws-cn)\b:[-a-zA-Z0-9:/._+]*)
+    minLength: 1
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackPolicyBody:
+    type: string
+    minLength: 1
+    maxLength: 16384
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackPolicyDuringUpdateBody:
+    type: string
+    minLength: 1
+    maxLength: 16384
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackPolicyDuringUpdateURL:
+    type: string
+    minLength: 1
+    maxLength: 1350
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackPolicyURL:
+    type: string
+    minLength: 1
+    maxLength: 1350
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackResourceSummaries:
+    type: array
+    items:
+      type: StackResourceSummary
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackResources:
+    type: array
+    items:
+      type: StackResource
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackStatus:
+    type: string
+    enum:
+    - CREATE_IN_PROGRESS
+    - CREATE_FAILED
+    - CREATE_COMPLETE
+    - ROLLBACK_IN_PROGRESS
+    - ROLLBACK_FAILED
+    - ROLLBACK_COMPLETE
+    - DELETE_IN_PROGRESS
+    - DELETE_FAILED
+    - DELETE_COMPLETE
+    - UPDATE_IN_PROGRESS
+    - UPDATE_COMPLETE_CLEANUP_IN_PROGRESS
+    - UPDATE_COMPLETE
+    - UPDATE_ROLLBACK_IN_PROGRESS
+    - UPDATE_ROLLBACK_FAILED
+    - UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS
+    - UPDATE_ROLLBACK_COMPLETE
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackStatusFilter:
+    type: array
+    items:
+      type: StackStatus
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackStatusReason:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  StackSummaries:
+    type: array
+    items:
+      type: StackSummary
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Stacks:
+    type: array
+    items:
+      type: Stack
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  TagKey:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  TagValue:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Tags:
+    type: array
+    items:
+      type: Tag
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  TemplateBody:
+    type: string
+    minLength: 1
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  TemplateDescription:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  TemplateParameters:
+    type: array
+    items:
+      type: TemplateParameter
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  TemplateURL:
+    type: string
+    minLength: 1
+    maxLength: 1024
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  TimeoutMinutes:
+    type: integer
+    format: int
+    minimum: 1
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Timestamp:
+    type: datetime
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Url:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  UsePreviousTemplate:
+    type: boolean
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  UsePreviousValue:
+    type: boolean
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  Version:
+    type: string
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+  AccountLimit:
+    type: object
+    properties:
+      Name?:
+        type: LimitName
+        description: <p>The name of the account limit. Currently, the only account limit is <code>StackLimit</code>.</p>
+      Value?:
+        type: LimitValue
+        description: <p>The value that is associated with the account limit name.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The AccountLimit data type.</p>
+  CancelUpdateStackInput:
+    type: object
+    properties:
+      StackName:
+        type: StackName
+        description: <p>The name or the unique stack ID that is associated with the stack.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>CancelUpdateStack</a> action.</p>
+  Change:
+    type: object
+    properties:
+      Type?:
+        type: ChangeType
+        description: <p>The type of entity that AWS CloudFormation changes. Currently, the only entity type is <code>Resource</code>.</p>
+      ResourceChange?:
+        type: ResourceChange
+        description: <p>A <code>ResourceChange</code> structure that describes the resource and action that AWS CloudFormation will perform.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The <code>Change</code> structure describes the changes AWS CloudFormation will perform if you execute the change set.</p>
+  ChangeSetSummary:
+    type: object
+    properties:
+      StackId?:
+        type: StackId
+        description: <p>The ID of the stack with which the change set is associated.</p>
+      StackName?:
+        type: StackName
+        description: <p>The name of the stack with which the change set is associated.</p>
+      ChangeSetId?:
+        type: ChangeSetId
+        description: <p>The ID of the change set.</p>
+      ChangeSetName?:
+        type: ChangeSetName
+        description: <p>The name of the change set.</p>
+      ExecutionStatus?:
+        type: ExecutionStatus
+        description: <p>If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t execute the change set, the status indicates why. For example, a change set might be in an <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an <code>OBSOLETE</code> state because the stack was already updated.</p>
+      Status?:
+        type: ChangeSetStatus
+        description: <p>The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or <code>FAILED</code>.</p>
+      StatusReason?:
+        type: ChangeSetStatusReason
+        description: <p>A description of the change set's status. For example, if your change set is in the <code>FAILED</code> state, AWS CloudFormation shows the error message.</p>
+      CreationTime?:
+        type: CreationTime
+        description: <p>The start time when the change set was created, in UTC.</p>
+      Description?:
+        type: Description
+        description: <p>Descriptive information about the change set.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The <code>ChangeSetSummary</code> structure describes a change set, its status, and the stack with which it's associated.</p>
+  ContinueUpdateRollbackInput:
+    type: object
+    properties:
+      StackName:
+        type: StackNameOrId
+        description: <p>The name or the unique ID of the stack that you want to continue rolling back.</p>
+      RoleARN?:
+        type: RoleARN
+        description: <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes to roll back the stack. AWS CloudFormation uses the role's credentials to make calls on your behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>ContinueUpdateRollback</a> action.</p>
+  ContinueUpdateRollbackOutput:
+    type: object
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for a <a>ContinueUpdateRollback</a> action.</p>
+  CreateChangeSetInput:
+    type: object
+    properties:
+      StackName:
+        type: StackNameOrId
+        description: <p>The name or the unique ID of the stack for which you are creating a change set. AWS CloudFormation generates the change set by comparing this stack's information with the information that you submit, such as a modified template or different parameter input values.</p>
+      TemplateBody?:
+        type: TemplateBody
+        description: '<p>A structure that contains the body of the revised template,
+          with a minimum length of 1 byte and a maximum length of 51,200 bytes. AWS
+          CloudFormation generates the change set by comparing this template with
+          the template of the stack that you specified.</p> <p>Conditional: You must
+          specify only <code>TemplateBody</code> or <code>TemplateURL</code>.</p>'
+      TemplateURL?:
+        type: TemplateURL
+        description: '<p>The location of the file that contains the revised template.
+          The URL must point to a template (max size: 460,800 bytes) that is located
+          in an S3 bucket. AWS CloudFormation generates the change set by comparing
+          this template with the stack that you specified.</p> <p>Conditional: You
+          must specify only <code>TemplateBody</code> or <code>TemplateURL</code>.</p>'
+      UsePreviousTemplate?:
+        type: UsePreviousTemplate
+        description: <p>Whether to reuse the template that is associated with the stack to create the change set.</p>
+      Parameters?:
+        type: Parameters
+        description: <p>A list of <code>Parameter</code> structures that specify input parameters for the change set. For more information, see the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html">Parameter</a> data type.</p>
+      Capabilities?:
+        type: Capabilities
+        description: '<p>A list of values that you must specify before AWS CloudFormation
+          can update certain stacks. Some stack templates might include resources
+          that can affect permissions in your AWS account, for example, by creating
+          new AWS Identity and Access Management (IAM) users. For those stacks, you
+          must explicitly acknowledge their capabilities by specifying this parameter.</p>
+          <p>The only valid values are <code>CAPABILITY_IAM</code> and <code>CAPABILITY_NAMED_IAM</code>.
+          The following resources require you to specify this parameter: <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html">
+          AWS::IAM::AccessKey</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html">
+          AWS::IAM::Group</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html">
+          AWS::IAM::InstanceProfile</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html">
+          AWS::IAM::Policy</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html">
+          AWS::IAM::Role</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html">
+          AWS::IAM::User</a>, and <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html">
+          AWS::IAM::UserToGroupAddition</a>. If your stack template contains these
+          resources, we recommend that you review all permissions associated with
+          them and edit their permissions if necessary.</p> <p>If you have IAM resources,
+          you can specify either capability. If you have IAM resources with custom
+          names, you must specify <code>CAPABILITY_NAMED_IAM</code>. If you don''t
+          specify this parameter, this action returns an <code>InsufficientCapabilities</code>
+          error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging
+          IAM Resources in AWS CloudFormation Templates</a>.</p>'
+      ResourceTypes?:
+        type: ResourceTypes
+        description: <p>The template resource types that you have permissions to work with if you execute this change set, such as <code>AWS::EC2::Instance</code>, <code>AWS::EC2::*</code>, or <code>Custom::MyCustomInstance</code>.</p> <p>If the list of resource types doesn't include a resource type that you're updating, the stack update fails. By default, AWS CloudFormation grants permissions to all resource types. AWS Identity and Access Management (IAM) uses this parameter for condition keys in IAM policies for AWS CloudFormation. For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html">Controlling Access with AWS Identity and Access Management</a> in the AWS CloudFormation User Guide.</p>
+      RoleARN?:
+        type: RoleARN
+        description: <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes when executing the change set. AWS CloudFormation uses the role's credentials to make calls on your behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.</p>
+      NotificationARNs?:
+        type: NotificationARNs
+        description: <p>The Amazon Resource Names (ARNs) of Amazon Simple Notification Service (Amazon SNS) topics that AWS CloudFormation associates with the stack. To remove all associated notification topics, specify an empty list.</p>
+      Tags?:
+        type: Tags
+        description: <p>Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to resources in the stack. You can specify a maximum of 10 tags.</p>
+      ChangeSetName:
+        type: ChangeSetName
+        description: <p>The name of the change set. The name must be unique among all change sets that are associated with the specified stack.</p> <p>A change set name can contain only alphanumeric, case sensitive characters and hyphens. It must start with an alphabetic character and cannot exceed 128 characters.</p>
+      ClientToken?:
+        type: ClientToken
+        description: <p>A unique identifier for this <code>CreateChangeSet</code> request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to create another change set with the same name. You might retry <code>CreateChangeSet</code> requests to ensure that AWS CloudFormation successfully received them.</p>
+      Description?:
+        type: Description
+        description: <p>A description to help you identify this change set.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>CreateChangeSet</a> action.</p>
+  CreateChangeSetOutput:
+    type: object
+    properties:
+      Id?:
+        type: ChangeSetId
+        description: <p>The Amazon Resource Name (ARN) of the change set.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for the <a>CreateChangeSet</a> action.</p>
+  CreateStackInput:
+    type: object
+    properties:
+      StackName:
+        type: StackName
+        description: <p>The name that is associated with the stack. The name must be unique in the region in which you are creating the stack.</p> <note> <p>A stack name can contain only alphanumeric characters (case sensitive) and hyphens. It must start with an alphabetic character and cannot be longer than 128 characters.</p> </note>
+      TemplateBody?:
+        type: TemplateBody
+        description: '<p>Structure containing the template body with a minimum length
+          of 1 byte and a maximum length of 51,200 bytes. For more information, go
+          to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+          Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You
+          must specify either the <code>TemplateBody</code> or the <code>TemplateURL</code>
+          parameter, but not both.</p>'
+      TemplateURL?:
+        type: TemplateURL
+        description: '<p>Location of file containing the template body. The URL must
+          point to a template (max size: 460,800 bytes) that is located in an Amazon
+          S3 bucket. For more information, go to the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+          Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You
+          must specify either the <code>TemplateBody</code> or the <code>TemplateURL</code>
+          parameter, but not both.</p>'
+      Parameters?:
+        type: Parameters
+        description: <p>A list of <code>Parameter</code> structures that specify input parameters for the stack. For more information, see the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html">Parameter</a> data type.</p>
+      DisableRollback?:
+        type: DisableRollback
+        description: '<p>Set to <code>true</code> to disable rollback of the stack
+          if stack creation failed. You can specify either <code>DisableRollback</code>
+          or <code>OnFailure</code>, but not both.</p> <p>Default: <code>false</code>
+          </p>'
+      TimeoutInMinutes?:
+        type: TimeoutMinutes
+        description: <p>The amount of time that can pass before the stack status becomes CREATE_FAILED; if <code>DisableRollback</code> is not set or is set to <code>false</code>, the stack will be rolled back.</p>
+      NotificationARNs?:
+        type: NotificationARNs
+        description: <p>The Simple Notification Service (SNS) topic ARNs to publish stack related events. You can find your SNS topic ARNs using the <a href="https://console.aws.amazon.com/sns">SNS console</a> or your Command Line Interface (CLI).</p>
+      Capabilities?:
+        type: Capabilities
+        description: '<p>A list of values that you must specify before AWS CloudFormation
+          can create certain stacks. Some stack templates might include resources
+          that can affect permissions in your AWS account, for example, by creating
+          new AWS Identity and Access Management (IAM) users. For those stacks, you
+          must explicitly acknowledge their capabilities by specifying this parameter.</p>
+          <p>The only valid values are <code>CAPABILITY_IAM</code> and <code>CAPABILITY_NAMED_IAM</code>.
+          The following resources require you to specify this parameter: <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html">
+          AWS::IAM::AccessKey</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html">
+          AWS::IAM::Group</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html">
+          AWS::IAM::InstanceProfile</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html">
+          AWS::IAM::Policy</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html">
+          AWS::IAM::Role</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html">
+          AWS::IAM::User</a>, and <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html">
+          AWS::IAM::UserToGroupAddition</a>. If your stack template contains these
+          resources, we recommend that you review all permissions associated with
+          them and edit their permissions if necessary.</p> <p>If you have IAM resources,
+          you can specify either capability. If you have IAM resources with custom
+          names, you must specify <code>CAPABILITY_NAMED_IAM</code>. If you don''t
+          specify this parameter, this action returns an <code>InsufficientCapabilities</code>
+          error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging
+          IAM Resources in AWS CloudFormation Templates</a>.</p>'
+      ResourceTypes?:
+        type: ResourceTypes
+        description: '<p>The template resource types that you have permissions to
+          work with for this create stack action, such as <code>AWS::EC2::Instance</code>,
+          <code>AWS::EC2::*</code>, or <code>Custom::MyCustomInstance</code>. Use
+          the following syntax to describe template resource types: <code>AWS::*</code>
+          (for all AWS resource), <code>Custom::*</code> (for all custom resources),
+          <code>Custom::<i>logical_ID</i> </code> (for a specific custom resource),
+          <code>AWS::<i>service_name</i>::*</code> (for all resources of a particular
+          AWS service), and <code>AWS::<i>service_name</i>::<i>resource_logical_ID</i>
+          </code> (for a specific AWS resource).</p> <p>If the list of resource types
+          doesn''t include a resource that you''re creating, the stack creation fails.
+          By default, AWS CloudFormation grants permissions to all resource types.
+          AWS Identity and Access Management (IAM) uses this parameter for AWS CloudFormation-specific
+          condition keys in IAM policies. For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html">Controlling
+          Access with AWS Identity and Access Management</a>.</p>'
+      RoleARN?:
+        type: RoleARN
+        description: <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes to create the stack. AWS CloudFormation uses the role's credentials to make calls on your behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.</p>
+      OnFailure?:
+        type: OnFailure
+        description: '<p>Determines what action will be taken if stack creation fails.
+          This must be one of: DO_NOTHING, ROLLBACK, or DELETE. You can specify either
+          <code>OnFailure</code> or <code>DisableRollback</code>, but not both.</p>
+          <p>Default: <code>ROLLBACK</code> </p>'
+      StackPolicyBody?:
+        type: StackPolicyBody
+        description: <p>Structure containing the stack policy body. For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent Updates to Stack Resources</a> in the <i>AWS CloudFormation User Guide</i>. You can specify either the <code>StackPolicyBody</code> or the <code>StackPolicyURL</code> parameter, but not both.</p>
+      StackPolicyURL?:
+        type: StackPolicyURL
+        description: '<p>Location of a file containing the stack policy. The URL must
+          point to a policy (maximum size: 16 KB) located in an S3 bucket in the same
+          region as the stack. You can specify either the <code>StackPolicyBody</code>
+          or the <code>StackPolicyURL</code> parameter, but not both.</p>'
+      Tags?:
+        type: Tags
+        description: <p>Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to the resources created in the stack. A maximum number of 10 tags can be specified.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for <a>CreateStack</a> action.</p>
+  CreateStackOutput:
+    type: object
+    properties:
+      StackId?:
+        type: StackId
+        description: <p>Unique identifier of the stack.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for a <a>CreateStack</a> action.</p>
+  DeleteChangeSetInput:
+    type: object
+    properties:
+      ChangeSetName:
+        type: ChangeSetNameOrId
+        description: <p>The name or Amazon Resource Name (ARN) of the change set that you want to delete.</p>
+      StackName?:
+        type: StackNameOrId
+        description: <p>If you specified the name of a change set to delete, specify the stack name or ID (ARN) that is associated with it.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>DeleteChangeSet</a> action.</p>
+  DeleteChangeSetOutput:
+    type: object
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for the <a>DeleteChangeSet</a> action.</p>
+  DeleteStackInput:
+    type: object
+    properties:
+      StackName:
+        type: StackName
+        description: <p>The name or the unique stack ID that is associated with the stack.</p>
+      RetainResources?:
+        type: RetainResources
+        description: <p>For stacks in the <code>DELETE_FAILED</code> state, a list of resource logical IDs that are associated with the resources you want to retain. During deletion, AWS CloudFormation deletes the stack but does not delete the retained resources.</p> <p>Retaining resources is useful when you cannot delete a resource, such as a non-empty S3 bucket, but you want to delete the stack.</p>
+      RoleARN?:
+        type: RoleARN
+        description: <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes to delete the stack. AWS CloudFormation uses the role's credentials to make calls on your behalf.</p> <p>If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for <a>DeleteStack</a> action.</p>
+  DescribeAccountLimitsInput:
+    type: object
+    properties:
+      NextToken?:
+        type: NextToken
+        description: <p>A string that identifies the next page of limits that you want to retrieve.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>DescribeAccountLimits</a> action.</p>
+  DescribeAccountLimitsOutput:
+    type: object
+    properties:
+      AccountLimits?:
+        type: AccountLimitList
+        description: <p>An account limit structure that contain a list of AWS CloudFormation account limits and their values.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>If the output exceeds 1 MB in size, a string that identifies the next page of limits. If no additional page exists, this value is null.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for the <a>DescribeAccountLimits</a> action.</p>
+  DescribeChangeSetInput:
+    type: object
+    properties:
+      ChangeSetName:
+        type: ChangeSetNameOrId
+        description: <p>The name or Amazon Resource Name (ARN) of the change set that you want to describe.</p>
+      StackName?:
+        type: StackNameOrId
+        description: <p>If you specified the name of a change set, specify the stack name or ID (ARN) of the change set you want to describe.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>A string (provided by the <a>DescribeChangeSet</a> response output) that identifies the next page of information that you want to retrieve.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>DescribeChangeSet</a> action.</p>
+  DescribeChangeSetOutput:
+    type: object
+    properties:
+      ChangeSetName?:
+        type: ChangeSetName
+        description: <p>The name of the change set.</p>
+      ChangeSetId?:
+        type: ChangeSetId
+        description: <p>The ARN of the change set.</p>
+      StackId?:
+        type: StackId
+        description: <p>The ARN of the stack that is associated with the change set.</p>
+      StackName?:
+        type: StackName
+        description: <p>The name of the stack that is associated with the change set.</p>
+      Description?:
+        type: Description
+        description: <p>Information about the change set.</p>
+      Parameters?:
+        type: Parameters
+        description: <p>A list of <code>Parameter</code> structures that describes the input parameters and their values used to create the change set. For more information, see the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html">Parameter</a> data type.</p>
+      CreationTime?:
+        type: CreationTime
+        description: <p>The start time when the change set was created, in UTC.</p>
+      ExecutionStatus?:
+        type: ExecutionStatus
+        description: <p>If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t execute the change set, the status indicates why. For example, a change set might be in an <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an <code>OBSOLETE</code> state because the stack was already updated.</p>
+      Status?:
+        type: ChangeSetStatus
+        description: <p>The current status of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or <code>FAILED</code>.</p>
+      StatusReason?:
+        type: ChangeSetStatusReason
+        description: <p>A description of the change set's status. For example, if your attempt to create a change set failed, AWS CloudFormation shows the error message.</p>
+      NotificationARNs?:
+        type: NotificationARNs
+        description: <p>The ARNs of the Amazon Simple Notification Service (Amazon SNS) topics that will be associated with the stack if you execute the change set.</p>
+      Capabilities?:
+        type: Capabilities
+        description: <p>If you execute the change set, the list of capabilities that were explicitly acknowledged when the change set was created.</p>
+      Tags?:
+        type: Tags
+        description: <p>If you execute the change set, the tags that will be associated with the stack.</p>
+      Changes?:
+        type: Changes
+        description: <p>A list of <code>Change</code> structures that describes the resources AWS CloudFormation changes if you execute the change set.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>If the output exceeds 1 MB, a string that identifies the next page of changes. If there is no additional page, this value is null.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for the <a>DescribeChangeSet</a> action.</p>
+  DescribeStackEventsInput:
+    type: object
+    properties:
+      StackName?:
+        type: StackName
+        description: '<p>The name or the unique stack ID that is associated with the
+          stack, which are not always interchangeable:</p> <ul> <li> <p>Running stacks:
+          You can specify either the stack''s name or its unique stack ID.</p> </li>
+          <li> <p>Deleted stacks: You must specify the unique stack ID.</p> </li>
+          </ul> <p>Default: There is no default value.</p>'
+      NextToken?:
+        type: NextToken
+        description: <p>A string that identifies the next page of events that you want to retrieve.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for <a>DescribeStackEvents</a> action.</p>
+  DescribeStackEventsOutput:
+    type: object
+    properties:
+      StackEvents?:
+        type: StackEvents
+        description: <p>A list of <code>StackEvents</code> structures.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>If the output exceeds 1 MB in size, a string that identifies the next page of events. If no additional page exists, this value is null.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for a <a>DescribeStackEvents</a> action.</p>
+  DescribeStackResourceInput:
+    type: object
+    properties:
+      StackName:
+        type: StackName
+        description: '<p>The name or the unique stack ID that is associated with the
+          stack, which are not always interchangeable:</p> <ul> <li> <p>Running stacks:
+          You can specify either the stack''s name or its unique stack ID.</p> </li>
+          <li> <p>Deleted stacks: You must specify the unique stack ID.</p> </li>
+          </ul> <p>Default: There is no default value.</p>'
+      LogicalResourceId:
+        type: LogicalResourceId
+        description: '<p>The logical name of the resource as specified in the template.</p>
+          <p>Default: There is no default value.</p>'
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for <a>DescribeStackResource</a> action.</p>
+  DescribeStackResourceOutput:
+    type: object
+    properties:
+      StackResourceDetail?:
+        type: StackResourceDetail
+        description: <p>A <code>StackResourceDetail</code> structure containing the description of the specified resource in the specified stack.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for a <a>DescribeStackResource</a> action.</p>
+  DescribeStackResourcesInput:
+    type: object
+    properties:
+      StackName?:
+        type: StackName
+        description: '<p>The name or the unique stack ID that is associated with the
+          stack, which are not always interchangeable:</p> <ul> <li> <p>Running stacks:
+          You can specify either the stack''s name or its unique stack ID.</p> </li>
+          <li> <p>Deleted stacks: You must specify the unique stack ID.</p> </li>
+          </ul> <p>Default: There is no default value.</p> <p>Required: Conditional.
+          If you do not specify <code>StackName</code>, you must specify <code>PhysicalResourceId</code>.</p>'
+      LogicalResourceId?:
+        type: LogicalResourceId
+        description: '<p>The logical name of the resource as specified in the template.</p>
+          <p>Default: There is no default value.</p>'
+      PhysicalResourceId?:
+        type: PhysicalResourceId
+        description: '<p>The name or unique identifier that corresponds to a physical
+          instance ID of a resource supported by AWS CloudFormation.</p> <p>For example,
+          for an Amazon Elastic Compute Cloud (EC2) instance, <code>PhysicalResourceId</code>
+          corresponds to the <code>InstanceId</code>. You can pass the EC2 <code>InstanceId</code>
+          to <code>DescribeStackResources</code> to find which stack the instance
+          belongs to and what other resources are part of the stack.</p> <p>Required:
+          Conditional. If you do not specify <code>PhysicalResourceId</code>, you
+          must specify <code>StackName</code>.</p> <p>Default: There is no default
+          value.</p>'
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for <a>DescribeStackResources</a> action.</p>
+  DescribeStackResourcesOutput:
+    type: object
+    properties:
+      StackResources?:
+        type: StackResources
+        description: <p>A list of <code>StackResource</code> structures.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for a <a>DescribeStackResources</a> action.</p>
+  DescribeStacksInput:
+    type: object
+    properties:
+      StackName?:
+        type: StackName
+        description: '<p>The name or the unique stack ID that is associated with the
+          stack, which are not always interchangeable:</p> <ul> <li> <p>Running stacks:
+          You can specify either the stack''s name or its unique stack ID.</p> </li>
+          <li> <p>Deleted stacks: You must specify the unique stack ID.</p> </li>
+          </ul> <p>Default: There is no default value.</p>'
+      NextToken?:
+        type: NextToken
+        description: <p>A string that identifies the next page of stacks that you want to retrieve.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for <a>DescribeStacks</a> action.</p>
+  DescribeStacksOutput:
+    type: object
+    properties:
+      Stacks?:
+        type: Stacks
+        description: <p>A list of stack structures.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>If the output exceeds 1 MB in size, a string that identifies the next page of stacks. If no additional page exists, this value is null.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for a <a>DescribeStacks</a> action.</p>
+  EstimateTemplateCostInput:
+    type: object
+    properties:
+      TemplateBody?:
+        type: TemplateBody
+        description: '<p>Structure containing the template body with a minimum length
+          of 1 byte and a maximum length of 51,200 bytes. (For more information, go
+          to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+          Anatomy</a> in the AWS CloudFormation User Guide.)</p> <p>Conditional: You
+          must pass <code>TemplateBody</code> or <code>TemplateURL</code>. If both
+          are passed, only <code>TemplateBody</code> is used.</p>'
+      TemplateURL?:
+        type: TemplateURL
+        description: '<p>Location of file containing the template body. The URL must
+          point to a template that is located in an Amazon S3 bucket. For more information,
+          go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+          Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You
+          must pass <code>TemplateURL</code> or <code>TemplateBody</code>. If both
+          are passed, only <code>TemplateBody</code> is used.</p>'
+      Parameters?:
+        type: Parameters
+        description: <p>A list of <code>Parameter</code> structures that specify input parameters.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for an <a>EstimateTemplateCost</a> action.</p>
+  EstimateTemplateCostOutput:
+    type: object
+    properties:
+      Url?:
+        type: Url
+        description: <p>An AWS Simple Monthly Calculator URL with a query string that describes the resources required to run the template.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for a <a>EstimateTemplateCost</a> action.</p>
+  ExecuteChangeSetInput:
+    type: object
+    properties:
+      ChangeSetName:
+        type: ChangeSetNameOrId
+        description: <p>The name or ARN of the change set that you want use to update the specified stack.</p>
+      StackName?:
+        type: StackNameOrId
+        description: <p>If you specified the name of a change set, specify the stack name or ID (ARN) that is associated with the change set you want to execute.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>ExecuteChangeSet</a> action.</p>
+  ExecuteChangeSetOutput:
+    type: object
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for the <a>ExecuteChangeSet</a> action.</p>
+  GetStackPolicyInput:
+    type: object
+    properties:
+      StackName:
+        type: StackName
+        description: <p>The name or unique stack ID that is associated with the stack whose policy you want to get.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>GetStackPolicy</a> action.</p>
+  GetStackPolicyOutput:
+    type: object
+    properties:
+      StackPolicyBody?:
+        type: StackPolicyBody
+        description: <p>Structure containing the stack policy body. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide.)</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for the <a>GetStackPolicy</a> action.</p>
+  GetTemplateInput:
+    type: object
+    properties:
+      StackName:
+        type: StackName
+        description: '<p>The name or the unique stack ID that is associated with the
+          stack, which are not always interchangeable:</p> <ul> <li> <p>Running stacks:
+          You can specify either the stack''s name or its unique stack ID.</p> </li>
+          <li> <p>Deleted stacks: You must specify the unique stack ID.</p> </li>
+          </ul> <p>Default: There is no default value.</p>'
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for a <a>GetTemplate</a> action.</p>
+  GetTemplateOutput:
+    type: object
+    properties:
+      TemplateBody?:
+        type: TemplateBody
+        description: <p>Structure containing the template body. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.)</p> <p>AWS CloudFormation returns the same template that was used when the stack was created.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for <a>GetTemplate</a> action.</p>
+  GetTemplateSummaryInput:
+    type: object
+    properties:
+      TemplateBody?:
+        type: TemplateBody
+        description: '<p>Structure containing the template body with a minimum length
+          of 1 byte and a maximum length of 51,200 bytes. For more information about
+          templates, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+          Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You
+          must specify only one of the following parameters: <code>StackName</code>,
+          <code>TemplateBody</code>, or <code>TemplateURL</code>.</p>'
+      TemplateURL?:
+        type: TemplateURL
+        description: '<p>Location of file containing the template body. The URL must
+          point to a template (max size: 460,800 bytes) that is located in an Amazon
+          S3 bucket. For more information about templates, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+          Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You
+          must specify only one of the following parameters: <code>StackName</code>,
+          <code>TemplateBody</code>, or <code>TemplateURL</code>.</p>'
+      StackName?:
+        type: StackNameOrId
+        description: '<p>The name or the stack ID that is associated with the stack,
+          which are not always interchangeable. For running stacks, you can specify
+          either the stack''s name or its unique stack ID. For deleted stack, you
+          must specify the unique stack ID.</p> <p>Conditional: You must specify only
+          one of the following parameters: <code>StackName</code>, <code>TemplateBody</code>,
+          or <code>TemplateURL</code>.</p>'
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>GetTemplateSummary</a> action.</p>
+  GetTemplateSummaryOutput:
+    type: object
+    properties:
+      Parameters?:
+        type: ParameterDeclarations
+        description: <p>A list of parameter declarations that describe various properties for each parameter.</p>
+      Description?:
+        type: Description
+        description: <p>The value that is defined in the <code>Description</code> property of the template.</p>
+      Capabilities?:
+        type: Capabilities
+        description: <p>The capabilities found within the template. If your template contains IAM resources, you must specify the CAPABILITY_IAM or CAPABILITY_NAMED_IAM value for this parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a> actions with your template; otherwise, those actions return an InsufficientCapabilities error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging IAM Resources in AWS CloudFormation Templates</a>.</p>
+      CapabilitiesReason?:
+        type: CapabilitiesReason
+        description: <p>The list of resources that generated the values in the <code>Capabilities</code> response element.</p>
+      ResourceTypes?:
+        type: ResourceTypes
+        description: <p>A list of all the template resource types that are defined in the template, such as <code>AWS::EC2::Instance</code>, <code>AWS::Dynamo::Table</code>, and <code>Custom::MyCustomInstance</code>.</p>
+      Version?:
+        type: Version
+        description: <p>The AWS template format version, which identifies the capabilities of the template.</p>
+      Metadata?:
+        type: Metadata
+        description: <p>The value that is defined for the <code>Metadata</code> property of the template.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for the <a>GetTemplateSummary</a> action.</p>
+  ListChangeSetsInput:
+    type: object
+    properties:
+      StackName:
+        type: StackNameOrId
+        description: <p>The name or the Amazon Resource Name (ARN) of the stack for which you want to list change sets.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>A string (provided by the <a>ListChangeSets</a> response output) that identifies the next page of change sets that you want to retrieve.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>ListChangeSets</a> action.</p>
+  ListChangeSetsOutput:
+    type: object
+    properties:
+      Summaries?:
+        type: ChangeSetSummaries
+        description: <p>A list of <code>ChangeSetSummary</code> structures that provides the ID and status of each change set for the specified stack.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>If the output exceeds 1 MB, a string that identifies the next page of change sets. If there is no additional page, this value is null.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for the <a>ListChangeSets</a> action.</p>
+  ListStackResourcesInput:
+    type: object
+    properties:
+      StackName:
+        type: StackName
+        description: '<p>The name or the unique stack ID that is associated with the
+          stack, which are not always interchangeable:</p> <ul> <li> <p>Running stacks:
+          You can specify either the stack''s name or its unique stack ID.</p> </li>
+          <li> <p>Deleted stacks: You must specify the unique stack ID.</p> </li>
+          </ul> <p>Default: There is no default value.</p>'
+      NextToken?:
+        type: NextToken
+        description: <p>A string that identifies the next page of stack resources that you want to retrieve.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>ListStackResource</a> action.</p>
+  ListStackResourcesOutput:
+    type: object
+    properties:
+      StackResourceSummaries?:
+        type: StackResourceSummaries
+        description: <p>A list of <code>StackResourceSummary</code> structures.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>If the output exceeds 1 MB, a string that identifies the next page of stack resources. If no additional page exists, this value is null.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for a <a>ListStackResources</a> action.</p>
+  ListStacksInput:
+    type: object
+    properties:
+      NextToken?:
+        type: NextToken
+        description: <p>A string that identifies the next page of stacks that you want to retrieve.</p>
+      StackStatusFilter?:
+        type: StackStatusFilter
+        description: <p>Stack status to use as a filter. Specify one or more stack status codes to list only stacks with the specified status codes. For a complete list of stack status codes, see the <code>StackStatus</code> parameter of the <a>Stack</a> data type.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for <a>ListStacks</a> action.</p>
+  ListStacksOutput:
+    type: object
+    properties:
+      StackSummaries?:
+        type: StackSummaries
+        description: <p>A list of <code>StackSummary</code> structures containing information about the specified stacks.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>If the output exceeds 1 MB in size, a string that identifies the next page of stacks. If no additional page exists, this value is null.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for <a>ListStacks</a> action.</p>
+  Output:
+    type: object
+    properties:
+      OutputKey?:
+        type: OutputKey
+        description: <p>The key associated with the output.</p>
+      OutputValue?:
+        type: OutputValue
+        description: <p>The value associated with the output.</p>
+      Description?:
+        type: Description
+        description: <p>User defined description associated with the output.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The Output data type.</p>
+  Parameter:
+    type: object
+    properties:
+      ParameterKey?:
+        type: ParameterKey
+        description: <p>The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.</p>
+      ParameterValue?:
+        type: ParameterValue
+        description: <p>The value associated with the parameter.</p>
+      UsePreviousValue?:
+        type: UsePreviousValue
+        description: <p>During a stack update, use the existing parameter value that the stack is using for a given parameter key. If you specify <code>true</code>, do not specify a parameter value.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The Parameter data type.</p>
+  ParameterConstraints:
+    type: object
+    properties:
+      AllowedValues?:
+        type: AllowedValues
+        description: <p>A list of values that are permitted for a parameter.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>A set of criteria that AWS CloudFormation uses to validate parameter values. Although other constraints might be defined in the stack template, AWS CloudFormation returns only the <code>AllowedValues</code> property.</p>
+  ParameterDeclaration:
+    type: object
+    properties:
+      ParameterKey?:
+        type: ParameterKey
+        description: <p>The name that is associated with the parameter.</p>
+      DefaultValue?:
+        type: ParameterValue
+        description: <p>The default value of the parameter.</p>
+      ParameterType?:
+        type: ParameterType
+        description: <p>The type of parameter.</p>
+      NoEcho?:
+        type: NoEcho
+        description: <p>Flag that indicates whether the parameter value is shown as plain text in logs and in the AWS Management Console.</p>
+      Description?:
+        type: Description
+        description: <p>The description that is associate with the parameter.</p>
+      ParameterConstraints?:
+        type: ParameterConstraints
+        description: <p>The criteria that AWS CloudFormation uses to validate parameter values.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The ParameterDeclaration data type.</p>
+  ResourceChange:
+    type: object
+    properties:
+      Action?:
+        type: ChangeAction
+        description: <p>The action that AWS CloudFormation takes on the resource, such as <code>Add</code> (adds a new resource), <code>Modify</code> (changes a resource), or <code>Remove</code> (deletes a resource).</p>
+      LogicalResourceId?:
+        type: LogicalResourceId
+        description: <p>The resource's logical ID, which is defined in the stack's template.</p>
+      PhysicalResourceId?:
+        type: PhysicalResourceId
+        description: <p>The resource's physical ID (resource name). Resources that you are adding don't have physical IDs because they haven't been created.</p>
+      ResourceType?:
+        type: ResourceType
+        description: <p>The type of AWS CloudFormation resource, such as <code>AWS::S3::Bucket</code>.</p>
+      Replacement?:
+        type: Replacement
+        description: <p>For the <code>Modify</code> action, indicates whether AWS CloudFormation will replace the resource by creating a new one and deleting the old one. This value depends on the value of the <code>RequiresRecreation</code> property in the <code>ResourceTargetDefinition</code> structure. For example, if the <code>RequiresRecreation</code> field is <code>Always</code> and the <code>Evaluation</code> field is <code>Static</code>, <code>Replacement</code> is <code>True</code>. If the <code>RequiresRecreation</code> field is <code>Always</code> and the <code>Evaluation</code> field is <code>Dynamic</code>, <code>Replacement</code> is <code>Conditionally</code>.</p> <p>If you have multiple changes with different <code>RequiresRecreation</code> values, the <code>Replacement</code> value depends on the change with the most impact. A <code>RequiresRecreation</code> value of <code>Always</code> has the most impact, followed by <code>Conditionally</code>, and then <code>Never</code>.</p>
+      Scope?:
+        type: Scope
+        description: <p>For the <code>Modify</code> action, indicates which resource attribute is triggering this update, such as a change in the resource attribute's <code>Metadata</code>, <code>Properties</code>, or <code>Tags</code>.</p>
+      Details?:
+        type: ResourceChangeDetails
+        description: <p>For the <code>Modify</code> action, a list of <code>ResourceChangeDetail</code> structures that describes the changes that AWS CloudFormation will make to the resource. </p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The <code>ResourceChange</code> structure describes the resource and the action that AWS CloudFormation will perform on it if you execute this change set.</p>
+  ResourceChangeDetail:
+    type: object
+    properties:
+      Target?:
+        type: ResourceTargetDefinition
+        description: <p>A <code>ResourceTargetDefinition</code> structure that describes the field that AWS CloudFormation will change and whether the resource will be recreated.</p>
+      Evaluation?:
+        type: EvaluationType
+        description: <p>Indicates whether AWS CloudFormation can determine the target value, and whether the target value will change before you execute a change set.</p> <p>For <code>Static</code> evaluations, AWS CloudFormation can determine that the target value will change, and its value. For example, if you directly modify the <code>InstanceType</code> property of an EC2 instance, AWS CloudFormation knows that this property value will change, and its value, so this is a <code>Static</code> evaluation.</p> <p>For <code>Dynamic</code> evaluations, cannot determine the target value because it depends on the result of an intrinsic function, such as a <code>Ref</code> or <code>Fn::GetAtt</code> intrinsic function, when the stack is updated. For example, if your template includes a reference to a resource that is conditionally recreated, the value of the reference (the physical ID of the resource) might change, depending on if the resource is recreated. If the resource is recreated, it will have a new physical ID, so all references to that resource will also be updated.</p>
+      ChangeSource?:
+        type: ChangeSource
+        description: '<p>The group to which the <code>CausingEntity</code> value belongs.
+          There are five entity groups:</p> <ul> <li> <p> <code>ResourceReference</code>
+          entities are <code>Ref</code> intrinsic functions that refer to resources
+          in the template, such as <code>{ "Ref" : "MyEC2InstanceResource" }</code>.</p>
+          </li> <li> <p> <code>ParameterReference</code> entities are <code>Ref</code>
+          intrinsic functions that get template parameter values, such as <code>{
+          "Ref" : "MyPasswordParameter" }</code>.</p> </li> <li> <p> <code>ResourceAttribute</code>
+          entities are <code>Fn::GetAtt</code> intrinsic functions that get resource
+          attribute values, such as <code>{ "Fn::GetAtt" : [ "MyEC2InstanceResource",
+          "PublicDnsName" ] }</code>.</p> </li> <li> <p> <code>DirectModification</code>
+          entities are changes that are made directly to the template.</p> </li> <li>
+          <p> <code>Automatic</code> entities are <code>AWS::CloudFormation::Stack</code>
+          resource types, which are also known as nested stacks. If you made no changes
+          to the <code>AWS::CloudFormation::Stack</code> resource, AWS CloudFormation
+          sets the <code>ChangeSource</code> to <code>Automatic</code> because the
+          nested stack''s template might have changed. Changes to a nested stack''s
+          template aren''t visible to AWS CloudFormation until you run an update on
+          the parent stack.</p> </li> </ul>'
+      CausingEntity?:
+        type: CausingEntity
+        description: <p>The identity of the entity that triggered this change. This entity is a member of the group that is specified by the <code>ChangeSource</code> field. For example, if you modified the value of the <code>KeyPairName</code> parameter, the <code>CausingEntity</code> is the name of the parameter (<code>KeyPairName</code>).</p> <p>If the <code>ChangeSource</code> value is <code>DirectModification</code>, no value is given for <code>CausingEntity</code>.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>For a resource with <code>Modify</code> as the action, the <code>ResourceChange</code> structure describes the changes AWS CloudFormation will make to that resource.</p>
+  ResourceTargetDefinition:
+    type: object
+    properties:
+      Attribute?:
+        type: ResourceAttribute
+        description: <p>Indicates which resource attribute is triggering this update, such as a change in the resource attribute's <code>Metadata</code>, <code>Properties</code>, or <code>Tags</code>.</p>
+      Name?:
+        type: PropertyName
+        description: <p>If the <code>Attribute</code> value is <code>Properties</code>, the name of the property. For all other attributes, the value is null.</p>
+      RequiresRecreation?:
+        type: RequiresRecreation
+        description: <p>If the <code>Attribute</code> value is <code>Properties</code>, indicates whether a change to this property causes the resource to be recreated. The value can be <code>Never</code>, <code>Always</code>, or <code>Conditionally</code>. To determine the conditions for a <code>Conditionally</code> recreation, see the update behavior for that <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">property</a> in the AWS CloudFormation User Guide.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The field that AWS CloudFormation will change, such as the name of a resource's property, and whether the resource will be recreated.</p>
+  SetStackPolicyInput:
+    type: object
+    properties:
+      StackName:
+        type: StackName
+        description: <p>The name or unique stack ID that you want to associate a policy with.</p>
+      StackPolicyBody?:
+        type: StackPolicyBody
+        description: <p>Structure containing the stack policy body. For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide. You can specify either the <code>StackPolicyBody</code> or the <code>StackPolicyURL</code> parameter, but not both.</p>
+      StackPolicyURL?:
+        type: StackPolicyURL
+        description: '<p>Location of a file containing the stack policy. The URL must
+          point to a policy (maximum size: 16 KB) located in an S3 bucket in the same
+          region as the stack. You can specify either the <code>StackPolicyBody</code>
+          or the <code>StackPolicyURL</code> parameter, but not both.</p>'
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>SetStackPolicy</a> action.</p>
+  SignalResourceInput:
+    type: object
+    properties:
+      StackName:
+        type: StackNameOrId
+        description: <p>The stack name or unique stack ID that includes the resource that you want to signal.</p>
+      LogicalResourceId:
+        type: LogicalResourceId
+        description: <p>The logical ID of the resource that you want to signal. The logical ID is the name of the resource that given in the template.</p>
+      UniqueId:
+        type: ResourceSignalUniqueId
+        description: <p>A unique ID of the signal. When you signal Amazon EC2 instances or Auto Scaling groups, specify the instance ID that you are signaling as the unique ID. If you send multiple signals to a single resource (such as signaling a wait condition), each signal requires a different unique ID.</p>
+      Status:
+        type: ResourceSignalStatus
+        description: <p>The status of the signal, which is either success or failure. A failure signal causes AWS CloudFormation to immediately fail the stack creation or update.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for the <a>SignalResource</a> action.</p>
+  Stack:
+    type: object
+    properties:
+      StackId?:
+        type: StackId
+        description: <p>Unique identifier of the stack.</p>
+      StackName:
+        type: StackName
+        description: <p>The name associated with the stack.</p>
+      Description?:
+        type: Description
+        description: <p>A user-defined description associated with the stack.</p>
+      Parameters?:
+        type: Parameters
+        description: <p>A list of <code>Parameter</code> structures.</p>
+      CreationTime:
+        type: CreationTime
+        description: <p>The time at which the stack was created.</p>
+      LastUpdatedTime?:
+        type: LastUpdatedTime
+        description: <p>The time the stack was last updated. This field will only be returned if the stack has been updated at least once.</p>
+      StackStatus:
+        type: StackStatus
+        description: <p>Current status of the stack.</p>
+      StackStatusReason?:
+        type: StackStatusReason
+        description: <p>Success/failure message associated with the stack status.</p>
+      DisableRollback?:
+        type: DisableRollback
+        description: '<p>Boolean to enable or disable rollback on stack creation failures:</p>
+          <ul> <li> <p> <code>true</code>: disable rollback</p> </li> <li> <p> <code>false</code>:
+          enable rollback</p> </li> </ul>'
+      NotificationARNs?:
+        type: NotificationARNs
+        description: <p>SNS topic ARNs to which stack related events are published.</p>
+      TimeoutInMinutes?:
+        type: TimeoutMinutes
+        description: <p>The amount of time within which stack creation should complete.</p>
+      Capabilities?:
+        type: Capabilities
+        description: <p>The capabilities allowed in the stack.</p>
+      Outputs?:
+        type: Outputs
+        description: <p>A list of output structures.</p>
+      RoleARN?:
+        type: RoleARN
+        description: <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that is associated with the stack. During a stack operation, AWS CloudFormation uses this role's credentials to make calls on your behalf.</p>
+      Tags?:
+        type: Tags
+        description: <p>A list of <code>Tag</code>s that specify information about the stack.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The Stack data type.</p>
+  StackEvent:
+    type: object
+    properties:
+      StackId:
+        type: StackId
+        description: <p>The unique ID name of the instance of the stack.</p>
+      EventId:
+        type: EventId
+        description: <p>The unique ID of this event.</p>
+      StackName:
+        type: StackName
+        description: <p>The name associated with a stack.</p>
+      LogicalResourceId?:
+        type: LogicalResourceId
+        description: <p>The logical name of the resource specified in the template.</p>
+      PhysicalResourceId?:
+        type: PhysicalResourceId
+        description: <p>The name or unique identifier associated with the physical instance of the resource.</p>
+      ResourceType?:
+        type: ResourceType
+        description: <p>Type of resource. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html"> AWS Resource Types Reference</a> in the AWS CloudFormation User Guide.)</p>
+      Timestamp:
+        type: Timestamp
+        description: <p>Time the status was updated.</p>
+      ResourceStatus?:
+        type: ResourceStatus
+        description: <p>Current status of the resource.</p>
+      ResourceStatusReason?:
+        type: ResourceStatusReason
+        description: <p>Success/failure message associated with the resource.</p>
+      ResourceProperties?:
+        type: ResourceProperties
+        description: <p>BLOB of the properties used to create the resource.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The StackEvent data type.</p>
+  StackResource:
+    type: object
+    properties:
+      StackName?:
+        type: StackName
+        description: <p>The name associated with the stack.</p>
+      StackId?:
+        type: StackId
+        description: <p>Unique identifier of the stack.</p>
+      LogicalResourceId:
+        type: LogicalResourceId
+        description: <p>The logical name of the resource specified in the template.</p>
+      PhysicalResourceId?:
+        type: PhysicalResourceId
+        description: <p>The name or unique identifier that corresponds to a physical instance ID of a resource supported by AWS CloudFormation.</p>
+      ResourceType:
+        type: ResourceType
+        description: <p>Type of resource. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html"> AWS Resource Types Reference</a> in the AWS CloudFormation User Guide.)</p>
+      Timestamp:
+        type: Timestamp
+        description: <p>Time the status was updated.</p>
+      ResourceStatus:
+        type: ResourceStatus
+        description: <p>Current status of the resource.</p>
+      ResourceStatusReason?:
+        type: ResourceStatusReason
+        description: <p>Success/failure message associated with the resource.</p>
+      Description?:
+        type: Description
+        description: <p>User defined description associated with the resource.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The StackResource data type.</p>
+  StackResourceDetail:
+    type: object
+    properties:
+      StackName?:
+        type: StackName
+        description: <p>The name associated with the stack.</p>
+      StackId?:
+        type: StackId
+        description: <p>Unique identifier of the stack.</p>
+      LogicalResourceId:
+        type: LogicalResourceId
+        description: <p>The logical name of the resource specified in the template.</p>
+      PhysicalResourceId?:
+        type: PhysicalResourceId
+        description: <p>The name or unique identifier that corresponds to a physical instance ID of a resource supported by AWS CloudFormation.</p>
+      ResourceType:
+        type: ResourceType
+        description: <p>Type of resource. ((For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html"> AWS Resource Types Reference</a> in the AWS CloudFormation User Guide.)</p>
+      LastUpdatedTimestamp:
+        type: Timestamp
+        description: <p>Time the status was updated.</p>
+      ResourceStatus:
+        type: ResourceStatus
+        description: <p>Current status of the resource.</p>
+      ResourceStatusReason?:
+        type: ResourceStatusReason
+        description: <p>Success/failure message associated with the resource.</p>
+      Description?:
+        type: Description
+        description: <p>User defined description associated with the resource.</p>
+      Metadata?:
+        type: Metadata
+        description: <p>The content of the <code>Metadata</code> attribute declared for the resource. For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-metadata.html">Metadata Attribute</a> in the AWS CloudFormation User Guide.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>Contains detailed information about the specified stack resource.</p>
+  StackResourceSummary:
+    type: object
+    properties:
+      LogicalResourceId:
+        type: LogicalResourceId
+        description: <p>The logical name of the resource specified in the template.</p>
+      PhysicalResourceId?:
+        type: PhysicalResourceId
+        description: <p>The name or unique identifier that corresponds to a physical instance ID of the resource.</p>
+      ResourceType:
+        type: ResourceType
+        description: <p>Type of resource. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html"> AWS Resource Types Reference</a> in the AWS CloudFormation User Guide.)</p>
+      LastUpdatedTimestamp:
+        type: Timestamp
+        description: <p>Time the status was updated.</p>
+      ResourceStatus:
+        type: ResourceStatus
+        description: <p>Current status of the resource.</p>
+      ResourceStatusReason?:
+        type: ResourceStatusReason
+        description: <p>Success/failure message associated with the resource.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>Contains high-level information about the specified stack resource.</p>
+  StackSummary:
+    type: object
+    properties:
+      StackId?:
+        type: StackId
+        description: <p>Unique stack identifier.</p>
+      StackName:
+        type: StackName
+        description: <p>The name associated with the stack.</p>
+      TemplateDescription?:
+        type: TemplateDescription
+        description: <p>The template description of the template used to create the stack.</p>
+      CreationTime:
+        type: CreationTime
+        description: <p>The time the stack was created.</p>
+      LastUpdatedTime?:
+        type: LastUpdatedTime
+        description: <p>The time the stack was last updated. This field will only be returned if the stack has been updated at least once.</p>
+      DeletionTime?:
+        type: DeletionTime
+        description: <p>The time the stack was deleted.</p>
+      StackStatus:
+        type: StackStatus
+        description: <p>The current status of the stack.</p>
+      StackStatusReason?:
+        type: StackStatusReason
+        description: <p>Success/Failure message associated with the stack status.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The StackSummary Data Type</p>
+  Tag:
+    type: object
+    properties:
+      Key?:
+        type: TagKey
+        description: '<p> <i>Required</i>. A string used to identify this tag. You
+          can specify a maximum of 128 characters for a tag key. Tags owned by Amazon
+          Web Services (AWS) have the reserved prefix: <code>aws:</code>.</p>'
+      Value?:
+        type: TagValue
+        description: <p> <i>Required</i>. A string containing the value for this tag. You can specify a maximum of 256 characters for a tag value.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The Tag type enables you to specify a key-value pair that can be used to store information about an AWS CloudFormation stack.</p>
+  TemplateParameter:
+    type: object
+    properties:
+      ParameterKey?:
+        type: ParameterKey
+        description: <p>The name associated with the parameter.</p>
+      DefaultValue?:
+        type: ParameterValue
+        description: <p>The default value associated with the parameter.</p>
+      NoEcho?:
+        type: NoEcho
+        description: <p>Flag indicating whether the parameter should be displayed as plain text in logs and UIs.</p>
+      Description?:
+        type: Description
+        description: <p>User defined description associated with the parameter.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The TemplateParameter data type.</p>
+  UpdateStackInput:
+    type: object
+    properties:
+      StackName:
+        type: StackName
+        description: <p>The name or unique stack ID of the stack to update.</p>
+      TemplateBody?:
+        type: TemplateBody
+        description: '<p>Structure containing the template body with a minimum length
+          of 1 byte and a maximum length of 51,200 bytes. (For more information, go
+          to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+          Anatomy</a> in the AWS CloudFormation User Guide.)</p> <p>Conditional: You
+          must specify either the <code>TemplateBody</code> or the <code>TemplateURL</code>
+          parameter, but not both.</p>'
+      TemplateURL?:
+        type: TemplateURL
+        description: '<p>Location of file containing the template body. The URL must
+          point to a template that is located in an Amazon S3 bucket. For more information,
+          go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+          Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You
+          must specify either the <code>TemplateBody</code> or the <code>TemplateURL</code>
+          parameter, but not both.</p>'
+      UsePreviousTemplate?:
+        type: UsePreviousTemplate
+        description: <p>Reuse the existing template that is associated with the stack that you are updating.</p>
+      StackPolicyDuringUpdateBody?:
+        type: StackPolicyDuringUpdateBody
+        description: <p>Structure containing the temporary overriding stack policy body. You can specify either the <code>StackPolicyDuringUpdateBody</code> or the <code>StackPolicyDuringUpdateURL</code> parameter, but not both.</p> <p>If you want to update protected resources, specify a temporary overriding stack policy during this update. If you do not specify a stack policy, the current policy that is associated with the stack will be used.</p>
+      StackPolicyDuringUpdateURL?:
+        type: StackPolicyDuringUpdateURL
+        description: '<p>Location of a file containing the temporary overriding stack
+          policy. The URL must point to a policy (max size: 16KB) located in an S3
+          bucket in the same region as the stack. You can specify either the <code>StackPolicyDuringUpdateBody</code>
+          or the <code>StackPolicyDuringUpdateURL</code> parameter, but not both.</p>
+          <p>If you want to update protected resources, specify a temporary overriding
+          stack policy during this update. If you do not specify a stack policy, the
+          current policy that is associated with the stack will be used.</p>'
+      Parameters?:
+        type: Parameters
+        description: <p>A list of <code>Parameter</code> structures that specify input parameters for the stack. For more information, see the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html">Parameter</a> data type.</p>
+      Capabilities?:
+        type: Capabilities
+        description: '<p>A list of values that you must specify before AWS CloudFormation
+          can update certain stacks. Some stack templates might include resources
+          that can affect permissions in your AWS account, for example, by creating
+          new AWS Identity and Access Management (IAM) users. For those stacks, you
+          must explicitly acknowledge their capabilities by specifying this parameter.</p>
+          <p>The only valid values are <code>CAPABILITY_IAM</code> and <code>CAPABILITY_NAMED_IAM</code>.
+          The following resources require you to specify this parameter: <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html">
+          AWS::IAM::AccessKey</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html">
+          AWS::IAM::Group</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html">
+          AWS::IAM::InstanceProfile</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html">
+          AWS::IAM::Policy</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html">
+          AWS::IAM::Role</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html">
+          AWS::IAM::User</a>, and <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html">
+          AWS::IAM::UserToGroupAddition</a>. If your stack template contains these
+          resources, we recommend that you review all permissions associated with
+          them and edit their permissions if necessary.</p> <p>If you have IAM resources,
+          you can specify either capability. If you have IAM resources with custom
+          names, you must specify <code>CAPABILITY_NAMED_IAM</code>. If you don''t
+          specify this parameter, this action returns an <code>InsufficientCapabilities</code>
+          error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging
+          IAM Resources in AWS CloudFormation Templates</a>.</p>'
+      ResourceTypes?:
+        type: ResourceTypes
+        description: <p>The template resource types that you have permissions to work with for this update stack action, such as <code>AWS::EC2::Instance</code>, <code>AWS::EC2::*</code>, or <code>Custom::MyCustomInstance</code>.</p> <p>If the list of resource types doesn't include a resource that you're updating, the stack update fails. By default, AWS CloudFormation grants permissions to all resource types. AWS Identity and Access Management (IAM) uses this parameter for AWS CloudFormation-specific condition keys in IAM policies. For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html">Controlling Access with AWS Identity and Access Management</a>.</p>
+      RoleARN?:
+        type: RoleARN
+        description: <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes to update the stack. AWS CloudFormation uses the role's credentials to make calls on your behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.</p>
+      StackPolicyBody?:
+        type: StackPolicyBody
+        description: <p>Structure containing a new stack policy body. You can specify either the <code>StackPolicyBody</code> or the <code>StackPolicyURL</code> parameter, but not both.</p> <p>You might update the stack policy, for example, in order to protect a new resource that you created during a stack update. If you do not specify a stack policy, the current policy that is associated with the stack is unchanged.</p>
+      StackPolicyURL?:
+        type: StackPolicyURL
+        description: '<p>Location of a file containing the updated stack policy. The
+          URL must point to a policy (max size: 16KB) located in an S3 bucket in the
+          same region as the stack. You can specify either the <code>StackPolicyBody</code>
+          or the <code>StackPolicyURL</code> parameter, but not both.</p> <p>You might
+          update the stack policy, for example, in order to protect a new resource
+          that you created during a stack update. If you do not specify a stack policy,
+          the current policy that is associated with the stack is unchanged.</p>'
+      NotificationARNs?:
+        type: NotificationARNs
+        description: <p>Amazon Simple Notification Service topic Amazon Resource Names (ARNs) that AWS CloudFormation associates with the stack. Specify an empty list to remove all notification topics.</p>
+      Tags?:
+        type: Tags
+        description: <p>Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to supported resources in the stack. You can specify a maximum number of 10 tags.</p> <p>If you don't specify this parameter, AWS CloudFormation doesn't modify the stack's tags. If you specify an empty value, AWS CloudFormation removes all associated tags.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for an <a>UpdateStack</a> action.</p>
+  UpdateStackOutput:
+    type: object
+    properties:
+      StackId?:
+        type: StackId
+        description: <p>Unique identifier of the stack.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for an <a>UpdateStack</a> action.</p>
+  ValidateTemplateInput:
+    type: object
+    properties:
+      TemplateBody?:
+        type: TemplateBody
+        description: '<p>Structure containing the template body with a minimum length
+          of 1 byte and a maximum length of 51,200 bytes. For more information, go
+          to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+          Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You
+          must pass <code>TemplateURL</code> or <code>TemplateBody</code>. If both
+          are passed, only <code>TemplateBody</code> is used.</p>'
+      TemplateURL?:
+        type: TemplateURL
+        description: '<p>Location of file containing the template body. The URL must
+          point to a template (max size: 460,800 bytes) that is located in an Amazon
+          S3 bucket. For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+          Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You
+          must pass <code>TemplateURL</code> or <code>TemplateBody</code>. If both
+          are passed, only <code>TemplateBody</code> is used.</p>'
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The input for <a>ValidateTemplate</a> action.</p>
+  ValidateTemplateOutput:
+    type: object
+    properties:
+      Parameters?:
+        type: TemplateParameters
+        description: <p>A list of <code>TemplateParameter</code> structures.</p>
+      Description?:
+        type: Description
+        description: <p>The description found within the template.</p>
+      Capabilities?:
+        type: Capabilities
+        description: <p>The capabilities found within the template. If your template contains IAM resources, you must specify the CAPABILITY_IAM or CAPABILITY_NAMED_IAM value for this parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a> actions with your template; otherwise, those actions return an InsufficientCapabilities error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging IAM Resources in AWS CloudFormation Templates</a>.</p>
+      CapabilitiesReason?:
+        type: CapabilitiesReason
+        description: <p>The list of resources that generated the values in the <code>Capabilities</code> response element.</p>
+    xml:
+      namespace: http://cloudformation.amazonaws.com/doc/2010-05-15/
+    description: <p>The output for <a>ValidateTemplate</a> action.</p>
+/{CancelUpdateStack}:
+  uriParameters:
+    CancelUpdateStack?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Cancels an update on the specified stack. If the call completes successfully, the stack rolls back the update and reverts to the previous stack configuration. <note> You can cancel only stacks that are in the UPDATE_IN_PROGRESS state. </note>
+  post:
+    body:
+      application/xml: CancelUpdateStackInput
+    responses:
+      200:
+        body:
+          application/xml: null
+/{ContinueUpdateRollback}:
+  uriParameters:
+    ContinueUpdateRollback?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: For a specified stack that is in the <code>UPDATE_ROLLBACK_FAILED</code> state, continues rolling it back to the <code>UPDATE_ROLLBACK_COMPLETE</code> state. Depending on the cause of the failure, you can manually <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed"> fix the error</a> and continue the rollback. By continuing the rollback, you can return your stack to a working state (the <code>UPDATE_ROLLBACK_COMPLETE</code> state), and then try to update the stack again. A stack goes into the <code>UPDATE_ROLLBACK_FAILED</code> state when AWS CloudFormation cannot roll back all changes after a failed stack update. For example, you might have a stack that is rolling back to an old database instance that was deleted outside of AWS CloudFormation. Because AWS CloudFormation doesn't know the database was deleted, it assumes that the database instance still exists and attempts to roll back to it, causing the update rollback to fail.
+  post:
+    body:
+      application/xml: ContinueUpdateRollbackInput
+    responses:
+      200:
+        body:
+          application/xml: ContinueUpdateRollbackOutput
+/{CreateChangeSet}:
+  uriParameters:
+    CreateChangeSet?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a list of changes for a stack. AWS CloudFormation generates the change set by comparing the stack's information with the information that you submit. A change set can help you understand which resources AWS CloudFormation will change and how it will change them before you update your stack. Change sets allow you to check before you make a change so that you don't delete or replace critical resources. AWS CloudFormation doesn't make any changes to the stack when you create a change set. To make the specified changes, you must execute the change set by using the <a>ExecuteChangeSet</a> action. After the call successfully completes, AWS CloudFormation starts creating the change set. To check the status of the change set, use the <a>DescribeChangeSet</a> action.
+  post:
+    body:
+      application/xml: CreateChangeSetInput
+    responses:
+      200:
+        body:
+          application/xml: CreateChangeSetOutput
+      400:
+        description: AlreadyExistsException
+/{CreateStack}:
+  uriParameters:
+    CreateStack?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a stack as specified in the template. After the call completes successfully, the stack creation starts. You can check the status of the stack via the <a>DescribeStacks</a> API.
+  post:
+    body:
+      application/xml: CreateStackInput
+    responses:
+      200:
+        body:
+          application/xml: CreateStackOutput
+      400:
+        description: LimitExceededException
+/{DeleteChangeSet}:
+  uriParameters:
+    DeleteChangeSet?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the specified change set. Deleting change sets ensures that no one executes the wrong change set. If the call successfully completes, AWS CloudFormation successfully deleted the change set.
+  post:
+    body:
+      application/xml: DeleteChangeSetInput
+    responses:
+      200:
+        body:
+          application/xml: DeleteChangeSetOutput
+      400:
+        description: InvalidChangeSetStatus
+/{DeleteStack}:
+  uriParameters:
+    DeleteStack?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a specified stack. Once the call completes successfully, stack deletion starts. Deleted stacks do not show up in the <a>DescribeStacks</a> API if the deletion has been completed successfully.
+  post:
+    body:
+      application/xml: DeleteStackInput
+    responses:
+      200:
+        body:
+          application/xml: null
+/{DescribeAccountLimits}:
+  uriParameters:
+    DescribeAccountLimits?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves your account's AWS CloudFormation limits, such as the maximum number of stacks that you can create in your account.
+  post:
+    body:
+      application/xml: DescribeAccountLimitsInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeAccountLimitsOutput
+/{DescribeChangeSet}:
+  uriParameters:
+    DescribeChangeSet?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns the inputs for the change set and a list of changes that AWS CloudFormation will make if you execute the change set. For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html">Updating Stacks Using Change Sets</a> in the AWS CloudFormation User Guide.
+  post:
+    body:
+      application/xml: DescribeChangeSetInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeChangeSetOutput
+      404:
+        description: ChangeSetNotFound
+/{DescribeStackEvents}:
+  uriParameters:
+    DescribeStackEvents?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns all stack related events for a specified stack in reverse chronological order. For more information about a stack's event history, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html">Stacks</a> in the AWS CloudFormation User Guide. <note> You can list events for stacks that have failed to create or have been deleted by specifying the unique stack identifier (stack ID). </note>
+  post:
+    body:
+      application/xml: DescribeStackEventsInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeStackEventsOutput
+/{DescribeStackResource}:
+  uriParameters:
+    DescribeStackResource?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns a description of the specified resource in the specified stack. For deleted stacks, DescribeStackResource returns resource information for up to 90 days after the stack has been deleted.
+  post:
+    body:
+      application/xml: DescribeStackResourceInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeStackResourceOutput
+/{DescribeStackResources}:
+  uriParameters:
+    DescribeStackResources?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns AWS resource descriptions for running and deleted stacks. If <code>StackName</code> is specified, all the associated resources that are part of the stack are returned. If <code>PhysicalResourceId</code> is specified, the associated resources of the stack that the resource belongs to are returned. <note> Only the first 100 resources will be returned. If your stack has more resources than this, you should use <code>ListStackResources</code> instead. </note> For deleted stacks, <code>DescribeStackResources</code> returns resource information for up to 90 days after the stack has been deleted. You must specify either <code>StackName</code> or <code>PhysicalResourceId</code>, but not both. In addition, you can specify <code>LogicalResourceId</code> to filter the returned result. For more information about resources, the <code>LogicalResourceId</code> and <code>PhysicalResourceId</code>, go to the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/">AWS CloudFormation User Guide</a>. <note> A <code>ValidationError</code> is returned if you specify both <code>StackName</code> and <code>PhysicalResourceId</code> in the same request. </note>
+  post:
+    body:
+      application/xml: DescribeStackResourcesInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeStackResourcesOutput
+/{DescribeStacks}:
+  uriParameters:
+    DescribeStacks?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created. <note> If the stack does not exist, an <code>AmazonCloudFormationException</code> is returned. </note>
+  post:
+    body:
+      application/xml: DescribeStacksInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeStacksOutput
+/{EstimateTemplateCost}:
+  uriParameters:
+    EstimateTemplateCost?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns the estimated monthly cost of a template. The return value is an AWS Simple Monthly Calculator URL with a query string that describes the resources required to run the template.
+  post:
+    body:
+      application/xml: EstimateTemplateCostInput
+    responses:
+      200:
+        body:
+          application/xml: EstimateTemplateCostOutput
+/{ExecuteChangeSet}:
+  uriParameters:
+    ExecuteChangeSet?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates a stack using the input information that was provided when the specified change set was created. After the call successfully completes, AWS CloudFormation starts updating the stack. Use the <a>DescribeStacks</a> action to view the status of the update. When you execute a change set, AWS CloudFormation deletes all other change sets associated with the stack because they aren't valid for the updated stack. If a stack policy is associated with the stack, AWS CloudFormation enforces the policy during the update. You can't specify a temporary stack policy that overrides the current policy.
+  post:
+    body:
+      application/xml: ExecuteChangeSetInput
+    responses:
+      200:
+        body:
+          application/xml: ExecuteChangeSetOutput
+      400:
+        description: InvalidChangeSetStatus
+      404:
+        description: ChangeSetNotFound
+/{GetStackPolicy}:
+  uriParameters:
+    GetStackPolicy?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns the stack policy for a specified stack. If a stack doesn't have a policy, a null value is returned.
+  post:
+    body:
+      application/xml: GetStackPolicyInput
+    responses:
+      200:
+        body:
+          application/xml: GetStackPolicyOutput
+/{GetTemplate}:
+  uriParameters:
+    GetTemplate?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns the template body for a specified stack. You can get the template for running or deleted stacks. For deleted stacks, GetTemplate returns the template for up to 90 days after the stack has been deleted. <note>  If the template does not exist, a <code>ValidationError</code> is returned.  </note>
+  post:
+    body:
+      application/xml: GetTemplateInput
+    responses:
+      200:
+        body:
+          application/xml: GetTemplateOutput
+/{GetTemplateSummary}:
+  uriParameters:
+    GetTemplateSummary?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns information about a new or existing template. The <code>GetTemplateSummary</code> action is useful for viewing parameter information, such as default parameter values and parameter types, before you create or update a stack. You can use the <code>GetTemplateSummary</code> action when you submit a template, or you can get template information for a running or deleted stack. For deleted stacks, <code>GetTemplateSummary</code> returns the template information for up to 90 days after the stack has been deleted. If the template does not exist, a <code>ValidationError</code> is returned.
+  post:
+    body:
+      application/xml: GetTemplateSummaryInput
+    responses:
+      200:
+        body:
+          application/xml: GetTemplateSummaryOutput
+/{ListChangeSets}:
+  uriParameters:
+    ListChangeSets?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns the ID and status of each active change set for a stack. For example, AWS CloudFormation lists change sets that are in the <code>CREATE_IN_PROGRESS</code> or <code>CREATE_PENDING</code> state.
+  post:
+    body:
+      application/xml: ListChangeSetsInput
+    responses:
+      200:
+        body:
+          application/xml: ListChangeSetsOutput
+/{ListStackResources}:
+  uriParameters:
+    ListStackResources?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns descriptions of all resources of the specified stack. For deleted stacks, ListStackResources returns resource information for up to 90 days after the stack has been deleted.
+  post:
+    body:
+      application/xml: ListStackResourcesInput
+    responses:
+      200:
+        body:
+          application/xml: ListStackResourcesOutput
+/{ListStacks}:
+  uriParameters:
+    ListStacks?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns the summary information for stacks whose status matches the specified StackStatusFilter. Summary information for stacks that have been deleted is kept for 90 days after the stack is deleted. If no StackStatusFilter is specified, summary information for all stacks is returned (including existing stacks and stacks that have been deleted).
+  post:
+    body:
+      application/xml: ListStacksInput
+    responses:
+      200:
+        body:
+          application/xml: ListStacksOutput
+/{SetStackPolicy}:
+  uriParameters:
+    SetStackPolicy?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sets a stack policy for a specified stack.
+  post:
+    body:
+      application/xml: SetStackPolicyInput
+    responses:
+      200:
+        body:
+          application/xml: null
+/{SignalResource}:
+  uriParameters:
+    SignalResource?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sends a signal to the specified resource with a success or failure status. You can use the SignalResource API in conjunction with a creation policy or update policy. AWS CloudFormation doesn't proceed with a stack creation or update until resources receive the required number of signals or the timeout period is exceeded. The SignalResource API is useful in cases where you want to send signals from anywhere other than an Amazon EC2 instance.
+  post:
+    body:
+      application/xml: SignalResourceInput
+    responses:
+      200:
+        body:
+          application/xml: null
+/{UpdateStack}:
+  uriParameters:
+    UpdateStack?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates a stack as specified in the template. After the call completes successfully, the stack update starts. You can check the status of the stack via the <a>DescribeStacks</a> action. To get a copy of the template for an existing stack, you can use the <a>GetTemplate</a> action. For more information about creating an update template, updating a stack, and monitoring the progress of the update, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html">Updating a Stack</a>.
+  post:
+    body:
+      application/xml: UpdateStackInput
+    responses:
+      200:
+        body:
+          application/xml: UpdateStackOutput
+      400:
+        description: InsufficientCapabilitiesException
+/{ValidateTemplate}:
+  uriParameters:
+    ValidateTemplate?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Validates a specified template. AWS CloudFormation first checks if the template is valid JSON. If it isn't, AWS CloudFormation checks if the template is valid YAML. If both these checks fail, AWS CloudFormation returns a template validation error.
+  post:
+    body:
+      application/xml: ValidateTemplateInput
+    responses:
+      200:
+        body:
+          application/xml: ValidateTemplateOutput

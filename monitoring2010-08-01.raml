@@ -1,0 +1,1062 @@
+#%RAML 1.0
+title: Amazon CloudWatch
+version: '2010-08-01'
+description: ' Amazon CloudWatch monitors your Amazon Web Services (AWS) resources
+  and the applications you run on AWS in real-time. You can use CloudWatch to collect
+  and track metrics, which are the variables you want to measure for your resources
+  and applications.  CloudWatch alarms send notifications or automatically make changes
+  to the resources you are monitoring based on rules that you define. For example,
+  you can monitor the CPU usage and disk reads and writes of your Amazon Elastic Compute
+  Cloud (Amazon EC2) instances and then use this data to determine whether you should
+  launch additional instances to handle increased load. You can also use this data
+  to stop under-used instances to save money.  In addition to monitoring the built-in
+  metrics that come with AWS, you can monitor your own custom metrics. With CloudWatch,
+  you gain system-wide visibility into resource utilization, application performance,
+  and operational health.'
+mediaType:
+- application/xml
+types:
+  ActionPrefix:
+    type: string
+    minLength: 1
+    maxLength: 1024
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  ActionsEnabled:
+    type: boolean
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  AlarmArn:
+    type: string
+    minLength: 1
+    maxLength: 1600
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  AlarmDescription:
+    type: string
+    minLength: 0
+    maxLength: 1024
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  AlarmHistoryItems:
+    type: array
+    items:
+      type: AlarmHistoryItem
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  AlarmName:
+    type: string
+    minLength: 1
+    maxLength: 255
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  AlarmNamePrefix:
+    type: string
+    minLength: 1
+    maxLength: 255
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  AlarmNames:
+    type: array
+    maxItems: 100
+    items:
+      type: AlarmName
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  ComparisonOperator:
+    type: string
+    enum:
+    - GreaterThanOrEqualToThreshold
+    - GreaterThanThreshold
+    - LessThanThreshold
+    - LessThanOrEqualToThreshold
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  DatapointValue:
+    type: number
+    format: double
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  Datapoints:
+    type: array
+    items:
+      type: Datapoint
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  DimensionFilters:
+    type: array
+    maxItems: 10
+    items:
+      type: DimensionFilter
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  DimensionName:
+    type: string
+    minLength: 1
+    maxLength: 255
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  DimensionValue:
+    type: string
+    minLength: 1
+    maxLength: 255
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  Dimensions:
+    type: array
+    maxItems: 10
+    items:
+      type: Dimension
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  EvaluationPeriods:
+    type: integer
+    format: int
+    minimum: 1
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  HistoryData:
+    type: string
+    minLength: 1
+    maxLength: 4095
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  HistoryItemType:
+    type: string
+    enum:
+    - ConfigurationUpdate
+    - StateUpdate
+    - Action
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  HistorySummary:
+    type: string
+    minLength: 1
+    maxLength: 255
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  MaxRecords:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 100
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  MetricAlarms:
+    type: array
+    items:
+      type: MetricAlarm
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  MetricData:
+    type: array
+    items:
+      type: MetricDatum
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  MetricLabel:
+    type: string
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  MetricName:
+    type: string
+    minLength: 1
+    maxLength: 255
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  Metrics:
+    type: array
+    items:
+      type: Metric
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  Namespace:
+    type: string
+    pattern: '[^:].*'
+    minLength: 1
+    maxLength: 255
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  NextToken:
+    type: string
+    minLength: 0
+    maxLength: 1024
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  Period:
+    type: integer
+    format: int
+    minimum: 60
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  ResourceList:
+    type: array
+    maxItems: 5
+    items:
+      type: ResourceName
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  ResourceName:
+    type: string
+    minLength: 1
+    maxLength: 1024
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  StandardUnit:
+    type: string
+    enum:
+    - Seconds
+    - Microseconds
+    - Milliseconds
+    - Bytes
+    - Kilobytes
+    - Megabytes
+    - Gigabytes
+    - Terabytes
+    - Bits
+    - Kilobits
+    - Megabits
+    - Gigabits
+    - Terabits
+    - Percent
+    - Count
+    - Bytes/Second
+    - Kilobytes/Second
+    - Megabytes/Second
+    - Gigabytes/Second
+    - Terabytes/Second
+    - Bits/Second
+    - Kilobits/Second
+    - Megabits/Second
+    - Gigabits/Second
+    - Terabits/Second
+    - Count/Second
+    - None
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  StateReason:
+    type: string
+    minLength: 0
+    maxLength: 1023
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  StateReasonData:
+    type: string
+    minLength: 0
+    maxLength: 4000
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  StateValue:
+    type: string
+    enum:
+    - OK
+    - ALARM
+    - INSUFFICIENT_DATA
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  Statistic:
+    type: string
+    enum:
+    - SampleCount
+    - Average
+    - Sum
+    - Minimum
+    - Maximum
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  Statistics:
+    type: array
+    minItems: 1
+    maxItems: 5
+    items:
+      type: Statistic
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  Threshold:
+    type: number
+    format: double
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  Timestamp:
+    type: datetime
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+  AlarmHistoryItem:
+    type: object
+    properties:
+      AlarmName?:
+        type: AlarmName
+        description: <p>The descriptive name for the alarm.</p>
+      Timestamp?:
+        type: Timestamp
+        description: <p>The time stamp for the alarm history item.</p>
+      HistoryItemType?:
+        type: HistoryItemType
+        description: <p>The type of alarm history item.</p>
+      HistorySummary?:
+        type: HistorySummary
+        description: <p>A human-readable summary of the alarm history.</p>
+      HistoryData?:
+        type: HistoryData
+        description: <p>Machine-readable data about the alarm in JSON format.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p> The <code>AlarmHistoryItem</code> data type contains descriptive information about the history of a specific alarm. If you call <a>DescribeAlarmHistory</a>, Amazon CloudWatch returns this data type as part of the DescribeAlarmHistoryResult data type. </p>
+  Datapoint:
+    type: object
+    properties:
+      Timestamp?:
+        type: Timestamp
+        description: <p>The time stamp used for the datapoint.</p>
+      SampleCount?:
+        type: DatapointValue
+        description: <p>The number of metric values that contributed to the aggregate value of this datapoint.</p>
+      Average?:
+        type: DatapointValue
+        description: <p>The average of metric values that correspond to the datapoint.</p>
+      Sum?:
+        type: DatapointValue
+        description: <p>The sum of metric values used for the datapoint.</p>
+      Minimum?:
+        type: DatapointValue
+        description: <p>The minimum metric value used for the datapoint.</p>
+      Maximum?:
+        type: DatapointValue
+        description: <p>The maximum of the metric value used for the datapoint.</p>
+      Unit?:
+        type: StandardUnit
+        description: <p>The standard unit used for the datapoint.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p> The <code>Datapoint</code> data type encapsulates the statistical data that Amazon CloudWatch computes from metric data. </p>
+  DeleteAlarmsInput:
+    type: object
+    properties:
+      AlarmNames:
+        type: AlarmNames
+        description: <p>A list of alarms to be deleted.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p>Describes the inputs for DeleteAlarms.</p>
+  DescribeAlarmHistoryInput:
+    type: object
+    properties:
+      AlarmName?:
+        type: AlarmName
+        description: <p>The name of the alarm.</p>
+      HistoryItemType?:
+        type: HistoryItemType
+        description: <p>The type of alarm histories to retrieve.</p>
+      StartDate?:
+        type: Timestamp
+        description: <p>The starting date to retrieve alarm history.</p>
+      EndDate?:
+        type: Timestamp
+        description: <p>The ending date to retrieve alarm history.</p>
+      MaxRecords?:
+        type: MaxRecords
+        description: <p>The maximum number of alarm history records to retrieve.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>The token returned by a previous call to indicate that there is more data available.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p>Describes the inputs for DescribeAlarmHistory.</p>
+  DescribeAlarmHistoryOutput:
+    type: object
+    properties:
+      AlarmHistoryItems?:
+        type: AlarmHistoryItems
+        description: <p>A list of alarm histories in JSON format.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>A string that marks the start of the next batch of returned results.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p> The output for <a>DescribeAlarmHistory</a>. </p>
+  DescribeAlarmsForMetricInput:
+    type: object
+    properties:
+      MetricName:
+        type: MetricName
+        description: <p>The name of the metric.</p>
+      Namespace:
+        type: Namespace
+        description: <p>The namespace of the metric.</p>
+      Statistic?:
+        type: Statistic
+        description: <p>The statistic for the metric.</p>
+      Dimensions?:
+        type: Dimensions
+        description: <p>The list of dimensions associated with the metric. If the metric has any associated dimensions, you must specify them in order for the DescribeAlarmsForMetric to succeed.</p>
+      Period?:
+        type: Period
+        description: <p>The period in seconds over which the statistic is applied.</p>
+      Unit?:
+        type: StandardUnit
+        description: <p>The unit for the metric.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p>Describes the inputs for DescribeAlarmsForMetric.</p>
+  DescribeAlarmsForMetricOutput:
+    type: object
+    properties:
+      MetricAlarms?:
+        type: MetricAlarms
+        description: <p>A list of information for each alarm with the specified metric.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p> The output for <a>DescribeAlarmsForMetric</a>. </p>
+  DescribeAlarmsInput:
+    type: object
+    properties:
+      AlarmNames?:
+        type: AlarmNames
+        description: <p>A list of alarm names to retrieve information for.</p>
+      AlarmNamePrefix?:
+        type: AlarmNamePrefix
+        description: <p>The alarm name prefix. <code>AlarmNames</code> cannot be specified if this parameter is specified.</p>
+      StateValue?:
+        type: StateValue
+        description: <p>The state value to be used in matching alarms.</p>
+      ActionPrefix?:
+        type: ActionPrefix
+        description: <p>The action name prefix.</p>
+      MaxRecords?:
+        type: MaxRecords
+        description: <p>The maximum number of alarm descriptions to retrieve.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>The token returned by a previous call to indicate that there is more data available.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p>Describes the inputs for DescribeAlarms.</p>
+  DescribeAlarmsOutput:
+    type: object
+    properties:
+      MetricAlarms?:
+        type: MetricAlarms
+        description: <p>A list of information for the specified alarms.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>A string that marks the start of the next batch of returned results.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p>The output for <a>DescribeAlarms</a>.</p>
+  Dimension:
+    type: object
+    properties:
+      Name:
+        type: DimensionName
+        description: <p>The name of the dimension.</p>
+      Value:
+        type: DimensionValue
+        description: <p>The value representing the dimension measurement</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p> The <code>Dimension</code> data type further expands on the identity of a metric using a Name, Value pair. </p> <p>For examples that use one or more dimensions, see <a>PutMetricData</a>.</p>
+  DimensionFilter:
+    type: object
+    properties:
+      Name:
+        type: DimensionName
+        description: <p>The dimension name to be matched.</p>
+      Value?:
+        type: DimensionValue
+        description: <p>The value of the dimension to be matched.</p> <note> <p>Specifying a <code>Name</code> without specifying a <code>Value</code> returns all values associated with that <code>Name</code>.</p> </note>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p> The <code>DimensionFilter</code> data type is used to filter <a>ListMetrics</a> results. </p>
+  DisableAlarmActionsInput:
+    type: object
+    properties:
+      AlarmNames:
+        type: AlarmNames
+        description: <p>The names of the alarms to disable actions for.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p/>
+  EnableAlarmActionsInput:
+    type: object
+    properties:
+      AlarmNames:
+        type: AlarmNames
+        description: <p>The names of the alarms to enable actions for.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p>Describes the inputs for EnableAlarmActions.</p>
+  GetMetricStatisticsInput:
+    type: object
+    properties:
+      Namespace:
+        type: Namespace
+        description: <p>The namespace of the metric, with or without spaces.</p>
+      MetricName:
+        type: MetricName
+        description: <p>The name of the metric, with or without spaces.</p>
+      Dimensions?:
+        type: Dimensions
+        description: <p>A list of dimensions describing qualities of the metric.</p>
+      StartTime:
+        type: Timestamp
+        description: <p>The time stamp to use for determining the first datapoint to return. The value specified is inclusive; results include datapoints with the time stamp specified. The time stamp must be in ISO 8601 UTC format (e.g., 2014-09-03T23:00:00Z).</p> <note> <p>The specified start time is rounded down to the nearest value. Datapoints are returned for start times up to two weeks in the past. Specified start times that are more than two weeks in the past will not return datapoints for metrics that are older than two weeks.</p> <p>Data that is timestamped 24 hours or more in the past may take in excess of 48 hours to become available from submission time using <code>GetMetricStatistics</code>.</p> </note>
+      EndTime:
+        type: Timestamp
+        description: <p>The time stamp to use for determining the last datapoint to return. The value specified is exclusive; results will include datapoints up to the time stamp specified. The time stamp must be in ISO 8601 UTC format (e.g., 2014-09-03T23:00:00Z).</p>
+      Period:
+        type: Period
+        description: <p> The granularity, in seconds, of the returned datapoints. A <code>Period</code> can be as short as one minute (60 seconds) or as long as one day (86,400 seconds), and must be a multiple of 60. The default value is 60. </p>
+      Statistics:
+        type: Statistics
+        description: <p> The metric statistics to return. For information about specific statistics returned by GetMetricStatistics, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Statistic">Statistics</a> in the <i>Amazon CloudWatch Developer Guide</i>. </p>
+      Unit?:
+        type: StandardUnit
+        description: <p>The specific unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units being returned. If the metric only ever reports one unit, specifying a unit will have no effect.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p>Describes the inputs for GetMetricStatistics.</p>
+  GetMetricStatisticsOutput:
+    type: object
+    properties:
+      Label?:
+        type: MetricLabel
+        description: <p>A label describing the specified metric.</p>
+      Datapoints?:
+        type: Datapoints
+        description: <p>The datapoints for the specified metric.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p> The output for <a>GetMetricStatistics</a>. </p>
+  ListMetricsInput:
+    type: object
+    properties:
+      Namespace?:
+        type: Namespace
+        description: <p>The namespace to filter against.</p>
+      MetricName?:
+        type: MetricName
+        description: <p>The name of the metric to filter against.</p>
+      Dimensions?:
+        type: DimensionFilters
+        description: <p>A list of dimensions to filter against.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>The token returned by a previous call to indicate that there is more data available.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p>Describes the inputs for ListMetrics.</p>
+  ListMetricsOutput:
+    type: object
+    properties:
+      Metrics?:
+        type: Metrics
+        description: <p>A list of metrics used to generate statistics for an AWS account.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>A string that marks the start of the next batch of returned results.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p> The output for <a>ListMetrics</a>. </p>
+  Metric:
+    type: object
+    properties:
+      Namespace?:
+        type: Namespace
+        description: <p>The namespace of the metric.</p>
+      MetricName?:
+        type: MetricName
+        description: <p>The name of the metric.</p>
+      Dimensions?:
+        type: Dimensions
+        description: <p>A list of dimensions associated with the metric.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p> The <code>Metric</code> data type contains information about a specific metric. If you call <a>ListMetrics</a>, Amazon CloudWatch returns information contained by this data type. </p> <p>The example in the Examples section publishes two metrics named buffers and latency. Both metrics are in the examples namespace. Both metrics have two dimensions, InstanceID and InstanceType.</p>
+  MetricAlarm:
+    type: object
+    properties:
+      AlarmName?:
+        type: AlarmName
+        description: <p>The name of the alarm.</p>
+      AlarmArn?:
+        type: AlarmArn
+        description: <p>The Amazon Resource Name (ARN) of the alarm.</p>
+      AlarmDescription?:
+        type: AlarmDescription
+        description: <p>The description for the alarm.</p>
+      AlarmConfigurationUpdatedTimestamp?:
+        type: Timestamp
+        description: <p>The time stamp of the last update to the alarm configuration.</p>
+      ActionsEnabled?:
+        type: ActionsEnabled
+        description: <p>Indicates whether actions should be executed during any changes to the alarm's state.</p>
+      OKActions?:
+        type: ResourceList
+        description: <p> The list of actions to execute when this alarm transitions into an <code>OK</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN). </p>
+      AlarmActions?:
+        type: ResourceList
+        description: <p> The list of actions to execute when this alarm transitions into an <code>ALARM</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN). </p>
+      InsufficientDataActions?:
+        type: ResourceList
+        description: <p> The list of actions to execute when this alarm transitions into an <code>INSUFFICIENT_DATA</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN). </p> <important> <p>The current WSDL lists this attribute as <code>UnknownActions</code>.</p> </important>
+      StateValue?:
+        type: StateValue
+        description: <p>The state value for the alarm.</p>
+      StateReason?:
+        type: StateReason
+        description: <p>A human-readable explanation for the alarm's state.</p>
+      StateReasonData?:
+        type: StateReasonData
+        description: <p>An explanation for the alarm's state in machine-readable JSON format</p>
+      StateUpdatedTimestamp?:
+        type: Timestamp
+        description: <p>The time stamp of the last update to the alarm's state.</p>
+      MetricName?:
+        type: MetricName
+        description: <p>The name of the alarm's metric.</p>
+      Namespace?:
+        type: Namespace
+        description: <p>The namespace of alarm's associated metric.</p>
+      Statistic?:
+        type: Statistic
+        description: <p>The statistic to apply to the alarm's associated metric.</p>
+      Dimensions?:
+        type: Dimensions
+        description: <p>The list of dimensions associated with the alarm's associated metric.</p>
+      Period?:
+        type: Period
+        description: <p>The period in seconds over which the statistic is applied.</p>
+      Unit?:
+        type: StandardUnit
+        description: <p>The unit of the alarm's associated metric.</p>
+      EvaluationPeriods?:
+        type: EvaluationPeriods
+        description: <p>The number of periods over which data is compared to the specified threshold.</p>
+      Threshold?:
+        type: Threshold
+        description: <p>The value against which the specified statistic is compared.</p>
+      ComparisonOperator?:
+        type: ComparisonOperator
+        description: <p> The arithmetic operation to use when comparing the specified <code>Statistic</code> and <code>Threshold</code>. The specified <code>Statistic</code> value is used as the first operand. </p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p> The <a>MetricAlarm</a> data type represents an alarm. You can use <a>PutMetricAlarm</a> to create or update an alarm. </p>
+  MetricDatum:
+    type: object
+    properties:
+      MetricName:
+        type: MetricName
+        description: <p>The name of the metric.</p>
+      Dimensions?:
+        type: Dimensions
+        description: <p>A list of dimensions associated with the metric. Note, when using the Dimensions value in a query, you need to append .member.N to it (e.g., Dimensions.member.N).</p>
+      Timestamp?:
+        type: Timestamp
+        description: <p>The time stamp used for the metric in ISO 8601 Universal Coordinated Time (UTC) format. If not specified, the default value is set to the time the metric data was received.</p>
+      Value?:
+        type: DatapointValue
+        description: <p>The value for the metric.</p> <important> <p>Although the <code>Value</code> parameter accepts numbers of type <code>Double</code>, Amazon CloudWatch rejects values that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g., NaN, +Infinity, -Infinity) are not supported.</p> </important>
+      StatisticValues?:
+        type: StatisticSet
+        description: <p>A set of statistical values describing the metric.</p>
+      Unit?:
+        type: StandardUnit
+        description: <p>The unit of the metric.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p> The <code>MetricDatum</code> data type encapsulates the information sent with <a>PutMetricData</a> to either create a new metric or add new values to be aggregated into an existing metric. </p>
+  PutMetricAlarmInput:
+    type: object
+    properties:
+      AlarmName:
+        type: AlarmName
+        description: <p>The descriptive name for the alarm. This name must be unique within the user's AWS account</p>
+      AlarmDescription?:
+        type: AlarmDescription
+        description: <p>The description for the alarm.</p>
+      ActionsEnabled?:
+        type: ActionsEnabled
+        description: <p>Indicates whether or not actions should be executed during any changes to the alarm's state.</p>
+      OKActions?:
+        type: ResourceList
+        description: '<p> The list of actions to execute when this alarm transitions
+          into an <code>OK</code> state from any other state. Each action is specified
+          as an Amazon Resource Name (ARN). </p> <p>Valid Values: arn:aws:automate:<i>region
+          (e.g., us-east-1)</i>:ec2:stop | arn:aws:automate:<i>region (e.g., us-east-1)</i>:ec2:terminate
+          | arn:aws:automate:<i>region (e.g., us-east-1)</i>:ec2:recover</p> <p>Valid
+          Values (for use with IAM roles): arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
+          | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
+          | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
+          <p> <b>Note:</b> You must create at least one stop, terminate, or reboot
+          alarm using the Amazon EC2 or CloudWatch console to create the <b>EC2ActionsAccess</b>
+          IAM role for the first time. After this IAM role is created, you can create
+          stop, terminate, or reboot alarms using the CLI.</p>'
+      AlarmActions?:
+        type: ResourceList
+        description: '<p> The list of actions to execute when this alarm transitions
+          into an <code>ALARM</code> state from any other state. Each action is specified
+          as an Amazon Resource Name (ARN). </p> <p>Valid Values: arn:aws:automate:<i>region
+          (e.g., us-east-1)</i>:ec2:stop | arn:aws:automate:<i>region (e.g., us-east-1)</i>:ec2:terminate
+          | arn:aws:automate:<i>region (e.g., us-east-1)</i>:ec2:recover</p> <p>Valid
+          Values (for use with IAM roles): arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
+          | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
+          | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
+          <p> <b>Note:</b> You must create at least one stop, terminate, or reboot
+          alarm using the Amazon EC2 or CloudWatch console to create the <b>EC2ActionsAccess</b>
+          IAM role for the first time. After this IAM role is created, you can create
+          stop, terminate, or reboot alarms using the CLI.</p>'
+      InsufficientDataActions?:
+        type: ResourceList
+        description: '<p> The list of actions to execute when this alarm transitions
+          into an <code>INSUFFICIENT_DATA</code> state from any other state. Each
+          action is specified as an Amazon Resource Name (ARN). </p> <p>Valid Values:
+          arn:aws:automate:<i>region (e.g., us-east-1)</i>:ec2:stop | arn:aws:automate:<i>region
+          (e.g., us-east-1)</i>:ec2:terminate | arn:aws:automate:<i>region (e.g.,
+          us-east-1)</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles):
+          arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
+          | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
+          | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
+          <p> <b>Note:</b> You must create at least one stop, terminate, or reboot
+          alarm using the Amazon EC2 or CloudWatch console to create the <b>EC2ActionsAccess</b>
+          IAM role for the first time. After this IAM role is created, you can create
+          stop, terminate, or reboot alarms using the CLI.</p>'
+      MetricName:
+        type: MetricName
+        description: <p>The name for the alarm's associated metric.</p>
+      Namespace:
+        type: Namespace
+        description: <p>The namespace for the alarm's associated metric.</p>
+      Statistic:
+        type: Statistic
+        description: <p>The statistic to apply to the alarm's associated metric.</p>
+      Dimensions?:
+        type: Dimensions
+        description: <p>The dimensions for the alarm's associated metric.</p>
+      Period:
+        type: Period
+        description: <p>The period in seconds over which the specified statistic is applied.</p>
+      Unit?:
+        type: StandardUnit
+        description: <p>The statistic's unit of measure. For example, the units for the Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the number of bytes that an instance receives on all network interfaces. You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately.</p> <p> <b>Note:</b> If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, this can cause an Amazon CloudWatch alarm to get stuck in the INSUFFICIENT DATA state. </p>
+      EvaluationPeriods:
+        type: EvaluationPeriods
+        description: <p>The number of periods over which data is compared to the specified threshold.</p>
+      Threshold:
+        type: Threshold
+        description: <p>The value against which the specified statistic is compared.</p>
+      ComparisonOperator:
+        type: ComparisonOperator
+        description: <p> The arithmetic operation to use when comparing the specified <code>Statistic</code> and <code>Threshold</code>. The specified <code>Statistic</code> value is used as the first operand. </p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p>Describes the inputs for PutMetricAlarm.</p>
+  PutMetricDataInput:
+    type: object
+    properties:
+      Namespace:
+        type: Namespace
+        description: <p>The namespace for the metric data.</p> <note> <p>You cannot specify a namespace that begins with "AWS/". Namespaces that begin with "AWS/" are reserved for other Amazon Web Services products that send metrics to Amazon CloudWatch.</p> </note>
+      MetricData:
+        type: MetricData
+        description: <p>A list of data describing the metric.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p>Describes the inputs for PutMetricData.</p>
+  SetAlarmStateInput:
+    type: object
+    properties:
+      AlarmName:
+        type: AlarmName
+        description: <p>The descriptive name for the alarm. This name must be unique within the user's AWS account. The maximum length is 255 characters.</p>
+      StateValue:
+        type: StateValue
+        description: <p>The value of the state.</p>
+      StateReason:
+        type: StateReason
+        description: <p>The reason that this alarm is set to this specific state (in human-readable text format)</p>
+      StateReasonData?:
+        type: StateReasonData
+        description: <p>The reason that this alarm is set to this specific state (in machine-readable JSON format)</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p>Describes the inputs for SetAlarmState.</p>
+  StatisticSet:
+    type: object
+    properties:
+      SampleCount:
+        type: DatapointValue
+        description: <p>The number of samples used for the statistic set.</p>
+      Sum:
+        type: DatapointValue
+        description: <p>The sum of values for the sample set.</p>
+      Minimum:
+        type: DatapointValue
+        description: <p>The minimum value of the sample set.</p>
+      Maximum:
+        type: DatapointValue
+        description: <p>The maximum value of the sample set.</p>
+    xml:
+      namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    description: <p> The <code>StatisticSet</code> data type describes the <code>StatisticValues</code> component of <a>MetricDatum</a>, and represents a set of statistics that describes a specific metric. </p>
+/{DeleteAlarms}:
+  uriParameters:
+    DeleteAlarms?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes all specified alarms. In the event of an error, no alarms are deleted.
+  post:
+    body:
+      application/xml: DeleteAlarmsInput
+    responses:
+      200:
+        body:
+          application/xml: null
+      404:
+        description: ResourceNotFound
+/{DescribeAlarmHistory}:
+  uriParameters:
+    DescribeAlarmHistory?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves history for the specified alarm. Filter alarms by date range or item type. If an alarm name is not specified, Amazon CloudWatch returns histories for all of the owner's alarms. <note> Amazon CloudWatch retains the history of an alarm for two weeks, whether or not you delete the alarm. </note>
+  post:
+    body:
+      application/xml: DescribeAlarmHistoryInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeAlarmHistoryOutput
+      400:
+        description: InvalidNextToken
+/{DescribeAlarms}:
+  uriParameters:
+    DescribeAlarms?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves alarms with the specified names. If no name is specified, all alarms for the user are returned. Alarms can be retrieved by using only a prefix for the alarm name, the alarm state, or a prefix for any action.
+  post:
+    body:
+      application/xml: DescribeAlarmsInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeAlarmsOutput
+      400:
+        description: InvalidNextToken
+/{DescribeAlarmsForMetric}:
+  uriParameters:
+    DescribeAlarmsForMetric?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves all alarms for a single metric. Specify a statistic, period, or unit to filter the set of alarms further.
+  post:
+    body:
+      application/xml: DescribeAlarmsForMetricInput
+    responses:
+      200:
+        body:
+          application/xml: DescribeAlarmsForMetricOutput
+/{DisableAlarmActions}:
+  uriParameters:
+    DisableAlarmActions?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Disables actions for the specified alarms. When an alarm's actions are disabled the alarm's state may change, but none of the alarm's actions will execute.
+  post:
+    body:
+      application/xml: DisableAlarmActionsInput
+    responses:
+      200:
+        body:
+          application/xml: null
+/{EnableAlarmActions}:
+  uriParameters:
+    EnableAlarmActions?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Enables actions for the specified alarms.
+  post:
+    body:
+      application/xml: EnableAlarmActionsInput
+    responses:
+      200:
+        body:
+          application/xml: null
+/{GetMetricStatistics}:
+  uriParameters:
+    GetMetricStatistics?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Gets statistics for the specified metric.  The maximum number of data
+    points that can be queried is 50,850, whereas the maximum number of data points
+    returned from a single <code>GetMetricStatistics</code> request is 1,440. If you
+    make a request that generates more than 1,440 data points, Amazon CloudWatch returns
+    an error. In such a case, you can alter the request by narrowing the specified
+    time range or increasing the specified period. A period can be as short as one
+    minute (60 seconds) or as long as one day (86,400 seconds). Alternatively, you
+    can make multiple requests across adjacent time ranges. <code>GetMetricStatistics</code>
+    does not return the data in chronological order.   Amazon CloudWatch aggregates
+    data points based on the length of the <code>period</code> that you specify. For
+    example, if you request statistics with a one-minute granularity, Amazon CloudWatch
+    aggregates data points with time stamps that fall within the same one-minute period.
+    In such a case, the data points queried can greatly outnumber the data points
+    returned.   The following examples show various statistics allowed by the data
+    point query maximum of 50,850 when you call <code>GetMetricStatistics</code> on
+    Amazon EC2 instances with detailed (one-minute) monitoring enabled:  <ul> <li>
+    Statistics for up to 400 instances for a span of one hour </li> <li> Statistics
+    for up to 35 instances over a span of 24 hours </li> <li> Statistics for up to
+    2 instances over a span of 2 weeks </li> </ul>  For information about the namespace,
+    metric names, and dimensions that other Amazon Web Services products use to send
+    metrics to CloudWatch, go to <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
+    CloudWatch Metrics, Namespaces, and Dimensions Reference</a> in the <i>Amazon
+    CloudWatch Developer Guide</i>. '
+  post:
+    body:
+      application/xml: GetMetricStatisticsInput
+    responses:
+      200:
+        body:
+          application/xml: GetMetricStatisticsOutput
+      400:
+        description: InvalidParameterValue
+      500:
+        description: InternalServiceError
+/{ListMetrics}:
+  uriParameters:
+    ListMetrics?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: ' Returns a list of valid metrics stored for the AWS account owner.
+    Returned metrics can be used with <a>GetMetricStatistics</a> to obtain statistical
+    data for a given metric.  <note>  Up to 500 results are returned for any one call.
+    To retrieve further results, use returned <code>NextToken</code> values with subsequent
+    <code>ListMetrics</code> operations. </note> <note>  If you create a metric with
+    <a>PutMetricData</a>, allow up to fifteen minutes for the metric to appear in
+    calls to <code>ListMetrics</code>. Statistics about the metric, however, are available
+    sooner using <a>GetMetricStatistics</a>. </note>'
+  post:
+    body:
+      application/xml: ListMetricsInput
+    responses:
+      200:
+        body:
+          application/xml: ListMetricsOutput
+      500:
+        description: InternalServiceError
+      400:
+        description: InvalidParameterValue
+/{PutMetricAlarm}:
+  uriParameters:
+    PutMetricAlarm?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Creates or updates an alarm and associates it with the specified Amazon
+    CloudWatch metric. Optionally, this operation can associate one or more Amazon
+    SNS resources with the alarm.  When this operation creates an alarm, the alarm
+    state is immediately set to <code>INSUFFICIENT_DATA</code>. The alarm is evaluated
+    and its <code>StateValue</code> is set appropriately. Any actions associated with
+    the <code>StateValue</code> are then executed.  <note> When updating an existing
+    alarm, its <code>StateValue</code> is left unchanged, but it completely overwrites
+    the alarm''s previous configuration. </note> <note> If you are using an AWS Identity
+    and Access Management (IAM) account to create or modify an alarm, you must have
+    the following Amazon EC2 permissions: <ul> <li>  <code>ec2:DescribeInstanceStatus</code>
+    and <code>ec2:DescribeInstances</code> for all alarms on Amazon EC2 instance status
+    metrics. </li> <li>  <code>ec2:StopInstances</code> for alarms with stop actions.
+    </li> <li>  <code>ec2:TerminateInstances</code> for alarms with terminate actions.
+    </li> <li>  <code>ec2:DescribeInstanceRecoveryAttribute</code>, and <code>ec2:RecoverInstances</code>
+    for alarms with recover actions. </li> </ul> If you have read/write permissions
+    for Amazon CloudWatch but not for Amazon EC2, you can still create an alarm but
+    the stop or terminate actions won''t be performed on the Amazon EC2 instance.
+    However, if you are later granted permission to use the associated Amazon EC2
+    APIs, the alarm actions you created earlier will be performed. For more information
+    about IAM permissions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html">Permissions
+    and Policies</a> in <i>Using IAM</i>. If you are using an IAM role (e.g., an Amazon
+    EC2 instance profile), you cannot stop or terminate the instance using alarm actions.
+    However, you can still see the alarm state and perform any other actions such
+    as Amazon SNS notifications or Auto Scaling policies. If you are using temporary
+    security credentials granted using the AWS Security Token Service (AWS STS), you
+    cannot stop or terminate an Amazon EC2 instance using alarm actions. </note>'
+  post:
+    body:
+      application/xml: PutMetricAlarmInput
+    responses:
+      200:
+        body:
+          application/xml: null
+      400:
+        description: LimitExceeded
+/{PutMetricData}:
+  uriParameters:
+    PutMetricData?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: ' Publishes metric data points to Amazon CloudWatch. Amazon CloudWatch
+    associates the data points with the specified metric. If the specified metric
+    does not exist, Amazon CloudWatch creates the metric. When Amazon CloudWatch creates
+    a metric, it can take up to fifteen minutes for the metric to appear in calls
+    to <a>ListMetrics</a>.   Each <code>PutMetricData</code> request is limited to
+    8 KB in size for HTTP GET requests and is limited to 40 KB in size for HTTP POST
+    requests.  <important> Although the <code>Value</code> parameter accepts numbers
+    of type <code>Double</code>, Amazon CloudWatch rejects values that are either
+    too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108
+    (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (e.g., NaN,
+    +Infinity, -Infinity) are not supported. </important> Data that is timestamped
+    24 hours or more in the past may take in excess of 48 hours to become available
+    from submission time using <code>GetMetricStatistics</code>.'
+  post:
+    body:
+      application/xml: PutMetricDataInput
+    responses:
+      200:
+        body:
+          application/xml: null
+      400:
+        description: InvalidParameterValue
+      500:
+        description: InternalServiceError
+/{SetAlarmState}:
+  uriParameters:
+    SetAlarmState?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: ' Temporarily sets the state of an alarm for testing purposes. When
+    the updated <code>StateValue</code> differs from the previous value, the action
+    configured for the appropriate state is invoked. For example, if your alarm is
+    configured to send an Amazon SNS message when an alarm is triggered, temporarily
+    changing the alarm''s state to <b>ALARM</b> sends an Amazon SNS message. The alarm
+    returns to its actual state (often within seconds). Because the alarm state change
+    happens very quickly, it is typically only visible in the alarm''s <b>History</b>
+    tab in the Amazon CloudWatch console or through <code>DescribeAlarmHistory</code>. '
+  post:
+    body:
+      application/xml: SetAlarmStateInput
+    responses:
+      200:
+        body:
+          application/xml: null
+      404:
+        description: ResourceNotFound
+      400:
+        description: InvalidFormat

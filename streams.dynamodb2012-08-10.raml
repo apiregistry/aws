@@ -1,0 +1,455 @@
+#%RAML 1.0
+title: Amazon DynamoDB Streams
+version: '2012-08-10'
+description: '  Amazon DynamoDB Streams provides API actions for accessing streams
+  and processing stream records. To learn more about application development with
+  Streams, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html">Capturing
+  Table Activity with DynamoDB Streams</a> in the Amazon DynamoDB Developer Guide.  The
+  following are short descriptions of each low-level DynamoDB Streams action: <ul>
+  <li>   <i>DescribeStream</i> - Returns detailed information about a particular stream.
+  </li> <li>   <i>GetRecords</i> - Retrieves the stream records from within a shard.
+  </li> <li>   <i>GetShardIterator</i> - Returns information on how to retrieve the
+  streams record from a shard with a given shard ID. </li> <li>   <i>ListStreams</i>
+  - Returns a list of all the streams associated with the current AWS account and
+  endpoint. </li> </ul>'
+mediaType:
+- application/json
+types:
+  AttributeName:
+    type: string
+    maxLength: 65535
+  BinaryAttributeValue:
+    type: file
+  BinarySetAttributeValue:
+    type: array
+    items:
+      type: BinaryAttributeValue
+  BooleanAttributeValue:
+    type: boolean
+  Date:
+    type: datetime
+  KeySchema:
+    type: array
+    minItems: 1
+    maxItems: 2
+    items:
+      type: KeySchemaElement
+  KeySchemaAttributeName:
+    type: string
+    minLength: 1
+    maxLength: 255
+  KeyType:
+    type: string
+    enum:
+    - HASH
+    - RANGE
+  ListAttributeValue:
+    type: array
+    items:
+      type: AttributeValue
+  NullAttributeValue:
+    type: boolean
+  NumberAttributeValue:
+    type: string
+  NumberSetAttributeValue:
+    type: array
+    items:
+      type: NumberAttributeValue
+  OperationType:
+    type: string
+    enum:
+    - INSERT
+    - MODIFY
+    - REMOVE
+  PositiveIntegerObject:
+    type: integer
+    format: int
+    minimum: 1
+  PositiveLongObject:
+    type: integer
+    format: long
+    minimum: 1
+  RecordList:
+    type: array
+    items:
+      type: Record
+  SequenceNumber:
+    type: string
+    minLength: 21
+    maxLength: 40
+  ShardDescriptionList:
+    type: array
+    items:
+      type: Shard
+  ShardId:
+    type: string
+    minLength: 28
+    maxLength: 65
+  ShardIterator:
+    type: string
+    minLength: 1
+    maxLength: 2048
+  ShardIteratorType:
+    type: string
+    enum:
+    - TRIM_HORIZON
+    - LATEST
+    - AT_SEQUENCE_NUMBER
+    - AFTER_SEQUENCE_NUMBER
+  StreamArn:
+    type: string
+    minLength: 37
+    maxLength: 1024
+  StreamList:
+    type: array
+    items:
+      type: Stream
+  StreamStatus:
+    type: string
+    enum:
+    - ENABLING
+    - ENABLED
+    - DISABLING
+    - DISABLED
+  StreamViewType:
+    type: string
+    enum:
+    - NEW_IMAGE
+    - OLD_IMAGE
+    - NEW_AND_OLD_IMAGES
+    - KEYS_ONLY
+  String:
+    type: string
+  StringAttributeValue:
+    type: string
+  StringSetAttributeValue:
+    type: array
+    items:
+      type: StringAttributeValue
+  TableName:
+    type: string
+    pattern: '[a-zA-Z0-9_.-]+'
+    minLength: 3
+    maxLength: 255
+  AttributeMap:
+    type: object
+    properties:
+      //:
+        type: AttributeValue
+  AttributeValue:
+    type: object
+    properties:
+      S?:
+        type: StringAttributeValue
+        description: <p>A String data type.</p>
+      N?:
+        type: NumberAttributeValue
+        description: <p>A Number data type.</p>
+      B?:
+        type: BinaryAttributeValue
+        description: <p>A Binary data type.</p>
+      SS?:
+        type: StringSetAttributeValue
+        description: <p>A String Set data type.</p>
+      NS?:
+        type: NumberSetAttributeValue
+        description: <p>A Number Set data type.</p>
+      BS?:
+        type: BinarySetAttributeValue
+        description: <p>A Binary Set data type.</p>
+      M?:
+        type: MapAttributeValue
+        description: <p>A Map data type.</p>
+      L?:
+        type: ListAttributeValue
+        description: <p>A List data type.</p>
+      NULL?:
+        type: NullAttributeValue
+        description: <p>A Null data type.</p>
+      BOOL?:
+        type: BooleanAttributeValue
+        description: <p>A Boolean data type.</p>
+    description: <p>Represents the data for an attribute. You can set one, and only one, of the elements.</p> <p>Each attribute in an item is a name-value pair. An attribute can be single-valued or multi-valued set. For example, a book item can have title and authors attributes. Each book has one title but can have many authors. The multi-valued attribute is a set; duplicate values are not allowed.</p>
+  DescribeStreamInput:
+    type: object
+    properties:
+      StreamArn:
+        type: StreamArn
+        description: <p>The Amazon Resource Name (ARN) for the stream.</p>
+      Limit?:
+        type: PositiveIntegerObject
+        description: <p>The maximum number of shard objects to return. The upper limit is 100.</p>
+      ExclusiveStartShardId?:
+        type: ShardId
+        description: <p>The shard ID of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedShardId</code> in the previous operation. </p>
+    description: <p>Represents the input of a <i>DescribeStream</i> operation.</p>
+  DescribeStreamOutput:
+    type: object
+    properties:
+      StreamDescription?:
+        type: StreamDescription
+        description: <p>A complete description of the stream, including its creation date and time, the DynamoDB table associated with the stream, the shard IDs within the stream, and the beginning and ending sequence numbers of stream records within the shards.</p>
+    description: <p>Represents the output of a <i>DescribeStream</i> operation.</p>
+  GetRecordsInput:
+    type: object
+    properties:
+      ShardIterator:
+        type: ShardIterator
+        description: <p>A shard iterator that was retrieved from a previous GetShardIterator operation. This iterator can be used to access the stream records in this shard.</p>
+      Limit?:
+        type: PositiveIntegerObject
+        description: <p>The maximum number of records to return from the shard. The upper limit is 1000.</p>
+    description: <p>Represents the input of a <i>GetRecords</i> operation.</p>
+  GetRecordsOutput:
+    type: object
+    properties:
+      Records?:
+        type: RecordList
+        description: <p>The stream records from the shard, which were retrieved using the shard iterator.</p>
+      NextShardIterator?:
+        type: ShardIterator
+        description: <p>The next position in the shard from which to start sequentially reading stream records. If set to <code>null</code>, the shard has been closed and the requested iterator will not return any more data.</p>
+    description: <p>Represents the output of a <i>GetRecords</i> operation.</p>
+  GetShardIteratorInput:
+    type: object
+    properties:
+      StreamArn:
+        type: StreamArn
+        description: <p>The Amazon Resource Name (ARN) for the stream.</p>
+      ShardId:
+        type: ShardId
+        description: <p>The identifier of the shard. The iterator will be returned for this shard ID.</p>
+      ShardIteratorType:
+        type: ShardIteratorType
+        description: <p>Determines how the shard iterator is used to start reading stream records from the shard:</p> <ul> <li> <p> <code>AT_SEQUENCE_NUMBER</code> - Start reading exactly from the position denoted by a specific sequence number.</p> </li> <li> <p> <code>AFTER_SEQUENCE_NUMBER</code> - Start reading right after the position denoted by a specific sequence number.</p> </li> <li> <p> <code>TRIM_HORIZON</code> - Start reading at the last (untrimmed) stream record, which is the oldest record in the shard. In DynamoDB Streams, there is a 24 hour limit on data retention. Stream records whose age exceeds this limit are subject to removal (trimming) from the stream.</p> </li> <li> <p> <code>LATEST</code> - Start reading just after the most recent stream record in the shard, so that you always read the most recent data in the shard.</p> </li> </ul>
+      SequenceNumber?:
+        type: SequenceNumber
+        description: <p>The sequence number of a stream record in the shard from which to start reading.</p>
+    description: <p>Represents the input of a <i>GetShardIterator</i> operation.</p>
+  GetShardIteratorOutput:
+    type: object
+    properties:
+      ShardIterator?:
+        type: ShardIterator
+        description: <p>The position in the shard from which to start reading stream records sequentially. A shard iterator specifies this position using the sequence number of a stream record in a shard.</p>
+    description: <p>Represents the output of a <i>GetShardIterator</i> operation.</p>
+  KeySchemaElement:
+    type: object
+    properties:
+      AttributeName:
+        type: KeySchemaAttributeName
+        description: <p>The name of a key attribute.</p>
+      KeyType:
+        type: KeyType
+        description: <p>The attribute data, consisting of the data type and the attribute value itself.</p>
+    description: <p>Represents <i>a single element</i> of a key schema. A key schema specifies the attributes that make up the primary key of a table, or the key attributes of an index.</p> <p>A <i>KeySchemaElement</i> represents exactly one attribute of the primary key. For example, a simple primary key (partition key) would be represented by one <i>KeySchemaElement</i>. A composite primary key (partition key and sort key) would require one <i>KeySchemaElement</i> for the partition key, and another <i>KeySchemaElement</i> for the sort key.</p> <note> <p>The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.</p> <p>The sort key of an item is also known as its <i>range attribute</i>. The term "range attribute" derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.</p> </note>
+  ListStreamsInput:
+    type: object
+    properties:
+      TableName?:
+        type: TableName
+        description: <p>If this parameter is provided, then only the streams associated with this table name are returned.</p>
+      Limit?:
+        type: PositiveIntegerObject
+        description: <p>The maximum number of streams to return. The upper limit is 100.</p>
+      ExclusiveStartStreamArn?:
+        type: StreamArn
+        description: <p>The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedStreamArn</code> in the previous operation. </p>
+    description: <p>Represents the input of a <i>ListStreams</i> operation.</p>
+  ListStreamsOutput:
+    type: object
+    properties:
+      Streams?:
+        type: StreamList
+        description: <p>A list of stream descriptors associated with the current account and endpoint.</p>
+      LastEvaluatedStreamArn?:
+        type: StreamArn
+        description: <p>The stream ARN of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p> <p>If <code>LastEvaluatedStreamArn</code> is empty, then the "last page" of results has been processed and there is no more data to be retrieved.</p> <p>If <code>LastEvaluatedStreamArn</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedStreamArn</code> is empty.</p>
+    description: <p>Represents the output of a <i>ListStreams</i> operation.</p>
+  MapAttributeValue:
+    type: object
+    properties:
+      //:
+        type: AttributeValue
+  Record:
+    type: object
+    properties:
+      eventID?:
+        type: String
+        description: <p>A globally unique identifier for the event that was recorded in this stream record.</p>
+      eventName?:
+        type: OperationType
+        description: <p>The type of data modification that was performed on the DynamoDB table:</p> <ul> <li> <p> <code>INSERT</code> - a new item was added to the table.</p> </li> <li> <p> <code>MODIFY</code> - one or more of an existing item's attributes were modified.</p> </li> <li> <p> <code>REMOVE</code> - the item was deleted from the table</p> </li> </ul>
+      eventVersion?:
+        type: String
+        description: <p>The version number of the stream record format. This number is updated whenever the structure of <i>Record</i> is modified.</p> <p>Client applications must not assume that <i>eventVersion</i> will remain at a particular value, as this number is subject to change at any time. In general, <i>eventVersion</i> will only increase as the low-level DynamoDB Streams API evolves.</p>
+      eventSource?:
+        type: String
+        description: <p>The AWS service from which the stream record originated. For DynamoDB Streams, this is <i>aws:dynamodb</i>.</p>
+      awsRegion?:
+        type: String
+        description: <p>The region in which the <i>GetRecords</i> request was received.</p>
+      dynamodb?:
+        type: StreamRecord
+        description: <p>The main body of the stream record, containing all of the DynamoDB-specific fields.</p>
+    description: <p>A description of a unique event within a stream.</p>
+  SequenceNumberRange:
+    type: object
+    properties:
+      StartingSequenceNumber?:
+        type: SequenceNumber
+        description: <p>The first sequence number.</p>
+      EndingSequenceNumber?:
+        type: SequenceNumber
+        description: <p>The last sequence number.</p>
+    description: <p>The beginning and ending sequence numbers for the stream records contained within a shard.</p>
+  Shard:
+    type: object
+    properties:
+      ShardId?:
+        type: ShardId
+        description: <p>The system-generated identifier for this shard.</p>
+      SequenceNumberRange?:
+        type: SequenceNumberRange
+        description: <p>The range of possible sequence numbers for the shard.</p>
+      ParentShardId?:
+        type: ShardId
+        description: <p>The shard ID of the current shard's parent.</p>
+    description: <p>A uniquely identified group of stream records within a stream.</p>
+  Stream:
+    type: object
+    properties:
+      StreamArn?:
+        type: StreamArn
+        description: <p>The Amazon Resource Name (ARN) for the stream.</p>
+      TableName?:
+        type: TableName
+        description: <p>The DynamoDB table with which the stream is associated.</p>
+      StreamLabel?:
+        type: String
+        description: <p>A timestamp, in ISO 8601 format, for this stream.</p> <p>Note that <i>LatestStreamLabel</i> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p> <ul> <li> <p>the AWS customer ID.</p> </li> <li> <p>the table name</p> </li> <li> <p>the <i>StreamLabel</i> </p> </li> </ul>
+    description: <p>Represents all of the data describing a particular stream.</p>
+  StreamDescription:
+    type: object
+    properties:
+      StreamArn?:
+        type: StreamArn
+        description: <p>The Amazon Resource Name (ARN) for the stream.</p>
+      StreamLabel?:
+        type: String
+        description: <p>A timestamp, in ISO 8601 format, for this stream.</p> <p>Note that <i>LatestStreamLabel</i> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p> <ul> <li> <p>the AWS customer ID.</p> </li> <li> <p>the table name</p> </li> <li> <p>the <i>StreamLabel</i> </p> </li> </ul>
+      StreamStatus?:
+        type: StreamStatus
+        description: <p>Indicates the current status of the stream:</p> <ul> <li> <p> <code>ENABLING</code> - Streams is currently being enabled on the DynamoDB table.</p> </li> <li> <p> <code>ENABLED</code> - the stream is enabled.</p> </li> <li> <p> <code>DISABLING</code> - Streams is currently being disabled on the DynamoDB table.</p> </li> <li> <p> <code>DISABLED</code> - the stream is disabled.</p> </li> </ul>
+      StreamViewType?:
+        type: StreamViewType
+        description: <p>Indicates the format of the records within this stream:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - only the key attributes of items that were modified in the DynamoDB table.</p> </li> <li> <p> <code>NEW_IMAGE</code> - entire items from the table, as they appeared after they were modified.</p> </li> <li> <p> <code>OLD_IMAGE</code> - entire items from the table, as they appeared before they were modified.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - both the new and the old images of the items from the table.</p> </li> </ul>
+      CreationRequestDateTime?:
+        type: Date
+        description: <p>The date and time when the request to create this stream was issued.</p>
+      TableName?:
+        type: TableName
+        description: <p>The DynamoDB table with which the stream is associated.</p>
+      KeySchema?:
+        type: KeySchema
+        description: <p>The key attribute(s) of the stream's DynamoDB table.</p>
+      Shards?:
+        type: ShardDescriptionList
+        description: <p>The shards that comprise the stream.</p>
+      LastEvaluatedShardId?:
+        type: ShardId
+        description: <p>The shard ID of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p> <p>If <code>LastEvaluatedShardId</code> is empty, then the "last page" of results has been processed and there is currently no more data to be retrieved.</p> <p>If <code>LastEvaluatedShardId</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedShardId</code> is empty.</p>
+    description: <p>Represents all of the data describing a particular stream.</p>
+  StreamRecord:
+    type: object
+    properties:
+      ApproximateCreationDateTime?:
+        type: Date
+        description: <p>The approximate date and time when the stream record was created, in <a href="http://www.epochconverter.com/">UNIX epoch time</a> format.</p>
+      Keys?:
+        type: AttributeMap
+        description: <p>The primary key attribute(s) for the DynamoDB item that was modified.</p>
+      NewImage?:
+        type: AttributeMap
+        description: <p>The item in the DynamoDB table as it appeared after it was modified.</p>
+      OldImage?:
+        type: AttributeMap
+        description: <p>The item in the DynamoDB table as it appeared before it was modified.</p>
+      SequenceNumber?:
+        type: SequenceNumber
+        description: <p>The sequence number of the stream record.</p>
+      SizeBytes?:
+        type: PositiveLongObject
+        description: <p>The size of the stream record, in bytes.</p>
+      StreamViewType?:
+        type: StreamViewType
+        description: <p>The type of data from the modified DynamoDB item that was captured in this stream record:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - only the key attributes of the modified item.</p> </li> <li> <p> <code>NEW_IMAGE</code> - the entire item, as it appeared after it was modified.</p> </li> <li> <p> <code>OLD_IMAGE</code> - the entire item, as it appeared before it was modified.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - both the new and the old item images of the item.</p> </li> </ul>
+    description: <p>A description of a single data modification that was performed on an item in a DynamoDB table.</p>
+/{DescribeStream}:
+  uriParameters:
+    DescribeStream?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns information about a stream, including the current status of the stream, its Amazon Resource Name (ARN), the composition of its shards, and its corresponding DynamoDB table. <note> You can call <i>DescribeStream</i> at a maximum rate of 10 times per second. </note> Each shard in the stream has a <code>SequenceNumberRange</code> associated with it. If the <code>SequenceNumberRange</code> has a <code>StartingSequenceNumber</code> but no <code>EndingSequenceNumber</code>, then the shard is still open (able to receive more stream records). If both <code>StartingSequenceNumber</code> and <code>EndingSequenceNumber</code> are present, then that shard is closed and can no longer receive more data.
+  post:
+    body:
+      application/json: DescribeStreamInput
+    responses:
+      200:
+        body:
+          application/json: DescribeStreamOutput
+      400:
+        description: ResourceNotFoundException
+/{GetRecords}:
+  uriParameters:
+    GetRecords?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves the stream records from a given shard. Specify a shard iterator using the <code>ShardIterator</code> parameter. The shard iterator specifies the position in the shard from which you want to start reading stream records sequentially. If there are no stream records available in the portion of the shard that the iterator points to, <code>GetRecords</code> returns an empty list. Note that it might take multiple calls to get to a portion of the shard that contains stream records. <note>  <code>GetRecords</code> can retrieve a maximum of 1 MB of data or 1000 stream records, whichever comes first. </note>
+  post:
+    body:
+      application/json: GetRecordsInput
+    responses:
+      200:
+        body:
+          application/json: GetRecordsOutput
+      400:
+        description: ResourceNotFoundException
+/{GetShardIterator}:
+  uriParameters:
+    GetShardIterator?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns a shard iterator. A shard iterator provides information about how to retrieve the stream records from within a shard. Use the shard iterator in a subsequent <code>GetRecords</code> request to read the stream records from the shard. <note> A shard iterator expires 15 minutes after it is returned to the requester. </note>
+  post:
+    body:
+      application/json: GetShardIteratorInput
+    responses:
+      200:
+        body:
+          application/json: GetShardIteratorOutput
+      400:
+        description: ResourceNotFoundException
+/{ListStreams}:
+  uriParameters:
+    ListStreams?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns an array of stream ARNs associated with the current account and endpoint. If the <code>TableName</code> parameter is present, then <i>ListStreams</i> will return only the streams ARNs for that table. <note> You can call <i>ListStreams</i> at a maximum rate of 5 times per second. </note>
+  post:
+    body:
+      application/json: ListStreamsInput
+    responses:
+      200:
+        body:
+          application/json: ListStreamsOutput
+      400:
+        description: ResourceNotFoundException

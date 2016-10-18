@@ -1,0 +1,1036 @@
+#%RAML 1.0
+title: AWS Service Catalog
+version: '2015-12-10'
+description: '   <b>Overview</b>    <a href="https://aws.amazon.com/servicecatalog/">AWS
+  Service Catalog</a> allows organizations to create and manage catalogs of IT services
+  that are approved for use on AWS. This documentation provides reference material
+  for the AWS Service Catalog end user API. To get the most out of this documentation,
+  you need to be familiar with the terminology discussed in <a href="http://docs.aws.amazon.com/servicecatalog/latest/userguide/what-is_concepts.html">AWS
+  Service Catalog Concepts</a>.   <i>Additional Resources</i>  <ul> <li>   <a href="http://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html">AWS
+  Service Catalog Administrator Guide</a>  </li> <li>   <a href="http://docs.aws.amazon.com/servicecatalog/latest/userguide/introduction.html">AWS
+  Service Catalog User Guide</a>  </li> </ul>'
+mediaType:
+- application/json
+types:
+  AcceptLanguage:
+    type: string
+  AccessLevelFilterKey:
+    type: string
+    enum:
+    - Account
+    - Role
+    - User
+  AccessLevelFilterValue:
+    type: string
+  AllowedValue:
+    type: string
+  AllowedValues:
+    type: array
+    items:
+      type: AllowedValue
+  ApproximateCount:
+    type: integer
+    format: int
+  AttributeValue:
+    type: string
+  ConstraintDescription:
+    type: string
+  ConstraintSummaries:
+    type: array
+    items:
+      type: ConstraintSummary
+  ConstraintType:
+    type: string
+  CreatedTime:
+    type: datetime
+  DefaultValue:
+    type: string
+  Description:
+    type: string
+  ErrorCode:
+    type: string
+  ErrorDescription:
+    type: string
+  HasDefaultPath:
+    type: boolean
+  Id:
+    type: string
+    minLength: 1
+  IdempotencyToken:
+    type: string
+    pattern: '[a-zA-Z0-9][a-zA-Z0-9_-]*'
+    minLength: 1
+    maxLength: 128
+  IgnoreErrors:
+    type: boolean
+  InstructionType:
+    type: string
+  InstructionValue:
+    type: string
+  LastRequestId:
+    type: string
+  LaunchPathSummaries:
+    type: array
+    items:
+      type: LaunchPathSummary
+  NoEcho:
+    type: boolean
+  NotificationArn:
+    type: string
+    pattern: arn:[a-z0-9-\.]{1,63}:[a-z0-9-\.]{0,63}:[a-z0-9-\.]{0,63}:[a-z0-9-\.]{0,63}:[^/].{0,1023}
+    minLength: 1
+    maxLength: 1224
+  NotificationArns:
+    type: array
+    maxItems: 5
+    items:
+      type: NotificationArn
+  OutputKey:
+    type: string
+  OutputValue:
+    type: string
+  PageSize:
+    type: integer
+    format: int
+    minimum: 0
+    maximum: 20
+  PageToken:
+    type: string
+    pattern: '[\u0009\u000a\u000d\u0020-\uD7FF\uE000-\uFFFD]*'
+  ParameterKey:
+    type: string
+  ParameterType:
+    type: string
+  ParameterValue:
+    type: string
+  PortfolioName:
+    type: string
+  ProductType:
+    type: string
+  ProductViewAggregationType:
+    type: string
+  ProductViewAggregationValues:
+    type: array
+    items:
+      type: ProductViewAggregationValue
+  ProductViewDistributor:
+    type: string
+  ProductViewFilterBy:
+    type: string
+    enum:
+    - FullTextSearch
+    - Owner
+    - ProductType
+  ProductViewFilterValue:
+    type: string
+  ProductViewFilterValues:
+    type: array
+    items:
+      type: ProductViewFilterValue
+  ProductViewName:
+    type: string
+  ProductViewOwner:
+    type: string
+  ProductViewShortDescription:
+    type: string
+  ProductViewSortBy:
+    type: string
+    enum:
+    - Title
+    - VersionCount
+    - CreationDate
+  ProductViewSummaries:
+    type: array
+    items:
+      type: ProductViewSummary
+  ProvisionedProductDetails:
+    type: array
+    items:
+      type: ProvisionedProductDetail
+  ProvisionedProductId:
+    type: string
+  ProvisionedProductName:
+    type: string
+  ProvisionedProductNameOrArn:
+    type: string
+    pattern: '[a-zA-Z0-9][a-zA-Z0-9_-]{0,127}|arn:[a-z0-9-\.]{1,63}:[a-z0-9-\.]{0,63}:[a-z0-9-\.]{0,63}:[a-z0-9-\.]{0,63}:[^/].{0,1023}'
+    minLength: 1
+    maxLength: 1224
+  ProvisionedProductStatusMessage:
+    type: string
+  ProvisionedProductType:
+    type: string
+  ProvisioningArtifactCreatedTime:
+    type: datetime
+  ProvisioningArtifactDescription:
+    type: string
+  ProvisioningArtifactName:
+    type: string
+  ProvisioningArtifactParameters:
+    type: array
+    items:
+      type: ProvisioningArtifactParameter
+  ProvisioningArtifacts:
+    type: array
+    items:
+      type: ProvisioningArtifact
+  ProvisioningParameters:
+    type: array
+    items:
+      type: ProvisioningParameter
+  RecordDetails:
+    type: array
+    items:
+      type: RecordDetail
+  RecordErrors:
+    type: array
+    items:
+      type: RecordError
+  RecordOutputs:
+    type: array
+    items:
+      type: RecordOutput
+  RecordStatus:
+    type: string
+    enum:
+    - IN_PROGRESS
+    - SUCCEEDED
+    - ERROR
+  RecordTagKey:
+    type: string
+    pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+    minLength: 1
+    maxLength: 128
+  RecordTagValue:
+    type: string
+    pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+    minLength: 1
+    maxLength: 256
+  RecordTags:
+    type: array
+    maxItems: 10
+    items:
+      type: RecordTag
+  RecordType:
+    type: string
+  SearchFilterKey:
+    type: string
+  SearchFilterValue:
+    type: string
+  SortOrder:
+    type: string
+    enum:
+    - ASCENDING
+    - DESCENDING
+  SupportDescription:
+    type: string
+  SupportEmail:
+    type: string
+  SupportUrl:
+    type: string
+  TagKey:
+    type: string
+    pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+    minLength: 1
+    maxLength: 128
+  TagValue:
+    type: string
+    pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+    minLength: 1
+    maxLength: 256
+  Tags:
+    type: array
+    maxItems: 10
+    items:
+      type: Tag
+  UpdateProvisioningParameters:
+    type: array
+    items:
+      type: UpdateProvisioningParameter
+  UpdatedTime:
+    type: datetime
+  UsageInstructions:
+    type: array
+    items:
+      type: UsageInstruction
+  UsePreviousValue:
+    type: boolean
+  AccessLevelFilter:
+    type: object
+    properties:
+      Key?:
+        type: AccessLevelFilterKey
+        description: <p>Specifies the access level.</p> <p> <code>Account</code> allows results at the account level. </p> <p> <code>Role</code> allows results based on the federated role of the specified user.</p> <p> <code>User</code> allows results limited to the specified user. </p>
+      Value?:
+        type: AccessLevelFilterValue
+        description: <p>Specifies the user to which the access level applies. A value of <code>Self</code> is currently supported.</p>
+    description: <p>The access level to limit results.</p>
+  ConstraintSummary:
+    type: object
+    properties:
+      Type?:
+        type: ConstraintType
+        description: <p>The type of the constraint. </p>
+      Description?:
+        type: ConstraintDescription
+        description: <p>The text description of the constraint.</p>
+    description: <p>An administrator-specified constraint to apply when provisioning a product.</p>
+  DescribeProductInput:
+    type: object
+    properties:
+      AcceptLanguage?:
+        type: AcceptLanguage
+        description: <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+      Id:
+        type: Id
+        description: <p>The <code>ProductId</code> of the product to describe.</p>
+  DescribeProductOutput:
+    type: object
+    properties:
+      ProductViewSummary?:
+        type: ProductViewSummary
+        description: <p>The summary metadata about the specified product.</p>
+      ProvisioningArtifacts?:
+        type: ProvisioningArtifacts
+        description: <p>A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code> parameter represent the ways the specified product can be provisioned.</p>
+  DescribeProductViewInput:
+    type: object
+    properties:
+      AcceptLanguage?:
+        type: AcceptLanguage
+        description: <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+      Id:
+        type: Id
+        description: <p>The <code>ProductViewId</code> of the product to describe.</p>
+  DescribeProductViewOutput:
+    type: object
+    properties:
+      ProductViewSummary?:
+        type: ProductViewSummary
+        description: <p>The summary metadata about the specified product.</p>
+      ProvisioningArtifacts?:
+        type: ProvisioningArtifacts
+        description: <p>A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code> represent the ways in which the specified product can be provisioned.</p>
+  DescribeProvisioningParametersInput:
+    type: object
+    properties:
+      AcceptLanguage?:
+        type: AcceptLanguage
+        description: <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+      ProductId:
+        type: Id
+        description: <p>The identifier of the product.</p>
+      ProvisioningArtifactId:
+        type: Id
+        description: <p>The provisioning artifact identifier for this product.</p>
+      PathId?:
+        type: Id
+        description: <p>The identifier of the path for this product's provisioning. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.</p>
+  DescribeProvisioningParametersOutput:
+    type: object
+    properties:
+      ProvisioningArtifactParameters?:
+        type: ProvisioningArtifactParameters
+        description: <p>The list of parameters used to successfully provision the product. Each parameter includes a list of allowable values and additional metadata about each parameter.</p>
+      ConstraintSummaries?:
+        type: ConstraintSummaries
+        description: <p>The list of constraint summaries that apply to provisioning this product.</p>
+      UsageInstructions?:
+        type: UsageInstructions
+        description: <p>Any additional metadata specifically related to the provisioning of the product. For example, see the <code>Version</code> field of the CloudFormation template.</p>
+  DescribeRecordInput:
+    type: object
+    properties:
+      AcceptLanguage?:
+        type: AcceptLanguage
+        description: <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+      Id:
+        type: Id
+        description: <p>The record identifier of the ProvisionedProduct object for which to retrieve output information. This is the <code>RecordDetail.RecordId</code> obtained from the request operation's response.</p>
+      PageToken?:
+        type: PageToken
+        description: <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+      PageSize?:
+        type: PageSize
+        description: <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+  DescribeRecordOutput:
+    type: object
+    properties:
+      RecordDetail?:
+        type: RecordDetail
+        description: <p>Detailed record information for the specified product. </p>
+      RecordOutputs?:
+        type: RecordOutputs
+        description: <p>A list of outputs for the specified Product object created as the result of a request. For example, a CloudFormation-backed product that creates an S3 bucket would have an output for the S3 bucket URL.</p>
+      NextPageToken?:
+        type: PageToken
+        description: <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+  LaunchPathSummary:
+    type: object
+    properties:
+      Id?:
+        type: Id
+        description: <p>The unique identifier of the product path.</p>
+      ConstraintSummaries?:
+        type: ConstraintSummaries
+        description: <p>List of constraints on the portfolio-product relationship.</p>
+      Tags?:
+        type: Tags
+        description: <p>List of tags used by this launch path.</p>
+      Name?:
+        type: PortfolioName
+        description: <p>Corresponds to the name of the portfolio to which the user was assigned.</p>
+    description: <p>Summary information about a path for a user to have access to a specified product.</p>
+  ListLaunchPathsInput:
+    type: object
+    properties:
+      AcceptLanguage?:
+        type: AcceptLanguage
+        description: <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+      ProductId:
+        type: Id
+        description: <p>Identifies the product for which to retrieve <code>LaunchPathSummaries</code> information.</p>
+      PageSize?:
+        type: PageSize
+        description: <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+      PageToken?:
+        type: PageToken
+        description: <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+  ListLaunchPathsOutput:
+    type: object
+    properties:
+      LaunchPathSummaries?:
+        type: LaunchPathSummaries
+        description: <p>List of launch path information summaries for the specified <code>PageToken</code>.</p>
+      NextPageToken?:
+        type: PageToken
+        description: <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+  ListRecordHistoryInput:
+    type: object
+    properties:
+      AcceptLanguage?:
+        type: AcceptLanguage
+        description: <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+      AccessLevelFilter?:
+        type: AccessLevelFilter
+        description: <p>The access level for obtaining results. If left unspecified, <code>User</code> level access is used.</p>
+      SearchFilter?:
+        type: ListRecordHistorySearchFilter
+        description: <p>The filter to limit search results. </p>
+      PageSize?:
+        type: PageSize
+        description: <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+      PageToken?:
+        type: PageToken
+        description: <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+  ListRecordHistoryOutput:
+    type: object
+    properties:
+      RecordDetails?:
+        type: RecordDetails
+        description: <p>A list of record detail objects, listed in reverse chronological order.</p>
+      NextPageToken?:
+        type: PageToken
+        description: <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+  ListRecordHistorySearchFilter:
+    type: object
+    properties:
+      Key?:
+        type: SearchFilterKey
+        description: <p>The filter key.</p>
+      Value?:
+        type: SearchFilterValue
+        description: <p>The filter value for <code>Key</code>.</p>
+    description: <p>The search filter to limit results when listing request history records.</p>
+  ParameterConstraints:
+    type: object
+    properties:
+      AllowedValues?:
+        type: AllowedValues
+        description: <p>The values that the administrator has allowed for the parameter.</p>
+    description: <p>The constraints that the administrator has put on the parameter.</p>
+  ProductViewAggregationValue:
+    type: object
+    properties:
+      Value?:
+        type: AttributeValue
+        description: <p>The value of the product view aggregation.</p>
+      ApproximateCount?:
+        type: ApproximateCount
+        description: <p>An approximate count of the products that match the value.</p>
+    description: <p>A single product view aggregation value/count pair, containing metadata about each product to which the calling user has access.</p>
+  ProductViewAggregations:
+    type: object
+    properties:
+      //:
+        type: ProductViewAggregationValues
+  ProductViewFilters:
+    type: object
+    properties:
+      //:
+        type: ProductViewFilterValues
+  ProductViewSummary:
+    type: object
+    properties:
+      Id?:
+        type: Id
+        description: <p>The product view identifier.</p>
+      ProductId?:
+        type: Id
+        description: <p>The product identifier.</p>
+      Name?:
+        type: ProductViewName
+        description: <p>The name of the product.</p>
+      Owner?:
+        type: ProductViewOwner
+        description: <p>The owner of the product. Contact the product administrator for the significance of this value.</p>
+      ShortDescription?:
+        type: ProductViewShortDescription
+        description: <p>Short description of the product.</p>
+      Type?:
+        type: ProductType
+        description: <p>The product type. Contact the product administrator for the significance of this value.</p>
+      Distributor?:
+        type: ProductViewDistributor
+        description: <p>The distributor of the product. Contact the product administrator for the significance of this value.</p>
+      HasDefaultPath?:
+        type: HasDefaultPath
+        description: <p>A value of <code>false</code> indicates that the product does not have a default path, while a value of <code>true</code> indicates that it does. If it's false, call <a>ListLaunchPaths</a> to disambiguate between paths. If true, <a>ListLaunchPaths</a> is not required, and the output of the <a>ProductViewSummary</a> operation can be used directly with <a>DescribeProvisioningParameters</a>.</p>
+      SupportEmail?:
+        type: SupportEmail
+        description: <p>The email contact information to obtain support for this Product.</p>
+      SupportDescription?:
+        type: SupportDescription
+        description: <p>The description of the support for this Product.</p>
+      SupportUrl?:
+        type: SupportUrl
+        description: <p>The URL information to obtain support for this Product.</p>
+    description: <p>The summary metadata about the specified product.</p>
+  ProvisionProductInput:
+    type: object
+    properties:
+      AcceptLanguage?:
+        type: AcceptLanguage
+        description: <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+      ProductId:
+        type: Id
+        description: <p>The identifier of the product.</p>
+      ProvisioningArtifactId:
+        type: Id
+        description: <p>The provisioning artifact identifier for this product.</p>
+      PathId?:
+        type: Id
+        description: <p>The identifier of the path for this product's provisioning. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.</p>
+      ProvisionedProductName:
+        type: ProvisionedProductName
+        description: <p>A user-friendly name to identify the ProvisionedProduct object. This value must be unique for the AWS account and cannot be updated after the product is provisioned.</p>
+      ProvisioningParameters?:
+        type: ProvisioningParameters
+        description: <p>Parameters specified by the administrator that are required for provisioning the product.</p>
+      Tags?:
+        type: Tags
+        description: <p>A list of tags to use as provisioning options.</p>
+      NotificationArns?:
+        type: NotificationArns
+        description: <p>Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.</p>
+      ProvisionToken:
+        type: IdempotencyToken
+        description: <p>An idempotency token that uniquely identifies the provisioning request. </p>
+  ProvisionProductOutput:
+    type: object
+    properties:
+      RecordDetail?:
+        type: RecordDetail
+        description: <p>The detailed result of the <a>ProvisionProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of any errors that the request encountered. </p>
+  ProvisionedProductDetail:
+    type: object
+    properties:
+      Name?:
+        type: ProvisionedProductNameOrArn
+        description: <p>The user-friendly name of the ProvisionedProduct object.</p>
+      Arn?:
+        type: ProvisionedProductNameOrArn
+        description: <p>The ARN associated with the ProvisionedProduct object.</p>
+      Type?:
+        type: ProvisionedProductType
+        description: <p>The type of the ProvisionedProduct object.</p>
+      Id?:
+        type: ProvisionedProductId
+        description: <p>The identifier of the ProvisionedProduct object.</p>
+      Status?:
+        type: RecordStatus
+        description: <p>The current status of the ProvisionedProduct.</p>
+      StatusMessage?:
+        type: ProvisionedProductStatusMessage
+        description: <p>The current status message of the ProvisionedProduct.</p>
+      CreatedTime?:
+        type: CreatedTime
+        description: <p>The time the ProvisionedProduct was created.</p>
+      IdempotencyToken?:
+        type: IdempotencyToken
+        description: <p>An idempotency token that uniquely identifies this ProvisionedProduct.</p>
+      LastRecordId?:
+        type: LastRequestId
+        description: <p>The record identifier of the last request performed on this ProvisionedProduct object.</p>
+    description: <p>Detailed information about a ProvisionedProduct object.</p>
+  ProvisioningArtifact:
+    type: object
+    properties:
+      Id?:
+        type: Id
+        description: <p>The identifier for the artifact.</p>
+      Name?:
+        type: ProvisioningArtifactName
+        description: <p>The name of the artifact.</p>
+      Description?:
+        type: ProvisioningArtifactDescription
+        description: <p>The text description of the artifact.</p>
+      CreatedTime?:
+        type: ProvisioningArtifactCreatedTime
+        description: <p>The time that the artifact was created by the Administrator.</p>
+    description: <p>Contains information indicating the ways in which a product can be provisioned.</p>
+  ProvisioningArtifactParameter:
+    type: object
+    properties:
+      ParameterKey?:
+        type: ParameterKey
+        description: <p>The parameter key. </p>
+      DefaultValue?:
+        type: DefaultValue
+        description: <p>The default value for this parameter.</p>
+      ParameterType?:
+        type: ParameterType
+        description: <p>The parameter type.</p>
+      IsNoEcho?:
+        type: NoEcho
+        description: <p>If this value is true, the value for this parameter is obfuscated from view when the parameter is retrieved. This parameter is used to hide sensitive information.</p>
+      Description?:
+        type: Description
+        description: <p>The text description of the parameter.</p>
+      ParameterConstraints?:
+        type: ParameterConstraints
+        description: <p>The list of constraints that the administrator has put on the parameter.</p>
+    description: <p>A parameter used to successfully provision the product. This value includes a list of allowable values and additional metadata. </p>
+  ProvisioningParameter:
+    type: object
+    properties:
+      Key?:
+        type: ParameterKey
+        description: <p>The <code>ProvisioningArtifactParameter.ParameterKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
+      Value?:
+        type: ParameterValue
+        description: <p>The value to use for provisioning. Any constraints on this value can be found in <code>ProvisioningArtifactParameter</code> for <code>Key</code>.</p>
+    description: <p>The arameter key/value pairs used to provision a product.</p>
+  RecordDetail:
+    type: object
+    properties:
+      RecordId?:
+        type: Id
+        description: <p>The identifier of the ProvisionedProduct object record.</p>
+      ProvisionedProductName?:
+        type: ProvisionedProductName
+        description: <p>The user-friendly name of the ProvisionedProduct object.</p>
+      Status?:
+        type: RecordStatus
+        description: <p>The status of the ProvisionedProduct object.</p>
+      CreatedTime?:
+        type: CreatedTime
+        description: <p>The time when the record for the ProvisionedProduct object was created.</p>
+      UpdatedTime?:
+        type: UpdatedTime
+        description: <p>The time when the record for the ProvisionedProduct object was last updated.</p>
+      ProvisionedProductType?:
+        type: ProvisionedProductType
+        description: <p>The type of the ProvisionedProduct object.</p>
+      RecordType?:
+        type: RecordType
+        description: <p>The record type for this record.</p>
+      ProvisionedProductId?:
+        type: Id
+        description: <p>The identifier of the ProvisionedProduct object.</p>
+      ProductId?:
+        type: Id
+        description: <p>The identifier of the product.</p>
+      ProvisioningArtifactId?:
+        type: Id
+        description: <p>The provisioning artifact identifier for this product.</p>
+      PathId?:
+        type: Id
+        description: <p>The identifier of the path for this product's provisioning.</p>
+      RecordErrors?:
+        type: RecordErrors
+        description: <p>A list of errors that occurred while processing the request.</p>
+      RecordTags?:
+        type: RecordTags
+        description: <p>List of tags associated with this record.</p>
+    description: <p>The full details of a specific ProvisionedProduct object.</p>
+  RecordError:
+    type: object
+    properties:
+      Code?:
+        type: ErrorCode
+        description: <p>The numeric value of the error.</p>
+      Description?:
+        type: ErrorDescription
+        description: <p>The text description of the error.</p>
+    description: <p>The error code and description resulting from an operation.</p>
+  RecordOutput:
+    type: object
+    properties:
+      OutputKey?:
+        type: OutputKey
+        description: <p>The output key.</p>
+      OutputValue?:
+        type: OutputValue
+        description: <p>The output value.</p>
+      Description?:
+        type: Description
+        description: <p>The text description of the output.</p>
+    description: <p>An output for the specified Product object created as the result of a request. For example, a CloudFormation-backed product that creates an S3 bucket would have an output for the S3 bucket URL.</p>
+  RecordTag:
+    type: object
+    properties:
+      Key?:
+        type: RecordTagKey
+        description: <p>The key for this tag.</p>
+      Value?:
+        type: RecordTagValue
+        description: <p>The value for this tag.</p>
+    description: <p>A tag associated with the record, stored as a key-value pair.</p>
+  ScanProvisionedProductsInput:
+    type: object
+    properties:
+      AcceptLanguage?:
+        type: AcceptLanguage
+        description: <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+      AccessLevelFilter?:
+        type: AccessLevelFilter
+        description: <p>The access level for obtaining results. If left unspecified, <code>User</code> level access is used.</p>
+      PageSize?:
+        type: PageSize
+        description: <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+      PageToken?:
+        type: PageToken
+        description: <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+  ScanProvisionedProductsOutput:
+    type: object
+    properties:
+      ProvisionedProducts?:
+        type: ProvisionedProductDetails
+        description: <p>A list of ProvisionedProduct detail objects.</p>
+      NextPageToken?:
+        type: PageToken
+        description: <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+  SearchProductsInput:
+    type: object
+    properties:
+      AcceptLanguage?:
+        type: AcceptLanguage
+        description: <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+      Filters?:
+        type: ProductViewFilters
+        description: <p>The list of filters with which to limit search results. If no search filters are specified, the output is all the products to which the calling user has access. </p>
+      PageSize?:
+        type: PageSize
+        description: <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+      SortBy?:
+        type: ProductViewSortBy
+        description: <p>The sort field specifier. If no value is specified, results are not sorted.</p>
+      SortOrder?:
+        type: SortOrder
+        description: <p>The sort order specifier. If no value is specified, results are not sorted.</p>
+      PageToken?:
+        type: PageToken
+        description: <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+  SearchProductsOutput:
+    type: object
+    properties:
+      ProductViewSummaries?:
+        type: ProductViewSummaries
+        description: <p>A list of the product view summary objects.</p>
+      ProductViewAggregations?:
+        type: ProductViewAggregations
+        description: <p>A list of the product view aggregation value objects.</p>
+      NextPageToken?:
+        type: PageToken
+        description: <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+  Tag:
+    type: object
+    properties:
+      Key?:
+        type: TagKey
+        description: <p>The <code>ProvisioningArtifactParameter.TagKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
+      Value?:
+        type: TagValue
+        description: <p>The esired value for this key.</p>
+    description: <p>Key/value pairs to associate with this provisioning. These tags are entirely discretionary and are propagated to the resources created in the provisioning.</p>
+  TerminateProvisionedProductInput:
+    type: object
+    properties:
+      ProvisionedProductName?:
+        type: ProvisionedProductNameOrArn
+        description: <p>The name of the ProvisionedProduct object to terminate. You must specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
+      ProvisionedProductId?:
+        type: Id
+        description: <p>The identifier of the ProvisionedProduct object to terminate. You must specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
+      TerminateToken:
+        type: IdempotencyToken
+        description: <p>An idempotency token that uniquely identifies the termination request. This token is only valid during the termination process. After the ProvisionedProduct object is terminated, further requests to terminate the same ProvisionedProduct object always return <b>ResourceNotFound</b> regardless of the value of <code>TerminateToken</code>.</p>
+      IgnoreErrors?:
+        type: IgnoreErrors
+        description: <p>If set to true, AWS Service Catalog stops managing the specified ProvisionedProduct object even if it cannot delete the underlying resources.</p>
+      AcceptLanguage?:
+        type: AcceptLanguage
+        description: <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+  TerminateProvisionedProductOutput:
+    type: object
+    properties:
+      RecordDetail?:
+        type: RecordDetail
+        description: <p>The detailed result of the <a>TerminateProvisionedProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.</p>
+  UpdateProvisionedProductInput:
+    type: object
+    properties:
+      AcceptLanguage?:
+        type: AcceptLanguage
+        description: <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+      ProvisionedProductName?:
+        type: ProvisionedProductNameOrArn
+        description: <p>The updated name of the ProvisionedProduct object . You must specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
+      ProvisionedProductId?:
+        type: Id
+        description: <p>The identifier of the ProvisionedProduct object to update. You must specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
+      ProductId?:
+        type: Id
+        description: <p>The identifier of the ProvisionedProduct object.</p>
+      ProvisioningArtifactId?:
+        type: Id
+        description: <p>The provisioning artifact identifier for this product.</p>
+      PathId?:
+        type: Id
+        description: <p>The identifier of the path to use in the updated ProvisionedProduct object. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.</p>
+      ProvisioningParameters?:
+        type: UpdateProvisioningParameters
+        description: <p>A list of <code>ProvisioningParameter</code> objects used to update the ProvisionedProduct object.</p>
+      UpdateToken:
+        type: IdempotencyToken
+        description: <p>The idempotency token that uniquely identifies the provisioning update request.</p>
+  UpdateProvisionedProductOutput:
+    type: object
+    properties:
+      RecordDetail?:
+        type: RecordDetail
+        description: <p>The detailed result of the <a>UpdateProvisionedProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.</p>
+  UpdateProvisioningParameter:
+    type: object
+    properties:
+      Key?:
+        type: ParameterKey
+        description: <p>The <code>ProvisioningArtifactParameter.ParameterKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
+      Value?:
+        type: ParameterValue
+        description: <p>The value to use for updating the product provisioning. Any constraints on this value can be found in the <code>ProvisioningArtifactParameter</code> parameter for <code>Key</code>.</p>
+      UsePreviousValue?:
+        type: UsePreviousValue
+        description: <p>If true, uses the currently set value for <code>Key</code>, ignoring <code>UpdateProvisioningParameter.Value</code>.</p>
+    description: <p>The parameter key/value pair used to update a ProvisionedProduct object. If <code>UsePreviousValue</code> is set to true, <code>Value</code> is ignored and the value for <code>Key</code> is kept as previously set (current value).</p>
+  UsageInstruction:
+    type: object
+    properties:
+      Type?:
+        type: InstructionType
+        description: <p>The usage instruction type for the value.</p>
+      Value?:
+        type: InstructionValue
+        description: <p>The usage instruction value for this type.</p>
+    description: <p>Additional information provided by the administrator.</p>
+/{DescribeProduct}:
+  uriParameters:
+    DescribeProduct?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves information about a specified product. This operation is functionally identical to <a>DescribeProductView</a> except that it takes as input <code>ProductId</code> instead of <code>ProductViewId</code>.
+  post:
+    body:
+      application/json: DescribeProductInput
+    responses:
+      200:
+        body:
+          application/json: DescribeProductOutput
+      400:
+        description: ResourceNotFoundException
+/{DescribeProductView}:
+  uriParameters:
+    DescribeProductView?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves information about a specified product. This operation is functionally identical to <a>DescribeProduct</a> except that it takes as input <code>ProductViewId</code> instead of <code>ProductId</code>.
+  post:
+    body:
+      application/json: DescribeProductViewInput
+    responses:
+      200:
+        body:
+          application/json: DescribeProductViewOutput
+      400:
+        description: ResourceNotFoundException
+/{DescribeProvisioningParameters}:
+  uriParameters:
+    DescribeProvisioningParameters?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Provides information about parameters required to provision a specified product in a specified manner. Use this operation to obtain the list of <code>ProvisioningArtifactParameters</code> parameters available to call the <a>ProvisionProduct</a> operation for the specified product.
+  post:
+    body:
+      application/json: DescribeProvisioningParametersInput
+    responses:
+      200:
+        body:
+          application/json: DescribeProvisioningParametersOutput
+      400:
+        description: InvalidParametersException
+/{DescribeRecord}:
+  uriParameters:
+    DescribeRecord?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Retrieves a paginated list of the full details of a specific request.
+    Use this operation after calling a request operation (<a>ProvisionProduct</a>,
+    <a>TerminateProvisionedProduct</a>, or <a>UpdateProvisionedProduct</a>). '
+  post:
+    body:
+      application/json: DescribeRecordInput
+    responses:
+      200:
+        body:
+          application/json: DescribeRecordOutput
+      400:
+        description: ResourceNotFoundException
+/{ListLaunchPaths}:
+  uriParameters:
+    ListLaunchPaths?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns a paginated list of all paths to a specified product. A path is how the user has access to a specified product, and is necessary when provisioning a product. A path also determines the constraints put on the product.
+  post:
+    body:
+      application/json: ListLaunchPathsInput
+    responses:
+      200:
+        body:
+          application/json: ListLaunchPathsOutput
+      400:
+        description: InvalidParametersException
+/{ListRecordHistory}:
+  uriParameters:
+    ListRecordHistory?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns a paginated list of all performed requests, in the form of RecordDetails objects that are filtered as specified.
+  post:
+    body:
+      application/json: ListRecordHistoryInput
+    responses:
+      200:
+        body:
+          application/json: ListRecordHistoryOutput
+      400:
+        description: InvalidParametersException
+/{ProvisionProduct}:
+  uriParameters:
+    ProvisionProduct?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Requests a <i>Provision</i> of a specified product. A <i>ProvisionedProduct</i> is a resourced instance for a product. For example, provisioning a CloudFormation-template-backed product results in launching a CloudFormation stack and all the underlying resources that come with it.  You can check the status of this request using the <a>DescribeRecord</a> operation.
+  post:
+    body:
+      application/json: ProvisionProductInput
+    responses:
+      200:
+        body:
+          application/json: ProvisionProductOutput
+      400:
+        description: InvalidParametersException
+/{ScanProvisionedProducts}:
+  uriParameters:
+    ScanProvisionedProducts?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Returns a paginated list of all the ProvisionedProduct objects that
+    are currently available (not terminated). '
+  post:
+    body:
+      application/json: ScanProvisionedProductsInput
+    responses:
+      200:
+        body:
+          application/json: ScanProvisionedProductsOutput
+      400:
+        description: InvalidParametersException
+/{SearchProducts}:
+  uriParameters:
+    SearchProducts?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns a paginated list all of the <code>Products</code> objects to which the caller has access.  The output of this operation can be used as input for other operations, such as <a>DescribeProductView</a>.
+  post:
+    body:
+      application/json: SearchProductsInput
+    responses:
+      200:
+        body:
+          application/json: SearchProductsOutput
+      400:
+        description: InvalidParametersException
+/{TerminateProvisionedProduct}:
+  uriParameters:
+    TerminateProvisionedProduct?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Requests termination of an existing ProvisionedProduct object. If there are <code>Tags</code> associated with the object, they are terminated when the ProvisionedProduct object is terminated.  This operation does not delete any records associated with the ProvisionedProduct object. You can check the status of this request using the <a>DescribeRecord</a> operation.
+  post:
+    body:
+      application/json: TerminateProvisionedProductInput
+    responses:
+      200:
+        body:
+          application/json: TerminateProvisionedProductOutput
+      400:
+        description: ResourceNotFoundException
+/{UpdateProvisionedProduct}:
+  uriParameters:
+    UpdateProvisionedProduct?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Requests updates to the configuration of an existing ProvisionedProduct object. If there are tags associated with the object, they cannot be updated or added with this operation. Depending on the specific updates requested, this operation may update with no interruption, with some interruption, or replace the ProvisionedProduct object entirely.  You can check the status of this request using the <a>DescribeRecord</a> operation.
+  post:
+    body:
+      application/json: UpdateProvisionedProductInput
+    responses:
+      200:
+        body:
+          application/json: UpdateProvisionedProductOutput
+      400:
+        description: InvalidParametersException

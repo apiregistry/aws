@@ -1,0 +1,2653 @@
+#%RAML 1.0
+title: AWS Storage Gateway
+version: '2013-06-30'
+description: '  AWS Storage Gateway is the service that connects an on-premises software
+  appliance with cloud-based storage to provide seamless and secure integration between
+  an organization''s on-premises IT environment and AWS''s storage infrastructure.
+  The service enables you to securely upload data to the AWS cloud for cost effective
+  backup and rapid disaster recovery.  Use the following links to get started using
+  the <i>AWS Storage Gateway Service API Reference</i>: <ul> <li>   <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayHTTPRequestsHeaders.html">AWS
+  Storage Gateway Required Request Headers</a>: Describes the required headers that
+  you must send with every POST request to AWS Storage Gateway. </li> <li>   <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewaySigningRequests.html">Signing
+  Requests</a>: AWS Storage Gateway requires that you authenticate every request you
+  send; this topic describes how sign such a request. </li> <li>   <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/APIErrorResponses.html">Error
+  Responses</a>: Provides reference information about AWS Storage Gateway errors.
+  </li> <li>   <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPIOperations.html">Operations
+  in AWS Storage Gateway</a>: Contains detailed descriptions of all AWS Storage Gateway
+  operations, their request parameters, response elements, possible errors, and examples
+  of requests and responses. </li> <li>   <a href="http://docs.aws.amazon.com/general/latest/gr/index.html?rande.html">AWS
+  Storage Gateway Regions and Endpoints</a>: Provides a list of each of the s and
+  endpoints available for use with AWS Storage Gateway. </li> </ul> <note>  AWS Storage
+  Gateway resource IDs are in uppercase. When you use these resource IDs with the
+  Amazon EC2 API, EC2 expects resource IDs in lowercase. You must change your resource
+  ID to lowercase to use it with the EC2 API. For example, in Storage Gateway the
+  ID for a volume might be <code>vol-1122AABB</code>. When you use this ID with the
+  EC2 API, you must change it to <code>vol-1122aabb</code>. Otherwise, the EC2 API
+  might not behave as expected. </note> <important>  IDs for Storage Gateway volumes
+  and Amazon EBS snapshots created from gateway volumes are changing to a longer format.
+  Starting in December 2016, all new volumes and snapshots will be created with a
+  17-character string. Starting in April 2016, you will be able to use these longer
+  IDs so you can test your systems with the new format. For more information, see
+  <a href="https://aws.amazon.com/ec2/faqs/#longer-ids">Longer EC2 and EBS Resource
+  IDs</a>.   For example, a volume ARN with the longer volume ID format will look
+  like this:   <code>arn:aws:storagegateway:us-west-2:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABBCCDDEEFFG</code>.  A
+  snapshot ID with the longer ID format will look like this: <code>snap-78e226633445566ee</code>.  For
+  more information, see <a href="https://forums.aws.amazon.com/ann.jspa?annID=3557">Announcement:
+  Heads-up – Longer AWS Storage Gateway volume and snapshot IDs coming in 2016</a>.
+  </important>'
+mediaType:
+- application/json
+types:
+  ActivationKey:
+    type: string
+    minLength: 1
+    maxLength: 50
+  BandwidthDownloadRateLimit:
+    type: integer
+    format: long
+    minimum: 102400
+  BandwidthType:
+    type: string
+    minLength: 3
+    maxLength: 25
+  BandwidthUploadRateLimit:
+    type: integer
+    format: long
+    minimum: 51200
+  CachediSCSIVolumes:
+    type: array
+    items:
+      type: CachediSCSIVolume
+  ChapCredentials:
+    type: array
+    items:
+      type: ChapInfo
+  ChapSecret:
+    type: string
+    minLength: 1
+    maxLength: 100
+  ClientToken:
+    type: string
+    minLength: 5
+    maxLength: 100
+  DayOfWeek:
+    type: integer
+    format: int
+    minimum: 0
+    maximum: 6
+  Description:
+    type: string
+    minLength: 1
+    maxLength: 255
+  DeviceType:
+    type: string
+    minLength: 2
+    maxLength: 50
+  DiskAllocationType:
+    type: string
+    minLength: 3
+    maxLength: 100
+  DiskId:
+    type: string
+    minLength: 1
+    maxLength: 300
+  DiskIds:
+    type: array
+    items:
+      type: DiskId
+  Disks:
+    type: array
+    items:
+      type: Disk
+  DoubleObject:
+    type: number
+    format: double
+  GatewayARN:
+    type: string
+    minLength: 50
+    maxLength: 500
+    description: <p>The Amazon Resource Name (ARN) of the gateway. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+  GatewayId:
+    type: string
+    minLength: 12
+    maxLength: 30
+  GatewayName:
+    type: string
+    pattern: ^[ -\.0-\[\]-~]*[!-\.0-\[\]-~][ -\.0-\[\]-~]*$
+    minLength: 2
+    maxLength: 255
+    description: <p>The name you configured for your gateway.</p>
+  GatewayNetworkInterfaces:
+    type: array
+    items:
+      type: NetworkInterface
+  GatewayOperationalState:
+    type: string
+    minLength: 2
+    maxLength: 25
+  GatewayState:
+    type: string
+    minLength: 2
+    maxLength: 25
+  GatewayTimezone:
+    type: string
+    minLength: 3
+    maxLength: 10
+  GatewayType:
+    type: string
+    minLength: 2
+    maxLength: 20
+  Gateways:
+    type: array
+    items:
+      type: GatewayInfo
+  HourOfDay:
+    type: integer
+    format: int
+    minimum: 0
+    maximum: 23
+  Initiator:
+    type: string
+    minLength: 1
+    maxLength: 50
+  Initiators:
+    type: array
+    items:
+      type: Initiator
+  IqnName:
+    type: string
+    pattern: '[0-9a-z:.-]+'
+    minLength: 1
+    maxLength: 255
+  LastSoftwareUpdate:
+    type: string
+    minLength: 1
+    maxLength: 25
+  LocalConsolePassword:
+    type: string
+    pattern: ^[ -~]+$
+    minLength: 6
+    maxLength: 512
+  Marker:
+    type: string
+    minLength: 1
+    maxLength: 1000
+  MediumChangerType:
+    type: string
+    minLength: 2
+    maxLength: 50
+  MinuteOfHour:
+    type: integer
+    format: int
+    minimum: 0
+    maximum: 59
+  NetworkInterfaceId:
+    type: string
+    pattern: \A(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}\z
+  NextUpdateAvailabilityDate:
+    type: string
+    minLength: 1
+    maxLength: 25
+  NumTapesToCreate:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 10
+  PositiveIntObject:
+    type: integer
+    format: int
+    minimum: 1
+  RecurrenceInHours:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 24
+  RegionId:
+    type: string
+    minLength: 1
+    maxLength: 25
+  ResourceARN:
+    type: string
+    minLength: 50
+    maxLength: 500
+  SnapshotDescription:
+    type: string
+    minLength: 1
+    maxLength: 255
+  SnapshotId:
+    type: string
+    pattern: \Asnap-([0-9A-Fa-f]{8}|[0-9A-Fa-f]{17})\z
+  StorediSCSIVolumes:
+    type: array
+    items:
+      type: StorediSCSIVolume
+  TagKey:
+    type: string
+    pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-%@]*)$
+    minLength: 1
+    maxLength: 128
+  TagKeys:
+    type: array
+    items:
+      type: TagKey
+  TagValue:
+    type: string
+    maxLength: 256
+  Tags:
+    type: array
+    items:
+      type: Tag
+  TapeARN:
+    type: string
+    minLength: 50
+    maxLength: 500
+  TapeARNs:
+    type: array
+    items:
+      type: TapeARN
+    description: <p>The Amazon Resource Name (ARN) of each of the tapes you want to list. If you don't specify a tape ARN, the response lists all tapes in both your VTL and VTS.</p>
+  TapeArchiveStatus:
+    type: string
+  TapeArchives:
+    type: array
+    items:
+      type: TapeArchive
+  TapeBarcode:
+    type: string
+    pattern: ^[A-Z0-9]*$
+    minLength: 7
+    maxLength: 16
+  TapeBarcodePrefix:
+    type: string
+    pattern: ^[A-Z]*$
+    minLength: 1
+    maxLength: 4
+  TapeDriveType:
+    type: string
+    minLength: 2
+    maxLength: 50
+  TapeInfos:
+    type: array
+    items:
+      type: TapeInfo
+    description: <p>An array of <a>TapeInfo</a> objects, where each object describes an a single tape. If there not tapes in the tape library or VTS, then the <code>TapeInfos</code> is an empty array.</p>
+  TapeRecoveryPointInfos:
+    type: array
+    items:
+      type: TapeRecoveryPointInfo
+  TapeRecoveryPointStatus:
+    type: string
+  TapeSize:
+    type: integer
+    format: long
+  TapeStatus:
+    type: string
+  Tapes:
+    type: array
+    items:
+      type: Tape
+  TargetARN:
+    type: string
+    minLength: 50
+    maxLength: 800
+  TargetName:
+    type: string
+    pattern: ^[-\.;a-z0-9]+$
+    minLength: 1
+    maxLength: 200
+  Time:
+    type: datetime
+  VTLDeviceARN:
+    type: string
+    minLength: 50
+    maxLength: 500
+  VTLDeviceARNs:
+    type: array
+    items:
+      type: VTLDeviceARN
+  VTLDeviceProductIdentifier:
+    type: string
+  VTLDeviceType:
+    type: string
+  VTLDeviceVendor:
+    type: string
+  VTLDevices:
+    type: array
+    items:
+      type: VTLDevice
+  VolumeARN:
+    type: string
+    minLength: 50
+    maxLength: 500
+  VolumeARNs:
+    type: array
+    items:
+      type: VolumeARN
+  VolumeId:
+    type: string
+    minLength: 12
+    maxLength: 30
+  VolumeInfos:
+    type: array
+    items:
+      type: VolumeInfo
+  VolumeRecoveryPointInfos:
+    type: array
+    items:
+      type: VolumeRecoveryPointInfo
+  VolumeStatus:
+    type: string
+    minLength: 3
+    maxLength: 50
+  VolumeType:
+    type: string
+    minLength: 3
+    maxLength: 100
+  double:
+    type: number
+    format: double
+  long:
+    type: integer
+    format: long
+  ActivateGatewayInput:
+    type: object
+    properties:
+      ActivationKey:
+        type: ActivationKey
+        description: <p>Your gateway activation key. You can obtain the activation key by sending an HTTP GET request with redirects enabled to the gateway IP address (port 80). The redirect URL returned in the response provides you the activation key for your gateway in the query string parameter <code>activationKey</code>. It may also include other activation-related parameters, however, these are merely defaults -- the arguments you pass to the <code>ActivateGateway</code> API call determine the actual configuration of your gateway.</p>
+      GatewayName:
+        type: GatewayName
+        description: <p>The name you configured for your gateway.</p>
+      GatewayTimezone:
+        type: GatewayTimezone
+        description: <p>A value that indicates the time zone you want to set for the gateway. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.</p>
+      GatewayRegion:
+        type: RegionId
+        description: '<p>A value that indicates the region where you want to store
+          the snapshot backups. The gateway region specified must be the same region
+          as the region in your <code>Host</code> header in the request. For more
+          information about available regions and endpoints for AWS Storage Gateway,
+          see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions
+          and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid
+          Values: "us-east-1", "us-west-1", "us-west-2", "eu-west-1", "eu-central-1",
+          "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
+          "sa-east-1"</p>'
+      GatewayType?:
+        type: GatewayType
+        description: <p>A value that defines the type of gateway to activate. The type specified is critical to all later functions of the gateway and cannot be changed after activation. The default value is <code>STORED</code>. </p>
+      TapeDriveType?:
+        type: TapeDriveType
+        description: '<p>The value that indicates the type of tape drive to use for
+          gateway-VTL. This field is optional.</p> <p> Valid Values: "IBM-ULT3580-TD5"
+          </p>'
+      MediumChangerType?:
+        type: MediumChangerType
+        description: '<p>The value that indicates the type of medium changer to use
+          for gateway-VTL. This field is optional.</p> <p> Valid Values: "STK-L700",
+          "AWS-Gateway-VTL"</p>'
+    description: <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>ActivateGatewayInput$ActivationKey</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayName</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayRegion</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayTimezone</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayType</a> </p> </li> <li> <p> <a>ActivateGatewayInput$TapeDriveType</a> </p> </li> <li> <p> <a>ActivateGatewayInput$MediumChangerType</a> </p> </li> </ul>
+  ActivateGatewayOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+    description: <p>AWS Storage Gateway returns the Amazon Resource Name (ARN) of the activated gateway. It is a string made of information such as your account, gateway name, and region. This ARN is used to reference the gateway in other API operations as well as resource-based authorization.</p> <note><p>For gateways activated prior to September 02, 2015 the gateway ARN contains the gateway name rather than the gateway id. Changing the name of the gateway has no effect on the gateway ARN.</p> </note>
+  AddCacheInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      DiskIds:
+        type: DiskIds
+  AddCacheOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+  AddTagsToResourceInput:
+    type: object
+    properties:
+      ResourceARN:
+        type: ResourceARN
+        description: <p>The Amazon Resource Name (ARN) of the resource you want to add tags to.</p>
+      Tags:
+        type: Tags
+        description: '<p>The key-value pair that represents the tag you want to add
+          to the resource. The value can be an empty string.</p> <note> <p>Valid characters
+          for key and value are letters, spaces, and numbers representable in UTF-8
+          format, and the following special characters: + - = . _ : / @.</p> </note>'
+    description: <p>AddTagsToResourceInput</p>
+  AddTagsToResourceOutput:
+    type: object
+    properties:
+      ResourceARN?:
+        type: ResourceARN
+        description: <p>The Amazon Resource Name (ARN) of the resource you want to add tags to.</p>
+    description: <p>AddTagsToResourceOutput</p>
+  AddUploadBufferInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      DiskIds:
+        type: DiskIds
+  AddUploadBufferOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+  AddWorkingStorageInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      DiskIds:
+        type: DiskIds
+        description: <p>An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300. You can get the disk IDs from the <a>ListLocalDisks</a> API.</p>
+    description: <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>AddWorkingStorageInput$DiskIds</a> </p> </li> </ul>
+  AddWorkingStorageOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway for which working storage was configured.</p>
+  CachediSCSIVolume:
+    type: object
+    properties:
+      VolumeARN?:
+        type: VolumeARN
+      VolumeId?:
+        type: VolumeId
+      VolumeType?:
+        type: VolumeType
+      VolumeStatus?:
+        type: VolumeStatus
+      VolumeSizeInBytes?:
+        type: long
+      VolumeProgress?:
+        type: DoubleObject
+      SourceSnapshotId?:
+        type: SnapshotId
+      VolumeiSCSIAttributes?:
+        type: VolumeiSCSIAttributes
+  CancelArchivalInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      TapeARN:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the virtual tape you want to cancel archiving for.</p>
+    description: <p>CancelArchivalInput</p>
+  CancelArchivalOutput:
+    type: object
+    properties:
+      TapeARN?:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the virtual tape for which archiving was canceled.</p>
+    description: <p>CancelArchivalOutput</p>
+  CancelRetrievalInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      TapeARN:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the virtual tape you want to cancel retrieval for.</p>
+    description: <p>CancelRetrievalInput</p>
+  CancelRetrievalOutput:
+    type: object
+    properties:
+      TapeARN?:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the virtual tape for which retrieval was canceled.</p>
+    description: <p>CancelRetrievalOutput</p>
+  ChapInfo:
+    type: object
+    properties:
+      TargetARN?:
+        type: TargetARN
+        description: '<p>The Amazon Resource Name (ARN) of the volume.</p> <p> Valid
+          Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>'
+      SecretToAuthenticateInitiator?:
+        type: ChapSecret
+        description: <p>The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.</p>
+      InitiatorName?:
+        type: IqnName
+        description: <p>The iSCSI initiator that connects to the target.</p>
+      SecretToAuthenticateTarget?:
+        type: ChapSecret
+        description: <p>The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).</p>
+    description: <p>Describes Challenge-Handshake Authentication Protocol (CHAP) information that supports authentication between your gateway and iSCSI initiators.</p>
+  CreateCachediSCSIVolumeInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      VolumeSizeInBytes:
+        type: long
+      SnapshotId?:
+        type: SnapshotId
+      TargetName:
+        type: TargetName
+      NetworkInterfaceId:
+        type: NetworkInterfaceId
+      ClientToken:
+        type: ClientToken
+  CreateCachediSCSIVolumeOutput:
+    type: object
+    properties:
+      VolumeARN?:
+        type: VolumeARN
+      TargetARN?:
+        type: TargetARN
+  CreateSnapshotFromVolumeRecoveryPointInput:
+    type: object
+    properties:
+      VolumeARN:
+        type: VolumeARN
+      SnapshotDescription:
+        type: SnapshotDescription
+  CreateSnapshotFromVolumeRecoveryPointOutput:
+    type: object
+    properties:
+      SnapshotId?:
+        type: SnapshotId
+      VolumeARN?:
+        type: VolumeARN
+      VolumeRecoveryPointTime?:
+        type: string
+  CreateSnapshotInput:
+    type: object
+    properties:
+      VolumeARN:
+        type: VolumeARN
+        description: <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
+      SnapshotDescription:
+        type: SnapshotDescription
+        description: <p>Textual description of the snapshot that appears in the Amazon EC2 console, Elastic Block Store snapshots panel in the <b>Description</b> field, and in the AWS Storage Gateway snapshot <b>Details</b> pane, <b>Description</b> field</p>
+    description: <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>CreateSnapshotInput$SnapshotDescription</a> </p> </li> <li> <p> <a>CreateSnapshotInput$VolumeARN</a> </p> </li> </ul>
+  CreateSnapshotOutput:
+    type: object
+    properties:
+      VolumeARN?:
+        type: VolumeARN
+        description: <p>The Amazon Resource Name (ARN) of the volume of which the snapshot was taken.</p>
+      SnapshotId?:
+        type: SnapshotId
+        description: <p>The snapshot ID that is used to refer to the snapshot in future operations such as describing snapshots (Amazon Elastic Compute Cloud API <code>DescribeSnapshots</code>) or creating a volume from a snapshot (<a>CreateStorediSCSIVolume</a>).</p>
+    description: <p>A JSON object containing the following fields:</p>
+  CreateStorediSCSIVolumeInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      DiskId:
+        type: DiskId
+        description: <p>The unique identifier for the gateway local disk that is configured as a stored volume. Use <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a> to list disk IDs for a gateway.</p>
+      SnapshotId?:
+        type: SnapshotId
+        description: <p>The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the new stored volume. Specify this field if you want to create the iSCSI storage volume from a snapshot otherwise do not include this field. To list snapshots for your account use <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a> in the <i>Amazon Elastic Compute Cloud API Reference</i>.</p>
+      PreserveExistingData:
+        type: boolean
+        description: '<p>Specify this field as true if you want to preserve the data
+          on the local disk. Otherwise, specifying this field as false creates an
+          empty volume.</p> <p> Valid Values: true, false</p>'
+      TargetName:
+        type: TargetName
+        description: <p>The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying <code>TargetName</code> as <i>myvolume</i> results in the target ARN of arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.</p>
+      NetworkInterfaceId:
+        type: NetworkInterfaceId
+        description: '<p>The network interface of the gateway on which to expose the
+          iSCSI target. Only IPv4 addresses are accepted. Use <a>DescribeGatewayInformation</a>
+          to get a list of the network interfaces available on a gateway.</p> <p>
+          Valid Values: A valid IP address.</p>'
+    description: <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>CreateStorediSCSIVolumeInput$DiskId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$NetworkInterfaceId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$PreserveExistingData</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$SnapshotId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$TargetName</a> </p> </li> </ul>
+  CreateStorediSCSIVolumeOutput:
+    type: object
+    properties:
+      VolumeARN?:
+        type: VolumeARN
+        description: <p>The Amazon Resource Name (ARN) of the configured volume.</p>
+      VolumeSizeInBytes?:
+        type: long
+        description: <p>The size of the volume in bytes.</p>
+      TargetARN?:
+        type: TargetARN
+        description: <p>he Amazon Resource Name (ARN) of the volume target that includes the iSCSI name that initiators can use to connect to the target.</p>
+    description: <p>A JSON object containing the following fields:</p>
+  CreateTapeWithBarcodeInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+        description: <p>The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tape with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+      TapeSizeInBytes:
+        type: TapeSize
+        description: <p>The size, in bytes, of the virtual tape that you want to create.</p> <note><p>The size must be aligned by gigabyte (1024*1024*1024 byte).</p> </note>
+      TapeBarcode:
+        type: TapeBarcode
+        description: <p>The barcode that you want to assign to the tape.</p>
+    description: <p>CreateTapeWithBarcodeInput</p>
+  CreateTapeWithBarcodeOutput:
+    type: object
+    properties:
+      TapeARN?:
+        type: TapeARN
+        description: <p>A unique Amazon Resource Name (ARN) that represents the virtual tape that was created.</p>
+    description: <p>CreateTapeOutput</p>
+  CreateTapesInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+        description: <p>The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+      TapeSizeInBytes:
+        type: TapeSize
+        description: <p>The size, in bytes, of the virtual tapes that you want to create.</p> <note><p>The size must be aligned by gigabyte (1024*1024*1024 byte).</p> </note>
+      ClientToken:
+        type: ClientToken
+        description: <p>A unique identifier that you use to retry a request. If you retry a request, use the same <code>ClientToken</code> you specified in the initial request.</p> <note><p>Using the same <code>ClientToken</code> prevents creating the tape multiple times.</p> </note>
+      NumTapesToCreate:
+        type: NumTapesToCreate
+        description: <p>The number of virtual tapes that you want to create.</p>
+      TapeBarcodePrefix:
+        type: TapeBarcodePrefix
+        description: <p>A prefix that you append to the barcode of the virtual tape you are creating. This prefix makes the barcode unique.</p> <note><p>The prefix must be 1 to 4 characters in length and must be one of the uppercase letters from A to Z.</p> </note>
+    description: <p>CreateTapesInput</p>
+  CreateTapesOutput:
+    type: object
+    properties:
+      TapeARNs?:
+        type: TapeARNs
+        description: <p>A list of unique Amazon Resource Names (ARNs) that represents the virtual tapes that were created.</p>
+    description: <p>CreateTapeOutput</p>
+  DeleteBandwidthRateLimitInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      BandwidthType:
+        type: BandwidthType
+  DeleteBandwidthRateLimitOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway whose bandwidth rate information was deleted.</p>
+  DeleteChapCredentialsInput:
+    type: object
+    properties:
+      TargetARN:
+        type: TargetARN
+        description: <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN for specified VolumeARN.</p>
+      InitiatorName:
+        type: IqnName
+        description: <p>The iSCSI initiator that connects to the target.</p>
+    description: <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>DeleteChapCredentialsInput$InitiatorName</a> </p> </li> <li> <p> <a>DeleteChapCredentialsInput$TargetARN</a> </p> </li> </ul>
+  DeleteChapCredentialsOutput:
+    type: object
+    properties:
+      TargetARN?:
+        type: TargetARN
+        description: <p>The Amazon Resource Name (ARN) of the target.</p>
+      InitiatorName?:
+        type: IqnName
+        description: <p>The iSCSI initiator that connects to the target.</p>
+    description: <p>A JSON object containing the following fields:</p>
+  DeleteGatewayInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+    description: <p>A JSON object containing the id of the gateway to delete.</p>
+  DeleteGatewayOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+    description: <p>A JSON object containing the id of the deleted gateway.</p>
+  DeleteSnapshotScheduleInput:
+    type: object
+    properties:
+      VolumeARN:
+        type: VolumeARN
+  DeleteSnapshotScheduleOutput:
+    type: object
+    properties:
+      VolumeARN?:
+        type: VolumeARN
+  DeleteTapeArchiveInput:
+    type: object
+    properties:
+      TapeARN:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the virtual tape to delete from the virtual tape shelf (VTS).</p>
+    description: <p>DeleteTapeArchiveInput</p>
+  DeleteTapeArchiveOutput:
+    type: object
+    properties:
+      TapeARN?:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the virtual tape that was deleted from the virtual tape shelf (VTS).</p>
+    description: <p>DeleteTapeArchiveOutput</p>
+  DeleteTapeInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+        description: <p>The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+      TapeARN:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the virtual tape to delete.</p>
+    description: <p>DeleteTapeInput</p>
+  DeleteTapeOutput:
+    type: object
+    properties:
+      TapeARN?:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the deleted virtual tape.</p>
+    description: <p>DeleteTapeOutput</p>
+  DeleteVolumeInput:
+    type: object
+    properties:
+      VolumeARN:
+        type: VolumeARN
+        description: <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
+    description: <p>A JSON object containing the <a>DeleteVolumeInput$VolumeARN</a> to delete.</p>
+  DeleteVolumeOutput:
+    type: object
+    properties:
+      VolumeARN?:
+        type: VolumeARN
+        description: <p>The Amazon Resource Name (ARN) of the storage volume that was deleted. It is the same ARN you provided in the request.</p>
+    description: <p>A JSON object containing the of the storage volume that was deleted</p>
+  DescribeBandwidthRateLimitInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway.</p>
+  DescribeBandwidthRateLimitOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      AverageUploadRateLimitInBitsPerSec?:
+        type: BandwidthUploadRateLimit
+        description: <p>The average upload bandwidth rate limit in bits per second. This field does not appear in the response if the upload rate limit is not set.</p>
+      AverageDownloadRateLimitInBitsPerSec?:
+        type: BandwidthDownloadRateLimit
+        description: <p>The average download bandwidth rate limit in bits per second. This field does not appear in the response if the download rate limit is not set.</p>
+    description: <p>A JSON object containing the following fields:</p>
+  DescribeCacheInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+  DescribeCacheOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      DiskIds?:
+        type: DiskIds
+      CacheAllocatedInBytes?:
+        type: long
+      CacheUsedPercentage?:
+        type: double
+      CacheDirtyPercentage?:
+        type: double
+      CacheHitPercentage?:
+        type: double
+      CacheMissPercentage?:
+        type: double
+  DescribeCachediSCSIVolumesInput:
+    type: object
+    properties:
+      VolumeARNs:
+        type: VolumeARNs
+  DescribeCachediSCSIVolumesOutput:
+    type: object
+    properties:
+      CachediSCSIVolumes?:
+        type: CachediSCSIVolumes
+        description: <p>An array of objects where each object contains metadata about one cached volume.</p>
+    description: <p>A JSON object containing the following fields:</p>
+  DescribeChapCredentialsInput:
+    type: object
+    properties:
+      TargetARN:
+        type: TargetARN
+        description: <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN for specified VolumeARN.</p>
+    description: <p>A JSON object containing the Amazon Resource Name (ARN) of the iSCSI volume target.</p>
+  DescribeChapCredentialsOutput:
+    type: object
+    properties:
+      ChapCredentials?:
+        type: ChapCredentials
+        description: '<p>An array of <a>ChapInfo</a> objects that represent CHAP credentials.
+          Each object in the array contains CHAP credential information for one target-initiator
+          pair. If no CHAP credentials are set, an empty array is returned. CHAP credential
+          information is provided in a JSON object with the following fields:</p>
+          <ul> <li> <p> <b>InitiatorName</b>: The iSCSI initiator that connects to
+          the target.</p> </li> <li> <p> <b>SecretToAuthenticateInitiator</b>: The
+          secret key that the initiator (for example, the Windows client) must provide
+          to participate in mutual CHAP with the target.</p> </li> <li> <p> <b>SecretToAuthenticateTarget</b>:
+          The secret key that the target must provide to participate in mutual CHAP
+          with the initiator (e.g. Windows client).</p> </li> <li> <p> <b>TargetARN</b>:
+          The Amazon Resource Name (ARN) of the storage volume.</p> </li> </ul>'
+    description: <p>A JSON object containing a .</p>
+  DescribeGatewayInformationInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+    description: <p>A JSON object containing the id of the gateway.</p>
+  DescribeGatewayInformationOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      GatewayId?:
+        type: GatewayId
+        description: <p>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</p>
+      GatewayName?:
+        type: string
+        description: <p>The name you configured for your gateway.</p>
+      GatewayTimezone?:
+        type: GatewayTimezone
+        description: <p>A value that indicates the time zone configured for the gateway.</p>
+      GatewayState?:
+        type: GatewayState
+        description: <p>A value that indicates the operating state of the gateway.</p>
+      GatewayNetworkInterfaces?:
+        type: GatewayNetworkInterfaces
+        description: <p>A <a>NetworkInterface</a> array that contains descriptions of the gateway network interfaces.</p>
+      GatewayType?:
+        type: GatewayType
+        description: <p>The type of the gateway.</p>
+      NextUpdateAvailabilityDate?:
+        type: NextUpdateAvailabilityDate
+        description: <p>The date on which an update to the gateway is available. This date is in the time zone of the gateway. If the gateway is not available for an update this field is not returned in the response.</p>
+      LastSoftwareUpdate?:
+        type: LastSoftwareUpdate
+        description: <p>The date on which the last software update was applied to the gateway. If the gateway has never been updated, this field does not return a value in the response.</p>
+    description: <p>A JSON object containing the following fields:</p>
+  DescribeMaintenanceStartTimeInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway.</p>
+  DescribeMaintenanceStartTimeOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      HourOfDay?:
+        type: HourOfDay
+      MinuteOfHour?:
+        type: MinuteOfHour
+      DayOfWeek?:
+        type: DayOfWeek
+      Timezone?:
+        type: GatewayTimezone
+  DescribeSnapshotScheduleInput:
+    type: object
+    properties:
+      VolumeARN:
+        type: VolumeARN
+        description: <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
+    description: <p>A JSON object containing the <a>DescribeSnapshotScheduleInput$VolumeARN</a> of the volume.</p>
+  DescribeSnapshotScheduleOutput:
+    type: object
+    properties:
+      VolumeARN?:
+        type: VolumeARN
+      StartAt?:
+        type: HourOfDay
+      RecurrenceInHours?:
+        type: RecurrenceInHours
+      Description?:
+        type: Description
+      Timezone?:
+        type: GatewayTimezone
+  DescribeStorediSCSIVolumesInput:
+    type: object
+    properties:
+      VolumeARNs:
+        type: VolumeARNs
+        description: <p>An array of strings where each string represents the Amazon Resource Name (ARN) of a stored volume. All of the specified stored volumes must from the same gateway. Use <a>ListVolumes</a> to get volume ARNs for a gateway.</p>
+    description: <p>A JSON object containing a list of <a>DescribeStorediSCSIVolumesInput$VolumeARNs</a>.</p>
+  DescribeStorediSCSIVolumesOutput:
+    type: object
+    properties:
+      StorediSCSIVolumes?:
+        type: StorediSCSIVolumes
+  DescribeTapeArchivesInput:
+    type: object
+    properties:
+      TapeARNs?:
+        type: TapeARNs
+        description: <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe.</p>
+      Marker?:
+        type: Marker
+        description: <p>An opaque string that indicates the position at which to begin describing virtual tapes.</p>
+      Limit?:
+        type: PositiveIntObject
+        description: <p>Specifies that the number of virtual tapes descried be limited to the specified number.</p>
+    description: <p>DescribeTapeArchivesInput</p>
+  DescribeTapeArchivesOutput:
+    type: object
+    properties:
+      TapeArchives?:
+        type: TapeArchives
+        description: <p>An array of virtual tape objects in the virtual tape shelf (VTS). The description includes of the Amazon Resource Name(ARN) of the virtual tapes. The information returned includes the Amazon Resource Names (ARNs) of the tapes, size of the tapes, status of the tapes, progress of the description and tape barcode.</p>
+      Marker?:
+        type: Marker
+        description: <p>An opaque string that indicates the position at which the virtual tapes that were fetched for description ended. Use this marker in your next request to fetch the next set of virtual tapes in the virtual tape shelf (VTS). If there are no more virtual tapes to describe, this field does not appear in the response.</p>
+    description: <p>DescribeTapeArchivesOutput</p>
+  DescribeTapeRecoveryPointsInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      Marker?:
+        type: Marker
+        description: <p>An opaque string that indicates the position at which to begin describing the virtual tape recovery points.</p>
+      Limit?:
+        type: PositiveIntObject
+        description: <p>Specifies that the number of virtual tape recovery points that are described be limited to the specified number.</p>
+    description: <p>DescribeTapeRecoveryPointsInput</p>
+  DescribeTapeRecoveryPointsOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      TapeRecoveryPointInfos?:
+        type: TapeRecoveryPointInfos
+        description: <p>An array of TapeRecoveryPointInfos that are available for the specified gateway.</p>
+      Marker?:
+        type: Marker
+        description: <p>An opaque string that indicates the position at which the virtual tape recovery points that were listed for description ended.</p> <p>Use this marker in your next request to list the next set of virtual tape recovery points in the list. If there are no more recovery points to describe, this field does not appear in the response.</p>
+    description: <p>DescribeTapeRecoveryPointsOutput</p>
+  DescribeTapesInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      TapeARNs?:
+        type: TapeARNs
+        description: <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe. If this parameter is not specified, AWS Storage Gateway returns a description of all virtual tapes associated with the specified gateway.</p>
+      Marker?:
+        type: Marker
+        description: <p>A marker value, obtained in a previous call to <code>DescribeTapes</code>. This marker indicates which page of results to retrieve. </p> <p>If not specified, the first page of results is retrieved.</p>
+      Limit?:
+        type: PositiveIntObject
+        description: <p>Specifies that the number of virtual tapes described be limited to the specified number.</p> <note><p>Amazon Web Services may impose its own limit, if this field is not set.</p> </note>
+    description: <p>DescribeTapesInput</p>
+  DescribeTapesOutput:
+    type: object
+    properties:
+      Tapes?:
+        type: Tapes
+        description: <p>An array of virtual tape descriptions.</p>
+      Marker?:
+        type: Marker
+        description: <p>An opaque string which can be used as part of a subsequent DescribeTapes call to retrieve the next page of results.</p> <p>If a response does not contain a marker, then there are no more results to be retrieved.</p>
+    description: <p>DescribeTapesOutput</p>
+  DescribeUploadBufferInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+  DescribeUploadBufferOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      DiskIds?:
+        type: DiskIds
+      UploadBufferUsedInBytes?:
+        type: long
+      UploadBufferAllocatedInBytes?:
+        type: long
+  DescribeVTLDevicesInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      VTLDeviceARNs?:
+        type: VTLDeviceARNs
+        description: <p>An array of strings, where each string represents the Amazon Resource Name (ARN) of a VTL device.</p> <note><p>All of the specified VTL devices must be from the same gateway. If no VTL devices are specified, the result will contain all devices on the specified gateway.</p> </note>
+      Marker?:
+        type: Marker
+        description: <p>An opaque string that indicates the position at which to begin describing the VTL devices.</p>
+      Limit?:
+        type: PositiveIntObject
+        description: <p>Specifies that the number of VTL devices described be limited to the specified number.</p>
+    description: <p>DescribeVTLDevicesInput</p>
+  DescribeVTLDevicesOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      VTLDevices?:
+        type: VTLDevices
+        description: <p>An array of VTL device objects composed of the Amazon Resource Name(ARN) of the VTL devices.</p>
+      Marker?:
+        type: Marker
+        description: <p>An opaque string that indicates the position at which the VTL devices that were fetched for description ended. Use the marker in your next request to fetch the next set of VTL devices in the list. If there are no more VTL devices to describe, this field does not appear in the response.</p>
+    description: <p>DescribeVTLDevicesOutput</p>
+  DescribeWorkingStorageInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway.</p>
+  DescribeWorkingStorageOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      DiskIds?:
+        type: DiskIds
+        description: <p>An array of the gateway's local disk IDs that are configured as working storage. Each local disk ID is specified as a string (minimum length of 1 and maximum length of 300). If no local disks are configured as working storage, then the DiskIds array is empty.</p>
+      WorkingStorageUsedInBytes?:
+        type: long
+        description: <p>The total working storage in bytes in use by the gateway. If no working storage is configured for the gateway, this field returns 0.</p>
+      WorkingStorageAllocatedInBytes?:
+        type: long
+        description: <p>The total working storage in bytes allocated for the gateway. If no working storage is configured for the gateway, this field returns 0.</p>
+    description: <p>A JSON object containing the following fields:</p>
+  DeviceiSCSIAttributes:
+    type: object
+    properties:
+      TargetARN?:
+        type: TargetARN
+        description: <p>Specifies the unique Amazon Resource Name(ARN) that encodes the iSCSI qualified name(iqn) of a tape drive or media changer target.</p>
+      NetworkInterfaceId?:
+        type: NetworkInterfaceId
+        description: <p>The network interface identifier of the VTL device.</p>
+      NetworkInterfacePort?:
+        type: integer
+        description: <p>The port used to communicate with iSCSI VTL device targets.</p>
+      ChapEnabled?:
+        type: boolean
+        description: <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
+    description: <p>Lists iSCSI information about a VTL device.</p>
+  DisableGatewayInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+    description: <p>DisableGatewayInput</p>
+  DisableGatewayOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+        description: <p>The unique Amazon Resource Name of the disabled gateway.</p>
+    description: <p>DisableGatewayOutput</p>
+  Disk:
+    type: object
+    properties:
+      DiskId?:
+        type: DiskId
+      DiskPath?:
+        type: string
+      DiskNode?:
+        type: string
+      DiskStatus?:
+        type: string
+      DiskSizeInBytes?:
+        type: long
+      DiskAllocationType?:
+        type: DiskAllocationType
+      DiskAllocationResource?:
+        type: string
+  GatewayInfo:
+    type: object
+    properties:
+      GatewayId?:
+        type: GatewayId
+        description: <p>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</p>
+      GatewayARN?:
+        type: GatewayARN
+        description: <p>The Amazon Resource Name (ARN) of the gateway. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+      GatewayType?:
+        type: GatewayType
+        description: <p>The type of the gateway.</p>
+      GatewayOperationalState?:
+        type: GatewayOperationalState
+        description: '<p>The state of the gateway.</p> <p>Valid Values: DISABLED or
+          ACTIVE</p>'
+      GatewayName?:
+        type: string
+        description: <p>The name of the gateway.</p>
+    description: <p>Describes a gateway object.</p>
+  ListGatewaysInput:
+    type: object
+    properties:
+      Marker?:
+        type: Marker
+        description: <p>An opaque string that indicates the position at which to begin the returned list of gateways.</p>
+      Limit?:
+        type: PositiveIntObject
+        description: <p>Specifies that the list of gateways returned be limited to the specified number of items.</p>
+    description: <p>A JSON object containing zero or more of the following fields:</p> <ul> <li> <p> <a>ListGatewaysInput$Limit</a> </p> </li> <li> <p> <a>ListGatewaysInput$Marker</a> </p> </li> </ul>
+  ListGatewaysOutput:
+    type: object
+    properties:
+      Gateways?:
+        type: Gateways
+      Marker?:
+        type: Marker
+  ListLocalDisksInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway.</p>
+  ListLocalDisksOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      Disks?:
+        type: Disks
+  ListTagsForResourceInput:
+    type: object
+    properties:
+      ResourceARN:
+        type: ResourceARN
+        description: <p>The Amazon Resource Name (ARN) of the resource for which you want to list tags.</p>
+      Marker?:
+        type: Marker
+        description: <p>An opaque string that indicates the position at which to begin returning the list of tags.</p>
+      Limit?:
+        type: PositiveIntObject
+        description: <p>Specifies that the list of tags returned be limited to the specified number of items.</p>
+    description: <p>ListTagsForResourceInput</p>
+  ListTagsForResourceOutput:
+    type: object
+    properties:
+      ResourceARN?:
+        type: ResourceARN
+        description: <p>he Amazon Resource Name (ARN) of the resource for which you want to list tags.</p>
+      Marker?:
+        type: Marker
+        description: <p>An opaque string that indicates the position at which to stop returning the list of tags.</p>
+      Tags?:
+        type: Tags
+        description: <p>An array that contains the tags for the specified resource.</p>
+    description: <p>ListTagsForResourceOutput</p>
+  ListTapesInput:
+    type: object
+    properties:
+      TapeARNs?:
+        type: TapeARNs
+      Marker?:
+        type: Marker
+        description: <p>A string that indicates the position at which to begin the returned list of tapes.</p>
+      Limit?:
+        type: PositiveIntObject
+        description: <p>An optional number limit for the tapes in the list returned by this call.</p>
+    description: <p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListTapesInput$Limit</a> </p> </li> <li> <p> <a>ListTapesInput$Marker</a> </p> </li> <li> <p> <a>ListTapesInput$TapeARNs</a> </p> </li> </ul>
+  ListTapesOutput:
+    type: object
+    properties:
+      TapeInfos?:
+        type: TapeInfos
+      Marker?:
+        type: Marker
+        description: <p>A string that indicates the position at which to begin returning the next list of tapes. Use the marker in your next request to continue pagination of tapes. If there are no more tapes to list, this element does not appear in the response body.</p>
+    description: <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>ListTapesOutput$Marker</a> </p> </li> <li> <p> <a>ListTapesOutput$VolumeInfos</a> </p> </li> </ul>
+  ListVolumeInitiatorsInput:
+    type: object
+    properties:
+      VolumeARN:
+        type: VolumeARN
+        description: <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes for the gateway.</p>
+    description: <p>ListVolumeInitiatorsInput</p>
+  ListVolumeInitiatorsOutput:
+    type: object
+    properties:
+      Initiators?:
+        type: Initiators
+        description: <p>The host names and port numbers of all iSCSI initiators that are connected to the gateway.</p>
+    description: <p>ListVolumeInitiatorsOutput</p>
+  ListVolumeRecoveryPointsInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+  ListVolumeRecoveryPointsOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      VolumeRecoveryPointInfos?:
+        type: VolumeRecoveryPointInfos
+  ListVolumesInput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      Marker?:
+        type: Marker
+        description: <p>A string that indicates the position at which to begin the returned list of volumes. Obtain the marker from the response of a previous List iSCSI Volumes request.</p>
+      Limit?:
+        type: PositiveIntObject
+        description: <p>Specifies that the list of volumes returned be limited to the specified number of items.</p>
+    description: <p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListVolumesInput$Limit</a> </p> </li> <li> <p> <a>ListVolumesInput$Marker</a> </p> </li> </ul>
+  ListVolumesOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      Marker?:
+        type: Marker
+      VolumeInfos?:
+        type: VolumeInfos
+  NetworkInterface:
+    type: object
+    properties:
+      Ipv4Address?:
+        type: string
+        description: <p>The Internet Protocol version 4 (IPv4) address of the interface.</p>
+      MacAddress?:
+        type: string
+        description: <p>The Media Access Control (MAC) address of the interface.</p> <note><p>This is currently unsupported and will not be returned in output.</p> </note>
+      Ipv6Address?:
+        type: string
+        description: <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently not supported</i>.</p>
+    description: <p>Describes a gateway's network interface.</p>
+  RemoveTagsFromResourceInput:
+    type: object
+    properties:
+      ResourceARN:
+        type: ResourceARN
+        description: <p>The Amazon Resource Name (ARN) of the resource you want to remove the tags from.</p>
+      TagKeys:
+        type: TagKeys
+        description: <p>The keys of the tags you want to remove from the specified resource. A tag is composed of a key/value pair.</p>
+    description: <p>RemoveTagsFromResourceInput</p>
+  RemoveTagsFromResourceOutput:
+    type: object
+    properties:
+      ResourceARN?:
+        type: ResourceARN
+        description: <p>The Amazon Resource Name (ARN) of the resource that the tags were removed from.</p>
+    description: <p>RemoveTagsFromResourceOutput</p>
+  ResetCacheInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+  ResetCacheOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+  RetrieveTapeArchiveInput:
+    type: object
+    properties:
+      TapeARN:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the virtual tape you want to retrieve from the virtual tape shelf (VTS).</p>
+      GatewayARN:
+        type: GatewayARN
+        description: <p>The Amazon Resource Name (ARN) of the gateway you want to retrieve the virtual tape to. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p> <p>You retrieve archived virtual tapes to only one gateway and the gateway must be a gateway-VTL.</p>
+    description: <p>RetrieveTapeArchiveInput</p>
+  RetrieveTapeArchiveOutput:
+    type: object
+    properties:
+      TapeARN?:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the retrieved virtual tape.</p>
+    description: <p>RetrieveTapeArchiveOutput</p>
+  RetrieveTapeRecoveryPointInput:
+    type: object
+    properties:
+      TapeARN:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the virtual tape for which you want to retrieve the recovery point.</p>
+      GatewayARN:
+        type: GatewayARN
+    description: <p>RetrieveTapeRecoveryPointInput</p>
+  RetrieveTapeRecoveryPointOutput:
+    type: object
+    properties:
+      TapeARN?:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the virtual tape for which the recovery point was retrieved.</p>
+    description: <p>RetrieveTapeRecoveryPointOutput</p>
+  SetLocalConsolePasswordInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      LocalConsolePassword:
+        type: LocalConsolePassword
+        description: <p>The password you want to set for your VM local console.</p>
+    description: <p>SetLocalConsolePasswordInput</p>
+  SetLocalConsolePasswordOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+  ShutdownGatewayInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway to shut down.</p>
+  ShutdownGatewayOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway that was shut down.</p>
+  StartGatewayInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway to start.</p>
+  StartGatewayOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway that was restarted.</p>
+  StorediSCSIVolume:
+    type: object
+    properties:
+      VolumeARN?:
+        type: VolumeARN
+      VolumeId?:
+        type: VolumeId
+      VolumeType?:
+        type: VolumeType
+      VolumeStatus?:
+        type: VolumeStatus
+      VolumeSizeInBytes?:
+        type: long
+      VolumeProgress?:
+        type: DoubleObject
+      VolumeDiskId?:
+        type: DiskId
+      SourceSnapshotId?:
+        type: SnapshotId
+      PreservedExistingData?:
+        type: boolean
+      VolumeiSCSIAttributes?:
+        type: VolumeiSCSIAttributes
+  Tag:
+    type: object
+    properties:
+      Key:
+        type: TagKey
+      Value:
+        type: TagValue
+  Tape:
+    type: object
+    properties:
+      TapeARN?:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
+      TapeBarcode?:
+        type: TapeBarcode
+        description: <p>The barcode that identifies a specific virtual tape.</p>
+      TapeSizeInBytes?:
+        type: TapeSize
+        description: <p>The size, in bytes, of the virtual tape.</p>
+      TapeStatus?:
+        type: TapeStatus
+        description: <p>The current state of the virtual tape.</p>
+      VTLDevice?:
+        type: VTLDeviceARN
+        description: <p>The virtual tape library (VTL) device that the virtual tape is associated with.</p>
+      Progress?:
+        type: DoubleObject
+        description: '<p>For archiving virtual tapes, indicates how much data remains
+          to be uploaded before archiving is complete.</p> <p>Range: 0 (not started)
+          to 100 (complete).</p>'
+    description: <p>Describes a virtual tape object.</p>
+  TapeArchive:
+    type: object
+    properties:
+      TapeARN?:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of an archived virtual tape.</p>
+      TapeBarcode?:
+        type: TapeBarcode
+        description: <p>The barcode that identifies the archived virtual tape.</p>
+      TapeSizeInBytes?:
+        type: TapeSize
+        description: <p>The size, in bytes, of the archived virtual tape.</p>
+      CompletionTime?:
+        type: Time
+        description: <p>The time that the archiving of the virtual tape was completed.</p> <p>The string format of the completion time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
+      RetrievedTo?:
+        type: GatewayARN
+        description: <p>The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is being retrieved to.</p> <p>The virtual tape is retrieved from the virtual tape shelf (VTS).</p>
+      TapeStatus?:
+        type: TapeArchiveStatus
+        description: <p>The current state of the archived virtual tape.</p>
+    description: <p>Represents a virtual tape that is archived in the virtual tape shelf (VTS).</p>
+  TapeInfo:
+    type: object
+    properties:
+      TapeARN?:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of a virtual tape.</p>
+      TapeBarcode?:
+        type: TapeBarcode
+        description: <p>The barcode that identifies a specific virtual tape.</p>
+      TapeSizeInBytes?:
+        type: TapeSize
+        description: <p>The size, in bytes, of a virtual tape.</p>
+      TapeStatus?:
+        type: TapeStatus
+        description: <p>The status of the tape.</p>
+      GatewayARN?:
+        type: GatewayARN
+        description: <p>The Amazon Resource Name (ARN) of the gateway. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+    description: <p>Describes a virtual tape.</p>
+  TapeRecoveryPointInfo:
+    type: object
+    properties:
+      TapeARN?:
+        type: TapeARN
+        description: <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
+      TapeRecoveryPointTime?:
+        type: Time
+        description: <p>The time when the point-in-time view of the virtual tape was replicated for later recovery.</p> <p>The string format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
+      TapeSizeInBytes?:
+        type: TapeSize
+        description: <p>The size, in bytes, of the virtual tapes to recover.</p>
+      TapeStatus?:
+        type: TapeRecoveryPointStatus
+    description: <p>Describes a recovery point.</p>
+  UpdateBandwidthRateLimitInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      AverageUploadRateLimitInBitsPerSec?:
+        type: BandwidthUploadRateLimit
+        description: <p>The average upload bandwidth rate limit in bits per second.</p>
+      AverageDownloadRateLimitInBitsPerSec?:
+        type: BandwidthDownloadRateLimit
+        description: <p>The average download bandwidth rate limit in bits per second.</p>
+    description: <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateBandwidthRateLimitInput$AverageDownloadRateLimitInBitsPerSec</a> </p> </li> <li> <p> <a>UpdateBandwidthRateLimitInput$AverageUploadRateLimitInBitsPerSec</a> </p> </li> </ul>
+  UpdateBandwidthRateLimitOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway whose throttle information was updated.</p>
+  UpdateChapCredentialsInput:
+    type: object
+    properties:
+      TargetARN:
+        type: TargetARN
+        description: <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the <a>DescribeStorediSCSIVolumes</a> operation to return the TargetARN for specified VolumeARN.</p>
+      SecretToAuthenticateInitiator:
+        type: ChapSecret
+        description: <p>The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.</p> <note><p>The secret key must be between 12 and 16 bytes when encoded in UTF-8.</p> </note>
+      InitiatorName:
+        type: IqnName
+        description: <p>The iSCSI initiator that connects to the target.</p>
+      SecretToAuthenticateTarget?:
+        type: ChapSecret
+        description: '<p>The secret key that the target must provide to participate
+          in mutual CHAP with the initiator (e.g. Windows client).</p> <p>Byte constraints:
+          Minimum bytes of 12. Maximum bytes of 16.</p> <note><p>The secret key must
+          be between 12 and 16 bytes when encoded in UTF-8.</p> </note>'
+    description: <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateChapCredentialsInput$InitiatorName</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$SecretToAuthenticateInitiator</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$SecretToAuthenticateTarget</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$TargetARN</a> </p> </li> </ul>
+  UpdateChapCredentialsOutput:
+    type: object
+    properties:
+      TargetARN?:
+        type: TargetARN
+        description: <p>The Amazon Resource Name (ARN) of the target. This is the same target specified in the request.</p>
+      InitiatorName?:
+        type: IqnName
+        description: <p>The iSCSI initiator that connects to the target. This is the same initiator name specified in the request.</p>
+    description: <p>A JSON object containing the following fields:</p>
+  UpdateGatewayInformationInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      GatewayName?:
+        type: GatewayName
+      GatewayTimezone?:
+        type: GatewayTimezone
+  UpdateGatewayInformationOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+      GatewayName?:
+        type: string
+    description: <p>A JSON object containing the ARN of the gateway that was updated.</p>
+  UpdateGatewaySoftwareNowInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway to update.</p>
+  UpdateGatewaySoftwareNowOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway that was updated.</p>
+  UpdateMaintenanceStartTimeInput:
+    type: object
+    properties:
+      GatewayARN:
+        type: GatewayARN
+      HourOfDay:
+        type: HourOfDay
+        description: <p>The hour component of the maintenance start time represented as <i>hh</i>, where <i>hh</i> is the hour (00 to 23). The hour of the day is in the time zone of the gateway.</p>
+      MinuteOfHour:
+        type: MinuteOfHour
+        description: <p>The minute component of the maintenance start time represented as <i>mm</i>, where <i>mm</i> is the minute (00 to 59). The minute of the hour is in the time zone of the gateway.</p>
+      DayOfWeek:
+        type: DayOfWeek
+        description: <p>The maintenance start time day of the week.</p>
+    description: <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>UpdateMaintenanceStartTimeInput$DayOfWeek</a> </p> </li> <li> <p> <a>UpdateMaintenanceStartTimeInput$HourOfDay</a> </p> </li> <li> <p> <a>UpdateMaintenanceStartTimeInput$MinuteOfHour</a> </p> </li> </ul>
+  UpdateMaintenanceStartTimeOutput:
+    type: object
+    properties:
+      GatewayARN?:
+        type: GatewayARN
+    description: <p>A JSON object containing the of the gateway whose maintenance start time is updated.</p>
+  UpdateSnapshotScheduleInput:
+    type: object
+    properties:
+      VolumeARN:
+        type: VolumeARN
+        description: <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
+      StartAt:
+        type: HourOfDay
+        description: <p>The hour of the day at which the snapshot schedule begins represented as <i>hh</i>, where <i>hh</i> is the hour (0 to 23). The hour of the day is in the time zone of the gateway.</p>
+      RecurrenceInHours:
+        type: RecurrenceInHours
+        description: <p>Frequency of snapshots. Specify the number of hours between snapshots.</p>
+      Description?:
+        type: Description
+        description: <p>Optional description of the snapshot that overwrites the existing description.</p>
+    description: <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateSnapshotScheduleInput$Description</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$RecurrenceInHours</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$StartAt</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$VolumeARN</a> </p> </li> </ul>
+  UpdateSnapshotScheduleOutput:
+    type: object
+    properties:
+      VolumeARN?:
+        type: VolumeARN
+        description: <p/>
+    description: <p>A JSON object containing the of the updated storage volume.</p>
+  UpdateVTLDeviceTypeInput:
+    type: object
+    properties:
+      VTLDeviceARN:
+        type: VTLDeviceARN
+        description: <p>The Amazon Resource Name (ARN) of the medium changer you want to select.</p>
+      DeviceType:
+        type: DeviceType
+        description: '<p>The type of medium changer you want to select.</p> <p> Valid
+          Values: "STK-L700", "AWS-Gateway-VTL"</p>'
+  UpdateVTLDeviceTypeOutput:
+    type: object
+    properties:
+      VTLDeviceARN?:
+        type: VTLDeviceARN
+        description: <p>The Amazon Resource Name (ARN) of the medium changer you have selected.</p>
+    description: <p>UpdateVTLDeviceTypeOutput</p>
+  VTLDevice:
+    type: object
+    properties:
+      VTLDeviceARN?:
+        type: VTLDeviceARN
+        description: <p>Specifies the unique Amazon Resource Name (ARN) of the device (tape drive or media changer).</p>
+      VTLDeviceType?:
+        type: VTLDeviceType
+      VTLDeviceVendor?:
+        type: VTLDeviceVendor
+      VTLDeviceProductIdentifier?:
+        type: VTLDeviceProductIdentifier
+      DeviceiSCSIAttributes?:
+        type: DeviceiSCSIAttributes
+        description: <p>A list of iSCSI information about a VTL device.</p>
+    description: <p>Represents a device object associated with a gateway-VTL.</p>
+  VolumeInfo:
+    type: object
+    properties:
+      VolumeARN?:
+        type: VolumeARN
+        description: '<p>The Amazon Resource Name (ARN) for the storage volume. For
+          example, the following is a valid ARN:</p> <p> <code>arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB</code>
+          </p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.),
+          and hyphens (-).</p>'
+      VolumeId?:
+        type: VolumeId
+        description: '<p>The unique identifier assigned to the volume. This ID becomes
+          part of the volume Amazon Resource Name (ARN), which you use as input for
+          other operations.</p> <p> Valid Values: 50 to 500 lowercase letters, numbers,
+          periods (.), and hyphens (-).</p>'
+      GatewayARN?:
+        type: GatewayARN
+      GatewayId?:
+        type: GatewayId
+        description: '<p>The unique identifier assigned to your gateway during activation.
+          This ID becomes part of the gateway Amazon Resource Name (ARN), which you
+          use as input for other operations.</p> <p> Valid Values: 50 to 500 lowercase
+          letters, numbers, periods (.), and hyphens (-).</p>'
+      VolumeType?:
+        type: VolumeType
+      VolumeSizeInBytes?:
+        type: long
+        description: '<p>The size, in bytes, of the volume.</p> <p>Valid Values: 50
+          to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>'
+    description: <p>Describes a storage volume object.</p>
+  VolumeRecoveryPointInfo:
+    type: object
+    properties:
+      VolumeARN?:
+        type: VolumeARN
+      VolumeSizeInBytes?:
+        type: long
+      VolumeUsageInBytes?:
+        type: long
+      VolumeRecoveryPointTime?:
+        type: string
+  VolumeiSCSIAttributes:
+    type: object
+    properties:
+      TargetARN?:
+        type: TargetARN
+        description: <p>The Amazon Resource Name (ARN) of the volume target.</p>
+      NetworkInterfaceId?:
+        type: NetworkInterfaceId
+        description: <p>The network interface identifier.</p>
+      NetworkInterfacePort?:
+        type: integer
+        description: <p>The port used to communicate with iSCSI targets.</p>
+      LunNumber?:
+        type: PositiveIntObject
+        description: <p>The logical disk number.</p>
+      ChapEnabled?:
+        type: boolean
+        description: <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
+    description: <p>Lists iSCSI information about a volume.</p>
+/{ActivateGateway}:
+  uriParameters:
+    ActivateGateway?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Activates the gateway you previously deployed on your host. For more information, see <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/GettingStartedActivateGateway-common.html"> Activate the AWS Storage Gateway</a>. In the activation process, you specify information such as the you want to use for storing snapshots, the time zone for scheduled snapshots the gateway snapshot schedule window, an activation key, and a name for your gateway. The activation process also associates your gateway with your account; for more information, see <a>UpdateGatewayInformation</a>. <note>You must turn on the gateway VM before you can activate your gateway. </note>
+  post:
+    body:
+      application/json: ActivateGatewayInput
+    responses:
+      200:
+        body:
+          application/json: ActivateGatewayOutput
+      400:
+        description: InvalidGatewayRequestException
+/{AddCache}:
+  uriParameters:
+    AddCache?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Configures one or more gateway local disks as cache for a cached-volume gateway. This operation is supported only for the gateway-cached volume architecture (see <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html">Storage Gateway Concepts</a>). In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add cache, and one or more disk IDs that you want to configure as cache.
+  post:
+    body:
+      application/json: AddCacheInput
+    responses:
+      200:
+        body:
+          application/json: AddCacheOutput
+      400:
+        description: InvalidGatewayRequestException
+/{AddTagsToResource}:
+  uriParameters:
+    AddTagsToResource?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Adds one or more tags to the specified resource. You use tags to add
+    metadata to resources, which you can use to categorize these resources. For example,
+    you can categorize resources by purpose, owner, environment, or team. Each tag
+    consists of a key and a value, which you define. You can add tags to the following
+    AWS Storage Gateway resources: <ul> <li> Storage gateways of all types </li> </ul>
+    <ul> <li> Storage Volumes </li> </ul> <ul> <li> Virtual Tapes </li> </ul> You
+    can create a maximum of 10 tags for each resource. Virtual tapes and storage volumes
+    that are recovered to a new gateway maintain their tags.'
+  post:
+    body:
+      application/json: AddTagsToResourceInput
+    responses:
+      200:
+        body:
+          application/json: AddTagsToResourceOutput
+      400:
+        description: InvalidGatewayRequestException
+/{AddUploadBuffer}:
+  uriParameters:
+    AddUploadBuffer?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Configures one or more gateway local disks as upload buffer for a specified gateway. This operation is supported for both the gateway-stored and gateway-cached volume architectures. In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add upload buffer, and one or more disk IDs that you want to configure as upload buffer.
+  post:
+    body:
+      application/json: AddUploadBufferInput
+    responses:
+      200:
+        body:
+          application/json: AddUploadBufferOutput
+      400:
+        description: InvalidGatewayRequestException
+/{AddWorkingStorage}:
+  uriParameters:
+    AddWorkingStorage?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Configures one or more gateway local disks as working storage for a gateway. This operation is supported only for the gateway-stored volume architecture. This operation is deprecated in cached-volumes API version 20120630. Use <a>AddUploadBuffer</a> instead. <note> Working storage is also referred to as upload buffer. You can also use the <a>AddUploadBuffer</a> operation to add upload buffer to a stored-volume gateway. </note> In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add working storage, and one or more disk IDs that you want to configure as working storage.
+  post:
+    body:
+      application/json: AddWorkingStorageInput
+    responses:
+      200:
+        body:
+          application/json: AddWorkingStorageOutput
+      400:
+        description: InvalidGatewayRequestException
+/{CancelArchival}:
+  uriParameters:
+    CancelArchival?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated.
+  post:
+    body:
+      application/json: CancelArchivalInput
+    responses:
+      200:
+        body:
+          application/json: CancelArchivalOutput
+      400:
+        description: InvalidGatewayRequestException
+/{CancelRetrieval}:
+  uriParameters:
+    CancelRetrieval?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the retrieval process is initiated. The virtual tape is returned to the VTS.
+  post:
+    body:
+      application/json: CancelRetrievalInput
+    responses:
+      200:
+        body:
+          application/json: CancelRetrievalOutput
+      400:
+        description: InvalidGatewayRequestException
+/{CreateCachediSCSIVolume}:
+  uriParameters:
+    CreateCachediSCSIVolume?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a cached volume on a specified cached gateway. This operation is supported only for the gateway-cached volume architecture. <note>Cache storage must be allocated to the gateway before you can create a cached volume. Use the <a>AddCache</a> operation to add cache storage to a gateway.  </note> In the request, you must specify the gateway, size of the volume in bytes, the iSCSI target name, an IP address on which to expose the target, and a unique client token. In response, AWS Storage Gateway creates the volume and returns information about it such as the volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN that initiators can use to connect to the volume target.
+  post:
+    body:
+      application/json: CreateCachediSCSIVolumeInput
+    responses:
+      200:
+        body:
+          application/json: CreateCachediSCSIVolumeOutput
+      400:
+        description: InvalidGatewayRequestException
+/{CreateSnapshot}:
+  uriParameters:
+    CreateSnapshot?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Initiates a snapshot of a volume. AWS Storage Gateway provides the ability to back up point-in-time snapshots of your data to Amazon Simple Storage (S3) for durable off-site recovery, as well as import the data to an Amazon Elastic Block Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take snapshots of your gateway volume on a scheduled or ad-hoc basis. This API enables you to take ad-hoc snapshot. For more information, see <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html">Working With Snapshots in the AWS Storage Gateway Console</a>. In the CreateSnapshot request you identify the volume by providing its Amazon Resource Name (ARN). You must also provide description for the snapshot. When AWS Storage Gateway takes the snapshot of specified volume, the snapshot and description appears in the AWS Storage Gateway Console. In response, AWS Storage Gateway returns you a snapshot ID. You can use this snapshot ID to check the snapshot progress or later use it when you want to create a volume from a snapshot. <note>To list or delete a snapshot, you must use the Amazon EC2 API. For more information, see DescribeSnapshots or DeleteSnapshot in the <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html">EC2 API reference</a>. </note> <important> Volume and snapshot IDs are changing to a longer length ID format. For more information, see the important note on the <a href="http://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html">Welcome</a> page. </important>
+  post:
+    body:
+      application/json: CreateSnapshotInput
+    responses:
+      200:
+        body:
+          application/json: CreateSnapshotOutput
+      400:
+        description: InvalidGatewayRequestException
+/{CreateSnapshotFromVolumeRecoveryPoint}:
+  uriParameters:
+    CreateSnapshotFromVolumeRecoveryPoint?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Initiates a snapshot of a gateway from a volume recovery point. This operation is supported only for the gateway-cached volume architecture. A volume recovery point is a point in time at which all data of the volume is consistent and from which you can create a snapshot. To get a list of volume recovery point for gateway-cached volumes, use <a>ListVolumeRecoveryPoints</a>. In the <code>CreateSnapshotFromVolumeRecoveryPoint</code> request, you identify the volume by providing its Amazon Resource Name (ARN). You must also provide a description for the snapshot. When AWS Storage Gateway takes a snapshot of the specified volume, the snapshot and its description appear in the AWS Storage Gateway console. In response, AWS Storage Gateway returns you a snapshot ID. You can use this snapshot ID to check the snapshot progress or later use it when you want to create a volume from a snapshot. <note> To list or delete a snapshot, you must use the Amazon EC2 API. For more information, in <i>Amazon Elastic Compute Cloud API Reference</i>. </note>
+  post:
+    body:
+      application/json: CreateSnapshotFromVolumeRecoveryPointInput
+    responses:
+      200:
+        body:
+          application/json: CreateSnapshotFromVolumeRecoveryPointOutput
+      400:
+        description: InvalidGatewayRequestException
+/{CreateStorediSCSIVolume}:
+  uriParameters:
+    CreateStorediSCSIVolume?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a volume on a specified gateway. This operation is supported only for the gateway-stored volume architecture. The size of the volume to create is inferred from the disk size. You can choose to preserve existing data on the disk, create volume from an existing snapshot, or create an empty volume. If you choose to create an empty gateway volume, then any existing data on the disk is erased. In the request you must specify the gateway and the disk information on which you are creating the volume. In response, AWS Storage Gateway creates the volume and returns volume information such as the volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN that initiators can use to connect to the volume target.
+  post:
+    body:
+      application/json: CreateStorediSCSIVolumeInput
+    responses:
+      200:
+        body:
+          application/json: CreateStorediSCSIVolumeOutput
+      400:
+        description: InvalidGatewayRequestException
+/{CreateTapeWithBarcode}:
+  uriParameters:
+    CreateTapeWithBarcode?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a virtual tape by using your own barcode. You write data to the virtual tape and then archive the tape. <note>Cache storage must be allocated to the gateway before you can create a virtual tape. Use the <a>AddCache</a> operation to add cache storage to a gateway. </note>
+  post:
+    body:
+      application/json: CreateTapeWithBarcodeInput
+    responses:
+      200:
+        body:
+          application/json: CreateTapeWithBarcodeOutput
+      400:
+        description: InvalidGatewayRequestException
+/{CreateTapes}:
+  uriParameters:
+    CreateTapes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates one or more virtual tapes. You write data to the virtual tapes and then archive the tapes. <note>Cache storage must be allocated to the gateway before you can create virtual tapes. Use the <a>AddCache</a> operation to add cache storage to a gateway.  </note>
+  post:
+    body:
+      application/json: CreateTapesInput
+    responses:
+      200:
+        body:
+          application/json: CreateTapesOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DeleteBandwidthRateLimit}:
+  uriParameters:
+    DeleteBandwidthRateLimit?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the bandwidth rate limits of a gateway. You can delete either the upload and download bandwidth rate limit, or you can delete both. If you delete only one of the limits, the other limit remains unchanged. To specify which gateway to work with, use the Amazon Resource Name (ARN) of the gateway in your request.
+  post:
+    body:
+      application/json: DeleteBandwidthRateLimitInput
+    responses:
+      200:
+        body:
+          application/json: DeleteBandwidthRateLimitOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DeleteChapCredentials}:
+  uriParameters:
+    DeleteChapCredentials?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target and initiator pair.
+  post:
+    body:
+      application/json: DeleteChapCredentialsInput
+    responses:
+      200:
+        body:
+          application/json: DeleteChapCredentialsOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DeleteGateway}:
+  uriParameters:
+    DeleteGateway?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a gateway. To specify which gateway to delete, use the Amazon Resource Name (ARN) of the gateway in your request. The operation deletes the gateway; however, it does not delete the gateway virtual machine (VM) from your host computer. After you delete a gateway, you cannot reactivate it. Completed snapshots of the gateway volumes are not deleted upon deleting the gateway, however, pending snapshots will not complete. After you delete a gateway, your next step is to remove it from your environment. <important> You no longer pay software charges after the gateway is deleted; however, your existing Amazon EBS snapshots persist and you will continue to be billed for these snapshots. You can choose to remove all remaining Amazon EBS snapshots by canceling your Amazon EC2 subscription.  If you prefer not to cancel your Amazon EC2 subscription, you can delete your snapshots using the Amazon EC2 console. For more information, see the <a href="http://aws.amazon.com/storagegateway"> AWS Storage Gateway Detail Page</a>.  </important>
+  post:
+    body:
+      application/json: DeleteGatewayInput
+    responses:
+      200:
+        body:
+          application/json: DeleteGatewayOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DeleteSnapshotSchedule}:
+  uriParameters:
+    DeleteSnapshotSchedule?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a snapshot of a volume. You can take snapshots of your gateway volumes on a scheduled or ad hoc basis. This API action enables you to delete a snapshot schedule for a volume. For more information, see <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html">Working with Snapshots</a>. In the <code>DeleteSnapshotSchedule</code> request, you identify the volume by providing its Amazon Resource Name (ARN).  <note> To list or delete a snapshot, you must use the Amazon EC2 API. in <i>Amazon Elastic Compute Cloud API Reference</i>. </note>
+  post:
+    body:
+      application/json: DeleteSnapshotScheduleInput
+    responses:
+      200:
+        body:
+          application/json: DeleteSnapshotScheduleOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DeleteTape}:
+  uriParameters:
+    DeleteTape?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the specified virtual tape.
+  post:
+    body:
+      application/json: DeleteTapeInput
+    responses:
+      200:
+        body:
+          application/json: DeleteTapeOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DeleteTapeArchive}:
+  uriParameters:
+    DeleteTapeArchive?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the specified virtual tape from the virtual tape shelf (VTS).
+  post:
+    body:
+      application/json: DeleteTapeArchiveInput
+    responses:
+      200:
+        body:
+          application/json: DeleteTapeArchiveOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DeleteVolume}:
+  uriParameters:
+    DeleteVolume?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the specified gateway volume that you previously created using the <a>CreateCachediSCSIVolume</a> or <a>CreateStorediSCSIVolume</a> API. For gateway-stored volumes, the local disk that was configured as the storage volume is not deleted. You can reuse the local disk to create another storage volume.  Before you delete a gateway volume, make sure there are no iSCSI connections to the volume you are deleting. You should also make sure there is no snapshot in progress. You can use the Amazon Elastic Compute Cloud (Amazon EC2) API to query snapshots on the volume you are deleting and check the snapshot status. For more information, go to <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a> in the <i>Amazon Elastic Compute Cloud API Reference</i>. In the request, you must provide the Amazon Resource Name (ARN) of the storage volume you want to delete.
+  post:
+    body:
+      application/json: DeleteVolumeInput
+    responses:
+      200:
+        body:
+          application/json: DeleteVolumeOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeBandwidthRateLimit}:
+  uriParameters:
+    DescribeBandwidthRateLimit?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns the bandwidth rate limits of a gateway. By default, these limits are not set, which means no bandwidth rate limiting is in effect. This operation only returns a value for a bandwidth rate limit only if the limit is set. If no limits are set for the gateway, then this operation returns only the gateway ARN in the response body. To specify which gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.
+  post:
+    body:
+      application/json: DescribeBandwidthRateLimitInput
+    responses:
+      200:
+        body:
+          application/json: DescribeBandwidthRateLimitOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeCache}:
+  uriParameters:
+    DescribeCache?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns information about the cache of a gateway. This operation is supported only for the gateway-cached volume architecture. The response includes disk IDs that are configured as cache, and it includes the amount of cache allocated and used.
+  post:
+    body:
+      application/json: DescribeCacheInput
+    responses:
+      200:
+        body:
+          application/json: DescribeCacheOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeCachediSCSIVolumes}:
+  uriParameters:
+    DescribeCachediSCSIVolumes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns a description of the gateway volumes specified in the request. This operation is supported only for the gateway-cached volume architecture. The list of gateway volumes in the request must be from one gateway. In the response Amazon Storage Gateway returns volume information sorted by volume Amazon Resource Name (ARN).
+  post:
+    body:
+      application/json: DescribeCachediSCSIVolumesInput
+    responses:
+      200:
+        body:
+          application/json: DescribeCachediSCSIVolumesOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeChapCredentials}:
+  uriParameters:
+    DescribeChapCredentials?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair.
+  post:
+    body:
+      application/json: DescribeChapCredentialsInput
+    responses:
+      200:
+        body:
+          application/json: DescribeChapCredentialsOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeGatewayInformation}:
+  uriParameters:
+    DescribeGatewayInformation?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not). To specify which gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.
+  post:
+    body:
+      application/json: DescribeGatewayInformationInput
+    responses:
+      200:
+        body:
+          application/json: DescribeGatewayInformationOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeMaintenanceStartTime}:
+  uriParameters:
+    DescribeMaintenanceStartTime?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns your gateway's weekly maintenance start time including the day and time of the week. Note that values are in terms of the gateway's time zone.
+  post:
+    body:
+      application/json: DescribeMaintenanceStartTimeInput
+    responses:
+      200:
+        body:
+          application/json: DescribeMaintenanceStartTimeOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeSnapshotSchedule}:
+  uriParameters:
+    DescribeSnapshotSchedule?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the snapshot schedule for the specified gateway volume. The snapshot schedule information includes intervals at which snapshots are automatically initiated on the volume.
+  post:
+    body:
+      application/json: DescribeSnapshotScheduleInput
+    responses:
+      200:
+        body:
+          application/json: DescribeSnapshotScheduleOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeStorediSCSIVolumes}:
+  uriParameters:
+    DescribeStorediSCSIVolumes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns the description of the gateway volumes specified in the request. The list of gateway volumes in the request must be from one gateway. In the response Amazon Storage Gateway returns volume information sorted by volume ARNs.
+  post:
+    body:
+      application/json: DescribeStorediSCSIVolumesInput
+    responses:
+      200:
+        body:
+          application/json: DescribeStorediSCSIVolumesOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeTapeArchives}:
+  uriParameters:
+    DescribeTapeArchives?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns a description of specified virtual tapes in the virtual tape shelf (VTS). If a specific <code>TapeARN</code> is not specified, AWS Storage Gateway returns a description of all virtual tapes found in the VTS associated with your account.
+  post:
+    body:
+      application/json: DescribeTapeArchivesInput
+    responses:
+      200:
+        body:
+          application/json: DescribeTapeArchivesOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeTapeRecoveryPoints}:
+  uriParameters:
+    DescribeTapeRecoveryPoints?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns a list of virtual tape recovery points that are available for the specified gateway-VTL. A recovery point is a point-in-time view of a virtual tape at which all the data on the virtual tape is consistent. If your gateway crashes, virtual tapes that have recovery points can be recovered to a new gateway.
+  post:
+    body:
+      application/json: DescribeTapeRecoveryPointsInput
+    responses:
+      200:
+        body:
+          application/json: DescribeTapeRecoveryPointsOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeTapes}:
+  uriParameters:
+    DescribeTapes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes. If a <code>TapeARN</code> is not specified, returns a description of all virtual tapes associated with the specified gateway.
+  post:
+    body:
+      application/json: DescribeTapesInput
+    responses:
+      200:
+        body:
+          application/json: DescribeTapesOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeUploadBuffer}:
+  uriParameters:
+    DescribeUploadBuffer?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns information about the upload buffer of a gateway. This operation is supported for both the gateway-stored and gateway-cached volume architectures. The response includes disk IDs that are configured as upload buffer space, and it includes the amount of upload buffer space allocated and used.
+  post:
+    body:
+      application/json: DescribeUploadBufferInput
+    responses:
+      200:
+        body:
+          application/json: DescribeUploadBufferOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeVTLDevices}:
+  uriParameters:
+    DescribeVTLDevices?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns a description of virtual tape library (VTL) devices for the specified gateway. In the response, AWS Storage Gateway returns VTL device information. The list of VTL devices must be from one gateway.
+  post:
+    body:
+      application/json: DescribeVTLDevicesInput
+    responses:
+      200:
+        body:
+          application/json: DescribeVTLDevicesOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DescribeWorkingStorage}:
+  uriParameters:
+    DescribeWorkingStorage?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns information about the working storage of a gateway. This operation is supported only for the gateway-stored volume architecture. This operation is deprecated in cached-volumes API version (20120630). Use DescribeUploadBuffer instead. <note> Working storage is also referred to as upload buffer. You can also use the DescribeUploadBuffer operation to add upload buffer to a stored-volume gateway. </note> The response includes disk IDs that are configured as working storage, and it includes the amount of working storage allocated and used.
+  post:
+    body:
+      application/json: DescribeWorkingStorageInput
+    responses:
+      200:
+        body:
+          application/json: DescribeWorkingStorageOutput
+      400:
+        description: InvalidGatewayRequestException
+/{DisableGateway}:
+  uriParameters:
+    DisableGateway?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Disables a gateway when the gateway is no longer functioning. For example, if your gateway VM is damaged, you can disable the gateway so you can recover virtual tapes. Use this operation for a gateway-VTL that is not reachable or not functioning. <important>Once a gateway is disabled it cannot be enabled. </important>
+  post:
+    body:
+      application/json: DisableGatewayInput
+    responses:
+      200:
+        body:
+          application/json: DisableGatewayOutput
+      400:
+        description: InvalidGatewayRequestException
+/{ListGateways}:
+  uriParameters:
+    ListGateways?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists gateways owned by an AWS account in a region specified in the request. The returned list is ordered by gateway Amazon Resource Name (ARN). By default, the operation returns a maximum of 100 gateways. This operation supports pagination that allows you to optionally reduce the number of gateways returned in a response. If you have more gateways than are returned in a response (that is, the response returns only a truncated list of your gateways), the response contains a marker that you can specify in your next request to fetch the next page of gateways.
+  post:
+    body:
+      application/json: ListGatewaysInput
+    responses:
+      200:
+        body:
+          application/json: ListGatewaysOutput
+      400:
+        description: InvalidGatewayRequestException
+/{ListLocalDisks}:
+  uriParameters:
+    ListLocalDisks?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Returns a list of the gateway''s local disks. To specify which gateway
+    to describe, you use the Amazon Resource Name (ARN) of the gateway in the body
+    of the request. The request returns a list of all disks, specifying which are
+    configured as working storage, cache storage, or stored volume or not configured
+    at all. The response includes a <code>DiskStatus</code> field. This field can
+    have a value of present (the disk is available to use), missing (the disk is no
+    longer connected to the gateway), or mismatch (the disk node is occupied by a
+    disk that has incorrect metadata or the disk content is corrupted). '
+  post:
+    body:
+      application/json: ListLocalDisksInput
+    responses:
+      200:
+        body:
+          application/json: ListLocalDisksOutput
+      400:
+        description: InvalidGatewayRequestException
+/{ListTagsForResource}:
+  uriParameters:
+    ListTagsForResource?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the tags that have been added to the specified resource.
+  post:
+    body:
+      application/json: ListTagsForResourceInput
+    responses:
+      200:
+        body:
+          application/json: ListTagsForResourceOutput
+      400:
+        description: InvalidGatewayRequestException
+/{ListTapes}:
+  uriParameters:
+    ListTapes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf (VTS). You specify the tapes to list by specifying one or more tape Amazon Resource Names (ARNs). If you don't specify a tape ARN, the operation lists all virtual tapes in both your VTL and VTS. This operation supports pagination. By default, the operation returns a maximum of up to 100 tapes. You can optionally specify the <code>Limit</code> parameter in the body to limit the number of tapes in the response. If the number of tapes returned in the response is truncated, the response includes a <code>Marker</code> element that you can use in your subsequent request to retrieve the next set of tapes.
+  post:
+    body:
+      application/json: ListTapesInput
+    responses:
+      200:
+        body:
+          application/json: ListTapesOutput
+      400:
+        description: InvalidGatewayRequestException
+/{ListVolumeInitiators}:
+  uriParameters:
+    ListVolumeInitiators?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists iSCSI initiators that are connected to a volume. You can use this operation to determine whether a volume is being used or not.
+  post:
+    body:
+      application/json: ListVolumeInitiatorsInput
+    responses:
+      200:
+        body:
+          application/json: ListVolumeInitiatorsOutput
+      400:
+        description: InvalidGatewayRequestException
+/{ListVolumeRecoveryPoints}:
+  uriParameters:
+    ListVolumeRecoveryPoints?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the recovery points for a specified gateway. This operation is supported only for the gateway-cached volume architecture. Each gateway-cached volume has one recovery point. A volume recovery point is a point in time at which all data of the volume is consistent and from which you can create a snapshot. To create a snapshot from a volume recovery point use the <a>CreateSnapshotFromVolumeRecoveryPoint</a> operation.
+  post:
+    body:
+      application/json: ListVolumeRecoveryPointsInput
+    responses:
+      200:
+        body:
+          application/json: ListVolumeRecoveryPointsOutput
+      400:
+        description: InvalidGatewayRequestException
+/{ListVolumes}:
+  uriParameters:
+    ListVolumes?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the iSCSI stored volumes of a gateway. Results are sorted by volume ARN. The response includes only the volume ARNs. If you want additional volume information, use the <a>DescribeStorediSCSIVolumes</a> API. The operation supports pagination. By default, the operation returns a maximum of up to 100 volumes. You can optionally specify the <code>Limit</code> field in the body to limit the number of volumes in the response. If the number of volumes returned in the response is truncated, the response includes a Marker field. You can use this Marker value in your subsequent request to retrieve the next set of volumes.
+  post:
+    body:
+      application/json: ListVolumesInput
+    responses:
+      200:
+        body:
+          application/json: ListVolumesOutput
+      400:
+        description: InvalidGatewayRequestException
+/{RemoveTagsFromResource}:
+  uriParameters:
+    RemoveTagsFromResource?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Removes one or more tags from the specified resource.
+  post:
+    body:
+      application/json: RemoveTagsFromResourceInput
+    responses:
+      200:
+        body:
+          application/json: RemoveTagsFromResourceOutput
+      400:
+        description: InvalidGatewayRequestException
+/{ResetCache}:
+  uriParameters:
+    ResetCache?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Resets all cache disks that have encountered a error and makes the disks available for reconfiguration as cache storage. If your cache disk encounters a error, the gateway prevents read and write operations on virtual tapes in the gateway. For example, an error can occur when a disk is corrupted or removed from the gateway. When a cache is reset, the gateway loses its cache storage. At this point you can reconfigure the disks as cache disks. <important> If the cache disk you are resetting contains data that has not been uploaded to Amazon S3 yet, that data can be lost. After you reset cache disks, there will be no configured cache disks left in the gateway, so you must configure at least one new cache disk for your gateway to function properly. </important>
+  post:
+    body:
+      application/json: ResetCacheInput
+    responses:
+      200:
+        body:
+          application/json: ResetCacheOutput
+      400:
+        description: InvalidGatewayRequestException
+/{RetrieveTapeArchive}:
+  uriParameters:
+    RetrieveTapeArchive?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a gateway-VTL. Virtual tapes archived in the VTS are not associated with any gateway. However after a tape is retrieved, it is associated with a gateway, even though it is also listed in the VTS. Once a tape is successfully retrieved to a gateway, it cannot be retrieved again to another gateway. You must archive the tape again before you can retrieve it to another gateway.
+  post:
+    body:
+      application/json: RetrieveTapeArchiveInput
+    responses:
+      200:
+        body:
+          application/json: RetrieveTapeArchiveOutput
+      400:
+        description: InvalidGatewayRequestException
+/{RetrieveTapeRecoveryPoint}:
+  uriParameters:
+    RetrieveTapeRecoveryPoint?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves the recovery point for the specified virtual tape. A recovery point is a point in time view of a virtual tape at which all the data on the tape is consistent. If your gateway crashes, virtual tapes that have recovery points can be recovered to a new gateway. <note>The virtual tape can be retrieved to only one gateway. The retrieved tape is read-only. The virtual tape can be retrieved to only a gateway-VTL. There is no charge for retrieving recovery points. </note>
+  post:
+    body:
+      application/json: RetrieveTapeRecoveryPointInput
+    responses:
+      200:
+        body:
+          application/json: RetrieveTapeRecoveryPointOutput
+      400:
+        description: InvalidGatewayRequestException
+/{SetLocalConsolePassword}:
+  uriParameters:
+    SetLocalConsolePassword?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sets the password for your VM local console. When you log in to the local console for the first time, you log in to the VM with the default credentials. We recommend that you set a new password. You don't need to know the default password to set a new password.
+  post:
+    body:
+      application/json: SetLocalConsolePasswordInput
+    responses:
+      200:
+        body:
+          application/json: SetLocalConsolePasswordOutput
+      400:
+        description: InvalidGatewayRequestException
+/{ShutdownGateway}:
+  uriParameters:
+    ShutdownGateway?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Shuts down a gateway. To specify which gateway to shut down, use the Amazon Resource Name (ARN) of the gateway in the body of your request. The operation shuts down the gateway service component running in the storage gateway's virtual machine (VM) and not the VM. <note>If you want to shut down the VM, it is recommended that you first shut down the gateway component in the VM to avoid unpredictable conditions. </note> After the gateway is shutdown, you cannot call any other API except <a>StartGateway</a>, <a>DescribeGatewayInformation</a>, and <a>ListGateways</a>. For more information, see <a>ActivateGateway</a>. Your applications cannot read from or write to the gateway's storage volumes, and there are no snapshots taken. <note>When you make a shutdown request, you will get a <code>200 OK</code> success response immediately. However, it might take some time for the gateway to shut down. You can call the <a>DescribeGatewayInformation</a> API to check the status. For more information, see <a>ActivateGateway</a>. </note> If do not intend to use the gateway again, you must delete the gateway (using <a>DeleteGateway</a>) to no longer pay software charges associated with the gateway.
+  post:
+    body:
+      application/json: ShutdownGatewayInput
+    responses:
+      200:
+        body:
+          application/json: ShutdownGatewayOutput
+      400:
+        description: InvalidGatewayRequestException
+/{StartGateway}:
+  uriParameters:
+    StartGateway?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Starts a gateway that you previously shut down (see <a>ShutdownGateway</a>). After the gateway starts, you can then make other API calls, your applications can read from or write to the gateway's storage volumes and you will be able to take snapshot backups. <note>When you make a request, you will get a 200 OK success response immediately. However, it might take some time for the gateway to be ready. You should call <a>DescribeGatewayInformation</a> and check the status before making any additional API calls. For more information, see <a>ActivateGateway</a>. </note> To specify which gateway to start, use the Amazon Resource Name (ARN) of the gateway in your request.
+  post:
+    body:
+      application/json: StartGatewayInput
+    responses:
+      200:
+        body:
+          application/json: StartGatewayOutput
+      400:
+        description: InvalidGatewayRequestException
+/{UpdateBandwidthRateLimit}:
+  uriParameters:
+    UpdateBandwidthRateLimit?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates the bandwidth rate limits of a gateway. You can update both the upload and download bandwidth rate limit or specify only one of the two. If you don't set a bandwidth rate limit, the existing rate limit remains. By default, a gateway's bandwidth rate limits are not set. If you don't set any limit, the gateway does not have any limitations on its bandwidth usage and could potentially use the maximum available bandwidth. To specify which gateway to update, use the Amazon Resource Name (ARN) of the gateway in your request.
+  post:
+    body:
+      application/json: UpdateBandwidthRateLimitInput
+    responses:
+      200:
+        body:
+          application/json: UpdateBandwidthRateLimitOutput
+      400:
+        description: InvalidGatewayRequestException
+/{UpdateChapCredentials}:
+  uriParameters:
+    UpdateChapCredentials?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target. By default, a gateway does not have CHAP enabled; however, for added security, you might use it. <important> When you update CHAP credentials, all existing connections on the target are closed and initiators must reconnect with the new credentials. </important>
+  post:
+    body:
+      application/json: UpdateChapCredentialsInput
+    responses:
+      200:
+        body:
+          application/json: UpdateChapCredentialsOutput
+      400:
+        description: InvalidGatewayRequestException
+/{UpdateGatewayInformation}:
+  uriParameters:
+    UpdateGatewayInformation?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates a gateway's metadata, which includes the gateway's name and time zone. To specify which gateway to update, use the Amazon Resource Name (ARN) of the gateway in your request. <note>For Gateways activated after September 2, 2015, the gateway's ARN contains the gateway ID rather than the gateway name. However, changing the name of the gateway has no effect on the gateway's ARN. </note>
+  post:
+    body:
+      application/json: UpdateGatewayInformationInput
+    responses:
+      200:
+        body:
+          application/json: UpdateGatewayInformationOutput
+      400:
+        description: InvalidGatewayRequestException
+/{UpdateGatewaySoftwareNow}:
+  uriParameters:
+    UpdateGatewaySoftwareNow?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates the gateway virtual machine (VM) software. The request immediately triggers the software update. <note>When you make this request, you get a <code>200 OK</code> success response immediately. However, it might take some time for the update to complete. You can call <a>DescribeGatewayInformation</a> to verify the gateway is in the <code>STATE_RUNNING</code> state. </note> <important>A software update forces a system restart of your gateway. You can minimize the chance of any disruption to your applications by increasing your iSCSI Initiators' timeouts. For more information about increasing iSCSI Initiator timeouts for Windows and Linux, see <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings">Customizing Your Windows iSCSI Settings</a> and <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings">Customizing Your Linux iSCSI Settings</a>, respectively. </important>
+  post:
+    body:
+      application/json: UpdateGatewaySoftwareNowInput
+    responses:
+      200:
+        body:
+          application/json: UpdateGatewaySoftwareNowOutput
+      400:
+        description: InvalidGatewayRequestException
+/{UpdateMaintenanceStartTime}:
+  uriParameters:
+    UpdateMaintenanceStartTime?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates a gateway's weekly maintenance start time information, including day and time of the week. The maintenance time is the time in your gateway's time zone.
+  post:
+    body:
+      application/json: UpdateMaintenanceStartTimeInput
+    responses:
+      200:
+        body:
+          application/json: UpdateMaintenanceStartTimeOutput
+      400:
+        description: InvalidGatewayRequestException
+/{UpdateSnapshotSchedule}:
+  uriParameters:
+    UpdateSnapshotSchedule?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates a snapshot schedule configured for a gateway volume. The default snapshot schedule for volume is once every 24 hours, starting at the creation time of the volume. You can use this API to change the snapshot schedule configured for the volume. In the request you must identify the gateway volume whose snapshot schedule you want to update, and the schedule information, including when you want the snapshot to begin on a day and the frequency (in hours) of snapshots.
+  post:
+    body:
+      application/json: UpdateSnapshotScheduleInput
+    responses:
+      200:
+        body:
+          application/json: UpdateSnapshotScheduleOutput
+      400:
+        description: InvalidGatewayRequestException
+/{UpdateVTLDeviceType}:
+  uriParameters:
+    UpdateVTLDeviceType?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates the type of medium changer in a gateway-VTL. When you activate a gateway-VTL, you select a medium changer type for the gateway-VTL. This operation enables you to select a different type of medium changer after a gateway-VTL is activated.
+  post:
+    body:
+      application/json: UpdateVTLDeviceTypeInput
+    responses:
+      200:
+        body:
+          application/json: UpdateVTLDeviceTypeOutput
+      400:
+        description: InvalidGatewayRequestException

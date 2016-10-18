@@ -1,0 +1,748 @@
+#%RAML 1.0
+title: AWS CodeCommit
+version: '2015-04-13'
+description: '  This is the <i>AWS CodeCommit API Reference</i>. This reference provides
+  descriptions of the operations and data types for AWS CodeCommit API.  You can use
+  the AWS CodeCommit API to work with the following objects: <ul> <li>Repositories,
+  by calling the following: <ul> <li><a>BatchGetRepositories</a>, which returns information
+  about one or more repositories associated with your AWS account</li> <li><a>CreateRepository</a>,
+  which creates an AWS CodeCommit repository</li> <li><a>DeleteRepository</a>, which
+  deletes an AWS CodeCommit repository</li> <li><a>GetRepository</a>, which returns
+  information about a specified repository</li> <li><a>ListRepositories</a>, which
+  lists all AWS CodeCommit repositories associated with your AWS account</li> <li><a>UpdateRepositoryDescription</a>,
+  which sets or updates the description of the repository</li> <li><a>UpdateRepositoryName</a>,
+  which changes the name of the repository. If you change the name of a repository,
+  no other users of that repository will be able to access it until you send them
+  the new HTTPS or SSH URL to use.</li> </ul></li> <li>Branches, by calling the following:
+  <ul> <li><a>CreateBranch</a>, which creates a new branch in a specified repository</li>
+  <li><a>GetBranch</a>, which returns information about a specified branch</li> <li><a>ListBranches</a>,
+  which lists all branches for a specified repository</li> <li><a>UpdateDefaultBranch</a>,
+  which changes the default branch for a repository</li> </ul></li> <li>Information
+  about committed code in a repository, by calling the following: <ul> <li><a>GetCommit</a>,
+  which returns information about a commit, including commit messages and committer
+  information.</li> </ul></li> <li>Triggers, by calling the following: <ul> <li><a>GetRepositoryTriggers</a>,
+  which returns information about triggers configured for a repository</li> <li><a>PutRepositoryTriggers</a>,
+  which replaces all triggers for a repository and can be used to create or delete
+  triggers</li> <li><a>TestRepositoryTriggers</a>, which tests the functionality of
+  a repository trigger by sending data to the trigger target</li> </ul> </li> </ul>  For
+  information about how to use AWS CodeCommit, see the <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html">AWS
+  CodeCommit User Guide</a>.'
+mediaType:
+- application/json
+types:
+  AccountId:
+    type: string
+  AdditionalData:
+    type: string
+  Arn:
+    type: string
+  BranchName:
+    type: string
+    minLength: 1
+    maxLength: 100
+  BranchNameList:
+    type: array
+    items:
+      type: BranchName
+  CloneUrlHttp:
+    type: string
+  CloneUrlSsh:
+    type: string
+  CommitId:
+    type: string
+  CreationDate:
+    type: datetime
+  Date:
+    type: string
+  Email:
+    type: string
+  LastModifiedDate:
+    type: datetime
+  Message:
+    type: string
+  Name:
+    type: string
+  NextToken:
+    type: string
+  ObjectId:
+    type: string
+  OrderEnum:
+    type: string
+    enum:
+    - ascending
+    - descending
+  ParentList:
+    type: array
+    items:
+      type: ObjectId
+  RepositoryDescription:
+    type: string
+    maxLength: 1000
+  RepositoryId:
+    type: string
+  RepositoryMetadataList:
+    type: array
+    items:
+      type: RepositoryMetadata
+  RepositoryName:
+    type: string
+    pattern: '[\\w\\.-]+'
+    minLength: 1
+    maxLength: 100
+  RepositoryNameIdPairList:
+    type: array
+    items:
+      type: RepositoryNameIdPair
+  RepositoryNameList:
+    type: array
+    items:
+      type: RepositoryName
+  RepositoryNotFoundList:
+    type: array
+    items:
+      type: RepositoryName
+  RepositoryTriggerCustomData:
+    type: string
+  RepositoryTriggerEventEnum:
+    type: string
+    enum:
+    - all
+    - updateReference
+    - createReference
+    - deleteReference
+  RepositoryTriggerEventList:
+    type: array
+    items:
+      type: RepositoryTriggerEventEnum
+  RepositoryTriggerExecutionFailureList:
+    type: array
+    items:
+      type: RepositoryTriggerExecutionFailure
+  RepositoryTriggerExecutionFailureMessage:
+    type: string
+  RepositoryTriggerName:
+    type: string
+  RepositoryTriggerNameList:
+    type: array
+    items:
+      type: RepositoryTriggerName
+  RepositoryTriggersConfigurationId:
+    type: string
+  RepositoryTriggersList:
+    type: array
+    items:
+      type: RepositoryTrigger
+  SortByEnum:
+    type: string
+    enum:
+    - repositoryName
+    - lastModifiedDate
+  BatchGetRepositoriesInput:
+    type: object
+    properties:
+      repositoryNames:
+        type: RepositoryNameList
+        description: <p>The names of the repositories to get information about.</p>
+    description: <p>Represents the input of a batch get repositories operation.</p>
+  BatchGetRepositoriesOutput:
+    type: object
+    properties:
+      repositories?:
+        type: RepositoryMetadataList
+        description: <p>A list of repositories returned by the batch get repositories operation.</p>
+      repositoriesNotFound?:
+        type: RepositoryNotFoundList
+        description: <p>Returns a list of repository names for which information could not be found.</p>
+    description: <p>Represents the output of a batch get repositories operation.</p>
+  BranchInfo:
+    type: object
+    properties:
+      branchName?:
+        type: BranchName
+        description: <p>The name of the branch.</p>
+      commitId?:
+        type: CommitId
+        description: <p>The ID of the last commit made to the branch.</p>
+    description: <p>Returns information about a branch.</p>
+  Commit:
+    type: object
+    properties:
+      treeId?:
+        type: ObjectId
+        description: <p>Tree information for the specified commit.</p>
+      parents?:
+        type: ParentList
+        description: <p>The parent list for the specified commit.</p>
+      message?:
+        type: Message
+        description: <p>The message associated with the specified commit.</p>
+      author?:
+        type: UserInfo
+        description: <p>Information about the author of the specified commit.</p>
+      committer?:
+        type: UserInfo
+        description: <p>Information about the person who committed the specified commit, also known as the committer. For more information about the difference between an author and a committer in Git, see <a href="http://git-scm.com/book/ch2-3.html">Viewing the Commit History</a> in Pro Git by Scott Chacon and Ben Straub.</p>
+      additionalData?:
+        type: AdditionalData
+        description: <p>Any additional data associated with the specified commit.</p>
+    description: <p>Returns information about a specific commit.</p>
+  CreateBranchInput:
+    type: object
+    properties:
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository in which you want to create the new branch.</p>
+      branchName:
+        type: BranchName
+        description: <p>The name of the new branch to create.</p>
+      commitId:
+        type: CommitId
+        description: <p>The ID of the commit to point the new branch to.</p>
+    description: <p>Represents the input of a create branch operation.</p>
+  CreateRepositoryInput:
+    type: object
+    properties:
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the new repository to be created.</p> <note><p>The repository name must be unique across the calling AWS account. In addition, repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. For a full description of the limits on repository names, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a> in the AWS CodeCommit User Guide. The suffix ".git" is prohibited.</p></note>
+      repositoryDescription?:
+        type: RepositoryDescription
+        description: <p>A comment or description about the new repository.</p> <note><p>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</p></note>
+    description: <p>Represents the input of a create repository operation.</p>
+  CreateRepositoryOutput:
+    type: object
+    properties:
+      repositoryMetadata?:
+        type: RepositoryMetadata
+        description: <p>Information about the newly created repository.</p>
+    description: <p>Represents the output of a create repository operation.</p>
+  DeleteRepositoryInput:
+    type: object
+    properties:
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository to delete.</p>
+    description: <p>Represents the input of a delete repository operation.</p>
+  DeleteRepositoryOutput:
+    type: object
+    properties:
+      repositoryId?:
+        type: RepositoryId
+        description: <p>The ID of the repository that was deleted.</p>
+    description: <p>Represents the output of a delete repository operation.</p>
+  GetBranchInput:
+    type: object
+    properties:
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The name of the repository that contains the branch for which you want to retrieve information.</p>
+      branchName?:
+        type: BranchName
+        description: <p>The name of the branch for which you want to retrieve information.</p>
+    description: <p>Represents the input of a get branch operation.</p>
+  GetBranchOutput:
+    type: object
+    properties:
+      branch?:
+        type: BranchInfo
+        description: <p>The name of the branch.</p>
+    description: <p>Represents the output of a get branch operation.</p>
+  GetCommitInput:
+    type: object
+    properties:
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository to which the commit was made.</p>
+      commitId:
+        type: ObjectId
+        description: <p>The commit ID.</p>
+    description: <p>Represents the input of a get commit operation.</p>
+  GetCommitOutput:
+    type: object
+    properties:
+      commit:
+        type: Commit
+        description: <p>Information about the specified commit.</p>
+    description: <p>Represents the output of a get commit operation.</p>
+  GetRepositoryInput:
+    type: object
+    properties:
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository to get information about.</p>
+    description: <p>Represents the input of a get repository operation.</p>
+  GetRepositoryOutput:
+    type: object
+    properties:
+      repositoryMetadata?:
+        type: RepositoryMetadata
+        description: <p>Information about the repository.</p>
+    description: <p>Represents the output of a get repository operation.</p>
+  GetRepositoryTriggersInput:
+    type: object
+    properties:
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The name of the repository for which the trigger is configured.</p>
+    description: <p>Represents the input of a get repository triggers operation.</p>
+  GetRepositoryTriggersOutput:
+    type: object
+    properties:
+      configurationId?:
+        type: RepositoryTriggersConfigurationId
+        description: <p>The system-generated unique ID for the trigger.</p>
+      triggers?:
+        type: RepositoryTriggersList
+        description: <p>The JSON block of configuration information for each trigger.</p>
+    description: <p>Represents the output of a get repository triggers operation.</p>
+  ListBranchesInput:
+    type: object
+    properties:
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository that contains the branches.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>An enumeration token that allows the operation to batch the results. </p>
+    description: <p>Represents the input of a list branches operation.</p>
+  ListBranchesOutput:
+    type: object
+    properties:
+      branches?:
+        type: BranchNameList
+        description: <p>The list of branch names.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>An enumeration token that returns the batch of the results. </p>
+    description: <p>Represents the output of a list branches operation.</p>
+  ListRepositoriesInput:
+    type: object
+    properties:
+      nextToken?:
+        type: NextToken
+        description: <p>An enumeration token that allows the operation to batch the results of the operation. Batch sizes are 1,000 for list repository operations. When the client sends the token back to AWS CodeCommit, another page of 1,000 records is retrieved.</p>
+      sortBy?:
+        type: SortByEnum
+        description: <p>The criteria used to sort the results of a list repositories operation.</p>
+      order?:
+        type: OrderEnum
+        description: <p>The order in which to sort the results of a list repositories operation.</p>
+    description: <p>Represents the input of a list repositories operation.</p>
+  ListRepositoriesOutput:
+    type: object
+    properties:
+      repositories?:
+        type: RepositoryNameIdPairList
+        description: <p>Lists the repositories called by the list repositories operation.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>An enumeration token that allows the operation to batch the results of the operation. Batch sizes are 1,000 for list repository operations. When the client sends the token back to AWS CodeCommit, another page of 1,000 records is retrieved.</p>
+    description: <p>Represents the output of a list repositories operation.</p>
+  PutRepositoryTriggersInput:
+    type: object
+    properties:
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The name of the repository where you want to create or update the trigger. </p>
+      triggers?:
+        type: RepositoryTriggersList
+        description: <p>The JSON block of configuration information for each trigger. </p>
+    description: <p>Represents the input ofa put repository triggers operation. </p>
+  PutRepositoryTriggersOutput:
+    type: object
+    properties:
+      configurationId?:
+        type: RepositoryTriggersConfigurationId
+        description: <p>The system-generated unique ID for the create or update operation. </p>
+    description: <p>Represents the output of a put repository triggers operation. </p>
+  RepositoryMetadata:
+    type: object
+    properties:
+      accountId?:
+        type: AccountId
+        description: <p>The ID of the AWS account associated with the repository.</p>
+      repositoryId?:
+        type: RepositoryId
+        description: <p>The ID of the repository.</p>
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The repository's name.</p>
+      repositoryDescription?:
+        type: RepositoryDescription
+        description: <p>A comment or description about the repository.</p>
+      defaultBranch?:
+        type: BranchName
+        description: <p>The repository's default branch name.</p>
+      lastModifiedDate?:
+        type: LastModifiedDate
+        description: <p>The date and time the repository was last modified, in timestamp format.</p>
+      creationDate?:
+        type: CreationDate
+        description: <p>The date and time the repository was created, in timestamp format.</p>
+      cloneUrlHttp?:
+        type: CloneUrlHttp
+        description: <p>The URL to use for cloning the repository over HTTPS.</p>
+      cloneUrlSsh?:
+        type: CloneUrlSsh
+        description: <p>The URL to use for cloning the repository over SSH.</p>
+      Arn?:
+        type: Arn
+        description: <p>The Amazon Resource Name (ARN) of the repository.</p>
+    description: <p>Information about a repository.</p>
+  RepositoryNameIdPair:
+    type: object
+    properties:
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The name associated with the repository.</p>
+      repositoryId?:
+        type: RepositoryId
+        description: <p>The ID associated with the repository.</p>
+    description: <p>Information about a repository name and ID.</p>
+  RepositoryTrigger:
+    type: object
+    properties:
+      name?:
+        type: RepositoryTriggerName
+        description: <p>The name of the trigger.</p>
+      destinationArn?:
+        type: Arn
+        description: <p>The ARN of the resource that is the target for a trigger. For example, the ARN of a topic in Amazon Simple Notification Service (SNS).</p>
+      customData?:
+        type: RepositoryTriggerCustomData
+        description: <p>Any custom data associated with the trigger that will be included in the information sent to the target of the trigger.</p>
+      branches?:
+        type: BranchNameList
+        description: <p>The branches that will be included in the trigger configuration. If no branches are specified, the trigger will apply to all branches.</p>
+      events?:
+        type: RepositoryTriggerEventList
+        description: <p>The repository events that will cause the trigger to run actions in another service, such as sending a notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger will run for all repository events.</p>
+    description: <p>Information about a trigger for a repository.</p>
+  RepositoryTriggerExecutionFailure:
+    type: object
+    properties:
+      trigger?:
+        type: RepositoryTriggerName
+        description: <p>The name of the trigger that did not run.</p>
+      failureMessage?:
+        type: RepositoryTriggerExecutionFailureMessage
+        description: <p>Additional message information about the trigger that did not run.</p>
+    description: <p>A trigger failed to run.</p>
+  TestRepositoryTriggersInput:
+    type: object
+    properties:
+      repositoryName?:
+        type: RepositoryName
+        description: <p>The name of the repository in which to test the triggers.</p>
+      triggers?:
+        type: RepositoryTriggersList
+        description: <p>The list of triggers to test.</p>
+    description: <p>Represents the input of a test repository triggers operation.</p>
+  TestRepositoryTriggersOutput:
+    type: object
+    properties:
+      successfulExecutions?:
+        type: RepositoryTriggerNameList
+        description: <p>The list of triggers that were successfully tested. This list provides the names of the triggers that were successfully tested, separated by commas.</p>
+      failedExecutions?:
+        type: RepositoryTriggerExecutionFailureList
+        description: <p>The list of triggers that were not able to be tested. This list provides the names of the triggers that could not be tested, separated by commas.</p>
+    description: <p>Represents the output of a test repository triggers operation.</p>
+  UpdateDefaultBranchInput:
+    type: object
+    properties:
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository to set or change the default branch for.</p>
+      defaultBranchName:
+        type: BranchName
+        description: <p>The name of the branch to set as the default.</p>
+    description: <p>Represents the input of an update default branch operation.</p>
+  UpdateRepositoryDescriptionInput:
+    type: object
+    properties:
+      repositoryName:
+        type: RepositoryName
+        description: <p>The name of the repository to set or change the comment or description for.</p>
+      repositoryDescription?:
+        type: RepositoryDescription
+        description: <p>The new comment or description for the specified repository. Repository descriptions are limited to 1,000 characters.</p>
+    description: <p>Represents the input of an update repository description operation.</p>
+  UpdateRepositoryNameInput:
+    type: object
+    properties:
+      oldName:
+        type: RepositoryName
+        description: <p>The existing name of the repository.</p>
+      newName:
+        type: RepositoryName
+        description: <p>The new name for the repository.</p>
+    description: <p>Represents the input of an update repository description operation.</p>
+  UserInfo:
+    type: object
+    properties:
+      name?:
+        type: Name
+        description: <p>The name of the user who made the specified commit.</p>
+      email?:
+        type: Email
+        description: <p>The email address associated with the user who made the commit, if any.</p>
+      date?:
+        type: Date
+        description: <p>The date when the specified commit was pushed to the repository.</p>
+    description: <p>Information about the user who made a specified commit.</p>
+/{BatchGetRepositories}:
+  uriParameters:
+    BatchGetRepositories?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns information about one or more repositories. <note>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</note>
+  post:
+    body:
+      application/json: BatchGetRepositoriesInput
+    responses:
+      200:
+        body:
+          application/json: BatchGetRepositoriesOutput
+      400:
+        description: RepositoryNamesRequiredException
+/{CreateBranch}:
+  uriParameters:
+    CreateBranch?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a new branch in a repository and points the branch to a commit. <note>Calling the create branch operation does not set a repository's default branch. To do this, call the update default branch operation.</note>
+  post:
+    body:
+      application/json: CreateBranchInput
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: RepositoryNameRequiredException
+/{CreateRepository}:
+  uriParameters:
+    CreateRepository?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a new, empty repository.
+  post:
+    body:
+      application/json: CreateRepositoryInput
+    responses:
+      200:
+        body:
+          application/json: CreateRepositoryOutput
+      400:
+        description: RepositoryNameExistsException
+/{DeleteRepository}:
+  uriParameters:
+    DeleteRepository?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a repository. If a specified repository was already deleted, a null repository ID will be returned. <important>Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future push calls to the deleted repository will fail.</important>
+  post:
+    body:
+      application/json: DeleteRepositoryInput
+    responses:
+      200:
+        body:
+          application/json: DeleteRepositoryOutput
+      400:
+        description: RepositoryNameRequiredException
+/{GetBranch}:
+  uriParameters:
+    GetBranch?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns information about a repository branch, including its name and the last commit ID.
+  post:
+    body:
+      application/json: GetBranchInput
+    responses:
+      200:
+        body:
+          application/json: GetBranchOutput
+      400:
+        description: RepositoryNameRequiredException
+/{GetCommit}:
+  uriParameters:
+    GetCommit?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns information about a commit, including commit message and committer information.
+  post:
+    body:
+      application/json: GetCommitInput
+    responses:
+      200:
+        body:
+          application/json: GetCommitOutput
+      400:
+        description: RepositoryNameRequiredException
+/{GetRepository}:
+  uriParameters:
+    GetRepository?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Returns information about a repository. <note>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</note>
+  post:
+    body:
+      application/json: GetRepositoryInput
+    responses:
+      200:
+        body:
+          application/json: GetRepositoryOutput
+      400:
+        description: RepositoryNameRequiredException
+/{GetRepositoryTriggers}:
+  uriParameters:
+    GetRepositoryTriggers?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets information about triggers configured for a repository.
+  post:
+    body:
+      application/json: GetRepositoryTriggersInput
+    responses:
+      200:
+        body:
+          application/json: GetRepositoryTriggersOutput
+      400:
+        description: RepositoryNameRequiredException
+/{ListBranches}:
+  uriParameters:
+    ListBranches?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets information about one or more branches in a repository.
+  post:
+    body:
+      application/json: ListBranchesInput
+    responses:
+      200:
+        body:
+          application/json: ListBranchesOutput
+      400:
+        description: RepositoryNameRequiredException
+/{ListRepositories}:
+  uriParameters:
+    ListRepositories?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Gets information about one or more repositories.
+  post:
+    body:
+      application/json: ListRepositoriesInput
+    responses:
+      200:
+        body:
+          application/json: ListRepositoriesOutput
+      400:
+        description: InvalidSortByException
+/{PutRepositoryTriggers}:
+  uriParameters:
+    PutRepositoryTriggers?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Replaces all triggers for a repository. This can be used to create or delete triggers.
+  post:
+    body:
+      application/json: PutRepositoryTriggersInput
+    responses:
+      200:
+        body:
+          application/json: PutRepositoryTriggersOutput
+      400:
+        description: RepositoryDoesNotExistException
+/{TestRepositoryTriggers}:
+  uriParameters:
+    TestRepositoryTriggers?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Tests the functionality of repository triggers by sending information to the trigger target. If real data is available in the repository, the test will send data from the last commit. If no data is available, sample data will be generated.
+  post:
+    body:
+      application/json: TestRepositoryTriggersInput
+    responses:
+      200:
+        body:
+          application/json: TestRepositoryTriggersOutput
+      400:
+        description: RepositoryDoesNotExistException
+/{UpdateDefaultBranch}:
+  uriParameters:
+    UpdateDefaultBranch?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sets or changes the default branch name for the specified repository. <note>If you use this operation to change the default branch name to the current default branch name, a success message is returned even though the default branch did not change.</note>
+  post:
+    body:
+      application/json: UpdateDefaultBranchInput
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: RepositoryNameRequiredException
+/{UpdateRepositoryDescription}:
+  uriParameters:
+    UpdateRepositoryDescription?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sets or changes the comment or description for a repository. <note>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</note>
+  post:
+    body:
+      application/json: UpdateRepositoryDescriptionInput
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: RepositoryNameRequiredException
+/{UpdateRepositoryName}:
+  uriParameters:
+    UpdateRepositoryName?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Renames a repository. The repository name must be unique across the calling AWS account. In addition, repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. The suffix ".git" is prohibited. For a full description of the limits on repository names, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a> in the AWS CodeCommit User Guide.
+  post:
+    body:
+      application/json: UpdateRepositoryNameInput
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: RepositoryDoesNotExistException

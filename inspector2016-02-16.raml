@@ -1,0 +1,1890 @@
+#%RAML 1.0
+title: Amazon Inspector
+version: '2016-02-16'
+description: '  Amazon Inspector enables you to analyze the behavior of your AWS resources
+  and to identify potential security issues. For more information, see <a href="http://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html">
+  Amazon Inspector User Guide</a>.'
+mediaType:
+- application/json
+types:
+  AddRemoveAttributesFindingArnList:
+    type: array
+    minItems: 1
+    maxItems: 10
+    items:
+      type: Arn
+  AgentHealth:
+    type: string
+    enum:
+    - HEALTHY
+    - UNHEALTHY
+  AgentHealthCode:
+    type: string
+    enum:
+    - IDLE
+    - RUNNING
+    - SHUTDOWN
+    - UNHEALTHY
+    - THROTTLED
+    - UNKNOWN
+  AgentHealthCodeList:
+    type: array
+    minItems: 0
+    maxItems: 10
+    items:
+      type: AgentHealthCode
+  AgentHealthList:
+    type: array
+    minItems: 0
+    maxItems: 10
+    items:
+      type: AgentHealth
+  AgentId:
+    type: string
+    minLength: 1
+    maxLength: 128
+  AgentIdList:
+    type: array
+    minItems: 0
+    maxItems: 500
+    items:
+      type: AgentId
+  AgentPreviewList:
+    type: array
+    minItems: 0
+    maxItems: 100
+    items:
+      type: AgentPreview
+  AmiId:
+    type: string
+    minLength: 0
+    maxLength: 256
+  Arn:
+    type: string
+    minLength: 1
+    maxLength: 300
+  AssessmentRulesPackageArnList:
+    type: array
+    minItems: 1
+    maxItems: 50
+    items:
+      type: Arn
+  AssessmentRunAgentList:
+    type: array
+    minItems: 0
+    maxItems: 500
+    items:
+      type: AssessmentRunAgent
+  AssessmentRunDuration:
+    type: integer
+    format: int
+    minimum: 180
+    maximum: 86400
+  AssessmentRunList:
+    type: array
+    minItems: 0
+    maxItems: 10
+    items:
+      type: AssessmentRun
+  AssessmentRunName:
+    type: string
+    minLength: 1
+    maxLength: 140
+  AssessmentRunNotificationList:
+    type: array
+    minItems: 0
+    maxItems: 50
+    items:
+      type: AssessmentRunNotification
+  AssessmentRunNotificationSnsStatusCode:
+    type: string
+    enum:
+    - SUCCESS
+    - TOPIC_DOES_NOT_EXIST
+    - ACCESS_DENIED
+    - INTERNAL_ERROR
+  AssessmentRunState:
+    type: string
+    enum:
+    - CREATED
+    - START_DATA_COLLECTION_PENDING
+    - START_DATA_COLLECTION_IN_PROGRESS
+    - COLLECTING_DATA
+    - STOP_DATA_COLLECTION_PENDING
+    - DATA_COLLECTED
+    - EVALUATING_RULES
+    - FAILED
+    - COMPLETED
+    - COMPLETED_WITH_ERRORS
+  AssessmentRunStateChangeList:
+    type: array
+    minItems: 0
+    maxItems: 50
+    items:
+      type: AssessmentRunStateChange
+  AssessmentRunStateList:
+    type: array
+    minItems: 0
+    maxItems: 50
+    items:
+      type: AssessmentRunState
+  AssessmentTargetList:
+    type: array
+    minItems: 0
+    maxItems: 10
+    items:
+      type: AssessmentTarget
+  AssessmentTargetName:
+    type: string
+    minLength: 1
+    maxLength: 140
+  AssessmentTemplateList:
+    type: array
+    minItems: 0
+    maxItems: 10
+    items:
+      type: AssessmentTemplate
+  AssessmentTemplateName:
+    type: string
+    minLength: 1
+    maxLength: 140
+  AssessmentTemplateRulesPackageArnList:
+    type: array
+    minItems: 0
+    maxItems: 50
+    items:
+      type: Arn
+  AssetType:
+    type: string
+    enum:
+    - ec2-instance
+  AttributeKey:
+    type: string
+    minLength: 1
+    maxLength: 128
+  AttributeList:
+    type: array
+    minItems: 0
+    maxItems: 50
+    items:
+      type: Attribute
+  AttributeValue:
+    type: string
+    minLength: 1
+    maxLength: 256
+  AutoScalingGroup:
+    type: string
+    minLength: 1
+    maxLength: 256
+  AutoScalingGroupList:
+    type: array
+    minItems: 0
+    maxItems: 20
+    items:
+      type: AutoScalingGroup
+  BatchDescribeArnList:
+    type: array
+    minItems: 1
+    maxItems: 10
+    items:
+      type: Arn
+  Bool:
+    type: boolean
+  EventSubscriptionList:
+    type: array
+    minItems: 1
+    maxItems: 50
+    items:
+      type: EventSubscription
+  FailedItemErrorCode:
+    type: string
+    enum:
+    - INVALID_ARN
+    - DUPLICATE_ARN
+    - ITEM_DOES_NOT_EXIST
+    - ACCESS_DENIED
+    - LIMIT_EXCEEDED
+    - INTERNAL_ERROR
+  FilterRulesPackageArnList:
+    type: array
+    minItems: 0
+    maxItems: 50
+    items:
+      type: Arn
+  FindingId:
+    type: string
+    minLength: 0
+    maxLength: 128
+  FindingList:
+    type: array
+    minItems: 0
+    maxItems: 10
+    items:
+      type: Finding
+  Hostname:
+    type: string
+    minLength: 0
+    maxLength: 256
+  InspectorEvent:
+    type: string
+    enum:
+    - ASSESSMENT_RUN_STARTED
+    - ASSESSMENT_RUN_COMPLETED
+    - ASSESSMENT_RUN_STATE_CHANGED
+    - FINDING_REPORTED
+    - OTHER
+  IocConfidence:
+    type: integer
+    format: int
+    minimum: 0
+    maximum: 10
+  Ipv4Address:
+    type: string
+    minLength: 7
+    maxLength: 15
+  Ipv4AddressList:
+    type: array
+    minItems: 0
+    maxItems: 50
+    items:
+      type: Ipv4Address
+  ListEventSubscriptionsMaxResults:
+    type: integer
+    format: int
+  ListMaxResults:
+    type: integer
+    format: int
+  ListParentArnList:
+    type: array
+    minItems: 0
+    maxItems: 50
+    items:
+      type: Arn
+  ListReturnedArnList:
+    type: array
+    minItems: 0
+    maxItems: 100
+    items:
+      type: Arn
+  Locale:
+    type: string
+    enum:
+    - EN_US
+  Long:
+    type: integer
+    format: long
+  Message:
+    type: string
+    minLength: 0
+    maxLength: 1000
+  MessageType:
+    type: string
+    minLength: 1
+    maxLength: 300
+  NamePattern:
+    type: string
+    minLength: 1
+    maxLength: 140
+  NumericSeverity:
+    type: number
+    format: double
+    minimum: 0.0
+    maximum: 10
+  NumericVersion:
+    type: integer
+    format: int
+    minimum: 0
+  PaginationToken:
+    type: string
+    minLength: 1
+    maxLength: 300
+  PreviewAgentsMaxResults:
+    type: integer
+    format: int
+  ProviderName:
+    type: string
+    minLength: 0
+    maxLength: 1000
+  ResourceGroupList:
+    type: array
+    minItems: 0
+    maxItems: 10
+    items:
+      type: ResourceGroup
+  ResourceGroupTags:
+    type: array
+    minItems: 1
+    maxItems: 10
+    items:
+      type: ResourceGroupTag
+  RuleName:
+    type: string
+    maxLength: 1000
+  RuleNameList:
+    type: array
+    minItems: 0
+    maxItems: 50
+    items:
+      type: RuleName
+  RulesPackageList:
+    type: array
+    minItems: 0
+    maxItems: 10
+    items:
+      type: RulesPackage
+  RulesPackageName:
+    type: string
+    minLength: 0
+    maxLength: 1000
+  ServiceName:
+    type: string
+    minLength: 0
+    maxLength: 128
+  Severity:
+    type: string
+    enum:
+    - Low
+    - Medium
+    - High
+    - Informational
+    - Undefined
+  SeverityList:
+    type: array
+    minItems: 0
+    maxItems: 50
+    items:
+      type: Severity
+  SubscriptionList:
+    type: array
+    minItems: 0
+    maxItems: 50
+    items:
+      type: Subscription
+  TagKey:
+    type: string
+    minLength: 1
+    maxLength: 128
+  TagList:
+    type: array
+    minItems: 0
+    maxItems: 10
+    items:
+      type: Tag
+  TagValue:
+    type: string
+    minLength: 1
+    maxLength: 256
+  TelemetryMetadataList:
+    type: array
+    minItems: 0
+    maxItems: 5000
+    items:
+      type: TelemetryMetadata
+  Text:
+    type: string
+    minLength: 0
+    maxLength: 20000
+  Timestamp:
+    type: datetime
+  UserAttributeKeyList:
+    type: array
+    minItems: 0
+    maxItems: 10
+    items:
+      type: AttributeKey
+  UserAttributeList:
+    type: array
+    minItems: 0
+    maxItems: 10
+    items:
+      type: Attribute
+  Version:
+    type: string
+    minLength: 0
+    maxLength: 1000
+  AddAttributesToFindingsRequest:
+    type: object
+    properties:
+      findingArns:
+        type: AddRemoveAttributesFindingArnList
+        description: <p>The ARNs that specify the findings that you want to assign attributes to.</p>
+      attributes:
+        type: UserAttributeList
+        description: <p>The array of attributes that you want to assign to specified findings.</p>
+  AddAttributesToFindingsResponse:
+    type: object
+    properties:
+      failedItems:
+        type: FailedItems
+        description: <p>Attribute details that cannot be described. An error code is provided for each failed item.</p>
+  AgentFilter:
+    type: object
+    properties:
+      agentHealths:
+        type: AgentHealthList
+        description: <p>The current health state of the agent. Values can be set to <b>HEALTHY</b> or <b>UNHEALTHY</b>.</p>
+      agentHealthCodes:
+        type: AgentHealthCodeList
+        description: <p>The detailed health state of the agent. Values can be set to <b>IDLE</b>, <b>RUNNING</b>, <b>SHUTDOWN</b>, <b>UNHEALTHY</b>, <b>THROTTLED</b>, and <b>UNKNOWN</b>. </p>
+    description: <p>Contains information about an Amazon Inspector agent. This data type is used as a request parameter in the <a>ListAssessmentRunAgents</a> action.</p>
+  AgentPreview:
+    type: object
+    properties:
+      agentId:
+        type: AgentId
+        description: <p>The ID of the EC2 instance where the agent is installed.</p>
+      autoScalingGroup?:
+        type: AutoScalingGroup
+        description: <p>The Auto Scaling group for the EC2 instance where the agent is installed.</p>
+    description: <p>Used as a response element in the <a>PreviewAgents</a> action.</p>
+  AssessmentRun:
+    type: object
+    properties:
+      arn:
+        type: Arn
+        description: <p>The ARN of the assessment run.</p>
+      name:
+        type: AssessmentRunName
+        description: <p>The auto-generated name for the assessment run.</p>
+      assessmentTemplateArn:
+        type: Arn
+        description: <p>The ARN of the assessment template that is associated with the assessment run.</p>
+      state:
+        type: AssessmentRunState
+        description: <p>The state of the assessment run.</p>
+      durationInSeconds:
+        type: AssessmentRunDuration
+        description: <p>The duration of the assessment run.</p>
+      rulesPackageArns:
+        type: AssessmentRulesPackageArnList
+        description: <p>The rules packages selected for the assessment run.</p>
+      userAttributesForFindings:
+        type: UserAttributeList
+        description: <p>The user-defined attributes that are assigned to every generated finding.</p>
+      createdAt:
+        type: Timestamp
+        description: <p>The time when <a>StartAssessmentRun</a> was called.</p>
+      startedAt?:
+        type: Timestamp
+        description: <p>The time when <a>StartAssessmentRun</a> was called.</p>
+      completedAt?:
+        type: Timestamp
+        description: <p>The assessment run completion time that corresponds to the rules packages evaluation completion time or failure.</p>
+      stateChangedAt:
+        type: Timestamp
+        description: <p>The last time when the assessment run's state changed.</p>
+      dataCollected:
+        type: Bool
+        description: <p>A Boolean value (true or false) that specifies whether the process of collecting data from the agents is completed.</p>
+      stateChanges:
+        type: AssessmentRunStateChangeList
+        description: <p>A list of the assessment run state changes.</p>
+      notifications:
+        type: AssessmentRunNotificationList
+        description: <p>A list of notifications for the event subscriptions. A notification about a particular generated finding is added to this list only once.</p>
+    description: <p>A snapshot of an Amazon Inspector assessment run that contains the findings of the assessment run .</p> <p>Used as the response element in the <a>DescribeAssessmentRuns</a> action.</p>
+  AssessmentRunAgent:
+    type: object
+    properties:
+      agentId:
+        type: AgentId
+        description: <p>The AWS account of the EC2 instance where the agent is installed.</p>
+      assessmentRunArn:
+        type: Arn
+        description: <p>The ARN of the assessment run that is associated with the agent.</p>
+      agentHealth:
+        type: AgentHealth
+        description: <p>The current health state of the agent.</p>
+      agentHealthCode:
+        type: AgentHealthCode
+        description: <p>The detailed health state of the agent.</p>
+      agentHealthDetails?:
+        type: Message
+        description: <p>The description for the agent health code.</p>
+      autoScalingGroup?:
+        type: AutoScalingGroup
+        description: <p>The Auto Scaling group of the EC2 instance that is specified by the agent ID.</p>
+      telemetryMetadata:
+        type: TelemetryMetadataList
+        description: <p>The Amazon Inspector application data metrics that are collected by the agent.</p>
+    description: <p>Contains information about an Amazon Inspector agent. This data type is used as a response element in the <a>ListAssessmentRunAgents</a> action.</p>
+  AssessmentRunFilter:
+    type: object
+    properties:
+      namePattern?:
+        type: NamePattern
+        description: <p>For a record to match a filter, an explicit value or a string containing a wildcard that is specified for this data type property must match the value of the <b>assessmentRunName</b> property of the <a>AssessmentRun</a> data type.</p>
+      states?:
+        type: AssessmentRunStateList
+        description: <p>For a record to match a filter, one of the values specified for this data type property must be the exact match of the value of the <b>assessmentRunState</b> property of the <a>AssessmentRun</a> data type.</p>
+      durationRange?:
+        type: DurationRange
+        description: <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>durationInSeconds</b> property of the <a>AssessmentRun</a> data type.</p>
+      rulesPackageArns?:
+        type: FilterRulesPackageArnList
+        description: <p>For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the <b>rulesPackages</b> property of the <a>AssessmentRun</a> data type.</p>
+      startTimeRange?:
+        type: TimestampRange
+        description: <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>startTime</b> property of the <a>AssessmentRun</a> data type.</p>
+      completionTimeRange?:
+        type: TimestampRange
+        description: <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>completedAt</b> property of the <a>AssessmentRun</a> data type.</p>
+      stateChangeTimeRange?:
+        type: TimestampRange
+        description: <p>For a record to match a filter, the value that is specified for this data type property must match the <b>stateChangedAt</b> property of the <a>AssessmentRun</a> data type.</p>
+    description: <p>Used as the request parameter in the <a>ListAssessmentRuns</a> action.</p>
+  AssessmentRunNotification:
+    type: object
+    properties:
+      date:
+        type: Timestamp
+        description: <p>The date of the notification.</p>
+      event:
+        type: InspectorEvent
+        description: <p>The event for which a notification is sent.</p>
+      message?:
+        type: Message
+      error:
+        type: Bool
+        description: <p>The Boolean value that specifies whether the notification represents an error.</p>
+      snsTopicArn?:
+        type: Arn
+        description: <p>The SNS topic to which the SNS notification is sent.</p>
+      snsPublishStatusCode?:
+        type: AssessmentRunNotificationSnsStatusCode
+        description: <p>The status code of the SNS notification.</p>
+    description: <p>Used as one of the elements of the <a>AssessmentRun</a> data type.</p>
+  AssessmentRunStateChange:
+    type: object
+    properties:
+      stateChangedAt:
+        type: Timestamp
+        description: <p>The last time the assessment run state changed.</p>
+      state:
+        type: AssessmentRunState
+        description: <p>The assessment run state.</p>
+    description: <p>Used as one of the elements of the <a>AssessmentRun</a> data type.</p>
+  AssessmentTarget:
+    type: object
+    properties:
+      arn:
+        type: Arn
+        description: <p>The ARN that specifies the Amazon Inspector assessment target.</p>
+      name:
+        type: AssessmentTargetName
+        description: <p>The name of the Amazon Inspector assessment target.</p>
+      resourceGroupArn:
+        type: Arn
+        description: <p>The ARN that specifies the resource group that is associated with the assessment target.</p>
+      createdAt:
+        type: Timestamp
+        description: <p>The time at which the assessment target is created.</p>
+      updatedAt:
+        type: Timestamp
+        description: <p>The time at which <a>UpdateAssessmentTarget</a> is called.</p>
+    description: <p>Contains information about an Amazon Inspector application. This data type is used as the response element in the <a>DescribeAssessmentTargets</a> action.</p>
+  AssessmentTargetFilter:
+    type: object
+    properties:
+      assessmentTargetNamePattern?:
+        type: NamePattern
+        description: <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTargetName</b> property of the <a>AssessmentTarget</a> data type.</p>
+    description: <p>Used as the request parameter in the <a>ListAssessmentTargets</a> action.</p>
+  AssessmentTemplate:
+    type: object
+    properties:
+      arn:
+        type: Arn
+        description: <p>The ARN of the assessment template.</p>
+      name:
+        type: AssessmentTemplateName
+        description: <p>The name of the assessment template.</p>
+      assessmentTargetArn:
+        type: Arn
+        description: <p>The ARN of the assessment target that corresponds to this assessment template.</p>
+      durationInSeconds:
+        type: AssessmentRunDuration
+        description: <p>The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The maximum value is 86400 seconds (one day).</p>
+      rulesPackageArns:
+        type: AssessmentTemplateRulesPackageArnList
+        description: <p>The rules packages that are specified for this assessment template.</p>
+      userAttributesForFindings:
+        type: UserAttributeList
+        description: <p>The user-defined attributes that are assigned to every generated finding from the assessment run that uses this assessment template.</p>
+      createdAt:
+        type: Timestamp
+        description: <p>The time at which the assessment template is created.</p>
+    description: <p>Contains information about an Amazon Inspector assessment template. This data type is used as the response element in the <a>DescribeAssessmentTemplates</a> action.</p>
+  AssessmentTemplateFilter:
+    type: object
+    properties:
+      namePattern?:
+        type: NamePattern
+        description: <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data type.</p>
+      durationRange?:
+        type: DurationRange
+        description: <p>For a record to match a filter, the value specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>durationInSeconds</b> property of the <a>AssessmentTemplate</a> data type.</p>
+      rulesPackageArns?:
+        type: FilterRulesPackageArnList
+        description: <p>For a record to match a filter, the values that are specified for this data type property must be contained in the list of values of the <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
+    description: <p>Used as the request parameter in the <a>ListAssessmentTemplates</a> action.</p>
+  AssetAttributes:
+    type: object
+    properties:
+      schemaVersion:
+        type: NumericVersion
+        description: <p>The schema version of this data type.</p>
+      agentId?:
+        type: AgentId
+        description: <p>The ID of the agent that is installed on the EC2 instance where the finding is generated.</p>
+      autoScalingGroup?:
+        type: AutoScalingGroup
+        description: <p>The Auto Scaling group of the EC2 instance where the finding is generated.</p>
+      amiId?:
+        type: AmiId
+        description: <p>The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is generated.</p>
+      hostname?:
+        type: Hostname
+        description: <p>The hostname of the EC2 instance where the finding is generated.</p>
+      ipv4Addresses?:
+        type: Ipv4AddressList
+        description: <p>The list of IP v4 addresses of the EC2 instance where the finding is generated.</p>
+    description: <p>A collection of attributes of the host from which the finding is generated.</p>
+  Attribute:
+    type: object
+    properties:
+      key:
+        type: AttributeKey
+        description: <p>The attribute key.</p>
+      value?:
+        type: AttributeValue
+        description: <p>The value assigned to the attribute key.</p>
+    description: <p>This data type is used as a request parameter in the <a>AddAttributesToFindings</a> and <a>CreateAssessmentTemplate</a> actions.</p>
+  CreateAssessmentTargetRequest:
+    type: object
+    properties:
+      assessmentTargetName:
+        type: AssessmentTargetName
+        description: <p>The user-defined name that identifies the assessment target that you want to create. The name must be unique within the AWS account.</p>
+      resourceGroupArn:
+        type: Arn
+        description: <p>The ARN that specifies the resource group that is used to create the assessment target.</p>
+  CreateAssessmentTargetResponse:
+    type: object
+    properties:
+      assessmentTargetArn:
+        type: Arn
+        description: <p>The ARN that specifies the assessment target that is created.</p>
+  CreateAssessmentTemplateRequest:
+    type: object
+    properties:
+      assessmentTargetArn:
+        type: Arn
+        description: <p>The ARN that specifies the assessment target for which you want to create the assessment template.</p>
+      assessmentTemplateName:
+        type: AssessmentTemplateName
+        description: <p>The user-defined name that identifies the assessment template that you want to create. You can create several assessment templates for an assessment target. The names of the assessment templates that correspond to a particular assessment target must be unique.</p>
+      durationInSeconds:
+        type: AssessmentRunDuration
+        description: <p>The duration of the assessment run in seconds. The default value is 3600 seconds (one hour).</p>
+      rulesPackageArns:
+        type: AssessmentTemplateRulesPackageArnList
+        description: <p>The ARNs that specify the rules packages that you want to attach to the assessment template.</p>
+      userAttributesForFindings?:
+        type: UserAttributeList
+        description: <p>The user-defined attributes that are assigned to every finding that is generated by the assessment run that uses this assessment template.</p>
+  CreateAssessmentTemplateResponse:
+    type: object
+    properties:
+      assessmentTemplateArn:
+        type: Arn
+        description: <p>The ARN that specifies the assessment template that is created.</p>
+  CreateResourceGroupRequest:
+    type: object
+    properties:
+      resourceGroupTags:
+        type: ResourceGroupTags
+        description: <p>A collection of keys and an array of possible values, '[{"key":"key1","values":["Value1","Value2"]},{"key":"Key2","values":["Value3"]}]'.</p> <p>For example,'[{"key":"Name","values":["TestEC2Instance"]}]'.</p>
+  CreateResourceGroupResponse:
+    type: object
+    properties:
+      resourceGroupArn:
+        type: Arn
+        description: <p>The ARN that specifies the resource group that is created.</p>
+  DeleteAssessmentRunRequest:
+    type: object
+    properties:
+      assessmentRunArn:
+        type: Arn
+        description: <p>The ARN that specifies the assessment run that you want to delete.</p>
+  DeleteAssessmentTargetRequest:
+    type: object
+    properties:
+      assessmentTargetArn:
+        type: Arn
+        description: <p>The ARN that specifies the assessment target that you want to delete.</p>
+  DeleteAssessmentTemplateRequest:
+    type: object
+    properties:
+      assessmentTemplateArn:
+        type: Arn
+        description: <p>The ARN that specifies the assessment template that you want to delete.</p>
+  DescribeAssessmentRunsRequest:
+    type: object
+    properties:
+      assessmentRunArns:
+        type: BatchDescribeArnList
+        description: <p>The ARN that specifies the assessment run that you want to describe.</p>
+  DescribeAssessmentRunsResponse:
+    type: object
+    properties:
+      assessmentRuns:
+        type: AssessmentRunList
+        description: <p>Information about the assessment run.</p>
+      failedItems:
+        type: FailedItems
+        description: <p>Assessment run details that cannot be described. An error code is provided for each failed item.</p>
+  DescribeAssessmentTargetsRequest:
+    type: object
+    properties:
+      assessmentTargetArns:
+        type: BatchDescribeArnList
+        description: <p>The ARNs that specifies the assessment targets that you want to describe.</p>
+  DescribeAssessmentTargetsResponse:
+    type: object
+    properties:
+      assessmentTargets:
+        type: AssessmentTargetList
+        description: <p>Information about the assessment targets.</p>
+      failedItems:
+        type: FailedItems
+        description: <p>Assessment target details that cannot be described. An error code is provided for each failed item.</p>
+  DescribeAssessmentTemplatesRequest:
+    type: object
+    properties:
+      assessmentTemplateArns:
+        type: BatchDescribeArnList
+        description: <p>The ARN that specifiesthe assessment templates that you want to describe.</p>
+  DescribeAssessmentTemplatesResponse:
+    type: object
+    properties:
+      assessmentTemplates:
+        type: AssessmentTemplateList
+        description: <p>Information about the assessment templates.</p>
+      failedItems:
+        type: FailedItems
+        description: <p>Assessment template details that cannot be described. An error code is provided for each failed item.</p>
+  DescribeCrossAccountAccessRoleResponse:
+    type: object
+    properties:
+      roleArn:
+        type: Arn
+        description: <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your AWS account.</p>
+      valid:
+        type: Bool
+        description: <p>A Boolean value that specifies whether the IAM role has the necessary policies attached to enable Amazon Inspector to access your AWS account.</p>
+      registeredAt:
+        type: Timestamp
+        description: <p>The date when the cross-account access role was registered.</p>
+  DescribeFindingsRequest:
+    type: object
+    properties:
+      findingArns:
+        type: BatchDescribeArnList
+        description: <p>The ARN that specifies the finding that you want to describe.</p>
+      locale?:
+        type: Locale
+        description: <p>The locale into which you want to translate a finding description, recommendation, and the short description that identifies the finding.</p>
+  DescribeFindingsResponse:
+    type: object
+    properties:
+      findings:
+        type: FindingList
+        description: <p>Information about the finding.</p>
+      failedItems:
+        type: FailedItems
+        description: <p>Finding details that cannot be described. An error code is provided for each failed item.</p>
+  DescribeResourceGroupsRequest:
+    type: object
+    properties:
+      resourceGroupArns:
+        type: BatchDescribeArnList
+        description: <p>The ARN that specifies the resource group that you want to describe.</p>
+  DescribeResourceGroupsResponse:
+    type: object
+    properties:
+      resourceGroups:
+        type: ResourceGroupList
+        description: <p>Information about a resource group.</p>
+      failedItems:
+        type: FailedItems
+        description: <p>Resource group details that cannot be described. An error code is provided for each failed item.</p>
+  DescribeRulesPackagesRequest:
+    type: object
+    properties:
+      rulesPackageArns:
+        type: BatchDescribeArnList
+        description: <p>The ARN that specifies the rules package that you want to describe.</p>
+      locale?:
+        type: Locale
+        description: <p>The locale that you want to translate a rules package description into.</p>
+  DescribeRulesPackagesResponse:
+    type: object
+    properties:
+      rulesPackages:
+        type: RulesPackageList
+        description: <p>Information about the rules package.</p>
+      failedItems:
+        type: FailedItems
+        description: <p>Rules package details that cannot be described. An error code is provided for each failed item.</p>
+  DurationRange:
+    type: object
+    properties:
+      minSeconds?:
+        type: AssessmentRunDuration
+        description: <p>The minimum value of the duration range. Must be greater than zero.</p>
+      maxSeconds?:
+        type: AssessmentRunDuration
+        description: <p>The maximum value of the duration range. Must be less than or equal to 604800 seconds (1 week).</p>
+    description: <p>This data type is used in the <a>AssessmentTemplateFilter</a> data type.</p>
+  EventSubscription:
+    type: object
+    properties:
+      event:
+        type: InspectorEvent
+        description: <p>The event for which Amazon Simple Notification Service (SNS) notifications are sent.</p>
+      subscribedAt:
+        type: Timestamp
+        description: <p>The time at which <a>SubscribeToEvent</a> is called.</p>
+    description: <p>This data type is used in the <a>Subscription</a> data type.</p>
+  FailedItemDetails:
+    type: object
+    properties:
+      failureCode:
+        type: FailedItemErrorCode
+        description: <p>The status code of a failed item.</p>
+      retryable:
+        type: Bool
+        description: <p>Indicates whether you can immediately retry a request for this item for a specified resource.</p>
+    description: <p>Includes details about the failed items.</p>
+  FailedItems:
+    type: object
+    properties:
+      //:
+        type: FailedItemDetails
+  Finding:
+    type: object
+    properties:
+      arn:
+        type: Arn
+        description: <p>The ARN that specifies the finding.</p>
+      schemaVersion?:
+        type: NumericVersion
+        description: <p>The schema version of this data type.</p>
+      service?:
+        type: ServiceName
+        description: <p>The data element is set to "Inspector".</p>
+      serviceAttributes?:
+        type: InspectorServiceAttributes
+      assetType?:
+        type: AssetType
+        description: <p>The type of the host from which the finding is generated.</p>
+      assetAttributes?:
+        type: AssetAttributes
+        description: <p>A collection of attributes of the host from which the finding is generated.</p>
+      id?:
+        type: FindingId
+        description: <p>The ID of the finding.</p>
+      title?:
+        type: Text
+        description: <p>The name of the finding.</p>
+      description?:
+        type: Text
+        description: <p>The description of the finding.</p>
+      recommendation?:
+        type: Text
+        description: <p>The recommendation for the finding.</p>
+      severity?:
+        type: Severity
+        description: <p>The finding severity. Values can be set to High, Medium, Low, and Informational.</p>
+      numericSeverity?:
+        type: NumericSeverity
+        description: <p>The numeric value of the finding severity.</p>
+      confidence?:
+        type: IocConfidence
+        description: <p>This data element is currently not used.</p>
+      indicatorOfCompromise?:
+        type: Bool
+        description: <p>This data element is currently not used.</p>
+      attributes:
+        type: AttributeList
+        description: <p>The system-defined attributes for the finding.</p>
+      userAttributes:
+        type: UserAttributeList
+        description: <p>The user-defined attributes that are assigned to the finding.</p>
+      createdAt:
+        type: Timestamp
+        description: <p>The time when the finding was generated.</p>
+      updatedAt:
+        type: Timestamp
+        description: <p>The time when <a>AddAttributesToFindings</a> is called.</p>
+    description: <p>Contains information about an Amazon Inspector finding. This data type is used as the response element in the <a>DescribeFindings</a> action.</p>
+  FindingFilter:
+    type: object
+    properties:
+      agentIds?:
+        type: AgentIdList
+        description: <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>agentId</b> property of the <a>Finding</a> data type.</p>
+      autoScalingGroups?:
+        type: AutoScalingGroupList
+        description: <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>autoScalingGroup</b> property of the <a>Finding</a> data type.</p>
+      ruleNames?:
+        type: RuleNameList
+        description: <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>ruleName</b> property of the <a>Finding</a> data type.</p>
+      severities?:
+        type: SeverityList
+        description: <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>severity</b> property of the <a>Finding</a> data type.</p>
+      rulesPackageArns?:
+        type: FilterRulesPackageArnList
+        description: <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>rulesPackageArn</b> property of the <a>Finding</a> data type.</p>
+      attributes?:
+        type: AttributeList
+        description: <p>For a record to match a filter, the list of values that are specified for this data type property must be contained in the list of values of the <b>attributes</b> property of the <a>Finding</a> data type.</p>
+      userAttributes?:
+        type: AttributeList
+        description: <p>For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the <b>userAttributes</b> property of the <a>Finding</a> data type.</p>
+      creationTimeRange?:
+        type: TimestampRange
+        description: <p>The time range during which the finding is generated.</p>
+    description: <p>This data type is used as a request parameter in the <a>ListFindings</a> action.</p>
+  GetTelemetryMetadataRequest:
+    type: object
+    properties:
+      assessmentRunArn:
+        type: Arn
+        description: <p>The ARN that specifies the assessment run that has the telemetry data that you want to obtain.</p>
+  GetTelemetryMetadataResponse:
+    type: object
+    properties:
+      telemetryMetadata:
+        type: TelemetryMetadataList
+        description: <p>Telemetry details.</p>
+  InspectorServiceAttributes:
+    type: object
+    properties:
+      schemaVersion:
+        type: NumericVersion
+        description: <p>The schema version of this data type.</p>
+      assessmentRunArn?:
+        type: Arn
+        description: <p>The ARN of the assessment run during which the finding is generated.</p>
+      rulesPackageArn?:
+        type: Arn
+        description: <p>The ARN of the rules package that is used to generate the finding.</p>
+    description: <p>This data type is used in the <a>Finding</a> data type.</p>
+  ListAssessmentRunAgentsRequest:
+    type: object
+    properties:
+      assessmentRunArn:
+        type: Arn
+        description: <p>The ARN that specifies the assessment run whose agents you want to list.</p>
+      filter?:
+        type: AgentFilter
+        description: <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentRunAgents</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+      maxResults?:
+        type: ListMaxResults
+        description: <p>You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.</p>
+  ListAssessmentRunAgentsResponse:
+    type: object
+    properties:
+      assessmentRunAgents:
+        type: AssessmentRunAgentList
+        description: <p>A list of ARNs that specifies the agents returned by the action.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+  ListAssessmentRunsRequest:
+    type: object
+    properties:
+      assessmentTemplateArns?:
+        type: ListParentArnList
+        description: <p>The ARNs that specify the assessment templates whose assessment runs you want to list.</p>
+      filter?:
+        type: AssessmentRunFilter
+        description: <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentRuns</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+      maxResults?:
+        type: ListMaxResults
+        description: <p>You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.</p>
+  ListAssessmentRunsResponse:
+    type: object
+    properties:
+      assessmentRunArns:
+        type: ListReturnedArnList
+        description: <p>A list of ARNs that specifies the assessment runs that are returned by the action.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+  ListAssessmentTargetsRequest:
+    type: object
+    properties:
+      filter?:
+        type: AssessmentTargetFilter
+        description: <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentTargets</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+      maxResults?:
+        type: ListMaxResults
+        description: <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+  ListAssessmentTargetsResponse:
+    type: object
+    properties:
+      assessmentTargetArns:
+        type: ListReturnedArnList
+        description: <p>A list of ARNs that specifies the assessment targets that are returned by the action.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+  ListAssessmentTemplatesRequest:
+    type: object
+    properties:
+      assessmentTargetArns?:
+        type: ListParentArnList
+        description: <p>A list of ARNs that specifies the assessment targets whose assessment templates you want to list.</p>
+      filter?:
+        type: AssessmentTemplateFilter
+        description: <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentTemplates</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+      maxResults?:
+        type: ListMaxResults
+        description: <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+  ListAssessmentTemplatesResponse:
+    type: object
+    properties:
+      assessmentTemplateArns:
+        type: ListReturnedArnList
+        description: <p>A list of ARNs that specifies the assessment templates returned by the action.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+  ListEventSubscriptionsRequest:
+    type: object
+    properties:
+      resourceArn?:
+        type: Arn
+        description: <p>The ARN of the assessment template for which you want to list the existing event subscriptions.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListEventSubscriptions</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+      maxResults?:
+        type: ListEventSubscriptionsMaxResults
+        description: <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+  ListEventSubscriptionsResponse:
+    type: object
+    properties:
+      subscriptions:
+        type: SubscriptionList
+        description: <p>Details of the returned event subscriptions.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+  ListFindingsRequest:
+    type: object
+    properties:
+      assessmentRunArns?:
+        type: ListParentArnList
+        description: <p>The ARNs of the assessment runs that generate the findings that you want to list.</p>
+      filter?:
+        type: FindingFilter
+        description: <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListFindings</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+      maxResults?:
+        type: ListMaxResults
+        description: <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+  ListFindingsResponse:
+    type: object
+    properties:
+      findingArns:
+        type: ListReturnedArnList
+        description: <p>A list of ARNs that specifies the findings returned by the action.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+  ListRulesPackagesRequest:
+    type: object
+    properties:
+      nextToken?:
+        type: PaginationToken
+        description: <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListRulesPackages</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+      maxResults?:
+        type: ListMaxResults
+        description: <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+  ListRulesPackagesResponse:
+    type: object
+    properties:
+      rulesPackageArns:
+        type: ListReturnedArnList
+        description: <p>The list of ARNs that specifies the rules packages returned by the action.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+  ListTagsForResourceRequest:
+    type: object
+    properties:
+      resourceArn:
+        type: Arn
+        description: <p>The ARN that specifies the assessment template whose tags you want to list.</p>
+  ListTagsForResourceResponse:
+    type: object
+    properties:
+      tags:
+        type: TagList
+        description: <p>A collection of key and value pairs.</p>
+  PreviewAgentsRequest:
+    type: object
+    properties:
+      previewAgentsArn:
+        type: Arn
+        description: <p>The ARN of the assessment target whose agents you want to preview.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>PreviewAgents</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+      maxResults?:
+        type: PreviewAgentsMaxResults
+        description: <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+  PreviewAgentsResponse:
+    type: object
+    properties:
+      agentPreviews:
+        type: AgentPreviewList
+        description: <p>The resulting list of agents.</p>
+      nextToken?:
+        type: PaginationToken
+        description: <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+  RegisterCrossAccountAccessRoleRequest:
+    type: object
+    properties:
+      roleArn:
+        type: Arn
+        description: <p>The ARN of the IAM role that Amazon Inspector uses to list your EC2 instances during the assessment run or when you call the <a>PreviewAgents</a> action. </p>
+  RemoveAttributesFromFindingsRequest:
+    type: object
+    properties:
+      findingArns:
+        type: AddRemoveAttributesFindingArnList
+        description: <p>The ARNs that specify the findings that you want to remove attributes from.</p>
+      attributeKeys:
+        type: UserAttributeKeyList
+        description: <p>The array of attribute keys that you want to remove from specified findings.</p>
+  RemoveAttributesFromFindingsResponse:
+    type: object
+    properties:
+      failedItems:
+        type: FailedItems
+        description: <p>Attributes details that cannot be described. An error code is provided for each failed item.</p>
+  ResourceGroup:
+    type: object
+    properties:
+      arn:
+        type: Arn
+        description: <p>The ARN of the resource group.</p>
+      tags:
+        type: ResourceGroupTags
+        description: <p>The tags (key and value pairs) of the resource group. This data type property is used in the <a>CreateResourceGroup</a> action.</p>
+      createdAt:
+        type: Timestamp
+        description: <p>The time at which resource group is created.</p>
+    description: <p>Contains information about a resource group. The resource group defines a set of tags that, when queried, identify the AWS resources that make up the assessment target. This data type is used as the response element in the <a>DescribeResourceGroups</a> action.</p>
+  ResourceGroupTag:
+    type: object
+    properties:
+      key:
+        type: TagKey
+        description: <p>A tag key.</p>
+      value?:
+        type: TagValue
+        description: <p>The value assigned to a tag key.</p>
+    description: <p>This data type is used as one of the elements of the <a>ResourceGroup</a> data type.</p>
+  RulesPackage:
+    type: object
+    properties:
+      arn:
+        type: Arn
+        description: <p>The ARN of the rules package.</p>
+      name:
+        type: RulesPackageName
+        description: <p>The name of the rules package.</p>
+      version:
+        type: Version
+        description: <p>The version ID of the rules package.</p>
+      provider:
+        type: ProviderName
+        description: <p>The provider of the rules package.</p>
+      description?:
+        type: Text
+        description: <p>The description of the rules package.</p>
+    description: <p>Contains information about an Amazon Inspector rules package. This data type is used as the response element in the <a>DescribeRulesPackages</a> action.</p>
+  SetTagsForResourceRequest:
+    type: object
+    properties:
+      resourceArn:
+        type: Arn
+        description: <p>The ARN of the assessment template that you want to set tags to.</p>
+      tags?:
+        type: TagList
+        description: <p>A collection of key and value pairs that you want to set to the assessment template.</p>
+  StartAssessmentRunRequest:
+    type: object
+    properties:
+      assessmentTemplateArn:
+        type: Arn
+        description: <p>The ARN of the assessment template of the assessment run that you want to start.</p>
+      assessmentRunName?:
+        type: AssessmentRunName
+        description: <p>You can specify the name for the assessment run, or you can use the auto-generated name that is based on the assessment template name. The name must be unique for the assessment template.</p>
+  StartAssessmentRunResponse:
+    type: object
+    properties:
+      assessmentRunArn:
+        type: Arn
+        description: <p>The ARN of the assessment run that has been started.</p>
+  StopAssessmentRunRequest:
+    type: object
+    properties:
+      assessmentRunArn:
+        type: Arn
+        description: <p>The ARN of the assessment run that you want to stop.</p>
+  SubscribeToEventRequest:
+    type: object
+    properties:
+      resourceArn:
+        type: Arn
+        description: <p>The ARN of the assessment template that is used during the event for which you want to receive SNS notifications.</p>
+      event:
+        type: InspectorEvent
+        description: <p>The event for which you want to receive SNS notifications.</p>
+      topicArn:
+        type: Arn
+        description: <p>The ARN of the SNS topic to which the SNS notifications are sent.</p>
+  Subscription:
+    type: object
+    properties:
+      resourceArn:
+        type: Arn
+        description: <p>The ARN of the assessment template that is used during the event for which the SNS notification is sent.</p>
+      topicArn:
+        type: Arn
+        description: <p>The ARN of the Amazon Simple Notification Service (SNS) topic to which the SNS notifications are sent.</p>
+      eventSubscriptions:
+        type: EventSubscriptionList
+        description: <p>The list of existing event subscriptions.</p>
+    description: <p>This data type is used as a response element in the <a>ListEventSubscriptions</a> action.</p>
+  Tag:
+    type: object
+    properties:
+      key:
+        type: TagKey
+        description: <p>A tag key.</p>
+      value?:
+        type: TagValue
+        description: <p>A value assigned to a tag key.</p>
+    description: <p>A key and value pair. This data type is used as a request parameter in the <a>SetTagsForResource</a> action and a response element in the <a>ListTagsForResource</a> action.</p>
+  TelemetryMetadata:
+    type: object
+    properties:
+      messageType:
+        type: MessageType
+        description: <p>A specific type of behavioral data that is collected by the agent.</p>
+      count:
+        type: Long
+        description: <p>The count of messages that the agent sends to the Amazon Inspector service.</p>
+      dataSize?:
+        type: Long
+        description: <p>The data size of messages that the agent sends to the Amazon Inspector service.</p>
+    description: <p>The metadata about the Amazon Inspector application data metrics collected by the agent. This data type is used as the response element in the <a>GetTelemetryMetadata</a> action.</p>
+  TimestampRange:
+    type: object
+    properties:
+      beginDate?:
+        type: Timestamp
+        description: <p>The minimum value of the timestamp range.</p>
+      endDate?:
+        type: Timestamp
+        description: <p>The maximum value of the timestamp range.</p>
+    description: <p>This data type is used in the <a>AssessmentRunFilter</a> data type.</p>
+  UnsubscribeFromEventRequest:
+    type: object
+    properties:
+      resourceArn:
+        type: Arn
+        description: <p>The ARN of the assessment template that is used during the event for which you want to stop receiving SNS notifications.</p>
+      event:
+        type: InspectorEvent
+        description: <p>The event for which you want to stop receiving SNS notifications.</p>
+      topicArn:
+        type: Arn
+        description: <p>The ARN of the SNS topic to which SNS notifications are sent.</p>
+  UpdateAssessmentTargetRequest:
+    type: object
+    properties:
+      assessmentTargetArn:
+        type: Arn
+        description: <p>The ARN of the assessment target that you want to update.</p>
+      assessmentTargetName:
+        type: AssessmentTargetName
+        description: <p>The name of the assessment target that you want to update.</p>
+      resourceGroupArn:
+        type: Arn
+        description: <p>The ARN of the resource group that is used to specify the new resource group to associate with the assessment target.</p>
+/{AddAttributesToFindings}:
+  uriParameters:
+    AddAttributesToFindings?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Assigns attributes (key and value pairs) to the findings that are specified by the ARNs of the findings.
+  post:
+    body:
+      application/json: AddAttributesToFindingsRequest
+    responses:
+      200:
+        body:
+          application/json: AddAttributesToFindingsResponse
+      400:
+        description: InternalException
+/{CreateAssessmentTarget}:
+  uriParameters:
+    CreateAssessmentTarget?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a new assessment target using the ARN of the resource group that is generated by <a>CreateResourceGroup</a>. You can create up to 50 assessment targets per AWS account. You can run up to 500 concurrent agents per AWS account. For more information, see <a href="http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html"> Amazon Inspector Assessment Targets</a>.
+  post:
+    body:
+      application/json: CreateAssessmentTargetRequest
+    responses:
+      200:
+        body:
+          application/json: CreateAssessmentTargetResponse
+      400:
+        description: InternalException
+/{CreateAssessmentTemplate}:
+  uriParameters:
+    CreateAssessmentTemplate?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates an assessment template for the assessment target that is specified by the ARN of the assessment target.
+  post:
+    body:
+      application/json: CreateAssessmentTemplateRequest
+    responses:
+      200:
+        body:
+          application/json: CreateAssessmentTemplateResponse
+      400:
+        description: InternalException
+/{CreateResourceGroup}:
+  uriParameters:
+    CreateResourceGroup?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a resource group using the specified set of tags (key and value pairs) that are used to select the EC2 instances to be included in an Amazon Inspector assessment target. The created resource group is then used to create an Amazon Inspector assessment target. For more information, see <a>CreateAssessmentTarget</a>.
+  post:
+    body:
+      application/json: CreateResourceGroupRequest
+    responses:
+      200:
+        body:
+          application/json: CreateResourceGroupResponse
+      400:
+        description: InternalException
+/{DeleteAssessmentRun}:
+  uriParameters:
+    DeleteAssessmentRun?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the assessment run that is specified by the ARN of the assessment run.
+  post:
+    body:
+      application/json: DeleteAssessmentRunRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalException
+/{DeleteAssessmentTarget}:
+  uriParameters:
+    DeleteAssessmentTarget?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the assessment target that is specified by the ARN of the assessment target.
+  post:
+    body:
+      application/json: DeleteAssessmentTargetRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalException
+/{DeleteAssessmentTemplate}:
+  uriParameters:
+    DeleteAssessmentTemplate?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the assessment template that is specified by the ARN of the assessment template.
+  post:
+    body:
+      application/json: DeleteAssessmentTemplateRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalException
+/{DescribeAssessmentRuns}:
+  uriParameters:
+    DescribeAssessmentRuns?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the assessment runs that are specified by the ARNs of the assessment runs.
+  post:
+    body:
+      application/json: DescribeAssessmentRunsRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeAssessmentRunsResponse
+      400:
+        description: InternalException
+/{DescribeAssessmentTargets}:
+  uriParameters:
+    DescribeAssessmentTargets?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the assessment targets that are specified by the ARNs of the assessment targets.
+  post:
+    body:
+      application/json: DescribeAssessmentTargetsRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeAssessmentTargetsResponse
+      400:
+        description: InternalException
+/{DescribeAssessmentTemplates}:
+  uriParameters:
+    DescribeAssessmentTemplates?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the assessment templates that are specified by the ARNs of the assessment templates.
+  post:
+    body:
+      application/json: DescribeAssessmentTemplatesRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeAssessmentTemplatesResponse
+      400:
+        description: InternalException
+/{DescribeCrossAccountAccessRole}:
+  uriParameters:
+    DescribeCrossAccountAccessRole?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the IAM role that enables Amazon Inspector to access your AWS account.
+  post:
+    responses:
+      200:
+        body:
+          application/json: DescribeCrossAccountAccessRoleResponse
+      400:
+        description: InternalException
+/{DescribeFindings}:
+  uriParameters:
+    DescribeFindings?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the findings that are specified by the ARNs of the findings.
+  post:
+    body:
+      application/json: DescribeFindingsRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeFindingsResponse
+      400:
+        description: InternalException
+/{DescribeResourceGroups}:
+  uriParameters:
+    DescribeResourceGroups?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the resource groups that are specified by the ARNs of the resource groups.
+  post:
+    body:
+      application/json: DescribeResourceGroupsRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeResourceGroupsResponse
+      400:
+        description: InternalException
+/{DescribeRulesPackages}:
+  uriParameters:
+    DescribeRulesPackages?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the rules packages that are specified by the ARNs of the rules packages.
+  post:
+    body:
+      application/json: DescribeRulesPackagesRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeRulesPackagesResponse
+      400:
+        description: InternalException
+/{GetTelemetryMetadata}:
+  uriParameters:
+    GetTelemetryMetadata?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Information about the data that is collected for the specified assessment run.
+  post:
+    body:
+      application/json: GetTelemetryMetadataRequest
+    responses:
+      200:
+        body:
+          application/json: GetTelemetryMetadataResponse
+      400:
+        description: InternalException
+/{ListAssessmentRunAgents}:
+  uriParameters:
+    ListAssessmentRunAgents?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the agents of the assessment runs that are specified by the ARNs of the assessment runs.
+  post:
+    body:
+      application/json: ListAssessmentRunAgentsRequest
+    responses:
+      200:
+        body:
+          application/json: ListAssessmentRunAgentsResponse
+      400:
+        description: InternalException
+/{ListAssessmentRuns}:
+  uriParameters:
+    ListAssessmentRuns?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the assessment runs that correspond to the assessment templates that are specified by the ARNs of the assessment templates.
+  post:
+    body:
+      application/json: ListAssessmentRunsRequest
+    responses:
+      200:
+        body:
+          application/json: ListAssessmentRunsResponse
+      400:
+        description: InternalException
+/{ListAssessmentTargets}:
+  uriParameters:
+    ListAssessmentTargets?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the ARNs of the assessment targets within this AWS account. For more information about assessment targets, see <a href="http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html">Amazon Inspector Assessment Targets</a>.
+  post:
+    body:
+      application/json: ListAssessmentTargetsRequest
+    responses:
+      200:
+        body:
+          application/json: ListAssessmentTargetsResponse
+      400:
+        description: InternalException
+/{ListAssessmentTemplates}:
+  uriParameters:
+    ListAssessmentTemplates?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the assessment templates that correspond to the assessment targets that are specified by the ARNs of the assessment targets.
+  post:
+    body:
+      application/json: ListAssessmentTemplatesRequest
+    responses:
+      200:
+        body:
+          application/json: ListAssessmentTemplatesResponse
+      400:
+        description: InternalException
+/{ListEventSubscriptions}:
+  uriParameters:
+    ListEventSubscriptions?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists all the event subscriptions for the assessment template that is specified by the ARN of the assessment template. For more information, see <a>SubscribeToEvent</a> and <a>UnsubscribeFromEvent</a>.
+  post:
+    body:
+      application/json: ListEventSubscriptionsRequest
+    responses:
+      200:
+        body:
+          application/json: ListEventSubscriptionsResponse
+      400:
+        description: InternalException
+/{ListFindings}:
+  uriParameters:
+    ListFindings?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists findings that are generated by the assessment runs that are specified by the ARNs of the assessment runs.
+  post:
+    body:
+      application/json: ListFindingsRequest
+    responses:
+      200:
+        body:
+          application/json: ListFindingsResponse
+      400:
+        description: InternalException
+/{ListRulesPackages}:
+  uriParameters:
+    ListRulesPackages?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists all available Amazon Inspector rules packages.
+  post:
+    body:
+      application/json: ListRulesPackagesRequest
+    responses:
+      200:
+        body:
+          application/json: ListRulesPackagesResponse
+      400:
+        description: InternalException
+/{ListTagsForResource}:
+  uriParameters:
+    ListTagsForResource?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists all tags associated with an assessment template.
+  post:
+    body:
+      application/json: ListTagsForResourceRequest
+    responses:
+      200:
+        body:
+          application/json: ListTagsForResourceResponse
+      400:
+        description: InternalException
+/{PreviewAgents}:
+  uriParameters:
+    PreviewAgents?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Previews the agents installed on the EC2 instances that are part of the specified assessment target.
+  post:
+    body:
+      application/json: PreviewAgentsRequest
+    responses:
+      200:
+        body:
+          application/json: PreviewAgentsResponse
+      400:
+        description: InternalException
+/{RegisterCrossAccountAccessRole}:
+  uriParameters:
+    RegisterCrossAccountAccessRole?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Registers the IAM role that Amazon Inspector uses to list your EC2 instances at the start of the assessment run or when you call the <a>PreviewAgents</a> action.
+  post:
+    body:
+      application/json: RegisterCrossAccountAccessRoleRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalException
+/{RemoveAttributesFromFindings}:
+  uriParameters:
+    RemoveAttributesFromFindings?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Removes entire attributes (key and value pairs) from the findings that are specified by the ARNs of the findings where an attribute with the specified key exists.
+  post:
+    body:
+      application/json: RemoveAttributesFromFindingsRequest
+    responses:
+      200:
+        body:
+          application/json: RemoveAttributesFromFindingsResponse
+      400:
+        description: InternalException
+/{SetTagsForResource}:
+  uriParameters:
+    SetTagsForResource?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sets tags (key and value pairs) to the assessment template that is specified by the ARN of the assessment template.
+  post:
+    body:
+      application/json: SetTagsForResourceRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalException
+/{StartAssessmentRun}:
+  uriParameters:
+    StartAssessmentRun?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Starts the assessment run specified by the ARN of the assessment template. For this API to function properly, you must not exceed the limit of running up to 500 concurrent agents per AWS account.
+  post:
+    body:
+      application/json: StartAssessmentRunRequest
+    responses:
+      200:
+        body:
+          application/json: StartAssessmentRunResponse
+      400:
+        description: InternalException
+/{StopAssessmentRun}:
+  uriParameters:
+    StopAssessmentRun?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Stops the assessment run that is specified by the ARN of the assessment run.
+  post:
+    body:
+      application/json: StopAssessmentRunRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalException
+/{SubscribeToEvent}:
+  uriParameters:
+    SubscribeToEvent?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Enables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic.
+  post:
+    body:
+      application/json: SubscribeToEventRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalException
+/{UnsubscribeFromEvent}:
+  uriParameters:
+    UnsubscribeFromEvent?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Disables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic.
+  post:
+    body:
+      application/json: UnsubscribeFromEventRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalException
+/{UpdateAssessmentTarget}:
+  uriParameters:
+    UpdateAssessmentTarget?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Updates the assessment target that is specified by the ARN of the assessment target.
+  post:
+    body:
+      application/json: UpdateAssessmentTargetRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalException

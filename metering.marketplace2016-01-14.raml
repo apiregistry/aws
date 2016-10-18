@@ -1,0 +1,64 @@
+#%RAML 1.0
+title: AWSMarketplace Metering
+version: '2016-01-14'
+description: '  This reference provides descriptions of the low-level AWS Marketplace
+  Metering Service API.   AWS Marketplace sellers can use this API to submit usage
+  data for custom usage dimensions.  <b>Submitting Metering Records</b> <ul> <li>  <i>MeterUsage</i>-
+  Submits the metering record for a Marketplace product. </li> </ul>'
+mediaType:
+- application/json
+types:
+  Boolean:
+    type: boolean
+  ProductCode:
+    type: string
+    minLength: 1
+    maxLength: 255
+  String:
+    type: string
+  Timestamp:
+    type: datetime
+  UsageDimension:
+    type: string
+    minLength: 1
+    maxLength: 255
+  UsageQuantity:
+    type: integer
+    format: int
+    minimum: 0
+    maximum: 1000000
+  MeterUsageRequest:
+    type: object
+    properties:
+      ProductCode:
+        type: ProductCode
+        description: <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.</p>
+      Timestamp:
+        type: Timestamp
+        description: <p>Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored. </p>
+      UsageDimension:
+        type: UsageDimension
+        description: <p>It will be one of the 'fcp dimension name' provided during the publishing of the product.</p>
+      UsageQuantity:
+        type: UsageQuantity
+        description: <p>Consumption value for the hour.</p>
+      DryRun:
+        type: Boolean
+        description: <p>Checks whether you have the permissions required for the action, but does not make the request. If you have the permissions, the request returns DryRunOperation; otherwise, it returns UnauthorizedException. </p>
+  MeterUsageResult:
+    type: object
+    properties:
+      MeteringRecordId?:
+        type: String
+/:
+  description: 'API to emit metering records. For identical requests, the API is idempotent.
+    It simply returns the metering record ID. '
+  post:
+    body:
+      application/json: MeterUsageRequest
+    responses:
+      200:
+        body:
+          application/json: MeterUsageResult
+      400:
+        description: InternalServiceErrorException | InvalidProductCodeException | InvalidUsageDimensionException | InvalidEndpointRegionException | TimestampOutOfBoundsException | DuplicateRequestException | ThrottlingException

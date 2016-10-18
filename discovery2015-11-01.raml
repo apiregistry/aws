@@ -1,0 +1,664 @@
+#%RAML 1.0
+title: AWS Application Discovery Service
+version: '2015-11-01'
+description: ' The AWS Application Discovery Service helps Systems Integrators quickly
+  and reliably plan application migration projects by automatically identifying applications
+  running in on-premises data centers, their associated dependencies, and their performance
+  profile.   Planning data center migrations can involve thousands of workloads that
+  are often deeply interdependent. Application discovery and dependency mapping are
+  important early first steps in the migration process, but difficult to perform at
+  scale due to the lack of automated tools.  The AWS Application Discovery Service
+  automatically collects configuration and usage data from servers to develop a list
+  of applications, how they perform, and how they are interdependent. This information
+  is securely retained in an AWS Application Discovery Service database which you
+  can export as a CSV file into your preferred visualization tool or cloud migration
+  solution to help reduce the complexity and time in planning your cloud migration.  The
+  Application Discovery Service is currently available for preview. Only customers
+  who are engaged with <a href="https://aws.amazon.com/professional-services/">AWS
+  Professional Services</a> or a certified AWS partner can use the service. To see
+  the list of certified partners and request access to the Application Discovery Service,
+  complete the following <a href="http://aws.amazon.com/application-discovery/preview/">preview
+  form</a>.  This API reference provides descriptions, syntax, and usage examples
+  for each of the actions and data types for the Discovery Service. The topic for
+  each action shows the API request parameters and the response. Alternatively, you
+  can use one of the AWS SDKs to access an API that is tailored to the programming
+  language or platform that you''re using. For more information, see <a href="http://aws.amazon.com/tools/#SDKs">AWS
+  SDKs</a>.  This guide is intended for use with the <a href="http://docs.aws.amazon.com/application-discovery/latest/userguide/what-is-appdiscovery.html">
+  <i>AWS Discovery Service User Guide</i> </a>.  The following are short descriptions
+  of each API action, organized by function.   <b>Managing AWS Agents Using the Application
+  Discovery Service</b>   An AWS agent is software that you install on on-premises
+  servers and virtual machines that are targeted for discovery and migration. Agents
+  run on Linux and Windows Server and collect server configuration and activity information
+  about your applications and infrastructure. Specifically, agents collect the following
+  information and send it to the Application Discovery Service using Secure Sockets
+  Layer (SSL) encryption: <ul> <li>  User information (user name, home directory)
+  </li> <li>  Group information (name) </li> <li>  List of installed packages </li>
+  <li>  List of kernel modules </li> <li>  All create and stop process events </li>
+  <li>  DNS queries </li> <li>  NIC information </li> <li>  TCP/UDP process listening
+  ports </li> <li>  TCPV4/V6 connections </li> <li>  Operating system information
+  </li> <li>  System performance </li> <li>  Process performance </li> </ul>  The
+  Application Discovery Service API includes the following actions to manage AWS agents:
+  <ul> <li>   <i>StartDataCollectionByAgentIds</i>: Instructs the specified agents
+  to start collecting data. The Application Discovery Service takes several minutes
+  to receive and process data after you initiate data collection. </li> <li>   <i>StopDataCollectionByAgentIds</i>:
+  Instructs the specified agents to stop collecting data. </li> <li>   <i>DescribeAgents</i>:
+  Lists AWS agents by ID or lists all agents associated with your user account if
+  you did not specify an agent ID. The output includes agent IDs, IP addresses, media
+  access control (MAC) addresses, agent health, host name where the agent resides,
+  and the version number of each agent. </li> </ul>   <b>Querying Configuration Items</b>   A
+  <i>configuration item</i> is an IT asset that was discovered in your data center
+  by an AWS agent. When you use the Application Discovery Service, you can specify
+  filters and query specific configuration items. The service supports Server, Process,
+  and Connection configuration items. This means you can specify a value for the following
+  keys and query your IT assets: <p class="title"> <b>Server</b>  <ul> <li>  server.HostName
+  </li> <li>  server.osName </li> <li>  server.osVersion </li> <li>  server.configurationId
+  </li> <li>  server.agentId </li> </ul> <p class="title"> <b>Process</b>  <ul> <li>  process.name
+  </li> <li>  process.CommandLine </li> <li>  process.configurationId </li> <li>  server.hostName
+  </li> <li>  server.osName </li> <li>  server.osVersion </li> <li>  server.configurationId
+  </li> <li>  server.agentId </li> </ul> <p class="title"> <b>Connection</b>  <ul>
+  <li>  connection.sourceIp </li> <li>  connection.sourcePort </li> <li>  connection.destinationIp
+  </li> <li>  connection.destinationPort </li> <li>  sourceProcess.configurationId
+  </li> <li>  sourceProcess.commandLine </li> <li>  sourceProcess.name </li> <li>  destinationProcessId.configurationId
+  </li> <li>  destinationProcess.commandLine </li> <li>  destinationProcess.name </li>
+  <li>  sourceServer.configurationId </li> <li>  sourceServer.hostName </li> <li>  sourceServer.osName
+  </li> <li>  sourceServer.osVersion </li> <li>  destinationServer.configurationId
+  </li> <li>  destinationServer.hostName </li> <li>  destinationServer.osName </li>
+  <li>  destinationServer.osVersion </li> </ul>  The Application Discovery Service
+  includes the following actions for querying configuration items.  <ul> <li>   <i>DescribeConfigurations</i>:
+  Retrieves a list of attributes for a specific configuration ID. For example, the
+  output for a <i>server</i> configuration item includes a list of attributes about
+  the server, including host name, operating system, number of network cards, etc.
+  </li> <li>   <i>ListConfigurations</i>: Retrieves a list of configuration items
+  according to the criteria you specify in a filter. The filter criteria identify
+  relationship requirements. For example, you can specify filter criteria of process.name
+  with values of <i>nginx</i> and <i>apache</i>. </li> </ul>   <b>Tagging Discovered
+  Configuration Items</b>   You can tag discovered configuration items. Tags are metadata
+  that help you categorize IT assets in your data center. Tags use a <i>key</i>-<i>value</i>
+  format. For example, <code>{"key": "serverType", "value": "webServer"}</code>.  <ul>
+  <li>   <i>CreateTags</i>: Creates one or more tags for a configuration items. </li>
+  <li>   <i>DescribeTags</i>: Retrieves a list of configuration items that are tagged
+  with a specific tag. <i>Or</i>, retrieves a list of all tags assigned to a specific
+  configuration item. </li> <li>   <i>DeleteTags</i>: Deletes the association between
+  a configuration item and one or more tags. </li> </ul>   <b>Exporting Data</b>   You
+  can export data as a CSV file to an Amazon S3 bucket or into your preferred visualization
+  tool or cloud migration solution to help reduce the complexity and time in planning
+  your cloud migration. <ul> <li>   <i>ExportConfigurations</i>: Exports all discovered
+  configuration data to an Amazon S3 bucket. Data includes tags and tag associations,
+  processes, connections, servers, and system performance. This API returns an export
+  ID which you can query using the GetExportStatus API. </li> <li>   <i>DescribeExportConfigurations</i>:
+  Gets the status of the data export. When the export is complete, the service returns
+  an Amazon S3 URL where you can download CSV files that include the data. </li> </ul>'
+mediaType:
+- application/json
+types:
+  AgentConfigurationStatusList:
+    type: array
+    items:
+      type: AgentConfigurationStatus
+  AgentId:
+    type: string
+  AgentIds:
+    type: array
+    items:
+      type: AgentId
+  AgentNetworkInfoList:
+    type: array
+    items:
+      type: AgentNetworkInfo
+  AgentStatus:
+    type: string
+    enum:
+    - HEALTHY
+    - UNHEALTHY
+    - RUNNING
+    - UNKNOWN
+    - BLACKLISTED
+    - SHUTDOWN
+  AgentsInfo:
+    type: array
+    items:
+      type: AgentInfo
+  Boolean:
+    type: boolean
+  Condition:
+    type: string
+  ConfigurationId:
+    type: string
+  ConfigurationIdList:
+    type: array
+    items:
+      type: ConfigurationId
+  ConfigurationItemType:
+    type: string
+    enum:
+    - SERVER
+    - PROCESS
+    - CONNECTION
+  ConfigurationTagSet:
+    type: array
+    items:
+      type: ConfigurationTag
+  Configurations:
+    type: array
+    items:
+      type: Configuration
+  ConfigurationsDownloadUrl:
+    type: string
+  ConfigurationsExportId:
+    type: string
+  DescribeConfigurationsAttributes:
+    type: array
+    items:
+      type: DescribeConfigurationsAttribute
+  ExportIds:
+    type: array
+    items:
+      type: ConfigurationsExportId
+  ExportRequestTime:
+    type: datetime
+  ExportStatus:
+    type: string
+    enum:
+    - FAILED
+    - SUCCEEDED
+    - IN_PROGRESS
+  ExportStatusMessage:
+    type: string
+  ExportsInfo:
+    type: array
+    items:
+      type: ExportInfo
+  FilterName:
+    type: string
+  FilterValue:
+    type: string
+  FilterValues:
+    type: array
+    items:
+      type: FilterValue
+  Filters:
+    type: array
+    items:
+      type: Filter
+  Integer:
+    type: integer
+    format: int
+  NextToken:
+    type: string
+  String:
+    type: string
+  TagFilters:
+    type: array
+    items:
+      type: TagFilter
+  TagKey:
+    type: string
+  TagSet:
+    type: array
+    items:
+      type: Tag
+  TagValue:
+    type: string
+  TimeStamp:
+    type: datetime
+  AgentConfigurationStatus:
+    type: object
+    properties:
+      agentId?:
+        type: String
+        description: <p>The agent ID.</p>
+      operationSucceeded?:
+        type: Boolean
+        description: <p>Information about the status of the <code>StartDataCollection</code> and <code>StopDataCollection</code> operations. The system has recorded the data collection operation. The agent receives this command the next time it polls for a new command. </p>
+      description?:
+        type: String
+        description: <p>A description of the operation performed.</p>
+    description: <p>Information about agents that were instructed to start collecting data. Information includes the agent ID, a description of the operation, and whether or not the agent configuration was updated.</p>
+  AgentInfo:
+    type: object
+    properties:
+      agentId?:
+        type: AgentId
+        description: <p>The agent ID.</p>
+      hostName?:
+        type: String
+        description: <p>The name of the host where the agent resides. The host can be a server or virtual machine.</p>
+      agentNetworkInfoList?:
+        type: AgentNetworkInfoList
+        description: <p>Network details about the host where the agent resides.</p>
+      connectorId?:
+        type: String
+        description: <p>This data type is currently not valid.</p>
+      version?:
+        type: String
+        description: <p>The agent version.</p>
+      health?:
+        type: AgentStatus
+        description: <p>The health of the agent.</p>
+    description: <p>Information about agents associated with the user’s AWS account. Information includes agent IDs, IP addresses, media access control (MAC) addresses, agent health, hostname where the agent resides, and agent version for each agent.</p>
+  AgentNetworkInfo:
+    type: object
+    properties:
+      ipAddress?:
+        type: String
+        description: <p>The IP address for the host where the agent resides.</p>
+      macAddress?:
+        type: String
+        description: <p>The MAC address for the host where the agent resides.</p>
+    description: <p>Network details about the host where the agent resides.</p>
+  Configuration:
+    type: object
+    properties:
+      //:
+        type: String
+  ConfigurationTag:
+    type: object
+    properties:
+      configurationType?:
+        type: ConfigurationItemType
+        description: <p>A type of IT asset that you want to tag.</p>
+      configurationId?:
+        type: ConfigurationId
+        description: <p>The configuration ID for the item you want to tag. You can specify a list of keys and values.</p>
+      key?:
+        type: TagKey
+        description: <p>A type of tag to filter on. For example, <i>serverType</i>.</p>
+      value?:
+        type: TagValue
+        description: <p>A value to filter on. For example <i>key = serverType</i> and <i>value = web server</i>.</p>
+      timeOfCreation?:
+        type: TimeStamp
+        description: <p>The time the configuration tag was created in Coordinated Universal Time (UTC).</p>
+    description: <p>Tags for a configuration item. Tags are metadata that help you categorize IT assets.</p>
+  CreateTagsRequest:
+    type: object
+    properties:
+      configurationIds:
+        type: ConfigurationIdList
+        description: <p>A list of configuration items that you want to tag.</p>
+      tags:
+        type: TagSet
+        description: '<p>Tags that you want to associate with one or more configuration
+          items. Specify the tags that you want to create in a <i>key</i>-<i>value</i>
+          format. For example:</p> <p> <code>{"key": "serverType", "value": "webServer"}</code>
+          </p>'
+  CreateTagsResponse:
+    type: object
+  DeleteTagsRequest:
+    type: object
+    properties:
+      configurationIds:
+        type: ConfigurationIdList
+        description: <p>A list of configuration items with tags that you want to delete.</p>
+      tags?:
+        type: TagSet
+        description: '<p>Tags that you want to delete from one or more configuration
+          items. Specify the tags that you want to delete in a <i>key</i>-<i>value</i>
+          format. For example:</p> <p> <code>{"key": "serverType", "value": "webServer"}</code>
+          </p>'
+  DeleteTagsResponse:
+    type: object
+  DescribeAgentsRequest:
+    type: object
+    properties:
+      agentIds?:
+        type: AgentIds
+        description: <p>The agent IDs for which you want information. If you specify no IDs, the system returns information about all agents associated with your AWS user account.</p>
+      maxResults?:
+        type: Integer
+        description: <p>The total number of agents to return. The maximum value is 100.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>A token to start the list. Use this token to get the next set of results.</p>
+  DescribeAgentsResponse:
+    type: object
+    properties:
+      agentsInfo?:
+        type: AgentsInfo
+        description: <p>Lists AWS agents by ID or lists all agents associated with your user account if you did not specify an agent ID. The output includes agent IDs, IP addresses, media access control (MAC) addresses, agent health, host name where the agent resides, and the version number of each agent.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>The call returns a token. Use this token to get the next set of results.</p>
+  DescribeConfigurationsAttribute:
+    type: object
+    properties:
+      //:
+        type: String
+  DescribeConfigurationsRequest:
+    type: object
+    properties:
+      configurationIds:
+        type: ConfigurationIdList
+        description: <p>One or more configuration IDs.</p>
+  DescribeConfigurationsResponse:
+    type: object
+    properties:
+      configurations?:
+        type: DescribeConfigurationsAttributes
+        description: <p>A key in the response map. The value is an array of data.</p>
+  DescribeExportConfigurationsRequest:
+    type: object
+    properties:
+      exportIds?:
+        type: ExportIds
+        description: <p>A unique identifier that you can use to query the export status.</p>
+      maxResults?:
+        type: Integer
+        description: <p>The maximum number of results that you want to display as a part of the query.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>A token to get the next set of results. For example, if you specified 100 IDs for <code>DescribeConfigurationsRequest$configurationIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you will get results in a set of 10. Use the token in the query to get the next set of 10.</p>
+  DescribeExportConfigurationsResponse:
+    type: object
+    properties:
+      exportsInfo?:
+        type: ExportsInfo
+        description: <p>Returns export details. When the status is complete, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>A token to get the next set of results. For example, if you specified 100 IDs for <code>DescribeConfigurationsRequest$configurationIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you will get results in a set of 10. Use the token in the query to get the next set of 10.</p>
+  DescribeTagsRequest:
+    type: object
+    properties:
+      filters?:
+        type: TagFilters
+        description: <p>You can filter the list using a <i>key</i>-<i>value</i> format. You can separate these items by using logical operators. Allowed filters include <code>tagKey</code>, <code>tagValue</code>, and <code>configurationId</code>. </p>
+      maxResults?:
+        type: Integer
+        description: <p>The total number of items to return. The maximum value is 100.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>A token to start the list. Use this token to get the next set of results.</p>
+  DescribeTagsResponse:
+    type: object
+    properties:
+      tags?:
+        type: ConfigurationTagSet
+        description: <p>Depending on the input, this is a list of configuration items tagged with a specific tag, or a list of tags for a specific configuration item.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>The call returns a token. Use this token to get the next set of results.</p>
+  ExportConfigurationsResponse:
+    type: object
+    properties:
+      exportId?:
+        type: ConfigurationsExportId
+        description: <p>A unique identifier that you can use to query the export status.</p>
+  ExportInfo:
+    type: object
+    properties:
+      exportId:
+        type: ConfigurationsExportId
+        description: <p>A unique identifier that you can use to query the export.</p>
+      exportStatus:
+        type: ExportStatus
+        description: <p>The status of the configuration data export. The status can succeed, fail, or be in-progress.</p>
+      statusMessage:
+        type: ExportStatusMessage
+        description: '<p>Helpful status messages for API callers. For example: Too
+          many exports in the last 6 hours. Export in progress. Export was successful.</p>'
+      configurationsDownloadUrl?:
+        type: ConfigurationsDownloadUrl
+        description: <p>A URL for an Amazon S3 bucket where you can review the configuration data. The URL is displayed only if the export succeeded.</p>
+      exportRequestTime:
+        type: ExportRequestTime
+        description: <p>The time the configuration data export was initiated.</p>
+    description: <p>Information regarding the export status of the discovered data. The value is an array of objects.</p>
+  Filter:
+    type: object
+    properties:
+      name:
+        type: String
+        description: <p>The name of the filter. The following filter names are allowed for <code>SERVER</code> configuration items.</p> <p class="title"> <b>Server</b> </p> <ul> <li> <p> <code>server.hostName</code> </p> </li> <li> <p> <code>server.osName</code> </p> </li> <li> <p> <code>server.osVersion</code> </p> </li> <li> <p> <code>server.configurationid</code> </p> </li> <li> <p> <code>server.agentid</code> </p> </li> </ul> <p>The name of the filter. The following filter names are allowed for <code>PROCESS</code> configuration items.</p> <p class="title"> <b>Process</b> </p> <ul> <li> <p> <code>process.configurationid</code> </p> </li> <li> <p> <code>process.name</code> </p> </li> <li> <p> <code>process.commandLine</code> </p> </li> <li> <p> <code>server.configurationid</code> </p> </li> <li> <p> <code>server.hostName</code> </p> </li> <li> <p> <code>server.osName</code> </p> </li> <li> <p> <code>server.osVersion</code> </p> </li> <li> <p> <code>server.agentId</code> </p> </li> </ul> <p>The name of the filter. The following filter names are allowed for <code>CONNECTION</code> configuration items.</p> <p class="title"> <b>Connection</b> </p> <ul> <li> <p> <code>connection.sourceIp</code> </p> </li> <li> <p> <code>connection.destinationIp</code> </p> </li> <li> <p> <code>connection.destinationPort</code> </p> </li> <li> <p> <code>sourceProcess.configurationId</code> </p> </li> <li> <p> <code>sourceProcess.name</code> </p> </li> <li> <p> <code>sourceProcess.commandLine</code> </p> </li> <li> <p> <code>destinationProcess.configurationId</code> </p> </li> <li> <p> <code>destinationProcess.name</code> </p> </li> <li> <p> <code>destinationProcess.commandLine</code> </p> </li> <li> <p> <code>sourceServer.configurationId</code> </p> </li> <li> <p> <code>sourceServer.hostName</code> </p> </li> <li> <p> <code>sourceServer.osName</code> </p> </li> <li> <p> <code>sourceServer.osVersion</code> </p> </li> <li> <p> <code>sourceServer.agentId</code> </p> </li> <li> <p> <code>destinationServer.configurationId</code> </p> </li> <li> <p> <code>destinationServer.hostName</code> </p> </li> <li> <p> <code>destinationServer.osName</code> </p> </li> <li> <p> <code>destinationServer.osVersion</code> </p> </li> <li> <p> <code>destinationServer.agentId</code> </p> </li> </ul>
+      values:
+        type: FilterValues
+        description: <p>A string value that you want to filter on. For example, if you choose the <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.</p>
+      condition:
+        type: Condition
+        description: '<p>A conditional operator. The following operators are valid:
+          EQUALS, NOT_EQUALS, CONTAINS, NOT_CONTAINS. If you specify multiple filters,
+          the system utilizes all filters as though concatenated by <i>AND</i>. If
+          you specify multiple values for a particular filter, the system differentiates
+          the values using <i>OR</i>. Calling either <i>DescribeConfigurations</i>
+          or <i>ListConfigurations</i> returns attributes of matching configuration
+          items.</p>'
+    description: <p>A filter that can use conditional operators.</p>
+  ListConfigurationsRequest:
+    type: object
+    properties:
+      configurationType:
+        type: ConfigurationItemType
+        description: <p>A valid configuration identified by the Discovery Service. </p>
+      filters?:
+        type: Filters
+        description: '<p>You can filter the list using a <i>key</i>-<i>value</i> format.
+          For example: </p> <p> <code>{"key": "serverType", "value": "webServer"}</code>
+          </p> <p>You can separate these items by using logical operators. </p>'
+      maxResults?:
+        type: Integer
+        description: <p>The total number of items to return. The maximum value is 100.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>A token to start the list. Use this token to get the next set of results.</p>
+  ListConfigurationsResponse:
+    type: object
+    properties:
+      configurations?:
+        type: Configurations
+        description: <p>Returns configuration details, including the configuration ID, attribute names, and attribute values.</p>
+      nextToken?:
+        type: NextToken
+        description: <p>The call returns a token. Use this token to get the next set of results.</p>
+  StartDataCollectionByAgentIdsRequest:
+    type: object
+    properties:
+      agentIds:
+        type: AgentIds
+        description: <p>The IDs of the agents that you want to start collecting data. If you send a request to an AWS agent ID that you do not have permission to contact, according to your AWS account, the service does not throw an exception. Instead, it returns the error in the <i>Description</i> field. If you send a request to multiple agents and you do not have permission to contact some of those agents, the system does not throw an exception. Instead, the system shows <code>Failed</code> in the <i>Description</i> field.</p>
+  StartDataCollectionByAgentIdsResponse:
+    type: object
+    properties:
+      agentsConfigurationStatus?:
+        type: AgentConfigurationStatusList
+        description: <p>Information about agents that were instructed to start collecting data. Information includes the agent ID, a description of the operation performed, and whether or not the agent configuration was updated.</p>
+  StopDataCollectionByAgentIdsRequest:
+    type: object
+    properties:
+      agentIds:
+        type: AgentIds
+        description: <p>The IDs of the agents that you want to stop collecting data.</p>
+  StopDataCollectionByAgentIdsResponse:
+    type: object
+    properties:
+      agentsConfigurationStatus?:
+        type: AgentConfigurationStatusList
+        description: <p>Information about agents that were instructed to stop collecting data. Information includes the agent ID, a description of the operation performed, and whether or not the agent configuration was updated.</p>
+  Tag:
+    type: object
+    properties:
+      key:
+        type: TagKey
+        description: <p>A type of tag to filter on.</p>
+      value:
+        type: TagValue
+        description: <p>A value for a tag key to filter on.</p>
+    description: <p>Metadata that help you categorize IT assets.</p>
+  TagFilter:
+    type: object
+    properties:
+      name:
+        type: FilterName
+        description: <p>A name of a tag filter.</p>
+      values:
+        type: FilterValues
+        description: <p>Values of a tag filter.</p>
+    description: '<p>The name of a tag filter. Valid names are: <code>tagKey</code>,
+      <code>tagValue</code>, <code>configurationId</code>.</p>'
+/{CreateTags}:
+  uriParameters:
+    CreateTags?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates one or more tags for configuration items. Tags are metadata that help you categorize IT assets. This API accepts a list of multiple configuration items.
+  post:
+    body:
+      application/json: CreateTagsRequest
+    responses:
+      200:
+        body:
+          application/json: CreateTagsResponse
+      400:
+        description: AuthorizationErrorException
+/{DeleteTags}:
+  uriParameters:
+    DeleteTags?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes the association between configuration items and one or more tags. This API accepts a list of multiple configuration items.
+  post:
+    body:
+      application/json: DeleteTagsRequest
+    responses:
+      200:
+        body:
+          application/json: DeleteTagsResponse
+      400:
+        description: AuthorizationErrorException
+/{DescribeAgents}:
+  uriParameters:
+    DescribeAgents?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists AWS agents by ID or lists all agents associated with your user account if you did not specify an agent ID.
+  post:
+    body:
+      application/json: DescribeAgentsRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeAgentsResponse
+      400:
+        description: AuthorizationErrorException
+/{DescribeConfigurations}:
+  uriParameters:
+    DescribeConfigurations?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves a list of attributes for a specific configuration ID. For example, the output for a <i>server</i> configuration item includes a list of attributes about the server, including host name, operating system, number of network cards, etc.
+  post:
+    body:
+      application/json: DescribeConfigurationsRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeConfigurationsResponse
+      400:
+        description: AuthorizationErrorException
+/{DescribeExportConfigurations}:
+  uriParameters:
+    DescribeExportConfigurations?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves the status of a given export process. You can retrieve status from a maximum of 100 processes.
+  post:
+    body:
+      application/json: DescribeExportConfigurationsRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeExportConfigurationsResponse
+      400:
+        description: AuthorizationErrorException
+/{DescribeTags}:
+  uriParameters:
+    DescribeTags?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves a list of configuration items that are tagged with a specific tag. Or retrieves a list of all tags assigned to a specific configuration item.
+  post:
+    body:
+      application/json: DescribeTagsRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeTagsResponse
+      400:
+        description: AuthorizationErrorException
+/{ExportConfigurations}:
+  uriParameters:
+    ExportConfigurations?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Exports all discovered configuration data to an Amazon S3 bucket or an application that enables you to view and evaluate the data. Data includes tags and tag associations, processes, connections, servers, and system performance. This API returns an export ID which you can query using the <i>GetExportStatus</i> API. The system imposes a limit of two configuration exports in six hours.
+  post:
+    responses:
+      200:
+        body:
+          application/json: ExportConfigurationsResponse
+      400:
+        description: AuthorizationErrorException
+/{ListConfigurations}:
+  uriParameters:
+    ListConfigurations?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Retrieves a list of configurations items according to the criteria you specify in a filter. The filter criteria identify relationship requirements.
+  post:
+    body:
+      application/json: ListConfigurationsRequest
+    responses:
+      200:
+        body:
+          application/json: ListConfigurationsResponse
+      400:
+        description: AuthorizationErrorException
+/{StartDataCollectionByAgentIds}:
+  uriParameters:
+    StartDataCollectionByAgentIds?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Instructs the specified agents to start collecting data. Agents can reside on host servers or virtual machines in your data center.
+  post:
+    body:
+      application/json: StartDataCollectionByAgentIdsRequest
+    responses:
+      200:
+        body:
+          application/json: StartDataCollectionByAgentIdsResponse
+      400:
+        description: AuthorizationErrorException
+/{StopDataCollectionByAgentIds}:
+  uriParameters:
+    StopDataCollectionByAgentIds?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Instructs the specified agents to stop collecting data.
+  post:
+    body:
+      application/json: StopDataCollectionByAgentIdsRequest
+    responses:
+      200:
+        body:
+          application/json: StopDataCollectionByAgentIdsResponse
+      400:
+        description: AuthorizationErrorException

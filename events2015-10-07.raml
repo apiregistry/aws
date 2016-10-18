@@ -1,0 +1,702 @@
+#%RAML 1.0
+title: Amazon CloudWatch Events
+version: '2015-10-07'
+description: ' Amazon CloudWatch Events helps you to respond to state changes in your
+  AWS resources. When your resources change state they automatically send events into
+  an event stream. You can create rules that match selected events in the stream and
+  route them to targets to take action. You can also use rules to take action on a
+  pre-determined schedule. For example, you can configure rules to:  <ul> <li>Automatically
+  invoke an AWS Lambda function to update DNS entries when an event notifies you that
+  Amazon EC2 instance enters the running state.</li> <li>Direct specific API records
+  from CloudTrail to an Amazon Kinesis stream for detailed analysis of potential security
+  or availability risks.</li> <li>Periodically invoke a built-in target to create
+  a snapshot of an Amazon EBS volume.</li> </ul>   For more information about Amazon
+  CloudWatch Events features, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide">Amazon
+  CloudWatch Developer Guide</a>. '
+mediaType:
+- application/json
+types:
+  Boolean:
+    type: boolean
+  ErrorCode:
+    type: string
+  ErrorMessage:
+    type: string
+  EventId:
+    type: string
+  EventPattern:
+    type: string
+    maxLength: 2048
+  EventResource:
+    type: string
+  EventResourceList:
+    type: array
+    items:
+      type: EventResource
+  EventTime:
+    type: datetime
+  Integer:
+    type: integer
+    format: int
+  LimitMax100:
+    type: integer
+    format: int
+    minimum: 1
+    maximum: 100
+  NextToken:
+    type: string
+    minLength: 1
+    maxLength: 2048
+  PutEventsRequestEntryList:
+    type: array
+    minItems: 1
+    maxItems: 10
+    items:
+      type: PutEventsRequestEntry
+  PutEventsResultEntryList:
+    type: array
+    items:
+      type: PutEventsResultEntry
+  PutTargetsResultEntryList:
+    type: array
+    items:
+      type: PutTargetsResultEntry
+  RemoveTargetsResultEntryList:
+    type: array
+    items:
+      type: RemoveTargetsResultEntry
+  RoleArn:
+    type: string
+    minLength: 1
+    maxLength: 1600
+  RuleArn:
+    type: string
+    minLength: 1
+    maxLength: 1600
+  RuleDescription:
+    type: string
+    maxLength: 512
+  RuleName:
+    type: string
+    pattern: '[\.\-_A-Za-z0-9]+'
+    minLength: 1
+    maxLength: 64
+  RuleNameList:
+    type: array
+    items:
+      type: RuleName
+  RuleResponseList:
+    type: array
+    items:
+      type: Rule
+  RuleState:
+    type: string
+    enum:
+    - ENABLED
+    - DISABLED
+  ScheduleExpression:
+    type: string
+    maxLength: 256
+  String:
+    type: string
+  TargetArn:
+    type: string
+    minLength: 1
+    maxLength: 1600
+  TargetId:
+    type: string
+    pattern: '[\.\-_A-Za-z0-9]+'
+    minLength: 1
+    maxLength: 64
+  TargetIdList:
+    type: array
+    minItems: 1
+    maxItems: 100
+    items:
+      type: TargetId
+  TargetInput:
+    type: string
+    maxLength: 8192
+  TargetInputPath:
+    type: string
+    maxLength: 256
+  TargetList:
+    type: array
+    items:
+      type: Target
+  DeleteRuleRequest:
+    type: object
+    properties:
+      Name:
+        type: RuleName
+        description: <p>The name of the rule to be deleted.</p>
+    description: <p>Container for the parameters to the <a>DeleteRule</a> operation.</p>
+  DescribeRuleRequest:
+    type: object
+    properties:
+      Name:
+        type: RuleName
+        description: <p>The name of the rule you want to describe details for.</p>
+    description: <p>Container for the parameters to the <a>DescribeRule</a> operation.</p>
+  DescribeRuleResponse:
+    type: object
+    properties:
+      Name?:
+        type: RuleName
+        description: <p>The rule's name.</p>
+      Arn?:
+        type: RuleArn
+        description: <p>The Amazon Resource Name (ARN) associated with the rule.</p>
+      EventPattern?:
+        type: EventPattern
+        description: <p>The event pattern.</p>
+      ScheduleExpression?:
+        type: ScheduleExpression
+        description: <p>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</p>
+      State?:
+        type: RuleState
+        description: <p>Specifies whether the rule is enabled or disabled.</p>
+      Description?:
+        type: RuleDescription
+        description: <p>The rule's description.</p>
+      RoleArn?:
+        type: RoleArn
+        description: <p>The Amazon Resource Name (ARN) of the IAM role associated with the rule.</p>
+    description: <p>The result of the <a>DescribeRule</a> operation.</p>
+  DisableRuleRequest:
+    type: object
+    properties:
+      Name:
+        type: RuleName
+        description: <p>The name of the rule you want to disable.</p>
+    description: <p>Container for the parameters to the <a>DisableRule</a> operation.</p>
+  EnableRuleRequest:
+    type: object
+    properties:
+      Name:
+        type: RuleName
+        description: <p>The name of the rule that you want to enable.</p>
+    description: <p>Container for the parameters to the <a>EnableRule</a> operation.</p>
+  ListRuleNamesByTargetRequest:
+    type: object
+    properties:
+      TargetArn:
+        type: TargetArn
+        description: <p>The Amazon Resource Name (ARN) of the target resource that you want to list the rules for.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>The token returned by a previous call to indicate that there is more data available.</p>
+      Limit?:
+        type: LimitMax100
+        description: <p>The maximum number of results to return.</p>
+    description: <p>Container for the parameters to the <a>ListRuleNamesByTarget</a> operation.</p>
+  ListRuleNamesByTargetResponse:
+    type: object
+    properties:
+      RuleNames?:
+        type: RuleNameList
+        description: <p>List of rules names that can invoke the given target.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>Indicates that there are additional results to retrieve.</p>
+    description: <p>The result of the <a>ListRuleNamesByTarget</a> operation.</p>
+  ListRulesRequest:
+    type: object
+    properties:
+      NamePrefix?:
+        type: RuleName
+        description: <p>The prefix matching the rule name.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>The token returned by a previous call to indicate that there is more data available.</p>
+      Limit?:
+        type: LimitMax100
+        description: <p>The maximum number of results to return.</p>
+    description: <p>Container for the parameters to the <a>ListRules</a> operation.</p>
+  ListRulesResponse:
+    type: object
+    properties:
+      Rules?:
+        type: RuleResponseList
+        description: <p>List of rules matching the specified criteria.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>Indicates that there are additional results to retrieve.</p>
+    description: <p>The result of the <a>ListRules</a> operation.</p>
+  ListTargetsByRuleRequest:
+    type: object
+    properties:
+      Rule:
+        type: RuleName
+        description: <p>The name of the rule whose targets you want to list.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>The token returned by a previous call to indicate that there is more data available.</p>
+      Limit?:
+        type: LimitMax100
+        description: <p>The maximum number of results to return.</p>
+    description: <p>Container for the parameters to the <a>ListTargetsByRule</a> operation.</p>
+  ListTargetsByRuleResponse:
+    type: object
+    properties:
+      Targets?:
+        type: TargetList
+        description: <p>Lists the targets assigned to the rule.</p>
+      NextToken?:
+        type: NextToken
+        description: <p>Indicates that there are additional results to retrieve.</p>
+    description: <p>The result of the <a>ListTargetsByRule</a> operation.</p>
+  PutEventsRequest:
+    type: object
+    properties:
+      Entries:
+        type: PutEventsRequestEntryList
+        description: <p>The entry that defines an event in your system. You can specify several parameters for the entry such as the source and type of the event, resources associated with the event, and so on.</p>
+    description: <p>Container for the parameters to the <a>PutEvents</a> operation.</p>
+  PutEventsRequestEntry:
+    type: object
+    properties:
+      Time?:
+        type: EventTime
+        description: <p>Timestamp of event, per <a href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no timestamp is provided, the timestamp of the <a>PutEvents</a> call will be used.</p>
+      Source?:
+        type: String
+        description: <p>The source of the event.</p>
+      Resources?:
+        type: EventResourceList
+        description: <p>AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number, including zero, may be present.</p>
+      DetailType?:
+        type: String
+        description: <p>Free-form string used to decide what fields to expect in the event detail.</p>
+      Detail?:
+        type: String
+        description: <p>In the JSON sense, an object containing fields, which may also contain nested sub-objects. No constraints are imposed on its contents.</p>
+    description: <p>Contains information about the event to be used in PutEvents.</p>
+  PutEventsResponse:
+    type: object
+    properties:
+      FailedEntryCount?:
+        type: Integer
+        description: <p>The number of failed entries.</p>
+      Entries?:
+        type: PutEventsResultEntryList
+        description: <p>A list of successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry will have the event ID in it. If not, then the ErrorCode and ErrorMessage can be used to identify the problem with the entry.</p>
+    description: <p>The result of the <a>PutEvents</a> operation.</p>
+  PutEventsResultEntry:
+    type: object
+    properties:
+      EventId?:
+        type: EventId
+        description: <p>The ID of the event submitted to Amazon CloudWatch Events.</p>
+      ErrorCode?:
+        type: ErrorCode
+        description: <p>The error code representing why the event submission failed on this entry.</p>
+      ErrorMessage?:
+        type: ErrorMessage
+        description: <p>The error message explaining why the event submission failed on this entry.</p>
+    description: <p>A PutEventsResult contains a list of PutEventsResultEntry.</p>
+  PutRuleRequest:
+    type: object
+    properties:
+      Name:
+        type: RuleName
+        description: <p>The name of the rule that you are creating or updating.</p>
+      ScheduleExpression?:
+        type: ScheduleExpression
+        description: <p>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</p>
+      EventPattern?:
+        type: EventPattern
+        description: <p>The event pattern.</p>
+      State?:
+        type: RuleState
+        description: <p>Indicates whether the rule is enabled or disabled.</p>
+      Description?:
+        type: RuleDescription
+        description: <p>A description of the rule.</p>
+      RoleArn?:
+        type: RoleArn
+        description: <p>The Amazon Resource Name (ARN) of the IAM role associated with the rule.</p>
+    description: <p>Container for the parameters to the <a>PutRule</a> operation.</p>
+  PutRuleResponse:
+    type: object
+    properties:
+      RuleArn?:
+        type: RuleArn
+        description: <p>The Amazon Resource Name (ARN) that identifies the rule.</p>
+    description: <p>The result of the <a>PutRule</a> operation.</p>
+  PutTargetsRequest:
+    type: object
+    properties:
+      Rule:
+        type: RuleName
+        description: <p>The name of the rule you want to add targets to.</p>
+      Targets:
+        type: TargetList
+        description: <p>List of targets you want to update or add to the rule.</p>
+    description: <p>Container for the parameters to the <a>PutTargets</a> operation.</p>
+  PutTargetsResponse:
+    type: object
+    properties:
+      FailedEntryCount?:
+        type: Integer
+        description: <p>The number of failed entries.</p>
+      FailedEntries?:
+        type: PutTargetsResultEntryList
+        description: <p>An array of failed target entries.</p>
+    description: <p>The result of the <a>PutTargets</a> operation.</p>
+  PutTargetsResultEntry:
+    type: object
+    properties:
+      TargetId?:
+        type: TargetId
+        description: <p>The ID of the target submitted to Amazon CloudWatch Events.</p>
+      ErrorCode?:
+        type: ErrorCode
+        description: <p>The error code representing why the target submission failed on this entry.</p>
+      ErrorMessage?:
+        type: ErrorMessage
+        description: <p>The error message explaining why the target submission failed on this entry.</p>
+    description: <p>A PutTargetsResult contains a list of PutTargetsResultEntry.</p>
+  RemoveTargetsRequest:
+    type: object
+    properties:
+      Rule:
+        type: RuleName
+        description: <p>The name of the rule you want to remove targets from.</p>
+      Ids:
+        type: TargetIdList
+        description: <p>The list of target IDs to remove from the rule.</p>
+    description: <p>Container for the parameters to the <a>RemoveTargets</a> operation.</p>
+  RemoveTargetsResponse:
+    type: object
+    properties:
+      FailedEntryCount?:
+        type: Integer
+        description: <p>The number of failed entries.</p>
+      FailedEntries?:
+        type: RemoveTargetsResultEntryList
+        description: <p>An array of failed target entries.</p>
+    description: <p>The result of the <a>RemoveTargets</a> operation.</p>
+  RemoveTargetsResultEntry:
+    type: object
+    properties:
+      TargetId?:
+        type: TargetId
+        description: <p>The ID of the target requested to be removed by Amazon CloudWatch Events.</p>
+      ErrorCode?:
+        type: ErrorCode
+        description: <p>The error code representing why the target removal failed on this entry.</p>
+      ErrorMessage?:
+        type: ErrorMessage
+        description: <p>The error message explaining why the target removal failed on this entry.</p>
+    description: <p>The ID of the target requested to be removed from the rule by Amazon CloudWatch Events.</p>
+  Rule:
+    type: object
+    properties:
+      Name?:
+        type: RuleName
+        description: <p>The rule's name.</p>
+      Arn?:
+        type: RuleArn
+        description: <p>The Amazon Resource Name (ARN) of the rule.</p>
+      EventPattern?:
+        type: EventPattern
+        description: <p>The event pattern of the rule.</p>
+      State?:
+        type: RuleState
+        description: <p>The rule's state.</p>
+      Description?:
+        type: RuleDescription
+        description: <p>The description of the rule.</p>
+      ScheduleExpression?:
+        type: ScheduleExpression
+        description: <p>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</p>
+      RoleArn?:
+        type: RoleArn
+        description: <p>The Amazon Resource Name (ARN) associated with the role that is used for target invocation.</p>
+    description: <p>Contains information about a rule in Amazon CloudWatch Events. A ListRulesResult contains a list of Rules.</p>
+  Target:
+    type: object
+    properties:
+      Id:
+        type: TargetId
+        description: <p>The unique target assignment ID.</p>
+      Arn:
+        type: TargetArn
+        description: <p>The Amazon Resource Name (ARN) associated of the target.</p>
+      Input?:
+        type: TargetInput
+        description: <p>Valid JSON text passed to the target. For more information about JSON text, see <a href="http://www.rfc-editor.org/rfc/rfc7159.txt">The JavaScript Object Notation (JSON) Data Interchange Format</a>.</p>
+      InputPath?:
+        type: TargetInputPath
+        description: <p>The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. For more information about JSON paths, see <a href="http://goessner.net/articles/JsonPath/">JSONPath</a>.</p>
+    description: <p>Targets are the resources that can be invoked when a rule is triggered. For example, AWS Lambda functions, Amazon Kinesis streams, and built-in targets.</p> <p><b>Input</b> and <b>InputPath</b> are mutually-exclusive and optional parameters of a target. When a rule is triggered due to a matched event, if for a target:</p> <ul> <li>Neither <b>Input</b> nor <b>InputPath</b> is specified, then the entire event is passed to the target in JSON form.</li> <li> <b>InputPath</b> is specified in the form of JSONPath (e.g. <b>$.detail</b>), then only the part of the event specified in the path is passed to the target (e.g. only the detail part of the event is passed). </li> <li> <b>Input</b> is specified in the form of a valid JSON, then the matched event is overridden with this constant.</li> </ul>
+  TestEventPatternRequest:
+    type: object
+    properties:
+      EventPattern:
+        type: EventPattern
+        description: <p>The event pattern you want to test.</p>
+      Event:
+        type: String
+        description: <p>The event in the JSON format to test against the event pattern.</p>
+    description: <p>Container for the parameters to the <a>TestEventPattern</a> operation.</p>
+  TestEventPatternResponse:
+    type: object
+    properties:
+      Result?:
+        type: Boolean
+        description: <p>Indicates whether the event matches the event pattern.</p>
+    description: <p>The result of the <a>TestEventPattern</a> operation.</p>
+/{DeleteRule}:
+  uriParameters:
+    DeleteRule?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Deletes a rule. You must remove all targets from a rule using <a>RemoveTargets</a>
+    before you can delete the rule.  <b>Note:</b> When you delete a rule, incoming
+    events might still continue to match to the deleted rule. Please allow a short
+    period of time for changes to take effect. '
+  post:
+    body:
+      application/json: DeleteRuleRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ConcurrentModificationException
+/{DescribeRule}:
+  uriParameters:
+    DescribeRule?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Describes the details of the specified rule.
+  post:
+    body:
+      application/json: DescribeRuleRequest
+    responses:
+      200:
+        body:
+          application/json: DescribeRuleResponse
+      400:
+        description: ResourceNotFoundException
+/{DisableRule}:
+  uriParameters:
+    DisableRule?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Disables a rule. A disabled rule won''t match any events, and won''t
+    self-trigger if it has a schedule expression.  <b>Note:</b> When you disable a
+    rule, incoming events might still continue to match to the disabled rule. Please
+    allow a short period of time for changes to take effect. '
+  post:
+    body:
+      application/json: DisableRuleRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ResourceNotFoundException
+/{EnableRule}:
+  uriParameters:
+    EnableRule?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Enables a rule. If the rule does not exist, the operation fails.  <b>Note:</b>
+    When you enable a rule, incoming events might not immediately start matching to
+    a newly enabled rule. Please allow a short period of time for changes to take
+    effect. '
+  post:
+    body:
+      application/json: EnableRuleRequest
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: ResourceNotFoundException
+/{ListRuleNamesByTarget}:
+  uriParameters:
+    ListRuleNamesByTarget?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the names of the rules that the given target is put to. You can see which of the rules in Amazon CloudWatch Events can invoke a specific target in your account. If you have more rules in your account than the given limit, the results will be paginated. In that case, use the next token returned in the response and repeat ListRulesByTarget until the NextToken in the response is returned as null.
+  post:
+    body:
+      application/json: ListRuleNamesByTargetRequest
+    responses:
+      200:
+        body:
+          application/json: ListRuleNamesByTargetResponse
+      400:
+        description: InternalException
+/{ListRules}:
+  uriParameters:
+    ListRules?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists the Amazon CloudWatch Events rules in your account. You can either list all the rules or you can provide a prefix to match to the rule names. If you have more rules in your account than the given limit, the results will be paginated. In that case, use the next token returned in the response and repeat ListRules until the NextToken in the response is returned as null.
+  post:
+    body:
+      application/json: ListRulesRequest
+    responses:
+      200:
+        body:
+          application/json: ListRulesResponse
+      400:
+        description: InternalException
+/{ListTargetsByRule}:
+  uriParameters:
+    ListTargetsByRule?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists of targets assigned to the rule.
+  post:
+    body:
+      application/json: ListTargetsByRuleRequest
+    responses:
+      200:
+        body:
+          application/json: ListTargetsByRuleResponse
+      400:
+        description: ResourceNotFoundException
+/{PutEvents}:
+  uriParameters:
+    PutEvents?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sends custom events to Amazon CloudWatch Events so that they can be matched to rules.
+  post:
+    body:
+      application/json: PutEventsRequest
+    responses:
+      200:
+        body:
+          application/json: PutEventsResponse
+      400:
+        description: InternalException
+/{PutRule}:
+  uriParameters:
+    PutRule?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Creates or updates a rule. Rules are enabled by default, or based
+    on value of the State parameter. You can disable a rule using <a>DisableRule</a>.  <b>Note:</b>
+    When you create or update a rule, incoming events might not immediately start
+    matching to new or updated rules. Please allow a short period of time for changes
+    to take effect. A rule must contain at least an EventPattern or ScheduleExpression.
+    Rules with EventPatterns are triggered when a matching event is observed. Rules
+    with ScheduleExpressions self-trigger based on the given schedule. A rule can
+    have both an EventPattern and a ScheduleExpression, in which case the rule will
+    trigger on matching events as well as on a schedule.  <b>Note:</b> Most services
+    in AWS treat : or / as the same character in Amazon Resource Names (ARNs). However,
+    CloudWatch Events uses an exact match in event patterns and rules. Be sure to
+    use the correct ARN characters when creating event patterns so that they match
+    the ARN syntax in the event you want to match. '
+  post:
+    body:
+      application/json: PutRuleRequest
+    responses:
+      200:
+        body:
+          application/json: PutRuleResponse
+      400:
+        description: InvalidEventPatternException
+/{PutTargets}:
+  uriParameters:
+    PutTargets?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Adds target(s) to a rule. Targets are the resources that can be invoked
+    when a rule is triggered. For example, AWS Lambda functions, Amazon Kinesis streams,
+    and built-in targets. Updates the target(s) if they are already associated with
+    the role. In other words, if there is already a target with the given target ID,
+    then the target associated with that ID is updated. In order to be able to make
+    API calls against the resources you own, Amazon CloudWatch Events needs the appropriate
+    permissions. For AWS Lambda and Amazon SNS resources, CloudWatch Events relies
+    on resource-based policies. For Amazon Kinesis streams, CloudWatch Events relies
+    on IAM roles. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/EventsTargetPermissions.html">Permissions
+    for Sending Events to Targets</a> in the <b><i>Amazon CloudWatch Developer Guide</i></b>.
+    <b>Input</b> and <b>InputPath</b> are mutually-exclusive and optional parameters
+    of a target. When a rule is triggered due to a matched event, if for a target:
+    <ul> <li>Neither <b>Input</b> nor <b>InputPath</b> is specified, then the entire
+    event is passed to the target in JSON form.</li> <li> <b>InputPath</b> is specified
+    in the form of JSONPath (e.g. <b>$.detail</b>), then only the part of the event
+    specified in the path is passed to the target (e.g. only the detail part of the
+    event is passed). </li> <li> <b>Input</b> is specified in the form of a valid
+    JSON, then the matched event is overridden with this constant.</li> </ul>  <b>Note:</b>
+    When you add targets to a rule, when the associated rule triggers, new or updated
+    targets might not be immediately invoked. Please allow a short period of time
+    for changes to take effect. '
+  post:
+    body:
+      application/json: PutTargetsRequest
+    responses:
+      200:
+        body:
+          application/json: PutTargetsResponse
+      400:
+        description: ResourceNotFoundException
+/{RemoveTargets}:
+  uriParameters:
+    RemoveTargets?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Removes target(s) from a rule so that when the rule is triggered,
+    those targets will no longer be invoked.  <b>Note:</b> When you remove a target,
+    when the associated rule triggers, removed targets might still continue to be
+    invoked. Please allow a short period of time for changes to take effect. '
+  post:
+    body:
+      application/json: RemoveTargetsRequest
+    responses:
+      200:
+        body:
+          application/json: RemoveTargetsResponse
+      400:
+        description: ResourceNotFoundException
+/{TestEventPattern}:
+  uriParameters:
+    TestEventPattern?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Tests whether an event pattern matches the provided event.  <b>Note:</b>
+    Most services in AWS treat : or / as the same character in Amazon Resource Names
+    (ARNs). However, CloudWatch Events uses an exact match in event patterns and rules.
+    Be sure to use the correct ARN characters when creating event patterns so that
+    they match the ARN syntax in the event you want to match. '
+  post:
+    body:
+      application/json: TestEventPatternRequest
+    responses:
+      200:
+        body:
+          application/json: TestEventPatternResponse
+      400:
+        description: InvalidEventPatternException

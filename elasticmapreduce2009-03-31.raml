@@ -1,0 +1,2003 @@
+#%RAML 1.0
+title: Amazon Elastic MapReduce
+version: '2009-03-31'
+description: ' Amazon Elastic MapReduce (Amazon EMR) is a web service that makes it
+  easy to process large amounts of data efficiently. Amazon EMR uses Hadoop processing
+  combined with several AWS products to do tasks such as web indexing, data mining,
+  log file analysis, machine learning, scientific simulation, and data warehousing.'
+mediaType:
+- application/json
+types:
+  ActionOnFailure:
+    type: string
+    enum:
+    - TERMINATE_JOB_FLOW
+    - TERMINATE_CLUSTER
+    - CANCEL_AND_WAIT
+    - CONTINUE
+  ApplicationList:
+    type: array
+    items:
+      type: Application
+  Boolean:
+    type: boolean
+  BooleanObject:
+    type: boolean
+  BootstrapActionConfigList:
+    type: array
+    items:
+      type: BootstrapActionConfig
+  BootstrapActionDetailList:
+    type: array
+    items:
+      type: BootstrapActionDetail
+  ClusterId:
+    type: string
+  ClusterState:
+    type: string
+    enum:
+    - STARTING
+    - BOOTSTRAPPING
+    - RUNNING
+    - WAITING
+    - TERMINATING
+    - TERMINATED
+    - TERMINATED_WITH_ERRORS
+  ClusterStateChangeReasonCode:
+    type: string
+    enum:
+    - INTERNAL_ERROR
+    - VALIDATION_ERROR
+    - INSTANCE_FAILURE
+    - BOOTSTRAP_FAILURE
+    - USER_REQUEST
+    - STEP_FAILURE
+    - ALL_STEPS_COMPLETED
+  ClusterStateList:
+    type: array
+    items:
+      type: ClusterState
+  ClusterSummaryList:
+    type: array
+    items:
+      type: ClusterSummary
+  CommandList:
+    type: array
+    items:
+      type: Command
+  ConfigurationList:
+    type: array
+    items:
+      type: Configuration
+  Date:
+    type: datetime
+  EC2InstanceIdsList:
+    type: array
+    items:
+      type: InstanceId
+  EC2InstanceIdsToTerminateList:
+    type: array
+    items:
+      type: InstanceId
+  EbsBlockDeviceConfigList:
+    type: array
+    items:
+      type: EbsBlockDeviceConfig
+  EbsBlockDeviceList:
+    type: array
+    items:
+      type: EbsBlockDevice
+  EbsVolumeList:
+    type: array
+    items:
+      type: EbsVolume
+  InstanceGroupConfigList:
+    type: array
+    items:
+      type: InstanceGroupConfig
+  InstanceGroupDetailList:
+    type: array
+    items:
+      type: InstanceGroupDetail
+  InstanceGroupId:
+    type: string
+  InstanceGroupIdsList:
+    type: array
+    items:
+      type: XmlStringMaxLen256
+  InstanceGroupList:
+    type: array
+    items:
+      type: InstanceGroup
+  InstanceGroupModifyConfigList:
+    type: array
+    items:
+      type: InstanceGroupModifyConfig
+  InstanceGroupState:
+    type: string
+    enum:
+    - PROVISIONING
+    - BOOTSTRAPPING
+    - RUNNING
+    - RESIZING
+    - SUSPENDED
+    - TERMINATING
+    - TERMINATED
+    - ARRESTED
+    - SHUTTING_DOWN
+    - ENDED
+  InstanceGroupStateChangeReasonCode:
+    type: string
+    enum:
+    - INTERNAL_ERROR
+    - VALIDATION_ERROR
+    - INSTANCE_FAILURE
+    - CLUSTER_TERMINATED
+  InstanceGroupType:
+    type: string
+    enum:
+    - MASTER
+    - CORE
+    - TASK
+  InstanceGroupTypeList:
+    type: array
+    items:
+      type: InstanceGroupType
+  InstanceId:
+    type: string
+  InstanceList:
+    type: array
+    items:
+      type: Instance
+  InstanceRoleType:
+    type: string
+    enum:
+    - MASTER
+    - CORE
+    - TASK
+  InstanceState:
+    type: string
+    enum:
+    - AWAITING_FULFILLMENT
+    - PROVISIONING
+    - BOOTSTRAPPING
+    - RUNNING
+    - TERMINATED
+  InstanceStateChangeReasonCode:
+    type: string
+    enum:
+    - INTERNAL_ERROR
+    - VALIDATION_ERROR
+    - INSTANCE_FAILURE
+    - BOOTSTRAP_FAILURE
+    - CLUSTER_TERMINATED
+  InstanceStateList:
+    type: array
+    items:
+      type: InstanceState
+  InstanceType:
+    type: string
+    pattern: '[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*'
+    minLength: 1
+    maxLength: 256
+  Integer:
+    type: integer
+    format: int
+  JobFlowDetailList:
+    type: array
+    items:
+      type: JobFlowDetail
+  JobFlowExecutionState:
+    type: string
+    enum:
+    - STARTING
+    - BOOTSTRAPPING
+    - RUNNING
+    - WAITING
+    - SHUTTING_DOWN
+    - TERMINATED
+    - COMPLETED
+    - FAILED
+    description: <p>The type of instance.</p>
+  JobFlowExecutionStateList:
+    type: array
+    items:
+      type: JobFlowExecutionState
+  KeyValueList:
+    type: array
+    items:
+      type: KeyValue
+  Marker:
+    type: string
+  MarketType:
+    type: string
+    enum:
+    - ON_DEMAND
+    - SPOT
+  NewSupportedProductsList:
+    type: array
+    items:
+      type: SupportedProductConfig
+  ResourceId:
+    type: string
+  SecurityConfigurationList:
+    type: array
+    items:
+      type: SecurityConfigurationSummary
+  SecurityGroupsList:
+    type: array
+    items:
+      type: XmlStringMaxLen256
+  StepConfigList:
+    type: array
+    items:
+      type: StepConfig
+  StepDetailList:
+    type: array
+    items:
+      type: StepDetail
+  StepExecutionState:
+    type: string
+    enum:
+    - PENDING
+    - RUNNING
+    - CONTINUE
+    - COMPLETED
+    - CANCELLED
+    - FAILED
+    - INTERRUPTED
+  StepId:
+    type: string
+  StepIdsList:
+    type: array
+    items:
+      type: XmlStringMaxLen256
+  StepState:
+    type: string
+    enum:
+    - PENDING
+    - RUNNING
+    - COMPLETED
+    - CANCELLED
+    - FAILED
+    - INTERRUPTED
+  StepStateChangeReasonCode:
+    type: string
+    enum:
+    - NONE
+  StepStateList:
+    type: array
+    items:
+      type: StepState
+  StepSummaryList:
+    type: array
+    items:
+      type: StepSummary
+  String:
+    type: string
+  StringList:
+    type: array
+    items:
+      type: String
+  SupportedProductsList:
+    type: array
+    items:
+      type: XmlStringMaxLen256
+  TagList:
+    type: array
+    items:
+      type: Tag
+  XmlString:
+    type: string
+    pattern: '[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*'
+    minLength: 0
+    maxLength: 10280
+  XmlStringList:
+    type: array
+    items:
+      type: XmlString
+  XmlStringMaxLen256:
+    type: string
+    pattern: '[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*'
+    minLength: 0
+    maxLength: 256
+  AddInstanceGroupsInput:
+    type: object
+    properties:
+      InstanceGroups:
+        type: InstanceGroupConfigList
+        description: <p>Instance Groups to add.</p>
+      JobFlowId:
+        type: XmlStringMaxLen256
+        description: <p>Job flow in which to add the instance groups.</p>
+    description: <p>Input to an AddInstanceGroups call.</p>
+  AddInstanceGroupsOutput:
+    type: object
+    properties:
+      JobFlowId?:
+        type: XmlStringMaxLen256
+        description: <p>The job flow ID in which the instance groups are added.</p>
+      InstanceGroupIds?:
+        type: InstanceGroupIdsList
+        description: <p>Instance group IDs of the newly created instance groups.</p>
+    description: <p>Output from an AddInstanceGroups call.</p>
+  AddJobFlowStepsInput:
+    type: object
+    properties:
+      JobFlowId:
+        type: XmlStringMaxLen256
+        description: <p>A string that uniquely identifies the job flow. This identifier is returned by <a>RunJobFlow</a> and can also be obtained from <a>ListClusters</a>. </p>
+      Steps:
+        type: StepConfigList
+        description: <p> A list of <a>StepConfig</a> to be executed by the job flow. </p>
+    description: <p> The input argument to the <a>AddJobFlowSteps</a> operation. </p>
+  AddJobFlowStepsOutput:
+    type: object
+    properties:
+      StepIds?:
+        type: StepIdsList
+        description: <p>The identifiers of the list of steps added to the job flow.</p>
+    description: <p> The output for the <a>AddJobFlowSteps</a> operation. </p>
+  AddTagsInput:
+    type: object
+    properties:
+      ResourceId:
+        type: ResourceId
+        description: <p>The Amazon EMR resource identifier to which tags will be added. This value must be a cluster identifier.</p>
+      Tags:
+        type: TagList
+        description: <p>A list of tags to associate with a cluster and propagate to Amazon EC2 instances. Tags are user-defined key/value pairs that consist of a required key string with a maximum of 128 characters, and an optional value string with a maximum of 256 characters.</p>
+    description: <p>This input identifies a cluster and a list of tags to attach.</p>
+  AddTagsOutput:
+    type: object
+    description: <p>This output indicates the result of adding tags to a resource.</p>
+  Application:
+    type: object
+    properties:
+      Name?:
+        type: String
+        description: <p>The name of the application.</p>
+      Version?:
+        type: String
+        description: <p>The version of the application.</p>
+      Args?:
+        type: StringList
+        description: <p>Arguments for Amazon EMR to pass to the application.</p>
+      AdditionalInfo?:
+        type: StringMap
+        description: <p>This option is for advanced users only. This is meta information about third-party applications that third-party vendors use for testing purposes.</p>
+    description: <p>An application is any Amazon or third-party software that you can add to the cluster. This structure contains a list of strings that indicates the software to use with the cluster and accepts a user argument list. Amazon EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action argument. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-mapr.html">Launch a Job Flow on the MapR Distribution for Hadoop</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the job flow using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the job flow using MapR M5 Edition.</p> </li> <li> <p>"mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the job flow using MapR M3 or M5 Edition, respectively.</p> </li> </ul> <note> <p>In Amazon EMR releases 4.0 and greater, the only accepted parameter is the application name. To pass arguments to applications, you supply a configuration for each application.</p> </note>
+  BootstrapActionConfig:
+    type: object
+    properties:
+      Name:
+        type: XmlStringMaxLen256
+      ScriptBootstrapAction:
+        type: ScriptBootstrapActionConfig
+  BootstrapActionDetail:
+    type: object
+    properties:
+      BootstrapActionConfig?:
+        type: BootstrapActionConfig
+        description: <p>A description of the bootstrap action.</p>
+    description: <p>Reports the configuration of a bootstrap action in a job flow.</p>
+  Cluster:
+    type: object
+    properties:
+      Id?:
+        type: ClusterId
+        description: <p>The unique identifier for the cluster.</p>
+      Name?:
+        type: String
+        description: <p>The name of the cluster.</p>
+      Status?:
+        type: ClusterStatus
+        description: <p>The current status details about the cluster.</p>
+      Ec2InstanceAttributes?:
+        type: Ec2InstanceAttributes
+      LogUri?:
+        type: String
+        description: <p>The path to the Amazon S3 location where logs for this cluster are stored.</p>
+      RequestedAmiVersion?:
+        type: String
+        description: <p>The AMI version requested for this cluster.</p>
+      RunningAmiVersion?:
+        type: String
+        description: <p>The AMI version running on this cluster.</p>
+      ReleaseLabel?:
+        type: String
+        description: <p>The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use amiVersion instead instead of ReleaseLabel.</p>
+      AutoTerminate?:
+        type: Boolean
+        description: <p>Specifies whether the cluster should terminate after completing all steps.</p>
+      TerminationProtected?:
+        type: Boolean
+        description: <p>Indicates whether Amazon EMR will lock the cluster to prevent the EC2 instances from being terminated by an API call or user intervention, or in the event of a cluster error.</p>
+      VisibleToAllUsers?:
+        type: Boolean
+        description: <p>Indicates whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the job flow if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
+      Applications?:
+        type: ApplicationList
+        description: <p>The applications installed on this cluster.</p>
+      Tags?:
+        type: TagList
+        description: <p>A list of tags associated with a cluster.</p>
+      ServiceRole?:
+        type: String
+        description: <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
+      NormalizedInstanceHours?:
+        type: Integer
+        description: <p>An approximation of the cost of the job flow, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
+      MasterPublicDnsName?:
+        type: String
+        description: <p>The public DNS name of the master EC2 instance.</p>
+      Configurations?:
+        type: ConfigurationList
+        description: <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of Configurations supplied to the EMR cluster.</p>
+      SecurityConfiguration?:
+        type: XmlString
+        description: <p>The name of the security configuration applied to the cluster.</p>
+    description: <p>The detailed description of the cluster.</p>
+  ClusterStateChangeReason:
+    type: object
+    properties:
+      Code?:
+        type: ClusterStateChangeReasonCode
+        description: <p>The programmatic code for the state change reason.</p>
+      Message?:
+        type: String
+        description: <p>The descriptive message for the state change reason.</p>
+    description: <p>The reason that the cluster changed to its current state.</p>
+  ClusterStatus:
+    type: object
+    properties:
+      State?:
+        type: ClusterState
+        description: <p>The current state of the cluster.</p>
+      StateChangeReason?:
+        type: ClusterStateChangeReason
+        description: <p>The reason for the cluster status change.</p>
+      Timeline?:
+        type: ClusterTimeline
+        description: <p>A timeline that represents the status of a cluster over the lifetime of the cluster.</p>
+    description: <p>The detailed status of the cluster.</p>
+  ClusterSummary:
+    type: object
+    properties:
+      Id?:
+        type: ClusterId
+        description: <p>The unique identifier for the cluster.</p>
+      Name?:
+        type: String
+        description: <p>The name of the cluster.</p>
+      Status?:
+        type: ClusterStatus
+        description: <p>The details about the current status of the cluster.</p>
+      NormalizedInstanceHours?:
+        type: Integer
+        description: <p>An approximation of the cost of the job flow, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
+    description: <p>The summary description of the cluster.</p>
+  ClusterTimeline:
+    type: object
+    properties:
+      CreationDateTime?:
+        type: Date
+        description: <p>The creation date and time of the cluster.</p>
+      ReadyDateTime?:
+        type: Date
+        description: <p>The date and time when the cluster was ready to execute steps.</p>
+      EndDateTime?:
+        type: Date
+        description: <p>The date and time when the cluster was terminated.</p>
+    description: <p>Represents the timeline of the cluster's lifecycle.</p>
+  Command:
+    type: object
+    properties:
+      Name?:
+        type: String
+        description: <p>The name of the command.</p>
+      ScriptPath?:
+        type: String
+        description: <p>The Amazon S3 location of the command script.</p>
+      Args?:
+        type: StringList
+        description: <p>Arguments for Amazon EMR to pass to the command for execution.</p>
+    description: <p>An entity describing an executable that runs on a cluster.</p>
+  Configuration:
+    type: object
+    properties:
+      Classification?:
+        type: String
+        description: <p>The classification of a configuration. For more information see, <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/API/EmrConfigurations.html">Amazon EMR Configurations</a>. </p>
+      Configurations?:
+        type: ConfigurationList
+        description: <p>A list of configurations you apply to this configuration object.</p>
+      Properties?:
+        type: StringMap
+        description: <p>A set of properties supplied to the Configuration object.</p>
+    description: <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>Specifies a hardware and software configuration of the EMR cluster. This includes configurations for applications and software bundled with Amazon EMR. The Configuration object is a JSON object which is defined by a classification and a set of properties. Configurations can be nested, so a configuration may have its own Configuration objects listed.</p>
+  CreateSecurityConfigurationInput:
+    type: object
+    properties:
+      Name:
+        type: XmlString
+        description: <p>The name of the security configuration.</p>
+      SecurityConfiguration:
+        type: String
+        description: <p>The security configuration details in JSON format.</p>
+  CreateSecurityConfigurationOutput:
+    type: object
+    properties:
+      Name:
+        type: XmlString
+        description: <p>The name of the security configuration.</p>
+      CreationDateTime:
+        type: Date
+        description: <p>The date and time the security configuration was created.</p>
+  DeleteSecurityConfigurationInput:
+    type: object
+    properties:
+      Name:
+        type: XmlString
+        description: <p>The name of the security configuration.</p>
+  DeleteSecurityConfigurationOutput:
+    type: object
+  DescribeClusterInput:
+    type: object
+    properties:
+      ClusterId:
+        type: ClusterId
+        description: <p>The identifier of the cluster to describe.</p>
+    description: <p>This input determines which cluster to describe.</p>
+  DescribeClusterOutput:
+    type: object
+    properties:
+      Cluster?:
+        type: Cluster
+        description: <p>This output contains the details for the requested cluster.</p>
+    description: <p>This output contains the description of the cluster.</p>
+  DescribeJobFlowsInput:
+    type: object
+    properties:
+      CreatedAfter?:
+        type: Date
+        description: <p>Return only job flows created after this date and time.</p>
+      CreatedBefore?:
+        type: Date
+        description: <p>Return only job flows created before this date and time.</p>
+      JobFlowIds?:
+        type: XmlStringList
+        description: <p>Return only job flows whose job flow ID is contained in this list.</p>
+      JobFlowStates?:
+        type: JobFlowExecutionStateList
+        description: <p>Return only job flows whose state is contained in this list.</p>
+    description: <p> The input for the <a>DescribeJobFlows</a> operation. </p>
+  DescribeJobFlowsOutput:
+    type: object
+    properties:
+      JobFlows?:
+        type: JobFlowDetailList
+        description: <p>A list of job flows matching the parameters supplied.</p>
+    description: <p> The output for the <a>DescribeJobFlows</a> operation. </p>
+  DescribeSecurityConfigurationInput:
+    type: object
+    properties:
+      Name:
+        type: XmlString
+        description: <p>The name of the security configuration.</p>
+  DescribeSecurityConfigurationOutput:
+    type: object
+    properties:
+      Name?:
+        type: XmlString
+        description: <p>The name of the security configuration.</p>
+      SecurityConfiguration?:
+        type: String
+        description: <p>The security configuration details in JSON format.</p>
+      CreationDateTime?:
+        type: Date
+        description: <p>The date and time the security configuration was created</p>
+  DescribeStepInput:
+    type: object
+    properties:
+      ClusterId:
+        type: ClusterId
+        description: <p>The identifier of the cluster with steps to describe.</p>
+      StepId:
+        type: StepId
+        description: <p>The identifier of the step to describe.</p>
+    description: <p>This input determines which step to describe.</p>
+  DescribeStepOutput:
+    type: object
+    properties:
+      Step?:
+        type: Step
+        description: <p>The step details for the requested step identifier.</p>
+    description: <p>This output contains the description of the cluster step.</p>
+  EbsBlockDevice:
+    type: object
+    properties:
+      VolumeSpecification?:
+        type: VolumeSpecification
+        description: <p>EBS volume specifications such as volume type, IOPS, and size(GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
+      Device?:
+        type: String
+        description: <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
+    description: <p>Configuration of requested EBS block device associated with the instance group.</p>
+  EbsBlockDeviceConfig:
+    type: object
+    properties:
+      VolumeSpecification:
+        type: VolumeSpecification
+        description: <p>EBS volume specifications such as volume type, IOPS, and size(GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
+      VolumesPerInstance?:
+        type: Integer
+        description: <p>Number of EBS volumes with specific volume configuration, that will be associated with every instance in the instance group</p>
+    description: <p>Configuration of requested EBS block device associated with the instance group with count of volumes that will be associated to every instance.</p>
+  EbsConfiguration:
+    type: object
+    properties:
+      EbsBlockDeviceConfigs?:
+        type: EbsBlockDeviceConfigList
+      EbsOptimized?:
+        type: BooleanObject
+  EbsVolume:
+    type: object
+    properties:
+      Device?:
+        type: String
+        description: <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
+      VolumeId?:
+        type: String
+        description: <p>The volume identifier of the EBS volume.</p>
+    description: <p>EBS block device that's attached to an EC2 instance.</p>
+  Ec2InstanceAttributes:
+    type: object
+    properties:
+      Ec2KeyName?:
+        type: String
+        description: <p>The name of the Amazon EC2 key pair to use when connecting with SSH into the master node as a user named "hadoop".</p>
+      Ec2SubnetId?:
+        type: String
+        description: <p>To launch the job flow in Amazon VPC, set this parameter to the identifier of the Amazon VPC subnet where you want the job flow to launch. If you do not specify this value, the job flow is launched in the normal AWS cloud, outside of a VPC.</p> <p>Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus, you cannot specify the cc1.4xlarge instance type for nodes of a job flow launched in a VPC.</p>
+      Ec2AvailabilityZone?:
+        type: String
+        description: <p>The Availability Zone in which the cluster will run.</p>
+      IamInstanceProfile?:
+        type: String
+        description: <p>The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.</p>
+      EmrManagedMasterSecurityGroup?:
+        type: String
+        description: <p>The identifier of the Amazon EC2 security group for the master node.</p>
+      EmrManagedSlaveSecurityGroup?:
+        type: String
+        description: <p>The identifier of the Amazon EC2 security group for the slave nodes.</p>
+      ServiceAccessSecurityGroup?:
+        type: String
+        description: <p>The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.</p>
+      AdditionalMasterSecurityGroups?:
+        type: StringList
+        description: <p>A list of additional Amazon EC2 security group IDs for the master node.</p>
+      AdditionalSlaveSecurityGroups?:
+        type: StringList
+        description: <p>A list of additional Amazon EC2 security group IDs for the slave nodes.</p>
+    description: <p>Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID, IAM instance profile, and so on.</p>
+  FailureDetails:
+    type: object
+    properties:
+      Reason?:
+        type: String
+        description: <p>The reason for the step failure. In the case where the service cannot successfully determine the root cause of the failure, it returns "Unknown Error" as a reason.</p>
+      Message?:
+        type: String
+        description: <p>The descriptive message including the error the EMR service has identified as the cause of step failure. This is text from an error log that describes the root cause of the failure.</p>
+      LogFile?:
+        type: String
+        description: <p>The path to the log file where the step failure root cause was originally recorded.</p>
+    description: <p>The details of the step failure. The service attempts to detect the root cause for many common failures.</p>
+  HadoopJarStepConfig:
+    type: object
+    properties:
+      Properties?:
+        type: KeyValueList
+        description: <p>A list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.</p>
+      Jar:
+        type: XmlString
+        description: <p>A path to a JAR file run during the step.</p>
+      MainClass?:
+        type: XmlString
+        description: <p>The name of the main class in the specified Java file. If not specified, the JAR file should specify a Main-Class in its manifest file.</p>
+      Args?:
+        type: XmlStringList
+        description: <p>A list of command line arguments passed to the JAR file's main function when executed.</p>
+    description: <p>A job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for Hadoop to execute and waits for the job to finish or fail.</p>
+  HadoopStepConfig:
+    type: object
+    properties:
+      Jar?:
+        type: String
+        description: <p>The path to the JAR file that runs during the step.</p>
+      Properties?:
+        type: StringMap
+        description: <p>The list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.</p>
+      MainClass?:
+        type: String
+        description: <p>The name of the main class in the specified Java file. If not specified, the JAR file should specify a main class in its manifest file.</p>
+      Args?:
+        type: StringList
+        description: <p>The list of command line arguments to pass to the JAR file's main function for execution.</p>
+    description: <p>A cluster step consisting of a JAR file whose main function will be executed. The main function submits a job for Hadoop to execute and waits for the job to finish or fail.</p>
+  Instance:
+    type: object
+    properties:
+      Id?:
+        type: InstanceId
+        description: <p>The unique identifier for the instance in Amazon EMR.</p>
+      Ec2InstanceId?:
+        type: InstanceId
+        description: <p>The unique identifier of the instance in Amazon EC2.</p>
+      PublicDnsName?:
+        type: String
+        description: <p>The public DNS name of the instance.</p>
+      PublicIpAddress?:
+        type: String
+        description: <p>The public IP address of the instance.</p>
+      PrivateDnsName?:
+        type: String
+        description: <p>The private DNS name of the instance.</p>
+      PrivateIpAddress?:
+        type: String
+        description: <p>The private IP address of the instance.</p>
+      Status?:
+        type: InstanceStatus
+        description: <p>The current status of the instance.</p>
+      InstanceGroupId?:
+        type: String
+        description: <p>The identifier of the instance group to which this instance belongs.</p>
+      EbsVolumes?:
+        type: EbsVolumeList
+        description: <p>The list of EBS volumes that are attached to this instance.</p>
+    description: <p>Represents an EC2 instance provisioned as part of cluster.</p>
+  InstanceGroup:
+    type: object
+    properties:
+      Id?:
+        type: InstanceGroupId
+        description: <p>The identifier of the instance group.</p>
+      Name?:
+        type: String
+        description: <p>The name of the instance group.</p>
+      Market?:
+        type: MarketType
+        description: <p>The marketplace to provision instances for this group. Valid values are ON_DEMAND or SPOT.</p>
+      InstanceGroupType?:
+        type: InstanceGroupType
+        description: <p>The type of the instance group. Valid values are MASTER, CORE or TASK.</p>
+      BidPrice?:
+        type: String
+        description: <p>The bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.</p>
+      InstanceType?:
+        type: InstanceType
+        description: <p>The EC2 instance type for all instances in the instance group.</p>
+      RequestedInstanceCount?:
+        type: Integer
+        description: <p>The target number of instances for the instance group.</p>
+      RunningInstanceCount?:
+        type: Integer
+        description: <p>The number of instances currently running in this instance group.</p>
+      Status?:
+        type: InstanceGroupStatus
+        description: <p>The current status of the instance group.</p>
+      Configurations?:
+        type: ConfigurationList
+        description: <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</p>
+      EbsBlockDevices?:
+        type: EbsBlockDeviceList
+        description: <p>The EBS block devices that are mapped to this instance group.</p>
+      EbsOptimized?:
+        type: BooleanObject
+        description: <p>If the instance group is EBS-optimized. An Amazon EBS-optimized instance uses an optimized configuration stack and provides additional, dedicated capacity for Amazon EBS I/O.</p>
+      ShrinkPolicy?:
+        type: ShrinkPolicy
+        description: <p>Policy for customizing shrink operations.</p>
+    description: <p>This entity represents an instance group, which is a group of instances that have common purpose. For example, CORE instance group is used for HDFS.</p>
+  InstanceGroupConfig:
+    type: object
+    properties:
+      Name?:
+        type: XmlStringMaxLen256
+        description: <p>Friendly name given to the instance group.</p>
+      Market?:
+        type: MarketType
+        description: <p>Market type of the Amazon EC2 instances used to create a cluster node.</p>
+      InstanceRole:
+        type: InstanceRoleType
+        description: <p>The role of the instance group in the cluster.</p>
+      BidPrice?:
+        type: XmlStringMaxLen256
+        description: <p>Bid price for each Amazon EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.</p>
+      InstanceType:
+        type: InstanceType
+        description: <p>The Amazon EC2 instance type for all instances in the instance group.</p>
+      InstanceCount:
+        type: Integer
+        description: <p>Target number of instances for the instance group.</p>
+      Configurations?:
+        type: ConfigurationList
+        description: <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</p>
+      EbsConfiguration?:
+        type: EbsConfiguration
+        description: <p>EBS configurations that will be attached to each Amazon EC2 instance in the instance group.</p>
+    description: <p>Configuration defining a new instance group.</p>
+  InstanceGroupDetail:
+    type: object
+    properties:
+      InstanceGroupId?:
+        type: XmlStringMaxLen256
+        description: <p>Unique identifier for the instance group.</p>
+      Name?:
+        type: XmlStringMaxLen256
+        description: <p>Friendly name for the instance group.</p>
+      Market:
+        type: MarketType
+        description: <p>Market type of the Amazon EC2 instances used to create a cluster node.</p>
+      InstanceRole:
+        type: InstanceRoleType
+        description: <p>Instance group role in the cluster</p>
+      BidPrice?:
+        type: XmlStringMaxLen256
+        description: <p>Bid price for EC2 Instances when launching nodes as Spot Instances, expressed in USD.</p>
+      InstanceType:
+        type: InstanceType
+        description: <p>Amazon EC2 Instance type.</p>
+      InstanceRequestCount:
+        type: Integer
+        description: <p>Target number of instances to run in the instance group.</p>
+      InstanceRunningCount:
+        type: Integer
+        description: <p>Actual count of running instances.</p>
+      State:
+        type: InstanceGroupState
+        description: '<p>State of instance group. The following values are deprecated:
+          STARTING, TERMINATED, and FAILED.</p>'
+      LastStateChangeReason?:
+        type: XmlString
+        description: <p>Details regarding the state of the instance group.</p>
+      CreationDateTime:
+        type: Date
+        description: <p>The date/time the instance group was created.</p>
+      StartDateTime?:
+        type: Date
+        description: <p>The date/time the instance group was started.</p>
+      ReadyDateTime?:
+        type: Date
+        description: <p>The date/time the instance group was available to the cluster.</p>
+      EndDateTime?:
+        type: Date
+        description: <p>The date/time the instance group was terminated.</p>
+    description: <p>Detailed information about an instance group.</p>
+  InstanceGroupModifyConfig:
+    type: object
+    properties:
+      InstanceGroupId:
+        type: XmlStringMaxLen256
+        description: <p>Unique ID of the instance group to expand or shrink.</p>
+      InstanceCount?:
+        type: Integer
+        description: <p>Target size for the instance group.</p>
+      EC2InstanceIdsToTerminate?:
+        type: EC2InstanceIdsToTerminateList
+        description: <p>The EC2 InstanceIds to terminate. Once you terminate the instances, the instance group will not return to its original requested size.</p>
+      ShrinkPolicy?:
+        type: ShrinkPolicy
+        description: <p>Policy for customizing shrink operations.</p>
+    description: <p>Modify an instance group size.</p>
+  InstanceGroupStateChangeReason:
+    type: object
+    properties:
+      Code?:
+        type: InstanceGroupStateChangeReasonCode
+        description: <p>The programmable code for the state change reason.</p>
+      Message?:
+        type: String
+        description: <p>The status change reason description.</p>
+    description: <p>The status change reason details for the instance group.</p>
+  InstanceGroupStatus:
+    type: object
+    properties:
+      State?:
+        type: InstanceGroupState
+        description: <p>The current state of the instance group.</p>
+      StateChangeReason?:
+        type: InstanceGroupStateChangeReason
+        description: <p>The status change reason details for the instance group.</p>
+      Timeline?:
+        type: InstanceGroupTimeline
+        description: <p>The timeline of the instance group status over time.</p>
+    description: <p>The details of the instance group status.</p>
+  InstanceGroupTimeline:
+    type: object
+    properties:
+      CreationDateTime?:
+        type: Date
+        description: <p>The creation date and time of the instance group.</p>
+      ReadyDateTime?:
+        type: Date
+        description: <p>The date and time when the instance group became ready to perform tasks.</p>
+      EndDateTime?:
+        type: Date
+        description: <p>The date and time when the instance group terminated.</p>
+    description: <p>The timeline of the instance group lifecycle.</p>
+  InstanceResizePolicy:
+    type: object
+    properties:
+      InstancesToTerminate?:
+        type: EC2InstanceIdsList
+        description: <p>Specific list of instances to be terminated when shrinking an instance group.</p>
+      InstancesToProtect?:
+        type: EC2InstanceIdsList
+        description: <p>Specific list of instances to be protected when shrinking an instance group.</p>
+      InstanceTerminationTimeout?:
+        type: Integer
+        description: <p>Decommissioning timeout override for the specific list of instances to be terminated.</p>
+    description: <p>Custom policy for requesting termination protection or termination of specific instances when shrinking an instance group.</p>
+  InstanceStateChangeReason:
+    type: object
+    properties:
+      Code?:
+        type: InstanceStateChangeReasonCode
+        description: <p>The programmable code for the state change reason.</p>
+      Message?:
+        type: String
+        description: <p>The status change reason description.</p>
+    description: <p>The details of the status change reason for the instance.</p>
+  InstanceStatus:
+    type: object
+    properties:
+      State?:
+        type: InstanceState
+        description: <p>The current state of the instance.</p>
+      StateChangeReason?:
+        type: InstanceStateChangeReason
+        description: <p>The details of the status change reason for the instance.</p>
+      Timeline?:
+        type: InstanceTimeline
+        description: <p>The timeline of the instance status over time.</p>
+    description: <p>The instance status details.</p>
+  InstanceTimeline:
+    type: object
+    properties:
+      CreationDateTime?:
+        type: Date
+        description: <p>The creation date and time of the instance.</p>
+      ReadyDateTime?:
+        type: Date
+        description: <p>The date and time when the instance was ready to perform tasks.</p>
+      EndDateTime?:
+        type: Date
+        description: <p>The date and time when the instance was terminated.</p>
+    description: <p>The timeline of the instance lifecycle.</p>
+  JobFlowDetail:
+    type: object
+    properties:
+      JobFlowId:
+        type: XmlStringMaxLen256
+        description: <p>The job flow identifier.</p>
+      Name:
+        type: XmlStringMaxLen256
+        description: <p>The name of the job flow.</p>
+      LogUri?:
+        type: XmlString
+        description: <p>The location in Amazon S3 where log files for the job are stored.</p>
+      AmiVersion?:
+        type: XmlStringMaxLen256
+        description: <p>The version of the AMI used to initialize Amazon EC2 instances in the job flow. For a list of AMI versions currently supported by Amazon ElasticMapReduce, go to <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported">AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i> </p>
+      ExecutionStatusDetail:
+        type: JobFlowExecutionStatusDetail
+        description: <p>Describes the execution status of the job flow.</p>
+      Instances:
+        type: JobFlowInstancesDetail
+        description: <p>Describes the Amazon EC2 instances of the job flow.</p>
+      Steps?:
+        type: StepDetailList
+        description: <p>A list of steps run by the job flow.</p>
+      BootstrapActions?:
+        type: BootstrapActionDetailList
+        description: <p>A list of the bootstrap actions run by the job flow.</p>
+      SupportedProducts?:
+        type: SupportedProductsList
+        description: <p>A list of strings set by third party software when the job flow is launched. If you are not using third party software to manage the job flow this value is empty.</p>
+      VisibleToAllUsers?:
+        type: Boolean
+        description: <p>Specifies whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If this value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the job flow. If it is set to <code>false</code>, only the IAM user that created the job flow can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
+      JobFlowRole?:
+        type: XmlString
+        description: <p>The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.</p>
+      ServiceRole?:
+        type: XmlString
+        description: <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
+    description: <p>A description of a job flow.</p>
+  JobFlowExecutionStatusDetail:
+    type: object
+    properties:
+      State:
+        type: JobFlowExecutionState
+        description: <p>The state of the job flow.</p>
+      CreationDateTime:
+        type: Date
+        description: <p>The creation date and time of the job flow.</p>
+      StartDateTime?:
+        type: Date
+        description: <p>The start date and time of the job flow.</p>
+      ReadyDateTime?:
+        type: Date
+        description: <p>The date and time when the job flow was ready to start running bootstrap actions.</p>
+      EndDateTime?:
+        type: Date
+        description: <p>The completion date and time of the job flow.</p>
+      LastStateChangeReason?:
+        type: XmlString
+        description: <p>Description of the job flow last changed state.</p>
+    description: <p>Describes the status of the job flow.</p>
+  JobFlowInstancesConfig:
+    type: object
+    properties:
+      MasterInstanceType?:
+        type: InstanceType
+        description: <p>The EC2 instance type of the master node.</p>
+      SlaveInstanceType?:
+        type: InstanceType
+        description: <p>The EC2 instance type of the slave nodes.</p>
+      InstanceCount?:
+        type: Integer
+        description: <p>The number of Amazon EC2 instances used to execute the job flow.</p>
+      InstanceGroups?:
+        type: InstanceGroupConfigList
+        description: <p>Configuration for the job flow's instance groups.</p>
+      Ec2KeyName?:
+        type: XmlStringMaxLen256
+        description: <p>The name of the Amazon EC2 key pair that can be used to ssh to the master node as the user called "hadoop."</p>
+      Placement?:
+        type: PlacementType
+        description: <p>The Availability Zone the job flow will run in.</p>
+      KeepJobFlowAliveWhenNoSteps?:
+        type: Boolean
+        description: <p>Specifies whether the job flow should be kept alive after completing all steps.</p>
+      TerminationProtected?:
+        type: Boolean
+        description: <p>Specifies whether to lock the job flow to prevent the Amazon EC2 instances from being terminated by API call, user intervention, or in the event of a job flow error.</p>
+      HadoopVersion?:
+        type: XmlStringMaxLen256
+        description: <p>The Hadoop version for the job flow. Valid inputs are "0.18" (deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or "2.4.0". If you do not set this value, the default of 0.18 is used, unless the AmiVersion parameter is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI version is used.</p>
+      Ec2SubnetId?:
+        type: XmlStringMaxLen256
+        description: <p>To launch the job flow in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the identifier of the Amazon VPC subnet where you want the job flow to launch. If you do not specify this value, the job flow is launched in the normal Amazon Web Services cloud, outside of an Amazon VPC.</p> <p>Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus you cannot specify the cc1.4xlarge instance type for nodes of a job flow launched in a Amazon VPC.</p>
+      EmrManagedMasterSecurityGroup?:
+        type: XmlStringMaxLen256
+        description: <p>The identifier of the Amazon EC2 security group for the master node.</p>
+      EmrManagedSlaveSecurityGroup?:
+        type: XmlStringMaxLen256
+        description: <p>The identifier of the Amazon EC2 security group for the slave nodes.</p>
+      ServiceAccessSecurityGroup?:
+        type: XmlStringMaxLen256
+        description: <p>The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.</p>
+      AdditionalMasterSecurityGroups?:
+        type: SecurityGroupsList
+        description: <p>A list of additional Amazon EC2 security group IDs for the master node.</p>
+      AdditionalSlaveSecurityGroups?:
+        type: SecurityGroupsList
+        description: <p>A list of additional Amazon EC2 security group IDs for the slave nodes.</p>
+    description: <p>A description of the Amazon EC2 instance running the job flow. A valid JobFlowInstancesConfig must contain at least InstanceGroups, which is the recommended configuration. However, a valid alternative is to have MasterInstanceType, SlaveInstanceType, and InstanceCount (all three must be present).</p>
+  JobFlowInstancesDetail:
+    type: object
+    properties:
+      MasterInstanceType:
+        type: InstanceType
+        description: <p>The Amazon EC2 master node instance type.</p>
+      MasterPublicDnsName?:
+        type: XmlString
+        description: <p>The DNS name of the master node.</p>
+      MasterInstanceId?:
+        type: XmlString
+        description: <p>The Amazon EC2 instance identifier of the master node.</p>
+      SlaveInstanceType:
+        type: InstanceType
+        description: <p>The Amazon EC2 slave node instance type.</p>
+      InstanceCount:
+        type: Integer
+        description: <p>The number of Amazon EC2 instances in the cluster. If the value is 1, the same instance serves as both the master and slave node. If the value is greater than 1, one instance is the master node and all others are slave nodes.</p>
+      InstanceGroups?:
+        type: InstanceGroupDetailList
+        description: <p>Details about the job flow's instance groups.</p>
+      NormalizedInstanceHours?:
+        type: Integer
+        description: <p>An approximation of the cost of the job flow, represented in m1.small/hours. This value is incremented once for every hour an m1.small runs. Larger instances are weighted more, so an Amazon EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
+      Ec2KeyName?:
+        type: XmlStringMaxLen256
+        description: <p>The name of an Amazon EC2 key pair that can be used to ssh to the master node of job flow.</p>
+      Ec2SubnetId?:
+        type: XmlStringMaxLen256
+        description: <p>For job flows launched within Amazon Virtual Private Cloud, this value specifies the identifier of the subnet where the job flow was launched.</p>
+      Placement?:
+        type: PlacementType
+        description: <p>The Amazon EC2 Availability Zone for the job flow.</p>
+      KeepJobFlowAliveWhenNoSteps?:
+        type: Boolean
+        description: <p>Specifies whether the job flow should terminate after completing all steps.</p>
+      TerminationProtected?:
+        type: Boolean
+        description: <p>Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job flow error.</p>
+      HadoopVersion?:
+        type: XmlStringMaxLen256
+        description: <p>The Hadoop version for the job flow.</p>
+    description: <p>Specify the type of Amazon EC2 instances to run the job flow on.</p>
+  KeyValue:
+    type: object
+    properties:
+      Key?:
+        type: XmlString
+        description: <p>The unique identifier of a key value pair.</p>
+      Value?:
+        type: XmlString
+        description: <p>The value part of the identified key.</p>
+    description: <p>A key value pair.</p>
+  ListBootstrapActionsInput:
+    type: object
+    properties:
+      ClusterId:
+        type: ClusterId
+        description: <p>The cluster identifier for the bootstrap actions to list .</p>
+      Marker?:
+        type: Marker
+        description: <p>The pagination token that indicates the next set of results to retrieve.</p>
+    description: <p>This input determines which bootstrap actions to retrieve.</p>
+  ListBootstrapActionsOutput:
+    type: object
+    properties:
+      BootstrapActions?:
+        type: CommandList
+        description: <p>The bootstrap actions associated with the cluster .</p>
+      Marker?:
+        type: Marker
+        description: <p>The pagination token that indicates the next set of results to retrieve.</p>
+    description: <p>This output contains the boostrap actions detail .</p>
+  ListClustersInput:
+    type: object
+    properties:
+      CreatedAfter?:
+        type: Date
+        description: <p>The creation date and time beginning value filter for listing clusters .</p>
+      CreatedBefore?:
+        type: Date
+        description: <p>The creation date and time end value filter for listing clusters .</p>
+      ClusterStates?:
+        type: ClusterStateList
+        description: <p>The cluster state filters to apply when listing clusters.</p>
+      Marker?:
+        type: Marker
+        description: <p>The pagination token that indicates the next set of results to retrieve.</p>
+    description: <p>This input determines how the ListClusters action filters the list of clusters that it returns.</p>
+  ListClustersOutput:
+    type: object
+    properties:
+      Clusters?:
+        type: ClusterSummaryList
+        description: <p>The list of clusters for the account based on the given filters.</p>
+      Marker?:
+        type: Marker
+        description: <p>The pagination token that indicates the next set of results to retrieve.</p>
+    description: <p>This contains a ClusterSummaryList with the cluster details; for example, the cluster IDs, names, and status.</p>
+  ListInstanceGroupsInput:
+    type: object
+    properties:
+      ClusterId:
+        type: ClusterId
+        description: <p>The identifier of the cluster for which to list the instance groups.</p>
+      Marker?:
+        type: Marker
+        description: <p>The pagination token that indicates the next set of results to retrieve.</p>
+    description: <p>This input determines which instance groups to retrieve.</p>
+  ListInstanceGroupsOutput:
+    type: object
+    properties:
+      InstanceGroups?:
+        type: InstanceGroupList
+        description: <p>The list of instance groups for the cluster and given filters.</p>
+      Marker?:
+        type: Marker
+        description: <p>The pagination token that indicates the next set of results to retrieve.</p>
+    description: <p>This input determines which instance groups to retrieve.</p>
+  ListInstancesInput:
+    type: object
+    properties:
+      ClusterId:
+        type: ClusterId
+        description: <p>The identifier of the cluster for which to list the instances.</p>
+      InstanceGroupId?:
+        type: InstanceGroupId
+        description: <p>The identifier of the instance group for which to list the instances.</p>
+      InstanceGroupTypes?:
+        type: InstanceGroupTypeList
+        description: <p>The type of instance group for which to list the instances.</p>
+      InstanceStates?:
+        type: InstanceStateList
+        description: <p>A list of instance states that will filter the instances returned with this request.</p>
+      Marker?:
+        type: Marker
+        description: <p>The pagination token that indicates the next set of results to retrieve.</p>
+    description: <p>This input determines which instances to list.</p>
+  ListInstancesOutput:
+    type: object
+    properties:
+      Instances?:
+        type: InstanceList
+        description: <p>The list of instances for the cluster and given filters.</p>
+      Marker?:
+        type: Marker
+        description: <p>The pagination token that indicates the next set of results to retrieve.</p>
+    description: <p>This output contains the list of instances.</p>
+  ListSecurityConfigurationsInput:
+    type: object
+    properties:
+      Marker?:
+        type: Marker
+        description: <p>The pagination token that indicates the set of results to retrieve.</p>
+  ListSecurityConfigurationsOutput:
+    type: object
+    properties:
+      SecurityConfigurations?:
+        type: SecurityConfigurationList
+        description: <p>The creation date and time, and name, of each security configuration.</p>
+      Marker?:
+        type: Marker
+        description: <p>A pagination token that indicates the next set of results to retrieve. Include the marker in the next ListSecurityConfiguration call to retrieve the next page of results, if required.</p>
+  ListStepsInput:
+    type: object
+    properties:
+      ClusterId:
+        type: ClusterId
+        description: <p>The identifier of the cluster for which to list the steps.</p>
+      StepStates?:
+        type: StepStateList
+        description: <p>The filter to limit the step list based on certain states.</p>
+      StepIds?:
+        type: XmlStringList
+        description: <p>The filter to limit the step list based on the identifier of the steps.</p>
+      Marker?:
+        type: Marker
+        description: <p>The pagination token that indicates the next set of results to retrieve.</p>
+    description: <p>This input determines which steps to list.</p>
+  ListStepsOutput:
+    type: object
+    properties:
+      Steps?:
+        type: StepSummaryList
+        description: <p>The filtered list of steps for the cluster.</p>
+      Marker?:
+        type: Marker
+        description: <p>The pagination token that indicates the next set of results to retrieve.</p>
+    description: <p>This output contains the list of steps returned in reverse order. This means that the last step is the first element in the list.</p>
+  ModifyInstanceGroupsInput:
+    type: object
+    properties:
+      InstanceGroups?:
+        type: InstanceGroupModifyConfigList
+        description: <p>Instance groups to change.</p>
+    description: <p>Change the size of some instance groups.</p>
+  PlacementType:
+    type: object
+    properties:
+      AvailabilityZone:
+        type: XmlString
+        description: <p>The Amazon EC2 Availability Zone for the job flow.</p>
+    description: <p>The Amazon EC2 location for the job flow.</p>
+  RemoveTagsInput:
+    type: object
+    properties:
+      ResourceId:
+        type: ResourceId
+        description: <p>The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster identifier.</p>
+      TagKeys:
+        type: StringList
+        description: <p>A list of tag keys to remove from a resource.</p>
+    description: <p>This input identifies a cluster and a list of tags to remove.</p>
+  RemoveTagsOutput:
+    type: object
+    description: <p>This output indicates the result of removing tags from a resource.</p>
+  RunJobFlowInput:
+    type: object
+    properties:
+      Name:
+        type: XmlStringMaxLen256
+        description: <p>The name of the job flow.</p>
+      LogUri?:
+        type: XmlString
+        description: <p>The location in Amazon S3 to write the log files of the job flow. If a value is not provided, logs are not created.</p>
+      AdditionalInfo?:
+        type: XmlString
+        description: <p>A JSON string for selecting additional features.</p>
+      AmiVersion?:
+        type: XmlStringMaxLen256
+        description: <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use ReleaseLabel.</p> </note> <p>The version of the Amazon Machine Image (AMI) to use when launching Amazon EC2 instances in the job flow. The following values are valid:</p> <ul> <li> <p>The version number of the AMI to use, for example, "2.0."</p> </li> </ul> <p>If the AMI supports multiple versions of Hadoop (for example, AMI 1.0 supports both Hadoop 0.18 and 0.20) you can use the <a>JobFlowInstancesConfig</a> <code>HadoopVersion</code> parameter to modify the version of Hadoop from the defaults shown above.</p> <p>For details about the AMI versions currently supported by Amazon Elastic MapReduce, go to <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported">AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer's Guide.</i> </p>
+      ReleaseLabel?:
+        type: XmlStringMaxLen256
+        description: <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use amiVersion instead instead of ReleaseLabel.</p>
+      Instances:
+        type: JobFlowInstancesConfig
+        description: <p>A specification of the number and type of Amazon EC2 instances on which to run the job flow.</p>
+      Steps?:
+        type: StepConfigList
+        description: <p>A list of steps to be executed by the job flow.</p>
+      BootstrapActions?:
+        type: BootstrapActionConfigList
+        description: <p>A list of bootstrap actions that will be run before Hadoop is started on the cluster nodes.</p>
+      SupportedProducts?:
+        type: SupportedProductsList
+        description: <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use with the job flow. For more information, go to <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use Third Party Applications with Amazon EMR</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the job flow using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the job flow using MapR M5 Edition.</p> </li> </ul>
+      NewSupportedProducts?:
+        type: NewSupportedProductsList
+        description: <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use with the job flow that accepts a user argument list. EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action arguments. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-mapr.html">Launch a Job Flow on the MapR Distribution for Hadoop</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the cluster using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the cluster using MapR M5 Edition.</p> </li> <li> <p>"mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the job flow using MapR M3 or M5 Edition respectively.</p> </li> <li> <p>"mapr-m7" - launch the cluster using MapR M7 Edition.</p> </li> <li> <p>"hunk" - launch the cluster with the Hunk Big Data Analtics Platform.</p> </li> <li> <p>"hue"- launch the cluster with Hue installed.</p> </li> <li> <p>"spark" - launch the cluster with Apache Spark installed.</p> </li> <li> <p>"ganglia" - launch the cluster with the Ganglia Monitoring System installed.</p> </li> </ul>
+      Applications?:
+        type: ApplicationList
+        description: '<note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>A
+          list of applications for the cluster. Valid values are: "Hadoop", "Hive",
+          "Mahout", "Pig", and "Spark." They are case insensitive.</p>'
+      Configurations?:
+        type: ConfigurationList
+        description: <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for the EMR cluster you are creating.</p>
+      VisibleToAllUsers?:
+        type: Boolean
+        description: <p>Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. If this value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the job flow. If it is set to <code>false</code>, only the IAM user that created the job flow can view and manage it.</p>
+      JobFlowRole?:
+        type: XmlString
+        description: <p>Also called instance profile and EC2 role. An IAM role for an EMR cluster. The EC2 instances of the cluster assume this role. The default role is <code>EMR_EC2_DefaultRole</code>. In order to use the default role, you must have already created it using the CLI or console.</p>
+      ServiceRole?:
+        type: XmlString
+        description: <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
+      Tags?:
+        type: TagList
+        description: <p>A list of tags to associate with a cluster and propagate to Amazon EC2 instances.</p>
+      SecurityConfiguration?:
+        type: XmlString
+        description: <p>The name of a security configuration to apply to the cluster.</p>
+    description: <p> Input to the <a>RunJobFlow</a> operation. </p>
+  RunJobFlowOutput:
+    type: object
+    properties:
+      JobFlowId?:
+        type: XmlStringMaxLen256
+        description: <p>An unique identifier for the job flow.</p>
+    description: <p> The result of the <a>RunJobFlow</a> operation. </p>
+  ScriptBootstrapActionConfig:
+    type: object
+    properties:
+      Path:
+        type: XmlString
+      Args?:
+        type: XmlStringList
+  SecurityConfigurationSummary:
+    type: object
+    properties:
+      Name?:
+        type: XmlString
+        description: <p>The name of the security configuration.</p>
+      CreationDateTime?:
+        type: Date
+        description: <p>The date and time the security configuration was created.</p>
+    description: <p>The creation date and time, and name, of a security configuration.</p>
+  SetTerminationProtectionInput:
+    type: object
+    properties:
+      JobFlowIds:
+        type: XmlStringList
+        description: <p> A list of strings that uniquely identify the job flows to protect. This identifier is returned by <a>RunJobFlow</a> and can also be obtained from <a>DescribeJobFlows</a> . </p>
+      TerminationProtected:
+        type: Boolean
+        description: <p>A Boolean that indicates whether to protect the job flow and prevent the Amazon EC2 instances in the cluster from shutting down due to API calls, user intervention, or job-flow error.</p>
+    description: <p> The input argument to the <a>TerminationProtection</a> operation. </p>
+  SetVisibleToAllUsersInput:
+    type: object
+    properties:
+      JobFlowIds:
+        type: XmlStringList
+        description: <p>Identifiers of the job flows to receive the new visibility setting.</p>
+      VisibleToAllUsers:
+        type: Boolean
+        description: <p>Whether the specified job flows are visible to all IAM users of the AWS account associated with the job flow. If this value is set to True, all IAM users of that AWS account can view and, if they have the proper IAM policy permissions set, manage the job flows. If it is set to False, only the IAM user that created a job flow can view and manage it.</p>
+    description: <p>The input to the SetVisibleToAllUsers action.</p>
+  ShrinkPolicy:
+    type: object
+    properties:
+      DecommissionTimeout?:
+        type: Integer
+        description: <p>The desired timeout for decommissioning an instance. Overrides the default YARN decommissioning timeout.</p>
+      InstanceResizePolicy?:
+        type: InstanceResizePolicy
+        description: <p>Custom policy for requesting termination protection or termination of specific instances when shrinking an instance group.</p>
+    description: <p>Policy for customizing shrink operations. Allows configuration of decommissioning timeout and targeted instance shrinking.</p>
+  Step:
+    type: object
+    properties:
+      Id?:
+        type: StepId
+        description: <p>The identifier of the cluster step.</p>
+      Name?:
+        type: String
+        description: <p>The name of the cluster step.</p>
+      Config?:
+        type: HadoopStepConfig
+        description: <p>The Hadoop job configuration of the cluster step.</p>
+      ActionOnFailure?:
+        type: ActionOnFailure
+        description: <p>This specifies what action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.</p>
+      Status?:
+        type: StepStatus
+        description: <p>The current execution status details of the cluster step.</p>
+    description: <p>This represents a step in a cluster.</p>
+  StepConfig:
+    type: object
+    properties:
+      Name:
+        type: XmlStringMaxLen256
+        description: <p>The name of the job flow step.</p>
+      ActionOnFailure?:
+        type: ActionOnFailure
+        description: <p>The action to take if the job flow step fails.</p>
+      HadoopJarStep:
+        type: HadoopJarStepConfig
+        description: <p>The JAR file used for the job flow step.</p>
+    description: <p>Specification of a job flow step.</p>
+  StepDetail:
+    type: object
+    properties:
+      StepConfig:
+        type: StepConfig
+        description: <p>The step configuration.</p>
+      ExecutionStatusDetail:
+        type: StepExecutionStatusDetail
+        description: <p>The description of the step status.</p>
+    description: <p>Combines the execution state and configuration of a step.</p>
+  StepExecutionStatusDetail:
+    type: object
+    properties:
+      State:
+        type: StepExecutionState
+        description: <p>The state of the job flow step.</p>
+      CreationDateTime:
+        type: Date
+        description: <p>The creation date and time of the step.</p>
+      StartDateTime?:
+        type: Date
+        description: <p>The start date and time of the step.</p>
+      EndDateTime?:
+        type: Date
+        description: <p>The completion date and time of the step.</p>
+      LastStateChangeReason?:
+        type: XmlString
+        description: <p>A description of the step's current state.</p>
+    description: <p>The execution state of a step.</p>
+  StepStateChangeReason:
+    type: object
+    properties:
+      Code?:
+        type: StepStateChangeReasonCode
+        description: '<p>The programmable code for the state change reason. Note:
+          Currently, the service provides no code for the state change.</p>'
+      Message?:
+        type: String
+        description: <p>The descriptive message for the state change reason.</p>
+    description: <p>The details of the step state change reason.</p>
+  StepStatus:
+    type: object
+    properties:
+      State?:
+        type: StepState
+        description: <p>The execution state of the cluster step.</p>
+      StateChangeReason?:
+        type: StepStateChangeReason
+        description: <p>The reason for the step execution status change.</p>
+      FailureDetails?:
+        type: FailureDetails
+        description: <p>The details for the step failure including reason, message, and log file path where the root cause was identified.</p>
+      Timeline?:
+        type: StepTimeline
+        description: <p>The timeline of the cluster step status over time.</p>
+    description: <p>The execution status details of the cluster step.</p>
+  StepSummary:
+    type: object
+    properties:
+      Id?:
+        type: StepId
+        description: <p>The identifier of the cluster step.</p>
+      Name?:
+        type: String
+        description: <p>The name of the cluster step.</p>
+      Config?:
+        type: HadoopStepConfig
+        description: <p>The Hadoop job configuration of the cluster step.</p>
+      ActionOnFailure?:
+        type: ActionOnFailure
+        description: <p>This specifies what action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.</p>
+      Status?:
+        type: StepStatus
+        description: <p>The current execution status details of the cluster step.</p>
+    description: <p>The summary of the cluster step.</p>
+  StepTimeline:
+    type: object
+    properties:
+      CreationDateTime?:
+        type: Date
+        description: <p>The date and time when the cluster step was created.</p>
+      StartDateTime?:
+        type: Date
+        description: <p>The date and time when the cluster step execution started.</p>
+      EndDateTime?:
+        type: Date
+        description: <p>The date and time when the cluster step execution completed or failed.</p>
+    description: <p>The timeline of the cluster step lifecycle.</p>
+  StringMap:
+    type: object
+    properties:
+      //:
+        type: String
+  SupportedProductConfig:
+    type: object
+    properties:
+      Name?:
+        type: XmlStringMaxLen256
+        description: <p>The name of the product configuration.</p>
+      Args?:
+        type: XmlStringList
+        description: <p>The list of user-supplied arguments.</p>
+    description: <p>The list of supported product configurations which allow user-supplied arguments. EMR accepts these arguments and forwards them to the corresponding installation script as bootstrap action arguments.</p>
+  Tag:
+    type: object
+    properties:
+      Key?:
+        type: String
+        description: <p>A user-defined key, which is the minimum required information for a valid tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
+      Value?:
+        type: String
+        description: <p>A user-defined value, which is optional in a tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
+    description: <p>A key/value pair containing user-defined metadata that you can associate with an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clu\ sters to track your Amazon EMR resource allocation costs. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
+  TerminateJobFlowsInput:
+    type: object
+    properties:
+      JobFlowIds:
+        type: XmlStringList
+        description: <p>A list of job flows to be shutdown.</p>
+    description: <p> Input to the <a>TerminateJobFlows</a> operation. </p>
+  VolumeSpecification:
+    type: object
+    properties:
+      VolumeType:
+        type: String
+        description: <p>The volume type. Volume types supported are gp2, io1, standard.</p>
+      Iops?:
+        type: Integer
+        description: <p>The number of I/O operations per second (IOPS) that the volume supports.</p>
+      SizeInGB:
+        type: Integer
+        description: <p>The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.</p>
+    description: <p>EBS volume specifications such as volume type, IOPS, and size(GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
+/{AddInstanceGroups}:
+  uriParameters:
+    AddInstanceGroups?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: AddInstanceGroups adds an instance group to a running cluster.
+  post:
+    body:
+      application/json: AddInstanceGroupsInput
+    responses:
+      200:
+        body:
+          application/json: AddInstanceGroupsOutput
+      400:
+        description: InternalServerError
+/{AddJobFlowSteps}:
+  uriParameters:
+    AddJobFlowSteps?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'AddJobFlowSteps adds new steps to a running job flow. A maximum of
+    256 steps are allowed in each job flow. If your job flow is long-running (such
+    as a Hive data warehouse) or complex, you may require more than 256 steps to process
+    your data. You can bypass the 256-step limitation in various ways, including using
+    the SSH shell to connect to the master node and submitting queries directly to
+    the software running on the master node, such as Hive and Hadoop. For more information
+    on how to do this, go to <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/AddMoreThan256Steps.html">Add
+    More than 256 Steps to a Job Flow</a> in the <i>Amazon Elastic MapReduce Developer''s
+    Guide</i>. A step specifies the location of a JAR file stored either on the master
+    node of the job flow or in Amazon S3. Each step is performed by the main function
+    of the main class of the JAR file. The main class can be specified either in the
+    manifest of the JAR or by using the MainFunction parameter of the step. Elastic
+    MapReduce executes each step in the order listed. For a step to be considered
+    complete, the main function must exit with a zero exit code and all Hadoop jobs
+    started while the step was running must have completed and run successfully. You
+    can only add steps to a job flow that is in one of the following states: STARTING,
+    BOOTSTRAPPING, RUNNING, or WAITING.'
+  post:
+    body:
+      application/json: AddJobFlowStepsInput
+    responses:
+      200:
+        body:
+          application/json: AddJobFlowStepsOutput
+      400:
+        description: InternalServerError
+/{AddTags}:
+  uriParameters:
+    AddTags?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Adds tags to an Amazon EMR resource. Tags make it easier to associate
+    clusters in various ways, such as grouping clusters to track your Amazon EMR resource
+    allocation costs. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging
+    Amazon EMR Resources</a>. '
+  post:
+    body:
+      application/json: AddTagsInput
+    responses:
+      200:
+        body:
+          application/json: AddTagsOutput
+      400:
+        description: InternalServerException
+/{CreateSecurityConfiguration}:
+  uriParameters:
+    CreateSecurityConfiguration?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Creates a security configuration using EMR Security Configurations, which are stored in the service. Security Configurations enable you to more easily create a configuration, reuse it, and apply it whenever a cluster is created.
+  post:
+    body:
+      application/json: CreateSecurityConfigurationInput
+    responses:
+      200:
+        body:
+          application/json: CreateSecurityConfigurationOutput
+      400:
+        description: InternalServerException
+/{DeleteSecurityConfiguration}:
+  uriParameters:
+    DeleteSecurityConfiguration?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Deletes a security configuration.
+  post:
+    body:
+      application/json: DeleteSecurityConfigurationInput
+    responses:
+      200:
+        body:
+          application/json: DeleteSecurityConfigurationOutput
+      400:
+        description: InternalServerException
+/{DescribeCluster}:
+  uriParameters:
+    DescribeCluster?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Provides cluster-level details including status, hardware and software configuration, VPC settings, and so on. For information about the cluster steps, see <a>ListSteps</a>.
+  post:
+    body:
+      application/json: DescribeClusterInput
+    responses:
+      200:
+        body:
+          application/json: DescribeClusterOutput
+      400:
+        description: InternalServerException
+/{DescribeJobFlows}:
+  uriParameters:
+    DescribeJobFlows?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: ' This API is deprecated and will eventually be removed. We recommend
+    you use <a>ListClusters</a>, <a>DescribeCluster</a>, <a>ListSteps</a>, <a>ListInstanceGroups</a>
+    and <a>ListBootstrapActions</a> instead. DescribeJobFlows returns a list of job
+    flows that match all of the supplied parameters. The parameters can include a
+    list of job flow IDs, job flow states, and restrictions on job flow creation date
+    and time. Regardless of supplied parameters, only job flows created within the
+    last two months are returned. If no parameters are supplied, then job flows matching
+    either of the following criteria are returned: <ul> <li> Job flows created and
+    completed in the last two weeks </li> <li>  Job flows created within the last
+    two months that are in one of the following states: <code>RUNNING</code>, <code>WAITING</code>,
+    <code>SHUTTING_DOWN</code>, <code>STARTING</code>  </li> </ul> Amazon Elastic
+    MapReduce can return a maximum of 512 job flow descriptions.'
+  post:
+    body:
+      application/json: DescribeJobFlowsInput
+    responses:
+      200:
+        body:
+          application/json: DescribeJobFlowsOutput
+      400:
+        description: InternalServerError
+/{DescribeSecurityConfiguration}:
+  uriParameters:
+    DescribeSecurityConfiguration?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Provides the details of a security configuration by returning the configuration JSON.
+  post:
+    body:
+      application/json: DescribeSecurityConfigurationInput
+    responses:
+      200:
+        body:
+          application/json: DescribeSecurityConfigurationOutput
+      400:
+        description: InternalServerException
+/{DescribeStep}:
+  uriParameters:
+    DescribeStep?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Provides more detail about the cluster step.
+  post:
+    body:
+      application/json: DescribeStepInput
+    responses:
+      200:
+        body:
+          application/json: DescribeStepOutput
+      400:
+        description: InternalServerException
+/{ListBootstrapActions}:
+  uriParameters:
+    ListBootstrapActions?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Provides information about the bootstrap actions associated with a cluster.
+  post:
+    body:
+      application/json: ListBootstrapActionsInput
+    responses:
+      200:
+        body:
+          application/json: ListBootstrapActionsOutput
+      400:
+        description: InternalServerException
+/{ListClusters}:
+  uriParameters:
+    ListClusters?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Provides the status of all clusters visible to this AWS account. Allows you to filter the list of clusters based on certain criteria; for example, filtering by cluster creation date and time or by status. This call returns a maximum of 50 clusters per call, but returns a marker to track the paging of the cluster list across multiple ListClusters calls.
+  post:
+    body:
+      application/json: ListClustersInput
+    responses:
+      200:
+        body:
+          application/json: ListClustersOutput
+      400:
+        description: InternalServerException
+/{ListInstanceGroups}:
+  uriParameters:
+    ListInstanceGroups?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Provides all available details about the instance groups in a cluster.
+  post:
+    body:
+      application/json: ListInstanceGroupsInput
+    responses:
+      200:
+        body:
+          application/json: ListInstanceGroupsOutput
+      400:
+        description: InternalServerException
+/{ListInstances}:
+  uriParameters:
+    ListInstances?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Provides information about the cluster instances that Amazon EMR provisions on behalf of a user when it creates the cluster. For example, this operation indicates when the EC2 instances reach the Ready state, when instances become available to Amazon EMR to use for jobs, and the IP addresses for cluster instances, etc.
+  post:
+    body:
+      application/json: ListInstancesInput
+    responses:
+      200:
+        body:
+          application/json: ListInstancesOutput
+      400:
+        description: InternalServerException
+/{ListSecurityConfigurations}:
+  uriParameters:
+    ListSecurityConfigurations?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Lists all the security configurations visible to this account, providing their creation dates and times, and their names. This call returns a maximum of 50 clusters per call, but returns a marker to track the paging of the cluster list across multiple ListSecurityConfigurations calls.
+  post:
+    body:
+      application/json: ListSecurityConfigurationsInput
+    responses:
+      200:
+        body:
+          application/json: ListSecurityConfigurationsOutput
+      400:
+        description: InternalServerException
+/{ListSteps}:
+  uriParameters:
+    ListSteps?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Provides a list of steps for the cluster.
+  post:
+    body:
+      application/json: ListStepsInput
+    responses:
+      200:
+        body:
+          application/json: ListStepsOutput
+      400:
+        description: InternalServerException
+/{ModifyInstanceGroups}:
+  uriParameters:
+    ModifyInstanceGroups?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group. The input parameters include the new target instance count for the group and the instance group ID. The call will either succeed or fail atomically.
+  post:
+    body:
+      application/json: ModifyInstanceGroupsInput
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalServerError
+/{RemoveTags}:
+  uriParameters:
+    RemoveTags?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'Removes tags from an Amazon EMR resource. Tags make it easier to associate
+    clusters in various ways, such as grouping clusters to track your Amazon EMR resource
+    allocation costs. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging
+    Amazon EMR Resources</a>.  The following example removes the stack tag with value
+    Prod from a cluster:'
+  post:
+    body:
+      application/json: RemoveTagsInput
+    responses:
+      200:
+        body:
+          application/json: RemoveTagsOutput
+      400:
+        description: InternalServerException
+/{RunJobFlow}:
+  uriParameters:
+    RunJobFlow?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: ' RunJobFlow creates and starts running a new job flow. The job flow
+    will run the steps specified. Once the job flow completes, the cluster is stopped
+    and the HDFS partition is lost. To prevent loss of data, configure the last step
+    of the job flow to store results in Amazon S3. If the <a>JobFlowInstancesConfig</a>
+    <code>KeepJobFlowAliveWhenNoSteps</code> parameter is set to <code>TRUE</code>,
+    the job flow will transition to the WAITING state rather than shutting down once
+    the steps have completed.  For additional protection, you can set the <a>JobFlowInstancesConfig</a>
+    <code>TerminationProtected</code> parameter to <code>TRUE</code> to lock the job
+    flow and prevent it from being terminated by API call, user intervention, or in
+    the event of a job flow error. A maximum of 256 steps are allowed in each job
+    flow. If your job flow is long-running (such as a Hive data warehouse) or complex,
+    you may require more than 256 steps to process your data. You can bypass the 256-step
+    limitation in various ways, including using the SSH shell to connect to the master
+    node and submitting queries directly to the software running on the master node,
+    such as Hive and Hadoop. For more information on how to do this, go to <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/AddMoreThan256Steps.html">Add
+    More than 256 Steps to a Job Flow</a> in the <i>Amazon Elastic MapReduce Developer''s
+    Guide</i>. For long running job flows, we recommend that you periodically store
+    your results.'
+  post:
+    body:
+      application/json: RunJobFlowInput
+    responses:
+      200:
+        body:
+          application/json: RunJobFlowOutput
+      400:
+        description: InternalServerError
+/{SetTerminationProtection}:
+  uriParameters:
+    SetTerminationProtection?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: 'SetTerminationProtection locks a job flow so the Amazon EC2 instances
+    in the cluster cannot be terminated by user intervention, an API call, or in the
+    event of a job-flow error. The cluster still terminates upon successful completion
+    of the job flow. Calling SetTerminationProtection on a job flow is analogous to
+    calling the Amazon EC2 DisableAPITermination API on all of the EC2 instances in
+    a cluster. SetTerminationProtection is used to prevent accidental termination
+    of a job flow and to ensure that in the event of an error, the instances will
+    persist so you can recover any data stored in their ephemeral instance storage.  To
+    terminate a job flow that has been locked by setting SetTerminationProtection
+    to <code>true</code>, you must first unlock the job flow by a subsequent call
+    to SetTerminationProtection in which you set the value to <code>false</code>.   For
+    more information, go to <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/UsingEMR_TerminationProtection.html">Protecting
+    a Job Flow from Termination</a> in the <i>Amazon Elastic MapReduce Developer''s
+    Guide.</i> '
+  post:
+    body:
+      application/json: SetTerminationProtectionInput
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalServerError
+/{SetVisibleToAllUsers}:
+  uriParameters:
+    SetVisibleToAllUsers?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: Sets whether all AWS Identity and Access Management (IAM) users under your account can access the specified job flows. This action works on running job flows. You can also set the visibility of a job flow when you launch it using the <code>VisibleToAllUsers</code> parameter of <a>RunJobFlow</a>. The SetVisibleToAllUsers action can be called only by an IAM user who created the job flow or the AWS account that owns the job flow.
+  post:
+    body:
+      application/json: SetVisibleToAllUsersInput
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalServerError
+/{TerminateJobFlows}:
+  uriParameters:
+    TerminateJobFlows?:
+      type: string
+      enum:
+      - ''
+      description: This url parameter exists only to differentiate different operations on the same url
+  description: TerminateJobFlows shuts a list of job flows down. When a job flow is shut down, any step not yet completed is canceled and the EC2 instances on which the job flow is running are stopped. Any log files not already saved are uploaded to Amazon S3 if a LogUri was specified when the job flow was created. The maximum number of JobFlows allowed is 10. The call to TerminateJobFlows is asynchronous. Depending on the configuration of the job flow, it may take up to 5-20 minutes for the job flow to completely terminate and release allocated resources, such as Amazon EC2 instances.
+  post:
+    body:
+      application/json: TerminateJobFlowsInput
+    responses:
+      200:
+        body:
+          application/json: null
+      400:
+        description: InternalServerError
