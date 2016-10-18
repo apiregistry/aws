@@ -2461,8 +2461,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Cancels in-progress environment configuration update or application version deployment.
   post:
+    description: Cancels in-progress environment configuration update or application version deployment.
     body:
       application/xml: AbortEnvironmentUpdateMessage
     responses:
@@ -2478,8 +2478,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Applies a scheduled managed action immediately. A managed action can be applied only if its status is <code>Scheduled</code>. Get the status and action ID of a managed action with <a>DescribeEnvironmentManagedActions</a>.
   post:
+    description: Applies a scheduled managed action immediately. A managed action can be applied only if its status is <code>Scheduled</code>. Get the status and action ID of a managed action with <a>DescribeEnvironmentManagedActions</a>.
     body:
       application/xml: ApplyEnvironmentManagedActionRequest
     responses:
@@ -2495,8 +2495,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Checks if the specified CNAME is available. '
   post:
+    description: ' Checks if the specified CNAME is available. '
     body:
       application/xml: CheckDNSAvailabilityMessage
     responses:
@@ -2510,8 +2510,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Create or update a group of environments that each run a separate component of a single application. Takes a list of version labels that specify application source bundles for each of the environments to create or update. The name of each environment and other required information must be included in the source bundles in an environment manifest named <code>env.yaml</code>. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html">Compose Environments</a> for details.
   post:
+    description: Create or update a group of environments that each run a separate component of a single application. Takes a list of version labels that specify application source bundles for each of the environments to create or update. The name of each environment and other required information must be included in the source bundles in an environment manifest named <code>env.yaml</code>. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html">Compose Environments</a> for details.
     body:
       application/xml: ComposeEnvironmentsMessage
     responses:
@@ -2529,9 +2529,9 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Creates an application that has one configuration template named
-    <code>default</code> and no application versions. '
   post:
+    description: ' Creates an application that has one configuration template named
+      <code>default</code> and no application versions. '
     body:
       application/xml: CreateApplicationMessage
     responses:
@@ -2547,8 +2547,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates an application version for the specified application. <note>Once you create an application version with a specified Amazon S3 bucket and key location, you cannot change that Amazon S3 location. If you change the Amazon S3 location, you receive an exception when you attempt to launch an environment from the application version. </note>
   post:
+    description: Creates an application version for the specified application. <note>Once you create an application version with a specified Amazon S3 bucket and key location, you cannot change that Amazon S3 location. If you change the Amazon S3 location, you receive an exception when you attempt to launch an environment from the application version. </note>
     body:
       application/xml: CreateApplicationVersionMessage
     responses:
@@ -2566,8 +2566,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates a configuration template. Templates are associated with a specific application and are used to deploy different versions of the application with the same configuration settings. Related Topics <ul> <li> <a>DescribeConfigurationOptions</a> </li> <li> <a>DescribeConfigurationSettings</a> </li> <li> <a>ListAvailableSolutionStacks</a> </li> </ul>
   post:
+    description: Creates a configuration template. Templates are associated with a specific application and are used to deploy different versions of the application with the same configuration settings. Related Topics <ul> <li> <a>DescribeConfigurationOptions</a> </li> <li> <a>DescribeConfigurationSettings</a> </li> <li> <a>ListAvailableSolutionStacks</a> </li> </ul>
     body:
       application/xml: CreateConfigurationTemplateMessage
     responses:
@@ -2585,8 +2585,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Launches an environment for the specified application using the specified configuration.
   post:
+    description: Launches an environment for the specified application using the specified configuration.
     body:
       application/xml: CreateEnvironmentMessage
     responses:
@@ -2604,9 +2604,9 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Creates the Amazon S3 storage location for the account.   This location
-    is used to store user log files. '
   post:
+    description: ' Creates the Amazon S3 storage location for the account.   This
+      location is used to store user log files. '
     responses:
       200:
         body:
@@ -2622,11 +2622,11 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Deletes the specified application along with all associated versions
-    and configurations. The application versions will not be deleted from your Amazon
-    S3 bucket.  <note>You cannot delete an application that has a running environment.
-    </note>'
   post:
+    description: ' Deletes the specified application along with all associated versions
+      and configurations. The application versions will not be deleted from your Amazon
+      S3 bucket.  <note>You cannot delete an application that has a running environment.
+      </note>'
     body:
       application/xml: DeleteApplicationMessage
     responses:
@@ -2642,9 +2642,9 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Deletes the specified version from the specified application.  <note>You
-    cannot delete an application version that is associated with a running environment.</note>'
   post:
+    description: ' Deletes the specified version from the specified application.  <note>You
+      cannot delete an application version that is associated with a running environment.</note>'
     body:
       application/xml: DeleteApplicationVersionMessage
     responses:
@@ -2662,8 +2662,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the specified configuration template. <note>When you launch an environment using a configuration template, the environment gets a copy of the template. You can delete or modify the environment's copy of the template without affecting the running environment.</note>
   post:
+    description: Deletes the specified configuration template. <note>When you launch an environment using a configuration template, the environment gets a copy of the template. You can delete or modify the environment's copy of the template without affecting the running environment.</note>
     body:
       application/xml: DeleteConfigurationTemplateMessage
     responses:
@@ -2679,8 +2679,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the draft configuration associated with the running environment. Updating a running environment with any configuration changes creates a draft configuration set. You can get the draft configuration using <a>DescribeConfigurationSettings</a> while the update is in progress or if the update fails. The <code>DeploymentStatus</code> for the draft configuration indicates whether the deployment is in process or has failed. The draft configuration remains in existence until it is deleted with this action.
   post:
+    description: Deletes the draft configuration associated with the running environment. Updating a running environment with any configuration changes creates a draft configuration set. You can get the draft configuration using <a>DescribeConfigurationSettings</a> while the update is in progress or if the update fails. The <code>DeploymentStatus</code> for the draft configuration indicates whether the deployment is in process or has failed. The draft configuration remains in existence until it is deleted with this action.
     body:
       application/xml: DeleteEnvironmentConfigurationMessage
     responses:
@@ -2694,8 +2694,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Retrieve a list of application versions stored in your AWS Elastic Beanstalk storage bucket.
   post:
+    description: Retrieve a list of application versions stored in your AWS Elastic Beanstalk storage bucket.
     body:
       application/xml: DescribeApplicationVersionsMessage
     responses:
@@ -2709,8 +2709,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns the descriptions of existing applications.
   post:
+    description: Returns the descriptions of existing applications.
     body:
       application/xml: DescribeApplicationsMessage
     responses:
@@ -2724,12 +2724,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Describes the configuration options that are used in a particular
-    configuration template or environment, or that a specified solution stack defines.
-    The description includes the values the options, their default values, and an
-    indication of the required action on a running environment if an option value
-    is changed. '
   post:
+    description: ' Describes the configuration options that are used in a particular
+      configuration template or environment, or that a specified solution stack defines.
+      The description includes the values the options, their default values, and an
+      indication of the required action on a running environment if an option value
+      is changed. '
     body:
       application/xml: DescribeConfigurationOptionsMessage
     responses:
@@ -2745,15 +2745,15 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Returns a description of the settings for the specified configuration
-    set, that is, either a configuration template or the configuration set associated
-    with a running environment.   When describing the settings for the configuration
-    set associated with a running environment, it is possible to receive two sets
-    of setting descriptions. One is the deployed configuration set, and the other
-    is a draft configuration of an environment that is either in the process of deployment
-    or that failed to deploy.  Related Topics <ul> <li> <a>DeleteEnvironmentConfiguration</a>
-    </li> </ul>'
   post:
+    description: ' Returns a description of the settings for the specified configuration
+      set, that is, either a configuration template or the configuration set associated
+      with a running environment.   When describing the settings for the configuration
+      set associated with a running environment, it is possible to receive two sets
+      of setting descriptions. One is the deployed configuration set, and the other
+      is a draft configuration of an environment that is either in the process of
+      deployment or that failed to deploy.  Related Topics <ul> <li> <a>DeleteEnvironmentConfiguration</a>
+      </li> </ul>'
     body:
       application/xml: DescribeConfigurationSettingsMessage
     responses:
@@ -2769,8 +2769,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns information about the overall health of the specified environment. The <b>DescribeEnvironmentHealth</b> operation is only available with AWS Elastic Beanstalk Enhanced Health.
   post:
+    description: Returns information about the overall health of the specified environment. The <b>DescribeEnvironmentHealth</b> operation is only available with AWS Elastic Beanstalk Enhanced Health.
     body:
       application/xml: DescribeEnvironmentHealthRequest
     responses:
@@ -2786,8 +2786,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists an environment's completed and failed managed actions.
   post:
+    description: Lists an environment's completed and failed managed actions.
     body:
       application/xml: DescribeEnvironmentManagedActionHistoryRequest
     responses:
@@ -2803,8 +2803,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists an environment's upcoming and in-progress managed actions.
   post:
+    description: Lists an environment's upcoming and in-progress managed actions.
     body:
       application/xml: DescribeEnvironmentManagedActionsRequest
     responses:
@@ -2820,8 +2820,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns AWS resources for this environment.
   post:
+    description: Returns AWS resources for this environment.
     body:
       application/xml: DescribeEnvironmentResourcesMessage
     responses:
@@ -2837,8 +2837,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns descriptions for existing environments.
   post:
+    description: Returns descriptions for existing environments.
     body:
       application/xml: DescribeEnvironmentsMessage
     responses:
@@ -2852,8 +2852,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns list of event descriptions matching criteria up to the last 6 weeks. <note>This action returns the most recent 1,000 events from the specified <code>NextToken</code>.</note>
   post:
+    description: Returns list of event descriptions matching criteria up to the last 6 weeks. <note>This action returns the most recent 1,000 events from the specified <code>NextToken</code>.</note>
     body:
       application/xml: DescribeEventsMessage
     responses:
@@ -2867,8 +2867,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns more detailed information about the health of the specified instances (for example, CPU utilization, load average, and causes). The <b>DescribeInstancesHealth</b> operation is only available with AWS Elastic Beanstalk Enhanced Health.
   post:
+    description: Returns more detailed information about the health of the specified instances (for example, CPU utilization, load average, and causes). The <b>DescribeInstancesHealth</b> operation is only available with AWS Elastic Beanstalk Enhanced Health.
     body:
       application/xml: DescribeInstancesHealthRequest
     responses:
@@ -2884,8 +2884,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Returns a list of the available solution stack names. '
   post:
+    description: ' Returns a list of the available solution stack names. '
     responses:
       200:
         body:
@@ -2897,10 +2897,10 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Deletes and recreates all of the AWS resources (for example: the
-    Auto Scaling group, load balancer, etc.) for a specified environment and forces
-    a restart. '
   post:
+    description: ' Deletes and recreates all of the AWS resources (for example: the
+      Auto Scaling group, load balancer, etc.) for a specified environment and forces
+      a restart. '
     body:
       application/xml: RebuildEnvironmentMessage
     responses:
@@ -2916,15 +2916,15 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Initiates a request to compile the specified type of information
-    of the deployed environment.   Setting the <code>InfoType</code> to <code>tail</code>
-    compiles the last lines from the application server log files of every Amazon
-    EC2 instance in your environment.   Setting the <code>InfoType</code> to <code>bundle</code>
-    compresses the application server log files for every Amazon EC2 instance into
-    a <code>.zip</code> file. Legacy and .NET containers do not support bundle logs.   Use
-    <a>RetrieveEnvironmentInfo</a> to obtain the set of logs.  Related Topics <ul>
-    <li> <a>RetrieveEnvironmentInfo</a> </li> </ul>'
   post:
+    description: ' Initiates a request to compile the specified type of information
+      of the deployed environment.   Setting the <code>InfoType</code> to <code>tail</code>
+      compiles the last lines from the application server log files of every Amazon
+      EC2 instance in your environment.   Setting the <code>InfoType</code> to <code>bundle</code>
+      compresses the application server log files for every Amazon EC2 instance into
+      a <code>.zip</code> file. Legacy and .NET containers do not support bundle logs.   Use
+      <a>RetrieveEnvironmentInfo</a> to obtain the set of logs.  Related Topics <ul>
+      <li> <a>RetrieveEnvironmentInfo</a> </li> </ul>'
     body:
       application/xml: RequestEnvironmentInfoMessage
     responses:
@@ -2938,8 +2938,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Causes the environment to restart the application container server running on each Amazon EC2 instance.
   post:
+    description: Causes the environment to restart the application container server running on each Amazon EC2 instance.
     body:
       application/xml: RestartAppServerMessage
     responses:
@@ -2953,8 +2953,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Retrieves the compiled information from a <a>RequestEnvironmentInfo</a> request. Related Topics <ul> <li> <a>RequestEnvironmentInfo</a> </li> </ul>
   post:
+    description: Retrieves the compiled information from a <a>RequestEnvironmentInfo</a> request. Related Topics <ul> <li> <a>RequestEnvironmentInfo</a> </li> </ul>
     body:
       application/xml: RetrieveEnvironmentInfoMessage
     responses:
@@ -2968,8 +2968,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Swaps the CNAMEs of two environments. '
   post:
+    description: ' Swaps the CNAMEs of two environments. '
     body:
       application/xml: SwapEnvironmentCNAMEsMessage
     responses:
@@ -2983,8 +2983,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Terminates the specified environment. '
   post:
+    description: ' Terminates the specified environment. '
     body:
       application/xml: TerminateEnvironmentMessage
     responses:
@@ -3000,8 +3000,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Updates the specified application to have the specified properties.  <note> If a property (for example, <code>description</code>) is not provided, the value remains unchanged. To clear these properties, specify an empty string. </note>
   post:
+    description: Updates the specified application to have the specified properties.  <note> If a property (for example, <code>description</code>) is not provided, the value remains unchanged. To clear these properties, specify an empty string. </note>
     body:
       application/xml: UpdateApplicationMessage
     responses:
@@ -3015,10 +3015,11 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Updates the specified application version to have the specified properties.  <note>
-    If a property (for example, <code>description</code>) is not provided, the value
-    remains unchanged. To clear properties, specify an empty string. </note>'
   post:
+    description: ' Updates the specified application version to have the specified
+      properties.  <note> If a property (for example, <code>description</code>) is
+      not provided, the value remains unchanged. To clear properties, specify an empty
+      string. </note>'
     body:
       application/xml: UpdateApplicationVersionMessage
     responses:
@@ -3032,12 +3033,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Updates the specified configuration template to have the specified
-    properties or configuration option values.  <note> If a property (for example,
-    <code>ApplicationName</code>) is not provided, its value remains unchanged. To
-    clear such properties, specify an empty string. </note> Related Topics <ul> <li>
-    <a>DescribeConfigurationOptions</a> </li> </ul>'
   post:
+    description: ' Updates the specified configuration template to have the specified
+      properties or configuration option values.  <note> If a property (for example,
+      <code>ApplicationName</code>) is not provided, its value remains unchanged.
+      To clear such properties, specify an empty string. </note> Related Topics <ul>
+      <li> <a>DescribeConfigurationOptions</a> </li> </ul>'
     body:
       application/xml: UpdateConfigurationTemplateMessage
     responses:
@@ -3055,15 +3056,16 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Updates the environment description, deploys a new application version,
-    updates the configuration settings to an entirely new configuration template,
-    or updates select configuration option values in the running environment.   Attempting
-    to update both the release and configuration is not allowed and AWS Elastic Beanstalk
-    returns an <code>InvalidParameterCombination</code> error.   When updating the
-    configuration settings to a new template or individual settings, a draft configuration
-    is created and <a>DescribeConfigurationSettings</a> for this environment returns
-    two setting descriptions with different <code>DeploymentStatus</code> values. '
   post:
+    description: ' Updates the environment description, deploys a new application
+      version, updates the configuration settings to an entirely new configuration
+      template, or updates select configuration option values in the running environment.   Attempting
+      to update both the release and configuration is not allowed and AWS Elastic
+      Beanstalk returns an <code>InvalidParameterCombination</code> error.   When
+      updating the configuration settings to a new template or individual settings,
+      a draft configuration is created and <a>DescribeConfigurationSettings</a> for
+      this environment returns two setting descriptions with different <code>DeploymentStatus</code>
+      values. '
     body:
       application/xml: UpdateEnvironmentMessage
     responses:
@@ -3081,11 +3083,11 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: ' Takes a set of configuration settings and either a configuration
-    template or environment, and determines whether those values are valid.   This
-    action returns a list of messages indicating any errors or warnings associated
-    with the selection of option values. '
   post:
+    description: ' Takes a set of configuration settings and either a configuration
+      template or environment, and determines whether those values are valid.   This
+      action returns a list of messages indicating any errors or warnings associated
+      with the selection of option values. '
     body:
       application/xml: ValidateConfigurationSettingsMessage
     responses:

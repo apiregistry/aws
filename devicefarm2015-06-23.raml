@@ -1967,8 +1967,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates a device pool.
   post:
+    description: Creates a device pool.
     body:
       application/json: CreateDevicePoolRequest
     responses:
@@ -1984,8 +1984,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates a new project.
   post:
+    description: Creates a new project.
     body:
       application/json: CreateProjectRequest
     responses:
@@ -2001,8 +2001,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Specifies and starts a remote access session.
   post:
+    description: Specifies and starts a remote access session.
     body:
       application/json: CreateRemoteAccessSessionRequest
     responses:
@@ -2018,8 +2018,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Uploads an app or test scripts.
   post:
+    description: Uploads an app or test scripts.
     body:
       application/json: CreateUploadRequest
     responses:
@@ -2035,8 +2035,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes a device pool given the pool ARN. Does not allow deletion of curated pools owned by the system.
   post:
+    description: Deletes a device pool given the pool ARN. Does not allow deletion of curated pools owned by the system.
     body:
       application/json: DeleteDevicePoolRequest
     responses:
@@ -2052,8 +2052,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes an AWS Device Farm project, given the project ARN.  <b>Note</b> Deleting this resource does not stop an in-progress run.
   post:
+    description: Deletes an AWS Device Farm project, given the project ARN.  <b>Note</b> Deleting this resource does not stop an in-progress run.
     body:
       application/json: DeleteProjectRequest
     responses:
@@ -2069,8 +2069,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes a completed remote access session and its results.
   post:
+    description: Deletes a completed remote access session and its results.
     body:
       application/json: DeleteRemoteAccessSessionRequest
     responses:
@@ -2086,8 +2086,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the run, given the run ARN.  <b>Note</b> Deleting this resource does not stop an in-progress run.
   post:
+    description: Deletes the run, given the run ARN.  <b>Note</b> Deleting this resource does not stop an in-progress run.
     body:
       application/json: DeleteRunRequest
     responses:
@@ -2103,8 +2103,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes an upload given the upload ARN.
   post:
+    description: Deletes an upload given the upload ARN.
     body:
       application/json: DeleteUploadRequest
     responses:
@@ -2120,8 +2120,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns the number of unmetered iOS and/or unmetered Android devices that have been purchased by the account.
   post:
+    description: Returns the number of unmetered iOS and/or unmetered Android devices that have been purchased by the account.
     body:
       application/json: GetAccountSettingsRequest
     responses:
@@ -2137,8 +2137,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about a unique device type.
   post:
+    description: Gets information about a unique device type.
     body:
       application/json: GetDeviceRequest
     responses:
@@ -2154,8 +2154,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about a device pool.
   post:
+    description: Gets information about a device pool.
     body:
       application/json: GetDevicePoolRequest
     responses:
@@ -2171,8 +2171,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about compatibility with a device pool.
   post:
+    description: Gets information about compatibility with a device pool.
     body:
       application/json: GetDevicePoolCompatibilityRequest
     responses:
@@ -2188,8 +2188,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about a job.
   post:
+    description: Gets information about a job.
     body:
       application/json: GetJobRequest
     responses:
@@ -2205,8 +2205,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets the current status and future status of all offerings purchased by an AWS account. The response indicates how many offerings are currently available and the offerings that will be available in the next period. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
   post:
+    description: Gets the current status and future status of all offerings purchased by an AWS account. The response indicates how many offerings are currently available and the offerings that will be available in the next period. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
     body:
       application/json: GetOfferingStatusRequest
     responses:
@@ -2222,8 +2222,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about a project.
   post:
+    description: Gets information about a project.
     body:
       application/json: GetProjectRequest
     responses:
@@ -2239,8 +2239,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns a link to a currently running remote access session.
   post:
+    description: Returns a link to a currently running remote access session.
     body:
       application/json: GetRemoteAccessSessionRequest
     responses:
@@ -2256,8 +2256,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about a run.
   post:
+    description: Gets information about a run.
     body:
       application/json: GetRunRequest
     responses:
@@ -2273,8 +2273,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about a suite.
   post:
+    description: Gets information about a suite.
     body:
       application/json: GetSuiteRequest
     responses:
@@ -2290,8 +2290,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about a test.
   post:
+    description: Gets information about a test.
     body:
       application/json: GetTestRequest
     responses:
@@ -2307,8 +2307,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about an upload.
   post:
+    description: Gets information about an upload.
     body:
       application/json: GetUploadRequest
     responses:
@@ -2324,8 +2324,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Installs an application to the device in a remote access session. For Android applications, the file must be in .apk format. For iOS applications, the file must be in .ipa format.
   post:
+    description: Installs an application to the device in a remote access session. For Android applications, the file must be in .apk format. For iOS applications, the file must be in .ipa format.
     body:
       application/json: InstallToRemoteAccessSessionRequest
     responses:
@@ -2341,8 +2341,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about artifacts.
   post:
+    description: Gets information about artifacts.
     body:
       application/json: ListArtifactsRequest
     responses:
@@ -2358,8 +2358,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about device pools.
   post:
+    description: Gets information about device pools.
     body:
       application/json: ListDevicePoolsRequest
     responses:
@@ -2375,8 +2375,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about unique device types.
   post:
+    description: Gets information about unique device types.
     body:
       application/json: ListDevicesRequest
     responses:
@@ -2392,8 +2392,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about jobs.
   post:
+    description: Gets information about jobs.
     body:
       application/json: ListJobsRequest
     responses:
@@ -2409,8 +2409,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account. The list is paginated and ordered by a descending timestamp (most recent transactions are first). The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
   post:
+    description: Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account. The list is paginated and ordered by a descending timestamp (most recent transactions are first). The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
     body:
       application/json: ListOfferingTransactionsRequest
     responses:
@@ -2426,8 +2426,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns a list of products or offerings that the user can manage through the API. Each offering record indicates the recurring price per unit and the frequency for that offering. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
   post:
+    description: Returns a list of products or offerings that the user can manage through the API. Each offering record indicates the recurring price per unit and the frequency for that offering. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
     body:
       application/json: ListOfferingsRequest
     responses:
@@ -2443,8 +2443,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about projects.
   post:
+    description: Gets information about projects.
     body:
       application/json: ListProjectsRequest
     responses:
@@ -2460,8 +2460,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns a list of all currently running remote access sessions.
   post:
+    description: Returns a list of all currently running remote access sessions.
     body:
       application/json: ListRemoteAccessSessionsRequest
     responses:
@@ -2477,8 +2477,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about runs, given an AWS Device Farm project ARN.
   post:
+    description: Gets information about runs, given an AWS Device Farm project ARN.
     body:
       application/json: ListRunsRequest
     responses:
@@ -2494,8 +2494,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about samples, given an AWS Device Farm project ARN
   post:
+    description: Gets information about samples, given an AWS Device Farm project ARN
     body:
       application/json: ListSamplesRequest
     responses:
@@ -2511,8 +2511,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about suites.
   post:
+    description: Gets information about suites.
     body:
       application/json: ListSuitesRequest
     responses:
@@ -2528,8 +2528,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about tests.
   post:
+    description: Gets information about tests.
     body:
       application/json: ListTestsRequest
     responses:
@@ -2545,8 +2545,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about unique problems.
   post:
+    description: Gets information about unique problems.
     body:
       application/json: ListUniqueProblemsRequest
     responses:
@@ -2562,8 +2562,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets information about uploads, given an AWS Device Farm project ARN.
   post:
+    description: Gets information about uploads, given an AWS Device Farm project ARN.
     body:
       application/json: ListUploadsRequest
     responses:
@@ -2579,8 +2579,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Immediately purchases offerings for an AWS account. Offerings renew with the latest total purchased quantity for an offering, unless the renewal was overridden. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
   post:
+    description: Immediately purchases offerings for an AWS account. Offerings renew with the latest total purchased quantity for an offering, unless the renewal was overridden. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
     body:
       application/json: PurchaseOfferingRequest
     responses:
@@ -2596,8 +2596,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Explicitly sets the quantity of devices to renew for an offering, starting from the <code>effectiveDate</code> of the next period. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
   post:
+    description: Explicitly sets the quantity of devices to renew for an offering, starting from the <code>effectiveDate</code> of the next period. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
     body:
       application/json: RenewOfferingRequest
     responses:
@@ -2613,8 +2613,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Schedules a run.
   post:
+    description: Schedules a run.
     body:
       application/json: ScheduleRunRequest
     responses:
@@ -2630,8 +2630,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Ends a specified remote access session.
   post:
+    description: Ends a specified remote access session.
     body:
       application/json: StopRemoteAccessSessionRequest
     responses:
@@ -2647,8 +2647,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Initiates a stop request for the current test run. AWS Device Farm will immediately stop the run on devices where tests have not started executing, and you will not be billed for these devices. On devices where tests have started executing, Setup Suite and Teardown Suite tests will run to completion before stopping execution on those devices. You will be billed for Setup, Teardown, and any tests that were in progress or already completed.
   post:
+    description: Initiates a stop request for the current test run. AWS Device Farm will immediately stop the run on devices where tests have not started executing, and you will not be billed for these devices. On devices where tests have started executing, Setup Suite and Teardown Suite tests will run to completion before stopping execution on those devices. You will be billed for Setup, Teardown, and any tests that were in progress or already completed.
     body:
       application/json: StopRunRequest
     responses:
@@ -2664,8 +2664,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Modifies the name, description, and rules in a device pool given the attributes and the pool ARN. Rule updates are all-or-nothing, meaning they can only be updated as a whole (or not at all).
   post:
+    description: Modifies the name, description, and rules in a device pool given the attributes and the pool ARN. Rule updates are all-or-nothing, meaning they can only be updated as a whole (or not at all).
     body:
       application/json: UpdateDevicePoolRequest
     responses:
@@ -2681,8 +2681,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Modifies the specified project name, given the project ARN and a new name.
   post:
+    description: Modifies the specified project name, given the project ARN and a new name.
     body:
       application/json: UpdateProjectRequest
     responses:

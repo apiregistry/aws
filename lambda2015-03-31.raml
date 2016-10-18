@@ -426,40 +426,19 @@ types:
     description: <p>VPC configuration associated with your Lambda function.</p>
 /2015-03-31:
   /functions:
-    description: 'Returns a list of your Lambda functions. For each function, the
-      response includes the function configuration information. You must use <a>GetFunction</a>
-      to retrieve the code for your function. This operation requires permission for
-      the <code>lambda:ListFunctions</code> action. If you are using versioning feature,
-      the response returns list of $LATEST versions of your functions. For information
-      about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
-      Lambda Function Versioning and Aliases</a>. '
     /{FunctionName}:
       uriParameters:
         FunctionName?:
           type: FunctionName
           description: <p>Lambda function whose resource policy you want to remove a permission from.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
-      description: Returns the configuration information of the Lambda function and a presigned URL link to the .zip file you uploaded with <a>CreateFunction</a> so you can download the .zip file. Note that the URL is valid for up to 10 minutes. The configuration information is the same information you provided as parameters when uploading the function. Using the optional <code>Qualifier</code> parameter, you can specify a specific function version for which you want this information. If you don't specify this parameter, the API uses unqualified function ARN which return information about the <code>$LATEST</code> version of the Lambda function. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. This operation requires permission for the <code>lambda:GetFunction</code> action.
       /policy:
-        description: 'Adds a permission to the resource policy associated with the
-          specified AWS Lambda function. You use resource policies to grant permissions
-          to event sources that use <i>push</i> model. In a <i>push</i> model, event
-          sources (such as Amazon S3 and custom applications) invoke your Lambda function.
-          Each permission you add to the resource policy allows an event source, permission
-          to invoke the Lambda function.  For information about the push model, see
-          <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS
-          Lambda: How it Works</a>.  If you are using versioning, the permissions
-          you add are specific to the Lambda function version or alias you specify
-          in the <code>AddPermission</code> request via the <code>Qualifier</code>
-          parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
-          Lambda Function Versioning and Aliases</a>.  This operation requires permission
-          for the <code>lambda:AddPermission</code> action.'
         /{StatementId}:
           uriParameters:
             StatementId?:
               type: StatementId
               description: <p>Statement ID of the permission to remove.</p>
-          description: You can remove individual permissions from an resource policy associated with a Lambda function by providing a statement ID that you provided when you added the permission. If you are using versioning, the permissions you remove are specific to the Lambda function version or alias you specify in the <code>AddPermission</code> request via the <code>Qualifier</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  Note that removal of a permission will cause an active event source to lose permission to the function. You need permission for the <code>lambda:RemovePermission</code> action.
           delete:
+            description: You can remove individual permissions from an resource policy associated with a Lambda function by providing a statement ID that you provided when you added the permission. If you are using versioning, the permissions you remove are specific to the Lambda function version or alias you specify in the <code>AddPermission</code> request via the <code>Qualifier</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  Note that removal of a permission will cause an active event source to lose permission to the function. You need permission for the <code>lambda:RemovePermission</code> action.
             queryParameters:
               Qualifier:
                 type: Qualifier
@@ -484,6 +463,14 @@ types:
               429:
                 description: TooManyRequestsException
         get:
+          description: 'Returns the resource policy associated with the specified
+            Lambda function.  If you are using the versioning feature, you can get
+            the resource policy associated with the specific Lambda function version
+            or alias by specifying the version or alias name using the <code>Qualifier</code>
+            parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
+            Lambda Function Versioning and Aliases</a>.  For information about adding
+            permissions, see <a>AddPermission</a>. You need permission for the <code>lambda:GetPolicy
+            action.</code> '
           queryParameters:
             Qualifier:
               type: Qualifier
@@ -505,6 +492,19 @@ types:
             400:
               description: InvalidParameterValueException
         post:
+          description: 'Adds a permission to the resource policy associated with the
+            specified AWS Lambda function. You use resource policies to grant permissions
+            to event sources that use <i>push</i> model. In a <i>push</i> model, event
+            sources (such as Amazon S3 and custom applications) invoke your Lambda
+            function. Each permission you add to the resource policy allows an event
+            source, permission to invoke the Lambda function.  For information about
+            the push model, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS
+            Lambda: How it Works</a>.  If you are using versioning, the permissions
+            you add are specific to the Lambda function version or alias you specify
+            in the <code>AddPermission</code> request via the <code>Qualifier</code>
+            parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
+            Lambda Function Versioning and Aliases</a>.  This operation requires permission
+            for the <code>lambda:AddPermission</code> action.'
           queryParameters:
             Qualifier:
               type: Qualifier
@@ -550,14 +550,13 @@ types:
             429:
               description: TooManyRequestsException
       /aliases:
-        description: Creates an alias that points to the specified Lambda function version. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. Alias names are unique for a given function. This requires permission for the lambda:CreateAlias action.
         /{Name}:
           uriParameters:
             Name?:
               type: Alias
               description: <p>Name of the alias to delete.</p>
-          description: Returns the specified alias information such as the alias ARN, description, and function version it is pointing to. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. This requires permission for the <code>lambda:GetAlias</code> action.
           delete:
+            description: Deletes the specified Lambda function alias. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. This requires permission for the lambda:DeleteAlias action.
             headers:
               FunctionName?:
                 type: FunctionName
@@ -576,6 +575,7 @@ types:
               429:
                 description: TooManyRequestsException
           put:
+            description: Using this API you can update the function version to which the alias points and the alias description. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. This requires permission for the lambda:UpdateAlias action.
             headers:
               FunctionName?:
                 type: FunctionName
@@ -606,6 +606,7 @@ types:
               429:
                 description: TooManyRequestsException
           get:
+            description: Returns the specified alias information such as the alias ARN, description, and function version it is pointing to. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. This requires permission for the <code>lambda:GetAlias</code> action.
             headers:
               FunctionName?:
                 type: FunctionName
@@ -626,6 +627,7 @@ types:
               429:
                 description: TooManyRequestsException
         get:
+          description: Returns list of aliases created for a Lambda function. For each alias, the response includes information such as the alias ARN, description, alias name, and the function version to which it points. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. This requires permission for the lambda:ListAliases action.
           queryParameters:
             FunctionVersion:
               type: Version
@@ -653,6 +655,7 @@ types:
             429:
               description: TooManyRequestsException
         post:
+          description: Creates an alias that points to the specified Lambda function version. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. Alias names are unique for a given function. This requires permission for the lambda:CreateAlias action.
           headers:
             FunctionName?:
               type: FunctionName
@@ -685,8 +688,8 @@ types:
             429:
               description: TooManyRequestsException
       /configuration:
-        description: Returns the configuration information of the Lambda function. This the same information you provided as parameters when uploading the function by using <a>CreateFunction</a>. If you are using the versioning feature, you can retrieve this information for a specific function version by using the optional <code>Qualifier</code> parameter and specifying the function version or alias that points to it. If you don't provide it, the API returns information about the $LATEST version of the function. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. This operation requires permission for the <code>lambda:GetFunctionConfiguration</code> operation.
         put:
+          description: Updates the configuration parameters for the specified Lambda function by using the values provided in the request. You provide only the parameters you want to change. This operation must only be used on an existing Lambda function and cannot be used to update the function's code. If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:UpdateFunctionConfiguration</code> action.
           headers:
             FunctionName?:
               type: FunctionName
@@ -728,6 +731,7 @@ types:
             429:
               description: TooManyRequestsException
         get:
+          description: Returns the configuration information of the Lambda function. This the same information you provided as parameters when uploading the function by using <a>CreateFunction</a>. If you are using the versioning feature, you can retrieve this information for a specific function version by using the optional <code>Qualifier</code> parameter and specifying the function version or alias that points to it. If you don't provide it, the API returns information about the $LATEST version of the function. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. This operation requires permission for the <code>lambda:GetFunctionConfiguration</code> operation.
           queryParameters:
             Qualifier:
               type: Qualifier
@@ -749,10 +753,13 @@ types:
             400:
               description: InvalidParameterValueException
       /versions:
-        description: 'List all versions of a function. For information about the versioning
-          feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
-          Lambda Function Versioning and Aliases</a>. '
         post:
+          description: 'Publishes a version of your function from the current snapshot
+            of $LATEST. That is, AWS Lambda takes a snapshot of the function code
+            and configuration information from $LATEST and publishes a new version.
+            The code and configuration cannot be modified after publication. For information
+            about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
+            Lambda Function Versioning and Aliases</a>. '
           headers:
             FunctionName?:
               type: FunctionName
@@ -780,6 +787,9 @@ types:
             429:
               description: TooManyRequestsException
         get:
+          description: 'List all versions of a function. For information about the
+            versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
+            Lambda Function Versioning and Aliases</a>. '
           queryParameters:
             Marker:
               type: String
@@ -804,8 +814,8 @@ types:
             429:
               description: TooManyRequestsException
       /invocations:
-        description: Invokes a specific Lambda function. If you are using the versioning feature, you can invoke the specific function version by providing function version or alias name that is pointing to the function version using the <code>Qualifier</code> parameter in the request. If you don't provide the <code>Qualifier</code> parameter, the <code>$LATEST</code> version of the Lambda function is invoked. Invocations occur at least once in response to an event and functions must be idempotent to handle this. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:InvokeFunction</code> action.
         post:
+          description: Invokes a specific Lambda function. If you are using the versioning feature, you can invoke the specific function version by providing function version or alias name that is pointing to the function version using the <code>Qualifier</code> parameter in the request. If you don't provide the <code>Qualifier</code> parameter, the <code>$LATEST</code> version of the Lambda function is invoked. Invocations occur at least once in response to an event and functions must be idempotent to handle this. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:InvokeFunction</code> action.
           queryParameters:
             Qualifier:
               type: Qualifier
@@ -855,8 +865,8 @@ types:
             502:
               description: EC2UnexpectedException | SubnetIPAddressLimitReachedException | ENILimitReachedException | EC2ThrottledException | EC2AccessDeniedException | InvalidSubnetIDException | InvalidSecurityGroupIDException | InvalidZipFileException
       /code:
-        description: Updates the code for the specified Lambda function. This operation must only be used on an existing Lambda function and cannot be used to update the function configuration. If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:UpdateFunctionCode</code> action.
         put:
+          description: Updates the code for the specified Lambda function. This operation must only be used on an existing Lambda function and cannot be used to update the function configuration. If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:UpdateFunctionCode</code> action.
           headers:
             FunctionName?:
               type: FunctionName
@@ -893,6 +903,7 @@ types:
             429:
               description: TooManyRequestsException
       delete:
+        description: Deletes the specified Lambda function code and configuration. If you are using the versioning feature and you don't specify a function version in your <code>DeleteFunction</code> request, AWS Lambda will delete the function, including all its versions, and any aliases pointing to the function versions. To delete a specific function version, you must provide the function version via the <code>Qualifier</code> parameter. For information about function versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  When you delete a function the associated resource policy is also deleted. You will need to delete the event source mappings explicitly. This operation requires permission for the <code>lambda:DeleteFunction</code> action.
         queryParameters:
           Qualifier:
             type: Qualifier
@@ -916,6 +927,7 @@ types:
           409:
             description: ResourceConflictException
       get:
+        description: Returns the configuration information of the Lambda function and a presigned URL link to the .zip file you uploaded with <a>CreateFunction</a> so you can download the .zip file. Note that the URL is valid for up to 10 minutes. The configuration information is the same information you provided as parameters when uploading the function. Using the optional <code>Qualifier</code> parameter, you can specify a specific function version for which you want this information. If you don't specify this parameter, the API uses unqualified function ARN which return information about the <code>$LATEST</code> version of the Lambda function. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. This operation requires permission for the <code>lambda:GetFunction</code> action.
         queryParameters:
           Qualifier:
             type: Qualifier
@@ -937,6 +949,7 @@ types:
           400:
             description: InvalidParameterValueException
     post:
+      description: Creates a new Lambda function. The function metadata is created from the request parameters, and the code for the function is provided by a .zip file in the request body. If the function name already exists, the operation will fail. Note that the function name is case-sensitive.  If you are using versioning, you can also publish a version of the Lambda function you are creating using the <code>Publish</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:CreateFunction</code> action.
       body:
         application/json: CreateFunctionRequest
       responses:
@@ -954,6 +967,13 @@ types:
         429:
           description: TooManyRequestsException
     get:
+      description: 'Returns a list of your Lambda functions. For each function, the
+        response includes the function configuration information. You must use <a>GetFunction</a>
+        to retrieve the code for your function. This operation requires permission
+        for the <code>lambda:ListFunctions</code> action. If you are using versioning
+        feature, the response returns list of $LATEST versions of your functions.
+        For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
+        Lambda Function Versioning and Aliases</a>. '
       queryParameters:
         Marker:
           type: String
@@ -970,14 +990,13 @@ types:
         429:
           description: TooManyRequestsException
   /event-source-mappings:
-    description: Returns a list of event source mappings you created using the <code>CreateEventSourceMapping</code> (see <a>CreateEventSourceMapping</a>).  For each mapping, the API returns configuration information. You can optionally specify filters to retrieve specific event source mappings. If you are using the versioning feature, you can get list of event source mappings for a specific Lambda function version or an alias as described in the <code>FunctionName</code> parameter. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:ListEventSourceMappings</code> action.
     /{UUID}:
       uriParameters:
         UUID?:
           type: String
           description: <p>The event source mapping ID.</p>
-      description: Returns configuration information for the specified event source mapping (see <a>CreateEventSourceMapping</a>). This operation requires permission for the <code>lambda:GetEventSourceMapping</code> action.
       delete:
+        description: Removes an event source mapping. This means AWS Lambda will no longer invoke the function for events in the associated source. This operation requires permission for the <code>lambda:DeleteEventSourceMapping</code> action.
         headers:
           UUID?:
             type: String
@@ -995,6 +1014,7 @@ types:
           429:
             description: TooManyRequestsException
       put:
+        description: You can update an event source mapping. This is useful if you want to change the parameters of the existing mapping without losing your position in the stream. You can change which function will receive the stream records, but to change the stream itself, you must create a new mapping. If you are using the versioning feature, you can update the event source mapping to map to a specific Lambda function version or alias as described in the <code>FunctionName</code> parameter. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  If you disable the event source mapping, AWS Lambda stops polling. If you enable again, it will resume polling from the time it had stopped polling, so you don't lose processing of any records. However, if you delete event source mapping and create it again, it will reset. This operation requires permission for the <code>lambda:UpdateEventSourceMapping</code> action.
         headers:
           UUID?:
             type: String
@@ -1027,6 +1047,7 @@ types:
           409:
             description: ResourceConflictException
       get:
+        description: Returns configuration information for the specified event source mapping (see <a>CreateEventSourceMapping</a>). This operation requires permission for the <code>lambda:GetEventSourceMapping</code> action.
         headers:
           UUID?:
             type: String
@@ -1044,6 +1065,23 @@ types:
           429:
             description: TooManyRequestsException
     post:
+      description: 'Identifies a stream as an event source for a Lambda function.
+        It can be either an Amazon Kinesis stream or an Amazon DynamoDB stream. AWS
+        Lambda invokes the specified function when records are posted to the stream.
+        This association between a stream source and a Lambda function is called the
+        event source mapping. <important>This event source mapping is relevant only
+        in the AWS Lambda pull model, where AWS Lambda invokes the function. For more
+        information, go to <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS
+        Lambda: How it Works</a> in the <i>AWS Lambda Developer Guide</i>. </important>
+        You provide mapping information (for example, which stream to read from and
+        which Lambda function to invoke) in the request body. Each event source, such
+        as an Amazon Kinesis or a DynamoDB stream, can be associated with multiple
+        AWS Lambda function. A given Lambda function can be associated with multiple
+        AWS event sources. If you are using versioning, you can specify a specific
+        function version or an alias via the function name parameter. For more information
+        about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
+        Lambda Function Versioning and Aliases</a>.  This operation requires permission
+        for the <code>lambda:CreateEventSourceMapping</code> action.'
       body:
         application/json: CreateEventSourceMappingRequest
       responses:
@@ -1061,6 +1099,7 @@ types:
         404:
           description: ResourceNotFoundException
     get:
+      description: Returns a list of event source mappings you created using the <code>CreateEventSourceMapping</code> (see <a>CreateEventSourceMapping</a>).  For each mapping, the API returns configuration information. You can optionally specify filters to retrieve specific event source mappings. If you are using the versioning feature, you can get list of event source mappings for a specific Lambda function version or an alias as described in the <code>FunctionName</code> parameter. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:ListEventSourceMappings</code> action.
       queryParameters:
         EventSourceArn:
           type: Arn
@@ -1094,8 +1133,8 @@ types:
           type: FunctionName
           description: <p>The Lambda function name.</p>
       /invoke-async:
-        description: <important>This API is deprecated. We recommend you use <code>Invoke</code> API (see <a>Invoke</a>). </important> Submits an invocation request to AWS Lambda. Upon receiving the request, Lambda executes the specified function asynchronously. To see the logs generated by the Lambda function execution, see the CloudWatch Logs console. This operation requires permission for the <code>lambda:InvokeFunction</code> action.
         post:
+          description: <important>This API is deprecated. We recommend you use <code>Invoke</code> API (see <a>Invoke</a>). </important> Submits an invocation request to AWS Lambda. Upon receiving the request, Lambda executes the specified function asynchronously. To see the logs generated by the Lambda function execution, see the CloudWatch Logs console. This operation requires permission for the <code>lambda:InvokeFunction</code> action.
           headers:
             FunctionName?:
               type: FunctionName

@@ -2291,8 +2291,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Attaches one or more EC2 instances to the specified Auto Scaling group. When you attach instances, Auto Scaling increases the desired capacity of the group by the number of instances being attached. If the number of instances being attached plus the desired capacity of the group exceeds the maximum size of the group, the operation fails. If there is a Classic load balancer attached to your Auto Scaling group, the instances are also registered with the load balancer. If there are target groups attached to your Auto Scaling group, the instances are also registered with the target groups. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-instance-asg.html">Attach EC2 Instances to Your Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Attaches one or more EC2 instances to the specified Auto Scaling group. When you attach instances, Auto Scaling increases the desired capacity of the group by the number of instances being attached. If the number of instances being attached plus the desired capacity of the group exceeds the maximum size of the group, the operation fails. If there is a Classic load balancer attached to your Auto Scaling group, the instances are also registered with the load balancer. If there are target groups attached to your Auto Scaling group, the instances are also registered with the target groups. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-instance-asg.html">Attach EC2 Instances to Your Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: AttachInstancesQuery
     responses:
@@ -2308,8 +2308,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Attaches one or more target groups to the specified Auto Scaling group. To describe the target groups for an Auto Scaling group, use <a>DescribeLoadBalancerTargetGroups</a>. To detach the target group from the Auto Scaling group, use <a>DetachLoadBalancerTargetGroups</a>. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-load-balancer-asg.html">Attach a Load Balancer to Your Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Attaches one or more target groups to the specified Auto Scaling group. To describe the target groups for an Auto Scaling group, use <a>DescribeLoadBalancerTargetGroups</a>. To detach the target group from the Auto Scaling group, use <a>DetachLoadBalancerTargetGroups</a>. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-load-balancer-asg.html">Attach a Load Balancer to Your Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: AttachLoadBalancerTargetGroupsType
     responses:
@@ -2325,8 +2325,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Attaches one or more Classic load balancers to the specified Auto Scaling group. To attach an Application load balancer instead, see <a>AttachLoadBalancerTargetGroups</a>. To describe the load balancers for an Auto Scaling group, use <a>DescribeLoadBalancers</a>. To detach the load balancer from the Auto Scaling group, use <a>DetachLoadBalancers</a>. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-load-balancer-asg.html">Attach a Load Balancer to Your Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Attaches one or more Classic load balancers to the specified Auto Scaling group. To attach an Application load balancer instead, see <a>AttachLoadBalancerTargetGroups</a>. To describe the load balancers for an Auto Scaling group, use <a>DescribeLoadBalancers</a>. To detach the load balancer from the Auto Scaling group, use <a>DetachLoadBalancers</a>. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-load-balancer-asg.html">Attach a Load Balancer to Your Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: AttachLoadBalancersType
     responses:
@@ -2342,20 +2342,20 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Completes the lifecycle action for the specified token or instance
-    with the specified result. This step is a part of the procedure for adding a lifecycle
-    hook to an Auto Scaling group: <ol> <li> (Optional) Create a Lambda function and
-    a rule that allows CloudWatch Events to invoke your Lambda function when Auto
-    Scaling launches or terminates instances. </li> <li> (Optional) Create a notification
-    target and an IAM role. The target can be either an Amazon SQS queue or an Amazon
-    SNS topic. The role allows Auto Scaling to publish lifecycle notifications to
-    the target. </li> <li> Create the lifecycle hook. Specify whether the hook is
-    used when the instances launch or terminate. </li> <li> If you need more time,
-    record the lifecycle action heartbeat to keep the instance in a pending state.
-    </li> <li>  <b>If you finish before the timeout period ends, complete the lifecycle
-    action.</b>  </li> </ol> For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-    Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.'
   post:
+    description: 'Completes the lifecycle action for the specified token or instance
+      with the specified result. This step is a part of the procedure for adding a
+      lifecycle hook to an Auto Scaling group: <ol> <li> (Optional) Create a Lambda
+      function and a rule that allows CloudWatch Events to invoke your Lambda function
+      when Auto Scaling launches or terminates instances. </li> <li> (Optional) Create
+      a notification target and an IAM role. The target can be either an Amazon SQS
+      queue or an Amazon SNS topic. The role allows Auto Scaling to publish lifecycle
+      notifications to the target. </li> <li> Create the lifecycle hook. Specify whether
+      the hook is used when the instances launch or terminate. </li> <li> If you need
+      more time, record the lifecycle action heartbeat to keep the instance in a pending
+      state. </li> <li>  <b>If you finish before the timeout period ends, complete
+      the lifecycle action.</b>  </li> </ol> For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
+      Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.'
     body:
       application/xml: CompleteLifecycleActionType
     responses:
@@ -2371,8 +2371,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates an Auto Scaling group with the specified name and attributes. If you exceed your maximum limit of Auto Scaling groups, which by default is 20 per region, the call fails. For information about viewing and updating this limit, see <a>DescribeAccountLimits</a>. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroup.html">Auto Scaling Groups</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Creates an Auto Scaling group with the specified name and attributes. If you exceed your maximum limit of Auto Scaling groups, which by default is 20 per region, the call fails. For information about viewing and updating this limit, see <a>DescribeAccountLimits</a>. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroup.html">Auto Scaling Groups</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: CreateAutoScalingGroupType
     responses:
@@ -2390,8 +2390,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates a launch configuration. If you exceed your maximum limit of launch configurations, which by default is 100 per region, the call fails. For information about viewing and updating this limit, see <a>DescribeAccountLimits</a>. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/LaunchConfiguration.html">Launch Configurations</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Creates a launch configuration. If you exceed your maximum limit of launch configurations, which by default is 100 per region, the call fails. For information about viewing and updating this limit, see <a>DescribeAccountLimits</a>. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/LaunchConfiguration.html">Launch Configurations</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: CreateLaunchConfigurationType
     responses:
@@ -2409,8 +2409,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates or updates tags for the specified Auto Scaling group. When you specify a tag with a key that already exists, the operation overwrites the previous tag definition, and you do not get an error message. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASTagging.html">Tagging Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Creates or updates tags for the specified Auto Scaling group. When you specify a tag with a key that already exists, the operation overwrites the previous tag definition, and you do not get an error message. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASTagging.html">Tagging Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: CreateOrUpdateTagsType
     responses:
@@ -2428,8 +2428,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the specified Auto Scaling group. If the group has instances or scaling activities in progress, you must specify the option to force the deletion in order for it to succeed. If the group has policies, deleting the group deletes the policies, the underlying alarm actions, and any alarm that no longer has an associated action. To remove instances from the Auto Scaling group before deleting it, call <a>DetachInstances</a> with the list of instances and the option to decrement the desired capacity so that Auto Scaling does not launch replacement instances. To terminate all instances before deleting the Auto Scaling group, call <a>UpdateAutoScalingGroup</a> and set the minimum size and desired capacity of the Auto Scaling group to zero.
   post:
+    description: Deletes the specified Auto Scaling group. If the group has instances or scaling activities in progress, you must specify the option to force the deletion in order for it to succeed. If the group has policies, deleting the group deletes the policies, the underlying alarm actions, and any alarm that no longer has an associated action. To remove instances from the Auto Scaling group before deleting it, call <a>DetachInstances</a> with the list of instances and the option to decrement the desired capacity so that Auto Scaling does not launch replacement instances. To terminate all instances before deleting the Auto Scaling group, call <a>UpdateAutoScalingGroup</a> and set the minimum size and desired capacity of the Auto Scaling group to zero.
     body:
       application/xml: DeleteAutoScalingGroupType
     responses:
@@ -2447,8 +2447,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the specified launch configuration. The launch configuration must not be attached to an Auto Scaling group. When this call completes, the launch configuration is no longer available for use.
   post:
+    description: Deletes the specified launch configuration. The launch configuration must not be attached to an Auto Scaling group. When this call completes, the launch configuration is no longer available for use.
     body:
       application/xml: LaunchConfigurationNameType
     responses:
@@ -2466,8 +2466,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the specified lifecycle hook. If there are any outstanding lifecycle actions, they are completed first (<code>ABANDON</code> for launching instances, <code>CONTINUE</code> for terminating instances).
   post:
+    description: Deletes the specified lifecycle hook. If there are any outstanding lifecycle actions, they are completed first (<code>ABANDON</code> for launching instances, <code>CONTINUE</code> for terminating instances).
     body:
       application/xml: DeleteLifecycleHookType
     responses:
@@ -2483,8 +2483,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the specified notification.
   post:
+    description: Deletes the specified notification.
     body:
       application/xml: DeleteNotificationConfigurationType
     responses:
@@ -2500,8 +2500,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the specified Auto Scaling policy. Deleting a policy deletes the underlying alarm action, but does not delete the alarm, even if it no longer has an associated action.
   post:
+    description: Deletes the specified Auto Scaling policy. Deleting a policy deletes the underlying alarm action, but does not delete the alarm, even if it no longer has an associated action.
     body:
       application/xml: DeletePolicyType
     responses:
@@ -2517,8 +2517,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the specified scheduled action.
   post:
+    description: Deletes the specified scheduled action.
     body:
       application/xml: DeleteScheduledActionType
     responses:
@@ -2534,8 +2534,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the specified tags.
   post:
+    description: Deletes the specified tags.
     body:
       application/xml: DeleteTagsType
     responses:
@@ -2551,8 +2551,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the current Auto Scaling resource limits for your AWS account. For information about requesting an increase in these limits, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS Service Limits</a> in the <i>Amazon Web Services General Reference</i>.
   post:
+    description: Describes the current Auto Scaling resource limits for your AWS account. For information about requesting an increase in these limits, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS Service Limits</a> in the <i>Amazon Web Services General Reference</i>.
     responses:
       200:
         body:
@@ -2566,8 +2566,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the policy adjustment types for use with <a>PutScalingPolicy</a>.
   post:
+    description: Describes the policy adjustment types for use with <a>PutScalingPolicy</a>.
     responses:
       200:
         body:
@@ -2581,8 +2581,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes one or more Auto Scaling groups.
   post:
+    description: Describes one or more Auto Scaling groups.
     body:
       application/xml: AutoScalingGroupNamesType
     responses:
@@ -2600,8 +2600,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes one or more Auto Scaling instances.
   post:
+    description: Describes one or more Auto Scaling instances.
     body:
       application/xml: DescribeAutoScalingInstancesType
     responses:
@@ -2619,8 +2619,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the notification types that are supported by Auto Scaling.
   post:
+    description: Describes the notification types that are supported by Auto Scaling.
     responses:
       200:
         body:
@@ -2634,8 +2634,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes one or more launch configurations.
   post:
+    description: Describes one or more launch configurations.
     body:
       application/xml: LaunchConfigurationNamesType
     responses:
@@ -2653,8 +2653,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the available types of lifecycle hooks.
   post:
+    description: Describes the available types of lifecycle hooks.
     responses:
       200:
         body:
@@ -2668,8 +2668,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the lifecycle hooks for the specified Auto Scaling group.
   post:
+    description: Describes the lifecycle hooks for the specified Auto Scaling group.
     body:
       application/xml: DescribeLifecycleHooksType
     responses:
@@ -2685,8 +2685,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the target groups for the specified Auto Scaling group.
   post:
+    description: Describes the target groups for the specified Auto Scaling group.
     body:
       application/xml: DescribeLoadBalancerTargetGroupsRequest
     responses:
@@ -2702,8 +2702,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the load balancers for the specified Auto Scaling group. Note that this operation describes only Classic load balancers. If you have Application load balancers, use <a>DescribeLoadBalancerTargetGroups</a> instead.
   post:
+    description: Describes the load balancers for the specified Auto Scaling group. Note that this operation describes only Classic load balancers. If you have Application load balancers, use <a>DescribeLoadBalancerTargetGroups</a> instead.
     body:
       application/xml: DescribeLoadBalancersRequest
     responses:
@@ -2719,8 +2719,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the available CloudWatch metrics for Auto Scaling. Note that the <code>GroupStandbyInstances</code> metric is not returned by default. You must explicitly request this metric when calling <a>EnableMetricsCollection</a>.
   post:
+    description: Describes the available CloudWatch metrics for Auto Scaling. Note that the <code>GroupStandbyInstances</code> metric is not returned by default. You must explicitly request this metric when calling <a>EnableMetricsCollection</a>.
     responses:
       200:
         body:
@@ -2734,8 +2734,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the notification actions associated with the specified Auto Scaling group.
   post:
+    description: Describes the notification actions associated with the specified Auto Scaling group.
     body:
       application/xml: DescribeNotificationConfigurationsType
     responses:
@@ -2753,8 +2753,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the policies for the specified Auto Scaling group.
   post:
+    description: Describes the policies for the specified Auto Scaling group.
     body:
       application/xml: DescribePoliciesType
     responses:
@@ -2772,8 +2772,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes one or more scaling activities for the specified Auto Scaling group.
   post:
+    description: Describes one or more scaling activities for the specified Auto Scaling group.
     body:
       application/xml: DescribeScalingActivitiesType
     responses:
@@ -2791,8 +2791,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the scaling process types for use with <a>ResumeProcesses</a> and <a>SuspendProcesses</a>.
   post:
+    description: Describes the scaling process types for use with <a>ResumeProcesses</a> and <a>SuspendProcesses</a>.
     responses:
       200:
         body:
@@ -2806,8 +2806,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the actions scheduled for your Auto Scaling group that haven't run. To describe the actions that have already run, use <a>DescribeScalingActivities</a>.
   post:
+    description: Describes the actions scheduled for your Auto Scaling group that haven't run. To describe the actions that have already run, use <a>DescribeScalingActivities</a>.
     body:
       application/xml: DescribeScheduledActionsType
     responses:
@@ -2825,8 +2825,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the specified tags. You can use filters to limit the results. For example, you can query for the tags for a specific Auto Scaling group. You can specify multiple values for a filter. A tag must match at least one of the specified values for it to be included in the results. You can also specify multiple filters. The result includes information for a particular tag only if it matches all the filters. If there's no match, no special message is returned.
   post:
+    description: Describes the specified tags. You can use filters to limit the results. For example, you can query for the tags for a specific Auto Scaling group. You can specify multiple values for a filter. A tag must match at least one of the specified values for it to be included in the results. You can also specify multiple filters. The result includes information for a particular tag only if it matches all the filters. If there's no match, no special message is returned.
     body:
       application/xml: DescribeTagsType
     responses:
@@ -2844,8 +2844,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the termination policies supported by Auto Scaling.
   post:
+    description: Describes the termination policies supported by Auto Scaling.
     responses:
       200:
         body:
@@ -2859,8 +2859,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Removes one or more instances from the specified Auto Scaling group. After the instances are detached, you can manage them independently from the rest of the Auto Scaling group. If you do not specify the option to decrement the desired capacity, Auto Scaling launches instances to replace the ones that are detached. If there is a Classic load balancer attached to the Auto Scaling group, the instances are deregistered from the load balancer. If there are target groups attached to the Auto Scaling group, the instances are deregistered from the target groups. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/detach-instance-asg.html">Detach EC2 Instances from Your Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Removes one or more instances from the specified Auto Scaling group. After the instances are detached, you can manage them independently from the rest of the Auto Scaling group. If you do not specify the option to decrement the desired capacity, Auto Scaling launches instances to replace the ones that are detached. If there is a Classic load balancer attached to the Auto Scaling group, the instances are deregistered from the load balancer. If there are target groups attached to the Auto Scaling group, the instances are deregistered from the target groups. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/detach-instance-asg.html">Detach EC2 Instances from Your Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: DetachInstancesQuery
     responses:
@@ -2876,8 +2876,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Detaches one or more target groups from the specified Auto Scaling group.
   post:
+    description: Detaches one or more target groups from the specified Auto Scaling group.
     body:
       application/xml: DetachLoadBalancerTargetGroupsType
     responses:
@@ -2893,8 +2893,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Detaches one or more Classic load balancers from the specified Auto Scaling group. Note that this operation detaches only Classic load balancers. If you have Application load balancers, use <a>DetachLoadBalancerTargetGroups</a> instead. When you detach a load balancer, it enters the <code>Removing</code> state while deregistering the instances in the group. When all instances are deregistered, then you can no longer describe the load balancer using <a>DescribeLoadBalancers</a>. Note that the instances remain running.
   post:
+    description: Detaches one or more Classic load balancers from the specified Auto Scaling group. Note that this operation detaches only Classic load balancers. If you have Application load balancers, use <a>DetachLoadBalancerTargetGroups</a> instead. When you detach a load balancer, it enters the <code>Removing</code> state while deregistering the instances in the group. When all instances are deregistered, then you can no longer describe the load balancer using <a>DescribeLoadBalancers</a>. Note that the instances remain running.
     body:
       application/xml: DetachLoadBalancersType
     responses:
@@ -2910,8 +2910,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Disables group metrics for the specified Auto Scaling group.
   post:
+    description: Disables group metrics for the specified Auto Scaling group.
     body:
       application/xml: DisableMetricsCollectionQuery
     responses:
@@ -2927,8 +2927,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Enables group metrics for the specified Auto Scaling group. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/userguide/as-instance-monitoring.html">Monitoring Your Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Enables group metrics for the specified Auto Scaling group. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/userguide/as-instance-monitoring.html">Monitoring Your Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: EnableMetricsCollectionQuery
     responses:
@@ -2944,8 +2944,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Moves the specified instances into <code>Standby</code> mode. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Moves the specified instances into <code>Standby</code> mode. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: EnterStandbyQuery
     responses:
@@ -2961,8 +2961,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Executes the specified policy.
   post:
+    description: Executes the specified policy.
     body:
       application/xml: ExecutePolicyType
     responses:
@@ -2980,8 +2980,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Moves the specified instances out of <code>Standby</code> mode. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Moves the specified instances out of <code>Standby</code> mode. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: ExitStandbyQuery
     responses:
@@ -2997,25 +2997,26 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Creates or updates a lifecycle hook for the specified Auto Scaling
-    Group. A lifecycle hook tells Auto Scaling that you want to perform an action
-    on an instance that is not actively in service; for example, either when the instance
-    launches or before the instance terminates. This step is a part of the procedure
-    for adding a lifecycle hook to an Auto Scaling group: <ol> <li> (Optional) Create
-    a Lambda function and a rule that allows CloudWatch Events to invoke your Lambda
-    function when Auto Scaling launches or terminates instances. </li> <li> (Optional)
-    Create a notification target and an IAM role. The target can be either an Amazon
-    SQS queue or an Amazon SNS topic. The role allows Auto Scaling to publish lifecycle
-    notifications to the target. </li> <li>  <b>Create the lifecycle hook. Specify
-    whether the hook is used when the instances launch or terminate.</b>  </li> <li>
-    If you need more time, record the lifecycle action heartbeat to keep the instance
-    in a pending state. </li> <li> If you finish before the timeout period ends, complete
-    the lifecycle action. </li> </ol> For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-    Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>. If you exceed your
-    maximum limit of lifecycle hooks, which by default is 50 per Auto Scaling group,
-    the call fails. For information about updating this limit, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS
-    Service Limits</a> in the <i>Amazon Web Services General Reference</i>.'
   post:
+    description: 'Creates or updates a lifecycle hook for the specified Auto Scaling
+      Group. A lifecycle hook tells Auto Scaling that you want to perform an action
+      on an instance that is not actively in service; for example, either when the
+      instance launches or before the instance terminates. This step is a part of
+      the procedure for adding a lifecycle hook to an Auto Scaling group: <ol> <li>
+      (Optional) Create a Lambda function and a rule that allows CloudWatch Events
+      to invoke your Lambda function when Auto Scaling launches or terminates instances.
+      </li> <li> (Optional) Create a notification target and an IAM role. The target
+      can be either an Amazon SQS queue or an Amazon SNS topic. The role allows Auto
+      Scaling to publish lifecycle notifications to the target. </li> <li>  <b>Create
+      the lifecycle hook. Specify whether the hook is used when the instances launch
+      or terminate.</b>  </li> <li> If you need more time, record the lifecycle action
+      heartbeat to keep the instance in a pending state. </li> <li> If you finish
+      before the timeout period ends, complete the lifecycle action. </li> </ol> For
+      more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
+      Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>. If you exceed your
+      maximum limit of lifecycle hooks, which by default is 50 per Auto Scaling group,
+      the call fails. For information about updating this limit, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS
+      Service Limits</a> in the <i>Amazon Web Services General Reference</i>.'
     body:
       application/xml: PutLifecycleHookType
     responses:
@@ -3033,8 +3034,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Configures an Auto Scaling group to send notifications when specified events take place. Subscribers to the specified topic can have messages delivered to an endpoint such as a web server or an email address. This configuration overwrites any existing configuration. For more information see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASGettingNotifications.html">Getting SNS Notifications When Your Auto Scaling Group Scales</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Configures an Auto Scaling group to send notifications when specified events take place. Subscribers to the specified topic can have messages delivered to an endpoint such as a web server or an email address. This configuration overwrites any existing configuration. For more information see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASGettingNotifications.html">Getting SNS Notifications When Your Auto Scaling Group Scales</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: PutNotificationConfigurationType
     responses:
@@ -3052,8 +3053,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates or updates a policy for an Auto Scaling group. To update an existing policy, use the existing policy name and set the parameters you want to change. Any existing parameter not changed in an update to an existing policy is not changed in this update request. If you exceed your maximum limit of step adjustments, which by default is 20 per region, the call fails. For information about updating this limit, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS Service Limits</a> in the <i>Amazon Web Services General Reference</i>.
   post:
+    description: Creates or updates a policy for an Auto Scaling group. To update an existing policy, use the existing policy name and set the parameters you want to change. Any existing parameter not changed in an update to an existing policy is not changed in this update request. If you exceed your maximum limit of step adjustments, which by default is 20 per region, the call fails. For information about updating this limit, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS Service Limits</a> in the <i>Amazon Web Services General Reference</i>.
     body:
       application/xml: PutScalingPolicyType
     responses:
@@ -3071,8 +3072,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates or updates a scheduled scaling action for an Auto Scaling group. When updating a scheduled scaling action, if you leave a parameter unspecified, the corresponding value remains unchanged in the affected Auto Scaling group. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/schedule_time.html">Scheduled Scaling</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Creates or updates a scheduled scaling action for an Auto Scaling group. When updating a scheduled scaling action, if you leave a parameter unspecified, the corresponding value remains unchanged in the affected Auto Scaling group. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/schedule_time.html">Scheduled Scaling</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: PutScheduledUpdateGroupActionType
     responses:
@@ -3090,21 +3091,21 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Records a heartbeat for the lifecycle action associated with the specified
-    token or instance. This extends the timeout by the length of time defined using
-    <a>PutLifecycleHook</a>. This step is a part of the procedure for adding a lifecycle
-    hook to an Auto Scaling group: <ol> <li> (Optional) Create a Lambda function and
-    a rule that allows CloudWatch Events to invoke your Lambda function when Auto
-    Scaling launches or terminates instances. </li> <li> (Optional) Create a notification
-    target and an IAM role. The target can be either an Amazon SQS queue or an Amazon
-    SNS topic. The role allows Auto Scaling to publish lifecycle notifications to
-    the target. </li> <li> Create the lifecycle hook. Specify whether the hook is
-    used when the instances launch or terminate. </li> <li>  <b>If you need more time,
-    record the lifecycle action heartbeat to keep the instance in a pending state.</b>  </li>
-    <li> If you finish before the timeout period ends, complete the lifecycle action.
-    </li> </ol> For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-    Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.'
   post:
+    description: 'Records a heartbeat for the lifecycle action associated with the
+      specified token or instance. This extends the timeout by the length of time
+      defined using <a>PutLifecycleHook</a>. This step is a part of the procedure
+      for adding a lifecycle hook to an Auto Scaling group: <ol> <li> (Optional) Create
+      a Lambda function and a rule that allows CloudWatch Events to invoke your Lambda
+      function when Auto Scaling launches or terminates instances. </li> <li> (Optional)
+      Create a notification target and an IAM role. The target can be either an Amazon
+      SQS queue or an Amazon SNS topic. The role allows Auto Scaling to publish lifecycle
+      notifications to the target. </li> <li> Create the lifecycle hook. Specify whether
+      the hook is used when the instances launch or terminate. </li> <li>  <b>If you
+      need more time, record the lifecycle action heartbeat to keep the instance in
+      a pending state.</b>  </li> <li> If you finish before the timeout period ends,
+      complete the lifecycle action. </li> </ol> For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
+      Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.'
     body:
       application/xml: RecordLifecycleActionHeartbeatType
     responses:
@@ -3120,8 +3121,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Resumes the specified suspended Auto Scaling processes, or all suspended process, for the specified Auto Scaling group. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html">Suspending and Resuming Auto Scaling Processes</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Resumes the specified suspended Auto Scaling processes, or all suspended process, for the specified Auto Scaling group. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html">Suspending and Resuming Auto Scaling Processes</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: ScalingProcessQuery
     responses:
@@ -3139,8 +3140,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Sets the size of the specified Auto Scaling group. For more information about desired capacity, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/WhatIsAutoScaling.html">What Is Auto Scaling?</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Sets the size of the specified Auto Scaling group. For more information about desired capacity, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/WhatIsAutoScaling.html">What Is Auto Scaling?</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: SetDesiredCapacityType
     responses:
@@ -3158,8 +3159,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Sets the health status of the specified instance. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/healthcheck.html">Health Checks</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Sets the health status of the specified instance. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/healthcheck.html">Health Checks</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: SetInstanceHealthQuery
     responses:
@@ -3175,8 +3176,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Updates the instance protection settings of the specified instances. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingBehavior.InstanceTermination.html#instance-protection">Instance Protection</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Updates the instance protection settings of the specified instances. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingBehavior.InstanceTermination.html#instance-protection">Instance Protection</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: SetInstanceProtectionQuery
     responses:
@@ -3194,8 +3195,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Suspends the specified Auto Scaling processes, or all processes, for the specified Auto Scaling group. Note that if you suspend either the <code>Launch</code> or <code>Terminate</code> process types, it can prevent other process types from functioning properly. To resume processes that have been suspended, use <a>ResumeProcesses</a>. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html">Suspending and Resuming Auto Scaling Processes</a> in the <i>Auto Scaling User Guide</i>.
   post:
+    description: Suspends the specified Auto Scaling processes, or all processes, for the specified Auto Scaling group. Note that if you suspend either the <code>Launch</code> or <code>Terminate</code> process types, it can prevent other process types from functioning properly. To resume processes that have been suspended, use <a>ResumeProcesses</a>. For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html">Suspending and Resuming Auto Scaling Processes</a> in the <i>Auto Scaling User Guide</i>.
     body:
       application/xml: ScalingProcessQuery
     responses:
@@ -3213,8 +3214,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Terminates the specified instance and optionally adjusts the desired group size. This call simply makes a termination request. The instance is not terminated immediately.
   post:
+    description: Terminates the specified instance and optionally adjusts the desired group size. This call simply makes a termination request. The instance is not terminated immediately.
     body:
       application/xml: TerminateInstanceInAutoScalingGroupType
     responses:
@@ -3232,24 +3233,25 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Updates the configuration for the specified Auto Scaling group. To
-    update an Auto Scaling group with a launch configuration with <code>InstanceMonitoring</code>
-    set to <code>False</code>, you must first disable the collection of group metrics.
-    Otherwise, you will get an error. If you have previously enabled the collection
-    of group metrics, you can disable it using <a>DisableMetricsCollection</a>. The
-    new settings are registered upon the completion of this call. Any launch configuration
-    settings take effect on any triggers after this call returns. Scaling activities
-    that are currently in progress aren''t affected. Note the following: <ul> <li>
-    If you specify a new value for <code>MinSize</code> without specifying a value
-    for <code>DesiredCapacity</code>, and the new <code>MinSize</code> is larger than
-    the current size of the group, we implicitly call <a>SetDesiredCapacity</a> to
-    set the size of the group to the new value of <code>MinSize</code>. </li> <li>
-    If you specify a new value for <code>MaxSize</code> without specifying a value
-    for <code>DesiredCapacity</code>, and the new <code>MaxSize</code> is smaller
-    than the current size of the group, we implicitly call <a>SetDesiredCapacity</a>
-    to set the size of the group to the new value of <code>MaxSize</code>. </li> <li>
-    All other optional parameters are left unchanged if not specified. </li> </ul>'
   post:
+    description: 'Updates the configuration for the specified Auto Scaling group.
+      To update an Auto Scaling group with a launch configuration with <code>InstanceMonitoring</code>
+      set to <code>False</code>, you must first disable the collection of group metrics.
+      Otherwise, you will get an error. If you have previously enabled the collection
+      of group metrics, you can disable it using <a>DisableMetricsCollection</a>.
+      The new settings are registered upon the completion of this call. Any launch
+      configuration settings take effect on any triggers after this call returns.
+      Scaling activities that are currently in progress aren''t affected. Note the
+      following: <ul> <li> If you specify a new value for <code>MinSize</code> without
+      specifying a value for <code>DesiredCapacity</code>, and the new <code>MinSize</code>
+      is larger than the current size of the group, we implicitly call <a>SetDesiredCapacity</a>
+      to set the size of the group to the new value of <code>MinSize</code>. </li>
+      <li> If you specify a new value for <code>MaxSize</code> without specifying
+      a value for <code>DesiredCapacity</code>, and the new <code>MaxSize</code> is
+      smaller than the current size of the group, we implicitly call <a>SetDesiredCapacity</a>
+      to set the size of the group to the new value of <code>MaxSize</code>. </li>
+      <li> All other optional parameters are left unchanged if not specified. </li>
+      </ul>'
     body:
       application/xml: UpdateAutoScalingGroupType
     responses:

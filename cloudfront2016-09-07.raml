@@ -1103,21 +1103,19 @@ types:
     description: A complex type that contains information about viewer certificates for this distribution.
 /2016-09-07:
   /distribution:
-    description: List distributions.
     /{DistributionId}:
       uriParameters:
         DistributionId?:
           type: string
           description: The distribution's id.
       /invalidation:
-        description: Create a new invalidation.
         /{Id}:
           uriParameters:
             Id?:
               type: string
               description: The invalidation's id.
-          description: Get the information about an invalidation.
           get:
+            description: Get the information about an invalidation.
             headers:
               DistributionId?:
                 type: string
@@ -1136,6 +1134,7 @@ types:
               403:
                 description: AccessDenied
         get:
+          description: List invalidation batches.
           queryParameters:
             Marker:
               type: string
@@ -1160,6 +1159,7 @@ types:
             403:
               description: AccessDenied
         post:
+          description: Create a new invalidation.
           headers:
             DistributionId?:
               type: string
@@ -1193,10 +1193,9 @@ types:
         Id?:
           type: string
           description: The distribution id.
-      description: Get the information about a distribution.
       /config:
-        description: Update a distribution.
         get:
+          description: Get the configuration information about a distribution.
           headers:
             Id?:
               type: string
@@ -1217,6 +1216,7 @@ types:
             403:
               description: AccessDenied
         put:
+          description: Update a distribution.
           headers:
             Id?:
               type: string
@@ -1253,6 +1253,7 @@ types:
             412:
               description: PreconditionFailed
       delete:
+        description: Delete a distribution.
         headers:
           Id?:
             type: string
@@ -1276,6 +1277,7 @@ types:
           412:
             description: PreconditionFailed
       get:
+        description: Get the information about a distribution.
         headers:
           Id?:
             type: string
@@ -1296,6 +1298,7 @@ types:
           403:
             description: AccessDenied
     post:
+      description: Create a new distribution.
       body:
         application/xml:
           type: DistributionConfig
@@ -1325,6 +1328,7 @@ types:
         404:
           description: NoSuchOrigin
     get:
+      description: List distributions.
       queryParameters:
         Marker:
           type: string
@@ -1342,16 +1346,14 @@ types:
           description: InvalidArgument
   /origin-access-identity:
     /cloudfront:
-      description: List origin access identities.
       /{Id}:
         uriParameters:
           Id?:
             type: string
             description: The identity's id.
-        description: Delete an origin access identity.
         /config:
-          description: Get the configuration information about an origin access identity.
           put:
+            description: Update an origin access identity.
             headers:
               Id?:
                 type: string
@@ -1386,6 +1388,7 @@ types:
               412:
                 description: PreconditionFailed
           get:
+            description: Get the configuration information about an origin access identity.
             headers:
               Id?:
                 type: string
@@ -1406,6 +1409,7 @@ types:
               403:
                 description: AccessDenied
         get:
+          description: Get the information about an origin access identity.
           headers:
             Id?:
               type: string
@@ -1426,6 +1430,7 @@ types:
             403:
               description: AccessDenied
         delete:
+          description: Delete an origin access identity.
           headers:
             Id?:
               type: string
@@ -1449,6 +1454,7 @@ types:
             409:
               description: CloudFrontOriginAccessIdentityInUse
       post:
+        description: Create a new origin access identity.
         body:
           application/xml:
             type: CloudFrontOriginAccessIdentityConfig
@@ -1474,6 +1480,7 @@ types:
           400:
             description: MissingBody | TooManyCloudFrontOriginAccessIdentities | InvalidArgument | InconsistentQuantities
       get:
+        description: List origin access identities.
         queryParameters:
           Marker:
             type: string
@@ -1490,16 +1497,14 @@ types:
           400:
             description: InvalidArgument
   /streaming-distribution:
-    description: List streaming distributions.
     /{Id}:
       uriParameters:
         Id?:
           type: string
           description: The distribution id.
-      description: Get the information about a streaming distribution.
       /config:
-        description: Update a streaming distribution.
         get:
+          description: Get the configuration information about a streaming distribution.
           headers:
             Id?:
               type: string
@@ -1520,6 +1525,7 @@ types:
             403:
               description: AccessDenied
         put:
+          description: Update a streaming distribution.
           headers:
             Id?:
               type: string
@@ -1556,6 +1562,7 @@ types:
             412:
               description: PreconditionFailed
       delete:
+        description: Delete a streaming distribution.
         headers:
           Id?:
             type: string
@@ -1579,6 +1586,7 @@ types:
           412:
             description: PreconditionFailed
       get:
+        description: Get the information about a streaming distribution.
         headers:
           Id?:
             type: string
@@ -1599,6 +1607,7 @@ types:
           403:
             description: AccessDenied
     post:
+      description: Create a new streaming distribution.
       body:
         application/xml:
           type: StreamingDistributionConfig
@@ -1626,6 +1635,7 @@ types:
         403:
           description: AccessDenied
     get:
+      description: List streaming distributions.
       queryParameters:
         Marker:
           type: string
@@ -1642,8 +1652,8 @@ types:
         400:
           description: InvalidArgument
   /tagging?Operation=Tag:
-    description: Add tags to a CloudFront resource.
     post:
+      description: Add tags to a CloudFront resource.
       queryParameters:
         Resource?:
           type: ResourceARN
@@ -1665,8 +1675,8 @@ types:
         404:
           description: NoSuchResource
   /streaming-distribution?WithTags:
-    description: Create a new streaming distribution with tags.
     post:
+      description: Create a new streaming distribution with tags.
       body:
         application/xml:
           type: StreamingDistributionConfigWithTags
@@ -1694,8 +1704,8 @@ types:
         403:
           description: AccessDenied
   /distribution?WithTags:
-    description: Create a new distribution with tags.
     post:
+      description: Create a new distribution with tags.
       body:
         application/xml:
           type: DistributionConfigWithTags
@@ -1730,8 +1740,8 @@ types:
         WebACLId?:
           type: string
           description: The Id of the AWS WAF web ACL for which you want to list the associated distributions. If you specify "null" for the Id, the request returns a list of the distributions that aren't associated with a web ACL.
-      description: List the distributions that are associated with a specified AWS WAF web ACL.
       get:
+        description: List the distributions that are associated with a specified AWS WAF web ACL.
         queryParameters:
           Marker:
             type: string
@@ -1752,8 +1762,8 @@ types:
           400:
             description: InvalidArgument | InvalidWebACLId
   /tagging:
-    description: List tags for a CloudFront resource.
     get:
+      description: List tags for a CloudFront resource.
       queryParameters:
         Resource?:
           type: ResourceARN
@@ -1771,8 +1781,8 @@ types:
         404:
           description: NoSuchResource
   /tagging?Operation=Untag:
-    description: Remove tags from a CloudFront resource.
     post:
+      description: Remove tags from a CloudFront resource.
       queryParameters:
         Resource?:
           type: ResourceARN

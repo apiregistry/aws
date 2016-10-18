@@ -1450,8 +1450,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns information about a specified job and whether that job has been received by the job worker. Only used for custom actions.
   post:
+    description: Returns information about a specified job and whether that job has been received by the job worker. Only used for custom actions.
     body:
       application/json: AcknowledgeJobInput
     responses:
@@ -1467,8 +1467,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Confirms a job worker has received the specified job. Only used for partner actions.
   post:
+    description: Confirms a job worker has received the specified job. Only used for partner actions.
     body:
       application/json: AcknowledgeThirdPartyJobInput
     responses:
@@ -1484,8 +1484,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates a new custom action that can be used in all pipelines associated with the AWS account. Only used for custom actions.
   post:
+    description: Creates a new custom action that can be used in all pipelines associated with the AWS account. Only used for custom actions.
     body:
       application/json: CreateCustomActionTypeInput
     responses:
@@ -1501,8 +1501,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates a pipeline.
   post:
+    description: Creates a pipeline.
     body:
       application/json: CreatePipelineInput
     responses:
@@ -1518,8 +1518,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Marks a custom action as deleted. PollForJobs for the custom action will fail after the action is marked for deletion. Only used for custom actions. <important> You cannot recreate a custom action after it has been deleted unless you increase the version number of the action. </important>
   post:
+    description: Marks a custom action as deleted. PollForJobs for the custom action will fail after the action is marked for deletion. Only used for custom actions. <important> You cannot recreate a custom action after it has been deleted unless you increase the version number of the action. </important>
     body:
       application/json: DeleteCustomActionTypeInput
     responses:
@@ -1535,8 +1535,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the specified pipeline.
   post:
+    description: Deletes the specified pipeline.
     body:
       application/json: DeletePipelineInput
     responses:
@@ -1552,8 +1552,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline.
   post:
+    description: Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline.
     body:
       application/json: DisableStageTransitionInput
     responses:
@@ -1569,8 +1569,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Enables artifacts in a pipeline to transition to a stage in a pipeline.
   post:
+    description: Enables artifacts in a pipeline to transition to a stage in a pipeline.
     body:
       application/json: EnableStageTransitionInput
     responses:
@@ -1586,8 +1586,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns information about a job. Only used for custom actions. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action. </important>
   post:
+    description: Returns information about a job. Only used for custom actions. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action. </important>
     body:
       application/json: GetJobDetailsInput
     responses:
@@ -1603,8 +1603,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns the metadata, structure, stages, and actions of a pipeline. Can be used to return the entire structure of a pipeline in JSON format, which can then be modified and used to update the pipeline structure with <a>UpdatePipeline</a>.
   post:
+    description: Returns the metadata, structure, stages, and actions of a pipeline. Can be used to return the entire structure of a pipeline in JSON format, which can then be modified and used to update the pipeline structure with <a>UpdatePipeline</a>.
     body:
       application/json: GetPipelineInput
     responses:
@@ -1620,8 +1620,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline.
   post:
+    description: Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline.
     body:
       application/json: GetPipelineExecutionInput
     responses:
@@ -1637,8 +1637,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns information about the state of a pipeline, including the stages and actions.
   post:
+    description: Returns information about the state of a pipeline, including the stages and actions.
     body:
       application/json: GetPipelineStateInput
     responses:
@@ -1654,8 +1654,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Requests the details of a job for a third party action. Only used for partner actions. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action. </important>
   post:
+    description: Requests the details of a job for a third party action. Only used for partner actions. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action. </important>
     body:
       application/json: GetThirdPartyJobDetailsInput
     responses:
@@ -1671,8 +1671,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets a summary of all AWS CodePipeline action types associated with your account.
   post:
+    description: Gets a summary of all AWS CodePipeline action types associated with your account.
     body:
       application/json: ListActionTypesInput
     responses:
@@ -1688,8 +1688,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets a summary of all of the pipelines associated with your account.
   post:
+    description: Gets a summary of all of the pipelines associated with your account.
     body:
       application/json: ListPipelinesInput
     responses:
@@ -1705,8 +1705,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns information about any jobs for AWS CodePipeline to act upon. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action. </important>
   post:
+    description: Returns information about any jobs for AWS CodePipeline to act upon. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action. </important>
     body:
       application/json: PollForJobsInput
     responses:
@@ -1722,8 +1722,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Determines whether there are any third party jobs for a job worker to act on. Only used for partner actions. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. </important>
   post:
+    description: Determines whether there are any third party jobs for a job worker to act on. Only used for partner actions. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. </important>
     body:
       application/json: PollForThirdPartyJobsInput
     responses:
@@ -1739,8 +1739,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Provides information to AWS CodePipeline about new revisions to a source.
   post:
+    description: Provides information to AWS CodePipeline about new revisions to a source.
     body:
       application/json: PutActionRevisionInput
     responses:
@@ -1756,8 +1756,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Provides the response to a manual approval request to AWS CodePipeline. Valid responses include Approved and Rejected.
   post:
+    description: Provides the response to a manual approval request to AWS CodePipeline. Valid responses include Approved and Rejected.
     body:
       application/json: PutApprovalResultInput
     responses:
@@ -1773,8 +1773,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Represents the failure of a job as returned to the pipeline by a job worker. Only used for custom actions.
   post:
+    description: Represents the failure of a job as returned to the pipeline by a job worker. Only used for custom actions.
     body:
       application/json: PutJobFailureResultInput
     responses:
@@ -1790,8 +1790,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Represents the success of a job as returned to the pipeline by a job worker. Only used for custom actions.
   post:
+    description: Represents the success of a job as returned to the pipeline by a job worker. Only used for custom actions.
     body:
       application/json: PutJobSuccessResultInput
     responses:
@@ -1807,8 +1807,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Represents the failure of a third party job as returned to the pipeline by a job worker. Only used for partner actions.
   post:
+    description: Represents the failure of a third party job as returned to the pipeline by a job worker. Only used for partner actions.
     body:
       application/json: PutThirdPartyJobFailureResultInput
     responses:
@@ -1824,8 +1824,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Represents the success of a third party job as returned to the pipeline by a job worker. Only used for partner actions.
   post:
+    description: Represents the success of a third party job as returned to the pipeline by a job worker. Only used for partner actions.
     body:
       application/json: PutThirdPartyJobSuccessResultInput
     responses:
@@ -1841,8 +1841,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Resumes the pipeline execution by retrying the last failed actions in a stage.
   post:
+    description: Resumes the pipeline execution by retrying the last failed actions in a stage.
     body:
       application/json: RetryStageExecutionInput
     responses:
@@ -1858,8 +1858,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Starts the specified pipeline. Specifically, it begins processing the latest commit to the source location specified as part of the pipeline.
   post:
+    description: Starts the specified pipeline. Specifically, it begins processing the latest commit to the source location specified as part of the pipeline.
     body:
       application/json: StartPipelineExecutionInput
     responses:
@@ -1875,8 +1875,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Updates a specified pipeline with edits or changes to its structure. Use a JSON file with the pipeline structure in conjunction with UpdatePipeline to provide the full structure of the pipeline. Updating the pipeline increases the version number of the pipeline by 1.
   post:
+    description: Updates a specified pipeline with edits or changes to its structure. Use a JSON file with the pipeline structure in conjunction with UpdatePipeline to provide the full structure of the pipeline. Updating the pipeline increases the version number of the pipeline by 1.
     body:
       application/json: UpdatePipelineInput
     responses:

@@ -892,8 +892,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Cancels the deletion of a customer master key (CMK). When this operation is successful, the CMK is set to the <code>Disabled</code> state. To enable a CMK, use <a>EnableKey</a>. For more information about scheduling and canceling deletion of a CMK, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting Customer Master Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
   post:
+    description: Cancels the deletion of a customer master key (CMK). When this operation is successful, the CMK is set to the <code>Disabled</code> state. To enable a CMK, use <a>EnableKey</a>. For more information about scheduling and canceling deletion of a CMK, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting Customer Master Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
     body:
       application/json: CancelKeyDeletionRequest
     responses:
@@ -909,8 +909,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates a display name for a customer master key. An alias can be used to identify a key and should be unique. The console enforces a one-to-one mapping between the alias and a key. An alias name can contain only alphanumeric characters, forward slashes (/), underscores (_), and dashes (-). An alias must start with the word "alias" followed by a forward slash (alias/). An alias that begins with "aws" after the forward slash (alias/aws...) is reserved by Amazon Web Services (AWS). The alias and the key it is mapped to must be in the same AWS account and the same region. To map an alias to a different key, call <a>UpdateAlias</a>.
   post:
+    description: Creates a display name for a customer master key. An alias can be used to identify a key and should be unique. The console enforces a one-to-one mapping between the alias and a key. An alias name can contain only alphanumeric characters, forward slashes (/), underscores (_), and dashes (-). An alias must start with the word "alias" followed by a forward slash (alias/). An alias that begins with "aws" after the forward slash (alias/aws...) is reserved by Amazon Web Services (AWS). The alias and the key it is mapped to must be in the same AWS account and the same region. To map an alias to a different key, call <a>UpdateAlias</a>.
     body:
       application/json: CreateAliasRequest
     responses:
@@ -926,8 +926,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Adds a grant to a key to specify who can use the key and under what conditions. Grants are alternate permission mechanisms to key policies. For more information about grants, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/grants.html">Grants</a> in the <i>AWS Key Management Service Developer Guide</i>.
   post:
+    description: Adds a grant to a key to specify who can use the key and under what conditions. Grants are alternate permission mechanisms to key policies. For more information about grants, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/grants.html">Grants</a> in the <i>AWS Key Management Service Developer Guide</i>.
     body:
       application/json: CreateGrantRequest
     responses:
@@ -943,14 +943,15 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Creates a customer master key (CMK). You can use a CMK to encrypt
-    small amounts of data (4 KiB or less) directly, but CMKs are more commonly used
-    to encrypt data encryption keys (DEKs), which are used to encrypt raw data. For
-    more information about DEKs and the difference between CMKs and DEKs, see the
-    following: <ul> <li> The <a>GenerateDataKey</a> operation </li> <li>  <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS
-    Key Management Service Concepts</a> in the <i>AWS Key Management Service Developer
-    Guide</i>  </li> </ul>'
   post:
+    description: 'Creates a customer master key (CMK). You can use a CMK to encrypt
+      small amounts of data (4 KiB or less) directly, but CMKs are more commonly used
+      to encrypt data encryption keys (DEKs), which are used to encrypt raw data.
+      For more information about DEKs and the difference between CMKs and DEKs, see
+      the following: <ul> <li> The <a>GenerateDataKey</a> operation </li> <li>  <a
+      href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS
+      Key Management Service Concepts</a> in the <i>AWS Key Management Service Developer
+      Guide</i>  </li> </ul>'
     body:
       application/json: CreateKeyRequest
     responses:
@@ -966,18 +967,18 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Decrypts ciphertext. Ciphertext is plaintext that has been previously
-    encrypted by using any of the following functions: <ul> <li>  <a>GenerateDataKey</a>  </li>
-    <li>  <a>GenerateDataKeyWithoutPlaintext</a>  </li> <li>  <a>Encrypt</a>  </li>
-    </ul> Note that if a caller has been granted access permissions to all keys (through,
-    for example, IAM user policies that grant <code>Decrypt</code> permission on all
-    resources), then ciphertext encrypted by using keys in other accounts where the
-    key grants access to the caller can be decrypted. To remedy this, we recommend
-    that you do not grant <code>Decrypt</code> access in an IAM user policy. Instead
-    grant <code>Decrypt</code> access only in key policies. If you must grant <code>Decrypt</code>
-    access in an IAM user policy, you should scope the resource to specific keys or
-    to specific trusted accounts.'
   post:
+    description: 'Decrypts ciphertext. Ciphertext is plaintext that has been previously
+      encrypted by using any of the following functions: <ul> <li>  <a>GenerateDataKey</a>  </li>
+      <li>  <a>GenerateDataKeyWithoutPlaintext</a>  </li> <li>  <a>Encrypt</a>  </li>
+      </ul> Note that if a caller has been granted access permissions to all keys
+      (through, for example, IAM user policies that grant <code>Decrypt</code> permission
+      on all resources), then ciphertext encrypted by using keys in other accounts
+      where the key grants access to the caller can be decrypted. To remedy this,
+      we recommend that you do not grant <code>Decrypt</code> access in an IAM user
+      policy. Instead grant <code>Decrypt</code> access only in key policies. If you
+      must grant <code>Decrypt</code> access in an IAM user policy, you should scope
+      the resource to specific keys or to specific trusted accounts.'
     body:
       application/json: DecryptRequest
     responses:
@@ -993,8 +994,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the specified alias. To map an alias to a different key, call <a>UpdateAlias</a>.
   post:
+    description: Deletes the specified alias. To map an alias to a different key, call <a>UpdateAlias</a>.
     body:
       application/json: DeleteAliasRequest
     responses:
@@ -1010,8 +1011,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes key material that you previously imported and makes the specified customer master key (CMK) unusable. For more information about importing key material into AWS KMS, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>. When the specified CMK is in the <code>PendingDeletion</code> state, this operation does not change the CMK's state. Otherwise, it changes the CMK's state to <code>PendingImport</code>. After you delete key material, you can use <a>ImportKeyMaterial</a> to reimport the same key material into the CMK.
   post:
+    description: Deletes key material that you previously imported and makes the specified customer master key (CMK) unusable. For more information about importing key material into AWS KMS, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>. When the specified CMK is in the <code>PendingDeletion</code> state, this operation does not change the CMK's state. Otherwise, it changes the CMK's state to <code>PendingImport</code>. After you delete key material, you can use <a>ImportKeyMaterial</a> to reimport the same key material into the CMK.
     body:
       application/json: DeleteImportedKeyMaterialRequest
     responses:
@@ -1027,8 +1028,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Provides detailed information about the specified customer master key.
   post:
+    description: Provides detailed information about the specified customer master key.
     body:
       application/json: DescribeKeyRequest
     responses:
@@ -1044,8 +1045,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Sets the state of a customer master key (CMK) to disabled, thereby preventing its use for cryptographic operations. For more information about how key state affects the use of a CMK, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects the Use of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
   post:
+    description: Sets the state of a customer master key (CMK) to disabled, thereby preventing its use for cryptographic operations. For more information about how key state affects the use of a CMK, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects the Use of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
     body:
       application/json: DisableKeyRequest
     responses:
@@ -1061,8 +1062,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Disables rotation of the specified key.
   post:
+    description: Disables rotation of the specified key.
     body:
       application/json: DisableKeyRotationRequest
     responses:
@@ -1078,8 +1079,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Marks a key as enabled, thereby permitting its use.
   post:
+    description: Marks a key as enabled, thereby permitting its use.
     body:
       application/json: EnableKeyRequest
     responses:
@@ -1095,8 +1096,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Enables rotation of the specified customer master key.
   post:
+    description: Enables rotation of the specified customer master key.
     body:
       application/json: EnableKeyRotationRequest
     responses:
@@ -1112,22 +1113,22 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Encrypts plaintext into ciphertext by using a customer master key.
-    The <code>Encrypt</code> function has two primary use cases: <ul> <li> You can
-    encrypt up to 4 KB of arbitrary data such as an RSA key, a database password,
-    or other sensitive customer information. </li> <li> If you are moving encrypted
-    data from one region to another, you can use this API to encrypt in the new region
-    the plaintext data key that was used to encrypt the data in the original region.
-    This provides you with an encrypted copy of the data key that can be decrypted
-    in the new region and used there to decrypt the encrypted data. </li> </ul> Unless
-    you are moving encrypted data from one region to another, you don''t use this
-    function to encrypt a generated data key within a region. You retrieve data keys
-    already encrypted by calling the <a>GenerateDataKey</a> or <a>GenerateDataKeyWithoutPlaintext</a>
-    function. Data keys don''t need to be encrypted again by calling <code>Encrypt</code>.
-    If you want to encrypt data locally in your application, you can use the <code>GenerateDataKey</code>
-    function to return a plaintext data encryption key and a copy of the key encrypted
-    under the customer master key (CMK) of your choosing.'
   post:
+    description: 'Encrypts plaintext into ciphertext by using a customer master key.
+      The <code>Encrypt</code> function has two primary use cases: <ul> <li> You can
+      encrypt up to 4 KB of arbitrary data such as an RSA key, a database password,
+      or other sensitive customer information. </li> <li> If you are moving encrypted
+      data from one region to another, you can use this API to encrypt in the new
+      region the plaintext data key that was used to encrypt the data in the original
+      region. This provides you with an encrypted copy of the data key that can be
+      decrypted in the new region and used there to decrypt the encrypted data. </li>
+      </ul> Unless you are moving encrypted data from one region to another, you don''t
+      use this function to encrypt a generated data key within a region. You retrieve
+      data keys already encrypted by calling the <a>GenerateDataKey</a> or <a>GenerateDataKeyWithoutPlaintext</a>
+      function. Data keys don''t need to be encrypted again by calling <code>Encrypt</code>.
+      If you want to encrypt data locally in your application, you can use the <code>GenerateDataKey</code>
+      function to return a plaintext data encryption key and a copy of the key encrypted
+      under the customer master key (CMK) of your choosing.'
     body:
       application/json: EncryptRequest
     responses:
@@ -1143,34 +1144,34 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Returns a data encryption key that you can use in your application
-    to encrypt data locally. You must specify the customer master key (CMK) under
-    which to generate the data key. You must also specify the length of the data key
-    using either the <code>KeySpec</code> or <code>NumberOfBytes</code> field. You
-    must specify one field or the other, but not both. For common key lengths (128-bit
-    and 256-bit symmetric keys), we recommend that you use <code>KeySpec</code>. This
-    operation returns a plaintext copy of the data key in the <code>Plaintext</code>
-    field of the response, and an encrypted copy of the data key in the <code>CiphertextBlob</code>
-    field. The data key is encrypted under the CMK specified in the <code>KeyId</code>
-    field of the request. We recommend that you use the following pattern to encrypt
-    data locally in your application: <ol> <li> Use this operation (<code>GenerateDataKey</code>)
-    to retrieve a data encryption key. </li> <li> Use the plaintext data encryption
-    key (returned in the <code>Plaintext</code> field of the response) to encrypt
-    data locally, then erase the plaintext data key from memory. </li> <li> Store
-    the encrypted data key (returned in the <code>CiphertextBlob</code> field of the
-    response) alongside the locally encrypted data. </li> </ol> To decrypt data locally:
-    <ol> <li> Use the <a>Decrypt</a> operation to decrypt the encrypted data key into
-    a plaintext copy of the data key. </li> <li> Use the plaintext data key to decrypt
-    data locally, then erase the plaintext data key from memory. </li> </ol> To return
-    only an encrypted copy of the data key, use <a>GenerateDataKeyWithoutPlaintext</a>.
-    To return an arbitrary unpredictable byte string, use <a>GenerateRandom</a>. If
-    you use the optional <code>EncryptionContext</code> field, you must store at least
-    enough information to be able to reconstruct the full encryption context when
-    you later send the ciphertext to the <a>Decrypt</a> operation. It is a good practice
-    to choose an encryption context that you can reconstruct on the fly to better
-    secure the ciphertext. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption
-    Context</a> in the <i>AWS Key Management Service Developer Guide</i>.'
   post:
+    description: 'Returns a data encryption key that you can use in your application
+      to encrypt data locally. You must specify the customer master key (CMK) under
+      which to generate the data key. You must also specify the length of the data
+      key using either the <code>KeySpec</code> or <code>NumberOfBytes</code> field.
+      You must specify one field or the other, but not both. For common key lengths
+      (128-bit and 256-bit symmetric keys), we recommend that you use <code>KeySpec</code>.
+      This operation returns a plaintext copy of the data key in the <code>Plaintext</code>
+      field of the response, and an encrypted copy of the data key in the <code>CiphertextBlob</code>
+      field. The data key is encrypted under the CMK specified in the <code>KeyId</code>
+      field of the request. We recommend that you use the following pattern to encrypt
+      data locally in your application: <ol> <li> Use this operation (<code>GenerateDataKey</code>)
+      to retrieve a data encryption key. </li> <li> Use the plaintext data encryption
+      key (returned in the <code>Plaintext</code> field of the response) to encrypt
+      data locally, then erase the plaintext data key from memory. </li> <li> Store
+      the encrypted data key (returned in the <code>CiphertextBlob</code> field of
+      the response) alongside the locally encrypted data. </li> </ol> To decrypt data
+      locally: <ol> <li> Use the <a>Decrypt</a> operation to decrypt the encrypted
+      data key into a plaintext copy of the data key. </li> <li> Use the plaintext
+      data key to decrypt data locally, then erase the plaintext data key from memory.
+      </li> </ol> To return only an encrypted copy of the data key, use <a>GenerateDataKeyWithoutPlaintext</a>.
+      To return an arbitrary unpredictable byte string, use <a>GenerateRandom</a>.
+      If you use the optional <code>EncryptionContext</code> field, you must store
+      at least enough information to be able to reconstruct the full encryption context
+      when you later send the ciphertext to the <a>Decrypt</a> operation. It is a
+      good practice to choose an encryption context that you can reconstruct on the
+      fly to better secure the ciphertext. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption
+      Context</a> in the <i>AWS Key Management Service Developer Guide</i>.'
     body:
       application/json: GenerateDataKeyRequest
     responses:
@@ -1186,8 +1187,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns a data encryption key encrypted under a customer master key (CMK). This operation is identical to <a>GenerateDataKey</a> but returns only the encrypted copy of the data key. This operation is useful in a system that has multiple components with different degrees of trust. For example, consider a system that stores encrypted data in containers. Each container stores the encrypted data and an encrypted copy of the data key. One component of the system, called the <i>control plane</i>, creates new containers. When it creates a new container, it uses this operation (<code>GenerateDataKeyWithoutPlaintext</code>) to get an encrypted data key and then stores it in the container. Later, a different component of the system, called the <i>data plane</i>, puts encrypted data into the containers. To do this, it passes the encrypted data key to the <a>Decrypt</a> operation, then uses the returned plaintext data key to encrypt data, and finally stores the encrypted data in the container. In this system, the control plane never sees the plaintext data key.
   post:
+    description: Returns a data encryption key encrypted under a customer master key (CMK). This operation is identical to <a>GenerateDataKey</a> but returns only the encrypted copy of the data key. This operation is useful in a system that has multiple components with different degrees of trust. For example, consider a system that stores encrypted data in containers. Each container stores the encrypted data and an encrypted copy of the data key. One component of the system, called the <i>control plane</i>, creates new containers. When it creates a new container, it uses this operation (<code>GenerateDataKeyWithoutPlaintext</code>) to get an encrypted data key and then stores it in the container. Later, a different component of the system, called the <i>data plane</i>, puts encrypted data into the containers. To do this, it passes the encrypted data key to the <a>Decrypt</a> operation, then uses the returned plaintext data key to encrypt data, and finally stores the encrypted data in the container. In this system, the control plane never sees the plaintext data key.
     body:
       application/json: GenerateDataKeyWithoutPlaintextRequest
     responses:
@@ -1203,8 +1204,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Generates an unpredictable byte string.
   post:
+    description: Generates an unpredictable byte string.
     body:
       application/json: GenerateRandomRequest
     responses:
@@ -1220,8 +1221,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Retrieves a policy attached to the specified key.
   post:
+    description: Retrieves a policy attached to the specified key.
     body:
       application/json: GetKeyPolicyRequest
     responses:
@@ -1237,8 +1238,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Retrieves a Boolean value that indicates whether key rotation is enabled for the specified key.
   post:
+    description: Retrieves a Boolean value that indicates whether key rotation is enabled for the specified key.
     body:
       application/json: GetKeyRotationStatusRequest
     responses:
@@ -1254,8 +1255,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns the items you need in order to import key material into AWS KMS from your existing key management infrastructure. For more information about importing key material into AWS KMS, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>. You must specify the key ID of the customer master key (CMK) into which you will import key material. This CMK's <code>Origin</code> must be <code>EXTERNAL</code>. You must also specify the wrapping algorithm and type of wrapping key (public key) that you will use to encrypt the key material. This operation returns a public key and an import token. Use the public key to encrypt the key material. Store the import token to send with a subsequent <a>ImportKeyMaterial</a> request. The public key and import token from the same response must be used together. These items are valid for 24 hours, after which they cannot be used for a subsequent <a>ImportKeyMaterial</a> request. To retrieve new ones, send another <code>GetParametersForImport</code> request.
   post:
+    description: Returns the items you need in order to import key material into AWS KMS from your existing key management infrastructure. For more information about importing key material into AWS KMS, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>. You must specify the key ID of the customer master key (CMK) into which you will import key material. This CMK's <code>Origin</code> must be <code>EXTERNAL</code>. You must also specify the wrapping algorithm and type of wrapping key (public key) that you will use to encrypt the key material. This operation returns a public key and an import token. Use the public key to encrypt the key material. Store the import token to send with a subsequent <a>ImportKeyMaterial</a> request. The public key and import token from the same response must be used together. These items are valid for 24 hours, after which they cannot be used for a subsequent <a>ImportKeyMaterial</a> request. To retrieve new ones, send another <code>GetParametersForImport</code> request.
     body:
       application/json: GetParametersForImportRequest
     responses:
@@ -1271,8 +1272,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Imports key material into an AWS KMS customer master key (CMK) from your existing key management infrastructure. For more information about importing key material into AWS KMS, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>. You must specify the key ID of the CMK to import the key material into. This CMK's <code>Origin</code> must be <code>EXTERNAL</code>. You must also send an import token and the encrypted key material. Send the import token that you received in the same <a>GetParametersForImport</a> response that contained the public key that you used to encrypt the key material. You must also specify whether the key material expires and if so, when. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. To use the CMK again, you can reimport the same key material. If you set an expiration date, you can change it only by reimporting the same key material and specifying a new expiration date. When this operation is successful, the specified CMK's key state changes to <code>Enabled</code>, and you can use the CMK. After you successfully import key material into a CMK, you can reimport the same key material into that CMK, but you cannot import different key material.
   post:
+    description: Imports key material into an AWS KMS customer master key (CMK) from your existing key management infrastructure. For more information about importing key material into AWS KMS, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>. You must specify the key ID of the CMK to import the key material into. This CMK's <code>Origin</code> must be <code>EXTERNAL</code>. You must also send an import token and the encrypted key material. Send the import token that you received in the same <a>GetParametersForImport</a> response that contained the public key that you used to encrypt the key material. You must also specify whether the key material expires and if so, when. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. To use the CMK again, you can reimport the same key material. If you set an expiration date, you can change it only by reimporting the same key material and specifying a new expiration date. When this operation is successful, the specified CMK's key state changes to <code>Enabled</code>, and you can use the CMK. After you successfully import key material into a CMK, you can reimport the same key material into that CMK, but you cannot import different key material.
     body:
       application/json: ImportKeyMaterialRequest
     responses:
@@ -1288,8 +1289,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists all of the key aliases in the account.
   post:
+    description: Lists all of the key aliases in the account.
     body:
       application/json: ListAliasesRequest
     responses:
@@ -1305,8 +1306,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: List the grants for a specified key.
   post:
+    description: List the grants for a specified key.
     body:
       application/json: ListGrantsRequest
     responses:
@@ -1322,8 +1323,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Retrieves a list of policies attached to a key.
   post:
+    description: Retrieves a list of policies attached to a key.
     body:
       application/json: ListKeyPoliciesRequest
     responses:
@@ -1339,8 +1340,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists the customer master keys.
   post:
+    description: Lists the customer master keys.
     body:
       application/json: ListKeysRequest
     responses:
@@ -1356,8 +1357,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns a list of all grants for which the grant's <code>RetiringPrincipal</code> matches the one specified. A typical use is to list all grants that you are able to retire. To retire a grant, use <a>RetireGrant</a>.
   post:
+    description: Returns a list of all grants for which the grant's <code>RetiringPrincipal</code> matches the one specified. A typical use is to list all grants that you are able to retire. To retire a grant, use <a>RetireGrant</a>.
     body:
       application/json: ListRetirableGrantsRequest
     responses:
@@ -1373,8 +1374,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Attaches a key policy to the specified customer master key (CMK). For more information about key policies, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Key Policies</a> in the <i>AWS Key Management Service Developer Guide</i>.
   post:
+    description: Attaches a key policy to the specified customer master key (CMK). For more information about key policies, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Key Policies</a> in the <i>AWS Key Management Service Developer Guide</i>.
     body:
       application/json: PutKeyPolicyRequest
     responses:
@@ -1390,8 +1391,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Encrypts data on the server side with a new customer master key without exposing the plaintext of the data on the client side. The data is first decrypted and then encrypted. This operation can also be used to change the encryption context of a ciphertext. Unlike other actions, <code>ReEncrypt</code> is authorized twice - once as <code>ReEncryptFrom</code> on the source key and once as <code>ReEncryptTo</code> on the destination key. We therefore recommend that you include the <code>"action":"kms:ReEncrypt*"</code> statement in your key policies to permit re-encryption from or to the key. The statement is included automatically when you authorize use of the key through the console but must be included manually when you set a policy by using the <a>PutKeyPolicy</a> function.
   post:
+    description: Encrypts data on the server side with a new customer master key without exposing the plaintext of the data on the client side. The data is first decrypted and then encrypted. This operation can also be used to change the encryption context of a ciphertext. Unlike other actions, <code>ReEncrypt</code> is authorized twice - once as <code>ReEncryptFrom</code> on the source key and once as <code>ReEncryptTo</code> on the destination key. We therefore recommend that you include the <code>"action":"kms:ReEncrypt*"</code> statement in your key policies to permit re-encryption from or to the key. The statement is included automatically when you authorize use of the key through the console but must be included manually when you set a policy by using the <a>PutKeyPolicy</a> function.
     body:
       application/json: ReEncryptRequest
     responses:
@@ -1407,17 +1408,17 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Retires a grant. You can retire a grant when you''re done using it
-    to clean up. You should revoke a grant when you intend to actively deny operations
-    that depend on it. The following are permitted to call this API: <ul> <li> The
-    account that created the grant </li> <li> The <code>RetiringPrincipal</code>,
-    if present </li> <li> The <code>GranteePrincipal</code>, if <code>RetireGrant</code>
-    is a grantee operation </li> </ul> The grant to retire must be identified by its
-    grant token or by a combination of the key ARN and the grant ID. A grant token
-    is a unique variable-length base64-encoded string. A grant ID is a 64 character
-    unique identifier of a grant. Both are returned by the <code>CreateGrant</code>
-    function.'
   post:
+    description: 'Retires a grant. You can retire a grant when you''re done using
+      it to clean up. You should revoke a grant when you intend to actively deny operations
+      that depend on it. The following are permitted to call this API: <ul> <li> The
+      account that created the grant </li> <li> The <code>RetiringPrincipal</code>,
+      if present </li> <li> The <code>GranteePrincipal</code>, if <code>RetireGrant</code>
+      is a grantee operation </li> </ul> The grant to retire must be identified by
+      its grant token or by a combination of the key ARN and the grant ID. A grant
+      token is a unique variable-length base64-encoded string. A grant ID is a 64
+      character unique identifier of a grant. Both are returned by the <code>CreateGrant</code>
+      function.'
     body:
       application/json: RetireGrantRequest
     responses:
@@ -1433,8 +1434,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Revokes a grant. You can revoke a grant to actively deny operations that depend on it.
   post:
+    description: Revokes a grant. You can revoke a grant to actively deny operations that depend on it.
     body:
       application/json: RevokeGrantRequest
     responses:
@@ -1450,8 +1451,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Schedules the deletion of a customer master key (CMK). You may provide a waiting period, specified in days, before deletion occurs. If you do not provide a waiting period, the default period of 30 days is used. When this operation is successful, the state of the CMK changes to <code>PendingDeletion</code>. Before the waiting period ends, you can use <a>CancelKeyDeletion</a> to cancel the deletion of the CMK. After the waiting period ends, AWS KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that point to it. <important> Deleting a CMK is a destructive and potentially dangerous operation. When a CMK is deleted, all data that was encrypted under the CMK is rendered unrecoverable. To restrict the use of a CMK without deleting it, use <a>DisableKey</a>. </important> For more information about scheduling a CMK for deletion, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting Customer Master Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
   post:
+    description: Schedules the deletion of a customer master key (CMK). You may provide a waiting period, specified in days, before deletion occurs. If you do not provide a waiting period, the default period of 30 days is used. When this operation is successful, the state of the CMK changes to <code>PendingDeletion</code>. Before the waiting period ends, you can use <a>CancelKeyDeletion</a> to cancel the deletion of the CMK. After the waiting period ends, AWS KMS deletes the CMK and all AWS KMS data associated with it, including all aliases that point to it. <important> Deleting a CMK is a destructive and potentially dangerous operation. When a CMK is deleted, all data that was encrypted under the CMK is rendered unrecoverable. To restrict the use of a CMK without deleting it, use <a>DisableKey</a>. </important> For more information about scheduling a CMK for deletion, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting Customer Master Keys</a> in the <i>AWS Key Management Service Developer Guide</i>.
     body:
       application/json: ScheduleKeyDeletionRequest
     responses:
@@ -1467,8 +1468,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Updates an alias to map it to a different key. An alias is not a property of a key. Therefore, an alias can be mapped to and unmapped from an existing key without changing the properties of the key. An alias name can contain only alphanumeric characters, forward slashes (/), underscores (_), and dashes (-). An alias must start with the word "alias" followed by a forward slash (alias/). An alias that begins with "aws" after the forward slash (alias/aws...) is reserved by Amazon Web Services (AWS). The alias and the key it is mapped to must be in the same AWS account and the same region.
   post:
+    description: Updates an alias to map it to a different key. An alias is not a property of a key. Therefore, an alias can be mapped to and unmapped from an existing key without changing the properties of the key. An alias name can contain only alphanumeric characters, forward slashes (/), underscores (_), and dashes (-). An alias must start with the word "alias" followed by a forward slash (alias/). An alias that begins with "aws" after the forward slash (alias/aws...) is reserved by Amazon Web Services (AWS). The alias and the key it is mapped to must be in the same AWS account and the same region.
     body:
       application/json: UpdateAliasRequest
     responses:
@@ -1484,8 +1485,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Updates the description of a key.
   post:
+    description: Updates the description of a key.
     body:
       application/json: UpdateKeyDescriptionRequest
     responses:

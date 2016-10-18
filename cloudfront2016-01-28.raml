@@ -979,16 +979,14 @@ types:
 /2016-01-28:
   /origin-access-identity:
     /cloudfront:
-      description: Create a new origin access identity.
       /{Id}:
         uriParameters:
           Id?:
             type: string
             description: The identity's id.
-        description: Delete an origin access identity.
         /config:
-          description: Get the configuration information about an origin access identity.
           put:
+            description: Update an origin access identity.
             headers:
               Id?:
                 type: string
@@ -1023,6 +1021,7 @@ types:
               412:
                 description: PreconditionFailed
           get:
+            description: Get the configuration information about an origin access identity.
             headers:
               Id?:
                 type: string
@@ -1043,6 +1042,7 @@ types:
               403:
                 description: AccessDenied
         get:
+          description: Get the information about an origin access identity.
           headers:
             Id?:
               type: string
@@ -1063,6 +1063,7 @@ types:
             403:
               description: AccessDenied
         delete:
+          description: Delete an origin access identity.
           headers:
             Id?:
               type: string
@@ -1086,6 +1087,7 @@ types:
             409:
               description: CloudFrontOriginAccessIdentityInUse
       get:
+        description: List origin access identities.
         queryParameters:
           Marker:
             type: string
@@ -1102,6 +1104,7 @@ types:
           400:
             description: InvalidArgument
       post:
+        description: Create a new origin access identity.
         body:
           application/xml:
             type: CloudFrontOriginAccessIdentityConfig
@@ -1127,16 +1130,14 @@ types:
           400:
             description: MissingBody | TooManyCloudFrontOriginAccessIdentities | InvalidArgument | InconsistentQuantities
   /streaming-distribution:
-    description: List streaming distributions.
     /{Id}:
       uriParameters:
         Id?:
           type: string
           description: The streaming distribution's id.
-      description: Delete a streaming distribution.
       /config:
-        description: Get the configuration information about a streaming distribution.
         put:
+          description: Update a streaming distribution.
           headers:
             Id?:
               type: string
@@ -1173,6 +1174,7 @@ types:
             412:
               description: PreconditionFailed
         get:
+          description: Get the configuration information about a streaming distribution.
           headers:
             Id?:
               type: string
@@ -1193,6 +1195,7 @@ types:
             403:
               description: AccessDenied
       get:
+        description: Get the information about a streaming distribution.
         headers:
           Id?:
             type: string
@@ -1213,6 +1216,7 @@ types:
           403:
             description: AccessDenied
       delete:
+        description: Delete a streaming distribution.
         headers:
           Id?:
             type: string
@@ -1236,6 +1240,7 @@ types:
           412:
             description: PreconditionFailed
     post:
+      description: Create a new streaming distribution.
       body:
         application/xml:
           type: StreamingDistributionConfig
@@ -1263,6 +1268,7 @@ types:
         403:
           description: AccessDenied
     get:
+      description: List streaming distributions.
       queryParameters:
         Marker:
           type: string
@@ -1279,16 +1285,14 @@ types:
         400:
           description: InvalidArgument
   /distribution:
-    description: List distributions.
     /{Id}:
       uriParameters:
         Id?:
           type: string
           description: The distribution's id.
-      description: Delete a distribution.
       /config:
-        description: Get the configuration information about a distribution.
         put:
+          description: Update a distribution.
           headers:
             Id?:
               type: string
@@ -1325,6 +1329,7 @@ types:
             412:
               description: PreconditionFailed
         get:
+          description: Get the configuration information about a distribution.
           headers:
             Id?:
               type: string
@@ -1345,6 +1350,7 @@ types:
             403:
               description: AccessDenied
       get:
+        description: Get the information about a distribution.
         headers:
           Id?:
             type: string
@@ -1365,6 +1371,7 @@ types:
           403:
             description: AccessDenied
       delete:
+        description: Delete a distribution.
         headers:
           Id?:
             type: string
@@ -1393,14 +1400,13 @@ types:
           type: string
           description: The distribution's id.
       /invalidation:
-        description: Create a new invalidation.
         /{Id}:
           uriParameters:
             Id?:
               type: string
               description: The invalidation's id.
-          description: Get the information about an invalidation.
           get:
+            description: Get the information about an invalidation.
             headers:
               DistributionId?:
                 type: string
@@ -1419,6 +1425,7 @@ types:
               403:
                 description: AccessDenied
         get:
+          description: List invalidation batches.
           queryParameters:
             Marker:
               type: string
@@ -1443,6 +1450,7 @@ types:
             403:
               description: AccessDenied
         post:
+          description: Create a new invalidation.
           headers:
             DistributionId?:
               type: string
@@ -1472,6 +1480,7 @@ types:
             413:
               description: BatchTooLarge
     post:
+      description: Create a new distribution.
       body:
         application/xml:
           type: DistributionConfig
@@ -1501,6 +1510,7 @@ types:
         404:
           description: NoSuchOrigin
     get:
+      description: List distributions.
       queryParameters:
         Marker:
           type: string
@@ -1522,8 +1532,8 @@ types:
         WebACLId?:
           type: string
           description: The Id of the AWS WAF web ACL for which you want to list the associated distributions. If you specify "null" for the Id, the request returns a list of the distributions that aren't associated with a web ACL.
-      description: List the distributions that are associated with a specified AWS WAF web ACL.
       get:
+        description: List the distributions that are associated with a specified AWS WAF web ACL.
         queryParameters:
           Marker:
             type: string

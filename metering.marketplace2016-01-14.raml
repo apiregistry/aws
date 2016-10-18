@@ -51,9 +51,9 @@ types:
       MeteringRecordId?:
         type: String
 /:
-  description: 'API to emit metering records. For identical requests, the API is idempotent.
-    It simply returns the metering record ID. '
   post:
+    description: 'API to emit metering records. For identical requests, the API is
+      idempotent. It simply returns the metering record ID. '
     body:
       application/json: MeterUsageRequest
     responses:

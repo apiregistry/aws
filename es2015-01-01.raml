@@ -448,17 +448,14 @@ types:
 /2015-01-01:
   /es:
     /domain:
-      description: Creates a new Elasticsearch domain. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>.
       /{DomainName}:
         uriParameters:
           DomainName?:
             type: DomainName
             description: <p>The Elasticsearch domain that you want to get information about.</p>
-        description: Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN.
         /config:
-          description: 'Modifies the cluster configuration of the specified Elasticsearch
-            domain, setting as setting the instance type and the number of instances. '
           get:
+            description: Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options.
             headers:
               DomainName?:
                 type: DomainName
@@ -474,6 +471,8 @@ types:
               409:
                 description: ResourceNotFoundException
           post:
+            description: 'Modifies the cluster configuration of the specified Elasticsearch
+              domain, setting as setting the instance type and the number of instances. '
             headers:
               DomainName?:
                 type: DomainName
@@ -508,6 +507,7 @@ types:
               409:
                 description: InvalidTypeException | LimitExceededException | ResourceNotFoundException
         delete:
+          description: Permanently deletes the specified Elasticsearch domain and all of its data. Once a domain is deleted, it cannot be recovered.
           headers:
             DomainName?:
               type: DomainName
@@ -523,6 +523,7 @@ types:
             409:
               description: ResourceNotFoundException
         get:
+          description: Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN.
           headers:
             DomainName?:
               type: DomainName
@@ -538,6 +539,7 @@ types:
             409:
               description: ResourceNotFoundException
       post:
+        description: Creates a new Elasticsearch domain. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>.
         body:
           application/json: CreateElasticsearchDomainRequest
         responses:
@@ -551,8 +553,8 @@ types:
           500:
             description: InternalException
     /domain-info:
-      description: Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN.
       post:
+        description: Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN.
         body:
           application/json: DescribeElasticsearchDomainsRequest
         responses:
@@ -564,8 +566,8 @@ types:
           500:
             description: InternalException
   /tags:
-    description: Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value pairs. An Elasticsearch domain may have up to 10 tags. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging" target="_blank"> Tagging Amazon Elasticsearch Service Domains for more information.</a>
     get:
+      description: Returns all tags for the given Elasticsearch domain.
       queryParameters:
         arn?:
           type: ARN
@@ -581,6 +583,7 @@ types:
         500:
           description: InternalException
     post:
+      description: Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value pairs. An Elasticsearch domain may have up to 10 tags. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging" target="_blank"> Tagging Amazon Elasticsearch Service Domains for more information.</a>
       body:
         application/json: AddTagsRequest
       responses:
@@ -594,9 +597,9 @@ types:
         500:
           description: InternalException
   /domain:
-    description: 'Returns the name of all Elasticsearch domains owned by the current
-      user''s account. '
     get:
+      description: 'Returns the name of all Elasticsearch domains owned by the current
+        user''s account. '
       responses:
         200:
           body:
@@ -604,8 +607,8 @@ types:
         400:
           description: BaseException | ValidationException
   /tags-removal:
-    description: Removes the specified set of tags from the specified Elasticsearch domain.
     post:
+      description: Removes the specified set of tags from the specified Elasticsearch domain.
       body:
         application/json: RemoveTagsRequest
       responses:

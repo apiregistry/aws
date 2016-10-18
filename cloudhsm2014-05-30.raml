@@ -584,8 +584,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Adds or overwrites one or more tags for the specified AWS CloudHSM resource. Each tag consists of a key and a value. Tag keys must be unique to each resource.
   post:
+    description: Adds or overwrites one or more tags for the specified AWS CloudHSM resource. Each tag consists of a key and a value. Tag keys must be unique to each resource.
     body:
       application/json: AddTagsToResourceRequest
     responses:
@@ -601,8 +601,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates a high-availability partition group. A high-availability partition group is a group of partitions that spans multiple physical HSMs.
   post:
+    description: Creates a high-availability partition group. A high-availability partition group is a group of partitions that spans multiple physical HSMs.
     body:
       application/json: CreateHapgRequest
     responses:
@@ -618,8 +618,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates an uninitialized HSM instance. There is an upfront fee charged for each HSM instance that you create with the <a>CreateHsm</a> operation. If you accidentally provision an HSM and want to request a refund, delete the instance using the <a>DeleteHsm</a> operation, go to the <a href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>, create a new case, and select <b>Account and Billing Support</b>. <important> It can take up to 20 minutes to create and provision an HSM. You can monitor the status of the HSM with the <a>DescribeHsm</a> operation. The HSM is ready to be initialized when the status changes to <code>RUNNING</code>. </important>
   post:
+    description: Creates an uninitialized HSM instance. There is an upfront fee charged for each HSM instance that you create with the <a>CreateHsm</a> operation. If you accidentally provision an HSM and want to request a refund, delete the instance using the <a>DeleteHsm</a> operation, go to the <a href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>, create a new case, and select <b>Account and Billing Support</b>. <important> It can take up to 20 minutes to create and provision an HSM. You can monitor the status of the HSM with the <a>DescribeHsm</a> operation. The HSM is ready to be initialized when the status changes to <code>RUNNING</code>. </important>
     body:
       application/json: CreateHsmRequest
     responses:
@@ -635,8 +635,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates an HSM client.
   post:
+    description: Creates an HSM client.
     body:
       application/json: CreateLunaClientRequest
     responses:
@@ -652,8 +652,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes a high-availability partition group.
   post:
+    description: Deletes a high-availability partition group.
     body:
       application/json: DeleteHapgRequest
     responses:
@@ -669,8 +669,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes an HSM. After completion, this operation cannot be undone and your key material cannot be recovered.
   post:
+    description: Deletes an HSM. After completion, this operation cannot be undone and your key material cannot be recovered.
     body:
       application/json: DeleteHsmRequest
     responses:
@@ -686,8 +686,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes a client.
   post:
+    description: Deletes a client.
     body:
       application/json: DeleteLunaClientRequest
     responses:
@@ -703,8 +703,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Retrieves information about a high-availability partition group.
   post:
+    description: Retrieves information about a high-availability partition group.
     body:
       application/json: DescribeHapgRequest
     responses:
@@ -720,8 +720,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Retrieves information about an HSM. You can identify the HSM by its ARN or its serial number.
   post:
+    description: Retrieves information about an HSM. You can identify the HSM by its ARN or its serial number.
     body:
       application/json: DescribeHsmRequest
     responses:
@@ -737,8 +737,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Retrieves information about an HSM client.
   post:
+    description: Retrieves information about an HSM client.
     body:
       application/json: DescribeLunaClientRequest
     responses:
@@ -754,8 +754,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets the configuration files necessary to connect to all high availability partition groups the client is associated with.
   post:
+    description: Gets the configuration files necessary to connect to all high availability partition groups the client is associated with.
     body:
       application/json: GetConfigRequest
     responses:
@@ -771,8 +771,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists the Availability Zones that have available AWS CloudHSM capacity.
   post:
+    description: Lists the Availability Zones that have available AWS CloudHSM capacity.
     body:
       application/json: ListAvailableZonesRequest
     responses:
@@ -788,8 +788,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists the high-availability partition groups for the account. This operation supports pagination with the use of the <i>NextToken</i> member. If more results are available, the <i>NextToken</i> member of the response contains a token that you pass in the next call to <a>ListHapgs</a> to retrieve the next set of items.
   post:
+    description: Lists the high-availability partition groups for the account. This operation supports pagination with the use of the <i>NextToken</i> member. If more results are available, the <i>NextToken</i> member of the response contains a token that you pass in the next call to <a>ListHapgs</a> to retrieve the next set of items.
     body:
       application/json: ListHapgsRequest
     responses:
@@ -805,8 +805,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Retrieves the identifiers of all of the HSMs provisioned for the current customer. This operation supports pagination with the use of the <i>NextToken</i> member. If more results are available, the <i>NextToken</i> member of the response contains a token that you pass in the next call to <a>ListHsms</a> to retrieve the next set of items.
   post:
+    description: Retrieves the identifiers of all of the HSMs provisioned for the current customer. This operation supports pagination with the use of the <i>NextToken</i> member. If more results are available, the <i>NextToken</i> member of the response contains a token that you pass in the next call to <a>ListHsms</a> to retrieve the next set of items.
     body:
       application/json: ListHsmsRequest
     responses:
@@ -822,8 +822,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists all of the clients. This operation supports pagination with the use of the <i>NextToken</i> member. If more results are available, the <i>NextToken</i> member of the response contains a token that you pass in the next call to <a>ListLunaClients</a> to retrieve the next set of items.
   post:
+    description: Lists all of the clients. This operation supports pagination with the use of the <i>NextToken</i> member. If more results are available, the <i>NextToken</i> member of the response contains a token that you pass in the next call to <a>ListLunaClients</a> to retrieve the next set of items.
     body:
       application/json: ListLunaClientsRequest
     responses:
@@ -839,8 +839,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns a list of all tags for the specified AWS CloudHSM resource.
   post:
+    description: Returns a list of all tags for the specified AWS CloudHSM resource.
     body:
       application/json: ListTagsForResourceRequest
     responses:
@@ -856,8 +856,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Modifies an existing high-availability partition group.
   post:
+    description: Modifies an existing high-availability partition group.
     body:
       application/json: ModifyHapgRequest
     responses:
@@ -873,8 +873,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Modifies an HSM. <important> This operation can result in the HSM being offline for up to 15 minutes while the AWS CloudHSM service is reconfigured. If you are modifying a production HSM, you should ensure that your AWS CloudHSM service is configured for high availability, and consider executing this operation during a maintenance window. </important>
   post:
+    description: Modifies an HSM. <important> This operation can result in the HSM being offline for up to 15 minutes while the AWS CloudHSM service is reconfigured. If you are modifying a production HSM, you should ensure that your AWS CloudHSM service is configured for high availability, and consider executing this operation during a maintenance window. </important>
     body:
       application/json: ModifyHsmRequest
     responses:
@@ -890,8 +890,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Modifies the certificate used by the client. This action can potentially start a workflow to install the new certificate on the client's HSMs.
   post:
+    description: Modifies the certificate used by the client. This action can potentially start a workflow to install the new certificate on the client's HSMs.
     body:
       application/json: ModifyLunaClientRequest
     responses:
@@ -907,8 +907,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Removes one or more tags from the specified AWS CloudHSM resource. To remove a tag, specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use <a>AddTagsToResource</a>.
   post:
+    description: Removes one or more tags from the specified AWS CloudHSM resource. To remove a tag, specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use <a>AddTagsToResource</a>.
     body:
       application/json: RemoveTagsFromResourceRequest
     responses:

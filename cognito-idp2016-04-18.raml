@@ -1999,8 +1999,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Adds additional user attributes to the user pool schema.
   post:
+    description: Adds additional user attributes to the user pool schema.
     body:
       application/json: AddCustomAttributesRequest
     responses:
@@ -2016,8 +2016,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Confirms user registration as an admin without using a confirmation code. Works on any user.
   post:
+    description: Confirms user registration as an admin without using a confirmation code. Works on any user.
     body:
       application/json: AdminConfirmSignUpRequest
     responses:
@@ -2033,8 +2033,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates a new user in the specified user pool and sends a welcome message via email or phone (SMS). This message is based on a template that you configured in your call to CreateUserPool or UpdateUserPool. This template includes your custom sign-up instructions and placeholders for user name and temporary password. Requires developer credentials.
   post:
+    description: Creates a new user in the specified user pool and sends a welcome message via email or phone (SMS). This message is based on a template that you configured in your call to CreateUserPool or UpdateUserPool. This template includes your custom sign-up instructions and placeholders for user name and temporary password. Requires developer credentials.
     body:
       application/json: AdminCreateUserRequest
     responses:
@@ -2050,8 +2050,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes a user as an administrator. Works on any user.
   post:
+    description: Deletes a user as an administrator. Works on any user.
     body:
       application/json: AdminDeleteUserRequest
     responses:
@@ -2067,8 +2067,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the user attributes in a user pool as an administrator. Works on any user.
   post:
+    description: Deletes the user attributes in a user pool as an administrator. Works on any user.
     body:
       application/json: AdminDeleteUserAttributesRequest
     responses:
@@ -2084,8 +2084,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Disables the specified user as an administrator. Works on any user.
   post:
+    description: Disables the specified user as an administrator. Works on any user.
     body:
       application/json: AdminDisableUserRequest
     responses:
@@ -2101,8 +2101,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Enables the specified user as an administrator. Works on any user.
   post:
+    description: Enables the specified user as an administrator. Works on any user.
     body:
       application/json: AdminEnableUserRequest
     responses:
@@ -2118,8 +2118,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Forgets the device, as an administrator.
   post:
+    description: Forgets the device, as an administrator.
     body:
       application/json: AdminForgetDeviceRequest
     responses:
@@ -2135,8 +2135,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets the device, as an administrator.
   post:
+    description: Gets the device, as an administrator.
     body:
       application/json: AdminGetDeviceRequest
     responses:
@@ -2152,8 +2152,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets the specified user by user name in a user pool as an administrator. Works on any user.
   post:
+    description: Gets the specified user by user name in a user pool as an administrator. Works on any user.
     body:
       application/json: AdminGetUserRequest
     responses:
@@ -2169,8 +2169,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Initiates the authentication flow, as an administrator.
   post:
+    description: Initiates the authentication flow, as an administrator.
     body:
       application/json: AdminInitiateAuthRequest
     responses:
@@ -2186,8 +2186,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists devices, as an administrator.
   post:
+    description: Lists devices, as an administrator.
     body:
       application/json: AdminListDevicesRequest
     responses:
@@ -2203,8 +2203,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Resets the specified user's password in a user pool as an administrator. Works on any user. When a developer calls this API, the current password is invalidated, so it must be changed. If a user tries to sign in after the API is called, the app will get a PasswordResetRequiredException exception back and should direct the user down the flow to reset the password, which is the same as the forgot password flow. In addition, if the user pool has phone verification selected and a verified phone number exists for the user, or if email verification is selected and a verified email exists for the user, calling this API will also result in sending a message to the end user with the code to change their password.
   post:
+    description: Resets the specified user's password in a user pool as an administrator. Works on any user. When a developer calls this API, the current password is invalidated, so it must be changed. If a user tries to sign in after the API is called, the app will get a PasswordResetRequiredException exception back and should direct the user down the flow to reset the password, which is the same as the forgot password flow. In addition, if the user pool has phone verification selected and a verified phone number exists for the user, or if email verification is selected and a verified email exists for the user, calling this API will also result in sending a message to the end user with the code to change their password.
     body:
       application/json: AdminResetUserPasswordRequest
     responses:
@@ -2220,8 +2220,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Responds to an authentication challenge, as an administrator.
   post:
+    description: Responds to an authentication challenge, as an administrator.
     body:
       application/json: AdminRespondToAuthChallengeRequest
     responses:
@@ -2237,8 +2237,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Sets all the user settings for a specified user name. Works on any user.
   post:
+    description: Sets all the user settings for a specified user name. Works on any user.
     body:
       application/json: AdminSetUserSettingsRequest
     responses:
@@ -2254,8 +2254,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Updates the device status as an administrator.
   post:
+    description: Updates the device status as an administrator.
     body:
       application/json: AdminUpdateDeviceStatusRequest
     responses:
@@ -2271,8 +2271,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Updates the specified user's attributes, including developer attributes, as an administrator. Works on any user.
   post:
+    description: Updates the specified user's attributes, including developer attributes, as an administrator. Works on any user.
     body:
       application/json: AdminUpdateUserAttributesRequest
     responses:
@@ -2288,8 +2288,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Signs out users from all devices, as an administrator.
   post:
+    description: Signs out users from all devices, as an administrator.
     body:
       application/json: AdminUserGlobalSignOutRequest
     responses:
@@ -2305,8 +2305,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Changes the password for a specified user in a user pool.
   post:
+    description: Changes the password for a specified user in a user pool.
     body:
       application/json: ChangePasswordRequest
     responses:
@@ -2322,8 +2322,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Confirms tracking of the device. This API call is the call that beings device tracking.
   post:
+    description: Confirms tracking of the device. This API call is the call that beings device tracking.
     body:
       application/json: ConfirmDeviceRequest
     responses:
@@ -2339,8 +2339,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Allows a user to enter a code provided when they reset their password to update their password.
   post:
+    description: Allows a user to enter a code provided when they reset their password to update their password.
     body:
       application/json: ConfirmForgotPasswordRequest
     responses:
@@ -2356,8 +2356,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Confirms registration of a user and handles the existing alias from a previous user.
   post:
+    description: Confirms registration of a user and handles the existing alias from a previous user.
     body:
       application/json: ConfirmSignUpRequest
     responses:
@@ -2373,8 +2373,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates the user import job.
   post:
+    description: Creates the user import job.
     body:
       application/json: CreateUserImportJobRequest
     responses:
@@ -2390,8 +2390,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates a new Amazon Cognito user pool and sets the password policy for the pool.
   post:
+    description: Creates a new Amazon Cognito user pool and sets the password policy for the pool.
     body:
       application/json: CreateUserPoolRequest
     responses:
@@ -2407,8 +2407,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Creates the user pool client.
   post:
+    description: Creates the user pool client.
     body:
       application/json: CreateUserPoolClientRequest
     responses:
@@ -2424,8 +2424,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Allows a user to delete one's self.
   post:
+    description: Allows a user to delete one's self.
     body:
       application/json: DeleteUserRequest
     responses:
@@ -2441,8 +2441,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the attributes for a user.
   post:
+    description: Deletes the attributes for a user.
     body:
       application/json: DeleteUserAttributesRequest
     responses:
@@ -2458,8 +2458,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Deletes the specified Amazon Cognito user pool.
   post:
+    description: Deletes the specified Amazon Cognito user pool.
     body:
       application/json: DeleteUserPoolRequest
     responses:
@@ -2475,8 +2475,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Allows the developer to delete the user pool client.
   post:
+    description: Allows the developer to delete the user pool client.
     body:
       application/json: DeleteUserPoolClientRequest
     responses:
@@ -2492,8 +2492,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the user import job.
   post:
+    description: Describes the user import job.
     body:
       application/json: DescribeUserImportJobRequest
     responses:
@@ -2509,8 +2509,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Returns the configuration information and metadata of the specified user pool.
   post:
+    description: Returns the configuration information and metadata of the specified user pool.
     body:
       application/json: DescribeUserPoolRequest
     responses:
@@ -2526,8 +2526,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Client method for returning the configuration information and metadata of the specified user pool client.
   post:
+    description: Client method for returning the configuration information and metadata of the specified user pool client.
     body:
       application/json: DescribeUserPoolClientRequest
     responses:
@@ -2543,8 +2543,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Forgets the specified device.
   post:
+    description: Forgets the specified device.
     body:
       application/json: ForgetDeviceRequest
     responses:
@@ -2560,8 +2560,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Retrieves the password for the specified client ID or username.
   post:
+    description: Retrieves the password for the specified client ID or username.
     body:
       application/json: ForgotPasswordRequest
     responses:
@@ -2577,8 +2577,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets the header information for the .csv file to be used as input for the user import job.
   post:
+    description: Gets the header information for the .csv file to be used as input for the user import job.
     body:
       application/json: GetCSVHeaderRequest
     responses:
@@ -2594,8 +2594,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets the device.
   post:
+    description: Gets the device.
     body:
       application/json: GetDeviceRequest
     responses:
@@ -2611,8 +2611,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets the user attributes and metadata for a user.
   post:
+    description: Gets the user attributes and metadata for a user.
     body:
       application/json: GetUserRequest
     responses:
@@ -2628,8 +2628,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Gets the user attribute verification code for the specified attribute name.
   post:
+    description: Gets the user attribute verification code for the specified attribute name.
     body:
       application/json: GetUserAttributeVerificationCodeRequest
     responses:
@@ -2645,8 +2645,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Signs out users from all devices.
   post:
+    description: Signs out users from all devices.
     body:
       application/json: GlobalSignOutRequest
     responses:
@@ -2662,8 +2662,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Initiates the authentication flow.
   post:
+    description: Initiates the authentication flow.
     body:
       application/json: InitiateAuthRequest
     responses:
@@ -2679,8 +2679,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists the devices.
   post:
+    description: Lists the devices.
     body:
       application/json: ListDevicesRequest
     responses:
@@ -2696,8 +2696,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists the user import jobs.
   post:
+    description: Lists the user import jobs.
     body:
       application/json: ListUserImportJobsRequest
     responses:
@@ -2713,8 +2713,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists the clients that have been created for the specified user pool.
   post:
+    description: Lists the clients that have been created for the specified user pool.
     body:
       application/json: ListUserPoolClientsRequest
     responses:
@@ -2730,8 +2730,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists the user pools associated with an AWS account.
   post:
+    description: Lists the user pools associated with an AWS account.
     body:
       application/json: ListUserPoolsRequest
     responses:
@@ -2747,8 +2747,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Lists the users in the Amazon Cognito user pool.
   post:
+    description: Lists the users in the Amazon Cognito user pool.
     body:
       application/json: ListUsersRequest
     responses:
@@ -2764,8 +2764,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Resends the confirmation (for confirmation of registration) to a specific user in the user pool.
   post:
+    description: Resends the confirmation (for confirmation of registration) to a specific user in the user pool.
     body:
       application/json: ResendConfirmationCodeRequest
     responses:
@@ -2781,8 +2781,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Responds to the authentication challenge.
   post:
+    description: Responds to the authentication challenge.
     body:
       application/json: RespondToAuthChallengeRequest
     responses:
@@ -2798,8 +2798,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Sets the user settings like multi-factor authentication (MFA). If MFA is to be removed for a particular attribute pass the attribute with code delivery as null. If null list is passed, all MFA options are removed.
   post:
+    description: Sets the user settings like multi-factor authentication (MFA). If MFA is to be removed for a particular attribute pass the attribute with code delivery as null. If null list is passed, all MFA options are removed.
     body:
       application/json: SetUserSettingsRequest
     responses:
@@ -2815,8 +2815,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Registers the user in the specified user pool and creates a user name, password, and user attributes.
   post:
+    description: Registers the user in the specified user pool and creates a user name, password, and user attributes.
     body:
       application/json: SignUpRequest
     responses:
@@ -2832,8 +2832,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Starts the user import.
   post:
+    description: Starts the user import.
     body:
       application/json: StartUserImportJobRequest
     responses:
@@ -2849,8 +2849,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Stops the user import job.
   post:
+    description: Stops the user import job.
     body:
       application/json: StopUserImportJobRequest
     responses:
@@ -2866,8 +2866,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Updates the device status.
   post:
+    description: Updates the device status.
     body:
       application/json: UpdateDeviceStatusRequest
     responses:
@@ -2883,8 +2883,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Allows a user to update a specific attribute (one at a time).
   post:
+    description: Allows a user to update a specific attribute (one at a time).
     body:
       application/json: UpdateUserAttributesRequest
     responses:
@@ -2900,8 +2900,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Updates the specified user pool with the specified attributes.
   post:
+    description: Updates the specified user pool with the specified attributes.
     body:
       application/json: UpdateUserPoolRequest
     responses:
@@ -2917,8 +2917,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Allows the developer to update the specified user pool client and password policy.
   post:
+    description: Allows the developer to update the specified user pool client and password policy.
     body:
       application/json: UpdateUserPoolClientRequest
     responses:
@@ -2934,8 +2934,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Verifies the specified user attributes in the user pool.
   post:
+    description: Verifies the specified user attributes in the user pool.
     body:
       application/json: VerifyUserAttributeRequest
     responses:

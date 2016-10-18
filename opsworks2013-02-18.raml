@@ -2894,16 +2894,16 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Assign a registered instance to a layer. <ul> <li> You can assign
-    registered on-premises instances to any layer type. </li> <li> You can assign
-    registered Amazon EC2 instances only to custom layers. </li> <li> You cannot use
-    this action with instances that were created with AWS OpsWorks. </li> </ul>  <b>Required
-    Permissions</b>: To use this action, an AWS Identity and Access Management (IAM)
-    user must have a Manage permissions level for the stack or an attached policy
-    that explicitly grants permissions. For more information on user permissions,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Assign a registered instance to a layer. <ul> <li> You can assign
+      registered on-premises instances to any layer type. </li> <li> You can assign
+      registered Amazon EC2 instances only to custom layers. </li> <li> You cannot
+      use this action with instances that were created with AWS OpsWorks. </li> </ul>  <b>Required
+      Permissions</b>: To use this action, an AWS Identity and Access Management (IAM)
+      user must have a Manage permissions level for the stack or an attached policy
+      that explicitly grants permissions. For more information on user permissions,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: AssignInstanceRequest
     responses:
@@ -2919,17 +2919,17 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Assigns one of the stack''s registered Amazon EBS volumes to a specified
-    instance. The volume must first be registered with the stack by calling <a>RegisterVolume</a>.
-    After you register the volume, you must call <a>UpdateVolume</a> to specify a
-    mount point before calling <code>AssignVolume</code>. For more information, see
-    <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
-    Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack, or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Assigns one of the stack''s registered Amazon EBS volumes to a specified
+      instance. The volume must first be registered with the stack by calling <a>RegisterVolume</a>.
+      After you register the volume, you must call <a>UpdateVolume</a> to specify
+      a mount point before calling <code>AssignVolume</code>. For more information,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
+      Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Manage permissions level for the stack, or an attached policy that
+      explicitly grants permissions. For more information on user permissions, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: AssignVolumeRequest
     responses:
@@ -2945,15 +2945,15 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Associates one of the stack''s registered Elastic IP addresses with
-    a specified instance. The address must first be registered with the stack by calling
-    <a>RegisterElasticIp</a>. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
-    Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack, or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Associates one of the stack''s registered Elastic IP addresses with
+      a specified instance. The address must first be registered with the stack by
+      calling <a>RegisterElasticIp</a>. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
+      Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Manage permissions level for the stack, or an attached policy that
+      explicitly grants permissions. For more information on user permissions, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: AssociateElasticIpRequest
     responses:
@@ -2969,17 +2969,17 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Attaches an Elastic Load Balancing load balancer to a specified layer.
-    For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/load-balancer-elb.html">Elastic
-    Load Balancing</a>. <note> You must create the Elastic Load Balancing instance
-    separately, by using the Elastic Load Balancing console, API, or CLI. For more
-    information, see <a href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/Welcome.html">
-    Elastic Load Balancing Developer Guide</a>. </note>  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Manage permissions level for the stack,
-    or an attached policy that explicitly grants permissions. For more information
-    on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Attaches an Elastic Load Balancing load balancer to a specified
+      layer. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/load-balancer-elb.html">Elastic
+      Load Balancing</a>. <note> You must create the Elastic Load Balancing instance
+      separately, by using the Elastic Load Balancing console, API, or CLI. For more
+      information, see <a href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/Welcome.html">
+      Elastic Load Balancing Developer Guide</a>. </note>  <b>Required Permissions</b>:
+      To use this action, an IAM user must have a Manage permissions level for the
+      stack, or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: AttachElasticLoadBalancerRequest
     responses:
@@ -2995,14 +2995,14 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Creates a clone of a specified stack. For more information, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html">Clone
-    a Stack</a>. By default, all parameters are set to the values used by the parent
-    stack.  <b>Required Permissions</b>: To use this action, an IAM user must have
-    an attached policy that explicitly grants permissions. For more information on
-    user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Creates a clone of a specified stack. For more information, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html">Clone
+      a Stack</a>. By default, all parameters are set to the values used by the parent
+      stack.  <b>Required Permissions</b>: To use this action, an IAM user must have
+      an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: CloneStackRequest
     responses:
@@ -3018,13 +3018,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Creates an app for a specified stack. For more information, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Creating
-    Apps</a>.  <b>Required Permissions</b>: To use this action, an IAM user must have
-    a Manage permissions level for the stack, or an attached policy that explicitly
-    grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Creates an app for a specified stack. For more information, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Creating
+      Apps</a>.  <b>Required Permissions</b>: To use this action, an IAM user must
+      have a Manage permissions level for the stack, or an attached policy that explicitly
+      grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: CreateAppRequest
     responses:
@@ -3040,14 +3040,15 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Runs deployment or stack commands. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html">Deploying
-    Apps</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html">Run
-    Stack Commands</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Deploy or Manage permissions level for the stack, or an attached policy
-    that explicitly grants permissions. For more information on user permissions,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Runs deployment or stack commands. For more information, see <a
+      href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html">Deploying
+      Apps</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html">Run
+      Stack Commands</a>.  <b>Required Permissions</b>: To use this action, an IAM
+      user must have a Deploy or Manage permissions level for the stack, or an attached
+      policy that explicitly grants permissions. For more information on user permissions,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: CreateDeploymentRequest
     responses:
@@ -3063,14 +3064,14 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Creates an instance in a specified stack. For more information, see
-    <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html">Adding
-    an Instance to a Layer</a>.  <b>Required Permissions</b>: To use this action,
-    an IAM user must have a Manage permissions level for the stack, or an attached
-    policy that explicitly grants permissions. For more information on user permissions,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Creates an instance in a specified stack. For more information,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html">Adding
+      an Instance to a Layer</a>.  <b>Required Permissions</b>: To use this action,
+      an IAM user must have a Manage permissions level for the stack, or an attached
+      policy that explicitly grants permissions. For more information on user permissions,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: CreateInstanceRequest
     responses:
@@ -3086,18 +3087,18 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Creates a layer. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html">How
-    to Create a Layer</a>. <note> You should use <b>CreateLayer</b> for noncustom
-    layer types such as PHP App Server only if the stack does not have an existing
-    layer of that type. A stack can have at most one instance of each noncustom layer;
-    if you attempt to create a second instance, <b>CreateLayer</b> fails. A stack
-    can have an arbitrary number of custom layers, so you can call <b>CreateLayer</b>
-    as many times as you like for that layer type. </note>  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Manage permissions level for the stack,
-    or an attached policy that explicitly grants permissions. For more information
-    on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Creates a layer. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html">How
+      to Create a Layer</a>. <note> You should use <b>CreateLayer</b> for noncustom
+      layer types such as PHP App Server only if the stack does not have an existing
+      layer of that type. A stack can have at most one instance of each noncustom
+      layer; if you attempt to create a second instance, <b>CreateLayer</b> fails.
+      A stack can have an arbitrary number of custom layers, so you can call <b>CreateLayer</b>
+      as many times as you like for that layer type. </note>  <b>Required Permissions</b>:
+      To use this action, an IAM user must have a Manage permissions level for the
+      stack, or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: CreateLayerRequest
     responses:
@@ -3113,12 +3114,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Creates a new stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html">Create
-    a New Stack</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have an attached policy that explicitly grants permissions. For more information
-    on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Creates a new stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html">Create
+      a New Stack</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: CreateStackRequest
     responses:
@@ -3134,11 +3135,11 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Creates a new user profile.  <b>Required Permissions</b>: To use this
-    action, an IAM user must have an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Creates a new user profile.  <b>Required Permissions</b>: To use
+      this action, an IAM user must have an attached policy that explicitly grants
+      permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: CreateUserProfileRequest
     responses:
@@ -3154,12 +3155,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Deletes a specified app.  <b>Required Permissions</b>: To use this
-    action, an IAM user must have a Manage permissions level for the stack, or an
-    attached policy that explicitly grants permissions. For more information on user
-    permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Deletes a specified app.  <b>Required Permissions</b>: To use this
+      action, an IAM user must have a Manage permissions level for the stack, or an
+      attached policy that explicitly grants permissions. For more information on
+      user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DeleteAppRequest
     responses:
@@ -3175,14 +3176,15 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Deletes a specified instance, which terminates the associated Amazon
-    EC2 instance. You must stop an instance before you can delete it. For more information,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html">Deleting
-    Instances</a>.  <b>Required Permissions</b>: To use this action, an IAM user must
-    have a Manage permissions level for the stack, or an attached policy that explicitly
-    grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Deletes a specified instance, which terminates the associated Amazon
+      EC2 instance. You must stop an instance before you can delete it. For more information,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html">Deleting
+      Instances</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Manage permissions level for the stack, or an attached policy that
+      explicitly grants permissions. For more information on user permissions, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DeleteInstanceRequest
     responses:
@@ -3198,15 +3200,15 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Deletes a specified layer. You must first stop and then delete all
-    associated instances or unassign registered instances. For more information, see
-    <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-delete.html">How
-    to Delete a Layer</a>.  <b>Required Permissions</b>: To use this action, an IAM
-    user must have a Manage permissions level for the stack, or an attached policy
-    that explicitly grants permissions. For more information on user permissions,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Deletes a specified layer. You must first stop and then delete all
+      associated instances or unassign registered instances. For more information,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-delete.html">How
+      to Delete a Layer</a>.  <b>Required Permissions</b>: To use this action, an
+      IAM user must have a Manage permissions level for the stack, or an attached
+      policy that explicitly grants permissions. For more information on user permissions,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DeleteLayerRequest
     responses:
@@ -3222,14 +3224,15 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Deletes a specified stack. You must first delete all instances, layers,
-    and apps or deregister registered instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-shutting.html">Shut
-    Down a Stack</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack, or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Deletes a specified stack. You must first delete all instances,
+      layers, and apps or deregister registered instances. For more information, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-shutting.html">Shut
+      Down a Stack</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Manage permissions level for the stack, or an attached policy that
+      explicitly grants permissions. For more information on user permissions, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DeleteStackRequest
     responses:
@@ -3245,11 +3248,11 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Deletes a user profile.  <b>Required Permissions</b>: To use this
-    action, an IAM user must have an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Deletes a user profile.  <b>Required Permissions</b>: To use this
+      action, an IAM user must have an attached policy that explicitly grants permissions.
+      For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DeleteUserProfileRequest
     responses:
@@ -3265,13 +3268,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Deregisters a specified Amazon ECS cluster from a stack. For more
-    information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete">
-    Resource Management</a>.  <b>Required Permissions</b>: To use this action, an
-    IAM user must have a Manage permissions level for the stack or an attached policy
-    that explicitly grants permissions. For more information on user permissions,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html</a>.'
   post:
+    description: 'Deregisters a specified Amazon ECS cluster from a stack. For more
+      information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete">
+      Resource Management</a>.  <b>Required Permissions</b>: To use this action, an
+      IAM user must have a Manage permissions level for the stack or an attached policy
+      that explicitly grants permissions. For more information on user permissions,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html</a>.'
     body:
       application/json: DeregisterEcsClusterRequest
     responses:
@@ -3287,14 +3290,14 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Deregisters a specified Elastic IP address. The address can then be
-    registered by another stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
-    Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack, or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Deregisters a specified Elastic IP address. The address can then
+      be registered by another stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
+      Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Manage permissions level for the stack, or an attached policy that
+      explicitly grants permissions. For more information on user permissions, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DeregisterElasticIpRequest
     responses:
@@ -3310,14 +3313,14 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Deregister a registered Amazon EC2 or on-premises instance. This action
-    removes the instance from the stack and returns it to your control. This action
-    can not be used with instances that were created with AWS OpsWorks.  <b>Required
-    Permissions</b>: To use this action, an IAM user must have a Manage permissions
-    level for the stack or an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Deregister a registered Amazon EC2 or on-premises instance. This
+      action removes the instance from the stack and returns it to your control. This
+      action can not be used with instances that were created with AWS OpsWorks.  <b>Required
+      Permissions</b>: To use this action, an IAM user must have a Manage permissions
+      level for the stack or an attached policy that explicitly grants permissions.
+      For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DeregisterInstanceRequest
     responses:
@@ -3333,12 +3336,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Deregisters an Amazon RDS instance.  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Manage permissions level for the stack,
-    or an attached policy that explicitly grants permissions. For more information
-    on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Deregisters an Amazon RDS instance.  <b>Required Permissions</b>:
+      To use this action, an IAM user must have a Manage permissions level for the
+      stack, or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DeregisterRdsDbInstanceRequest
     responses:
@@ -3354,14 +3357,14 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Deregisters an Amazon EBS volume. The volume can then be registered
-    by another stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
-    Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack, or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Deregisters an Amazon EBS volume. The volume can then be registered
+      by another stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
+      Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Manage permissions level for the stack, or an attached policy that
+      explicitly grants permissions. For more information on user permissions, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DeregisterVolumeRequest
     responses:
@@ -3377,8 +3380,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: Describes the available AWS OpsWorks agent versions. You must specify a stack ID or a configuration manager. <code>DescribeAgentVersions</code> returns a list of available agent versions for the specified stack or configuration manager.
   post:
+    description: Describes the available AWS OpsWorks agent versions. You must specify a stack ID or a configuration manager. <code>DescribeAgentVersions</code> returns a list of available agent versions for the specified stack or configuration manager.
     body:
       application/json: DescribeAgentVersionsRequest
     responses:
@@ -3394,13 +3397,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Requests a description of a specified set of apps. <note> You must
-    specify at least one of the parameters. </note>  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Show, Deploy, or Manage permissions
-    level for the stack, or an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Requests a description of a specified set of apps. <note> You must
+      specify at least one of the parameters. </note>  <b>Required Permissions</b>:
+      To use this action, an IAM user must have a Show, Deploy, or Manage permissions
+      level for the stack, or an attached policy that explicitly grants permissions.
+      For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeAppsRequest
     responses:
@@ -3416,13 +3419,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describes the results of specified commands. <note> You must specify
-    at least one of the parameters. </note>  <b>Required Permissions</b>: To use this
-    action, an IAM user must have a Show, Deploy, or Manage permissions level for
-    the stack, or an attached policy that explicitly grants permissions. For more
-    information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describes the results of specified commands. <note> You must specify
+      at least one of the parameters. </note>  <b>Required Permissions</b>: To use
+      this action, an IAM user must have a Show, Deploy, or Manage permissions level
+      for the stack, or an attached policy that explicitly grants permissions. For
+      more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeCommandsRequest
     responses:
@@ -3438,13 +3441,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Requests a description of a specified set of deployments. <note> You
-    must specify at least one of the parameters. </note>  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Show, Deploy, or Manage permissions
-    level for the stack, or an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Requests a description of a specified set of deployments. <note>
+      You must specify at least one of the parameters. </note>  <b>Required Permissions</b>:
+      To use this action, an IAM user must have a Show, Deploy, or Manage permissions
+      level for the stack, or an attached policy that explicitly grants permissions.
+      For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeDeploymentsRequest
     responses:
@@ -3460,15 +3463,16 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describes Amazon ECS clusters that are registered with a stack. If
-    you specify only a stack ID, you can use the <code>MaxResults</code> and <code>NextToken</code>
-    parameters to paginate the response. However, AWS OpsWorks currently supports
-    only one cluster per layer, so the result set has a maximum of one element.  <b>Required
-    Permissions</b>: To use this action, an IAM user must have a Show, Deploy, or
-    Manage permissions level for the stack or an attached policy that explicitly grants
-    permission. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describes Amazon ECS clusters that are registered with a stack.
+      If you specify only a stack ID, you can use the <code>MaxResults</code> and
+      <code>NextToken</code> parameters to paginate the response. However, AWS OpsWorks
+      currently supports only one cluster per layer, so the result set has a maximum
+      of one element.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Show, Deploy, or Manage permissions level for the stack or an attached
+      policy that explicitly grants permission. For more information on user permissions,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeEcsClustersRequest
     responses:
@@ -3484,13 +3488,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describes <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic
-    IP addresses</a>. <note> You must specify at least one of the parameters. </note>  <b>Required
-    Permissions</b>: To use this action, an IAM user must have a Show, Deploy, or
-    Manage permissions level for the stack, or an attached policy that explicitly
-    grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describes <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic
+      IP addresses</a>. <note> You must specify at least one of the parameters. </note>  <b>Required
+      Permissions</b>: To use this action, an IAM user must have a Show, Deploy, or
+      Manage permissions level for the stack, or an attached policy that explicitly
+      grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeElasticIpsRequest
     responses:
@@ -3506,13 +3510,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describes a stack''s Elastic Load Balancing instances. <note> You
-    must specify at least one of the parameters. </note>  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Show, Deploy, or Manage permissions
-    level for the stack, or an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describes a stack''s Elastic Load Balancing instances. <note> You
+      must specify at least one of the parameters. </note>  <b>Required Permissions</b>:
+      To use this action, an IAM user must have a Show, Deploy, or Manage permissions
+      level for the stack, or an attached policy that explicitly grants permissions.
+      For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeElasticLoadBalancersRequest
     responses:
@@ -3528,13 +3532,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Requests a description of a set of instances. <note> You must specify
-    at least one of the parameters. </note>  <b>Required Permissions</b>: To use this
-    action, an IAM user must have a Show, Deploy, or Manage permissions level for
-    the stack, or an attached policy that explicitly grants permissions. For more
-    information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Requests a description of a set of instances. <note> You must specify
+      at least one of the parameters. </note>  <b>Required Permissions</b>: To use
+      this action, an IAM user must have a Show, Deploy, or Manage permissions level
+      for the stack, or an attached policy that explicitly grants permissions. For
+      more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeInstancesRequest
     responses:
@@ -3550,13 +3554,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Requests a description of one or more layers in a specified stack.
-    <note> You must specify at least one of the parameters. </note>  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Show, Deploy, or Manage permissions
-    level for the stack, or an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Requests a description of one or more layers in a specified stack.
+      <note> You must specify at least one of the parameters. </note>  <b>Required
+      Permissions</b>: To use this action, an IAM user must have a Show, Deploy, or
+      Manage permissions level for the stack, or an attached policy that explicitly
+      grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeLayersRequest
     responses:
@@ -3572,13 +3576,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describes load-based auto scaling configurations for specified layers.
-    <note> You must specify at least one of the parameters. </note>  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Show, Deploy, or Manage permissions
-    level for the stack, or an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describes load-based auto scaling configurations for specified layers.
+      <note> You must specify at least one of the parameters. </note>  <b>Required
+      Permissions</b>: To use this action, an IAM user must have a Show, Deploy, or
+      Manage permissions level for the stack, or an attached policy that explicitly
+      grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeLoadBasedAutoScalingRequest
     responses:
@@ -3594,12 +3598,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describes a user''s SSH information.  <b>Required Permissions</b>:
-    To use this action, an IAM user must have self-management enabled or an attached
-    policy that explicitly grants permissions. For more information on user permissions,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describes a user''s SSH information.  <b>Required Permissions</b>:
+      To use this action, an IAM user must have self-management enabled or an attached
+      policy that explicitly grants permissions. For more information on user permissions,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     responses:
       200:
         body:
@@ -3611,12 +3615,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describes the permissions for a specified stack.  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Manage permissions level for the stack,
-    or an attached policy that explicitly grants permissions. For more information
-    on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describes the permissions for a specified stack.  <b>Required Permissions</b>:
+      To use this action, an IAM user must have a Manage permissions level for the
+      stack, or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribePermissionsRequest
     responses:
@@ -3632,13 +3636,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describe an instance''s RAID arrays. <note> You must specify at least
-    one of the parameters. </note>  <b>Required Permissions</b>: To use this action,
-    an IAM user must have a Show, Deploy, or Manage permissions level for the stack,
-    or an attached policy that explicitly grants permissions. For more information
-    on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describe an instance''s RAID arrays. <note> You must specify at
+      least one of the parameters. </note>  <b>Required Permissions</b>: To use this
+      action, an IAM user must have a Show, Deploy, or Manage permissions level for
+      the stack, or an attached policy that explicitly grants permissions. For more
+      information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeRaidArraysRequest
     responses:
@@ -3654,12 +3658,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describes Amazon RDS instances.  <b>Required Permissions</b>: To use
-    this action, an IAM user must have a Show, Deploy, or Manage permissions level
-    for the stack, or an attached policy that explicitly grants permissions. For more
-    information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describes Amazon RDS instances.  <b>Required Permissions</b>: To
+      use this action, an IAM user must have a Show, Deploy, or Manage permissions
+      level for the stack, or an attached policy that explicitly grants permissions.
+      For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeRdsDbInstancesRequest
     responses:
@@ -3675,12 +3679,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describes AWS OpsWorks service errors.  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Show, Deploy, or Manage permissions
-    level for the stack, or an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describes AWS OpsWorks service errors.  <b>Required Permissions</b>:
+      To use this action, an IAM user must have a Show, Deploy, or Manage permissions
+      level for the stack, or an attached policy that explicitly grants permissions.
+      For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeServiceErrorsRequest
     responses:
@@ -3696,12 +3700,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Requests a description of a stack''s provisioning parameters.  <b>Required
-    Permissions</b>: To use this action, an IAM user must have a Show, Deploy, or
-    Manage permissions level for the stack or an attached policy that explicitly grants
-    permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Requests a description of a stack''s provisioning parameters.  <b>Required
+      Permissions</b>: To use this action, an IAM user must have a Show, Deploy, or
+      Manage permissions level for the stack or an attached policy that explicitly
+      grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeStackProvisioningParametersRequest
     responses:
@@ -3717,13 +3721,14 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describes the number of layers and apps in a specified stack, and
-    the number of instances in each state, such as <code>running_setup</code> or <code>online</code>.  <b>Required
-    Permissions</b>: To use this action, an IAM user must have a Show, Deploy, or
-    Manage permissions level for the stack, or an attached policy that explicitly
-    grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describes the number of layers and apps in a specified stack, and
+      the number of instances in each state, such as <code>running_setup</code> or
+      <code>online</code>.  <b>Required Permissions</b>: To use this action, an IAM
+      user must have a Show, Deploy, or Manage permissions level for the stack, or
+      an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeStackSummaryRequest
     responses:
@@ -3739,12 +3744,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Requests a description of one or more stacks.  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Show, Deploy, or Manage permissions
-    level for the stack, or an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Requests a description of one or more stacks.  <b>Required Permissions</b>:
+      To use this action, an IAM user must have a Show, Deploy, or Manage permissions
+      level for the stack, or an attached policy that explicitly grants permissions.
+      For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeStacksRequest
     responses:
@@ -3760,13 +3765,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describes time-based auto scaling configurations for specified instances.
-    <note> You must specify at least one of the parameters. </note>  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Show, Deploy, or Manage permissions
-    level for the stack, or an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describes time-based auto scaling configurations for specified instances.
+      <note> You must specify at least one of the parameters. </note>  <b>Required
+      Permissions</b>: To use this action, an IAM user must have a Show, Deploy, or
+      Manage permissions level for the stack, or an attached policy that explicitly
+      grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeTimeBasedAutoScalingRequest
     responses:
@@ -3782,11 +3787,11 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describe specified users.  <b>Required Permissions</b>: To use this
-    action, an IAM user must have an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describe specified users.  <b>Required Permissions</b>: To use this
+      action, an IAM user must have an attached policy that explicitly grants permissions.
+      For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeUserProfilesRequest
     responses:
@@ -3802,13 +3807,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Describes an instance''s Amazon EBS volumes. <note> You must specify
-    at least one of the parameters. </note>  <b>Required Permissions</b>: To use this
-    action, an IAM user must have a Show, Deploy, or Manage permissions level for
-    the stack, or an attached policy that explicitly grants permissions. For more
-    information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Describes an instance''s Amazon EBS volumes. <note> You must specify
+      at least one of the parameters. </note>  <b>Required Permissions</b>: To use
+      this action, an IAM user must have a Show, Deploy, or Manage permissions level
+      for the stack, or an attached policy that explicitly grants permissions. For
+      more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DescribeVolumesRequest
     responses:
@@ -3824,12 +3829,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Detaches a specified Elastic Load Balancing instance from its layer.  <b>Required
-    Permissions</b>: To use this action, an IAM user must have a Manage permissions
-    level for the stack, or an attached policy that explicitly grants permissions.
-    For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Detaches a specified Elastic Load Balancing instance from its layer.  <b>Required
+      Permissions</b>: To use this action, an IAM user must have a Manage permissions
+      level for the stack, or an attached policy that explicitly grants permissions.
+      For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DetachElasticLoadBalancerRequest
     responses:
@@ -3845,14 +3850,14 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Disassociates an Elastic IP address from its instance. The address
-    remains registered with the stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
-    Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack, or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Disassociates an Elastic IP address from its instance. The address
+      remains registered with the stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
+      Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Manage permissions level for the stack, or an attached policy that
+      explicitly grants permissions. For more information on user permissions, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: DisassociateElasticIpRequest
     responses:
@@ -3868,13 +3873,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Gets a generated host name for the specified layer, based on the current
-    host name theme.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack, or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Gets a generated host name for the specified layer, based on the
+      current host name theme.  <b>Required Permissions</b>: To use this action, an
+      IAM user must have a Manage permissions level for the stack, or an attached
+      policy that explicitly grants permissions. For more information on user permissions,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: GetHostnameSuggestionRequest
     responses:
@@ -3890,8 +3895,8 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: <note> This action can be used only with Windows stacks. </note> Grants RDP access to a Windows instance for a specified time period.
   post:
+    description: <note> This action can be used only with Windows stacks. </note> Grants RDP access to a Windows instance for a specified time period.
     body:
       application/json: GrantAccessRequest
     responses:
@@ -3907,13 +3912,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Reboots a specified instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html">Starting,
-    Stopping, and Rebooting Instances</a>.  <b>Required Permissions</b>: To use this
-    action, an IAM user must have a Manage permissions level for the stack, or an
-    attached policy that explicitly grants permissions. For more information on user
-    permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Reboots a specified instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html">Starting,
+      Stopping, and Rebooting Instances</a>.  <b>Required Permissions</b>: To use
+      this action, an IAM user must have a Manage permissions level for the stack,
+      or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: RebootInstanceRequest
     responses:
@@ -3929,15 +3934,15 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Registers a specified Amazon ECS cluster with a stack. You can register
-    only one cluster with a stack. A cluster can be registered with only one stack.
-    For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html">
-    Resource Management</a>.  <b>Required Permissions</b>: To use this action, an
-    IAM user must have a Manage permissions level for the stack or an attached policy
-    that explicitly grants permissions. For more information on user permissions,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">
-    Managing User Permissions</a>.'
   post:
+    description: 'Registers a specified Amazon ECS cluster with a stack. You can register
+      only one cluster with a stack. A cluster can be registered with only one stack.
+      For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html">
+      Resource Management</a>.  <b>Required Permissions</b>: To use this action, an
+      IAM user must have a Manage permissions level for the stack or an attached policy
+      that explicitly grants permissions. For more information on user permissions,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">
+      Managing User Permissions</a>.'
     body:
       application/json: RegisterEcsClusterRequest
     responses:
@@ -3953,16 +3958,16 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Registers an Elastic IP address with a specified stack. An address
-    can be registered with only one stack at a time. If the address is already registered,
-    you must first deregister it by calling <a>DeregisterElasticIp</a>. For more information,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
-    Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack, or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Registers an Elastic IP address with a specified stack. An address
+      can be registered with only one stack at a time. If the address is already registered,
+      you must first deregister it by calling <a>DeregisterElasticIp</a>. For more
+      information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
+      Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Manage permissions level for the stack, or an attached policy that
+      explicitly grants permissions. For more information on user permissions, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: RegisterElasticIpRequest
     responses:
@@ -3978,19 +3983,19 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Registers instances with a specified stack that were created outside
-    of AWS OpsWorks. <note> We do not recommend using this action to register instances.
-    The complete registration operation has two primary steps, installing the AWS
-    OpsWorks agent on the instance and registering the instance with the stack. <code>RegisterInstance</code>
-    handles only the second step. You should instead use the AWS CLI <code>register</code>
-    command, which performs the entire registration operation. For more information,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html">
-    Registering an Instance with an AWS OpsWorks Stack</a>. </note>  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Manage permissions level for the stack
-    or an attached policy that explicitly grants permissions. For more information
-    on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Registers instances with a specified stack that were created outside
+      of AWS OpsWorks. <note> We do not recommend using this action to register instances.
+      The complete registration operation has two primary steps, installing the AWS
+      OpsWorks agent on the instance and registering the instance with the stack.
+      <code>RegisterInstance</code> handles only the second step. You should instead
+      use the AWS CLI <code>register</code> command, which performs the entire registration
+      operation. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html">
+      Registering an Instance with an AWS OpsWorks Stack</a>. </note>  <b>Required
+      Permissions</b>: To use this action, an IAM user must have a Manage permissions
+      level for the stack or an attached policy that explicitly grants permissions.
+      For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: RegisterInstanceRequest
     responses:
@@ -4006,12 +4011,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Registers an Amazon RDS instance with a stack.  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Manage permissions level for the stack,
-    or an attached policy that explicitly grants permissions. For more information
-    on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Registers an Amazon RDS instance with a stack.  <b>Required Permissions</b>:
+      To use this action, an IAM user must have a Manage permissions level for the
+      stack, or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: RegisterRdsDbInstanceRequest
     responses:
@@ -4027,16 +4032,16 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Registers an Amazon EBS volume with a specified stack. A volume can
-    be registered with only one stack at a time. If the volume is already registered,
-    you must first deregister it by calling <a>DeregisterVolume</a>. For more information,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
-    Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack, or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Registers an Amazon EBS volume with a specified stack. A volume
+      can be registered with only one stack at a time. If the volume is already registered,
+      you must first deregister it by calling <a>DeregisterVolume</a>. For more information,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
+      Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Manage permissions level for the stack, or an attached policy that
+      explicitly grants permissions. For more information on user permissions, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: RegisterVolumeRequest
     responses:
@@ -4052,17 +4057,17 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Specify the load-based auto scaling configuration for a specified
-    layer. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html">Managing
-    Load with Time-based and Load-based Instances</a>. <note> To use load-based auto
-    scaling, you must create a set of load-based auto scaling instances. Load-based
-    auto scaling operates only on the instances from that set, so you must ensure
-    that you have created enough instances to handle the maximum anticipated load.
-    </note>  <b>Required Permissions</b>: To use this action, an IAM user must have
-    a Manage permissions level for the stack, or an attached policy that explicitly
-    grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Specify the load-based auto scaling configuration for a specified
+      layer. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html">Managing
+      Load with Time-based and Load-based Instances</a>. <note> To use load-based
+      auto scaling, you must create a set of load-based auto scaling instances. Load-based
+      auto scaling operates only on the instances from that set, so you must ensure
+      that you have created enough instances to handle the maximum anticipated load.
+      </note>  <b>Required Permissions</b>: To use this action, an IAM user must have
+      a Manage permissions level for the stack, or an attached policy that explicitly
+      grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: SetLoadBasedAutoScalingRequest
     responses:
@@ -4078,13 +4083,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Specifies a user''s permissions. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html">Security
-    and Permissions</a>.  <b>Required Permissions</b>: To use this action, an IAM
-    user must have a Manage permissions level for the stack, or an attached policy
-    that explicitly grants permissions. For more information on user permissions,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Specifies a user''s permissions. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html">Security
+      and Permissions</a>.  <b>Required Permissions</b>: To use this action, an IAM
+      user must have a Manage permissions level for the stack, or an attached policy
+      that explicitly grants permissions. For more information on user permissions,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: SetPermissionRequest
     responses:
@@ -4100,14 +4105,14 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Specify the time-based auto scaling configuration for a specified
-    instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html">Managing
-    Load with Time-based and Load-based Instances</a>.  <b>Required Permissions</b>:
-    To use this action, an IAM user must have a Manage permissions level for the stack,
-    or an attached policy that explicitly grants permissions. For more information
-    on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Specify the time-based auto scaling configuration for a specified
+      instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html">Managing
+      Load with Time-based and Load-based Instances</a>.  <b>Required Permissions</b>:
+      To use this action, an IAM user must have a Manage permissions level for the
+      stack, or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: SetTimeBasedAutoScalingRequest
     responses:
@@ -4123,13 +4128,13 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Starts a specified instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html">Starting,
-    Stopping, and Rebooting Instances</a>.  <b>Required Permissions</b>: To use this
-    action, an IAM user must have a Manage permissions level for the stack, or an
-    attached policy that explicitly grants permissions. For more information on user
-    permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Starts a specified instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html">Starting,
+      Stopping, and Rebooting Instances</a>.  <b>Required Permissions</b>: To use
+      this action, an IAM user must have a Manage permissions level for the stack,
+      or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: StartInstanceRequest
     responses:
@@ -4145,12 +4150,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Starts a stack''s instances.  <b>Required Permissions</b>: To use
-    this action, an IAM user must have a Manage permissions level for the stack, or
-    an attached policy that explicitly grants permissions. For more information on
-    user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Starts a stack''s instances.  <b>Required Permissions</b>: To use
+      this action, an IAM user must have a Manage permissions level for the stack,
+      or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: StartStackRequest
     responses:
@@ -4166,16 +4171,16 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Stops a specified instance. When you stop a standard instance, the
-    data disappears and must be reinstalled when you restart the instance. You can
-    stop an Amazon EBS-backed instance without losing data. For more information,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html">Starting,
-    Stopping, and Rebooting Instances</a>.  <b>Required Permissions</b>: To use this
-    action, an IAM user must have a Manage permissions level for the stack, or an
-    attached policy that explicitly grants permissions. For more information on user
-    permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Stops a specified instance. When you stop a standard instance, the
+      data disappears and must be reinstalled when you restart the instance. You can
+      stop an Amazon EBS-backed instance without losing data. For more information,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html">Starting,
+      Stopping, and Rebooting Instances</a>.  <b>Required Permissions</b>: To use
+      this action, an IAM user must have a Manage permissions level for the stack,
+      or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: StopInstanceRequest
     responses:
@@ -4191,12 +4196,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Stops a specified stack.  <b>Required Permissions</b>: To use this
-    action, an IAM user must have a Manage permissions level for the stack, or an
-    attached policy that explicitly grants permissions. For more information on user
-    permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Stops a specified stack.  <b>Required Permissions</b>: To use this
+      action, an IAM user must have a Manage permissions level for the stack, or an
+      attached policy that explicitly grants permissions. For more information on
+      user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: StopStackRequest
     responses:
@@ -4212,15 +4217,15 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Unassigns a registered instance from all of it''s layers. The instance
-    remains in the stack as an unassigned instance and can be assigned to another
-    layer, as needed. You cannot use this action with instances that were created
-    with AWS OpsWorks.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Unassigns a registered instance from all of it''s layers. The instance
+      remains in the stack as an unassigned instance and can be assigned to another
+      layer, as needed. You cannot use this action with instances that were created
+      with AWS OpsWorks.  <b>Required Permissions</b>: To use this action, an IAM
+      user must have a Manage permissions level for the stack or an attached policy
+      that explicitly grants permissions. For more information on user permissions,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: UnassignInstanceRequest
     responses:
@@ -4236,14 +4241,14 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Unassigns an assigned Amazon EBS volume. The volume remains registered
-    with the stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
-    Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack, or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Unassigns an assigned Amazon EBS volume. The volume remains registered
+      with the stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
+      Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Manage permissions level for the stack, or an attached policy that
+      explicitly grants permissions. For more information on user permissions, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: UnassignVolumeRequest
     responses:
@@ -4259,12 +4264,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Updates a specified app.  <b>Required Permissions</b>: To use this
-    action, an IAM user must have a Deploy or Manage permissions level for the stack,
-    or an attached policy that explicitly grants permissions. For more information
-    on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Updates a specified app.  <b>Required Permissions</b>: To use this
+      action, an IAM user must have a Deploy or Manage permissions level for the stack,
+      or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: UpdateAppRequest
     responses:
@@ -4280,14 +4285,14 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Updates a registered Elastic IP address''s name. For more information,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
-    Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack, or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Updates a registered Elastic IP address''s name. For more information,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
+      Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Manage permissions level for the stack, or an attached policy that
+      explicitly grants permissions. For more information on user permissions, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: UpdateElasticIpRequest
     responses:
@@ -4303,12 +4308,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Updates a specified instance.  <b>Required Permissions</b>: To use
-    this action, an IAM user must have a Manage permissions level for the stack, or
-    an attached policy that explicitly grants permissions. For more information on
-    user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Updates a specified instance.  <b>Required Permissions</b>: To use
+      this action, an IAM user must have a Manage permissions level for the stack,
+      or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: UpdateInstanceRequest
     responses:
@@ -4324,12 +4329,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Updates a specified layer.  <b>Required Permissions</b>: To use this
-    action, an IAM user must have a Manage permissions level for the stack, or an
-    attached policy that explicitly grants permissions. For more information on user
-    permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Updates a specified layer.  <b>Required Permissions</b>: To use
+      this action, an IAM user must have a Manage permissions level for the stack,
+      or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: UpdateLayerRequest
     responses:
@@ -4345,12 +4350,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Updates a user''s SSH public key.  <b>Required Permissions</b>: To
-    use this action, an IAM user must have self-management enabled or an attached
-    policy that explicitly grants permissions. For more information on user permissions,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Updates a user''s SSH public key.  <b>Required Permissions</b>:
+      To use this action, an IAM user must have self-management enabled or an attached
+      policy that explicitly grants permissions. For more information on user permissions,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: UpdateMyUserProfileRequest
     responses:
@@ -4366,12 +4371,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Updates an Amazon RDS instance.  <b>Required Permissions</b>: To use
-    this action, an IAM user must have a Manage permissions level for the stack, or
-    an attached policy that explicitly grants permissions. For more information on
-    user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Updates an Amazon RDS instance.  <b>Required Permissions</b>: To
+      use this action, an IAM user must have a Manage permissions level for the stack,
+      or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: UpdateRdsDbInstanceRequest
     responses:
@@ -4387,12 +4392,12 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Updates a specified stack.  <b>Required Permissions</b>: To use this
-    action, an IAM user must have a Manage permissions level for the stack, or an
-    attached policy that explicitly grants permissions. For more information on user
-    permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Updates a specified stack.  <b>Required Permissions</b>: To use
+      this action, an IAM user must have a Manage permissions level for the stack,
+      or an attached policy that explicitly grants permissions. For more information
+      on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: UpdateStackRequest
     responses:
@@ -4408,11 +4413,11 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Updates a specified user profile.  <b>Required Permissions</b>: To
-    use this action, an IAM user must have an attached policy that explicitly grants
-    permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Updates a specified user profile.  <b>Required Permissions</b>:
+      To use this action, an IAM user must have an attached policy that explicitly
+      grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: UpdateUserProfileRequest
     responses:
@@ -4428,14 +4433,14 @@ types:
       enum:
       - ''
       description: This url parameter exists only to differentiate different operations on the same url
-  description: 'Updates an Amazon EBS volume''s name or mount point. For more information,
-    see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
-    Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
-    must have a Manage permissions level for the stack, or an attached policy that
-    explicitly grants permissions. For more information on user permissions, see <a
-    href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
-    User Permissions</a>.'
   post:
+    description: 'Updates an Amazon EBS volume''s name or mount point. For more information,
+      see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
+      Management</a>.  <b>Required Permissions</b>: To use this action, an IAM user
+      must have a Manage permissions level for the stack, or an attached policy that
+      explicitly grants permissions. For more information on user permissions, see
+      <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
+      User Permissions</a>.'
     body:
       application/json: UpdateVolumeRequest
     responses:
