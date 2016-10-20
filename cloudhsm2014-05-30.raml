@@ -588,6 +588,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Add Tags To Resource
   post:
     description: Adds or overwrites one or more tags for the specified AWS CloudHSM resource. Each tag consists of a key and a value. Tag keys must be unique to each resource.
     displayName: Add Tags To Resource
@@ -607,6 +608,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Hapg
   post:
     description: Creates a high-availability partition group. A high-availability partition group is a group of partitions that spans multiple physical HSMs.
     displayName: Create Hapg
@@ -626,6 +628,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Hsm
   post:
     description: Creates an uninitialized HSM instance. There is an upfront fee charged for each HSM instance that you create with the <a>CreateHsm</a> operation. If you accidentally provision an HSM and want to request a refund, delete the instance using the <a>DeleteHsm</a> operation, go to the <a href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>, create a new case, and select <b>Account and Billing Support</b>. <important> It can take up to 20 minutes to create and provision an HSM. You can monitor the status of the HSM with the <a>DescribeHsm</a> operation. The HSM is ready to be initialized when the status changes to <code>RUNNING</code>. </important>
     displayName: Create Hsm
@@ -645,6 +648,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Luna Client
   post:
     description: Creates an HSM client.
     displayName: Create Luna Client
@@ -664,6 +668,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Hapg
   post:
     description: Deletes a high-availability partition group.
     displayName: Delete Hapg
@@ -683,6 +688,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Hsm
   post:
     description: Deletes an HSM. After completion, this operation cannot be undone and your key material cannot be recovered.
     displayName: Delete Hsm
@@ -702,6 +708,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Luna Client
   post:
     description: Deletes a client.
     displayName: Delete Luna Client
@@ -721,6 +728,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Hapg
   post:
     description: Retrieves information about a high-availability partition group.
     displayName: Describe Hapg
@@ -740,6 +748,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Hsm
   post:
     description: Retrieves information about an HSM. You can identify the HSM by its ARN or its serial number.
     displayName: Describe Hsm
@@ -759,6 +768,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Luna Client
   post:
     description: Retrieves information about an HSM client.
     displayName: Describe Luna Client
@@ -778,6 +788,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Config
   post:
     description: Gets the configuration files necessary to connect to all high availability partition groups the client is associated with.
     displayName: Get Config
@@ -797,6 +808,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Available Zones
   post:
     description: Lists the Availability Zones that have available AWS CloudHSM capacity.
     displayName: List Available Zones
@@ -816,6 +828,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Hapgs
   post:
     description: Lists the high-availability partition groups for the account. This operation supports pagination with the use of the <i>NextToken</i> member. If more results are available, the <i>NextToken</i> member of the response contains a token that you pass in the next call to <a>ListHapgs</a> to retrieve the next set of items.
     displayName: List Hapgs
@@ -835,6 +848,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Hsms
   post:
     description: Retrieves the identifiers of all of the HSMs provisioned for the current customer. This operation supports pagination with the use of the <i>NextToken</i> member. If more results are available, the <i>NextToken</i> member of the response contains a token that you pass in the next call to <a>ListHsms</a> to retrieve the next set of items.
     displayName: List Hsms
@@ -854,6 +868,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Luna Clients
   post:
     description: Lists all of the clients. This operation supports pagination with the use of the <i>NextToken</i> member. If more results are available, the <i>NextToken</i> member of the response contains a token that you pass in the next call to <a>ListLunaClients</a> to retrieve the next set of items.
     displayName: List Luna Clients
@@ -873,6 +888,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Tags For Resource
   post:
     description: Returns a list of all tags for the specified AWS CloudHSM resource.
     displayName: List Tags For Resource
@@ -892,6 +908,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Hapg
   post:
     description: Modifies an existing high-availability partition group.
     displayName: Modify Hapg
@@ -911,6 +928,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Hsm
   post:
     description: Modifies an HSM. <important> This operation can result in the HSM being offline for up to 15 minutes while the AWS CloudHSM service is reconfigured. If you are modifying a production HSM, you should ensure that your AWS CloudHSM service is configured for high availability, and consider executing this operation during a maintenance window. </important>
     displayName: Modify Hsm
@@ -930,6 +948,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Luna Client
   post:
     description: Modifies the certificate used by the client. This action can potentially start a workflow to install the new certificate on the client's HSMs.
     displayName: Modify Luna Client
@@ -949,6 +968,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Remove Tags From Resource
   post:
     description: Removes one or more tags from the specified AWS CloudHSM resource. To remove a tag, specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use <a>AddTagsToResource</a>.
     displayName: Remove Tags From Resource

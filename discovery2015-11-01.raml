@@ -505,6 +505,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Tags
   post:
     description: Creates one or more tags for configuration items. Tags are metadata that help you categorize IT assets. This API accepts a list of multiple configuration items.
     displayName: Create Tags
@@ -524,6 +525,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Tags
   post:
     description: Deletes the association between configuration items and one or more tags. This API accepts a list of multiple configuration items.
     displayName: Delete Tags
@@ -543,6 +545,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Agents
   post:
     description: Lists AWS agents by ID or lists all agents associated with your user account if you did not specify an agent ID.
     displayName: Describe Agents
@@ -562,6 +565,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Configurations
   post:
     description: Retrieves a list of attributes for a specific configuration ID. For example, the output for a <i>server</i> configuration item includes a list of attributes about the server, including host name, operating system, number of network cards, etc.
     displayName: Describe Configurations
@@ -581,6 +585,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Export Configurations
   post:
     description: Retrieves the status of a given export process. You can retrieve status from a maximum of 100 processes.
     displayName: Describe Export Configurations
@@ -600,6 +605,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Tags
   post:
     description: Retrieves a list of configuration items that are tagged with a specific tag. Or retrieves a list of all tags assigned to a specific configuration item.
     displayName: Describe Tags
@@ -619,6 +625,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Export Configurations
   post:
     description: Exports all discovered configuration data to an Amazon S3 bucket or an application that enables you to view and evaluate the data. Data includes tags and tag associations, processes, connections, servers, and system performance. This API returns an export ID which you can query using the <i>GetExportStatus</i> API. The system imposes a limit of two configuration exports in six hours.
     displayName: Export Configurations
@@ -636,6 +643,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Configurations
   post:
     description: Retrieves a list of configurations items according to the criteria you specify in a filter. The filter criteria identify relationship requirements.
     displayName: List Configurations
@@ -655,6 +663,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Start Data Collection By Agent Ids
   post:
     description: Instructs the specified agents to start collecting data. Agents can reside on host servers or virtual machines in your data center.
     displayName: Start Data Collection By Agent Ids
@@ -674,6 +683,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Stop Data Collection By Agent Ids
   post:
     description: Instructs the specified agents to stop collecting data.
     displayName: Stop Data Collection By Agent Ids

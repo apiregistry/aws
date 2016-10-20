@@ -1095,17 +1095,20 @@ types:
     description: A complex type that contains information about viewer certificates for this distribution.
 /2016-08-20:
   /distribution:
+    displayName: Create Distribution2016_08_20
     /{DistributionId}:
       uriParameters:
         DistributionId:
           type: string
           description: The distribution's id.
       /invalidation:
+        displayName: List Invalidations2016_08_20
         /{Id}:
           uriParameters:
             Id:
               type: string
               description: The invalidation's id.
+          displayName: Get Invalidation2016_08_20
           get:
             description: Get the information about an invalidation.
             displayName: Get Invalidation2016_08_20
@@ -1173,7 +1176,9 @@ types:
         Id:
           type: string
           description: The distribution's id.
+      displayName: Delete Distribution2016_08_20
       /config:
+        displayName: Update Distribution2016_08_20
         get:
           description: Get the configuration information about a distribution.
           displayName: Get Distribution Config2016_08_20
@@ -1318,12 +1323,15 @@ types:
           description: NoSuchOrigin
   /origin-access-identity:
     /cloudfront:
+      displayName: List Cloud Front Origin Access Identities2016_08_20
       /{Id}:
         uriParameters:
           Id:
             type: string
             description: The identity's id.
+        displayName: Delete Cloud Front Origin Access Identity2016_08_20
         /config:
+          displayName: Update Cloud Front Origin Access Identity2016_08_20
           get:
             description: Get the configuration information about an origin access identity.
             displayName: Get Cloud Front Origin Access Identity Config2016_08_20
@@ -1461,6 +1469,7 @@ types:
           400:
             description: InvalidArgument
   /tagging?Operation=Untag:
+    displayName: Untag Resource2016_08_20
     post:
       description: Remove tags from a CloudFront resource.
       displayName: Untag Resource2016_08_20
@@ -1485,12 +1494,15 @@ types:
         404:
           description: NoSuchResource
   /streaming-distribution:
+    displayName: List Streaming Distributions2016_08_20
     /{Id}:
       uriParameters:
         Id:
           type: string
           description: The streaming distribution's id.
+      displayName: Get Streaming Distribution2016_08_20
       /config:
+        displayName: Update Streaming Distribution2016_08_20
         get:
           description: Get the configuration information about a streaming distribution.
           displayName: Get Streaming Distribution Config2016_08_20
@@ -1632,6 +1644,7 @@ types:
         400:
           description: InvalidArgument
   /streaming-distribution?WithTags:
+    displayName: Create Streaming Distribution With Tags2016_08_20
     post:
       description: Create a new streaming distribution with tags.
       displayName: Create Streaming Distribution With Tags2016_08_20
@@ -1662,6 +1675,7 @@ types:
         403:
           description: AccessDenied
   /distribution?WithTags:
+    displayName: Create Distribution With Tags2016_08_20
     post:
       description: Create a new distribution with tags.
       displayName: Create Distribution With Tags2016_08_20
@@ -1694,6 +1708,7 @@ types:
         404:
           description: NoSuchOrigin
   /tagging?Operation=Tag:
+    displayName: Tag Resource2016_08_20
     post:
       description: Add tags to a CloudFront resource.
       displayName: Tag Resource2016_08_20
@@ -1723,6 +1738,7 @@ types:
         WebACLId:
           type: string
           description: The Id of the AWS WAF web ACL for which you want to list the associated distributions. If you specify "null" for the Id, the request returns a list of the distributions that aren't associated with a web ACL.
+      displayName: List Distributions By Web A C L Id2016_08_20
       get:
         description: List the distributions that are associated with a specified AWS WAF web ACL.
         displayName: List Distributions By Web A C L Id2016_08_20
@@ -1742,6 +1758,7 @@ types:
           400:
             description: InvalidArgument | InvalidWebACLId
   /tagging:
+    displayName: List Tags For Resource2016_08_20
     get:
       description: List tags for a CloudFront resource.
       displayName: List Tags For Resource2016_08_20

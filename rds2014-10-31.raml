@@ -5399,9 +5399,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Add Source Identifier To Subscription
   post:
     description: Adds a source identifier to an existing RDS event notification subscription.
     displayName: Add Source Identifier To Subscription
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AddSourceIdentifierToSubscription
     body:
       application/xml: AddSourceIdentifierToSubscriptionMessage
     responses:
@@ -5418,9 +5424,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Add Tags To Resource
   post:
     description: Adds metadata tags to an Amazon RDS resource. These tags can also be used with cost allocation reporting to track cost associated with Amazon RDS resources, or used in a Condition statement in an IAM policy for Amazon RDS. For an overview on tagging Amazon RDS resources, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html">Tagging Amazon RDS Resources</a>.
     displayName: Add Tags To Resource
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AddTagsToResource
     body:
       application/xml: AddTagsToResourceMessage
     responses:
@@ -5437,9 +5449,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Apply Pending Maintenance Action
   post:
     description: Applies a pending maintenance action to a resource (for example, to a DB instance).
     displayName: Apply Pending Maintenance Action
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ApplyPendingMaintenanceAction
     body:
       application/xml: ApplyPendingMaintenanceActionMessage
     responses:
@@ -5456,6 +5474,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Authorize D B Security Group Ingress
   post:
     description: 'Enables ingress to a DBSecurityGroup using one of two forms of authorization.
       First, EC2 or VPC security groups can be added to the DBSecurityGroup if the
@@ -5469,6 +5488,11 @@ types:
       another. </note> For an overview of CIDR ranges, go to the <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Wikipedia
       Tutorial</a>. '
     displayName: Authorize D B Security Group Ingress
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AuthorizeDBSecurityGroupIngress
     body:
       application/xml: AuthorizeDBSecurityGroupIngressMessage
     responses:
@@ -5487,9 +5511,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Copy D B Cluster Parameter Group
   post:
     description: Copies the specified DB cluster parameter group.
     displayName: Copy D B Cluster Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CopyDBClusterParameterGroup
     body:
       application/xml: CopyDBClusterParameterGroupMessage
     responses:
@@ -5508,11 +5538,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Copy D B Cluster Snapshot
   post:
     description: 'Creates a snapshot of a DB cluster. For more information on Amazon
       Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Copy D B Cluster Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CopyDBClusterSnapshot
     body:
       application/xml: CopyDBClusterSnapshotMessage
     responses:
@@ -5531,9 +5567,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Copy D B Parameter Group
   post:
     description: Copies the specified DB parameter group.
     displayName: Copy D B Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CopyDBParameterGroup
     body:
       application/xml: CopyDBParameterGroupMessage
     responses:
@@ -5552,9 +5594,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Copy D B Snapshot
   post:
     description: Copies the specified DB snapshot. The source DB snapshot must be in the "available" state. If you are copying from a shared manual DB snapshot, the <code>SourceDBSnapshotIdentifier</code> must be the ARN of the shared DB snapshot.
     displayName: Copy D B Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CopyDBSnapshot
     body:
       application/xml: CopyDBSnapshotMessage
     responses:
@@ -5573,9 +5621,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Copy Option Group
   post:
     description: Copies the specified option group.
     displayName: Copy Option Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CopyOptionGroup
     body:
       application/xml: CopyOptionGroupMessage
     responses:
@@ -5594,12 +5648,18 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create D B Cluster
   post:
     description: 'Creates a new Amazon Aurora DB cluster. You can use the <code>ReplicationSourceIdentifier</code>
       parameter to create the DB cluster as a Read Replica of another DB cluster.
       For more information on Amazon Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Create D B Cluster
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDBCluster
     body:
       application/xml: CreateDBClusterMessage
     responses:
@@ -5620,6 +5680,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create D B Cluster Parameter Group
   post:
     description: 'Creates a new DB cluster parameter group. Parameters in a DB cluster
       parameter group apply to all of the instances in a DB cluster.  A DB cluster
@@ -5644,6 +5705,11 @@ types:
       For more information on Amazon Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Create D B Cluster Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDBClusterParameterGroup
     body:
       application/xml: CreateDBClusterParameterGroupMessage
     responses:
@@ -5660,11 +5726,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create D B Cluster Snapshot
   post:
     description: 'Creates a snapshot of a DB cluster. For more information on Amazon
       Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Create D B Cluster Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDBClusterSnapshot
     body:
       application/xml: CreateDBClusterSnapshotMessage
     responses:
@@ -5683,9 +5755,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create D B Instance
   post:
     description: Creates a new DB instance.
     displayName: Create D B Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDBInstance
     body:
       application/xml: CreateDBInstanceMessage
     responses:
@@ -5704,9 +5782,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create D B Instance Read Replica
   post:
     description: Creates a DB instance for a DB instance running MySQL, MariaDB, or PostgreSQL that acts as a Read Replica of a source DB instance. All Read Replica DB instances are created as Single-AZ deployments with backups disabled. All other DB instance attributes (including DB security groups and DB parameter groups) are inherited from the source DB instance, except as specified below. <important> The source DB instance must have backup retention enabled. </important>
     displayName: Create D B Instance Read Replica
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDBInstanceReadReplica
     body:
       application/xml: CreateDBInstanceReadReplicaMessage
     responses:
@@ -5725,9 +5809,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create D B Parameter Group
   post:
     description: Creates a new DB parameter group.  A DB parameter group is initially created with the default parameters for the database engine used by the DB instance. To provide custom values for any of the parameters, you must modify the group after creating it using <i>ModifyDBParameterGroup</i>. Once you've created a DB parameter group, you need to associate it with your DB instance using <i>ModifyDBInstance</i>. When you associate a new DB parameter group with a running DB instance, you need to reboot the DB instance without failover for the new DB parameter group and associated settings to take effect.  <important> After you create a DB parameter group, you should wait at least 5 minutes before creating your first DB instance that uses that DB parameter group as the default parameter group. This allows Amazon RDS to fully complete the create action before the parameter group is used as the default for a new DB instance. This is especially important for parameters that are critical when creating the default database for a DB instance, such as the character set for the default database defined by the <code>character_set_database</code> parameter. You can use the <i>Parameter Groups</i> option of the <a href="https://console.aws.amazon.com/rds/">Amazon RDS console</a> or the <i>DescribeDBParameters</i> command to verify that your DB parameter group has been created or modified. </important>
     displayName: Create D B Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDBParameterGroup
     body:
       application/xml: CreateDBParameterGroupMessage
     responses:
@@ -5744,9 +5834,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create D B Security Group
   post:
     description: Creates a new DB security group. DB security groups control access to a DB instance.
     displayName: Create D B Security Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDBSecurityGroup
     body:
       application/xml: CreateDBSecurityGroupMessage
     responses:
@@ -5763,9 +5859,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create D B Snapshot
   post:
     description: Creates a DBSnapshot. The source DBInstance must be in "available" state.
     displayName: Create D B Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDBSnapshot
     body:
       application/xml: CreateDBSnapshotMessage
     responses:
@@ -5784,9 +5886,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create D B Subnet Group
   post:
     description: Creates a new DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the region.
     displayName: Create D B Subnet Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDBSubnetGroup
     body:
       application/xml: CreateDBSubnetGroupMessage
     responses:
@@ -5803,9 +5911,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Event Subscription
   post:
     description: Creates an RDS event notification subscription. This action requires a topic ARN (Amazon Resource Name) created by either the RDS console, the SNS console, or the SNS API. To obtain an ARN with SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the SNS console. You can specify the type of source (SourceType) you want to be notified of, provide a list of RDS sources (SourceIds) that triggers the events, and provide a list of event categories (EventCategories) for events you want to be notified of. For example, you can specify SourceType = db-instance, SourceIds = mydbinstance1, mydbinstance2 and EventCategories = Availability, Backup. If you specify both the SourceType and SourceIds, such as SourceType = db-instance and SourceIdentifier = myDBInstance1, you will be notified of all the db-instance events for the specified source. If you specify a SourceType but do not specify a SourceIdentifier, you will receive notice of the events for that source type for all your RDS sources. If you do not specify either the SourceType nor the SourceIdentifier, you will be notified of events generated from all RDS sources belonging to your customer account.
     displayName: Create Event Subscription
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateEventSubscription
     body:
       application/xml: CreateEventSubscriptionMessage
     responses:
@@ -5824,9 +5938,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Option Group
   post:
     description: Creates a new option group. You can create up to 20 option groups.
     displayName: Create Option Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateOptionGroup
     body:
       application/xml: CreateOptionGroupMessage
     responses:
@@ -5843,6 +5963,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete D B Cluster
   post:
     description: 'The DeleteDBCluster action deletes a previously provisioned DB cluster.
       When you delete a DB cluster, all automated backups for that DB cluster are
@@ -5851,6 +5972,11 @@ types:
       <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Delete D B Cluster
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDBCluster
     body:
       application/xml: DeleteDBClusterMessage
     responses:
@@ -5869,12 +5995,18 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete D B Cluster Parameter Group
   post:
     description: 'Deletes a specified DB cluster parameter group. The DB cluster parameter
       group to be deleted cannot be associated with any DB clusters. For more information
       on Amazon Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Delete D B Cluster Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDBClusterParameterGroup
     body:
       application/xml: DeleteDBClusterParameterGroupMessage
     responses:
@@ -5893,6 +6025,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete D B Cluster Snapshot
   post:
     description: 'Deletes a DB cluster snapshot. If the snapshot is being copied,
       the copy operation is terminated. <note> The DB cluster snapshot must be in
@@ -5900,6 +6033,11 @@ types:
       on Amazon Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Delete D B Cluster Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDBClusterSnapshot
     body:
       application/xml: DeleteDBClusterSnapshotMessage
     responses:
@@ -5918,6 +6056,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete D B Instance
   post:
     description: 'The DeleteDBInstance action deletes a previously provisioned DB
       instance. When you delete a DB instance, all automated backups for that instance
@@ -5938,6 +6077,11 @@ types:
       the promotion completes, then call the <code>DeleteDBInstance</code> API action
       to delete the final instance in the DB cluster.'
     displayName: Delete D B Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDBInstance
     body:
       application/xml: DeleteDBInstanceMessage
     responses:
@@ -5956,9 +6100,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete D B Parameter Group
   post:
     description: Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted cannot be associated with any DB instances.
     displayName: Delete D B Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDBParameterGroup
     body:
       application/xml: DeleteDBParameterGroupMessage
     responses:
@@ -5977,9 +6127,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete D B Security Group
   post:
     description: Deletes a DB security group. <note> The specified DB security group must not be associated with any DB instances. </note>
     displayName: Delete D B Security Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDBSecurityGroup
     body:
       application/xml: DeleteDBSecurityGroupMessage
     responses:
@@ -5998,9 +6154,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete D B Snapshot
   post:
     description: Deletes a DBSnapshot. If the snapshot is being copied, the copy operation is terminated. <note> The DBSnapshot must be in the <code>available</code> state to be deleted. </note>
     displayName: Delete D B Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDBSnapshot
     body:
       application/xml: DeleteDBSnapshotMessage
     responses:
@@ -6019,9 +6181,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete D B Subnet Group
   post:
     description: Deletes a DB subnet group. <note> The specified database subnet group must not be associated with any DB instances. </note>
     displayName: Delete D B Subnet Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDBSubnetGroup
     body:
       application/xml: DeleteDBSubnetGroupMessage
     responses:
@@ -6040,9 +6208,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Event Subscription
   post:
     description: Deletes an RDS event notification subscription.
     displayName: Delete Event Subscription
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteEventSubscription
     body:
       application/xml: DeleteEventSubscriptionMessage
     responses:
@@ -6061,9 +6235,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Option Group
   post:
     description: Deletes an existing option group.
     displayName: Delete Option Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteOptionGroup
     body:
       application/xml: DeleteOptionGroupMessage
     responses:
@@ -6082,9 +6262,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Account Attributes
   post:
     description: Lists all of the attributes for a customer account. The attributes include Amazon RDS quotas for the account, such as the number of DB instances allowed. The description for a quota includes the quota name, current usage toward that quota, and the quota's maximum value. This command does not take any parameters.
     displayName: Describe Account Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeAccountAttributes
     body:
       application/xml: DescribeAccountAttributesMessage
     responses:
@@ -6099,9 +6285,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Certificates
   post:
     description: Lists the set of CA certificates provided by Amazon RDS for this AWS account.
     displayName: Describe Certificates
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeCertificates
     body:
       application/xml: DescribeCertificatesMessage
     responses:
@@ -6118,6 +6310,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Cluster Parameter Groups
   post:
     description: ' Returns a list of <code>DBClusterParameterGroup</code> descriptions.
       If a <code>DBClusterParameterGroupName</code> parameter is specified, the list
@@ -6125,6 +6318,11 @@ types:
       more information on Amazon Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Describe D B Cluster Parameter Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBClusterParameterGroups
     body:
       application/xml: DescribeDBClusterParameterGroupsMessage
     responses:
@@ -6141,11 +6339,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Cluster Parameters
   post:
     description: 'Returns the detailed parameter list for a particular DB cluster
       parameter group. For more information on Amazon Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Describe D B Cluster Parameters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBClusterParameters
     body:
       application/xml: DescribeDBClusterParametersMessage
     responses:
@@ -6162,9 +6366,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Cluster Snapshot Attributes
   post:
     description: Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot. When sharing snapshots with other AWS accounts, <code>DescribeDBClusterSnapshotAttributes</code> returns the <code>restore</code> attribute and a list of IDs for the AWS accounts that are authorized to copy or restore the manual DB cluster snapshot. If <code>all</code> is included in the list of values for the <code>restore</code> attribute, then the manual DB cluster snapshot is public and can be copied or restored by all AWS accounts. To add or remove access for an AWS account to copy or restore a manual DB cluster snapshot, or to make the manual DB cluster snapshot public or private, use the <a>ModifyDBClusterSnapshotAttribute</a> API action.
     displayName: Describe D B Cluster Snapshot Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBClusterSnapshotAttributes
     body:
       application/xml: DescribeDBClusterSnapshotAttributesMessage
     responses:
@@ -6181,11 +6391,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Cluster Snapshots
   post:
     description: 'Returns information about DB cluster snapshots. This API action
       supports pagination. For more information on Amazon Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Describe D B Cluster Snapshots
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBClusterSnapshots
     body:
       application/xml: DescribeDBClusterSnapshotsMessage
     responses:
@@ -6202,11 +6418,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Clusters
   post:
     description: 'Returns information about provisioned Aurora DB clusters. This API
       supports pagination. For more information on Amazon Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Describe D B Clusters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBClusters
     body:
       application/xml: DescribeDBClustersMessage
     responses:
@@ -6223,9 +6445,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Engine Versions
   post:
     description: Returns a list of the available DB engines.
     displayName: Describe D B Engine Versions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBEngineVersions
     body:
       application/xml: DescribeDBEngineVersionsMessage
     responses:
@@ -6240,9 +6468,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Instances
   post:
     description: Returns information about provisioned RDS instances. This API supports pagination.
     displayName: Describe D B Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBInstances
     body:
       application/xml: DescribeDBInstancesMessage
     responses:
@@ -6259,9 +6493,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Log Files
   post:
     description: Returns a list of DB log files for the DB instance.
     displayName: Describe D B Log Files
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBLogFiles
     body:
       application/xml: DescribeDBLogFilesMessage
     responses:
@@ -6278,11 +6518,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Parameter Groups
   post:
     description: ' Returns a list of <code>DBParameterGroup</code> descriptions. If
       a <code>DBParameterGroupName</code> is specified, the list will contain only
       the description of the specified DB parameter group. '
     displayName: Describe D B Parameter Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBParameterGroups
     body:
       application/xml: DescribeDBParameterGroupsMessage
     responses:
@@ -6299,9 +6545,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Parameters
   post:
     description: Returns the detailed parameter list for a particular DB parameter group.
     displayName: Describe D B Parameters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBParameters
     body:
       application/xml: DescribeDBParametersMessage
     responses:
@@ -6318,11 +6570,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Security Groups
   post:
     description: ' Returns a list of <code>DBSecurityGroup</code> descriptions. If
       a <code>DBSecurityGroupName</code> is specified, the list will contain only
       the descriptions of the specified DB security group. '
     displayName: Describe D B Security Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBSecurityGroups
     body:
       application/xml: DescribeDBSecurityGroupsMessage
     responses:
@@ -6339,9 +6597,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Snapshot Attributes
   post:
     description: Returns a list of DB snapshot attribute names and values for a manual DB snapshot. When sharing snapshots with other AWS accounts, <code>DescribeDBSnapshotAttributes</code> returns the <code>restore</code> attribute and a list of IDs for the AWS accounts that are authorized to copy or restore the manual DB snapshot. If <code>all</code> is included in the list of values for the <code>restore</code> attribute, then the manual DB snapshot is public and can be copied or restored by all AWS accounts. To add or remove access for an AWS account to copy or restore a manual DB snapshot, or to make the manual DB snapshot public or private, use the <a>ModifyDBSnapshotAttribute</a> API action.
     displayName: Describe D B Snapshot Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBSnapshotAttributes
     body:
       application/xml: DescribeDBSnapshotAttributesMessage
     responses:
@@ -6358,9 +6622,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Snapshots
   post:
     description: Returns information about DB snapshots. This API action supports pagination.
     displayName: Describe D B Snapshots
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBSnapshots
     body:
       application/xml: DescribeDBSnapshotsMessage
     responses:
@@ -6377,12 +6647,18 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe D B Subnet Groups
   post:
     description: 'Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName
       is specified, the list will contain only the descriptions of the specified DBSubnetGroup.
       For an overview of CIDR ranges, go to the <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Wikipedia
       Tutorial</a>. '
     displayName: Describe D B Subnet Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDBSubnetGroups
     body:
       application/xml: DescribeDBSubnetGroupsMessage
     responses:
@@ -6399,11 +6675,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Engine Default Cluster Parameters
   post:
     description: 'Returns the default engine and system parameter information for
       the cluster database engine. For more information on Amazon Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Describe Engine Default Cluster Parameters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEngineDefaultClusterParameters
     body:
       application/xml: DescribeEngineDefaultClusterParametersMessage
     responses:
@@ -6418,9 +6700,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Engine Default Parameters
   post:
     description: Returns the default engine and system parameter information for the specified database engine.
     displayName: Describe Engine Default Parameters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEngineDefaultParameters
     body:
       application/xml: DescribeEngineDefaultParametersMessage
     responses:
@@ -6435,12 +6723,18 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Event Categories
   post:
     description: 'Displays a list of categories for all event source types, or, if
       specified, for a specified source type. You can see a list of the event categories
       and source types in the <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">
       Events</a> topic in the <i>Amazon RDS User Guide.</i> '
     displayName: Describe Event Categories
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEventCategories
     body:
       application/xml: DescribeEventCategoriesMessage
     responses:
@@ -6455,9 +6749,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Event Subscriptions
   post:
     description: Lists all the subscription descriptions for a customer account. The description for a subscription includes SubscriptionName, SNSTopicARN, CustomerID, SourceType, SourceID, CreationTime, and Status. If you specify a SubscriptionName, lists the description for that subscription.
     displayName: Describe Event Subscriptions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEventSubscriptions
     body:
       application/xml: DescribeEventSubscriptionsMessage
     responses:
@@ -6474,9 +6774,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Events
   post:
     description: Returns events related to DB instances, DB security groups, DB snapshots, and DB parameter groups for the past 14 days. Events specific to a particular DB instance, DB security group, database snapshot, or DB parameter group can be obtained by providing the name as a parameter. By default, the past hour of events are returned.
     displayName: Describe Events
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEvents
     body:
       application/xml: DescribeEventsMessage
     responses:
@@ -6491,9 +6797,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Option Group Options
   post:
     description: Describes all available options.
     displayName: Describe Option Group Options
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeOptionGroupOptions
     body:
       application/xml: DescribeOptionGroupOptionsMessage
     responses:
@@ -6508,9 +6820,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Option Groups
   post:
     description: Describes the available option groups.
     displayName: Describe Option Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeOptionGroups
     body:
       application/xml: DescribeOptionGroupsMessage
     responses:
@@ -6527,9 +6845,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Orderable D B Instance Options
   post:
     description: Returns a list of orderable DB instance options for the specified engine.
     displayName: Describe Orderable D B Instance Options
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeOrderableDBInstanceOptions
     body:
       application/xml: DescribeOrderableDBInstanceOptionsMessage
     responses:
@@ -6544,9 +6868,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Pending Maintenance Actions
   post:
     description: Returns a list of resources (for example, DB instances) that have at least one pending maintenance action.
     displayName: Describe Pending Maintenance Actions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribePendingMaintenanceActions
     body:
       application/xml: DescribePendingMaintenanceActionsMessage
     responses:
@@ -6563,9 +6893,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Reserved D B Instances
   post:
     description: Returns information about reserved DB instances for this account, or about a specified reserved DB instance.
     displayName: Describe Reserved D B Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeReservedDBInstances
     body:
       application/xml: DescribeReservedDBInstancesMessage
     responses:
@@ -6582,9 +6918,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Reserved D B Instances Offerings
   post:
     description: Lists available reserved DB instance offerings.
     displayName: Describe Reserved D B Instances Offerings
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeReservedDBInstancesOfferings
     body:
       application/xml: DescribeReservedDBInstancesOfferingsMessage
     responses:
@@ -6601,9 +6943,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Source Regions
   post:
     description: Returns a list of the source AWS regions where the current AWS region can create a Read Replica or copy a DB snapshot from. This API action supports pagination.
     displayName: Describe Source Regions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSourceRegions
     body:
       application/xml: DescribeSourceRegionsMessage
     responses:
@@ -6618,9 +6966,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Download D B Log File Portion
   post:
     description: Downloads all or a portion of the specified log file, up to 1 MB in size.
     displayName: Download D B Log File Portion
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DownloadDBLogFilePortion
     body:
       application/xml: DownloadDBLogFilePortionMessage
     responses:
@@ -6637,6 +6991,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Failover D B Cluster
   post:
     description: 'Forces a failover for a DB cluster. A failover for a DB cluster
       promotes one of the read-only instances in the DB cluster to the master DB instance
@@ -6649,6 +7004,11 @@ types:
       complete. For more information on Amazon Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Failover D B Cluster
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - FailoverDBCluster
     body:
       application/xml: FailoverDBClusterMessage
     responses:
@@ -6667,9 +7027,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Tags For Resource
   post:
     description: Lists all tags on an Amazon RDS resource. For an overview on tagging an Amazon RDS resource, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html">Tagging Amazon RDS Resources</a>.
     displayName: List Tags For Resource
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListTagsForResource
     body:
       application/xml: ListTagsForResourceMessage
     responses:
@@ -6686,6 +7052,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify D B Cluster
   post:
     description: 'Modify a setting for an Amazon Aurora DB cluster. You can change
       one or more database configuration parameters by specifying these parameters
@@ -6693,6 +7060,11 @@ types:
       <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Modify D B Cluster
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyDBCluster
     body:
       application/xml: ModifyDBClusterMessage
     responses:
@@ -6711,6 +7083,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify D B Cluster Parameter Group
   post:
     description: ' Modifies the parameters of a DB cluster parameter group. To modify
       more than one parameter, submit a list of the following: <code>ParameterName</code>,
@@ -6732,6 +7105,11 @@ types:
       RDS console</a> or the <a>DescribeDBClusterParameters</a> command to verify
       that your DB cluster parameter group has been created or modified. </important>'
     displayName: Modify D B Cluster Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyDBClusterParameterGroup
     body:
       application/xml: ModifyDBClusterParameterGroupMessage
     responses:
@@ -6750,9 +7128,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify D B Cluster Snapshot Attribute
   post:
     description: Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot. To share a manual DB cluster snapshot with other AWS accounts, specify <code>restore</code> as the <code>AttributeName</code> and use the <code>ValuesToAdd</code> parameter to add a list of IDs of the AWS accounts that are authorized to restore the manual DB cluster snapshot. Use the value <code>all</code> to make the manual DB cluster snapshot public, which means that it can be copied or restored by all AWS accounts. Do not add the <code>all</code> value for any manual DB cluster snapshots that contain private information that you don't want available to all AWS accounts. To view which AWS accounts have access to copy or restore a manual DB cluster snapshot, or whether a manual DB cluster snapshot public or private, use the <a>DescribeDBClusterSnapshotAttributes</a> API action. If a manual DB cluster snapshot is encrypted, it cannot be shared.
     displayName: Modify D B Cluster Snapshot Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyDBClusterSnapshotAttribute
     body:
       application/xml: ModifyDBClusterSnapshotAttributeMessage
     responses:
@@ -6771,9 +7155,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify D B Instance
   post:
     description: Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
     displayName: Modify D B Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyDBInstance
     body:
       application/xml: ModifyDBInstanceMessage
     responses:
@@ -6792,6 +7182,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify D B Parameter Group
   post:
     description: ' Modifies the parameters of a DB parameter group. To modify more
       than one parameter, submit a list of the following: <code>ParameterName</code>,
@@ -6810,6 +7201,11 @@ types:
       RDS console</a> or the <i>DescribeDBParameters</i> command to verify that your
       DB parameter group has been created or modified. </important>'
     displayName: Modify D B Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyDBParameterGroup
     body:
       application/xml: ModifyDBParameterGroupMessage
     responses:
@@ -6828,9 +7224,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify D B Snapshot Attribute
   post:
     description: Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot. To share a manual DB snapshot with other AWS accounts, specify <code>restore</code> as the <code>AttributeName</code> and use the <code>ValuesToAdd</code> parameter to add a list of IDs of the AWS accounts that are authorized to restore the manual DB snapshot. Uses the value <code>all</code> to make the manual DB snapshot public, which means it can be copied or restored by all AWS accounts. Do not add the <code>all</code> value for any manual DB snapshots that contain private information that you don't want available to all AWS accounts. To view which AWS accounts have access to copy or restore a manual DB snapshot, or whether a manual DB snapshot public or private, use the <a>DescribeDBSnapshotAttributes</a> API action. If the manual DB snapshot is encrypted, it cannot be shared.
     displayName: Modify D B Snapshot Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyDBSnapshotAttribute
     body:
       application/xml: ModifyDBSnapshotAttributeMessage
     responses:
@@ -6849,9 +7251,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify D B Subnet Group
   post:
     description: Modifies an existing DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the region.
     displayName: Modify D B Subnet Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyDBSubnetGroup
     body:
       application/xml: ModifyDBSubnetGroupMessage
     responses:
@@ -6870,9 +7278,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Event Subscription
   post:
     description: Modifies an existing RDS event notification subscription. Note that you cannot modify the source identifiers using this call; to change source identifiers for a subscription, use the <a>AddSourceIdentifierToSubscription</a> and <a>RemoveSourceIdentifierFromSubscription</a> calls. You can see a list of the event categories for a given SourceType in the <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the Amazon RDS User Guide or by using the <b>DescribeEventCategories</b> action.
     displayName: Modify Event Subscription
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyEventSubscription
     body:
       application/xml: ModifyEventSubscriptionMessage
     responses:
@@ -6891,9 +7305,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Option Group
   post:
     description: Modifies an existing option group.
     displayName: Modify Option Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyOptionGroup
     body:
       application/xml: ModifyOptionGroupMessage
     responses:
@@ -6912,9 +7332,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Promote Read Replica
   post:
     description: Promotes a Read Replica DB instance to a standalone DB instance. <note> We recommend that you enable automated backups on your Read Replica before promoting the Read Replica. This ensures that no backup is taken during the promotion process. Once the instance is promoted to a primary instance, backups are taken based on your backup settings. </note>
     displayName: Promote Read Replica
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PromoteReadReplica
     body:
       application/xml: PromoteReadReplicaMessage
     responses:
@@ -6933,9 +7359,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Promote Read Replica D B Cluster
   post:
     description: Promotes a Read Replica DB cluster to a standalone DB cluster.
     displayName: Promote Read Replica D B Cluster
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PromoteReadReplicaDBCluster
     body:
       application/xml: PromoteReadReplicaDBClusterMessage
     responses:
@@ -6954,9 +7386,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Purchase Reserved D B Instances Offering
   post:
     description: Purchases a reserved DB instance offering.
     displayName: Purchase Reserved D B Instances Offering
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PurchaseReservedDBInstancesOffering
     body:
       application/xml: PurchaseReservedDBInstancesOfferingMessage
     responses:
@@ -6975,9 +7413,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Reboot D B Instance
   post:
     description: Rebooting a DB instance restarts the database engine service. A reboot also applies to the DB instance any modifications to the associated DB parameter group that were pending. Rebooting a DB instance results in a momentary outage of the instance, during which the DB instance status is set to rebooting. If the RDS instance is configured for MultiAZ, it is possible that the reboot will be conducted through a failover. An Amazon RDS event is created when the reboot is completed. If your DB instance is deployed in multiple Availability Zones, you can force a failover from one AZ to the other during the reboot. You might force a failover to test the availability of your DB instance deployment or to restore operations to the original AZ after a failover occurs. The time required to reboot is a function of the specific database engine's crash recovery process. To improve the reboot time, we recommend that you reduce database activities as much as possible during the reboot process to reduce rollback activity for in-transit transactions.
     displayName: Reboot D B Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RebootDBInstance
     body:
       application/xml: RebootDBInstanceMessage
     responses:
@@ -6996,9 +7440,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Remove Source Identifier From Subscription
   post:
     description: Removes a source identifier from an existing RDS event notification subscription.
     displayName: Remove Source Identifier From Subscription
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RemoveSourceIdentifierFromSubscription
     body:
       application/xml: RemoveSourceIdentifierFromSubscriptionMessage
     responses:
@@ -7015,9 +7465,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Remove Tags From Resource
   post:
     description: Removes metadata tags from an Amazon RDS resource. For an overview on tagging an Amazon RDS resource, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html">Tagging Amazon RDS Resources</a>.
     displayName: Remove Tags From Resource
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RemoveTagsFromResource
     body:
       application/xml: RemoveTagsFromResourceMessage
     responses:
@@ -7034,6 +7490,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Reset D B Cluster Parameter Group
   post:
     description: ' Modifies the parameters of a DB cluster parameter group to the
       default value. To reset specific parameters submit a list of the following:
@@ -7047,6 +7504,11 @@ types:
       to apply to. For more information on Amazon Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Reset D B Cluster Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ResetDBClusterParameterGroup
     body:
       application/xml: ResetDBClusterParameterGroupMessage
     responses:
@@ -7065,6 +7527,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Reset D B Parameter Group
   post:
     description: ' Modifies the parameters of a DB parameter group to the engine/system
       default value. To reset specific parameters submit a list of the following:
@@ -7075,6 +7538,11 @@ types:
       take effect on the next DB instance restart or <code>RebootDBInstance</code>
       request. '
     displayName: Reset D B Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ResetDBParameterGroup
     body:
       application/xml: ResetDBParameterGroupMessage
     responses:
@@ -7093,9 +7561,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Restore D B Cluster From S3
   post:
     description: Creates an Amazon Aurora DB cluster from data stored in an Amazon S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket and the data must be created using the Percona XtraBackup utility as described in <a href="AmazonRDS/latest/UserGuide/Aurora.Migrate.MySQL.html#Aurora.Migrate.MySQL.S3">Migrating Data from MySQL by Using an Amazon S3 Bucket</a>.
     displayName: Restore D B Cluster From S3
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RestoreDBClusterFromS3
     body:
       application/xml: RestoreDBClusterFromS3Message
     responses:
@@ -7116,6 +7590,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Restore D B Cluster From Snapshot
   post:
     description: 'Creates a new DB cluster from a DB cluster snapshot. The target
       DB cluster is created from the source DB cluster restore point with the same
@@ -7124,6 +7599,11 @@ types:
       see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Restore D B Cluster From Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RestoreDBClusterFromSnapshot
     body:
       application/xml: RestoreDBClusterFromSnapshotMessage
     responses:
@@ -7144,6 +7624,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Restore D B Cluster To Point In Time
   post:
     description: ' Restores a DB cluster to an arbitrary point in time. Users can
       restore to any point in time before <code>LatestRestorableTime</code> for up
@@ -7153,6 +7634,11 @@ types:
       more information on Amazon Aurora, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Aurora
       on Amazon RDS</a> in the <i>Amazon RDS User Guide.</i> '
     displayName: Restore D B Cluster To Point In Time
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RestoreDBClusterToPointInTime
     body:
       application/xml: RestoreDBClusterToPointInTimeMessage
     responses:
@@ -7173,9 +7659,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Restore D B Instance From D B Snapshot
   post:
     description: Creates a new DB instance from a DB snapshot. The target database is created from the source database restore point with the most of original configuration with the default security group and the default DB parameter group. By default, the new DB instance is created as a single-AZ deployment except when the instance is a SQL Server instance that has an option group that is associated with mirroring; in this case, the instance becomes a mirrored AZ deployment and not a single-AZ deployment. If your intent is to replace your original DB instance with the new, restored DB instance, then rename your original DB instance before you call the RestoreDBInstanceFromDBSnapshot action. RDS does not allow two DB instances with the same name. Once you have renamed your original DB instance with a different identifier, then you can pass the original name of the DB instance as the DBInstanceIdentifier in the call to the RestoreDBInstanceFromDBSnapshot action. The result is that you will replace the original DB instance with the DB instance created from the snapshot. If you are restoring from a shared manual DB snapshot, the <code>DBSnapshotIdentifier</code> must be the ARN of the shared DB snapshot.
     displayName: Restore D B Instance From D B Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RestoreDBInstanceFromDBSnapshot
     body:
       application/xml: RestoreDBInstanceFromDBSnapshotMessage
     responses:
@@ -7194,9 +7686,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Restore D B Instance To Point In Time
   post:
     description: Restores a DB instance to an arbitrary point in time. You can restore to any point in time before the time identified by the LatestRestorableTime property. You can restore to a point up to the number of days specified by the BackupRetentionPeriod property. The target database is created with most of the original configuration, but in a system-selected availability zone, with the default security group, the default subnet group, and the default DB parameter group. By default, the new DB instance is created as a single-AZ deployment except when the instance is a SQL Server instance that has an option group that is associated with mirroring; in this case, the instance becomes a mirrored deployment and not a single-AZ deployment.
     displayName: Restore D B Instance To Point In Time
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RestoreDBInstanceToPointInTime
     body:
       application/xml: RestoreDBInstanceToPointInTimeMessage
     responses:
@@ -7215,9 +7713,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Revoke D B Security Group Ingress
   post:
     description: Revokes ingress from a DBSecurityGroup for previously authorized IP ranges or EC2 or VPC Security Groups. Required parameters for this API are one of CIDRIP, EC2SecurityGroupId for VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId).
     displayName: Revoke D B Security Group Ingress
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RevokeDBSecurityGroupIngress
     body:
       application/xml: RevokeDBSecurityGroupIngressMessage
     responses:

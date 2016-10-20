@@ -402,12 +402,15 @@ types:
       type: string
       description: <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens (apos-apos) in the ID.</p>
   /vaults:
+    displayName: List Vaults
     /{vaultName}:
       uriParameters:
         vaultName:
           type: string
           description: <p>The name of the vault.</p>
+      displayName: Create Vault
       /access-policy:
+        displayName: Delete Vault Access Policy
         get:
           description: This operation retrieves the <code>access-policy</code> subresource set on the vault; for more information on setting this subresource, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-SetVaultAccessPolicy.html">Set Vault Access Policy (PUT access-policy)</a>. If there is no access policy set on the vault, the operation returns a <code>404 Not found</code> error. For more information about vault access policies, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html">Amazon Glacier Access Control with Vault Access Policies</a>.
           displayName: Get Vault Access Policy
@@ -468,11 +471,13 @@ types:
             500:
               description: ServiceUnavailableException
       /archives:
+        displayName: Upload Archive
         /{archiveId}:
           uriParameters:
             archiveId:
               type: string
               description: <p>The ID of the archive to delete.</p>
+          displayName: Delete Archive
           delete:
             description: 'This operation deletes an archive from a vault. Subsequent
               requests to initiate a retrieval of this archive will fail. Archive
@@ -570,11 +575,13 @@ types:
             500:
               description: ServiceUnavailableException
       /multipart-uploads:
+        displayName: Initiate Multipart Upload
         /{uploadId}:
           uriParameters:
             uploadId:
               type: string
               description: <p>The upload ID of the multipart upload.</p>
+          displayName: Abort Multipart Upload
           post:
             description: 'You call this operation to inform Amazon Glacier that all
               the archive parts have been uploaded and that Amazon Glacier can now
@@ -800,11 +807,13 @@ types:
             500:
               description: ServiceUnavailableException
       /lock-policy:
+        displayName: Get Vault Lock
         /{lockId}:
           uriParameters:
             lockId:
               type: string
               description: <p>The <code>lockId</code> value is the lock ID obtained from a <a>InitiateVaultLock</a> request.</p>
+          displayName: Complete Vault Lock
           post:
             description: This operation completes the vault locking process by transitioning the vault lock from the <code>InProgress</code> state to the <code>Locked</code> state, which causes the vault lock policy to become unchangeable. A vault lock is put into the <code>InProgress</code> state by calling <a>InitiateVaultLock</a>. You can obtain the state of the vault lock by calling <a>GetVaultLock</a>. For more information about the vault locking process, <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html">Amazon Glacier Vault Lock</a>.  This operation is idempotent. This request is always successful if the vault lock is in the <code>Locked</code> state and the provided lock ID matches the lock ID originally used to lock the vault. If an invalid lock ID is passed in the request when the vault lock is in the <code>Locked</code> state, the operation returns an <code>AccessDeniedException</code> error. If an invalid lock ID is passed in the request when the vault lock is in the <code>InProgress</code> state, the operation throws an <code>InvalidParameter</code> error.
             displayName: Complete Vault Lock
@@ -902,6 +911,7 @@ types:
             500:
               description: ServiceUnavailableException
       /notification-configuration:
+        displayName: Delete Vault Notifications
         put:
           description: 'This operation configures notifications that will be sent
             when specific events happen to a vault. By default, you don''t get any
@@ -1001,12 +1011,15 @@ types:
             500:
               description: ServiceUnavailableException
       /jobs:
+        displayName: Initiate Job
         /{jobId}:
           uriParameters:
             jobId:
               type: string
               description: <p>The job ID whose data is downloaded.</p>
+          displayName: Describe Job
           /output:
+            displayName: Get Job Output
             get:
               description: 'This operation downloads the output of the job you initiated
                 using <a>InitiateJob</a>. Depending on the job type you specified
@@ -1302,6 +1315,7 @@ types:
             500:
               description: ServiceUnavailableException
       /tags:
+        displayName: List Tags For Vault
         get:
           description: This operation lists all the tags attached to a vault. The operation returns an empty map if there are no tags. For more information about tags, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html">Tagging Amazon Glacier Resources</a>.
           displayName: List Tags For Vault
@@ -1316,6 +1330,7 @@ types:
             500:
               description: ServiceUnavailableException
       /tags?operation=remove:
+        displayName: Remove Tags From Vault
         post:
           description: 'This operation removes one or more tags from the set of tags
             attached to a vault. For more information about tags, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html">Tagging
@@ -1340,6 +1355,7 @@ types:
             500:
               description: ServiceUnavailableException
       /tags?operation=add:
+        displayName: Add Tags To Vault
         post:
           description: 'This operation adds the specified tags to a vault. Each tag
             is composed of a key and a value. Each vault can have up to 10 tags. If
@@ -1495,6 +1511,7 @@ types:
           description: ServiceUnavailableException
   /policies:
     /data-retrieval:
+      displayName: Set Data Retrieval Policy
       get:
         description: This operation returns the current data retrieval policy for the account and region specified in the GET request. For more information about data retrieval policies, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html">Amazon Glacier Data Retrieval Policies</a>.
         displayName: Get Data Retrieval Policy

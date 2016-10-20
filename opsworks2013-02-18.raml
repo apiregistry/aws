@@ -2898,6 +2898,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Assign Instance
   post:
     description: 'Assign a registered instance to a layer. <ul> <li> You can assign
       registered on-premises instances to any layer type. </li> <li> You can assign
@@ -2925,6 +2926,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Assign Volume
   post:
     description: 'Assigns one of the stack''s registered Amazon EBS volumes to a specified
       instance. The volume must first be registered with the stack by calling <a>RegisterVolume</a>.
@@ -2953,6 +2955,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Associate Elastic Ip
   post:
     description: 'Associates one of the stack''s registered Elastic IP addresses with
       a specified instance. The address must first be registered with the stack by
@@ -2979,6 +2982,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Attach Elastic Load Balancer
   post:
     description: 'Attaches an Elastic Load Balancing load balancer to a specified
       layer. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/load-balancer-elb.html">Elastic
@@ -3007,6 +3011,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Clone Stack
   post:
     description: 'Creates a clone of a specified stack. For more information, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html">Clone
@@ -3032,6 +3037,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create App
   post:
     description: 'Creates an app for a specified stack. For more information, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Creating
@@ -3056,6 +3062,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Deployment
   post:
     description: 'Runs deployment or stack commands. For more information, see <a
       href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html">Deploying
@@ -3082,6 +3089,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Instance
   post:
     description: 'Creates an instance in a specified stack. For more information,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html">Adding
@@ -3107,6 +3115,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Layer
   post:
     description: 'Creates a layer. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html">How
       to Create a Layer</a>. <note> You should use <b>CreateLayer</b> for noncustom
@@ -3136,6 +3145,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Stack
   post:
     description: 'Creates a new stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html">Create
       a New Stack</a>.  <b>Required Permissions</b>: To use this action, an IAM user
@@ -3159,6 +3169,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create User Profile
   post:
     description: 'Creates a new user profile.  <b>Required Permissions</b>: To use
       this action, an IAM user must have an attached policy that explicitly grants
@@ -3181,6 +3192,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete App
   post:
     description: 'Deletes a specified app.  <b>Required Permissions</b>: To use this
       action, an IAM user must have a Manage permissions level for the stack, or an
@@ -3204,6 +3216,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Instance
   post:
     description: 'Deletes a specified instance, which terminates the associated Amazon
       EC2 instance. You must stop an instance before you can delete it. For more information,
@@ -3230,6 +3243,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Layer
   post:
     description: 'Deletes a specified layer. You must first stop and then delete all
       associated instances or unassign registered instances. For more information,
@@ -3256,6 +3270,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Stack
   post:
     description: 'Deletes a specified stack. You must first delete all instances,
       layers, and apps or deregister registered instances. For more information, see
@@ -3282,6 +3297,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete User Profile
   post:
     description: 'Deletes a user profile.  <b>Required Permissions</b>: To use this
       action, an IAM user must have an attached policy that explicitly grants permissions.
@@ -3304,6 +3320,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Deregister Ecs Cluster
   post:
     description: 'Deregisters a specified Amazon ECS cluster from a stack. For more
       information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete">
@@ -3328,6 +3345,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Deregister Elastic Ip
   post:
     description: 'Deregisters a specified Elastic IP address. The address can then
       be registered by another stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
@@ -3353,6 +3371,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Deregister Instance
   post:
     description: 'Deregister a registered Amazon EC2 or on-premises instance. This
       action removes the instance from the stack and returns it to your control. This
@@ -3378,6 +3397,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Deregister Rds Db Instance
   post:
     description: 'Deregisters an Amazon RDS instance.  <b>Required Permissions</b>:
       To use this action, an IAM user must have a Manage permissions level for the
@@ -3401,6 +3421,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Deregister Volume
   post:
     description: 'Deregisters an Amazon EBS volume. The volume can then be registered
       by another stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
@@ -3426,6 +3447,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Agent Versions
   post:
     description: Describes the available AWS OpsWorks agent versions. You must specify a stack ID or a configuration manager. <code>DescribeAgentVersions</code> returns a list of available agent versions for the specified stack or configuration manager.
     displayName: Describe Agent Versions
@@ -3445,6 +3467,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Apps
   post:
     description: 'Requests a description of a specified set of apps. <note> You must
       specify at least one of the parameters. </note>  <b>Required Permissions</b>:
@@ -3469,6 +3492,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Commands
   post:
     description: 'Describes the results of specified commands. <note> You must specify
       at least one of the parameters. </note>  <b>Required Permissions</b>: To use
@@ -3493,6 +3517,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Deployments
   post:
     description: 'Requests a description of a specified set of deployments. <note>
       You must specify at least one of the parameters. </note>  <b>Required Permissions</b>:
@@ -3517,6 +3542,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Ecs Clusters
   post:
     description: 'Describes Amazon ECS clusters that are registered with a stack.
       If you specify only a stack ID, you can use the <code>MaxResults</code> and
@@ -3544,6 +3570,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Elastic Ips
   post:
     description: 'Describes <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic
       IP addresses</a>. <note> You must specify at least one of the parameters. </note>  <b>Required
@@ -3568,6 +3595,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Elastic Load Balancers
   post:
     description: 'Describes a stack''s Elastic Load Balancing instances. <note> You
       must specify at least one of the parameters. </note>  <b>Required Permissions</b>:
@@ -3592,6 +3620,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Instances
   post:
     description: 'Requests a description of a set of instances. <note> You must specify
       at least one of the parameters. </note>  <b>Required Permissions</b>: To use
@@ -3616,6 +3645,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Layers
   post:
     description: 'Requests a description of one or more layers in a specified stack.
       <note> You must specify at least one of the parameters. </note>  <b>Required
@@ -3640,6 +3670,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Load Based Auto Scaling
   post:
     description: 'Describes load-based auto scaling configurations for specified layers.
       <note> You must specify at least one of the parameters. </note>  <b>Required
@@ -3664,6 +3695,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe My User Profile
   post:
     description: 'Describes a user''s SSH information.  <b>Required Permissions</b>:
       To use this action, an IAM user must have self-management enabled or an attached
@@ -3683,6 +3715,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Permissions
   post:
     description: 'Describes the permissions for a specified stack.  <b>Required Permissions</b>:
       To use this action, an IAM user must have a Manage permissions level for the
@@ -3706,6 +3739,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Raid Arrays
   post:
     description: 'Describe an instance''s RAID arrays. <note> You must specify at
       least one of the parameters. </note>  <b>Required Permissions</b>: To use this
@@ -3730,6 +3764,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Rds Db Instances
   post:
     description: 'Describes Amazon RDS instances.  <b>Required Permissions</b>: To
       use this action, an IAM user must have a Show, Deploy, or Manage permissions
@@ -3753,6 +3788,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Service Errors
   post:
     description: 'Describes AWS OpsWorks service errors.  <b>Required Permissions</b>:
       To use this action, an IAM user must have a Show, Deploy, or Manage permissions
@@ -3776,6 +3812,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Stack Provisioning Parameters
   post:
     description: 'Requests a description of a stack''s provisioning parameters.  <b>Required
       Permissions</b>: To use this action, an IAM user must have a Show, Deploy, or
@@ -3799,6 +3836,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Stack Summary
   post:
     description: 'Describes the number of layers and apps in a specified stack, and
       the number of instances in each state, such as <code>running_setup</code> or
@@ -3824,6 +3862,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Stacks
   post:
     description: 'Requests a description of one or more stacks.  <b>Required Permissions</b>:
       To use this action, an IAM user must have a Show, Deploy, or Manage permissions
@@ -3847,6 +3886,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Time Based Auto Scaling
   post:
     description: 'Describes time-based auto scaling configurations for specified instances.
       <note> You must specify at least one of the parameters. </note>  <b>Required
@@ -3871,6 +3911,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe User Profiles
   post:
     description: 'Describe specified users.  <b>Required Permissions</b>: To use this
       action, an IAM user must have an attached policy that explicitly grants permissions.
@@ -3893,6 +3934,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Volumes
   post:
     description: 'Describes an instance''s Amazon EBS volumes. <note> You must specify
       at least one of the parameters. </note>  <b>Required Permissions</b>: To use
@@ -3917,6 +3959,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Detach Elastic Load Balancer
   post:
     description: 'Detaches a specified Elastic Load Balancing instance from its layer.  <b>Required
       Permissions</b>: To use this action, an IAM user must have a Manage permissions
@@ -3940,6 +3983,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Disassociate Elastic Ip
   post:
     description: 'Disassociates an Elastic IP address from its instance. The address
       remains registered with the stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
@@ -3965,6 +4009,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Hostname Suggestion
   post:
     description: 'Gets a generated host name for the specified layer, based on the
       current host name theme.  <b>Required Permissions</b>: To use this action, an
@@ -3989,6 +4034,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Grant Access
   post:
     description: <note> This action can be used only with Windows stacks. </note> Grants RDP access to a Windows instance for a specified time period.
     displayName: Grant Access
@@ -4008,6 +4054,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Reboot Instance
   post:
     description: 'Reboots a specified instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html">Starting,
       Stopping, and Rebooting Instances</a>.  <b>Required Permissions</b>: To use
@@ -4032,6 +4079,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Register Ecs Cluster
   post:
     description: 'Registers a specified Amazon ECS cluster with a stack. You can register
       only one cluster with a stack. A cluster can be registered with only one stack.
@@ -4058,6 +4106,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Register Elastic Ip
   post:
     description: 'Registers an Elastic IP address with a specified stack. An address
       can be registered with only one stack at a time. If the address is already registered,
@@ -4085,6 +4134,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Register Instance
   post:
     description: 'Registers instances with a specified stack that were created outside
       of AWS OpsWorks. <note> We do not recommend using this action to register instances.
@@ -4115,6 +4165,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Register Rds Db Instance
   post:
     description: 'Registers an Amazon RDS instance with a stack.  <b>Required Permissions</b>:
       To use this action, an IAM user must have a Manage permissions level for the
@@ -4138,6 +4189,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Register Volume
   post:
     description: 'Registers an Amazon EBS volume with a specified stack. A volume
       can be registered with only one stack at a time. If the volume is already registered,
@@ -4165,6 +4217,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Load Based Auto Scaling
   post:
     description: 'Specify the load-based auto scaling configuration for a specified
       layer. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html">Managing
@@ -4193,6 +4246,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Permission
   post:
     description: 'Specifies a user''s permissions. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html">Security
       and Permissions</a>.  <b>Required Permissions</b>: To use this action, an IAM
@@ -4217,6 +4271,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Time Based Auto Scaling
   post:
     description: 'Specify the time-based auto scaling configuration for a specified
       instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html">Managing
@@ -4242,6 +4297,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Start Instance
   post:
     description: 'Starts a specified instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html">Starting,
       Stopping, and Rebooting Instances</a>.  <b>Required Permissions</b>: To use
@@ -4266,6 +4322,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Start Stack
   post:
     description: 'Starts a stack''s instances.  <b>Required Permissions</b>: To use
       this action, an IAM user must have a Manage permissions level for the stack,
@@ -4289,6 +4346,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Stop Instance
   post:
     description: 'Stops a specified instance. When you stop a standard instance, the
       data disappears and must be reinstalled when you restart the instance. You can
@@ -4316,6 +4374,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Stop Stack
   post:
     description: 'Stops a specified stack.  <b>Required Permissions</b>: To use this
       action, an IAM user must have a Manage permissions level for the stack, or an
@@ -4339,6 +4398,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Unassign Instance
   post:
     description: 'Unassigns a registered instance from all of it''s layers. The instance
       remains in the stack as an unassigned instance and can be assigned to another
@@ -4365,6 +4425,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Unassign Volume
   post:
     description: 'Unassigns an assigned Amazon EBS volume. The volume remains registered
       with the stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
@@ -4390,6 +4451,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update App
   post:
     description: 'Updates a specified app.  <b>Required Permissions</b>: To use this
       action, an IAM user must have a Deploy or Manage permissions level for the stack,
@@ -4413,6 +4475,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Elastic Ip
   post:
     description: 'Updates a registered Elastic IP address''s name. For more information,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource
@@ -4438,6 +4501,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Instance
   post:
     description: 'Updates a specified instance.  <b>Required Permissions</b>: To use
       this action, an IAM user must have a Manage permissions level for the stack,
@@ -4461,6 +4525,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Layer
   post:
     description: 'Updates a specified layer.  <b>Required Permissions</b>: To use
       this action, an IAM user must have a Manage permissions level for the stack,
@@ -4484,6 +4549,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update My User Profile
   post:
     description: 'Updates a user''s SSH public key.  <b>Required Permissions</b>:
       To use this action, an IAM user must have self-management enabled or an attached
@@ -4507,6 +4573,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Rds Db Instance
   post:
     description: 'Updates an Amazon RDS instance.  <b>Required Permissions</b>: To
       use this action, an IAM user must have a Manage permissions level for the stack,
@@ -4530,6 +4597,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Stack
   post:
     description: 'Updates a specified stack.  <b>Required Permissions</b>: To use
       this action, an IAM user must have a Manage permissions level for the stack,
@@ -4553,6 +4621,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update User Profile
   post:
     description: 'Updates a specified user profile.  <b>Required Permissions</b>:
       To use this action, an IAM user must have an attached policy that explicitly
@@ -4575,6 +4644,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Volume
   post:
     description: 'Updates an Amazon EBS volume''s name or mount point. For more information,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource

@@ -459,6 +459,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Rule
   post:
     description: 'Deletes a rule. You must remove all targets from a rule using <a>RemoveTargets</a>
       before you can delete the rule.  <b>Note:</b> When you delete a rule, incoming
@@ -481,6 +482,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Rule
   post:
     description: Describes the details of the specified rule.
     displayName: Describe Rule
@@ -500,6 +502,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Disable Rule
   post:
     description: 'Disables a rule. A disabled rule won''t match any events, and won''t
       self-trigger if it has a schedule expression.  <b>Note:</b> When you disable
@@ -522,6 +525,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Enable Rule
   post:
     description: 'Enables a rule. If the rule does not exist, the operation fails.  <b>Note:</b>
       When you enable a rule, incoming events might not immediately start matching
@@ -544,6 +548,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Rule Names By Target
   post:
     description: Lists the names of the rules that the given target is put to. You can see which of the rules in Amazon CloudWatch Events can invoke a specific target in your account. If you have more rules in your account than the given limit, the results will be paginated. In that case, use the next token returned in the response and repeat ListRulesByTarget until the NextToken in the response is returned as null.
     displayName: List Rule Names By Target
@@ -563,6 +568,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Rules
   post:
     description: Lists the Amazon CloudWatch Events rules in your account. You can either list all the rules or you can provide a prefix to match to the rule names. If you have more rules in your account than the given limit, the results will be paginated. In that case, use the next token returned in the response and repeat ListRules until the NextToken in the response is returned as null.
     displayName: List Rules
@@ -582,6 +588,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Targets By Rule
   post:
     description: Lists of targets assigned to the rule.
     displayName: List Targets By Rule
@@ -601,6 +608,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Events
   post:
     description: Sends custom events to Amazon CloudWatch Events so that they can be matched to rules.
     displayName: Put Events
@@ -620,6 +628,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Rule
   post:
     description: 'Creates or updates a rule. Rules are enabled by default, or based
       on value of the State parameter. You can disable a rule using <a>DisableRule</a>.  <b>Note:</b>
@@ -651,6 +660,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Targets
   post:
     description: 'Adds target(s) to a rule. Targets are the resources that can be
       invoked when a rule is triggered. For example, AWS Lambda functions, Amazon
@@ -690,6 +700,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Remove Targets
   post:
     description: 'Removes target(s) from a rule so that when the rule is triggered,
       those targets will no longer be invoked.  <b>Note:</b> When you remove a target,
@@ -712,6 +723,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Test Event Pattern
   post:
     description: 'Tests whether an event pattern matches the provided event.  <b>Note:</b>
       Most services in AWS treat : or / as the same character in Amazon Resource Names

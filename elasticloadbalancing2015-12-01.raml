@@ -1503,9 +1503,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Add Tags
   post:
     description: Adds the specified tags to the specified resource. You can tag your Application load balancers and your target groups. Each tag consists of a key and an optional value. If a resource already has a tag with the same key, <code>AddTags</code> updates its value. To list the current tags for your resources, use <a>DescribeTags</a>. To remove tags from your resources, use <a>RemoveTags</a>.
     displayName: Add Tags
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AddTags
     body:
       application/xml: AddTagsInput
     responses:
@@ -1522,9 +1528,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Listener
   post:
     description: Creates a listener for the specified Application load balancer. To update a listener, use <a>ModifyListener</a>. When you are finished with a listener, you can delete it using <a>DeleteListener</a>. If you are finished with both the listener and the load balancer, you can delete them both using <a>DeleteLoadBalancer</a>. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html">Listeners for Your Application Load Balancers</a> in the <i>Application Load Balancers Guide</i>.
     displayName: Create Listener
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateListener
     body:
       application/xml: CreateListenerInput
     responses:
@@ -1541,9 +1553,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Load Balancer
   post:
     description: Creates an Application load balancer. To create listeners for your load balancer, use <a>CreateListener</a>. You can add security groups, subnets, and tags when you create your load balancer, or you can add them later using <a>SetSecurityGroups</a>, <a>SetSubnets</a>, and <a>AddTags</a>. To describe your current load balancers, see <a>DescribeLoadBalancers</a>. When you are finished with a load balancer, you can delete it using <a>DeleteLoadBalancer</a>. You can create up to 20 load balancers per region per account. You can request an increase for the number of load balancers for your account. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html">Limits for Your Application Load Balancer</a> in the <i>Application Load Balancers Guide</i>.
     displayName: Create Load Balancer
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateLoadBalancer
     body:
       application/xml: CreateLoadBalancerInput
     responses:
@@ -1560,9 +1578,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Rule
   post:
     description: Creates a rule for the specified listener. A rule consists conditions and actions. Rules are evaluated in priority order, from the lowest value to the highest value. When the conditions for a rule are met, the specified actions are taken. If no rule's conditions are met, the default actions for the listener are taken. To view your current rules, use <a>DescribeRules</a>. To update a rule, use <a>ModifyRule</a>. To set the priorities of your rules, use <a>SetRulePriorities</a>. To delete a rule, use <a>DeleteRule</a>.
     displayName: Create Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateRule
     body:
       application/xml: CreateRuleInput
     responses:
@@ -1579,9 +1603,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Target Group
   post:
     description: Creates a target group. To register targets with the target group, use <a>RegisterTargets</a>. To update the health check settings for the target group, use <a>ModifyTargetGroup</a>. To monitor the health of targets in the target group, use <a>DescribeTargetHealth</a>. To route traffic to the targets in a target group, specify the target group in an action using <a>CreateListener</a> or <a>CreateRule</a>. To delete a target group, use <a>DeleteTargetGroup</a>. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html">Target Groups for Your Application Load Balancers</a> in the <i>Application Load Balancers Guide</i>.
     displayName: Create Target Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateTargetGroup
     body:
       application/xml: CreateTargetGroupInput
     responses:
@@ -1598,9 +1628,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Listener
   post:
     description: Deletes the specified listener. Alternatively, your listener is deleted when you delete the load balancer it is attached to using <a>DeleteLoadBalancer</a>.
     displayName: Delete Listener
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteListener
     body:
       application/xml: DeleteListenerInput
     responses:
@@ -1617,9 +1653,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Load Balancer
   post:
     description: Deletes the specified load balancer and its attached listeners. You can't delete a load balancer if deletion protection is enabled. If the load balancer does not exist or has already been deleted, the call succeeds. Deleting a load balancer does not affect its registered targets. For example, your EC2 instances continue to run and are still registered to their target groups. If you no longer need these EC2 instances, you can stop or terminate them.
     displayName: Delete Load Balancer
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteLoadBalancer
     body:
       application/xml: DeleteLoadBalancerInput
     responses:
@@ -1636,9 +1678,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Rule
   post:
     description: Deletes the specified rule.
     displayName: Delete Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteRule
     body:
       application/xml: DeleteRuleInput
     responses:
@@ -1655,9 +1703,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Target Group
   post:
     description: Deletes the specified target group. You can delete a target group if it is not referenced by any actions. Deleting a target group also deletes any associated health checks.
     displayName: Delete Target Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteTargetGroup
     body:
       application/xml: DeleteTargetGroupInput
     responses:
@@ -1674,9 +1728,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Deregister Targets
   post:
     description: Deregisters the specified targets from the specified target group. After the targets are deregistered, they no longer receive traffic from the load balancer.
     displayName: Deregister Targets
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeregisterTargets
     body:
       application/xml: DeregisterTargetsInput
     responses:
@@ -1693,9 +1753,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Listeners
   post:
     description: Describes the specified listeners or the listeners for the specified load balancer. You must specify either a load balancer or one or more listeners.
     displayName: Describe Listeners
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeListeners
     body:
       application/xml: DescribeListenersInput
     responses:
@@ -1712,9 +1778,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Load Balancer Attributes
   post:
     description: Describes the attributes for the specified load balancer.
     displayName: Describe Load Balancer Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeLoadBalancerAttributes
     body:
       application/xml: DescribeLoadBalancerAttributesInput
     responses:
@@ -1731,9 +1803,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Load Balancers
   post:
     description: Describes the specified Application load balancers or all of your Application load balancers. To describe the listeners for a load balancer, use <a>DescribeListeners</a>. To describe the attributes for a load balancer, use <a>DescribeLoadBalancerAttributes</a>.
     displayName: Describe Load Balancers
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeLoadBalancers
     body:
       application/xml: DescribeLoadBalancersInput
     responses:
@@ -1750,9 +1828,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Rules
   post:
     description: Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.
     displayName: Describe Rules
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeRules
     body:
       application/xml: DescribeRulesInput
     responses:
@@ -1769,9 +1853,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe S S L Policies
   post:
     description: Describes the specified policies or all policies used for SSL negotiation. Note that the only supported policy at this time is ELBSecurityPolicy-2015-05.
     displayName: Describe S S L Policies
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSSLPolicies
     body:
       application/xml: DescribeSSLPoliciesInput
     responses:
@@ -1788,9 +1878,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Tags
   post:
     description: Describes the tags for the specified resources.
     displayName: Describe Tags
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeTags
     body:
       application/xml: DescribeTagsInput
     responses:
@@ -1807,9 +1903,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Target Group Attributes
   post:
     description: Describes the attributes for the specified target group.
     displayName: Describe Target Group Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeTargetGroupAttributes
     body:
       application/xml: DescribeTargetGroupAttributesInput
     responses:
@@ -1826,6 +1928,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Target Groups
   post:
     description: 'Describes the specified target groups or all of your target groups.
       By default, all target groups are described. Alternatively, you can specify
@@ -1834,6 +1937,11 @@ types:
       To describe the targets for a target group, use <a>DescribeTargetHealth</a>.
       To describe the attributes of a target group, use <a>DescribeTargetGroupAttributes</a>.'
     displayName: Describe Target Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeTargetGroups
     body:
       application/xml: DescribeTargetGroupsInput
     responses:
@@ -1850,9 +1958,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Target Health
   post:
     description: Describes the health of the specified targets or all of your targets.
     displayName: Describe Target Health
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeTargetHealth
     body:
       application/xml: DescribeTargetHealthInput
     responses:
@@ -1871,9 +1985,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Listener
   post:
     description: Modifies the specified properties of the specified listener. Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to HTTP removes the security policy and SSL certificate properties. If you change the protocol from HTTP to HTTPS, you must add the security policy.
     displayName: Modify Listener
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyListener
     body:
       application/xml: ModifyListenerInput
     responses:
@@ -1890,9 +2010,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Load Balancer Attributes
   post:
     description: Modifies the specified attributes of the specified load balancer. If any of the specified attributes can't be modified as requested, the call fails. Any existing attributes that you do not modify retain their current values.
     displayName: Modify Load Balancer Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyLoadBalancerAttributes
     body:
       application/xml: ModifyLoadBalancerAttributesInput
     responses:
@@ -1909,9 +2035,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Rule
   post:
     description: Modifies the specified rule. Any existing properties that you do not modify retain their current values. To modify the default action, use <a>ModifyListener</a>.
     displayName: Modify Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyRule
     body:
       application/xml: ModifyRuleInput
     responses:
@@ -1928,9 +2060,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Target Group
   post:
     description: Modifies the health checks used when evaluating the health state of the targets in the specified target group. To monitor the health of the targets, use <a>DescribeTargetHealth</a>.
     displayName: Modify Target Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyTargetGroup
     body:
       application/xml: ModifyTargetGroupInput
     responses:
@@ -1947,9 +2085,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Target Group Attributes
   post:
     description: Modifies the specified attributes of the specified target group.
     displayName: Modify Target Group Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyTargetGroupAttributes
     body:
       application/xml: ModifyTargetGroupAttributesInput
     responses:
@@ -1966,9 +2110,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Register Targets
   post:
     description: Registers the specified targets with the specified target group. The target must be in the virtual private cloud (VPC) that you specified for the target group. To remove a target from a target group, use <a>DeregisterTargets</a>.
     displayName: Register Targets
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterTargets
     body:
       application/xml: RegisterTargetsInput
     responses:
@@ -1985,9 +2135,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Remove Tags
   post:
     description: Removes the specified tags from the specified resource. To list the current tags for your resources, use <a>DescribeTags</a>.
     displayName: Remove Tags
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RemoveTags
     body:
       application/xml: RemoveTagsInput
     responses:
@@ -2004,9 +2160,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Rule Priorities
   post:
     description: Sets the priorities of the specified rules. You can reorder the rules as long as there are no priority conflicts in the new order. Any existing rules that you do not specify retain their current priority.
     displayName: Set Rule Priorities
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetRulePriorities
     body:
       application/xml: SetRulePrioritiesInput
     responses:
@@ -2023,9 +2185,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Security Groups
   post:
     description: Associates the specified security groups with the specified load balancer. The specified security groups override the previously associated security groups.
     displayName: Set Security Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetSecurityGroups
     body:
       application/xml: SetSecurityGroupsInput
     responses:
@@ -2042,9 +2210,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Subnets
   post:
     description: Enables the Availability Zone for the specified subnets for the specified load balancer. The specified subnets replace the previously enabled subnets.
     displayName: Set Subnets
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetSubnets
     body:
       application/xml: SetSubnetsInput
     responses:

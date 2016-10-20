@@ -1643,9 +1643,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Clone Receipt Rule Set
   post:
     description: Creates a receipt rule set by cloning an existing one. All receipt rules and configurations are copied to the new receipt rule set and are completely independent of the source rule set. For information about setting up rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Clone Receipt Rule Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CloneReceiptRuleSet
     body:
       application/xml: CloneReceiptRuleSetRequest
     responses:
@@ -1662,9 +1668,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Receipt Filter
   post:
     description: Creates a new IP address filter. For information about setting up IP address filters, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Create Receipt Filter
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateReceiptFilter
     body:
       application/xml: CreateReceiptFilterRequest
     responses:
@@ -1681,9 +1693,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Receipt Rule
   post:
     description: Creates a receipt rule. For information about setting up receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Create Receipt Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateReceiptRule
     body:
       application/xml: CreateReceiptRuleRequest
     responses:
@@ -1700,9 +1718,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Receipt Rule Set
   post:
     description: Creates an empty receipt rule set. For information about setting up receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Create Receipt Rule Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateReceiptRuleSet
     body:
       application/xml: CreateReceiptRuleSetRequest
     responses:
@@ -1719,9 +1743,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Identity
   post:
     description: Deletes the specified identity (an email address or a domain) from the list of verified identities. This action is throttled at one request per second.
     displayName: Delete Identity
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteIdentity
     body:
       application/xml: DeleteIdentityRequest
     responses:
@@ -1736,9 +1766,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Identity Policy
   post:
     description: Deletes the specified sending authorization policy for the given identity (an email address or a domain). This API returns successfully even if a policy with the specified name does not exist. <note> This API is for the identity owner only. If you have not verified the identity, this API will return an error. </note> Sending authorization is a feature that enables an identity owner to authorize other senders to use its identities. For information about using sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Delete Identity Policy
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteIdentityPolicy
     body:
       application/xml: DeleteIdentityPolicyRequest
     responses:
@@ -1753,9 +1789,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Receipt Filter
   post:
     description: Deletes the specified IP address filter. For information about managing IP address filters, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Delete Receipt Filter
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteReceiptFilter
     body:
       application/xml: DeleteReceiptFilterRequest
     responses:
@@ -1770,9 +1812,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Receipt Rule
   post:
     description: Deletes the specified receipt rule. For information about managing receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Delete Receipt Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteReceiptRule
     body:
       application/xml: DeleteReceiptRuleRequest
     responses:
@@ -1789,9 +1837,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Receipt Rule Set
   post:
     description: Deletes the specified receipt rule set and all of the receipt rules it contains. <note> The currently active rule set cannot be deleted. </note> For information about managing receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Delete Receipt Rule Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteReceiptRuleSet
     body:
       application/xml: DeleteReceiptRuleSetRequest
     responses:
@@ -1808,9 +1862,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Verified Email Address
   post:
     description: Deletes the specified email address from the list of verified addresses. <important> The DeleteVerifiedEmailAddress action is deprecated as of the May 15, 2012 release of Domain Verification. The DeleteIdentity action is now preferred. </important> This action is throttled at one request per second.
     displayName: Delete Verified Email Address
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteVerifiedEmailAddress
     body:
       application/xml: DeleteVerifiedEmailAddressRequest
     responses:
@@ -1825,9 +1885,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Active Receipt Rule Set
   post:
     description: Returns the metadata and receipt rules for the receipt rule set that is currently active. For information about setting up receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Describe Active Receipt Rule Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeActiveReceiptRuleSet
     body:
       application/xml: DescribeActiveReceiptRuleSetRequest
     responses:
@@ -1842,9 +1908,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Receipt Rule
   post:
     description: Returns the details of the specified receipt rule. For information about setting up receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Describe Receipt Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeReceiptRule
     body:
       application/xml: DescribeReceiptRuleRequest
     responses:
@@ -1861,9 +1933,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Receipt Rule Set
   post:
     description: Returns the details of the specified receipt rule set. For information about managing receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Describe Receipt Rule Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeReceiptRuleSet
     body:
       application/xml: DescribeReceiptRuleSetRequest
     responses:
@@ -1880,6 +1958,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Identity Dkim Attributes
   post:
     description: 'Returns the current status of Easy DKIM signing for an entity. For
       domain name identities, this action also returns the DKIM tokens that are required
@@ -1896,6 +1975,11 @@ types:
       using DKIM tokens, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html">Amazon
       SES Developer Guide</a>.'
     displayName: Get Identity Dkim Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetIdentityDkimAttributes
     body:
       application/xml: GetIdentityDkimAttributesRequest
     responses:
@@ -1910,9 +1994,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Identity Mail From Domain Attributes
   post:
     description: Returns the custom MAIL FROM attributes for a list of identities (email addresses and/or domains). This action is throttled at one request per second and can only get custom MAIL FROM attributes for up to 100 identities at a time.
     displayName: Get Identity Mail From Domain Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetIdentityMailFromDomainAttributes
     body:
       application/xml: GetIdentityMailFromDomainAttributesRequest
     responses:
@@ -1927,9 +2017,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Identity Notification Attributes
   post:
     description: Given a list of verified identities (email addresses and/or domains), returns a structure describing identity notification attributes. This action is throttled at one request per second and can only get notification attributes for up to 100 identities at a time. For more information about using notifications with Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html">Amazon SES Developer Guide</a>.
     displayName: Get Identity Notification Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetIdentityNotificationAttributes
     body:
       application/xml: GetIdentityNotificationAttributesRequest
     responses:
@@ -1944,9 +2040,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Identity Policies
   post:
     description: Returns the requested sending authorization policies for the given identity (an email address or a domain). The policies are returned as a map of policy names to policy contents. You can retrieve a maximum of 20 policies at a time. <note> This API is for the identity owner only. If you have not verified the identity, this API will return an error. </note> Sending authorization is a feature that enables an identity owner to authorize other senders to use its identities. For information about using sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Get Identity Policies
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetIdentityPolicies
     body:
       application/xml: GetIdentityPoliciesRequest
     responses:
@@ -1961,9 +2063,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Identity Verification Attributes
   post:
     description: Given a list of identities (email addresses and/or domains), returns the verification status and (for domain identities) the verification token for each identity. This action is throttled at one request per second and can only get verification attributes for up to 100 identities at a time.
     displayName: Get Identity Verification Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetIdentityVerificationAttributes
     body:
       application/xml: GetIdentityVerificationAttributesRequest
     responses:
@@ -1978,9 +2086,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Send Quota
   post:
     description: Returns the user's current sending limits. This action is throttled at one request per second.
     displayName: Get Send Quota
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetSendQuota
     responses:
       200:
         body:
@@ -1993,9 +2107,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Send Statistics
   post:
     description: Returns the user's sending statistics. The result is a list of data points, representing the last two weeks of sending activity. Each data point in the list contains statistics for a 15-minute interval. This action is throttled at one request per second.
     displayName: Get Send Statistics
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetSendStatistics
     responses:
       200:
         body:
@@ -2008,9 +2128,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Identities
   post:
     description: Returns a list containing all of the identities (email addresses and domains) for your AWS account, regardless of verification status. This action is throttled at one request per second.
     displayName: List Identities
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListIdentities
     body:
       application/xml: ListIdentitiesRequest
     responses:
@@ -2025,9 +2151,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Identity Policies
   post:
     description: Returns a list of sending authorization policies that are attached to the given identity (an email address or a domain). This API returns only a list. If you want the actual policy content, you can use <code>GetIdentityPolicies</code>. <note> This API is for the identity owner only. If you have not verified the identity, this API will return an error. </note> Sending authorization is a feature that enables an identity owner to authorize other senders to use its identities. For information about using sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: List Identity Policies
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListIdentityPolicies
     body:
       application/xml: ListIdentityPoliciesRequest
     responses:
@@ -2042,9 +2174,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Receipt Filters
   post:
     description: Lists the IP address filters associated with your AWS account. For information about managing IP address filters, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: List Receipt Filters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListReceiptFilters
     body:
       application/xml: ListReceiptFiltersRequest
     responses:
@@ -2059,9 +2197,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Receipt Rule Sets
   post:
     description: Lists the receipt rule sets that exist under your AWS account. If there are additional receipt rule sets to be retrieved, you will receive a <code>NextToken</code> that you can provide to the next call to <code>ListReceiptRuleSets</code> to retrieve the additional entries. For information about managing receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: List Receipt Rule Sets
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListReceiptRuleSets
     body:
       application/xml: ListReceiptRuleSetsRequest
     responses:
@@ -2076,9 +2220,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Verified Email Addresses
   post:
     description: Returns a list containing all of the email addresses that have been verified. <important> The ListVerifiedEmailAddresses action is deprecated as of the May 15, 2012 release of Domain Verification. The ListIdentities action is now preferred. </important> This action is throttled at one request per second.
     displayName: List Verified Email Addresses
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListVerifiedEmailAddresses
     responses:
       200:
         body:
@@ -2091,9 +2241,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Identity Policy
   post:
     description: Adds or updates a sending authorization policy for the specified identity (an email address or a domain). <note> This API is for the identity owner only. If you have not verified the identity, this API will return an error. </note> Sending authorization is a feature that enables an identity owner to authorize other senders to use its identities. For information about using sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Put Identity Policy
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutIdentityPolicy
     body:
       application/xml: PutIdentityPolicyRequest
     responses:
@@ -2110,9 +2266,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Reorder Receipt Rule Set
   post:
     description: Reorders the receipt rules within a receipt rule set. <note> All of the rules in the rule set must be represented in this request. That is, this API will return an error if the reorder request doesn't explicitly position all of the rules. </note> For information about managing receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Reorder Receipt Rule Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ReorderReceiptRuleSet
     body:
       application/xml: ReorderReceiptRuleSetRequest
     responses:
@@ -2129,9 +2291,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Send Bounce
   post:
     description: Generates and sends a bounce message to the sender of an email you received through Amazon SES. You can only use this API on an email up to 24 hours after you receive it. <note> You cannot use this API to send generic bounces for mail that was not received by Amazon SES. </note> For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Send Bounce
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SendBounce
     body:
       application/xml: SendBounceRequest
     responses:
@@ -2148,6 +2316,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Send Email
   post:
     description: 'Composes an email message based on input data, and then immediately
       queues the message for sending. There are several important points to know about
@@ -2168,6 +2337,11 @@ types:
       about your sending quota, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html">Amazon
       SES Developer Guide</a>. </li> </ul>'
     displayName: Send Email
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SendEmail
     body:
       application/xml: SendEmailRequest
     responses:
@@ -2184,6 +2358,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Send Raw Email
   post:
     description: 'Sends an email message, with header and content specified by the
       client. The <code>SendRawEmail</code> action is useful for sending multipart
@@ -2225,6 +2400,11 @@ types:
       authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon
       SES Developer Guide</a>. </li> </ul>'
     displayName: Send Raw Email
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SendRawEmail
     body:
       application/xml: SendRawEmailRequest
     responses:
@@ -2241,9 +2421,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Active Receipt Rule Set
   post:
     description: Sets the specified receipt rule set as the active receipt rule set. <note> To disable your email-receiving through Amazon SES completely, you can call this API with RuleSetName set to null. </note> For information about managing receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Set Active Receipt Rule Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetActiveReceiptRuleSet
     body:
       application/xml: SetActiveReceiptRuleSetRequest
     responses:
@@ -2260,6 +2446,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Identity Dkim Enabled
   post:
     description: 'Enables or disables Easy DKIM signing of email sent from an identity:
       <ul> <li> If Easy DKIM signing is enabled for a domain name identity (e.g.,
@@ -2274,6 +2461,11 @@ types:
       Easy DKIM signing, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon
       SES Developer Guide</a>.'
     displayName: Set Identity Dkim Enabled
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetIdentityDkimEnabled
     body:
       application/xml: SetIdentityDkimEnabledRequest
     responses:
@@ -2288,9 +2480,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Identity Feedback Forwarding Enabled
   post:
     description: Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce and complaint notifications as email. Feedback forwarding can only be disabled when Amazon Simple Notification Service (Amazon SNS) topics are specified for both bounces and complaints. <note> Feedback forwarding does not apply to delivery notifications. Delivery notifications are only available through Amazon SNS. </note> This action is throttled at one request per second. For more information about using notifications with Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html">Amazon SES Developer Guide</a>.
     displayName: Set Identity Feedback Forwarding Enabled
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetIdentityFeedbackForwardingEnabled
     body:
       application/xml: SetIdentityFeedbackForwardingEnabledRequest
     responses:
@@ -2305,9 +2503,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Identity Headers In Notifications Enabled
   post:
     description: Given an identity (an email address or a domain), sets whether Amazon SES includes the original email headers in the Amazon Simple Notification Service (Amazon SNS) notifications of a specified type. This action is throttled at one request per second. For more information about using notifications with Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html">Amazon SES Developer Guide</a>.
     displayName: Set Identity Headers In Notifications Enabled
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetIdentityHeadersInNotificationsEnabled
     body:
       application/xml: SetIdentityHeadersInNotificationsEnabledRequest
     responses:
@@ -2322,9 +2526,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Identity Mail From Domain
   post:
     description: Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain). <important> To send emails using the specified MAIL FROM domain, you must add an MX record to your MAIL FROM domain's DNS settings. If you want your emails to pass Sender Policy Framework (SPF) checks, you must also add or update an SPF record. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html">Amazon SES Developer Guide</a>. </important> This action is throttled at one request per second.
     displayName: Set Identity Mail From Domain
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetIdentityMailFromDomain
     body:
       application/xml: SetIdentityMailFromDomainRequest
     responses:
@@ -2339,9 +2549,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Identity Notification Topic
   post:
     description: Given an identity (an email address or a domain), sets the Amazon Simple Notification Service (Amazon SNS) topic to which Amazon SES will publish bounce, complaint, and/or delivery notifications for emails sent with that identity as the <code>Source</code>. <note> Unless feedback forwarding is enabled, you must specify Amazon SNS topics for bounce and complaint notifications. For more information, see <code>SetIdentityFeedbackForwardingEnabled</code>. </note> This action is throttled at one request per second. For more information about feedback notification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html">Amazon SES Developer Guide</a>.
     displayName: Set Identity Notification Topic
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetIdentityNotificationTopic
     body:
       application/xml: SetIdentityNotificationTopicRequest
     responses:
@@ -2356,9 +2572,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Receipt Rule Position
   post:
     description: Sets the position of the specified receipt rule in the receipt rule set. For information about managing receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Set Receipt Rule Position
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetReceiptRulePosition
     body:
       application/xml: SetReceiptRulePositionRequest
     responses:
@@ -2375,9 +2597,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Receipt Rule
   post:
     description: Updates a receipt rule. For information about managing receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
     displayName: Update Receipt Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateReceiptRule
     body:
       application/xml: UpdateReceiptRuleRequest
     responses:
@@ -2394,9 +2622,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Verify Domain Dkim
   post:
     description: Returns a set of DKIM tokens for a domain. DKIM <i>tokens</i> are character strings that represent your domain's identity. Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign email originating from that domain. This action is throttled at one request per second. To enable or disable Easy DKIM signing for a domain, use the <code>SetIdentityDkimEnabled</code> action. For more information about creating DNS records using DKIM tokens, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html">Amazon SES Developer Guide</a>.
     displayName: Verify Domain Dkim
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - VerifyDomainDkim
     body:
       application/xml: VerifyDomainDkimRequest
     responses:
@@ -2411,9 +2645,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Verify Domain Identity
   post:
     description: Verifies a domain. This action is throttled at one request per second.
     displayName: Verify Domain Identity
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - VerifyDomainIdentity
     body:
       application/xml: VerifyDomainIdentityRequest
     responses:
@@ -2428,9 +2668,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Verify Email Address
   post:
     description: Verifies an email address. This action causes a confirmation email message to be sent to the specified address. <important> The VerifyEmailAddress action is deprecated as of the May 15, 2012 release of Domain Verification. The VerifyEmailIdentity action is now preferred. </important> This action is throttled at one request per second.
     displayName: Verify Email Address
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - VerifyEmailAddress
     body:
       application/xml: VerifyEmailAddressRequest
     responses:
@@ -2445,9 +2691,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Verify Email Identity
   post:
     description: Verifies an email address. This action causes a confirmation email message to be sent to the specified address. This action is throttled at one request per second.
     displayName: Verify Email Identity
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - VerifyEmailIdentity
     body:
       application/xml: VerifyEmailIdentityRequest
     responses:

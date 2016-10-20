@@ -1387,6 +1387,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Cluster
   post:
     description: Creates a new Amazon ECS cluster. By default, your account receives a <code>default</code> cluster when you launch your first container instance. However, you can create your own cluster with a unique name with the <code>CreateCluster</code> action.
     displayName: Create Cluster
@@ -1406,6 +1407,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Service
   post:
     description: 'Runs and maintains a desired number of tasks from a specified task
       definition. If the number of tasks running in a service drops below <code>desiredCount</code>,
@@ -1463,6 +1465,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Cluster
   post:
     description: Deletes the specified cluster. You must deregister all container instances from this cluster before you may delete it. You can list the container instances in a cluster with <a>ListContainerInstances</a> and deregister them with <a>DeregisterContainerInstance</a>.
     displayName: Delete Cluster
@@ -1482,6 +1485,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Service
   post:
     description: Deletes a specified service within a cluster. You can delete a service if you have no running tasks in it and the desired task count is zero. If the service is actively maintaining tasks, you cannot delete it, and you must update the service to a desired task count of zero. For more information, see <a>UpdateService</a>. <note> When you delete a service, if there are still running tasks that require cleanup, the service status moves from <code>ACTIVE</code> to <code>DRAINING</code>, and the service is no longer visible in the console or in <a>ListServices</a> API operations. After the tasks have stopped, then the service status moves from <code>DRAINING</code> to <code>INACTIVE</code>. Services in the <code>DRAINING</code> or <code>INACTIVE</code> status can still be viewed with <a>DescribeServices</a> API operations; however, in the future, <code>INACTIVE</code> services may be cleaned up and purged from Amazon ECS record keeping, and <a>DescribeServices</a> API operations on those services will return a <code>ServiceNotFoundException</code> error. </note>
     displayName: Delete Service
@@ -1501,6 +1505,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Deregister Container Instance
   post:
     description: Deregisters an Amazon ECS container instance from the specified cluster. This instance is no longer available to run tasks. If you intend to use the container instance for some other purpose after deregistration, you should stop all of the tasks running on the container instance before deregistration to avoid any orphaned tasks from consuming resources. Deregistering a container instance removes the instance from a cluster, but it does not terminate the EC2 instance; if you are finished using the instance, be sure to terminate it in the Amazon EC2 console to stop billing. <note> If you terminate a running container instance with a connected Amazon ECS container agent, the agent automatically deregisters the instance from your cluster (stopped container instances or instances with disconnected agents are not automatically deregistered when terminated). </note>
     displayName: Deregister Container Instance
@@ -1520,6 +1525,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Deregister Task Definition
   post:
     description: Deregisters the specified task definition by family and revision. Upon deregistration, the task definition is marked as <code>INACTIVE</code>. Existing tasks and services that reference an <code>INACTIVE</code> task definition continue to run without disruption. Existing services that reference an <code>INACTIVE</code> task definition can still scale up or down by modifying the service's desired count. You cannot use an <code>INACTIVE</code> task definition to run new tasks or create new services, and you cannot update an existing service to reference an <code>INACTIVE</code> task definition (although there may be up to a 10 minute window following deregistration where these restrictions have not yet taken effect).
     displayName: Deregister Task Definition
@@ -1539,6 +1545,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Clusters
   post:
     description: Describes one or more of your clusters.
     displayName: Describe Clusters
@@ -1558,6 +1565,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Container Instances
   post:
     description: Describes Amazon EC2 Container Service container instances. Returns metadata about registered and remaining resources on each container instance requested.
     displayName: Describe Container Instances
@@ -1577,6 +1585,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Services
   post:
     description: Describes the specified services running in your cluster.
     displayName: Describe Services
@@ -1596,6 +1605,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Task Definition
   post:
     description: Describes a task definition. You can specify a <code>family</code> and <code>revision</code> to find information about a specific task definition, or you can simply specify the family to find the latest <code>ACTIVE</code> revision in that family. <note> You can only describe <code>INACTIVE</code> task definitions while an active task or service references them. </note>
     displayName: Describe Task Definition
@@ -1615,6 +1625,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Tasks
   post:
     description: Describes a specified task or tasks.
     displayName: Describe Tasks
@@ -1634,6 +1645,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Discover Poll Endpoint
   post:
     description: <note> This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the agent. </note> Returns an endpoint for the Amazon EC2 Container Service agent to poll for updates.
     displayName: Discover Poll Endpoint
@@ -1653,6 +1665,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Clusters
   post:
     description: Returns a list of existing clusters.
     displayName: List Clusters
@@ -1672,6 +1685,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Container Instances
   post:
     description: Returns a list of container instances in a specified cluster.
     displayName: List Container Instances
@@ -1691,6 +1705,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Services
   post:
     description: Lists the services that are running in a specified cluster.
     displayName: List Services
@@ -1710,6 +1725,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Task Definition Families
   post:
     description: Returns a list of task definition families that are registered to your account (which may include task definition families that no longer have any <code>ACTIVE</code> task definition revisions). You can filter out task definition families that do not contain any <code>ACTIVE</code> task definition revisions by setting the <code>status</code> parameter to <code>ACTIVE</code>. You can also filter the results with the <code>familyPrefix</code> parameter.
     displayName: List Task Definition Families
@@ -1729,6 +1745,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Task Definitions
   post:
     description: Returns a list of task definitions that are registered to your account. You can filter the results by family name with the <code>familyPrefix</code> parameter or by status with the <code>status</code> parameter.
     displayName: List Task Definitions
@@ -1748,6 +1765,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Tasks
   post:
     description: 'Returns a list of tasks for a specified cluster. You can filter
       the results by family name, by a particular container instance, or by the desired
@@ -1772,6 +1790,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Register Container Instance
   post:
     description: <note> This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the agent. </note> Registers an EC2 instance into the specified cluster. This instance becomes available to place containers on.
     displayName: Register Container Instance
@@ -1791,6 +1810,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Register Task Definition
   post:
     description: Registers a new task definition from the supplied <code>family</code> and <code>containerDefinitions</code>. Optionally, you can add data volumes to your containers with the <code>volumes</code> parameter. For more information about task definition parameters and defaults, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task Definitions</a> in the <i>Amazon EC2 Container Service Developer Guide</i>. You can specify an IAM role for your task with the <code>taskRoleArn</code> parameter. When you specify an IAM role for a task, its containers can then use the latest versions of the AWS CLI or SDKs to make API requests to the AWS services that are specified in the IAM policy associated with the role. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">IAM Roles for Tasks</a> in the <i>Amazon EC2 Container Service Developer Guide</i>. You can specify a Docker networking mode for the containers in your task definition with the <code>networkMode</code> parameter. The available network modes correspond to those described in <a href="https://docs.docker.com/engine/reference/run/#/network-settings">Network settings</a> in the Docker run reference.
     displayName: Register Task Definition
@@ -1810,6 +1830,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Run Task
   post:
     description: Start a task using random placement and the default Amazon ECS scheduler. To use your own scheduler or place a task on a specific container instance, use <code>StartTask</code> instead. <important> The <code>count</code> parameter is limited to 10 tasks per call. </important>
     displayName: Run Task
@@ -1829,6 +1850,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Start Task
   post:
     description: Starts a new task from the specified task definition on the specified container instance or instances. To use the default Amazon ECS scheduler to place your task, use <code>RunTask</code> instead. <important> The list of container instances to start tasks on is limited to 10. </important>
     displayName: Start Task
@@ -1848,6 +1870,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Stop Task
   post:
     description: Stops a running task. When <a>StopTask</a> is called on a task, the equivalent of <code>docker stop</code> is issued to the containers running in the task. This results in a <code>SIGTERM</code> and a 30-second timeout, after which <code>SIGKILL</code> is sent and the containers are forcibly stopped. If the container handles the <code>SIGTERM</code> gracefully and exits within 30 seconds from receiving it, no <code>SIGKILL</code> is sent.
     displayName: Stop Task
@@ -1867,6 +1890,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Submit Container State Change
   post:
     description: <note> This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the agent. </note> Sent to acknowledge that a container changed states.
     displayName: Submit Container State Change
@@ -1886,6 +1910,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Submit Task State Change
   post:
     description: <note> This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the agent. </note> Sent to acknowledge that a task changed states.
     displayName: Submit Task State Change
@@ -1905,6 +1930,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Container Agent
   post:
     description: Updates the Amazon ECS container agent on a specified container instance. Updating the Amazon ECS container agent does not interrupt running tasks or services on the container instance. The process for updating the agent differs depending on whether your container instance was launched with the Amazon ECS-optimized AMI or another operating system.  <code>UpdateContainerAgent</code> requires the Amazon ECS-optimized AMI or Amazon Linux with the <code>ecs-init</code> service installed and running. For help updating the Amazon ECS container agent on other operating systems, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent">Manually Updating the Amazon ECS Container Agent</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
     displayName: Update Container Agent
@@ -1924,6 +1950,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Service
   post:
     description: 'Modifies the desired count, deployment configuration, or task definition
       used in a service. You can add to or subtract from the number of instantiations

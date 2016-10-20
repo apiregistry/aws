@@ -2003,6 +2003,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Add Custom Attributes
   post:
     description: Adds additional user attributes to the user pool schema.
     displayName: Add Custom Attributes
@@ -2022,6 +2023,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Confirm Sign Up
   post:
     description: Confirms user registration as an admin without using a confirmation code. Works on any user.
     displayName: Admin Confirm Sign Up
@@ -2041,6 +2043,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Create User
   post:
     description: Creates a new user in the specified user pool and sends a welcome message via email or phone (SMS). This message is based on a template that you configured in your call to CreateUserPool or UpdateUserPool. This template includes your custom sign-up instructions and placeholders for user name and temporary password. Requires developer credentials.
     displayName: Admin Create User
@@ -2060,6 +2063,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Delete User
   post:
     description: Deletes a user as an administrator. Works on any user.
     displayName: Admin Delete User
@@ -2079,6 +2083,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Delete User Attributes
   post:
     description: Deletes the user attributes in a user pool as an administrator. Works on any user.
     displayName: Admin Delete User Attributes
@@ -2098,6 +2103,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Disable User
   post:
     description: Disables the specified user as an administrator. Works on any user.
     displayName: Admin Disable User
@@ -2117,6 +2123,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Enable User
   post:
     description: Enables the specified user as an administrator. Works on any user.
     displayName: Admin Enable User
@@ -2136,6 +2143,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Forget Device
   post:
     description: Forgets the device, as an administrator.
     displayName: Admin Forget Device
@@ -2155,6 +2163,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Get Device
   post:
     description: Gets the device, as an administrator.
     displayName: Admin Get Device
@@ -2174,6 +2183,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Get User
   post:
     description: Gets the specified user by user name in a user pool as an administrator. Works on any user.
     displayName: Admin Get User
@@ -2193,6 +2203,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Initiate Auth
   post:
     description: Initiates the authentication flow, as an administrator.
     displayName: Admin Initiate Auth
@@ -2212,6 +2223,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin List Devices
   post:
     description: Lists devices, as an administrator.
     displayName: Admin List Devices
@@ -2231,6 +2243,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Reset User Password
   post:
     description: Resets the specified user's password in a user pool as an administrator. Works on any user. When a developer calls this API, the current password is invalidated, so it must be changed. If a user tries to sign in after the API is called, the app will get a PasswordResetRequiredException exception back and should direct the user down the flow to reset the password, which is the same as the forgot password flow. In addition, if the user pool has phone verification selected and a verified phone number exists for the user, or if email verification is selected and a verified email exists for the user, calling this API will also result in sending a message to the end user with the code to change their password.
     displayName: Admin Reset User Password
@@ -2250,6 +2263,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Respond To Auth Challenge
   post:
     description: Responds to an authentication challenge, as an administrator.
     displayName: Admin Respond To Auth Challenge
@@ -2269,6 +2283,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Set User Settings
   post:
     description: Sets all the user settings for a specified user name. Works on any user.
     displayName: Admin Set User Settings
@@ -2288,6 +2303,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Update Device Status
   post:
     description: Updates the device status as an administrator.
     displayName: Admin Update Device Status
@@ -2307,6 +2323,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin Update User Attributes
   post:
     description: Updates the specified user's attributes, including developer attributes, as an administrator. Works on any user.
     displayName: Admin Update User Attributes
@@ -2326,6 +2343,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Admin User Global Sign Out
   post:
     description: Signs out users from all devices, as an administrator.
     displayName: Admin User Global Sign Out
@@ -2345,6 +2363,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Change Password
   post:
     description: Changes the password for a specified user in a user pool.
     displayName: Change Password
@@ -2364,6 +2383,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Confirm Device
   post:
     description: Confirms tracking of the device. This API call is the call that beings device tracking.
     displayName: Confirm Device
@@ -2383,6 +2403,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Confirm Forgot Password
   post:
     description: Allows a user to enter a code provided when they reset their password to update their password.
     displayName: Confirm Forgot Password
@@ -2402,6 +2423,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Confirm Sign Up
   post:
     description: Confirms registration of a user and handles the existing alias from a previous user.
     displayName: Confirm Sign Up
@@ -2421,6 +2443,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create User Import Job
   post:
     description: Creates the user import job.
     displayName: Create User Import Job
@@ -2440,6 +2463,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create User Pool
   post:
     description: Creates a new Amazon Cognito user pool and sets the password policy for the pool.
     displayName: Create User Pool
@@ -2459,6 +2483,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create User Pool Client
   post:
     description: Creates the user pool client.
     displayName: Create User Pool Client
@@ -2478,6 +2503,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete User
   post:
     description: Allows a user to delete one's self.
     displayName: Delete User
@@ -2497,6 +2523,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete User Attributes
   post:
     description: Deletes the attributes for a user.
     displayName: Delete User Attributes
@@ -2516,6 +2543,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete User Pool
   post:
     description: Deletes the specified Amazon Cognito user pool.
     displayName: Delete User Pool
@@ -2535,6 +2563,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete User Pool Client
   post:
     description: Allows the developer to delete the user pool client.
     displayName: Delete User Pool Client
@@ -2554,6 +2583,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe User Import Job
   post:
     description: Describes the user import job.
     displayName: Describe User Import Job
@@ -2573,6 +2603,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe User Pool
   post:
     description: Returns the configuration information and metadata of the specified user pool.
     displayName: Describe User Pool
@@ -2592,6 +2623,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe User Pool Client
   post:
     description: Client method for returning the configuration information and metadata of the specified user pool client.
     displayName: Describe User Pool Client
@@ -2611,6 +2643,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Forget Device
   post:
     description: Forgets the specified device.
     displayName: Forget Device
@@ -2630,6 +2663,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Forgot Password
   post:
     description: Retrieves the password for the specified client ID or username.
     displayName: Forgot Password
@@ -2649,6 +2683,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get C S V Header
   post:
     description: Gets the header information for the .csv file to be used as input for the user import job.
     displayName: Get C S V Header
@@ -2668,6 +2703,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Device
   post:
     description: Gets the device.
     displayName: Get Device
@@ -2687,6 +2723,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get User
   post:
     description: Gets the user attributes and metadata for a user.
     displayName: Get User
@@ -2706,6 +2743,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get User Attribute Verification Code
   post:
     description: Gets the user attribute verification code for the specified attribute name.
     displayName: Get User Attribute Verification Code
@@ -2725,6 +2763,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Global Sign Out
   post:
     description: Signs out users from all devices.
     displayName: Global Sign Out
@@ -2744,6 +2783,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Initiate Auth
   post:
     description: Initiates the authentication flow.
     displayName: Initiate Auth
@@ -2763,6 +2803,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Devices
   post:
     description: Lists the devices.
     displayName: List Devices
@@ -2782,6 +2823,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List User Import Jobs
   post:
     description: Lists the user import jobs.
     displayName: List User Import Jobs
@@ -2801,6 +2843,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List User Pool Clients
   post:
     description: Lists the clients that have been created for the specified user pool.
     displayName: List User Pool Clients
@@ -2820,6 +2863,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List User Pools
   post:
     description: Lists the user pools associated with an AWS account.
     displayName: List User Pools
@@ -2839,6 +2883,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Users
   post:
     description: Lists the users in the Amazon Cognito user pool.
     displayName: List Users
@@ -2858,6 +2903,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Resend Confirmation Code
   post:
     description: Resends the confirmation (for confirmation of registration) to a specific user in the user pool.
     displayName: Resend Confirmation Code
@@ -2877,6 +2923,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Respond To Auth Challenge
   post:
     description: Responds to the authentication challenge.
     displayName: Respond To Auth Challenge
@@ -2896,6 +2943,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set User Settings
   post:
     description: Sets the user settings like multi-factor authentication (MFA). If MFA is to be removed for a particular attribute pass the attribute with code delivery as null. If null list is passed, all MFA options are removed.
     displayName: Set User Settings
@@ -2915,6 +2963,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Sign Up
   post:
     description: Registers the user in the specified user pool and creates a user name, password, and user attributes.
     displayName: Sign Up
@@ -2934,6 +2983,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Start User Import Job
   post:
     description: Starts the user import.
     displayName: Start User Import Job
@@ -2953,6 +3003,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Stop User Import Job
   post:
     description: Stops the user import job.
     displayName: Stop User Import Job
@@ -2972,6 +3023,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Device Status
   post:
     description: Updates the device status.
     displayName: Update Device Status
@@ -2991,6 +3043,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update User Attributes
   post:
     description: Allows a user to update a specific attribute (one at a time).
     displayName: Update User Attributes
@@ -3010,6 +3063,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update User Pool
   post:
     description: Updates the specified user pool with the specified attributes.
     displayName: Update User Pool
@@ -3029,6 +3083,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update User Pool Client
   post:
     description: Allows the developer to update the specified user pool client and password policy.
     displayName: Update User Pool Client
@@ -3048,6 +3103,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Verify User Attribute
   post:
     description: Verifies the specified user attributes in the user pool.
     displayName: Verify User Attribute

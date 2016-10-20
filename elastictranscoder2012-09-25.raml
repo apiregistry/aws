@@ -1934,11 +1934,13 @@ types:
     description: <p>Elastic Transcoder returns a warning if the resources used by your pipeline are not in the same region as the pipeline.</p> <p>Using resources in the same region, such as your Amazon S3 buckets, Amazon SNS notification topics, and AWS KMS key, reduces processing time and prevents cross-regional charges.</p>
 /2012-09-25:
   /jobs:
+    displayName: Create Job
     /{Id}:
       uriParameters:
         Id:
           type: Id
           description: <p>The identifier of the job that you want to cancel. </p> <p>To get a list of the jobs (including their <code>jobId</code>) that have a status of <code>Submitted</code>, use the <a>ListJobsByStatus</a> API action.</p>
+      displayName: Read Job
       delete:
         description: The CancelJob operation cancels an unfinished job. <note>You can only cancel a job that has a status of <code>Submitted</code>. To prevent a pipeline from starting to process a job while you're getting the job identifier, use <a>UpdatePipelineStatus</a> to temporarily pause the pipeline.</note>
         displayName: Cancel Job
@@ -1990,11 +1992,13 @@ types:
         429:
           description: LimitExceededException
   /presets:
+    displayName: List Presets
     /{Id}:
       uriParameters:
         Id:
           type: Id
           description: <p>The identifier of the preset for which you want to get detailed information.</p>
+      displayName: Delete Preset
       get:
         description: The ReadPreset operation gets detailed information about a preset.
         displayName: Read Preset
@@ -2073,6 +2077,7 @@ types:
         PipelineId:
           type: Id
           description: <p> The ID of the pipeline for which you want to get job information. </p>
+      displayName: List Jobs By Pipeline
       get:
         description: The ListJobsByPipeline operation gets a list of the jobs currently in a pipeline. Elastic Transcoder returns all of the jobs currently in the specified pipeline. The response body contains one element for each job that satisfies the search criteria.
         displayName: List Jobs By Pipeline
@@ -2094,12 +2099,15 @@ types:
           403:
             description: AccessDeniedException
   /pipelines:
+    displayName: Create Pipeline
     /{Id}:
       uriParameters:
         Id:
           type: Id
           description: <p>The identifier of the pipeline to read.</p>
+      displayName: Delete Pipeline
       /status:
+        displayName: Update Pipeline Status
         post:
           description: 'The UpdatePipelineStatus operation pauses or reactivates a
             pipeline, so that the pipeline stops or restarts the processing of jobs.
@@ -2132,6 +2140,7 @@ types:
             403:
               description: AccessDeniedException
       /notifications:
+        displayName: Update Pipeline Notifications
         post:
           description: With the UpdatePipelineNotifications operation, you can update Amazon Simple Notification Service (Amazon SNS) notifications for a pipeline. When you update notifications for a pipeline, Elastic Transcoder returns the values that you specified in the request.
           displayName: Update Pipeline Notifications
@@ -2387,6 +2396,7 @@ types:
             the current AWS account that have a given status, specify the following
             status: <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>,
             <code>Canceled</code>, or <code>Error</code>.</p>'
+      displayName: List Jobs By Status
       get:
         description: The ListJobsByStatus operation gets a list of jobs that have a specified status. The response body contains one element for each job that satisfies the search criteria.
         displayName: List Jobs By Status
@@ -2408,6 +2418,7 @@ types:
           403:
             description: AccessDeniedException
   /roleTests:
+    displayName: Test Role
     post:
       description: The TestRole operation tests the IAM role used to create the pipeline. The <code>TestRole</code> action lets you determine whether the IAM role you are using has sufficient permissions to let Elastic Transcoder perform tasks associated with the transcoding process. The action attempts to assume the specified IAM role, checks read access to the input and output buckets, and tries to send a test notification to Amazon SNS topics that you specify.
       displayName: Test Role

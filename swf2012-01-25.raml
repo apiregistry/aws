@@ -2887,6 +2887,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Count Closed Workflow Executions
   post:
     description: 'Returns the number of closed workflow executions within the given
       domain that meet the specified filtering criteria. <note>This operation is eventually
@@ -2923,6 +2924,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Count Open Workflow Executions
   post:
     description: 'Returns the number of open workflow executions within the given
       domain that meet the specified filtering criteria. <note>This operation is eventually
@@ -2959,6 +2961,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Count Pending Activity Tasks
   post:
     description: 'Returns the estimated number of activity tasks in the specified
       task list. The count returned is an approximation and is not guaranteed to be
@@ -2992,6 +2995,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Count Pending Decision Tasks
   post:
     description: 'Returns the estimated number of decision tasks in the specified
       task list. The count returned is an approximation and is not guaranteed to be
@@ -3025,6 +3029,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Deprecate Activity Type
   post:
     description: 'Deprecates the specified <i>activity type</i>. After an activity
       type has been deprecated, you cannot create new tasks of that activity type.
@@ -3062,6 +3067,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Deprecate Domain
   post:
     description: 'Deprecates the specified domain. After a domain has been deprecated
       it cannot be used to create new workflow executions or register new types. However,
@@ -3097,6 +3103,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Deprecate Workflow Type
   post:
     description: 'Deprecates the specified <i>workflow type</i>. After a workflow
       type has been deprecated, you cannot create new executions of that type. Executions
@@ -3135,6 +3142,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Activity Type
   post:
     description: 'Returns information about the specified activity type. This includes
       configuration settings provided when the type was registered and other general
@@ -3169,6 +3177,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Domain
   post:
     description: 'Returns information about the specified domain, including description
       and status. <b>Access Control</b> You can use IAM policies to control this action''s
@@ -3198,6 +3207,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Workflow Execution
   post:
     description: 'Returns information about the specified workflow execution including
       its type and some statistics. <note>This operation is eventually consistent.
@@ -3229,6 +3239,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Workflow Type
   post:
     description: 'Returns information about the specified <i>workflow type</i>. This
       includes configuration settings specified when the type was registered and other
@@ -3264,6 +3275,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Workflow Execution History
   post:
     description: 'Returns the history of the specified workflow execution. The results
       may be split into multiple pages. To retrieve subsequent pages, make the call
@@ -3297,6 +3309,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Activity Types
   post:
     description: 'Returns information about all activities registered in the specified
       domain that match the specified name and registration status. The result includes
@@ -3330,6 +3343,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Closed Workflow Executions
   post:
     description: 'Returns a list of closed workflow executions in the specified domain
       that meet the filtering criteria. The results may be split into multiple pages.
@@ -3368,6 +3382,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Domains
   post:
     description: 'Returns the list of domains registered in the account. The results
       may be split into multiple pages. To retrieve subsequent pages, make the call
@@ -3402,6 +3417,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Open Workflow Executions
   post:
     description: 'Returns a list of open workflow executions in the specified domain
       that meet the filtering criteria. The results may be split into multiple pages.
@@ -3440,6 +3456,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Workflow Types
   post:
     description: 'Returns information about workflow types in the specified domain.
       The results may be split into multiple pages that can be retrieved by making
@@ -3470,6 +3487,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Poll For Activity Task
   post:
     description: 'Used by workers to get an <a>ActivityTask</a> from the specified
       activity <code>taskList</code>. This initiates a long poll, where the service
@@ -3510,6 +3528,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Poll For Decision Task
   post:
     description: 'Used by deciders to get a <a>DecisionTask</a> from the specified
       decision <code>taskList</code>. A decision task may be returned for any open
@@ -3558,6 +3577,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Record Activity Task Heartbeat
   post:
     description: 'Used by activity workers to report to the service that the <a>ActivityTask</a>
       represented by the specified <code>taskToken</code> is still making progress.
@@ -3607,6 +3627,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Register Activity Type
   post:
     description: 'Registers a new <i>activity type</i> along with its configuration
       settings in the specified domain. <important>A <code>TypeAlreadyExists</code>
@@ -3644,6 +3665,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Register Domain
   post:
     description: 'Registers a new domain. <b>Access Control</b> You can use IAM policies
       to control this action''s access to Amazon SWF resources as follows: <ul> <li>You
@@ -3673,6 +3695,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Register Workflow Type
   post:
     description: 'Registers a new <i>workflow type</i> and its configuration settings
       in the specified domain. The retention period for the workflow history is set
@@ -3711,6 +3734,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Request Cancel Workflow Execution
   post:
     description: 'Records a <code>WorkflowExecutionCancelRequested</code> event in
       the currently running workflow execution identified by the given domain, workflowId,
@@ -3748,6 +3772,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Respond Activity Task Canceled
   post:
     description: 'Used by workers to tell the service that the <a>ActivityTask</a>
       identified by the <code>taskToken</code> was successfully canceled. Additional
@@ -3788,6 +3813,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Respond Activity Task Completed
   post:
     description: 'Used by workers to tell the service that the <a>ActivityTask</a>
       identified by the <code>taskToken</code> completed successfully with a <code>result</code>
@@ -3828,6 +3854,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Respond Activity Task Failed
   post:
     description: 'Used by workers to tell the service that the <a>ActivityTask</a>
       identified by the <code>taskToken</code> has failed with <code>reason</code>
@@ -3865,6 +3892,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Respond Decision Task Completed
   post:
     description: Used by deciders to tell the service that the <a>DecisionTask</a> identified by the <code>taskToken</code> has successfully completed. The <code>decisions</code> argument specifies the list of decisions made while processing the task. A <code>DecisionTaskCompleted</code> event is added to the workflow history. The <code>executionContext</code> specified is attached to the event in the workflow execution history. <b>Access Control</b> If an IAM policy grants permission to use <code>RespondDecisionTaskCompleted</code>, it can express permissions for the list of decisions in the <code>decisions</code> parameter. Each of the decisions has one or more parameters, much like a regular API call. To allow for policies to be as readable as possible, you can express permissions on decisions as if they were actual API calls, including applying conditions to some parameters. For more information, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.
     displayName: Respond Decision Task Completed
@@ -3884,6 +3912,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Signal Workflow Execution
   post:
     description: 'Records a <code>WorkflowExecutionSignaled</code> event in the workflow
       execution history and creates a decision task for the workflow execution identified
@@ -3920,6 +3949,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Start Workflow Execution
   post:
     description: 'Starts an execution of the workflow type in the specified domain
       using the provided <code>workflowId</code> and input data. This action returns
@@ -3960,6 +3990,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Terminate Workflow Execution
   post:
     description: 'Records a <code>WorkflowExecutionTerminated</code> event and forces
       closure of the workflow execution identified by the given domain, runId, and

@@ -2242,6 +2242,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Batch Get Item
   post:
     description: The <i>BatchGetItem</i> operation returns the attributes of one or more items from one or more tables. You identify requested items by primary key. A single operation can retrieve up to 16 MB of data, which can contain as many as 100 items. <i>BatchGetItem</i> will return a partial result if the response size limit is exceeded, the table's provisioned throughput is exceeded, or an internal processing failure occurs. If a partial result is returned, the operation returns a value for <i>UnprocessedKeys</i>. You can use this value to retry the operation starting with the next item to get. <important> If you request more than 100 items <i>BatchGetItem</i> will return a <i>ValidationException</i> with the message "Too many items requested for the BatchGetItem call". </important> For example, if you ask to retrieve 100 items, but each individual item is 300 KB in size, the system returns 52 items (so as not to exceed the 16 MB limit). It also returns an appropriate <i>UnprocessedKeys</i> value so you can get the next page of results. If desired, your application can include its own logic to assemble the pages of results into one data set. If <i>none</i> of the items can be processed due to insufficient provisioned throughput on all of the tables in the request, then <i>BatchGetItem</i> will return a <i>ProvisionedThroughputExceededException</i>. If <i>at least one</i> of the items is successfully processed, then <i>BatchGetItem</i> completes successfully, while returning the keys of the unread items in <i>UnprocessedKeys</i>. <important> If DynamoDB returns any unprocessed items, you should retry the batch operation on those items. However, <i>we strongly recommend that you use an exponential backoff algorithm</i>. If you retry the batch operation immediately, the underlying read or write requests can still fail due to throttling on the individual tables. If you delay the batch operation using exponential backoff, the individual requests in the batch are much more likely to succeed. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations">Batch Operations and Error Handling</a> in the <i>Amazon DynamoDB Developer Guide</i>. </important> By default, <i>BatchGetItem</i> performs eventually consistent reads on every table in the request. If you want strongly consistent reads instead, you can set <i>ConsistentRead</i> to <code>true</code> for any or all tables. In order to minimize response latency, <i>BatchGetItem</i> retrieves items in parallel. When designing your application, keep in mind that DynamoDB does not return items in any particular order. To help parse the response by item, include the primary key values for the items in your request in the <i>AttributesToGet</i> parameter. If a requested item does not exist, it is not returned in the result. Requests for nonexistent items consume the minimum read capacity units according to the type of read. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations">Capacity Units Calculations</a> in the <i>Amazon DynamoDB Developer Guide</i>.
     displayName: Batch Get Item
@@ -2261,6 +2262,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Batch Write Item
   post:
     description: 'The <i>BatchWriteItem</i> operation puts or deletes multiple items
       in one or more tables. A single call to <i>BatchWriteItem</i> can write up to
@@ -2329,6 +2331,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Table
   post:
     description: The <i>CreateTable</i> operation adds a new table to your account. In an AWS account, table names must be unique within each region. That is, you can have two tables with same name if you create the tables in different regions.  <i>CreateTable</i> is an asynchronous operation. Upon receiving a <i>CreateTable</i> request, DynamoDB immediately returns a response with a <i>TableStatus</i> of <code>CREATING</code>. After the table is created, DynamoDB sets the <i>TableStatus</i> to <code>ACTIVE</code>. You can perform read and write operations only on an <code>ACTIVE</code> table.  You can optionally define secondary indexes on the new table, as part of the <i>CreateTable</i> operation. If you want to create multiple tables with secondary indexes on them, you must create the tables sequentially. Only one table with secondary indexes can be in the <code>CREATING</code> state at any given time. You can use the <i>DescribeTable</i> API to check the table status.
     displayName: Create Table
@@ -2348,6 +2351,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Item
   post:
     description: Deletes a single item in a table by primary key. You can perform a conditional delete operation that deletes the item if it exists, or if it has an expected attribute value. In addition to deleting an item, you can also return the item's attribute values in the same operation, using the <i>ReturnValues</i> parameter. Unless you specify conditions, the <i>DeleteItem</i> is an idempotent operation; running it multiple times on the same item or attribute does <i>not</i> result in an error response. Conditional deletes are useful for deleting items only if specific conditions are met. If those conditions are met, DynamoDB performs the delete. Otherwise, the item is not deleted.
     displayName: Delete Item
@@ -2367,6 +2371,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Table
   post:
     description: 'The <i>DeleteTable</i> operation deletes a table and all of its
       items. After a <i>DeleteTable</i> request, the specified table is in the <code>DELETING</code>
@@ -2399,6 +2404,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Limits
   post:
     description: 'Returns the current provisioned-capacity limits for your AWS account
       in a region, both for the region as a whole and for any one DynamoDB table that
@@ -2453,6 +2459,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Table
   post:
     description: Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table. <note> If you issue a <i>DescribeTable</i> request immediately after a <i>CreateTable</i> request, DynamoDB might return a <i>ResourceNotFoundException</i>. This is because <i>DescribeTable</i> uses an eventually consistent query, and the metadata for your table might not be available at that moment. Wait for a few seconds, and then try the <i>DescribeTable</i> request again. </note>
     displayName: Describe Table
@@ -2472,6 +2479,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Item
   post:
     description: The <i>GetItem</i> operation returns a set of attributes for the item with the given primary key. If there is no matching item, <i>GetItem</i> does not return any data.  <i>GetItem</i> provides an eventually consistent read by default. If your application requires a strongly consistent read, set <i>ConsistentRead</i> to <code>true</code>. Although a strongly consistent read might take more time than an eventually consistent read, it always returns the last updated value.
     displayName: Get Item
@@ -2491,6 +2499,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Tables
   post:
     description: Returns an array of table names associated with the current account and endpoint. The output from <i>ListTables</i> is paginated, with each page returning a maximum of 100 table names.
     displayName: List Tables
@@ -2510,6 +2519,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Item
   post:
     description: Creates a new item, or replaces an old item with a new item. If an item that has the same primary key as the new item already exists in the specified table, the new item completely replaces the existing item. You can perform a conditional put operation (add a new item if one with the specified primary key doesn't exist), or replace an existing item if it has certain attribute values. In addition to putting an item, you can also return the item's attribute values in the same operation, using the <i>ReturnValues</i> parameter. When you add an item, the primary key attribute(s) are the only required attributes. Attribute values cannot be null. String and Binary type attributes must have lengths greater than zero. Set type attributes cannot be empty. Requests with empty values will be rejected with a <i>ValidationException</i> exception. You can request that <i>PutItem</i> return either a copy of the original item (before the update) or a copy of the updated item (after the update). For more information, see the <i>ReturnValues</i> description below. <note> To prevent a new item from replacing an existing item, use a conditional expression that contains the <code>attribute_not_exists</code> function with the name of the attribute being used as the partition key for the table. Since every record must contain that attribute, the <code>attribute_not_exists</code> function will only succeed if no matching item exists. </note> For more information about using this API, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html">Working with Items</a> in the <i>Amazon DynamoDB Developer Guide</i>.
     displayName: Put Item
@@ -2529,6 +2539,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Query
   post:
     description: A <i>Query</i> operation uses the primary key of a table or a secondary index to directly access items from that table or index. Use the <i>KeyConditionExpression</i> parameter to provide a specific value for the partition key. The <i>Query</i> operation will return all of the items from the table or index with that partition key value. You can optionally narrow the scope of the <i>Query</i> operation by specifying a sort key value and a comparison operator in <i>KeyConditionExpression</i>. You can use the <i>ScanIndexForward</i> parameter to get results in forward or reverse order, by sort key. Queries that do not return results consume the minimum number of read capacity units for that type of read operation. If the total number of items meeting the query criteria exceeds the result set size limit of 1 MB, the query stops and results are returned to the user with the <i>LastEvaluatedKey</i> element to continue the query in a subsequent operation. Unlike a <i>Scan</i> operation, a <i>Query</i> operation never returns both an empty result set and a <i>LastEvaluatedKey</i> value. <i>LastEvaluatedKey</i> is only provided if you have used the <i>Limit</i> parameter, or if the result set exceeds 1 MB (prior to applying a filter).  You can query a table, a local secondary index, or a global secondary index. For a query on a table or on a local secondary index, you can set the <i>ConsistentRead</i> parameter to <code>true</code> and obtain a strongly consistent result. Global secondary indexes support eventually consistent reads only, so do not specify <i>ConsistentRead</i> when querying a global secondary index.
     displayName: Query
@@ -2548,6 +2559,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Scan
   post:
     description: The <i>Scan</i> operation returns one or more items and item attributes by accessing every item in a table or a secondary index. To have DynamoDB return fewer items, you can provide a <i>ScanFilter</i> operation. If the total number of scanned items exceeds the maximum data set size limit of 1 MB, the scan stops and results are returned to the user as a <i>LastEvaluatedKey</i> value to continue the scan in a subsequent operation. The results also include the number of items exceeding the limit. A scan can result in no table data meeting the filter criteria.  By default, <i>Scan</i> operations proceed sequentially; however, for faster performance on a large table or secondary index, applications can request a parallel <i>Scan</i> operation by providing the <i>Segment</i> and <i>TotalSegments</i> parameters. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#QueryAndScanParallelScan">Parallel Scan</a> in the <i>Amazon DynamoDB Developer Guide</i>. By default, <i>Scan</i> uses eventually consistent reads when accessing the data in a table; therefore, the result set might not include the changes to data in the table immediately before the operation began. If you need a consistent copy of the data, as of the time that the Scan begins, you can set the <i>ConsistentRead</i> parameter to <i>true</i>.
     displayName: Scan
@@ -2567,6 +2579,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Item
   post:
     description: Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put, delete, or add attribute values. You can also perform a conditional update on an existing item (insert a new attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected attribute values). You can also return the item's attribute values in the same <i>UpdateItem</i> operation using the <i>ReturnValues</i> parameter.
     displayName: Update Item
@@ -2586,6 +2599,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Table
   post:
     description: 'Modifies the provisioned throughput settings, global secondary indexes,
       or DynamoDB Streams settings for a given table. You can only perform one of

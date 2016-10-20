@@ -241,6 +241,7 @@ types:
         FileSystemId:
           type: FileSystemId
           description: <p>ID of the file system whose tag set you want to retrieve.</p>
+      displayName: Describe Tags
       get:
         description: 'Returns the tags associated with a file system. The order of
           tags returned in the response of one <code>DescribeTags</code> call and
@@ -271,6 +272,7 @@ types:
         FileSystemId:
           type: FileSystemId
           description: <p>ID of the file system whose tags you want to modify (String). This operation modifies the tags only, not the file system.</p>
+      displayName: Create Tags
       post:
         description: Creates or overwrites tags associated with a file system. Each tag is a key-value pair. If a tag key specified in the request already exists on the file system, this operation overwrites its value with the value provided in the request. If you add the <code>Name</code> tag to your file system, Amazon EFS returns it in the response to the <a>DescribeFileSystems</a> operation.  This operation requires permission for the <code>elasticfilesystem:CreateTags</code> action.
         displayName: Create Tags
@@ -292,11 +294,13 @@ types:
           404:
             description: FileSystemNotFound
   /file-systems:
+    displayName: Describe File Systems
     /{FileSystemId}:
       uriParameters:
         FileSystemId:
           type: FileSystemId
           description: <p>ID of the file system you want to delete.</p>
+      displayName: Delete File System
       delete:
         description: Deletes a file system, permanently severing access to its contents. Upon return, the file system no longer exists and you can't access any contents of the deleted file system.  You can't delete a file system that is in use. That is, if the file system has any mount targets, you must first delete them. For more information, see <a>DescribeMountTargets</a> and <a>DeleteMountTarget</a>.  <note> The <code>DeleteFileSystem</code> call returns while the file system state is still <code>deleting</code>. You can check the file system deletion status by calling the <a>DescribeFileSystems</a> operation, which returns a list of file systems in your account. If you pass file system ID or creation token for the deleted file system, the <a>DescribeFileSystems</a> returns a <code>404 FileSystemNotFound</code> error. </note> This operation requires permissions for the <code>elasticfilesystem:DeleteFileSystem</code> action.
         displayName: Delete File System
@@ -411,12 +415,15 @@ types:
         404:
           description: FileSystemNotFound
   /mount-targets:
+    displayName: Describe Mount Targets
     /{MountTargetId}:
       uriParameters:
         MountTargetId:
           type: MountTargetId
           description: <p>ID of the mount target whose security groups you want to modify.</p>
+      displayName: Delete Mount Target
       /security-groups:
+        displayName: Describe Mount Target Security Groups
         put:
           description: 'Modifies the set of security groups in effect for a mount
             target. When you create a mount target, Amazon EFS also creates a new
@@ -613,6 +620,7 @@ types:
         FileSystemId:
           type: FileSystemId
           description: <p>ID of the file system whose tags you want to delete (String).</p>
+      displayName: Delete Tags
       post:
         description: Deletes the specified tags from a file system. If the <code>DeleteTags</code> request includes a tag key that does not exist, Amazon EFS ignores it and doesn't cause an error. For more information about tags and related restrictions, see <a href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Tag Restrictions</a> in the <i>AWS Billing and Cost Management User Guide</i>. This operation requires permissions for the <code>elasticfilesystem:DeleteTags</code> action.
         displayName: Delete Tags

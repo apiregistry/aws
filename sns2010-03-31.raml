@@ -849,9 +849,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Add Permission
   post:
     description: Adds a statement to a topic's access control policy, granting access for the specified AWS accounts to the specified actions.
     displayName: Add Permission
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AddPermission
     body:
       application/xml: AddPermissionInput
     responses:
@@ -874,9 +880,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Check If Phone Number Is Opted Out
   post:
     description: Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from your account. You cannot send SMS messages to a number that is opted out. To resume sending messages, you can opt in the number by using the <code>OptInPhoneNumber</code> action.
     displayName: Check If Phone Number Is Opted Out
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CheckIfPhoneNumberIsOptedOut
     body:
       application/xml: CheckIfPhoneNumberIsOptedOutInput
     responses:
@@ -899,9 +911,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Confirm Subscription
   post:
     description: Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by an earlier <code>Subscribe</code> action. If the token is valid, the action creates a new subscription and returns its Amazon Resource Name (ARN). This call requires an AWS signature only when the <code>AuthenticateOnUnsubscribe</code> flag is set to "true".
     displayName: Confirm Subscription
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ConfirmSubscription
     body:
       application/xml: ConfirmSubscriptionInput
     responses:
@@ -924,6 +942,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Platform Application
   post:
     description: 'Creates a platform application object for one of the supported push
       notification services, such as APNS and GCM, to which devices and mobile apps
@@ -951,6 +970,11 @@ types:
       Started with MPNS</a>, or <a href="http://docs.aws.amazon.com/sns/latest/dg/mobile-push-wns.html">Getting
       Started with WNS</a>. '
     displayName: Create Platform Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreatePlatformApplication
     body:
       application/xml: CreatePlatformApplicationInput
     responses:
@@ -971,6 +995,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Platform Endpoint
   post:
     description: 'Creates an endpoint for a device and mobile app on one of the supported
       push notification services, such as GCM and APNS. <code>CreatePlatformEndpoint</code>
@@ -987,6 +1012,11 @@ types:
       field must also contain the ChannelId. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html">Creating
       an Amazon SNS Endpoint for Baidu</a>. '
     displayName: Create Platform Endpoint
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreatePlatformEndpoint
     body:
       application/xml: CreatePlatformEndpointInput
     responses:
@@ -1009,9 +1039,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Topic
   post:
     description: Creates a topic to which notifications can be published. Users can create at most 100,000 topics. For more information, see <a href="http://aws.amazon.com/sns/">http://aws.amazon.com/sns</a>. This action is idempotent, so if the requester already owns a topic with the specified name, that topic's ARN is returned without creating a new topic.
     displayName: Create Topic
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateTopic
     body:
       application/xml: CreateTopicInput
     responses:
@@ -1032,9 +1068,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Endpoint
   post:
     description: Deletes the endpoint for a device and mobile app from Amazon SNS. This action is idempotent. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">Using Amazon SNS Mobile Push Notifications</a>.  When you delete an endpoint that is also subscribed to a topic, then you must also unsubscribe the endpoint from the topic.
     displayName: Delete Endpoint
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteEndpoint
     body:
       application/xml: DeleteEndpointInput
     responses:
@@ -1055,11 +1097,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Platform Application
   post:
     description: 'Deletes a platform application object for one of the supported push
       notification services, such as APNS and GCM. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">Using
       Amazon SNS Mobile Push Notifications</a>. '
     displayName: Delete Platform Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeletePlatformApplication
     body:
       application/xml: DeletePlatformApplicationInput
     responses:
@@ -1080,9 +1128,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Topic
   post:
     description: Deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously sent to the topic from being delivered to subscribers. This action is idempotent, so deleting a topic that does not exist does not result in an error.
     displayName: Delete Topic
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteTopic
     body:
       application/xml: DeleteTopicInput
     responses:
@@ -1105,12 +1159,18 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Endpoint Attributes
   post:
     description: 'Retrieves the endpoint attributes for a device on one of the supported
       push notification services, such as GCM and APNS. For more information, see
       <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">Using
       Amazon SNS Mobile Push Notifications</a>. '
     displayName: Get Endpoint Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetEndpointAttributes
     body:
       application/xml: GetEndpointAttributesInput
     responses:
@@ -1133,12 +1193,18 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Platform Application Attributes
   post:
     description: 'Retrieves the attributes of the platform application object for
       the supported push notification services, such as APNS and GCM. For more information,
       see <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">Using
       Amazon SNS Mobile Push Notifications</a>. '
     displayName: Get Platform Application Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetPlatformApplicationAttributes
     body:
       application/xml: GetPlatformApplicationAttributesInput
     responses:
@@ -1161,9 +1227,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get S M S Attributes
   post:
     description: Returns the settings for sending SMS messages from your account. These settings are set with the <code>SetSMSAttributes</code> action.
     displayName: Get S M S Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetSMSAttributes
     body:
       application/xml: GetSMSAttributesInput
     responses:
@@ -1186,9 +1258,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Subscription Attributes
   post:
     description: Returns all of the properties of a subscription.
     displayName: Get Subscription Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetSubscriptionAttributes
     body:
       application/xml: GetSubscriptionAttributesInput
     responses:
@@ -1211,9 +1289,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Topic Attributes
   post:
     description: Returns all of the properties of a topic. Topic properties returned might differ based on the authorization of the user.
     displayName: Get Topic Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetTopicAttributes
     body:
       application/xml: GetTopicAttributesInput
     responses:
@@ -1236,6 +1320,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Endpoints By Platform Application
   post:
     description: 'Lists the endpoints and endpoint attributes for devices in a supported
       push notification service, such as GCM and APNS. The results for <code>ListEndpointsByPlatformApplication</code>
@@ -1247,6 +1332,11 @@ types:
       see <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">Using
       Amazon SNS Mobile Push Notifications</a>. '
     displayName: List Endpoints By Platform Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListEndpointsByPlatformApplication
     body:
       application/xml: ListEndpointsByPlatformApplicationInput
     responses:
@@ -1269,9 +1359,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Phone Numbers Opted Out
   post:
     description: Returns a list of phone numbers that are opted out, meaning you cannot send SMS messages to them. The results for <code>ListPhoneNumbersOptedOut</code> are paginated, and each page returns up to 100 phone numbers. If additional phone numbers are available after the first page of results, then a <code>NextToken</code> string will be returned. To receive the next page, you call <code>ListPhoneNumbersOptedOut</code> again using the <code>NextToken</code> string received from the previous call. When there are no more records to return, <code>NextToken</code> will be null.
     displayName: List Phone Numbers Opted Out
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListPhoneNumbersOptedOut
     body:
       application/xml: ListPhoneNumbersOptedOutInput
     responses:
@@ -1294,6 +1390,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Platform Applications
   post:
     description: 'Lists the platform application objects for the supported push notification
       services, such as APNS and GCM. The results for <code>ListPlatformApplications</code>
@@ -1305,6 +1402,11 @@ types:
       href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">Using Amazon
       SNS Mobile Push Notifications</a>. '
     displayName: List Platform Applications
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListPlatformApplications
     body:
       application/xml: ListPlatformApplicationsInput
     responses:
@@ -1325,9 +1427,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Subscriptions
   post:
     description: Returns a list of the requester's subscriptions. Each call returns a limited list of subscriptions, up to 100. If there are more subscriptions, a <code>NextToken</code> is also returned. Use the <code>NextToken</code> parameter in a new <code>ListSubscriptions</code> call to get further results.
     displayName: List Subscriptions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListSubscriptions
     body:
       application/xml: ListSubscriptionsInput
     responses:
@@ -1348,9 +1456,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Subscriptions By Topic
   post:
     description: Returns a list of the subscriptions to a specific topic. Each call returns a limited list of subscriptions, up to 100. If there are more subscriptions, a <code>NextToken</code> is also returned. Use the <code>NextToken</code> parameter in a new <code>ListSubscriptionsByTopic</code> call to get further results.
     displayName: List Subscriptions By Topic
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListSubscriptionsByTopic
     body:
       application/xml: ListSubscriptionsByTopicInput
     responses:
@@ -1373,9 +1487,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Topics
   post:
     description: Returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If there are more topics, a <code>NextToken</code> is also returned. Use the <code>NextToken</code> parameter in a new <code>ListTopics</code> call to get further results.
     displayName: List Topics
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListTopics
     body:
       application/xml: ListTopicsInput
     responses:
@@ -1396,9 +1516,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Opt In Phone Number
   post:
     description: Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number. You can opt in a phone number only once every 30 days.
     displayName: Opt In Phone Number
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - OptInPhoneNumber
     body:
       application/xml: OptInPhoneNumberInput
     responses:
@@ -1421,6 +1547,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Publish
   post:
     description: 'Sends a message to all of a topic''s subscribed endpoints. When
       a <code>messageId</code> is returned, the message has been saved and Amazon
@@ -1433,6 +1560,11 @@ types:
       more information about formatting messages, see <a href="http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html">Send
       Custom Platform-Specific Payloads in Messages to Mobile Devices</a>. '
     displayName: Publish
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - Publish
     body:
       application/xml: PublishInput
     responses:
@@ -1455,9 +1587,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Remove Permission
   post:
     description: Removes a statement from a topic's access control policy.
     displayName: Remove Permission
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RemovePermission
     body:
       application/xml: RemovePermissionInput
     responses:
@@ -1480,12 +1618,18 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Endpoint Attributes
   post:
     description: 'Sets the attributes for an endpoint for a device on one of the supported
       push notification services, such as GCM and APNS. For more information, see
       <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">Using
       Amazon SNS Mobile Push Notifications</a>. '
     displayName: Set Endpoint Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetEndpointAttributes
     body:
       application/xml: SetEndpointAttributesInput
     responses:
@@ -1508,6 +1652,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Platform Application Attributes
   post:
     description: 'Sets the attributes of the platform application object for the supported
       push notification services, such as APNS and GCM. For more information, see
@@ -1516,6 +1661,11 @@ types:
       for message delivery status, see <a href="http://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html">Using
       Amazon SNS Application Attributes for Message Delivery Status</a>. '
     displayName: Set Platform Application Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetPlatformApplicationAttributes
     body:
       application/xml: SetPlatformApplicationAttributesInput
     responses:
@@ -1538,9 +1688,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set S M S Attributes
   post:
     description: Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports. You can override some of these settings for a single message when you use the <code>Publish</code> action with the <code>MessageAttributes.entry.N</code> parameter. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html">Sending an SMS Message</a> in the <i>Amazon SNS Developer Guide</i>.
     displayName: Set S M S Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetSMSAttributes
     body:
       application/xml: SetSMSAttributesInput
     responses:
@@ -1563,9 +1719,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Subscription Attributes
   post:
     description: Allows a subscription owner to set an attribute of the topic to a new value.
     displayName: Set Subscription Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetSubscriptionAttributes
     body:
       application/xml: SetSubscriptionAttributesInput
     responses:
@@ -1588,9 +1750,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Topic Attributes
   post:
     description: Allows a topic owner to set an attribute of the topic to a new value.
     displayName: Set Topic Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetTopicAttributes
     body:
       application/xml: SetTopicAttributesInput
     responses:
@@ -1613,9 +1781,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Subscribe
   post:
     description: Prepares to subscribe an endpoint by sending the endpoint a confirmation message. To actually create a subscription, the endpoint owner must call the <code>ConfirmSubscription</code> action with the token from the confirmation message. Confirmation tokens are valid for three days.
     displayName: Subscribe
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - Subscribe
     body:
       application/xml: SubscribeInput
     responses:
@@ -1638,9 +1812,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Unsubscribe
   post:
     description: Deletes a subscription. If the subscription requires authentication for deletion, only the owner of the subscription or the topic's owner can unsubscribe, and an AWS signature is required. If the <code>Unsubscribe</code> call does not require authentication and the requester is not the subscription owner, a final cancellation message is delivered to the endpoint, so that the endpoint owner can easily resubscribe to the topic if the <code>Unsubscribe</code> request was unintended.
     displayName: Unsubscribe
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - Unsubscribe
     body:
       application/xml: UnsubscribeInput
     responses:

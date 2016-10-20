@@ -440,9 +440,15 @@ types:
       namespace: http://importexport.amazonaws.com/doc/2010-06-01/
     description: Output structure for the UpateJob operation.
 /?Operation=UpdateJob:
+  displayName: Update Job
   post:
     description: You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file. The manifest file attached to this request replaces the original manifest file. You can only use the operation after a CreateJob request but before the data transfer starts and you can only use it on jobs you own.
     displayName: Update Job
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateJob
     body:
       application/xml: UpdateJobInput
     responses:
@@ -452,9 +458,15 @@ types:
       400:
         description: MissingParameterException | InvalidParameterException | InvalidAccessKeyIdException | InvalidAddressException | InvalidManifestFieldException | InvalidJobIdException | MissingManifestFieldException | NoSuchBucketException | ExpiredJobIdException | CanceledJobIdException | MissingCustomsException | InvalidCustomsException | InvalidFileSystemException | MultipleRegionsException | BucketPermissionException | MalformedManifestException | UnableToUpdateJobIdException | InvalidVersionException
 /?Operation=ListJobs:
+  displayName: List Jobs
   post:
     description: This operation returns the jobs associated with the requester. AWS Import/Export lists the jobs in reverse chronological order based on the date of creation. For example if Job Test1 was created 2009Dec30 and Test2 was created 2010Feb05, the ListJobs operation would return Test2 followed by Test1.
     displayName: List Jobs
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListJobs
     body:
       application/xml: ListJobsInput
     responses:
@@ -464,9 +476,15 @@ types:
       400:
         description: InvalidParameterException | InvalidAccessKeyIdException | InvalidVersionException
 /?Operation=GetShippingLabel:
+  displayName: Get Shipping Label
   post:
     description: This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing.
     displayName: Get Shipping Label
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetShippingLabel
     body:
       application/xml: GetShippingLabelInput
     responses:
@@ -476,9 +494,15 @@ types:
       400:
         description: InvalidJobIdException | ExpiredJobIdException | CanceledJobIdException | InvalidAccessKeyIdException | InvalidAddressException | InvalidVersionException | InvalidParameterException
 /?Operation=GetStatus:
+  displayName: Get Status
   post:
     description: This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job. You can only return information about jobs you own.
     displayName: Get Status
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetStatus
     body:
       application/xml: GetStatusInput
     responses:
@@ -488,9 +512,15 @@ types:
       400:
         description: InvalidJobIdException | ExpiredJobIdException | CanceledJobIdException | InvalidAccessKeyIdException | InvalidVersionException
 /?Operation=CreateJob:
+  displayName: Create Job
   post:
     description: This operation initiates the process of scheduling an upload or download of your data. You include in the request a manifest that describes the data transfer specifics. The response to the request includes a job ID, which you can use in other operations, a signature that you use to identify your storage device, and the address where you should ship your storage device.
     displayName: Create Job
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateJob
     body:
       application/xml: CreateJobInput
     responses:
@@ -500,9 +530,15 @@ types:
       400:
         description: MissingParameterException | InvalidParameterException | InvalidAccessKeyIdException | InvalidAddressException | InvalidManifestFieldException | MissingManifestFieldException | NoSuchBucketException | MissingCustomsException | InvalidCustomsException | InvalidFileSystemException | MultipleRegionsException | BucketPermissionException | MalformedManifestException | CreateJobQuotaExceededException | InvalidJobIdException | InvalidVersionException
 /?Operation=CancelJob:
+  displayName: Cancel Job
   post:
     description: This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the job has already started or is complete.
     displayName: Cancel Job
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CancelJob
     body:
       application/xml: CancelJobInput
     responses:

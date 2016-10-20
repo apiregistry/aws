@@ -809,9 +809,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Alarms
   post:
     description: Deletes all specified alarms. In the event of an error, no alarms are deleted.
     displayName: Delete Alarms
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteAlarms
     body:
       application/xml: DeleteAlarmsInput
     responses:
@@ -828,9 +834,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Alarm History
   post:
     description: Retrieves history for the specified alarm. Filter alarms by date range or item type. If an alarm name is not specified, Amazon CloudWatch returns histories for all of the owner's alarms. <note> Amazon CloudWatch retains the history of an alarm for two weeks, whether or not you delete the alarm. </note>
     displayName: Describe Alarm History
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeAlarmHistory
     body:
       application/xml: DescribeAlarmHistoryInput
     responses:
@@ -847,9 +859,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Alarms
   post:
     description: Retrieves alarms with the specified names. If no name is specified, all alarms for the user are returned. Alarms can be retrieved by using only a prefix for the alarm name, the alarm state, or a prefix for any action.
     displayName: Describe Alarms
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeAlarms
     body:
       application/xml: DescribeAlarmsInput
     responses:
@@ -866,9 +884,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Alarms For Metric
   post:
     description: Retrieves all alarms for a single metric. Specify a statistic, period, or unit to filter the set of alarms further.
     displayName: Describe Alarms For Metric
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeAlarmsForMetric
     body:
       application/xml: DescribeAlarmsForMetricInput
     responses:
@@ -883,9 +907,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Disable Alarm Actions
   post:
     description: Disables actions for the specified alarms. When an alarm's actions are disabled the alarm's state may change, but none of the alarm's actions will execute.
     displayName: Disable Alarm Actions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisableAlarmActions
     body:
       application/xml: DisableAlarmActionsInput
     responses:
@@ -900,9 +930,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Enable Alarm Actions
   post:
     description: Enables actions for the specified alarms.
     displayName: Enable Alarm Actions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - EnableAlarmActions
     body:
       application/xml: EnableAlarmActionsInput
     responses:
@@ -917,6 +953,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Metric Statistics
   post:
     description: 'Gets statistics for the specified metric.  The maximum number of
       data points that can be queried is 50,850, whereas the maximum number of data
@@ -942,6 +979,11 @@ types:
       CloudWatch Metrics, Namespaces, and Dimensions Reference</a> in the <i>Amazon
       CloudWatch Developer Guide</i>. '
     displayName: Get Metric Statistics
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetMetricStatistics
     body:
       application/xml: GetMetricStatisticsInput
     responses:
@@ -960,6 +1002,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Metrics
   post:
     description: ' Returns a list of valid metrics stored for the AWS account owner.
       Returned metrics can be used with <a>GetMetricStatistics</a> to obtain statistical
@@ -970,6 +1013,11 @@ types:
       metric to appear in calls to <code>ListMetrics</code>. Statistics about the
       metric, however, are available sooner using <a>GetMetricStatistics</a>. </note>'
     displayName: List Metrics
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListMetrics
     body:
       application/xml: ListMetricsInput
     responses:
@@ -988,6 +1036,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Metric Alarm
   post:
     description: 'Creates or updates an alarm and associates it with the specified
       Amazon CloudWatch metric. Optionally, this operation can associate one or more
@@ -1017,6 +1066,11 @@ types:
       (AWS STS), you cannot stop or terminate an Amazon EC2 instance using alarm actions.
       </note>'
     displayName: Put Metric Alarm
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutMetricAlarm
     body:
       application/xml: PutMetricAlarmInput
     responses:
@@ -1033,6 +1087,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Metric Data
   post:
     description: ' Publishes metric data points to Amazon CloudWatch. Amazon CloudWatch
       associates the data points with the specified metric. If the specified metric
@@ -1048,6 +1103,11 @@ types:
       that is timestamped 24 hours or more in the past may take in excess of 48 hours
       to become available from submission time using <code>GetMetricStatistics</code>.'
     displayName: Put Metric Data
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutMetricData
     body:
       application/xml: PutMetricDataInput
     responses:
@@ -1066,6 +1126,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Alarm State
   post:
     description: ' Temporarily sets the state of an alarm for testing purposes. When
       the updated <code>StateValue</code> differs from the previous value, the action
@@ -1076,6 +1137,11 @@ types:
       state change happens very quickly, it is typically only visible in the alarm''s
       <b>History</b> tab in the Amazon CloudWatch console or through <code>DescribeAlarmHistory</code>. '
     displayName: Set Alarm State
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetAlarmState
     body:
       application/xml: SetAlarmStateInput
     responses:

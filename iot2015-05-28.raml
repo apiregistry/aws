@@ -1237,11 +1237,13 @@ types:
     type: object
     description: <p>The output from the UpdateThing operation.</p>
 /cacertificate:
+  displayName: Register C A Certificate
   /{caCertificateId}:
     uriParameters:
       caCertificateId:
         type: CertificateId
         description: <p>The ID of the certificate to delete.</p>
+    displayName: Update C A Certificate
     delete:
       description: Deletes a registered CA certificate.
       displayName: Delete C A Certificate
@@ -1353,6 +1355,7 @@ types:
       caCertificateId:
         type: CertificateId
         description: <p>The ID of the CA certificate. This operation will list all registered device certificate that were signed by this CA certificate. </p>
+    displayName: List Certificates By C A
     get:
       description: List the device certificates signed by the specified CA certificate.
       displayName: List Certificates By C A
@@ -1381,12 +1384,15 @@ types:
         500:
           description: InternalFailureException
 /thing-types:
+  displayName: List Thing Types
   /{thingTypeName}:
     uriParameters:
       thingTypeName:
         type: ThingTypeName
         description: <p>The name of the thing type.</p>
+    displayName: Create Thing Type
     /deprecate:
+      displayName: Deprecate Thing Type
       post:
         description: Deprecates a thing type. You can not associate new things with deprecated thing type.
         displayName: Deprecate Thing Type
@@ -1505,11 +1511,13 @@ types:
       500:
         description: InternalFailureException
 /principal-policies:
+  displayName: List Principal Policies
   /{policyName}:
     uriParameters:
       policyName:
         type: PolicyName
         description: <p>The name of the policy to detach.</p>
+    displayName: Attach Principal Policy
     delete:
       description: Removes the specified policy from the specified certificate.
       displayName: Detach Principal Policy
@@ -1592,11 +1600,13 @@ types:
       500:
         description: InternalFailureException
 /certificates:
+  displayName: Create Certificate From Csr
   /{certificateId}:
     uriParameters:
       certificateId:
         type: CertificateId
         description: <p>The ID of the certificate.</p>
+    displayName: Delete Certificate
     get:
       description: Gets information about the specified certificate.
       displayName: Describe Certificate
@@ -1741,6 +1751,7 @@ types:
         description: InternalFailureException
 /principals:
   /things:
+    displayName: List Principal Things
     get:
       description: Lists the things associated with the specified principal.
       displayName: List Principal Things
@@ -1772,12 +1783,15 @@ types:
         404:
           description: ResourceNotFoundException
 /rules:
+  displayName: List Topic Rules
   /{ruleName}:
     uriParameters:
       ruleName:
         type: RuleName
         description: <p>The name of the rule to disable.</p>
+    displayName: Replace Topic Rule
     /disable:
+      displayName: Disable Topic Rule
       post:
         description: Disables the specified rule.
         displayName: Disable Topic Rule
@@ -1794,6 +1808,7 @@ types:
           401:
             description: UnauthorizedException
     /enable:
+      displayName: Enable Topic Rule
       post:
         description: Enables the specified rule.
         displayName: Enable Topic Rule
@@ -1904,6 +1919,7 @@ types:
       503:
         description: ServiceUnavailableException
 /cacertificates:
+  displayName: List C A Certificates
   get:
     description: Lists the CA certificates registered for your AWS account. The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.
     displayName: List C A Certificates
@@ -1932,6 +1948,7 @@ types:
       500:
         description: InternalFailureException
 /registrationcode:
+  displayName: Get Registration Code
   delete:
     description: Deletes a CA certificate registration code.
     displayName: Delete Registration Code
@@ -1971,12 +1988,15 @@ types:
       400:
         description: InvalidRequestException
 /things:
+  displayName: List Things
   /{thingName}:
     uriParameters:
       thingName:
         type: ThingName
         description: <p>The name of the thing to create.</p>
+    displayName: Describe Thing
     /principals:
+      displayName: List Thing Principals
       put:
         description: Attaches the specified principal to the specified thing.
         displayName: Attach Thing Principal
@@ -2191,17 +2211,21 @@ types:
       500:
         description: InternalFailureException
 /policies:
+  displayName: List Policies
   /{policyName}:
     uriParameters:
       policyName:
         type: PolicyName
         description: <p>The policy name.</p>
+    displayName: Create Policy
     /version:
+      displayName: List Policy Versions
       /{policyVersionId}:
         uriParameters:
           policyVersionId:
             type: PolicyVersionId
             description: <p>The policy version ID.</p>
+        displayName: Get Policy Version
         patch:
           description: Sets the specified version of the specified policy as the policy's default (operative) version. This action affects all certificates to which the policy is attached. To list the principals the policy is attached to, use the ListPrincipalPolicy API.
           displayName: Set Default Policy Version
@@ -2406,6 +2430,7 @@ types:
       500:
         description: InternalFailureException
 /loggingOptions:
+  displayName: Get Logging Options
   post:
     description: Sets the logging options.
     displayName: Set Logging Options
@@ -2444,6 +2469,7 @@ types:
       certificateId:
         type: CertificateId
         description: <p>The ID of the certificate.</p>
+    displayName: Reject Certificate Transfer
     patch:
       description: Rejects a pending certificate transfer. After AWS IoT rejects a certificate transfer, the certificate status changes from <b>PENDING_TRANSFER</b> to <b>INACTIVE</b>. To check for pending certificate transfers, call <a>ListCertificates</a> to enumerate your certificates. This operation can only be called by the transfer destination. After it is called, the certificate will be returned to the source's account in the INACTIVE state.
       displayName: Reject Certificate Transfer
@@ -2473,6 +2499,7 @@ types:
         500:
           description: InternalFailureException
 /policy-principals:
+  displayName: List Policy Principals
   get:
     description: Lists the principals associated with the specified policy.
     displayName: List Policy Principals
@@ -2507,6 +2534,7 @@ types:
       500:
         description: InternalFailureException
 /endpoint:
+  displayName: Describe Endpoint
   get:
     description: Returns a unique endpoint specific to the AWS account making the call.
     displayName: Describe Endpoint
@@ -2528,6 +2556,7 @@ types:
       certificateId:
         type: CertificateId
         description: <p>The ID of the certificate.</p>
+    displayName: Accept Certificate Transfer
     patch:
       description: Accepts a pending certificate transfer. The default state of the certificate is INACTIVE. To check for pending certificate transfers, call <a>ListCertificates</a> to enumerate your certificates.
       displayName: Accept Certificate Transfer
@@ -2559,6 +2588,7 @@ types:
       certificateId:
         type: CertificateId
         description: <p>The ID of the certificate.</p>
+    displayName: Cancel Certificate Transfer
     patch:
       description: Cancels a pending transfer for the specified certificate. <b>Note</b> Only the transfer source account can use this operation to cancel a transfer. (Transfer destinations can use <a>RejectCertificateTransfer</a> instead.) After transfer, AWS IoT returns the certificate to the source account in the INACTIVE state. After the destination account has accepted the transfer, the transfer cannot be cancelled. After a certificate transfer is cancelled, the status of the certificate changes from PENDING_TRANSFER to INACTIVE.
       displayName: Cancel Certificate Transfer
@@ -2581,6 +2611,7 @@ types:
         500:
           description: InternalFailureException
 /certificates-out-going:
+  displayName: List Outgoing Certificates
   get:
     description: Lists certificates that are being transfered but not yet accepted.
     displayName: List Outgoing Certificates
@@ -2614,6 +2645,7 @@ types:
       certificateId:
         type: CertificateId
         description: <p>The ID of the certificate.</p>
+    displayName: Transfer Certificate
     patch:
       description: Transfers the specified certificate to the specified AWS account. You can cancel the transfer until it is acknowledged by the recipient. No notification is sent to the transfer destination's account. It is up to the caller to notify the transfer target. The certificate being transferred must not be in the ACTIVE state. You can use the UpdateCertificate API to deactivate it. The certificate must not have any policies attached to it. You can use the DetachPrincipalPolicy API to detach them.
       displayName: Transfer Certificate
@@ -2649,6 +2681,7 @@ types:
         500:
           description: InternalFailureException
 /keys-and-certificate:
+  displayName: Create Keys And Certificate
   post:
     description: Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued public key. <b>Note</b> This is the only time AWS IoT issues the private key for this certificate, so it is important to keep it in a secure location.
     displayName: Create Keys And Certificate
@@ -2672,6 +2705,7 @@ types:
         description: InternalFailureException
 /certificate:
   /register:
+    displayName: Register Certificate
     post:
       description: Registers a device certificate with AWS IoT. If you have more than one CA certificate that has the same subject field, you must specify the CA certificate that was used to sign the device certificate being registered.
       displayName: Register Certificate

@@ -2465,9 +2465,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Abort Environment Update
   post:
     description: Cancels in-progress environment configuration update or application version deployment.
     displayName: Abort Environment Update
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AbortEnvironmentUpdate
     body:
       application/xml: AbortEnvironmentUpdateMessage
     responses:
@@ -2484,9 +2490,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Apply Environment Managed Action
   post:
     description: Applies a scheduled managed action immediately. A managed action can be applied only if its status is <code>Scheduled</code>. Get the status and action ID of a managed action with <a>DescribeEnvironmentManagedActions</a>.
     displayName: Apply Environment Managed Action
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ApplyEnvironmentManagedAction
     body:
       application/xml: ApplyEnvironmentManagedActionRequest
     responses:
@@ -2503,9 +2515,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Check D N S Availability
   post:
     description: ' Checks if the specified CNAME is available. '
     displayName: Check D N S Availability
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CheckDNSAvailability
     body:
       application/xml: CheckDNSAvailabilityMessage
     responses:
@@ -2520,9 +2538,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Compose Environments
   post:
     description: Create or update a group of environments that each run a separate component of a single application. Takes a list of version labels that specify application source bundles for each of the environments to create or update. The name of each environment and other required information must be included in the source bundles in an environment manifest named <code>env.yaml</code>. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html">Compose Environments</a> for details.
     displayName: Compose Environments
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ComposeEnvironments
     body:
       application/xml: ComposeEnvironmentsMessage
     responses:
@@ -2541,10 +2565,16 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Application
   post:
     description: ' Creates an application that has one configuration template named
       <code>default</code> and no application versions. '
     displayName: Create Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateApplication
     body:
       application/xml: CreateApplicationMessage
     responses:
@@ -2561,9 +2591,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Application Version
   post:
     description: Creates an application version for the specified application. <note>Once you create an application version with a specified Amazon S3 bucket and key location, you cannot change that Amazon S3 location. If you change the Amazon S3 location, you receive an exception when you attempt to launch an environment from the application version. </note>
     displayName: Create Application Version
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateApplicationVersion
     body:
       application/xml: CreateApplicationVersionMessage
     responses:
@@ -2582,9 +2618,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Configuration Template
   post:
     description: Creates a configuration template. Templates are associated with a specific application and are used to deploy different versions of the application with the same configuration settings. Related Topics <ul> <li> <a>DescribeConfigurationOptions</a> </li> <li> <a>DescribeConfigurationSettings</a> </li> <li> <a>ListAvailableSolutionStacks</a> </li> </ul>
     displayName: Create Configuration Template
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateConfigurationTemplate
     body:
       application/xml: CreateConfigurationTemplateMessage
     responses:
@@ -2603,9 +2645,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Environment
   post:
     description: Launches an environment for the specified application using the specified configuration.
     displayName: Create Environment
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateEnvironment
     body:
       application/xml: CreateEnvironmentMessage
     responses:
@@ -2624,10 +2672,16 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Storage Location
   post:
     description: ' Creates the Amazon S3 storage location for the account.   This
       location is used to store user log files. '
     displayName: Create Storage Location
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateStorageLocation
     responses:
       200:
         body:
@@ -2644,12 +2698,18 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Application
   post:
     description: ' Deletes the specified application along with all associated versions
       and configurations. The application versions will not be deleted from your Amazon
       S3 bucket.  <note>You cannot delete an application that has a running environment.
       </note>'
     displayName: Delete Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteApplication
     body:
       application/xml: DeleteApplicationMessage
     responses:
@@ -2666,10 +2726,16 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Application Version
   post:
     description: ' Deletes the specified version from the specified application.  <note>You
       cannot delete an application version that is associated with a running environment.</note>'
     displayName: Delete Application Version
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteApplicationVersion
     body:
       application/xml: DeleteApplicationVersionMessage
     responses:
@@ -2688,9 +2754,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Configuration Template
   post:
     description: Deletes the specified configuration template. <note>When you launch an environment using a configuration template, the environment gets a copy of the template. You can delete or modify the environment's copy of the template without affecting the running environment.</note>
     displayName: Delete Configuration Template
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteConfigurationTemplate
     body:
       application/xml: DeleteConfigurationTemplateMessage
     responses:
@@ -2707,9 +2779,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Environment Configuration
   post:
     description: Deletes the draft configuration associated with the running environment. Updating a running environment with any configuration changes creates a draft configuration set. You can get the draft configuration using <a>DescribeConfigurationSettings</a> while the update is in progress or if the update fails. The <code>DeploymentStatus</code> for the draft configuration indicates whether the deployment is in process or has failed. The draft configuration remains in existence until it is deleted with this action.
     displayName: Delete Environment Configuration
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteEnvironmentConfiguration
     body:
       application/xml: DeleteEnvironmentConfigurationMessage
     responses:
@@ -2724,9 +2802,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Application Versions
   post:
     description: Retrieve a list of application versions stored in your AWS Elastic Beanstalk storage bucket.
     displayName: Describe Application Versions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeApplicationVersions
     body:
       application/xml: DescribeApplicationVersionsMessage
     responses:
@@ -2741,9 +2825,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Applications
   post:
     description: Returns the descriptions of existing applications.
     displayName: Describe Applications
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeApplications
     body:
       application/xml: DescribeApplicationsMessage
     responses:
@@ -2758,6 +2848,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Configuration Options
   post:
     description: ' Describes the configuration options that are used in a particular
       configuration template or environment, or that a specified solution stack defines.
@@ -2765,6 +2856,11 @@ types:
       indication of the required action on a running environment if an option value
       is changed. '
     displayName: Describe Configuration Options
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeConfigurationOptions
     body:
       application/xml: DescribeConfigurationOptionsMessage
     responses:
@@ -2781,6 +2877,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Configuration Settings
   post:
     description: ' Returns a description of the settings for the specified configuration
       set, that is, either a configuration template or the configuration set associated
@@ -2791,6 +2888,11 @@ types:
       deployment or that failed to deploy.  Related Topics <ul> <li> <a>DeleteEnvironmentConfiguration</a>
       </li> </ul>'
     displayName: Describe Configuration Settings
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeConfigurationSettings
     body:
       application/xml: DescribeConfigurationSettingsMessage
     responses:
@@ -2807,9 +2909,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Environment Health
   post:
     description: Returns information about the overall health of the specified environment. The <b>DescribeEnvironmentHealth</b> operation is only available with AWS Elastic Beanstalk Enhanced Health.
     displayName: Describe Environment Health
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEnvironmentHealth
     body:
       application/xml: DescribeEnvironmentHealthRequest
     responses:
@@ -2826,9 +2934,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Environment Managed Action History
   post:
     description: Lists an environment's completed and failed managed actions.
     displayName: Describe Environment Managed Action History
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEnvironmentManagedActionHistory
     body:
       application/xml: DescribeEnvironmentManagedActionHistoryRequest
     responses:
@@ -2845,9 +2959,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Environment Managed Actions
   post:
     description: Lists an environment's upcoming and in-progress managed actions.
     displayName: Describe Environment Managed Actions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEnvironmentManagedActions
     body:
       application/xml: DescribeEnvironmentManagedActionsRequest
     responses:
@@ -2864,9 +2984,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Environment Resources
   post:
     description: Returns AWS resources for this environment.
     displayName: Describe Environment Resources
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEnvironmentResources
     body:
       application/xml: DescribeEnvironmentResourcesMessage
     responses:
@@ -2883,9 +3009,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Environments
   post:
     description: Returns descriptions for existing environments.
     displayName: Describe Environments
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEnvironments
     body:
       application/xml: DescribeEnvironmentsMessage
     responses:
@@ -2900,9 +3032,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Events
   post:
     description: Returns list of event descriptions matching criteria up to the last 6 weeks. <note>This action returns the most recent 1,000 events from the specified <code>NextToken</code>.</note>
     displayName: Describe Events
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEvents
     body:
       application/xml: DescribeEventsMessage
     responses:
@@ -2917,9 +3055,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Instances Health
   post:
     description: Returns more detailed information about the health of the specified instances (for example, CPU utilization, load average, and causes). The <b>DescribeInstancesHealth</b> operation is only available with AWS Elastic Beanstalk Enhanced Health.
     displayName: Describe Instances Health
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeInstancesHealth
     body:
       application/xml: DescribeInstancesHealthRequest
     responses:
@@ -2936,9 +3080,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Available Solution Stacks
   post:
     description: ' Returns a list of the available solution stack names. '
     displayName: List Available Solution Stacks
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListAvailableSolutionStacks
     responses:
       200:
         body:
@@ -2951,11 +3101,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Rebuild Environment
   post:
     description: ' Deletes and recreates all of the AWS resources (for example: the
       Auto Scaling group, load balancer, etc.) for a specified environment and forces
       a restart. '
     displayName: Rebuild Environment
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RebuildEnvironment
     body:
       application/xml: RebuildEnvironmentMessage
     responses:
@@ -2972,6 +3128,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Request Environment Info
   post:
     description: ' Initiates a request to compile the specified type of information
       of the deployed environment.   Setting the <code>InfoType</code> to <code>tail</code>
@@ -2982,6 +3139,11 @@ types:
       <a>RetrieveEnvironmentInfo</a> to obtain the set of logs.  Related Topics <ul>
       <li> <a>RetrieveEnvironmentInfo</a> </li> </ul>'
     displayName: Request Environment Info
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RequestEnvironmentInfo
     body:
       application/xml: RequestEnvironmentInfoMessage
     responses:
@@ -2996,9 +3158,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Restart App Server
   post:
     description: Causes the environment to restart the application container server running on each Amazon EC2 instance.
     displayName: Restart App Server
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RestartAppServer
     body:
       application/xml: RestartAppServerMessage
     responses:
@@ -3013,9 +3181,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Retrieve Environment Info
   post:
     description: Retrieves the compiled information from a <a>RequestEnvironmentInfo</a> request. Related Topics <ul> <li> <a>RequestEnvironmentInfo</a> </li> </ul>
     displayName: Retrieve Environment Info
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RetrieveEnvironmentInfo
     body:
       application/xml: RetrieveEnvironmentInfoMessage
     responses:
@@ -3030,9 +3204,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Swap Environment C N A M Es
   post:
     description: ' Swaps the CNAMEs of two environments. '
     displayName: Swap Environment C N A M Es
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SwapEnvironmentCNAMEs
     body:
       application/xml: SwapEnvironmentCNAMEsMessage
     responses:
@@ -3047,9 +3227,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Terminate Environment
   post:
     description: ' Terminates the specified environment. '
     displayName: Terminate Environment
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - TerminateEnvironment
     body:
       application/xml: TerminateEnvironmentMessage
     responses:
@@ -3066,9 +3252,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Application
   post:
     description: Updates the specified application to have the specified properties.  <note> If a property (for example, <code>description</code>) is not provided, the value remains unchanged. To clear these properties, specify an empty string. </note>
     displayName: Update Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateApplication
     body:
       application/xml: UpdateApplicationMessage
     responses:
@@ -3083,12 +3275,18 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Application Version
   post:
     description: ' Updates the specified application version to have the specified
       properties.  <note> If a property (for example, <code>description</code>) is
       not provided, the value remains unchanged. To clear properties, specify an empty
       string. </note>'
     displayName: Update Application Version
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateApplicationVersion
     body:
       application/xml: UpdateApplicationVersionMessage
     responses:
@@ -3103,6 +3301,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Configuration Template
   post:
     description: ' Updates the specified configuration template to have the specified
       properties or configuration option values.  <note> If a property (for example,
@@ -3110,6 +3309,11 @@ types:
       To clear such properties, specify an empty string. </note> Related Topics <ul>
       <li> <a>DescribeConfigurationOptions</a> </li> </ul>'
     displayName: Update Configuration Template
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateConfigurationTemplate
     body:
       application/xml: UpdateConfigurationTemplateMessage
     responses:
@@ -3128,6 +3332,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Environment
   post:
     description: ' Updates the environment description, deploys a new application
       version, updates the configuration settings to an entirely new configuration
@@ -3139,6 +3344,11 @@ types:
       this environment returns two setting descriptions with different <code>DeploymentStatus</code>
       values. '
     displayName: Update Environment
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateEnvironment
     body:
       application/xml: UpdateEnvironmentMessage
     responses:
@@ -3157,12 +3367,18 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Validate Configuration Settings
   post:
     description: ' Takes a set of configuration settings and either a configuration
       template or environment, and determines whether those values are valid.   This
       action returns a list of messages indicating any errors or warnings associated
       with the selection of option values. '
     displayName: Validate Configuration Settings
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ValidateConfigurationSettings
     body:
       application/xml: ValidateConfigurationSettingsMessage
     responses:

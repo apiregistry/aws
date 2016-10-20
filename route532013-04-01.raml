@@ -1685,6 +1685,7 @@ types:
         type: VPCId
 /2013-04-01:
   /trafficpolicyinstancecount:
+    displayName: Get Traffic Policy Instance Count
     get:
       description: Gets the number of traffic policy instances that are associated with the current AWS account. To get the number of traffic policy instances, send a <code>GET</code> request to the <code>/2013-04-01/trafficpolicyinstancecount</code> resource.
       displayName: Get Traffic Policy Instance Count
@@ -1695,7 +1696,9 @@ types:
           body:
             application/xml: GetTrafficPolicyInstanceCountResponse
   /trafficpolicyinstances:
+    displayName: List Traffic Policy Instances
     /trafficpolicy:
+      displayName: List Traffic Policy Instances By Policy
       get:
         description: 'Gets information about the traffic policy instances that you
           created by using a specify traffic policy version. <note> After you submit
@@ -1753,6 +1756,7 @@ types:
           404:
             description: NoSuchTrafficPolicyInstance | NoSuchTrafficPolicy
     /hostedzone:
+      displayName: List Traffic Policy Instances By Hosted Zone
       get:
         description: 'Gets information about the traffic policy instances that you
           created in a specified hosted zone. <note> After you submit an <code>UpdateTrafficPolicyInstance</code>
@@ -1850,12 +1854,15 @@ types:
         404:
           description: NoSuchTrafficPolicyInstance
   /hostedzone:
+    displayName: Create Hosted Zone
     /{Id}:
       uriParameters:
         Id:
           type: ResourceId
           description: <p>The ID of the hosted zone that you want to see changes for.</p>
+      displayName: Delete Hosted Zone
       /rrsChanges:
+        displayName: List Change Batches By R R Set
         get:
           description: Gets the list of ChangeBatches in a given time period for a given hosted zone and RRSet.
           displayName: List Change Batches By R R Set
@@ -1890,6 +1897,7 @@ types:
             400:
               description: InvalidInput
       /disassociatevpc:
+        displayName: Disassociate V P C From Hosted Zone
         post:
           description: Disassociates a VPC from a Amazon Route 53 private hosted zone.  Send a <code>POST</code> request to the <code>/<i>Amazon Route 53 API version</i>/hostedzone/<i>hosted zone ID</i>/disassociatevpc</code> resource. The request body must include an XML document with a <code>DisassociateVPCFromHostedZoneRequest</code> element. The response returns the <code>DisassociateVPCFromHostedZoneResponse</code> element. <important> You can only disassociate a VPC from a private hosted zone when two or more VPCs are associated with that hosted zone. You cannot convert a private hosted zone into a public hosted zone. </important>
           displayName: Disassociate V P C From Hosted Zone
@@ -1912,6 +1920,7 @@ types:
             400:
               description: InvalidVPCId | LastVPCAssociation | InvalidInput
       /rrset:
+        displayName: List Resource Record Sets
         post:
           description: 'Create, change, update, or delete authoritative DNS information
             on all Amazon Route 53 servers. Send a <code>POST</code> request to:   <code>/2013-04-01/hostedzone/<i>Amazon
@@ -2043,6 +2052,7 @@ types:
             400:
               description: InvalidInput
       /changes:
+        displayName: List Change Batches By Hosted Zone
         get:
           description: Gets the list of ChangeBatches in a given time period for a given hosted zone.
           displayName: List Change Batches By Hosted Zone
@@ -2068,6 +2078,7 @@ types:
             400:
               description: InvalidInput
       /associatevpc:
+        displayName: Associate V P C With Hosted Zone
         post:
           description: Associates an Amazon VPC with a private hosted zone.  <important> The VPC and the hosted zone must already exist, and you must have created a private hosted zone. You cannot convert a public hosted zone into a private hosted zone. </important> Send a <code>POST</code> request to the <code>/<i>Amazon Route 53 API version</i>/hostedzone/<i>hosted zone ID</i>/associatevpc</code> resource. The request body must include an XML document with a <code>AssociateVPCWithHostedZoneRequest</code> element. The response returns the <code>AssociateVPCWithHostedZoneResponse</code> element. <note> If you used different accounts to create the hosted zone and to create the Amazon VPCs that you want to associate with the hosted zone, we need to update account permissions for you. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zone-private-associate-vpcs-different-accounts.html">Associating Amazon VPCs and Private Hosted Zones That You Create with Different AWS Accounts</a> in the Amazon Route 53 Developer Guide. </note>
           displayName: Associate V P C With Hosted Zone
@@ -2227,12 +2238,15 @@ types:
         409:
           description: HostedZoneAlreadyExists
   /healthcheck:
+    displayName: List Health Checks
     /{HealthCheckId}:
       uriParameters:
         HealthCheckId:
           type: HealthCheckId
           description: <p>If you want Amazon Route 53 to return this resource record set in response to a DNS query only when a health check is passing, include the <code>HealthCheckId</code> element and specify the ID of the applicable health check.</p> <p>Amazon Route 53 determines whether a resource record set is healthy by periodically sending a request to the endpoint that is specified in the health check. If that endpoint returns an HTTP status code of 2xx or 3xx, the endpoint is healthy. If the endpoint returns an HTTP status code of 400 or greater, or if the endpoint doesn't respond for a certain amount of time, Amazon Route 53 considers the endpoint unhealthy and also considers the resource record set unhealthy.</p> <p>The <code>HealthCheckId</code> element is only useful when Amazon Route 53 is choosing between two or more resource record sets to respond to a DNS query, and you want Amazon Route 53 to base the choice in part on the status of a health check. Configuring health checks only makes sense in the following configurations:</p> <ul> <li> <p>You're checking the health of the resource record sets in a weighted, latency, geolocation, or failover resource record set, and you specify health check IDs for all of the resource record sets. If the health check for one resource record set specifies an endpoint that is not healthy, Amazon Route 53 stops responding to queries using the value for that resource record set.</p> </li> <li> <p>You set <code>EvaluateTargetHealth</code> to <code>true</code> for the resource record sets in an alias, weighted alias, latency alias, geolocation alias, or failover alias resource record set, and you specify health check IDs for all of the resource record sets that are referenced by the alias resource record sets. For more information about this configuration, see <code>EvaluateTargetHealth</code>.</p> <p>Amazon Route 53 doesn't check the health of the endpoint specified in the resource record set, for example, the endpoint specified by the IP address in the <code>Value</code> element. When you add a <code>HealthCheckId</code> element to a resource record set, Amazon Route 53 checks the health of the endpoint that you specified in the health check.</p> </li> </ul> <p>For geolocation resource record sets, if an endpoint is unhealthy, Amazon Route 53 looks for a resource record set for the larger, associated geographic region. For example, suppose you have resource record sets for a state in the United States, for the United States, for North America, and for all locations. If the endpoint for the state resource record set is unhealthy, Amazon Route 53 checks the resource record sets for the United States, for North America, and for all locations (a resource record set for which the value of CountryCode is <code>*</code>), in that order, until it finds a resource record set for which the endpoint is healthy.</p> <p>If your health checks specify the endpoint only by domain name, we recommend that you create a separate health check for each endpoint. For example, create a health check for each HTTP server that is serving content for www.example.com. For the value of <code>FullyQualifiedDomainName</code>, specify the domain name of the server (such as <code>us-east-1-www.example.com</code>), not the name of the resource record sets (example.com).</p> <important> <p>In this configuration, if you create a health check for which the value of <code>FullyQualifiedDomainName</code> matches the name of the resource record sets and then associate the health check with those resource record sets, health check results will be unpredictable.</p> </important>
+      displayName: Get Health Check
       /status:
+        displayName: Get Health Check Status
         get:
           description: 'Gets status of a specified health check. Send a <code>GET</code>
             request to the <code>/2013-04-01/healthcheck/<i>health check ID</i>/status</code>
@@ -2247,6 +2261,7 @@ types:
             400:
               description: InvalidInput
       /lastfailurereason:
+        displayName: Get Health Check Last Failure Reason
         get:
           description: If you want to learn why a health check is currently failing or why it failed most recently (if at all), you can get the failure reason for the most recent failure. Send a <code>GET</code> request to the <code>/<i>Amazon Route 53 API version</i>/healthcheck/<i>health check ID</i>/lastfailurereason</code> resource.
           displayName: Get Health Check Last Failure Reason
@@ -2405,6 +2420,7 @@ types:
         Id:
           type: ResourceId
           description: <p>The ID of the change batch request. The value that you specify here is the value that <code>ChangeResourceRecordSets</code> returned in the Id element when you submitted the request.</p>
+      displayName: Get Change
       get:
         description: 'Returns the current status of a change batch request. The status
           is one of the following values: <ul> <li>  <code>PENDING</code> indicates
@@ -2422,11 +2438,13 @@ types:
           400:
             description: InvalidInput
   /delegationset:
+    displayName: List Reusable Delegation Sets
     /{Id}:
       uriParameters:
         Id:
           type: ResourceId
           description: <p>The ID of the reusable delegation set you want to delete.</p>
+      displayName: Get Reusable Delegation Set
       delete:
         description: Deletes a reusable delegation set. Send a <code>DELETE</code> request to the <code>/2013-04-01/delegationset/<i>delegation set ID</i> </code> resource. <important>  You can delete a reusable delegation set only if there are no associated hosted zones. </important> To verify that the reusable delegation set is not associated with any hosted zones, run the <a>GetReusableDelegationSet</a> action and specify the ID of the reusable delegation set that you want to delete.
         displayName: Delete Reusable Delegation Set
@@ -2482,6 +2500,7 @@ types:
         400:
           description: InvalidInput
   /testdnsanswer:
+    displayName: Test D N S Answer
     get:
       displayName: Test D N S Answer
       queryParameters:
@@ -2506,6 +2525,7 @@ types:
         400:
           description: InvalidInput
   /geolocations:
+    displayName: List Geo Locations
     get:
       description: 'Retrieves a list of supported geo locations. Send a <code>GET</code>
         request to the <code>/2013-04-01/geolocations</code> resource. The response
@@ -2535,16 +2555,19 @@ types:
         400:
           description: InvalidInput
   /trafficpolicy:
+    displayName: Create Traffic Policy
     /{Id}:
       uriParameters:
         Id:
           type: TrafficPolicyId
           description: <p>The ID of the traffic policy that you want to delete.</p>
+      displayName: Create Traffic Policy Version
       /{Version}:
         uriParameters:
           Version:
             type: TrafficPolicyVersion
             description: <p>The version number of the traffic policy that you want to delete.</p>
+        displayName: Get Traffic Policy
         delete:
           description: Deletes a traffic policy. Send a <code>DELETE</code> request to the <code>/<i>Amazon Route 53 API version</i>/trafficpolicy</code> resource.
           displayName: Delete Traffic Policy
@@ -2636,12 +2659,14 @@ types:
         409:
           description: TrafficPolicyAlreadyExists
   /trafficpolicies:
+    displayName: List Traffic Policies
     /{Id}:
       uriParameters:
         Id:
           type: TrafficPolicyId
           description: <p>Specify the value of <code>Id</code> of the traffic policy for which you want to list all versions.</p>
       /versions:
+        displayName: List Traffic Policy Versions
         get:
           description: 'Gets information about all of the versions for a specified
             traffic policy. Send a <code>GET</code> request to the <code>/<i>Amazon
@@ -2723,11 +2748,13 @@ types:
         ResourceType:
           type: TagResourceType
           description: <p>The type of the resource.</p> <ul> <li> <p>The resource type for health checks is <code>healthcheck</code>.</p> </li> <li> <p>The resource type for hosted zones is <code>hostedzone</code>.</p> </li> </ul>
+      displayName: List Tags For Resources
       /{ResourceId}:
         uriParameters:
           ResourceId:
             type: TagResourceId
             description: <p>The ID of the resource for which you want to retrieve tags.</p>
+        displayName: Change Tags For Resource
         get:
           displayName: List Tags For Resource
           responses:
@@ -2776,11 +2803,13 @@ types:
           404:
             description: NoSuchHealthCheck | NoSuchHostedZone
   /trafficpolicyinstance:
+    displayName: Create Traffic Policy Instance
     /{Id}:
       uriParameters:
         Id:
           type: TrafficPolicyInstanceId
           description: <p>The ID of the traffic policy instance that you want to update.</p>
+      displayName: Delete Traffic Policy Instance
       post:
         description: 'Updates the resource record sets in a specified hosted zone
           that were created based on the settings in a specified traffic policy version.
@@ -2868,6 +2897,7 @@ types:
         409:
           description: TrafficPolicyInstanceAlreadyExists
   /geolocation:
+    displayName: Get Geo Location
     get:
       description: 'Retrieves a single geo location. Send a <code>GET</code> request
         to the <code>/2013-04-01/geolocation</code> resource with one of these options:
@@ -2896,6 +2926,7 @@ types:
         400:
           description: InvalidInput
   /hostedzonesbyname:
+    displayName: List Hosted Zones By Name
     get:
       description: 'Retrieves a list of your hosted zones in lexicographic order.
         Send a <code>GET</code> request to the <code>/2013-04-01/hostedzonesbyname</code>
@@ -2950,6 +2981,7 @@ types:
         400:
           description: InvalidInput | InvalidDomainName
   /hostedzonecount:
+    displayName: Get Hosted Zone Count
     get:
       description: Retrieves a count of all your hosted zones. Send a <code>GET</code> request to the <code>/2013-04-01/hostedzonecount</code> resource.
       displayName: Get Hosted Zone Count
@@ -2967,6 +2999,7 @@ types:
         Id:
           type: ResourceId
           description: <p>The ID of the change batch. This is the value that you specified in the <code>change ID</code> parameter when you submitted the request.</p>
+      displayName: Get Change Details
       get:
         description: Returns the status and changes of a change batch request.
         displayName: Get Change Details
@@ -2979,6 +3012,7 @@ types:
           400:
             description: InvalidInput
   /healthcheckcount:
+    displayName: Get Health Check Count
     get:
       description: To retrieve a count of all your health checks, send a <code>GET</code> request to the <code>/2013-04-01/healthcheckcount</code> resource.
       displayName: Get Health Check Count
@@ -2989,6 +3023,7 @@ types:
           body:
             application/xml: GetHealthCheckCountResponse
   /checkeripranges:
+    displayName: Get Checker Ip Ranges
     get:
       description: Retrieves a list of the IP ranges used by Amazon Route 53 health checkers to check the health of your resources. Send a <code>GET</code> request to the <code>/<i>Amazon Route 53 API version</i>/checkeripranges</code> resource. Use these IP addresses to configure router and firewall rules to allow health checkers to check the health of your resources.
       displayName: Get Checker Ip Ranges

@@ -451,12 +451,15 @@ types:
 /2015-01-01:
   /es:
     /domain:
+      displayName: Create Elasticsearch Domain
       /{DomainName}:
         uriParameters:
           DomainName:
             type: DomainName
             description: <p>The Elasticsearch domain that you want to get information about.</p>
+        displayName: Describe Elasticsearch Domain
         /config:
+          displayName: Update Elasticsearch Domain Config
           get:
             description: Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options.
             displayName: Describe Elasticsearch Domain Config
@@ -545,6 +548,7 @@ types:
           500:
             description: InternalException
     /domain-info:
+      displayName: Describe Elasticsearch Domains
       post:
         description: Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN.
         displayName: Describe Elasticsearch Domains
@@ -559,6 +563,7 @@ types:
           500:
             description: InternalException
   /tags:
+    displayName: Add Tags
     get:
       description: Returns all tags for the given Elasticsearch domain.
       displayName: List Tags
@@ -592,6 +597,7 @@ types:
         500:
           description: InternalException
   /domain:
+    displayName: List Domain Names
     get:
       description: 'Returns the name of all Elasticsearch domains owned by the current
         user''s account. '
@@ -603,6 +609,7 @@ types:
         400:
           description: BaseException | ValidationException
   /tags-removal:
+    displayName: Remove Tags
     post:
       description: Removes the specified set of tags from the specified Elasticsearch domain.
       displayName: Remove Tags

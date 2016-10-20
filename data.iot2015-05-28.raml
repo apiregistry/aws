@@ -36,6 +36,7 @@ types:
         type: ThingName
         description: <p>The name of the thing.</p>
     /shadow:
+      displayName: Delete Thing Shadow
       get:
         description: Gets the thing shadow for the specified thing. For more information, see <a href="http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html">GetThingShadow</a> in the <i>AWS IoT Developer Guide</i>.
         displayName: Get Thing Shadow
@@ -123,6 +124,7 @@ types:
       topic:
         type: Topic
         description: <p>The name of the MQTT topic.</p>
+    displayName: Publish
     post:
       description: Publishes state information. For more information, see <a href="http://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http">HTTP Protocol</a> in the <i>AWS IoT Developer Guide</i>.
       displayName: Publish

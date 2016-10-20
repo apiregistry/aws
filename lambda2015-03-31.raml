@@ -429,17 +429,21 @@ types:
     description: <p>VPC configuration associated with your Lambda function.</p>
 /2015-03-31:
   /functions:
+    displayName: List Functions
     /{FunctionName}:
       uriParameters:
         FunctionName:
           type: FunctionName
           description: <p>Lambda function whose resource policy you want to remove a permission from.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+      displayName: Get Function
       /policy:
+        displayName: Add Permission
         /{StatementId}:
           uriParameters:
             StatementId:
               type: StatementId
               description: <p>Statement ID of the permission to remove.</p>
+          displayName: Remove Permission
           delete:
             description: You can remove individual permissions from an resource policy associated with a Lambda function by providing a statement ID that you provided when you added the permission. If you are using versioning, the permissions you remove are specific to the Lambda function version or alias you specify in the <code>AddPermission</code> request via the <code>Qualifier</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  Note that removal of a permission will cause an active event source to lose permission to the function. You need permission for the <code>lambda:RemovePermission</code> action.
             displayName: Remove Permission
@@ -541,11 +545,13 @@ types:
             429:
               description: TooManyRequestsException
       /aliases:
+        displayName: Create Alias
         /{Name}:
           uriParameters:
             Name:
               type: Alias
               description: <p>Name of the alias to delete.</p>
+          displayName: Get Alias
           delete:
             description: Deletes the specified Lambda function alias. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. This requires permission for the lambda:DeleteAlias action.
             displayName: Delete Alias
@@ -655,6 +661,7 @@ types:
             429:
               description: TooManyRequestsException
       /configuration:
+        displayName: Get Function Configuration
         put:
           description: Updates the configuration parameters for the specified Lambda function by using the values provided in the request. You provide only the parameters you want to change. This operation must only be used on an existing Lambda function and cannot be used to update the function's code. If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:UpdateFunctionConfiguration</code> action.
           displayName: Update Function Configuration
@@ -714,6 +721,7 @@ types:
             400:
               description: InvalidParameterValueException
       /versions:
+        displayName: List Versions By Function
         post:
           description: 'Publishes a version of your function from the current snapshot
             of $LATEST. That is, AWS Lambda takes a snapshot of the function code
@@ -769,6 +777,7 @@ types:
             429:
               description: TooManyRequestsException
       /invocations:
+        displayName: Invoke
         post:
           description: Invokes a specific Lambda function. If you are using the versioning feature, you can invoke the specific function version by providing function version or alias name that is pointing to the function version using the <code>Qualifier</code> parameter in the request. If you don't provide the <code>Qualifier</code> parameter, the <code>$LATEST</code> version of the Lambda function is invoked. Invocations occur at least once in response to an event and functions must be idempotent to handle this. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:InvokeFunction</code> action.
           displayName: Invoke
@@ -818,6 +827,7 @@ types:
             502:
               description: EC2UnexpectedException | SubnetIPAddressLimitReachedException | ENILimitReachedException | EC2ThrottledException | EC2AccessDeniedException | InvalidSubnetIDException | InvalidSecurityGroupIDException | InvalidZipFileException
       /code:
+        displayName: Update Function Code
         put:
           description: Updates the code for the specified Lambda function. This operation must only be used on an existing Lambda function and cannot be used to update the function configuration. If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:UpdateFunctionCode</code> action.
           displayName: Update Function Code
@@ -936,11 +946,13 @@ types:
         429:
           description: TooManyRequestsException
   /event-source-mappings:
+    displayName: List Event Source Mappings
     /{UUID}:
       uriParameters:
         UUID:
           type: String
           description: <p>The event source mapping ID.</p>
+      displayName: Get Event Source Mapping
       delete:
         description: Removes an event source mapping. This means AWS Lambda will no longer invoke the function for events in the associated source. This operation requires permission for the <code>lambda:DeleteEventSourceMapping</code> action.
         displayName: Delete Event Source Mapping
@@ -1072,6 +1084,7 @@ types:
           type: FunctionName
           description: <p>The Lambda function name.</p>
       /invoke-async:
+        displayName: Invoke Async
         post:
           description: <important>This API is deprecated. We recommend you use <code>Invoke</code> API (see <a>Invoke</a>). </important> Submits an invocation request to AWS Lambda. Upon receiving the request, Lambda executes the specified function asynchronously. To see the logs generated by the Lambda function execution, see the CloudWatch Logs console. This operation requires permission for the <code>lambda:InvokeFunction</code> action.
           displayName: Invoke Async

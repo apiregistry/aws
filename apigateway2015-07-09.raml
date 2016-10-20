@@ -1236,11 +1236,13 @@ types:
         description: <p>Gets the current item when enumerating the collection of <a>UsagePlan</a>.</p>
     description: <p>Represents a collection of usage plans for an AWS account.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
 /clientcertificates:
+  displayName: Get Client Certificates
   /{clientcertificate_id}:
     uriParameters:
       clientcertificate_id:
         type: String
         description: <p>The identifier of the <a>ClientCertificate</a> resource to be described.</p>
+    displayName: Update Client Certificate
     get:
       description: Gets information about the current <a>ClientCertificate</a> resource.
       displayName: Get Client Certificate
@@ -1325,17 +1327,21 @@ types:
       429:
         description: TooManyRequestsException
 /domainnames:
+  displayName: Create Domain Name
   /{domain_name}:
     uriParameters:
       domain_name:
         type: String
         description: <p>The name of the <a>DomainName</a> resource to be deleted.</p>
+    displayName: Get Domain Name
     /basepathmappings:
+      displayName: Create Base Path Mapping
       /{base_path}:
         uriParameters:
           base_path:
             type: String
             description: <p>The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.</p>
+        displayName: Delete Base Path Mapping
         get:
           description: Describe a <a>BasePathMapping</a> resource.
           displayName: Get Base Path Mapping
@@ -1526,23 +1532,28 @@ types:
       429:
         description: TooManyRequestsException
 /restapis:
+  displayName: Get Rest Apis
   /{restapi_id}:
     uriParameters:
       restapi_id:
         type: String
         description: <p>The identifier of the <a>RestApi</a> to be exported.</p>
+    displayName: Get Rest Api
     /stages:
+      displayName: Create Stage
       /{stage_name}:
         uriParameters:
           stage_name:
             type: String
             description: <p>The name of the <a>Stage</a> that will be exported.</p>
+        displayName: Get Stage
         /exports:
           /{export_type}:
             uriParameters:
               export_type:
                 type: String
                 description: <p>The type of export. Currently only 'swagger' is supported.</p>
+            displayName: Get Export
             get:
               description: Exports a deployed version of a <a>RestApi</a> in a specified format.
               displayName: Get Export
@@ -1588,6 +1599,7 @@ types:
               sdk_type:
                 type: String
                 description: <p>The language for the generated SDK. Currently <code>javascript</code>, <code>android</code>, and <code>objectivec</code> (for iOS) are supported.</p>
+            displayName: Get Sdk
             get:
               description: Generates a client SDK for a <a>RestApi</a> and <a>Stage</a>.
               displayName: Get Sdk
@@ -1618,6 +1630,7 @@ types:
                   description: TooManyRequestsException
         /cache:
           /data:
+            displayName: Flush Stage Cache
             delete:
               description: Flushes a stage's cache.
               displayName: Flush Stage Cache
@@ -1634,6 +1647,7 @@ types:
                 429:
                   description: TooManyRequestsException
           /authorizers:
+            displayName: Flush Stage Authorizers Cache
             delete:
               description: Flushes all authorizer cache entries on a stage.
               displayName: Flush Stage Authorizers Cache
@@ -1759,12 +1773,15 @@ types:
           429:
             description: LimitExceededException | TooManyRequestsException
     /models:
+      displayName: Get Models
       /{model_name}:
         uriParameters:
           model_name:
             type: String
             description: <p>The name of the model as an identifier.</p>
+        displayName: Delete Model
         /default_template:
+          displayName: Get Model Template
           get:
             description: Generates a sample mapping template that can be used to transform a payload into the structure of a model.
             displayName: Get Model Template
@@ -1894,24 +1911,29 @@ types:
           429:
             description: TooManyRequestsException
     /resources:
+      displayName: Get Resources
       /{resource_id}:
         uriParameters:
           resource_id:
             type: String
             description: <p>The <a>Resource</a> identifier for the new <a>Method</a> resource.</p>
+        displayName: Delete Resource
         /methods:
           /{http_method}:
             uriParameters:
               http_method:
                 type: String
                 description: <p>Specifies the method request's HTTP method type.</p>
+            displayName: Delete Method
             /integration:
+              displayName: Put Integration
               /responses:
                 /{status_code}:
                   uriParameters:
                     status_code:
                       type: StatusCode
                       description: <p>Specifies a get integration response request's status code.</p>
+                  displayName: Put Integration Response
                   get:
                     description: Represents a get integration response.
                     displayName: Get Integration Response
@@ -2116,6 +2138,7 @@ types:
                   status_code:
                     type: StatusCode
                     description: <p>The method response's status code.</p>
+                displayName: Get Method Response
                 put:
                   description: Adds a <a>MethodResponse</a> to an existing <a>Method</a> resource.
                   displayName: Put Method Response
@@ -2378,6 +2401,7 @@ types:
           parent_id:
             type: String
             description: <p>The parent resource's identifier.</p>
+        displayName: Create Resource
         post:
           description: Creates a <a>Resource</a> resource.
           displayName: Create Resource
@@ -2425,11 +2449,13 @@ types:
           429:
             description: TooManyRequestsException
     /deployments:
+      displayName: Get Deployments
       /{deployment_id}:
         uriParameters:
           deployment_id:
             type: String
             description: <p>The replacement identifier for the <a>Deployment</a> resource to change information about.</p>
+        displayName: Get Deployment
         patch:
           description: Changes information about a <a>Deployment</a> resource.
           displayName: Update Deployment
@@ -2548,11 +2574,13 @@ types:
           503:
             description: ServiceUnavailableException
     /authorizers:
+      displayName: Get Authorizers
       /{authorizer_id}:
         uriParameters:
           authorizer_id:
             type: String
             description: <p>The identifier of the <a>Authorizer</a> resource.</p>
+        displayName: Test Invoke Authorizer
         get:
           description: Describe an existing <a>Authorizer</a> resource. <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html">AWS CLI</a></div>
           displayName: Get Authorizer
@@ -2826,11 +2854,13 @@ types:
       429:
         description: TooManyRequestsException
 /apikeys:
+  displayName: Get Api Keys
   /{api_Key}:
     uriParameters:
       api_Key:
         type: String
         description: <p>The identifier of the <a>ApiKey</a> resource to be deleted.</p>
+    displayName: Update Api Key
     delete:
       description: Deletes the <a>ApiKey</a> resource.
       displayName: Delete Api Key
@@ -2931,18 +2961,23 @@ types:
       429:
         description: TooManyRequestsException
 /usageplans:
+  displayName: Get Usage Plans
   /{usageplanId}:
     uriParameters:
       usageplanId:
         type: String
         description: <p>The Id of the to-be-updated usage plan.</p>
+    displayName: Get Usage Plan
     /keys:
+      displayName: Get Usage Plan Keys
       /{keyId}:
         uriParameters:
           keyId:
             type: String
             description: <p>The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.</p>
+        displayName: Delete Usage Plan Key
         /usage:
+          displayName: Update Usage
           patch:
             description: Grants a temporary extension to the reamining quota of a usage plan associated with a specified API key.
             displayName: Update Usage
@@ -3050,6 +3085,7 @@ types:
           429:
             description: TooManyRequestsException
     /usage:
+      displayName: Get Usage
       get:
         description: Gets the usage data of a usage plan in a specified time interval.
         displayName: Get Usage
@@ -3179,6 +3215,7 @@ types:
       409:
         description: ConflictException
 /restapis?mode=import:
+  displayName: Import Rest Api
   post:
     description: A feature of the Amazon API Gateway control service for creating a new API from an external API definition file.
     displayName: Import Rest Api
@@ -3206,6 +3243,7 @@ types:
       409:
         description: ConflictException
 /account:
+  displayName: Get Account
   patch:
     description: Changes information about the current <a>Account</a> resource.
     displayName: Update Account
@@ -3239,6 +3277,7 @@ types:
       429:
         description: TooManyRequestsException
 /apikeys?mode=import:
+  displayName: Import Api Keys
   post:
     description: Import API keys from an external source, such as a CSV-formatted file.
     displayName: Import Api Keys

@@ -1454,6 +1454,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Acknowledge Job
   post:
     description: Returns information about a specified job and whether that job has been received by the job worker. Only used for custom actions.
     displayName: Acknowledge Job
@@ -1473,6 +1474,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Acknowledge Third Party Job
   post:
     description: Confirms a job worker has received the specified job. Only used for partner actions.
     displayName: Acknowledge Third Party Job
@@ -1492,6 +1494,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Custom Action Type
   post:
     description: Creates a new custom action that can be used in all pipelines associated with the AWS account. Only used for custom actions.
     displayName: Create Custom Action Type
@@ -1511,6 +1514,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Pipeline
   post:
     description: Creates a pipeline.
     displayName: Create Pipeline
@@ -1530,6 +1534,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Custom Action Type
   post:
     description: Marks a custom action as deleted. PollForJobs for the custom action will fail after the action is marked for deletion. Only used for custom actions. <important> You cannot recreate a custom action after it has been deleted unless you increase the version number of the action. </important>
     displayName: Delete Custom Action Type
@@ -1549,6 +1554,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Pipeline
   post:
     description: Deletes the specified pipeline.
     displayName: Delete Pipeline
@@ -1568,6 +1574,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Disable Stage Transition
   post:
     description: Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline.
     displayName: Disable Stage Transition
@@ -1587,6 +1594,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Enable Stage Transition
   post:
     description: Enables artifacts in a pipeline to transition to a stage in a pipeline.
     displayName: Enable Stage Transition
@@ -1606,6 +1614,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Job Details
   post:
     description: Returns information about a job. Only used for custom actions. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action. </important>
     displayName: Get Job Details
@@ -1625,6 +1634,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Pipeline
   post:
     description: Returns the metadata, structure, stages, and actions of a pipeline. Can be used to return the entire structure of a pipeline in JSON format, which can then be modified and used to update the pipeline structure with <a>UpdatePipeline</a>.
     displayName: Get Pipeline
@@ -1644,6 +1654,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Pipeline Execution
   post:
     description: Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline.
     displayName: Get Pipeline Execution
@@ -1663,6 +1674,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Pipeline State
   post:
     description: Returns information about the state of a pipeline, including the stages and actions.
     displayName: Get Pipeline State
@@ -1682,6 +1694,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Third Party Job Details
   post:
     description: Requests the details of a job for a third party action. Only used for partner actions. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action. </important>
     displayName: Get Third Party Job Details
@@ -1701,6 +1714,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Action Types
   post:
     description: Gets a summary of all AWS CodePipeline action types associated with your account.
     displayName: List Action Types
@@ -1720,6 +1734,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Pipelines
   post:
     description: Gets a summary of all of the pipelines associated with your account.
     displayName: List Pipelines
@@ -1739,6 +1754,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Poll For Jobs
   post:
     description: Returns information about any jobs for AWS CodePipeline to act upon. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action. </important>
     displayName: Poll For Jobs
@@ -1758,6 +1774,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Poll For Third Party Jobs
   post:
     description: Determines whether there are any third party jobs for a job worker to act on. Only used for partner actions. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. </important>
     displayName: Poll For Third Party Jobs
@@ -1777,6 +1794,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Action Revision
   post:
     description: Provides information to AWS CodePipeline about new revisions to a source.
     displayName: Put Action Revision
@@ -1796,6 +1814,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Approval Result
   post:
     description: Provides the response to a manual approval request to AWS CodePipeline. Valid responses include Approved and Rejected.
     displayName: Put Approval Result
@@ -1815,6 +1834,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Job Failure Result
   post:
     description: Represents the failure of a job as returned to the pipeline by a job worker. Only used for custom actions.
     displayName: Put Job Failure Result
@@ -1834,6 +1854,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Job Success Result
   post:
     description: Represents the success of a job as returned to the pipeline by a job worker. Only used for custom actions.
     displayName: Put Job Success Result
@@ -1853,6 +1874,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Third Party Job Failure Result
   post:
     description: Represents the failure of a third party job as returned to the pipeline by a job worker. Only used for partner actions.
     displayName: Put Third Party Job Failure Result
@@ -1872,6 +1894,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Third Party Job Success Result
   post:
     description: Represents the success of a third party job as returned to the pipeline by a job worker. Only used for partner actions.
     displayName: Put Third Party Job Success Result
@@ -1891,6 +1914,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Retry Stage Execution
   post:
     description: Resumes the pipeline execution by retrying the last failed actions in a stage.
     displayName: Retry Stage Execution
@@ -1910,6 +1934,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Start Pipeline Execution
   post:
     description: Starts the specified pipeline. Specifically, it begins processing the latest commit to the source location specified as part of the pipeline.
     displayName: Start Pipeline Execution
@@ -1929,6 +1954,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Pipeline
   post:
     description: Updates a specified pipeline with edits or changes to its structure. Use a JSON file with the pipeline structure in conjunction with UpdatePipeline to provide the full structure of the pipeline. Updating the pipeline increases the version number of the pipeline by 1.
     displayName: Update Pipeline

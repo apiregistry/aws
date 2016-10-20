@@ -502,6 +502,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Batch Get Repositories
   post:
     description: Returns information about one or more repositories. <note>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</note>
     displayName: Batch Get Repositories
@@ -521,6 +522,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Branch
   post:
     description: Creates a new branch in a repository and points the branch to a commit. <note>Calling the create branch operation does not set a repository's default branch. To do this, call the update default branch operation.</note>
     displayName: Create Branch
@@ -540,6 +542,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Repository
   post:
     description: Creates a new, empty repository.
     displayName: Create Repository
@@ -559,6 +562,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Repository
   post:
     description: Deletes a repository. If a specified repository was already deleted, a null repository ID will be returned. <important>Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future push calls to the deleted repository will fail.</important>
     displayName: Delete Repository
@@ -578,6 +582,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Branch
   post:
     description: Returns information about a repository branch, including its name and the last commit ID.
     displayName: Get Branch
@@ -597,6 +602,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Commit
   post:
     description: Returns information about a commit, including commit message and committer information.
     displayName: Get Commit
@@ -616,6 +622,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Repository
   post:
     description: Returns information about a repository. <note>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</note>
     displayName: Get Repository
@@ -635,6 +642,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Repository Triggers
   post:
     description: Gets information about triggers configured for a repository.
     displayName: Get Repository Triggers
@@ -654,6 +662,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Branches
   post:
     description: Gets information about one or more branches in a repository.
     displayName: List Branches
@@ -673,6 +682,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Repositories
   post:
     description: Gets information about one or more repositories.
     displayName: List Repositories
@@ -692,6 +702,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Repository Triggers
   post:
     description: Replaces all triggers for a repository. This can be used to create or delete triggers.
     displayName: Put Repository Triggers
@@ -711,6 +722,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Test Repository Triggers
   post:
     description: Tests the functionality of repository triggers by sending information to the trigger target. If real data is available in the repository, the test will send data from the last commit. If no data is available, sample data will be generated.
     displayName: Test Repository Triggers
@@ -730,6 +742,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Default Branch
   post:
     description: Sets or changes the default branch name for the specified repository. <note>If you use this operation to change the default branch name to the current default branch name, a success message is returned even though the default branch did not change.</note>
     displayName: Update Default Branch
@@ -749,6 +762,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Repository Description
   post:
     description: Sets or changes the comment or description for a repository. <note>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</note>
     displayName: Update Repository Description
@@ -768,6 +782,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Repository Name
   post:
     description: Renames a repository. The repository name must be unique across the calling AWS account. In addition, repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. The suffix ".git" is prohibited. For a full description of the limits on repository names, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a> in the AWS CodeCommit User Guide.
     displayName: Update Repository Name

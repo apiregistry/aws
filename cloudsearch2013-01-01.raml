@@ -1370,9 +1370,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Build Suggesters
   post:
     description: Indexes the search suggestions. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters">Configuring Suggesters</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Build Suggesters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - BuildSuggesters
     body:
       application/xml: BuildSuggestersRequest
     responses:
@@ -1393,9 +1399,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Domain
   post:
     description: Creates a new search domain. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html" target="_blank">Creating a Search Domain</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Create Domain
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDomain
     body:
       application/xml: CreateDomainRequest
     responses:
@@ -1416,9 +1428,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Define Analysis Scheme
   post:
     description: Configures an analysis scheme that can be applied to a <code>text</code> or <code>text-array</code> field to define language-specific text processing options. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Define Analysis Scheme
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DefineAnalysisScheme
     body:
       application/xml: DefineAnalysisSchemeRequest
     responses:
@@ -1439,9 +1457,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Define Expression
   post:
     description: Configures an <code><a>Expression</a></code> for the search domain. Used to create new expressions and modify existing ones. If the expression exists, the new configuration replaces the old one. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Define Expression
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DefineExpression
     body:
       application/xml: DefineExpressionRequest
     responses:
@@ -1462,6 +1486,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Define Index Field
   post:
     description: 'Configures an <code><a>IndexField</a></code> for the search domain.
       Used to create new fields and modify existing ones. You must specify the name
@@ -1473,6 +1498,11 @@ types:
       target="_blank">Configuring Index Fields</a> in the <i>Amazon CloudSearch Developer
       Guide</i>. '
     displayName: Define Index Field
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DefineIndexField
     body:
       application/xml: DefineIndexFieldRequest
     responses:
@@ -1493,9 +1523,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Define Suggester
   post:
     description: Configures a suggester for a domain. A suggester enables you to display possible matches before users finish typing their queries. When you configure a suggester, you must specify the name of the text field you want to search for possible matches and a unique name for the suggester. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Define Suggester
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DefineSuggester
     body:
       application/xml: DefineSuggesterRequest
     responses:
@@ -1516,11 +1552,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Analysis Scheme
   post:
     description: 'Deletes an analysis scheme. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html"
       target="_blank">Configuring Analysis Schemes</a> in the <i>Amazon CloudSearch
       Developer Guide</i>. '
     displayName: Delete Analysis Scheme
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteAnalysisScheme
     body:
       application/xml: DeleteAnalysisSchemeRequest
     responses:
@@ -1541,6 +1583,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Domain
   post:
     description: 'Permanently deletes a search domain and all of its data. Once a
       domain has been deleted, it cannot be recovered. For more information, see <a
@@ -1548,6 +1591,11 @@ types:
       target="_blank">Deleting a Search Domain</a> in the <i>Amazon CloudSearch Developer
       Guide</i>. '
     displayName: Delete Domain
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDomain
     body:
       application/xml: DeleteDomainRequest
     responses:
@@ -1566,9 +1614,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Expression
   post:
     description: Removes an <code><a>Expression</a></code> from the search domain. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Delete Expression
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteExpression
     body:
       application/xml: DeleteExpressionRequest
     responses:
@@ -1589,9 +1643,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Index Field
   post:
     description: Removes an <code><a>IndexField</a></code> from the search domain. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html" target="_blank">Configuring Index Fields</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Delete Index Field
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteIndexField
     body:
       application/xml: DeleteIndexFieldRequest
     responses:
@@ -1612,9 +1672,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Suggester
   post:
     description: Deletes a suggester. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Delete Suggester
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteSuggester
     body:
       application/xml: DeleteSuggesterRequest
     responses:
@@ -1635,9 +1701,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Analysis Schemes
   post:
     description: Gets the analysis schemes configured for a domain. An analysis scheme defines language-specific text processing options for a <code>text</code> field. Can be limited to specific analysis schemes by name. By default, shows all analysis schemes and includes any pending changes to the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Describe Analysis Schemes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeAnalysisSchemes
     body:
       application/xml: DescribeAnalysisSchemesRequest
     responses:
@@ -1658,9 +1730,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Availability Options
   post:
     description: Gets the availability options configured for a domain. By default, shows the configuration with any pending changes. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Describe Availability Options
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeAvailabilityOptions
     body:
       application/xml: DescribeAvailabilityOptionsRequest
     responses:
@@ -1681,6 +1759,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Domains
   post:
     description: 'Gets information about the search domains owned by this account.
       Can be limited to specific domains. Shows all domains by default. To get the
@@ -1690,6 +1769,11 @@ types:
       target="_blank">Getting Information about a Search Domain</a> in the <i>Amazon
       CloudSearch Developer Guide</i>.'
     displayName: Describe Domains
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDomains
     body:
       application/xml: DescribeDomainsRequest
     responses:
@@ -1708,9 +1792,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Expressions
   post:
     description: Gets the expressions configured for the search domain. Can be limited to specific expressions by name. By default, shows all expressions and includes any pending changes to the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Describe Expressions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeExpressions
     body:
       application/xml: DescribeExpressionsRequest
     responses:
@@ -1731,9 +1821,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Index Fields
   post:
     description: Gets information about the index fields configured for the search domain. Can be limited to specific fields by name. By default, shows all fields and includes any pending changes to the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html" target="_blank">Getting Domain Information</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Describe Index Fields
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeIndexFields
     body:
       application/xml: DescribeIndexFieldsRequest
     responses:
@@ -1754,9 +1850,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Scaling Parameters
   post:
     description: Gets the scaling parameters configured for a domain. A domain's scaling parameters specify the desired search instance type and replication count. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html" target="_blank">Configuring Scaling Options</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Describe Scaling Parameters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeScalingParameters
     body:
       application/xml: DescribeScalingParametersRequest
     responses:
@@ -1777,9 +1879,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Service Access Policies
   post:
     description: Gets information about the access policies that control access to the domain's document and search endpoints. By default, shows the configuration with any pending changes. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">Configuring Access for a Search Domain</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Describe Service Access Policies
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeServiceAccessPolicies
     body:
       application/xml: DescribeServiceAccessPoliciesRequest
     responses:
@@ -1800,9 +1908,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Suggesters
   post:
     description: Gets the suggesters configured for a domain. A suggester enables you to display possible matches before users finish typing their queries. Can be limited to specific suggesters by name. By default, shows all suggesters and includes any pending changes to the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Describe Suggesters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSuggesters
     body:
       application/xml: DescribeSuggestersRequest
     responses:
@@ -1823,9 +1937,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Index Documents
   post:
     description: Tells the search domain to start indexing its documents using the latest indexing options. This operation must be invoked to activate options whose <a>OptionStatus</a> is <code>RequiresIndexDocuments</code>.
     displayName: Index Documents
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - IndexDocuments
     body:
       application/xml: IndexDocumentsRequest
     responses:
@@ -1846,9 +1966,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Domain Names
   post:
     description: Lists all search domains owned by an account.
     displayName: List Domain Names
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListDomainNames
     responses:
       200:
         body:
@@ -1863,9 +1989,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Availability Options
   post:
     description: Configures the availability options for a domain. Enabling the Multi-AZ option expands an Amazon CloudSearch domain to an additional Availability Zone in the same Region to increase fault tolerance in the event of a service disruption. Changes to the Multi-AZ option can take about half an hour to become active. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the <i>Amazon CloudSearch Developer Guide</i>.
     displayName: Update Availability Options
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateAvailabilityOptions
     body:
       application/xml: UpdateAvailabilityOptionsRequest
     responses:
@@ -1886,6 +2018,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Scaling Parameters
   post:
     description: 'Configures scaling parameters for a domain. A domain''s scaling
       parameters specify the desired search instance type and replication count. Amazon
@@ -1896,6 +2029,11 @@ types:
       target="_blank">Configuring Scaling Options</a> in the <i>Amazon CloudSearch
       Developer Guide</i>. '
     displayName: Update Scaling Parameters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateScalingParameters
     body:
       application/xml: UpdateScalingParametersRequest
     responses:
@@ -1916,9 +2054,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Update Service Access Policies
   post:
     description: Configures the access rules that control access to the domain's document and search endpoints. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank"> Configuring Access for an Amazon CloudSearch Domain</a>.
     displayName: Update Service Access Policies
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateServiceAccessPolicies
     body:
       application/xml: UpdateServiceAccessPoliciesRequest
     responses:

@@ -741,6 +741,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Tags
   post:
     description: Creates tags for a WorkSpace.
     displayName: Create Tags
@@ -760,6 +761,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Workspaces
   post:
     description: Creates one or more WorkSpaces. <note> This operation is asynchronous and returns before the WorkSpaces are created. </note>
     displayName: Create Workspaces
@@ -779,6 +781,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Tags
   post:
     description: Deletes tags from a WorkSpace.
     displayName: Delete Tags
@@ -798,6 +801,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Tags
   post:
     description: Describes tags for a WorkSpace.
     displayName: Describe Tags
@@ -817,6 +821,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Workspace Bundles
   post:
     description: Obtains information about the WorkSpace bundles that are available to your account in the specified region. You can filter the results with either the <code>BundleIds</code> parameter, or the <code>Owner</code> parameter, but not both. This operation supports pagination with the use of the <code>NextToken</code> request and response parameters. If more results are available, the <code>NextToken</code> response member contains a token that you pass in the next call to this operation to retrieve the next set of items.
     displayName: Describe Workspace Bundles
@@ -836,6 +841,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Workspace Directories
   post:
     description: Retrieves information about the AWS Directory Service directories in the region that are registered with Amazon WorkSpaces and are available to your account. This operation supports pagination with the use of the <code>NextToken</code> request and response parameters. If more results are available, the <code>NextToken</code> response member contains a token that you pass in the next call to this operation to retrieve the next set of items.
     displayName: Describe Workspace Directories
@@ -855,6 +861,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Workspaces
   post:
     description: Obtains information about the specified WorkSpaces. Only one of the filter parameters, such as <code>BundleId</code>, <code>DirectoryId</code>, or <code>WorkspaceIds</code>, can be specified at a time. This operation supports pagination with the use of the <code>NextToken</code> request and response parameters. If more results are available, the <code>NextToken</code> response member contains a token that you pass in the next call to this operation to retrieve the next set of items.
     displayName: Describe Workspaces
@@ -874,6 +881,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Workspaces Connection Status
   post:
     description: Describes the connection status of a specified WorkSpace.
     displayName: Describe Workspaces Connection Status
@@ -893,6 +901,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Workspace Properties
   post:
     description: Modifies the WorkSpace properties, including the RunningMode and AutoStop time.
     displayName: Modify Workspace Properties
@@ -912,6 +921,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Reboot Workspaces
   post:
     description: Reboots the specified WorkSpaces. To be able to reboot a WorkSpace, the WorkSpace must have a <b>State</b> of <code>AVAILABLE</code>, <code>IMPAIRED</code>, or <code>INOPERABLE</code>. <note> This operation is asynchronous and returns before the WorkSpaces have rebooted. </note>
     displayName: Reboot Workspaces
@@ -929,6 +939,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Rebuild Workspaces
   post:
     description: 'Rebuilds the specified WorkSpaces. Rebuilding a WorkSpace is a potentially
       destructive action that can result in the loss of data. Rebuilding a WorkSpace
@@ -957,6 +968,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Start Workspaces
   post:
     description: Starts the specified WorkSpaces. The API only works with WorkSpaces that have RunningMode configured as AutoStop and the State set to “STOPPED.”
     displayName: Start Workspaces
@@ -974,6 +986,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Stop Workspaces
   post:
     description: ' Stops the specified WorkSpaces. The API only works with WorkSpaces
       that have RunningMode configured as AutoStop and the State set to AVAILABLE,
@@ -993,6 +1006,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Terminate Workspaces
   post:
     description: Terminates the specified WorkSpaces. Terminating a WorkSpace is a permanent action and cannot be undone. The user's data is not maintained and will be destroyed. If you need to archive any user data, contact Amazon Web Services before terminating the WorkSpace. You can terminate a WorkSpace that is in any state except <code>SUSPENDED</code>. <note> This operation is asynchronous and returns before the WorkSpaces have been completely terminated. </note>
     displayName: Terminate Workspaces

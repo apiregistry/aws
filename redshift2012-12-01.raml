@@ -3444,9 +3444,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Authorize Cluster Security Group Ingress
   post:
     description: Adds an inbound (ingress) rule to an Amazon Redshift security group. Depending on whether the application accessing your cluster is running on the Internet or an Amazon EC2 instance, you can authorize inbound access to either a Classless Interdomain Routing (CIDR)/Internet Protocol (IP) range or to an Amazon EC2 security group. You can add as many as 20 ingress rules to an Amazon Redshift security group. If you authorize access to an Amazon EC2 security group, specify <i>EC2SecurityGroupName</i> and <i>EC2SecurityGroupOwnerId</i>. The Amazon EC2 security group and Amazon Redshift cluster must be in the same AWS region.  If you authorize access to a CIDR/IP address range, specify <i>CIDRIP</i>. For an overview of CIDR blocks, see the Wikipedia article on <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless Inter-Domain Routing</a>.  You must also associate the security group with a cluster so that clients running on these IP addresses or the EC2 instance are authorized to connect to the cluster. For information about managing security groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">Working with Security Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Authorize Cluster Security Group Ingress
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AuthorizeClusterSecurityGroupIngress
     body:
       application/xml: AuthorizeClusterSecurityGroupIngressMessage
     responses:
@@ -3465,9 +3471,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Authorize Snapshot Access
   post:
     description: Authorizes the specified AWS customer account to restore the specified snapshot.  For more information about working with snapshots, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon Redshift Snapshots</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Authorize Snapshot Access
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AuthorizeSnapshotAccess
     body:
       application/xml: AuthorizeSnapshotAccessMessage
     responses:
@@ -3486,9 +3498,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Copy Cluster Snapshot
   post:
     description: Copies the specified automated cluster snapshot to a new manual cluster snapshot. The source must be an automated snapshot and it must be in the available state. When you delete a cluster, Amazon Redshift deletes any automated snapshots of the cluster. Also, when the retention period of the snapshot expires, Amazon Redshift automatically deletes it. If you want to keep an automated snapshot for a longer period, you can make a manual copy of the snapshot. Manual snapshots are retained until you delete them.  For more information about working with snapshots, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon Redshift Snapshots</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Copy Cluster Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CopyClusterSnapshot
     body:
       application/xml: CopyClusterSnapshotMessage
     responses:
@@ -3507,9 +3525,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Cluster
   post:
     description: Creates a new cluster. To create the cluster in Virtual Private Cloud (VPC), you must provide a cluster subnet group name. The cluster subnet group identifies the subnets of your VPC that Amazon Redshift uses when creating the cluster. For more information about managing clusters, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Create Cluster
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateCluster
     body:
       application/xml: CreateClusterMessage
     responses:
@@ -3528,9 +3552,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Cluster Parameter Group
   post:
     description: Creates an Amazon Redshift parameter group. Creating parameter groups is independent of creating clusters. You can associate a cluster with a parameter group when you create the cluster. You can also associate an existing cluster with a parameter group after the cluster is created by using <a>ModifyCluster</a>.  Parameters in the parameter group define specific behavior that applies to the databases you create on the cluster. For more information about parameters and parameter groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Create Cluster Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateClusterParameterGroup
     body:
       application/xml: CreateClusterParameterGroupMessage
     responses:
@@ -3547,9 +3577,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Cluster Security Group
   post:
     description: Creates a new Amazon Redshift security group. You use security groups to control access to non-VPC clusters.  For information about managing security groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">Amazon Redshift Cluster Security Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Create Cluster Security Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateClusterSecurityGroup
     body:
       application/xml: CreateClusterSecurityGroupMessage
     responses:
@@ -3566,9 +3602,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Cluster Snapshot
   post:
     description: Creates a manual snapshot of the specified cluster. The cluster must be in the <code>available</code> state.   For more information about working with snapshots, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon Redshift Snapshots</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Create Cluster Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateClusterSnapshot
     body:
       application/xml: CreateClusterSnapshotMessage
     responses:
@@ -3587,9 +3629,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Cluster Subnet Group
   post:
     description: Creates a new Amazon Redshift subnet group. You must provide a list of one or more subnets in your existing Amazon Virtual Private Cloud (Amazon VPC) when creating Amazon Redshift subnet group.  For information about subnet groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html">Amazon Redshift Cluster Subnet Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Create Cluster Subnet Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateClusterSubnetGroup
     body:
       application/xml: CreateClusterSubnetGroupMessage
     responses:
@@ -3606,9 +3654,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Event Subscription
   post:
     description: Creates an Amazon Redshift event notification subscription. This action requires an ARN (Amazon Resource Name) of an Amazon SNS topic created by either the Amazon Redshift console, the Amazon SNS console, or the Amazon SNS API. To obtain an ARN with Amazon SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the SNS console. You can specify the source type, and lists of Amazon Redshift source IDs, event categories, and event severities. Notifications will be sent for all events you want that match those criteria. For example, you can specify source type = cluster, source ID = my-cluster-1 and mycluster2, event categories = Availability, Backup, and severity = ERROR. The subscription will only send notifications for those ERROR events in the Availability and Backup categories for the specified clusters. If you specify both the source type and source IDs, such as source type = cluster and source identifier = my-cluster-1, notifications will be sent for all the cluster events for my-cluster-1. If you specify a source type but do not specify a source identifier, you will receive notice of the events for the objects of that type in your AWS account. If you do not specify either the SourceType nor the SourceIdentifier, you will be notified of events generated from all Amazon Redshift sources belonging to your AWS account. You must specify a source type if you specify a source ID.
     displayName: Create Event Subscription
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateEventSubscription
     body:
       application/xml: CreateEventSubscriptionMessage
     responses:
@@ -3627,9 +3681,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Hsm Client Certificate
   post:
     description: Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases. The command returns a public key, which you must store in the HSM. In addition to creating the HSM certificate, you must create an Amazon Redshift HSM configuration that provides a cluster the information needed to store and use encryption keys in the HSM. For more information, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html">Hardware Security Modules</a> in the Amazon Redshift Cluster Management Guide.
     displayName: Create Hsm Client Certificate
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateHsmClientCertificate
     body:
       application/xml: CreateHsmClientCertificateMessage
     responses:
@@ -3646,9 +3706,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Hsm Configuration
   post:
     description: Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM). After creating the HSM configuration, you can specify it as a parameter when creating a cluster. The cluster will then store its encryption keys in the HSM. In addition to creating an HSM configuration, you must also create an HSM client certificate. For more information, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html">Hardware Security Modules</a> in the Amazon Redshift Cluster Management Guide.
     displayName: Create Hsm Configuration
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateHsmConfiguration
     body:
       application/xml: CreateHsmConfigurationMessage
     responses:
@@ -3665,6 +3731,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Snapshot Copy Grant
   post:
     description: 'Creates a snapshot copy grant that permits Amazon Redshift to use
       a customer master key (CMK) from AWS Key Management Service (AWS KMS) to encrypt
@@ -3673,6 +3740,11 @@ types:
       Redshift Database Encryption</a> in the <i>Amazon Redshift Cluster Management
       Guide</i>. '
     displayName: Create Snapshot Copy Grant
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateSnapshotCopyGrant
     body:
       application/xml: CreateSnapshotCopyGrantMessage
     responses:
@@ -3689,9 +3761,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Tags
   post:
     description: Adds one or more tags to a specified resource. A resource can have up to 10 tags. If you try to create more than 10 tags for a resource, you will receive an error and the attempt will fail. If you specify a key that already exists for the resource, the value for that key will be updated with the new value.
     displayName: Create Tags
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateTags
     body:
       application/xml: CreateTagsMessage
     responses:
@@ -3710,9 +3788,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Cluster
   post:
     description: Deletes a previously provisioned cluster. A successful response from the web service indicates that the request was received correctly. Use <a>DescribeClusters</a> to monitor the status of the deletion. The delete operation cannot be canceled or reverted once submitted. For more information about managing clusters, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>. If you want to shut down the cluster and retain it for future use, set <i>SkipFinalClusterSnapshot</i> to <code>false</code> and specify a name for <i>FinalClusterSnapshotIdentifier</i>. You can later restore this snapshot to resume using the cluster. If a final cluster snapshot is requested, the status of the cluster will be "final-snapshot" while the snapshot is being taken, then it's "deleting" once Amazon Redshift begins deleting the cluster.   For more information about managing clusters, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Delete Cluster
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteCluster
     body:
       application/xml: DeleteClusterMessage
     responses:
@@ -3731,9 +3815,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Cluster Parameter Group
   post:
     description: Deletes a specified Amazon Redshift parameter group. <note> You cannot delete a parameter group if it is associated with a cluster. </note>
     displayName: Delete Cluster Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteClusterParameterGroup
     body:
       application/xml: DeleteClusterParameterGroupMessage
     responses:
@@ -3752,9 +3842,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Cluster Security Group
   post:
     description: Deletes an Amazon Redshift security group. <note> You cannot delete a security group that is associated with any clusters. You cannot delete the default security group. </note>  For information about managing security groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">Amazon Redshift Cluster Security Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Delete Cluster Security Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteClusterSecurityGroup
     body:
       application/xml: DeleteClusterSecurityGroupMessage
     responses:
@@ -3773,9 +3869,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Cluster Snapshot
   post:
     description: Deletes the specified manual snapshot. The snapshot must be in the <code>available</code> state, with no other users authorized to access the snapshot.  Unlike automated snapshots, manual snapshots are retained even after you delete your cluster. Amazon Redshift does not delete your manual snapshots. You must delete manual snapshot explicitly to avoid getting charged. If other accounts are authorized to access the snapshot, you must revoke all of the authorizations before you can delete the snapshot.
     displayName: Delete Cluster Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteClusterSnapshot
     body:
       application/xml: DeleteClusterSnapshotMessage
     responses:
@@ -3794,9 +3896,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Cluster Subnet Group
   post:
     description: Deletes the specified cluster subnet group.
     displayName: Delete Cluster Subnet Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteClusterSubnetGroup
     body:
       application/xml: DeleteClusterSubnetGroupMessage
     responses:
@@ -3813,9 +3921,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Event Subscription
   post:
     description: Deletes an Amazon Redshift event notification subscription.
     displayName: Delete Event Subscription
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteEventSubscription
     body:
       application/xml: DeleteEventSubscriptionMessage
     responses:
@@ -3834,9 +3948,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Hsm Client Certificate
   post:
     description: Deletes the specified HSM client certificate.
     displayName: Delete Hsm Client Certificate
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteHsmClientCertificate
     body:
       application/xml: DeleteHsmClientCertificateMessage
     responses:
@@ -3853,9 +3973,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Hsm Configuration
   post:
     description: Deletes the specified Amazon Redshift HSM configuration.
     displayName: Delete Hsm Configuration
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteHsmConfiguration
     body:
       application/xml: DeleteHsmConfigurationMessage
     responses:
@@ -3872,9 +3998,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Snapshot Copy Grant
   post:
     description: Deletes the specified snapshot copy grant.
     displayName: Delete Snapshot Copy Grant
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteSnapshotCopyGrant
     body:
       application/xml: DeleteSnapshotCopyGrantMessage
     responses:
@@ -3891,9 +4023,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Tags
   post:
     description: Deletes a tag or tags from a resource. You must provide the ARN of the resource from which you want to delete the tag or tags.
     displayName: Delete Tags
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteTags
     body:
       application/xml: DeleteTagsMessage
     responses:
@@ -3912,9 +4050,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Cluster Parameter Groups
   post:
     description: Returns a list of Amazon Redshift parameter groups, including parameter groups you created and the default parameter group. For each parameter group, the response includes the parameter group name, description, and parameter group family name. You can optionally specify a name to retrieve the description of a specific parameter group.  For more information about parameters and parameter groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>. If you specify both tag keys and tag values in the same request, Amazon Redshift returns all parameter groups that match any combination of the specified keys and values. For example, if you have <code>owner</code> and <code>environment</code> for tag keys, and <code>admin</code> and <code>test</code> for tag values, all parameter groups that have any combination of those values are returned. If both tag keys and values are omitted from the request, parameter groups are returned regardless of whether they have tag keys or values associated with them.
     displayName: Describe Cluster Parameter Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeClusterParameterGroups
     body:
       application/xml: DescribeClusterParameterGroupsMessage
     responses:
@@ -3933,9 +4077,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Cluster Parameters
   post:
     description: Returns a detailed list of parameters contained within the specified Amazon Redshift parameter group. For each parameter the response includes information such as parameter name, description, data type, value, whether the parameter value is modifiable, and so on. You can specify <i>source</i> filter to retrieve parameters of only specific type. For example, to retrieve parameters that were modified by a user action such as from <a>ModifyClusterParameterGroup</a>, you can specify <i>source</i> equal to <i>user</i>.  For more information about parameters and parameter groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Describe Cluster Parameters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeClusterParameters
     body:
       application/xml: DescribeClusterParametersMessage
     responses:
@@ -3952,9 +4102,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Cluster Security Groups
   post:
     description: Returns information about Amazon Redshift security groups. If the name of a security group is specified, the response will contain only information about only that security group.  For information about managing security groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">Amazon Redshift Cluster Security Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>. If you specify both tag keys and tag values in the same request, Amazon Redshift returns all security groups that match any combination of the specified keys and values. For example, if you have <code>owner</code> and <code>environment</code> for tag keys, and <code>admin</code> and <code>test</code> for tag values, all security groups that have any combination of those values are returned. If both tag keys and values are omitted from the request, security groups are returned regardless of whether they have tag keys or values associated with them.
     displayName: Describe Cluster Security Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeClusterSecurityGroups
     body:
       application/xml: DescribeClusterSecurityGroupsMessage
     responses:
@@ -3973,9 +4129,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Cluster Snapshots
   post:
     description: Returns one or more snapshot objects, which contain metadata about your cluster snapshots. By default, this operation returns information about all snapshots of all clusters that are owned by you AWS customer account. No information is returned for snapshots owned by inactive AWS customer accounts. If you specify both tag keys and tag values in the same request, Amazon Redshift returns all snapshots that match any combination of the specified keys and values. For example, if you have <code>owner</code> and <code>environment</code> for tag keys, and <code>admin</code> and <code>test</code> for tag values, all snapshots that have any combination of those values are returned. Only snapshots that you own are returned in the response; shared snapshots are not returned with the tag key and tag value request parameters. If both tag keys and values are omitted from the request, snapshots are returned regardless of whether they have tag keys or values associated with them.
     displayName: Describe Cluster Snapshots
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeClusterSnapshots
     body:
       application/xml: DescribeClusterSnapshotsMessage
     responses:
@@ -3994,9 +4156,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Cluster Subnet Groups
   post:
     description: Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups. By default, this operation returns information about all cluster subnet groups that are defined in you AWS account. If you specify both tag keys and tag values in the same request, Amazon Redshift returns all subnet groups that match any combination of the specified keys and values. For example, if you have <code>owner</code> and <code>environment</code> for tag keys, and <code>admin</code> and <code>test</code> for tag values, all subnet groups that have any combination of those values are returned. If both tag keys and values are omitted from the request, subnet groups are returned regardless of whether they have tag keys or values associated with them.
     displayName: Describe Cluster Subnet Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeClusterSubnetGroups
     body:
       application/xml: DescribeClusterSubnetGroupsMessage
     responses:
@@ -4013,9 +4181,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Cluster Versions
   post:
     description: Returns descriptions of the available Amazon Redshift cluster versions. You can call this operation even before creating any clusters to learn more about the Amazon Redshift versions. For more information about managing clusters, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Describe Cluster Versions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeClusterVersions
     body:
       application/xml: DescribeClusterVersionsMessage
     responses:
@@ -4030,9 +4204,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Clusters
   post:
     description: Returns properties of provisioned clusters including general cluster properties, cluster database properties, maintenance and backup properties, and security and access properties. This operation supports pagination. For more information about managing clusters, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>. If you specify both tag keys and tag values in the same request, Amazon Redshift returns all clusters that match any combination of the specified keys and values. For example, if you have <code>owner</code> and <code>environment</code> for tag keys, and <code>admin</code> and <code>test</code> for tag values, all clusters that have any combination of those values are returned. If both tag keys and values are omitted from the request, clusters are returned regardless of whether they have tag keys or values associated with them.
     displayName: Describe Clusters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeClusters
     body:
       application/xml: DescribeClustersMessage
     responses:
@@ -4051,9 +4231,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Default Cluster Parameters
   post:
     description: Returns a list of parameter settings for the specified parameter group family.  For more information about parameters and parameter groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Describe Default Cluster Parameters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDefaultClusterParameters
     body:
       application/xml: DescribeDefaultClusterParametersMessage
     responses:
@@ -4068,9 +4254,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Event Categories
   post:
     description: Displays a list of event categories for all event source types, or for a specified source type. For a list of the event categories and source types, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html">Amazon Redshift Event Notifications</a>.
     displayName: Describe Event Categories
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEventCategories
     body:
       application/xml: DescribeEventCategoriesMessage
     responses:
@@ -4085,9 +4277,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Event Subscriptions
   post:
     description: Lists descriptions of all the Amazon Redshift event notifications subscription for a customer account. If you specify a subscription name, lists the description for that subscription.
     displayName: Describe Event Subscriptions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEventSubscriptions
     body:
       application/xml: DescribeEventSubscriptionsMessage
     responses:
@@ -4104,9 +4302,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Events
   post:
     description: Returns events related to clusters, security groups, snapshots, and parameter groups for the past 14 days. Events specific to a particular cluster, security group, snapshot or parameter group can be obtained by providing the name as a parameter. By default, the past hour of events are returned.
     displayName: Describe Events
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEvents
     body:
       application/xml: DescribeEventsMessage
     responses:
@@ -4121,9 +4325,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Hsm Client Certificates
   post:
     description: Returns information about the specified HSM client certificate. If no certificate ID is specified, returns information about all the HSM certificates owned by your AWS customer account. If you specify both tag keys and tag values in the same request, Amazon Redshift returns all HSM client certificates that match any combination of the specified keys and values. For example, if you have <code>owner</code> and <code>environment</code> for tag keys, and <code>admin</code> and <code>test</code> for tag values, all HSM client certificates that have any combination of those values are returned. If both tag keys and values are omitted from the request, HSM client certificates are returned regardless of whether they have tag keys or values associated with them.
     displayName: Describe Hsm Client Certificates
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeHsmClientCertificates
     body:
       application/xml: DescribeHsmClientCertificatesMessage
     responses:
@@ -4140,9 +4350,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Hsm Configurations
   post:
     description: Returns information about the specified Amazon Redshift HSM configuration. If no configuration ID is specified, returns information about all the HSM configurations owned by your AWS customer account. If you specify both tag keys and tag values in the same request, Amazon Redshift returns all HSM connections that match any combination of the specified keys and values. For example, if you have <code>owner</code> and <code>environment</code> for tag keys, and <code>admin</code> and <code>test</code> for tag values, all HSM connections that have any combination of those values are returned. If both tag keys and values are omitted from the request, HSM connections are returned regardless of whether they have tag keys or values associated with them.
     displayName: Describe Hsm Configurations
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeHsmConfigurations
     body:
       application/xml: DescribeHsmConfigurationsMessage
     responses:
@@ -4159,9 +4375,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Logging Status
   post:
     description: Describes whether information, such as queries and connection attempts, is being logged for the specified Amazon Redshift cluster.
     displayName: Describe Logging Status
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeLoggingStatus
     body:
       application/xml: DescribeLoggingStatusMessage
     responses:
@@ -4178,9 +4400,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Orderable Cluster Options
   post:
     description: Returns a list of orderable cluster options. Before you create a new cluster you can use this operation to find what options are available, such as the EC2 Availability Zones (AZ) in the specific AWS region that you can specify, and the node types you can request. The node types differ by available storage, memory, CPU and price. With the cost involved you might want to obtain a list of cluster options in the specific region and specify values when creating a cluster. For more information about managing clusters, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Describe Orderable Cluster Options
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeOrderableClusterOptions
     body:
       application/xml: DescribeOrderableClusterOptionsMessage
     responses:
@@ -4195,9 +4423,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Reserved Node Offerings
   post:
     description: Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you. These descriptions help you determine which reserve node offering you want to purchase. You then use the unique offering ID in you call to <a>PurchaseReservedNodeOffering</a> to reserve one or more nodes for your Amazon Redshift cluster.   For more information about reserved node offerings, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html">Purchasing Reserved Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Describe Reserved Node Offerings
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeReservedNodeOfferings
     body:
       application/xml: DescribeReservedNodeOfferingsMessage
     responses:
@@ -4216,9 +4450,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Reserved Nodes
   post:
     description: Returns the descriptions of the reserved nodes.
     displayName: Describe Reserved Nodes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeReservedNodes
     body:
       application/xml: DescribeReservedNodesMessage
     responses:
@@ -4235,6 +4475,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Resize
   post:
     description: 'Returns information about the last resize operation for the specified
       cluster. If no resize operation has ever been initiated for the specified cluster,
@@ -4243,6 +4484,11 @@ types:
       the next resize.  A resize operation can be requested using <a>ModifyCluster</a>
       and specifying a different number or type of nodes for the cluster. '
     displayName: Describe Resize
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeResize
     body:
       application/xml: DescribeResizeMessage
     responses:
@@ -4259,6 +4505,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Snapshot Copy Grants
   post:
     description: 'Returns a list of snapshot copy grants owned by the AWS account
       in the destination region.  For more information about managing snapshot copy
@@ -4266,6 +4513,11 @@ types:
       Redshift Database Encryption</a> in the <i>Amazon Redshift Cluster Management
       Guide</i>. '
     displayName: Describe Snapshot Copy Grants
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSnapshotCopyGrants
     body:
       application/xml: DescribeSnapshotCopyGrantsMessage
     responses:
@@ -4282,9 +4534,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Table Restore Status
   post:
     description: Lists the status of one or more table restore requests made using the <a>RestoreTableFromClusterSnapshot</a> API action. If you don't specify a value for the <code>TableRestoreRequestId</code> parameter, then <code>DescribeTableRestoreStatus</code> returns the status of all table restore requests ordered by the date and time of the request in ascending order. Otherwise <code>DescribeTableRestoreStatus</code> returns the status of the table specified by <code>TableRestoreRequestId</code>.
     displayName: Describe Table Restore Status
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeTableRestoreStatus
     body:
       application/xml: DescribeTableRestoreStatusMessage
     responses:
@@ -4303,6 +4561,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Tags
   post:
     description: 'Returns a list of tags. You can return tags from a specific resource
       by specifying an ARN, or you can return all tags for a given type of resource,
@@ -4319,6 +4578,11 @@ types:
       keys and values are omitted from the request, resources are returned regardless
       of whether they have tag keys or values associated with them.'
     displayName: Describe Tags
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeTags
     body:
       application/xml: DescribeTagsMessage
     responses:
@@ -4337,9 +4601,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Disable Logging
   post:
     description: Stops logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.
     displayName: Disable Logging
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisableLogging
     body:
       application/xml: DisableLoggingMessage
     responses:
@@ -4356,6 +4626,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Disable Snapshot Copy
   post:
     description: 'Disables the automatic copying of snapshots from one region to another
       region for a specified cluster. If your cluster and its snapshots are encrypted
@@ -4363,6 +4634,11 @@ types:
       to delete the grant that grants Amazon Redshift permission to the CMK in the
       destination region. '
     displayName: Disable Snapshot Copy
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisableSnapshotCopy
     body:
       application/xml: DisableSnapshotCopyMessage
     responses:
@@ -4381,9 +4657,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Enable Logging
   post:
     description: Starts logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.
     displayName: Enable Logging
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - EnableLogging
     body:
       application/xml: EnableLoggingMessage
     responses:
@@ -4402,9 +4684,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Enable Snapshot Copy
   post:
     description: Enables the automatic copy of snapshots from one region to another region for a specified cluster.
     displayName: Enable Snapshot Copy
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - EnableSnapshotCopy
     body:
       application/xml: EnableSnapshotCopyMessage
     responses:
@@ -4423,9 +4711,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Cluster
   post:
     description: Modifies the settings for a cluster. For example, you can add another security or parameter group, update the preferred maintenance window, or change the master user password. Resetting a cluster password or modifying the security groups associated with a cluster do not need a reboot. However, modifying a parameter group requires a reboot for parameters to take effect. For more information about managing clusters, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>. You can also change node type and the number of nodes to scale up or down the cluster. When resizing a cluster, you must specify both the number of nodes and the node type even if one of the parameters does not change.
     displayName: Modify Cluster
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyCluster
     body:
       application/xml: ModifyClusterMessage
     responses:
@@ -4444,9 +4738,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Cluster Iam Roles
   post:
     description: Modifies the list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. A cluster can have up to 10 IAM roles associated at any time.
     displayName: Modify Cluster Iam Roles
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyClusterIamRoles
     body:
       application/xml: ModifyClusterIamRolesMessage
     responses:
@@ -4465,9 +4765,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Cluster Parameter Group
   post:
     description: Modifies the parameters of a parameter group.  For more information about parameters and parameter groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Modify Cluster Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyClusterParameterGroup
     body:
       application/xml: ModifyClusterParameterGroupMessage
     responses:
@@ -4486,9 +4792,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Cluster Subnet Group
   post:
     description: Modifies a cluster subnet group to include the specified list of VPC subnets. The operation replaces the existing list of subnets with the new list of subnets.
     displayName: Modify Cluster Subnet Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyClusterSubnetGroup
     body:
       application/xml: ModifyClusterSubnetGroupMessage
     responses:
@@ -4505,9 +4817,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Event Subscription
   post:
     description: Modifies an existing Amazon Redshift event notification subscription.
     displayName: Modify Event Subscription
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyEventSubscription
     body:
       application/xml: ModifyEventSubscriptionMessage
     responses:
@@ -4526,9 +4844,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Snapshot Copy Retention Period
   post:
     description: Modifies the number of days to retain automated snapshots in the destination region after they are copied from the source region.
     displayName: Modify Snapshot Copy Retention Period
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifySnapshotCopyRetentionPeriod
     body:
       application/xml: ModifySnapshotCopyRetentionPeriodMessage
     responses:
@@ -4547,9 +4871,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Purchase Reserved Node Offering
   post:
     description: Allows you to purchase reserved nodes. Amazon Redshift offers a predefined set of reserved node offerings. You can purchase one or more of the offerings. You can call the <a>DescribeReservedNodeOfferings</a> API to obtain the available reserved node offerings. You can call this API by providing a specific reserved node offering and the number of nodes you want to reserve.   For more information about reserved node offerings, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html">Purchasing Reserved Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Purchase Reserved Node Offering
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PurchaseReservedNodeOffering
     body:
       application/xml: PurchaseReservedNodeOfferingMessage
     responses:
@@ -4568,6 +4898,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Reboot Cluster
   post:
     description: 'Reboots a cluster. This action is taken as soon as possible. It
       results in a momentary outage to the cluster, during which the cluster status
@@ -4577,6 +4908,11 @@ types:
       <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon
       Redshift Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>. '
     displayName: Reboot Cluster
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RebootCluster
     body:
       application/xml: RebootClusterMessage
     responses:
@@ -4595,12 +4931,18 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Reset Cluster Parameter Group
   post:
     description: 'Sets one or more parameters of the specified parameter group to
       their default values and sets the source values of the parameters to "engine-default".
       To reset the entire parameter group specify the <i>ResetAllParameters</i> parameter.
       For parameter changes to take effect you must reboot any associated clusters. '
     displayName: Reset Cluster Parameter Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ResetClusterParameterGroup
     body:
       application/xml: ResetClusterParameterGroupMessage
     responses:
@@ -4619,9 +4961,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Restore From Cluster Snapshot
   post:
     description: Creates a new cluster from a snapshot. By default, Amazon Redshift creates the resulting cluster with the same configuration as the original cluster from which the snapshot was created, except that the new cluster is created with the default cluster security and parameter groups. After Amazon Redshift creates the cluster, you can use the <a>ModifyCluster</a> API to associate a different security group and different parameter group with the restored cluster. If you are using a DS node type, you can also choose to change to another DS node type of the same size during restore. If you restore a cluster into a VPC, you must provide a cluster subnet group where you want the cluster restored.  For more information about working with snapshots, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon Redshift Snapshots</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Restore From Cluster Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RestoreFromClusterSnapshot
     body:
       application/xml: RestoreFromClusterSnapshotMessage
     responses:
@@ -4642,9 +4990,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Restore Table From Cluster Snapshot
   post:
     description: Creates a new table from a table in an Amazon Redshift cluster snapshot. You must create the new table within the Amazon Redshift cluster that the snapshot was taken from. You cannot use <code>RestoreTableFromClusterSnapshot</code> to restore a table with the same name as an existing table in an Amazon Redshift cluster. That is, you cannot overwrite an existing table in a cluster with a restored table. If you want to replace your original table with a new, restored table, then rename or drop your original table before you call <code>RestoreTableFromClusterSnapshot</code>. When you have renamed your original table, then you can pass the original name of the table as the <code>NewTableName</code> parameter value in the call to <code>RestoreTableFromClusterSnapshot</code>. This way, you can replace the original table with the table created from the snapshot.
     displayName: Restore Table From Cluster Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RestoreTableFromClusterSnapshot
     body:
       application/xml: RestoreTableFromClusterSnapshotMessage
     responses:
@@ -4663,6 +5017,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Revoke Cluster Security Group Ingress
   post:
     description: 'Revokes an ingress rule in an Amazon Redshift security group for
       a previously authorized IP range or Amazon EC2 security group. To add an ingress
@@ -4671,6 +5026,11 @@ types:
       Redshift Cluster Security Groups</a> in the <i>Amazon Redshift Cluster Management
       Guide</i>. '
     displayName: Revoke Cluster Security Group Ingress
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RevokeClusterSecurityGroupIngress
     body:
       application/xml: RevokeClusterSecurityGroupIngressMessage
     responses:
@@ -4689,9 +5049,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Revoke Snapshot Access
   post:
     description: Removes the ability of the specified AWS customer account to restore the specified snapshot. If the account is currently restoring the snapshot, the restore will run to completion.  For more information about working with snapshots, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon Redshift Snapshots</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
     displayName: Revoke Snapshot Access
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RevokeSnapshotAccess
     body:
       application/xml: RevokeSnapshotAccessMessage
     responses:
@@ -4710,9 +5076,15 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Rotate Encryption Key
   post:
     description: Rotates the encryption keys for a cluster.
     displayName: Rotate Encryption Key
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RotateEncryptionKey
     body:
       application/xml: RotateEncryptionKeyMessage
     responses:

@@ -1591,6 +1591,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Add Instance Groups
   post:
     description: AddInstanceGroups adds an instance group to a running cluster.
     displayName: Add Instance Groups
@@ -1610,6 +1611,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Add Job Flow Steps
   post:
     description: 'AddJobFlowSteps adds new steps to a running job flow. A maximum
       of 256 steps are allowed in each job flow. If your job flow is long-running
@@ -1645,6 +1647,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Add Tags
   post:
     description: 'Adds tags to an Amazon EMR resource. Tags make it easier to associate
       clusters in various ways, such as grouping clusters to track your Amazon EMR
@@ -1667,6 +1670,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Security Configuration
   post:
     description: Creates a security configuration using EMR Security Configurations, which are stored in the service. Security Configurations enable you to more easily create a configuration, reuse it, and apply it whenever a cluster is created.
     displayName: Create Security Configuration
@@ -1686,6 +1690,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Security Configuration
   post:
     description: Deletes a security configuration.
     displayName: Delete Security Configuration
@@ -1705,6 +1710,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Cluster
   post:
     description: Provides cluster-level details including status, hardware and software configuration, VPC settings, and so on. For information about the cluster steps, see <a>ListSteps</a>.
     displayName: Describe Cluster
@@ -1724,6 +1730,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Job Flows
   post:
     description: ' This API is deprecated and will eventually be removed. We recommend
       you use <a>ListClusters</a>, <a>DescribeCluster</a>, <a>ListSteps</a>, <a>ListInstanceGroups</a>
@@ -1754,6 +1761,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Security Configuration
   post:
     description: Provides the details of a security configuration by returning the configuration JSON.
     displayName: Describe Security Configuration
@@ -1773,6 +1781,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Describe Step
   post:
     description: Provides more detail about the cluster step.
     displayName: Describe Step
@@ -1792,6 +1801,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Bootstrap Actions
   post:
     description: Provides information about the bootstrap actions associated with a cluster.
     displayName: List Bootstrap Actions
@@ -1811,6 +1821,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Clusters
   post:
     description: Provides the status of all clusters visible to this AWS account. Allows you to filter the list of clusters based on certain criteria; for example, filtering by cluster creation date and time or by status. This call returns a maximum of 50 clusters per call, but returns a marker to track the paging of the cluster list across multiple ListClusters calls.
     displayName: List Clusters
@@ -1830,6 +1841,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Instance Groups
   post:
     description: Provides all available details about the instance groups in a cluster.
     displayName: List Instance Groups
@@ -1849,6 +1861,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Instances
   post:
     description: Provides information about the cluster instances that Amazon EMR provisions on behalf of a user when it creates the cluster. For example, this operation indicates when the EC2 instances reach the Ready state, when instances become available to Amazon EMR to use for jobs, and the IP addresses for cluster instances, etc.
     displayName: List Instances
@@ -1868,6 +1881,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Security Configurations
   post:
     description: Lists all the security configurations visible to this account, providing their creation dates and times, and their names. This call returns a maximum of 50 clusters per call, but returns a marker to track the paging of the cluster list across multiple ListSecurityConfigurations calls.
     displayName: List Security Configurations
@@ -1887,6 +1901,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Steps
   post:
     description: Provides a list of steps for the cluster.
     displayName: List Steps
@@ -1906,6 +1921,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Modify Instance Groups
   post:
     description: ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group. The input parameters include the new target instance count for the group and the instance group ID. The call will either succeed or fail atomically.
     displayName: Modify Instance Groups
@@ -1925,6 +1941,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Remove Tags
   post:
     description: 'Removes tags from an Amazon EMR resource. Tags make it easier to
       associate clusters in various ways, such as grouping clusters to track your
@@ -1948,6 +1965,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Run Job Flow
   post:
     description: ' RunJobFlow creates and starts running a new job flow. The job flow
       will run the steps specified. Once the job flow completes, the cluster is stopped
@@ -1985,6 +2003,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Termination Protection
   post:
     description: 'SetTerminationProtection locks a job flow so the Amazon EC2 instances
       in the cluster cannot be terminated by user intervention, an API call, or in
@@ -2017,6 +2036,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Set Visible To All Users
   post:
     description: Sets whether all AWS Identity and Access Management (IAM) users under your account can access the specified job flows. This action works on running job flows. You can also set the visibility of a job flow when you launch it using the <code>VisibleToAllUsers</code> parameter of <a>RunJobFlow</a>. The SetVisibleToAllUsers action can be called only by an IAM user who created the job flow or the AWS account that owns the job flow.
     displayName: Set Visible To All Users
@@ -2036,6 +2056,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Terminate Job Flows
   post:
     description: TerminateJobFlows shuts a list of job flows down. When a job flow is shut down, any step not yet completed is canceled and the EC2 instances on which the job flow is running are stopped. Any log files not already saved are uploaded to Amazon S3 if a LogUri was specified when the job flow was created. The maximum number of JobFlows allowed is 10. The call to TerminateJobFlows is asynchronous. Depending on the configuration of the job flow, it may take up to 5-20 minutes for the job flow to completely terminate and release allocated resources, such as Amazon EC2 instances.
     displayName: Terminate Job Flows

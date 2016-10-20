@@ -351,6 +351,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Batch Delete Attributes
   post:
     description: ' Performs multiple DeleteAttributes operations in a single call,
       which reduces round trips and latencies. This enables Amazon SimpleDB to optimize
@@ -358,6 +359,11 @@ types:
       are enforced for this operation: <ul> <li>1 MB request size</li> <li>25 item
       limit per BatchDeleteAttributes operation</li> </ul> '
     displayName: Batch Delete Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - BatchDeleteAttributes
     body:
       application/xml: BatchDeleteAttributesRequest
     responses:
@@ -372,6 +378,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Batch Put Attributes
   post:
     description: ' The <code>BatchPutAttributes</code> operation creates or replaces
       attributes within one or more items. By using this operation, the client can
@@ -408,6 +415,11 @@ types:
       <li>10 GB of total user data storage per domain</li> <li>25 item limit per <code>BatchPutAttributes</code>
       operation</li> </ul> '
     displayName: Batch Put Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - BatchPutAttributes
     body:
       application/xml: BatchPutAttributesRequest
     responses:
@@ -426,6 +438,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Create Domain
   post:
     description: ' The <code>CreateDomain</code> operation creates a new domain. The
       domain name should be unique among the domains associated with the Access Key
@@ -434,6 +447,11 @@ types:
       account.   If the client requires additional domains, go to <a href="http://aws.amazon.com/contact-us/simpledb-limit-request/">
       http://aws.amazon.com/contact-us/simpledb-limit-request/</a>. '
     displayName: Create Domain
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDomain
     body:
       application/xml: CreateDomainRequest
     responses:
@@ -452,6 +470,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Attributes
   post:
     description: ' Deletes one or more attributes associated with an item. If all
       attributes of the item are deleted, the item is deleted.   <code>DeleteAttributes</code>
@@ -462,6 +481,11 @@ types:
       <code>DeleteAttributes</code> or <a>PutAttributes</a> operation (write) might
       not return updated item data. '
     displayName: Delete Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteAttributes
     body:
       application/xml: DeleteAttributesRequest
     responses:
@@ -480,11 +504,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Delete Domain
   post:
     description: ' The <code>DeleteDomain</code> operation deletes a domain. Any items
       (and their attributes) in the domain are deleted as well. The <code>DeleteDomain</code>
       operation might take 10 or more seconds to complete. '
     displayName: Delete Domain
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDomain
     body:
       application/xml: DeleteDomainRequest
     responses:
@@ -501,11 +531,17 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Domain Metadata
   post:
     description: ' Returns information about the domain, including when the domain
       was created, the number of items and attributes in the domain, and the size
       of the attribute names and values. '
     displayName: Domain Metadata
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DomainMetadata
     body:
       application/xml: DomainMetadataRequest
     responses:
@@ -522,6 +558,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Get Attributes
   post:
     description: ' Returns all of the attributes associated with the specified item.
       Optionally, the attributes returned can be limited to one or more attributes
@@ -530,6 +567,11 @@ types:
       system does not return an error as it cannot guarantee the item does not exist
       on other replicas. '
     displayName: Get Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetAttributes
     body:
       application/xml: GetAttributesRequest
     responses:
@@ -546,6 +588,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: List Domains
   post:
     description: ' The <code>ListDomains</code> operation lists all domains associated
       with the Access Key ID. It returns domain names up to the limit set by <a href="#MaxNumberOfDomains">MaxNumberOfDomains</a>.
@@ -554,6 +597,11 @@ types:
       provided by the operation returns up to <code>MaxNumberOfDomains</code> more
       domain names with each successive operation call. '
     displayName: List Domains
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListDomains
     body:
       application/xml: ListDomainsRequest
     responses:
@@ -570,6 +618,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Put Attributes
   post:
     description: ' The PutAttributes operation creates or replaces attributes in an
       item. The client may specify new attributes using a combination of the <code>Attribute.X.Name</code>
@@ -598,6 +647,11 @@ types:
       name-value pairs per item</li> <li>One billion attributes per domain</li> <li>10
       GB of total user data storage per domain</li> </ul> '
     displayName: Put Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutAttributes
     body:
       application/xml: PutAttributesRequest
     responses:
@@ -618,6 +672,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
+  displayName: Select
   post:
     description: ' The <code>Select</code> operation returns a set of attributes for
       <code>ItemNames</code> that match the select expression. <code>Select</code>
@@ -630,6 +685,11 @@ types:
       select expressions, see Using Select to Create Amazon SimpleDB Queries in the
       Developer Guide. '
     displayName: Select
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - Select
     body:
       application/xml: SelectRequest
     responses:
