@@ -2910,6 +2910,11 @@ types:
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Assign Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AssignInstance
     body:
       application/json: AssignInstanceRequest
     responses:
@@ -2939,6 +2944,11 @@ types:
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Assign Volume
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AssignVolume
     body:
       application/json: AssignVolumeRequest
     responses:
@@ -2966,6 +2976,11 @@ types:
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Associate Elastic Ip
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AssociateElasticIp
     body:
       application/json: AssociateElasticIpRequest
     responses:
@@ -2995,6 +3010,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Attach Elastic Load Balancer
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AttachElasticLoadBalancer
     body:
       application/json: AttachElasticLoadBalancerRequest
     responses:
@@ -3021,6 +3041,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Clone Stack
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CloneStack
     body:
       application/json: CloneStackRequest
     responses:
@@ -3046,6 +3071,11 @@ types:
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Create App
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateApp
     body:
       application/json: CreateAppRequest
     responses:
@@ -3073,6 +3103,11 @@ types:
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Create Deployment
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDeployment
     body:
       application/json: CreateDeploymentRequest
     responses:
@@ -3099,6 +3134,11 @@ types:
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Create Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateInstance
     body:
       application/json: CreateInstanceRequest
     responses:
@@ -3129,6 +3169,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Create Layer
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateLayer
     body:
       application/json: CreateLayerRequest
     responses:
@@ -3153,6 +3198,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Create Stack
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateStack
     body:
       application/json: CreateStackRequest
     responses:
@@ -3176,6 +3226,11 @@ types:
       permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Create User Profile
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateUserProfile
     body:
       application/json: CreateUserProfileRequest
     responses:
@@ -3200,6 +3255,11 @@ types:
       user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Delete App
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteApp
     body:
       application/json: DeleteAppRequest
     responses:
@@ -3227,6 +3287,11 @@ types:
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Delete Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteInstance
     body:
       application/json: DeleteInstanceRequest
     responses:
@@ -3254,6 +3319,11 @@ types:
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Delete Layer
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteLayer
     body:
       application/json: DeleteLayerRequest
     responses:
@@ -3281,6 +3351,11 @@ types:
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Delete Stack
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteStack
     body:
       application/json: DeleteStackRequest
     responses:
@@ -3304,6 +3379,11 @@ types:
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Delete User Profile
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteUserProfile
     body:
       application/json: DeleteUserProfileRequest
     responses:
@@ -3329,6 +3409,11 @@ types:
       that explicitly grants permissions. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html</a>.'
     displayName: Deregister Ecs Cluster
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeregisterEcsCluster
     body:
       application/json: DeregisterEcsClusterRequest
     responses:
@@ -3355,6 +3440,11 @@ types:
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Deregister Elastic Ip
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeregisterElasticIp
     body:
       application/json: DeregisterElasticIpRequest
     responses:
@@ -3381,6 +3471,11 @@ types:
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Deregister Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeregisterInstance
     body:
       application/json: DeregisterInstanceRequest
     responses:
@@ -3405,6 +3500,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Deregister Rds Db Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeregisterRdsDbInstance
     body:
       application/json: DeregisterRdsDbInstanceRequest
     responses:
@@ -3431,6 +3531,11 @@ types:
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Deregister Volume
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeregisterVolume
     body:
       application/json: DeregisterVolumeRequest
     responses:
@@ -3451,6 +3556,11 @@ types:
   post:
     description: Describes the available AWS OpsWorks agent versions. You must specify a stack ID or a configuration manager. <code>DescribeAgentVersions</code> returns a list of available agent versions for the specified stack or configuration manager.
     displayName: Describe Agent Versions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeAgentVersions
     body:
       application/json: DescribeAgentVersionsRequest
     responses:
@@ -3476,6 +3586,11 @@ types:
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Apps
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeApps
     body:
       application/json: DescribeAppsRequest
     responses:
@@ -3501,6 +3616,11 @@ types:
       more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Commands
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeCommands
     body:
       application/json: DescribeCommandsRequest
     responses:
@@ -3526,6 +3646,11 @@ types:
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Deployments
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDeployments
     body:
       application/json: DescribeDeploymentsRequest
     responses:
@@ -3554,6 +3679,11 @@ types:
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Ecs Clusters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEcsClusters
     body:
       application/json: DescribeEcsClustersRequest
     responses:
@@ -3579,6 +3709,11 @@ types:
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Elastic Ips
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeElasticIps
     body:
       application/json: DescribeElasticIpsRequest
     responses:
@@ -3604,6 +3739,11 @@ types:
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Elastic Load Balancers
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeElasticLoadBalancers
     body:
       application/json: DescribeElasticLoadBalancersRequest
     responses:
@@ -3629,6 +3769,11 @@ types:
       more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeInstances
     body:
       application/json: DescribeInstancesRequest
     responses:
@@ -3654,6 +3799,11 @@ types:
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Layers
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeLayers
     body:
       application/json: DescribeLayersRequest
     responses:
@@ -3679,6 +3829,11 @@ types:
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Load Based Auto Scaling
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeLoadBasedAutoScaling
     body:
       application/json: DescribeLoadBasedAutoScalingRequest
     responses:
@@ -3703,6 +3858,11 @@ types:
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe My User Profile
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeMyUserProfile
     responses:
       200:
         body:
@@ -3723,6 +3883,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Permissions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribePermissions
     body:
       application/json: DescribePermissionsRequest
     responses:
@@ -3748,6 +3913,11 @@ types:
       information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Raid Arrays
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeRaidArrays
     body:
       application/json: DescribeRaidArraysRequest
     responses:
@@ -3772,6 +3942,11 @@ types:
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Rds Db Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeRdsDbInstances
     body:
       application/json: DescribeRdsDbInstancesRequest
     responses:
@@ -3796,6 +3971,11 @@ types:
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Service Errors
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeServiceErrors
     body:
       application/json: DescribeServiceErrorsRequest
     responses:
@@ -3820,6 +4000,11 @@ types:
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Stack Provisioning Parameters
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeStackProvisioningParameters
     body:
       application/json: DescribeStackProvisioningParametersRequest
     responses:
@@ -3846,6 +4031,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Stack Summary
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeStackSummary
     body:
       application/json: DescribeStackSummaryRequest
     responses:
@@ -3870,6 +4060,11 @@ types:
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Stacks
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeStacks
     body:
       application/json: DescribeStacksRequest
     responses:
@@ -3895,6 +4090,11 @@ types:
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Time Based Auto Scaling
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeTimeBasedAutoScaling
     body:
       application/json: DescribeTimeBasedAutoScalingRequest
     responses:
@@ -3918,6 +4118,11 @@ types:
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe User Profiles
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeUserProfiles
     body:
       application/json: DescribeUserProfilesRequest
     responses:
@@ -3943,6 +4148,11 @@ types:
       more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Describe Volumes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVolumes
     body:
       application/json: DescribeVolumesRequest
     responses:
@@ -3967,6 +4177,11 @@ types:
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Detach Elastic Load Balancer
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DetachElasticLoadBalancer
     body:
       application/json: DetachElasticLoadBalancerRequest
     responses:
@@ -3993,6 +4208,11 @@ types:
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Disassociate Elastic Ip
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisassociateElasticIp
     body:
       application/json: DisassociateElasticIpRequest
     responses:
@@ -4018,6 +4238,11 @@ types:
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Get Hostname Suggestion
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetHostnameSuggestion
     body:
       application/json: GetHostnameSuggestionRequest
     responses:
@@ -4038,6 +4263,11 @@ types:
   post:
     description: <note> This action can be used only with Windows stacks. </note> Grants RDP access to a Windows instance for a specified time period.
     displayName: Grant Access
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GrantAccess
     body:
       application/json: GrantAccessRequest
     responses:
@@ -4063,6 +4293,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Reboot Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RebootInstance
     body:
       application/json: RebootInstanceRequest
     responses:
@@ -4090,6 +4325,11 @@ types:
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">
       Managing User Permissions</a>.'
     displayName: Register Ecs Cluster
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterEcsCluster
     body:
       application/json: RegisterEcsClusterRequest
     responses:
@@ -4118,6 +4358,11 @@ types:
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Register Elastic Ip
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterElasticIp
     body:
       application/json: RegisterElasticIpRequest
     responses:
@@ -4149,6 +4394,11 @@ types:
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Register Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterInstance
     body:
       application/json: RegisterInstanceRequest
     responses:
@@ -4173,6 +4423,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Register Rds Db Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterRdsDbInstance
     body:
       application/json: RegisterRdsDbInstanceRequest
     responses:
@@ -4201,6 +4456,11 @@ types:
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Register Volume
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterVolume
     body:
       application/json: RegisterVolumeRequest
     responses:
@@ -4230,6 +4490,11 @@ types:
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Set Load Based Auto Scaling
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetLoadBasedAutoScaling
     body:
       application/json: SetLoadBasedAutoScalingRequest
     responses:
@@ -4255,6 +4520,11 @@ types:
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Set Permission
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetPermission
     body:
       application/json: SetPermissionRequest
     responses:
@@ -4281,6 +4551,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Set Time Based Auto Scaling
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetTimeBasedAutoScaling
     body:
       application/json: SetTimeBasedAutoScalingRequest
     responses:
@@ -4306,6 +4581,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Start Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StartInstance
     body:
       application/json: StartInstanceRequest
     responses:
@@ -4330,6 +4610,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Start Stack
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StartStack
     body:
       application/json: StartStackRequest
     responses:
@@ -4358,6 +4643,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Stop Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StopInstance
     body:
       application/json: StopInstanceRequest
     responses:
@@ -4382,6 +4672,11 @@ types:
       user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Stop Stack
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StopStack
     body:
       application/json: StopStackRequest
     responses:
@@ -4409,6 +4704,11 @@ types:
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Unassign Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UnassignInstance
     body:
       application/json: UnassignInstanceRequest
     responses:
@@ -4435,6 +4735,11 @@ types:
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Unassign Volume
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UnassignVolume
     body:
       application/json: UnassignVolumeRequest
     responses:
@@ -4459,6 +4764,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Update App
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateApp
     body:
       application/json: UpdateAppRequest
     responses:
@@ -4485,6 +4795,11 @@ types:
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Update Elastic Ip
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateElasticIp
     body:
       application/json: UpdateElasticIpRequest
     responses:
@@ -4509,6 +4824,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Update Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateInstance
     body:
       application/json: UpdateInstanceRequest
     responses:
@@ -4533,6 +4853,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Update Layer
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateLayer
     body:
       application/json: UpdateLayerRequest
     responses:
@@ -4557,6 +4882,11 @@ types:
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Update My User Profile
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateMyUserProfile
     body:
       application/json: UpdateMyUserProfileRequest
     responses:
@@ -4581,6 +4911,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Update Rds Db Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateRdsDbInstance
     body:
       application/json: UpdateRdsDbInstanceRequest
     responses:
@@ -4605,6 +4940,11 @@ types:
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Update Stack
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateStack
     body:
       application/json: UpdateStackRequest
     responses:
@@ -4628,6 +4968,11 @@ types:
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Update User Profile
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateUserProfile
     body:
       application/json: UpdateUserProfileRequest
     responses:
@@ -4654,6 +4999,11 @@ types:
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
     displayName: Update Volume
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateVolume
     body:
       application/json: UpdateVolumeRequest
     responses:

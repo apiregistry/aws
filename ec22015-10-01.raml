@@ -11583,6 +11583,11 @@ types:
   post:
     description: Accept a VPC peering connection request. To accept a request, the VPC peering connection must be in the <code>pending-acceptance</code> state, and you must be the owner of the peer VPC. Use the <code>DescribeVpcPeeringConnections</code> request to view your outstanding VPC peering connection requests.
     displayName: Accept Vpc Peering Connection
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AcceptVpcPeeringConnection
     body:
       application/json: AcceptVpcPeeringConnectionRequest
     responses:
@@ -11601,6 +11606,11 @@ types:
   post:
     description: Acquires an Elastic IP address. An Elastic IP address is for use either in the EC2-Classic platform or in a VPC. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Allocate Address
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AllocateAddress
     body:
       application/json: AllocateAddressRequest
     responses:
@@ -11619,6 +11629,11 @@ types:
   post:
     description: Allocates a Dedicated host to your account. At minimum you need to specify the instance size type, Availability Zone, and quantity of hosts you want to allocate.
     displayName: Allocate Hosts
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AllocateHosts
     body:
       application/json: AllocateHostsRequest
     responses:
@@ -11637,6 +11652,11 @@ types:
   post:
     description: Assigns one or more secondary private IP addresses to the specified network interface. You can specify one or more specific secondary IP addresses, or you can specify the number of secondary IP addresses to be automatically assigned within the subnet's CIDR block range. The number of secondary IP addresses that you can assign to an instance varies by instance type. For information about instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For more information about Elastic IP addresses, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. AssignPrivateIpAddresses is available only in EC2-VPC.
     displayName: Assign Private Ip Addresses
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AssignPrivateIpAddresses
     body:
       application/json: AssignPrivateIpAddressesRequest
     responses:
@@ -11655,6 +11675,11 @@ types:
   post:
     description: Associates an Elastic IP address with an instance or a network interface. An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. [EC2-Classic, VPC in an EC2-VPC-only account] If the Elastic IP address is already associated with a different instance, it is disassociated from that instance and associated with the specified instance. [VPC in an EC2-Classic account] If you don't specify a private IP address, the Elastic IP address is associated with the primary IP address. If the Elastic IP address is already associated with a different instance or a network interface, you get an error unless you allow reassociation. This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error.
     displayName: Associate Address
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AssociateAddress
     body:
       application/json: AssociateAddressRequest
     responses:
@@ -11673,6 +11698,11 @@ types:
   post:
     description: Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC. After you associate the options with the VPC, any existing instances and all new instances that you launch in that VPC use the options. You don't need to restart or relaunch the instances. They automatically pick up the changes within a few hours, depending on how frequently the instance renews its DHCP lease. You can explicitly renew the lease using the operating system on the instance. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html">DHCP Options Sets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Associate Dhcp Options
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AssociateDhcpOptions
     body:
       application/json: AssociateDhcpOptionsRequest
     responses:
@@ -11691,6 +11721,11 @@ types:
   post:
     description: Associates a subnet with a route table. The subnet and route table must be in the same VPC. This association causes traffic originating from the subnet to be routed according to the routes in the route table. The action returns an association ID, which you need in order to disassociate the route table from the subnet later. A route table can be associated with multiple subnets. For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Associate Route Table
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AssociateRouteTable
     body:
       application/json: AssociateRouteTableRequest
     responses:
@@ -11709,6 +11744,11 @@ types:
   post:
     description: Links an EC2-Classic instance to a ClassicLink-enabled VPC through one or more of the VPC's security groups. You cannot link an EC2-Classic instance to more than one VPC at a time. You can only link an instance that's in the <code>running</code> state. An instance is automatically unlinked from a VPC when it's stopped - you can link it to the VPC again when you restart it. After you've linked an instance, you cannot change the VPC security groups that are associated with it. To change the security groups, you must first unlink the instance, and then link it again.  Linking your instance to a VPC is sometimes referred to as <i>attaching</i> your instance.
     displayName: Attach Classic Link Vpc
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AttachClassicLinkVpc
     body:
       application/json: AttachClassicLinkVpcRequest
     responses:
@@ -11727,6 +11767,11 @@ types:
   post:
     description: Attaches an Internet gateway to a VPC, enabling connectivity between the Internet and the VPC. For more information about your VPC and Internet gateway, see the <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/">Amazon Virtual Private Cloud User Guide</a>.
     displayName: Attach Internet Gateway
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AttachInternetGateway
     body:
       application/json: AttachInternetGatewayRequest
     responses:
@@ -11745,6 +11790,11 @@ types:
   post:
     description: Attaches a network interface to an instance.
     displayName: Attach Network Interface
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AttachNetworkInterface
     body:
       application/json: AttachNetworkInterfaceRequest
     responses:
@@ -11781,6 +11831,11 @@ types:
       AWS Marketplace</a>. For more information about EBS volumes, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html">Attaching
       Amazon EBS Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.'
     displayName: Attach Volume
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AttachVolume
     body:
       application/json: AttachVolumeRequest
     responses:
@@ -11799,6 +11854,11 @@ types:
   post:
     description: Attaches a virtual private gateway to a VPC. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a Hardware Virtual Private Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Attach Vpn Gateway
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AttachVpnGateway
     body:
       application/json: AttachVpnGatewayRequest
     responses:
@@ -11829,6 +11889,11 @@ types:
       code to mean all types or all codes. Rule changes are propagated to affected
       instances as quickly as possible. However, a small delay might occur.'
     displayName: Authorize Security Group Egress
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AuthorizeSecurityGroupEgress
     body:
       application/json: AuthorizeSecurityGroupEgressRequest
     responses:
@@ -11859,6 +11924,11 @@ types:
       to access a security group for your VPC. The security groups must all be for
       the same VPC.'
     displayName: Authorize Security Group Ingress
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AuthorizeSecurityGroupIngress
     body:
       application/json: AuthorizeSecurityGroupIngressRequest
     responses:
@@ -11877,6 +11947,11 @@ types:
   post:
     description: Bundles an Amazon instance store-backed Windows instance. During bundling, only the root device volume (C:\) is bundled. Data on other instance store volumes is not preserved. <note> This action is not applicable for Linux/Unix instances or Windows instances that are backed by Amazon EBS. </note> For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Creating_InstanceStoreBacked_WinAMI.html">Creating an Instance Store-Backed Windows AMI</a>.
     displayName: Bundle Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - BundleInstance
     body:
       application/json: BundleInstanceRequest
     responses:
@@ -11895,6 +11970,11 @@ types:
   post:
     description: Cancels a bundling operation for an instance store-backed Windows instance.
     displayName: Cancel Bundle Task
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CancelBundleTask
     body:
       application/json: CancelBundleTaskRequest
     responses:
@@ -11913,6 +11993,11 @@ types:
   post:
     description: Cancels an active conversion task. The task can be the import of an instance or volume. The action removes all artifacts of the conversion, including a partially uploaded volume or instance. If the conversion is complete or is in the process of transferring the final disk image, the command fails and returns an exception. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UploadingYourInstancesandVolumes.html">Using the Command Line Tools to Import Your Virtual Machine to Amazon EC2</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Cancel Conversion Task
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CancelConversionTask
     body:
       application/json: CancelConversionRequest
     responses:
@@ -11931,6 +12016,11 @@ types:
   post:
     description: Cancels an active export task. The request removes all artifacts of the export, including any partially-created Amazon S3 objects. If the export task is complete or is in the process of transferring the final disk image, the command fails and returns an error.
     displayName: Cancel Export Task
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CancelExportTask
     body:
       application/json: CancelExportTaskRequest
     responses:
@@ -11949,6 +12039,11 @@ types:
   post:
     description: Cancels an in-process import virtual machine or import snapshot task.
     displayName: Cancel Import Task
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CancelImportTask
     body:
       application/json: CancelImportTaskRequest
     responses:
@@ -11967,6 +12062,11 @@ types:
   post:
     description: Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved Instance Marketplace</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Cancel Reserved Instances Listing
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CancelReservedInstancesListing
     body:
       application/json: CancelReservedInstancesListingRequest
     responses:
@@ -11985,6 +12085,11 @@ types:
   post:
     description: Cancels the specified Spot fleet requests. After you cancel a Spot fleet request, the Spot fleet launches no new Spot instances. You must specify whether the Spot fleet should also terminate its Spot instances. If you terminate the instances, the Spot fleet request enters the <code>cancelled_terminating</code> state. Otherwise, the Spot fleet request enters the <code>cancelled_running</code> state and the instances continue to run until they are interrupted or you terminate them manually.
     displayName: Cancel Spot Fleet Requests
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CancelSpotFleetRequests
     body:
       application/json: CancelSpotFleetRequestsRequest
     responses:
@@ -12003,6 +12108,11 @@ types:
   post:
     description: Cancels one or more Spot instance requests. Spot instances are instances that Amazon EC2 starts on your behalf when the bid price that you specify exceeds the current Spot price. Amazon EC2 periodically sets the Spot price based on available Spot instance capacity and current Spot instance requests. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html">Spot Instance Requests</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. <important> Canceling a Spot instance request does not terminate running Spot instances associated with the request. </important>
     displayName: Cancel Spot Instance Requests
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CancelSpotInstanceRequests
     body:
       application/json: CancelSpotInstanceRequestsRequest
     responses:
@@ -12021,6 +12131,11 @@ types:
   post:
     description: Determines whether a product code is associated with an instance. This action can only be used by the owner of the product code. It is useful when a product code owner needs to verify whether another user's instance is eligible for support.
     displayName: Confirm Product Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ConfirmProductInstance
     body:
       application/json: ConfirmProductInstanceRequest
     responses:
@@ -12039,6 +12154,11 @@ types:
   post:
     description: Initiates the copy of an AMI from the specified source region to the current region. You specify the destination region by using its endpoint when making the request. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html">Copying AMIs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Copy Image
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CopyImage
     body:
       application/json: CopyImageRequest
     responses:
@@ -12057,6 +12177,11 @@ types:
   post:
     description: Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3. You can copy the snapshot within the same region or from one region to another. You can use the snapshot to create EBS volumes or Amazon Machine Images (AMIs). The snapshot is copied to the regional endpoint that you send the HTTP request to. Copies of encrypted EBS snapshots remain encrypted. Copies of unencrypted snapshots remain unencrypted, unless the <code>Encrypted</code> flag is specified during the snapshot copy operation. By default, encrypted snapshot copies use the default AWS Key Management Service (AWS KMS) customer master key (CMK); however, you can specify a non-default CMK with the <code>KmsKeyId</code> parameter. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html">Copying an Amazon EBS Snapshot</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Copy Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CopySnapshot
     body:
       application/json: CopySnapshotRequest
     responses:
@@ -12075,6 +12200,11 @@ types:
   post:
     description: Provides information to AWS about your VPN customer gateway device. The customer gateway is the appliance at your end of the VPN connection. (The device on the AWS side of the VPN connection is the virtual private gateway.) You must provide the Internet-routable IP address of the customer gateway's external interface. The IP address must be static and may be behind a device performing network address translation (NAT). For devices that use Border Gateway Protocol (BGP), you can also provide the device's BGP Autonomous System Number (ASN). You can use an existing ASN assigned to your network. If you don't have an ASN already, you can use a private ASN (in the 64512 - 65534 range). <note> Amazon EC2 supports all 2-byte ASN numbers in the range of 1 - 65534, with the exception of 7224, which is reserved in the <code>us-east-1</code> region, and 9059, which is reserved in the <code>eu-west-1</code> region. </note> For more information about VPN customer gateways, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a Hardware Virtual Private Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>. <important> You cannot create more than one customer gateway with the same VPN type, IP address, and BGP ASN parameter values. If you run an identical request more than one time, the first request creates the customer gateway, and subsequent requests return information about the existing customer gateway. The subsequent requests do not create new customer gateway resources.  </important>
     displayName: Create Customer Gateway
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateCustomerGateway
     body:
       application/json: CreateCustomerGatewayRequest
     responses:
@@ -12120,6 +12250,11 @@ types:
       your choice. For more information about DHCP options, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html">DHCP
       Options Sets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.'
     displayName: Create Dhcp Options
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDhcpOptions
     body:
       application/json: CreateDhcpOptionsRequest
     responses:
@@ -12138,6 +12273,11 @@ types:
   post:
     description: Creates one or more flow logs to capture IP traffic for a specific network interface, subnet, or VPC. Flow logs are delivered to a specified log group in Amazon CloudWatch Logs. If you specify a VPC or subnet in the request, a log stream is created in CloudWatch Logs for each network interface in the subnet or VPC. Log streams can include information about accepted and rejected traffic to a network interface. You can view the data in your log streams using Amazon CloudWatch Logs.  In your request, you must also specify an IAM role that has permission to publish logs to CloudWatch Logs.
     displayName: Create Flow Logs
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateFlowLogs
     body:
       application/json: CreateFlowLogsRequest
     responses:
@@ -12156,6 +12296,11 @@ types:
   post:
     description: Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped. If you customized your instance with instance store volumes or EBS volumes in addition to the root device volume, the new AMI contains block device mapping information for those volumes. When you launch an instance from this new AMI, the instance automatically launches with those additional volumes. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating Amazon EBS-Backed Linux AMIs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Create Image
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateImage
     body:
       application/json: CreateImageRequest
     responses:
@@ -12174,6 +12319,11 @@ types:
   post:
     description: Exports a running or stopped instance to an S3 bucket. For information about the supported operating systems, image formats, and known limitations for the types of instances you can export, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ExportingEC2Instances.html">Exporting EC2 Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Create Instance Export Task
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateInstanceExportTask
     body:
       application/json: CreateInstanceExportTaskRequest
     responses:
@@ -12192,6 +12342,11 @@ types:
   post:
     description: Creates an Internet gateway for use with a VPC. After creating the Internet gateway, you attach it to a VPC using <a>AttachInternetGateway</a>. For more information about your VPC and Internet gateway, see the <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/">Amazon Virtual Private Cloud User Guide</a>.
     displayName: Create Internet Gateway
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateInternetGateway
     body:
       application/json: CreateInternetGatewayRequest
     responses:
@@ -12210,6 +12365,11 @@ types:
   post:
     description: Creates a 2048-bit RSA key pair with the specified name. Amazon EC2 stores the public key and displays the private key for you to save to a file. The private key is returned as an unencrypted PEM encoded PKCS#8 private key. If a key with the specified name already exists, Amazon EC2 returns an error. You can have up to five thousand key pairs per region. The key pair returned to you is available only in the region in which you create it. To create a key pair that is available in all regions, use <a>ImportKeyPair</a>. For more information about key pairs, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Create Key Pair
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateKeyPair
     body:
       application/json: CreateKeyPairRequest
     responses:
@@ -12228,6 +12388,11 @@ types:
   post:
     description: Creates a NAT gateway in the specified subnet. A NAT gateway can be used to enable instances in a private subnet to connect to the Internet. This action creates a network interface in the specified subnet with a private IP address from the IP address range of the subnet. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html">NAT Gateways</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Create Nat Gateway
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateNatGateway
     body:
       application/json: CreateNatGatewayRequest
     responses:
@@ -12246,6 +12411,11 @@ types:
   post:
     description: Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC. For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Create Network Acl
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateNetworkAcl
     body:
       application/json: CreateNetworkAclRequest
     responses:
@@ -12264,6 +12434,11 @@ types:
   post:
     description: Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules. We recommend that you leave room between the rule numbers (for example, 100, 110, 120, ...), and not number them one right after the other (for example, 101, 102, 103, ...). This makes it easier to add a rule between existing ones without having to renumber the rules. After you add an entry, you can't modify it; you must either replace it, or create an entry and delete the old one. For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Create Network Acl Entry
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateNetworkAclEntry
     body:
       application/json: CreateNetworkAclEntryRequest
     responses:
@@ -12282,6 +12457,11 @@ types:
   post:
     description: Creates a network interface in the specified subnet. For more information about network interfaces, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html">Elastic Network Interfaces</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Create Network Interface
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateNetworkInterface
     body:
       application/json: CreateNetworkInterfaceRequest
     responses:
@@ -12300,6 +12480,11 @@ types:
   post:
     description: Creates a placement group that you launch cluster instances into. You must give the group a name that's unique within the scope of your account. For more information about placement groups and cluster instances, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">Cluster Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Create Placement Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreatePlacementGroup
     body:
       application/json: CreatePlacementGroupRequest
     responses:
@@ -12318,6 +12503,11 @@ types:
   post:
     description: Creates a listing for Amazon EC2 Reserved Instances to be sold in the Reserved Instance Marketplace. You can submit one Reserved Instance listing at a time. To get a list of your Reserved Instances, you can use the <a>DescribeReservedInstances</a> operation. The Reserved Instance Marketplace matches sellers who want to resell Reserved Instance capacity that they no longer need with buyers who want to purchase additional capacity. Reserved Instances bought and sold through the Reserved Instance Marketplace work like any other Reserved Instances. To sell your Reserved Instances, you must first register as a seller in the Reserved Instance Marketplace. After completing the registration process, you can create a Reserved Instance Marketplace listing of some or all of your Reserved Instances, and specify the upfront price to receive for them. Your Reserved Instance listings then become available for purchase. To view the details of your Reserved Instance listing, you can use the <a>DescribeReservedInstancesListings</a> operation. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved Instance Marketplace</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Create Reserved Instances Listing
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateReservedInstancesListing
     body:
       application/json: CreateReservedInstancesListingRequest
     responses:
@@ -12347,6 +12537,11 @@ types:
       the traffic. For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route
       Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.'
     displayName: Create Route
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateRoute
     body:
       application/json: CreateRouteRequest
     responses:
@@ -12365,6 +12560,11 @@ types:
   post:
     description: Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet. For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Create Route Table
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateRouteTable
     body:
       application/json: CreateRouteTableRequest
     responses:
@@ -12401,6 +12601,11 @@ types:
       your security groups using <a>AuthorizeSecurityGroupIngress</a>, <a>AuthorizeSecurityGroupEgress</a>,
       <a>RevokeSecurityGroupIngress</a>, and <a>RevokeSecurityGroupEgress</a>.'
     displayName: Create Security Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateSecurityGroup
     body:
       application/json: CreateSecurityGroupRequest
     responses:
@@ -12419,6 +12624,11 @@ types:
   post:
     description: Creates a snapshot of an EBS volume and stores it in Amazon S3. You can use snapshots for backups, to make copies of EBS volumes, and to save data before shutting down an instance. When a snapshot is created, any AWS Marketplace product codes that are associated with the source volume are propagated to the snapshot. You can take a snapshot of an attached volume that is in use. However, snapshots only capture data that has been written to your EBS volume at the time the snapshot command is issued; this may exclude any data that has been cached by any applications or the operating system. If you can pause any file systems on the volume long enough to take a snapshot, your snapshot should be complete. However, if you cannot pause all file writes to the volume, you should unmount the volume from within the instance, issue the snapshot command, and then remount the volume to ensure a consistent and complete snapshot. You may remount and use your volume while the snapshot status is <code>pending</code>. To create a snapshot for EBS volumes that serve as root devices, you should stop the instance before taking the snapshot. Snapshots that are taken from encrypted volumes are automatically encrypted. Volumes that are created from encrypted snapshots are also automatically encrypted. Your encrypted volumes and any associated snapshots always remain protected. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html">Amazon Elastic Block Store</a> and <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Create Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateSnapshot
     body:
       application/json: CreateSnapshotRequest
     responses:
@@ -12437,6 +12647,11 @@ types:
   post:
     description: Creates a data feed for Spot instances, enabling you to view Spot instance usage logs. You can create one data feed per AWS account. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html">Spot Instance Data Feed</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Create Spot Datafeed Subscription
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateSpotDatafeedSubscription
     body:
       application/json: CreateSpotDatafeedSubscriptionRequest
     responses:
@@ -12455,6 +12670,11 @@ types:
   post:
     description: Creates a subnet in an existing VPC. When you create each subnet, you provide the VPC ID and the CIDR block you want for the subnet. After you create a subnet, you can't change its CIDR block. The subnet's CIDR block can be the same as the VPC's CIDR block (assuming you want only a single subnet in the VPC), or a subset of the VPC's CIDR block. If you create more than one subnet in a VPC, the subnets' CIDR blocks must not overlap. The smallest subnet (and VPC) you can create uses a /28 netmask (16 IP addresses), and the largest uses a /16 netmask (65,536 IP addresses). <important> AWS reserves both the first four and the last IP address in each subnet's CIDR block. They're not available for use. </important> If you add more than one subnet to a VPC, they're set up in a star topology with a logical router in the middle. If you launch an instance in a VPC using an Amazon EBS-backed AMI, the IP address doesn't change if you stop and restart the instance (unlike a similar instance launched outside a VPC, which gets a new IP address when restarted). It's therefore possible to have a subnet with no running instances (they're all stopped), but no remaining IP addresses available. For more information about subnets, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">Your VPC and Subnets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Create Subnet
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateSubnet
     body:
       application/json: CreateSubnetRequest
     responses:
@@ -12473,6 +12693,11 @@ types:
   post:
     description: Adds or overwrites one or more tags for the specified Amazon EC2 resource or resources. Each resource can have a maximum of 10 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource. For more information about tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For more information about creating IAM policies that control users' access to resources based on tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html">Supported Resource-Level Permissions for Amazon EC2 API Actions</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Create Tags
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateTags
     body:
       application/json: CreateTagsRequest
     responses:
@@ -12491,6 +12716,11 @@ types:
   post:
     description: Creates an EBS volume that can be attached to an instance in the same Availability Zone. The volume is created in the regional endpoint that you send the HTTP request to. For more information see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. You can create a new empty volume or restore a volume from an EBS snapshot. Any AWS Marketplace product codes from the snapshot are propagated to the volume. You can create encrypted volumes with the <code>Encrypted</code> parameter. Encrypted volumes may only be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are also automatically encrypted. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html">Creating or Restoring an Amazon EBS Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Create Volume
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateVolume
     body:
       application/json: CreateVolumeRequest
     responses:
@@ -12509,6 +12739,11 @@ types:
   post:
     description: Creates a VPC with the specified CIDR block. The smallest VPC you can create uses a /28 netmask (16 IP addresses), and the largest uses a /16 netmask (65,536 IP addresses). To help you decide how big to make your VPC, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">Your VPC and Subnets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>. By default, each instance you launch in the VPC has the default DHCP options, which includes only a default DNS server that we provide (AmazonProvidedDNS). For more information about DHCP options, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html">DHCP Options Sets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>. You can specify the instance tenancy value for the VPC when you create it. You can't change this value for the VPC after you create it. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html.html">Dedicated Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Create Vpc
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateVpc
     body:
       application/json: CreateVpcRequest
     responses:
@@ -12527,6 +12762,11 @@ types:
   post:
     description: Creates a VPC endpoint for a specified AWS service. An endpoint enables you to create a private connection between your VPC and another AWS service in your account. You can specify an endpoint policy to attach to the endpoint that will control access to the service from your VPC. You can also specify the VPC route tables that use the endpoint. Currently, only endpoints to Amazon S3 are supported.
     displayName: Create Vpc Endpoint
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateVpcEndpoint
     body:
       application/json: CreateVpcEndpointRequest
     responses:
@@ -12552,6 +12792,11 @@ types:
       request between VPCs with overlapping CIDR blocks results in the VPC peering
       connection having a status of <code>failed</code>.'
     displayName: Create Vpc Peering Connection
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateVpcPeeringConnection
     body:
       application/json: CreateVpcPeeringConnectionRequest
     responses:
@@ -12570,6 +12815,11 @@ types:
   post:
     description: Creates a VPN connection between an existing virtual private gateway and a VPN customer gateway. The only supported connection type is <code>ipsec.1</code>. The response includes information that you need to give to your network administrator to configure your customer gateway. <important> We strongly recommend that you use HTTPS when calling this operation because the response contains sensitive cryptographic information for configuring your customer gateway. </important> If you decide to shut down your VPN connection for any reason and later create a new VPN connection, you must reconfigure your customer gateway with the new information returned from this call. This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error. For more information about VPN connections, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a Hardware Virtual Private Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Create Vpn Connection
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateVpnConnection
     body:
       application/json: CreateVpnConnectionRequest
     responses:
@@ -12588,6 +12838,11 @@ types:
   post:
     description: Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway. For more information about VPN connections, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a Hardware Virtual Private Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Create Vpn Connection Route
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateVpnConnectionRoute
     body:
       application/json: CreateVpnConnectionRouteRequest
     responses:
@@ -12606,6 +12861,11 @@ types:
   post:
     description: Creates a virtual private gateway. A virtual private gateway is the endpoint on the VPC side of your VPN connection. You can create a virtual private gateway before creating the VPC itself. For more information about virtual private gateways, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a Hardware Virtual Private Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Create Vpn Gateway
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateVpnGateway
     body:
       application/json: CreateVpnGatewayRequest
     responses:
@@ -12624,6 +12884,11 @@ types:
   post:
     description: Deletes the specified customer gateway. You must delete the VPN connection before you can delete the customer gateway.
     displayName: Delete Customer Gateway
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteCustomerGateway
     body:
       application/json: DeleteCustomerGatewayRequest
     responses:
@@ -12642,6 +12907,11 @@ types:
   post:
     description: Deletes the specified set of DHCP options. You must disassociate the set of DHCP options before you can delete it. You can disassociate the set of DHCP options by associating either a new set of options or the default set of options with the VPC.
     displayName: Delete Dhcp Options
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDhcpOptions
     body:
       application/json: DeleteDhcpOptionsRequest
     responses:
@@ -12660,6 +12930,11 @@ types:
   post:
     description: Deletes one or more flow logs.
     displayName: Delete Flow Logs
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteFlowLogs
     body:
       application/json: DeleteFlowLogsRequest
     responses:
@@ -12678,6 +12953,11 @@ types:
   post:
     description: Deletes the specified Internet gateway. You must detach the Internet gateway from the VPC before you can delete it.
     displayName: Delete Internet Gateway
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteInternetGateway
     body:
       application/json: DeleteInternetGatewayRequest
     responses:
@@ -12696,6 +12976,11 @@ types:
   post:
     description: Deletes the specified key pair, by removing the public key from Amazon EC2.
     displayName: Delete Key Pair
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteKeyPair
     body:
       application/json: DeleteKeyPairRequest
     responses:
@@ -12717,6 +13002,11 @@ types:
       Deleting a NAT gateway does not delete any NAT gateway routes in your route
       tables. '
     displayName: Delete Nat Gateway
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteNatGateway
     body:
       application/json: DeleteNatGatewayRequest
     responses:
@@ -12735,6 +13025,11 @@ types:
   post:
     description: Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets. You can't delete the default network ACL.
     displayName: Delete Network Acl
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteNetworkAcl
     body:
       application/json: DeleteNetworkAclRequest
     responses:
@@ -12753,6 +13048,11 @@ types:
   post:
     description: Deletes the specified ingress or egress entry (rule) from the specified network ACL.
     displayName: Delete Network Acl Entry
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteNetworkAclEntry
     body:
       application/json: DeleteNetworkAclEntryRequest
     responses:
@@ -12771,6 +13071,11 @@ types:
   post:
     description: Deletes the specified network interface. You must detach the network interface before you can delete it.
     displayName: Delete Network Interface
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteNetworkInterface
     body:
       application/json: DeleteNetworkInterfaceRequest
     responses:
@@ -12789,6 +13094,11 @@ types:
   post:
     description: Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information about placement groups and cluster instances, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">Cluster Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Delete Placement Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeletePlacementGroup
     body:
       application/json: DeletePlacementGroupRequest
     responses:
@@ -12807,6 +13117,11 @@ types:
   post:
     description: Deletes the specified route from the specified route table.
     displayName: Delete Route
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteRoute
     body:
       application/json: DeleteRouteRequest
     responses:
@@ -12825,6 +13140,11 @@ types:
   post:
     description: Deletes the specified route table. You must disassociate the route table from any subnets before you can delete it. You can't delete the main route table.
     displayName: Delete Route Table
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteRouteTable
     body:
       application/json: DeleteRouteTableRequest
     responses:
@@ -12843,6 +13163,11 @@ types:
   post:
     description: Deletes a security group. If you attempt to delete a security group that is associated with an instance, or is referenced by another security group, the operation fails with <code>InvalidGroup.InUse</code> in EC2-Classic or <code>DependencyViolation</code> in EC2-VPC.
     displayName: Delete Security Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteSecurityGroup
     body:
       application/json: DeleteSecurityGroupRequest
     responses:
@@ -12861,6 +13186,11 @@ types:
   post:
     description: Deletes the specified snapshot. When you make periodic snapshots of a volume, the snapshots are incremental, and only the blocks on the device that have changed since your last snapshot are saved in the new snapshot. When you delete a snapshot, only the data not needed for any other snapshot is removed. So regardless of which prior snapshots have been deleted, all active snapshots will have access to all the information needed to restore the volume. You cannot delete a snapshot of the root device of an EBS volume used by a registered AMI. You must first de-register the AMI before you can delete the snapshot. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html">Deleting an Amazon EBS Snapshot</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Delete Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteSnapshot
     body:
       application/json: DeleteSnapshotRequest
     responses:
@@ -12879,6 +13209,11 @@ types:
   post:
     description: Deletes the data feed for Spot instances.
     displayName: Delete Spot Datafeed Subscription
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteSpotDatafeedSubscription
     body:
       application/json: DeleteSpotDatafeedSubscriptionRequest
     responses:
@@ -12897,6 +13232,11 @@ types:
   post:
     description: Deletes the specified subnet. You must terminate all running instances in the subnet before you can delete the subnet.
     displayName: Delete Subnet
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteSubnet
     body:
       application/json: DeleteSubnetRequest
     responses:
@@ -12915,6 +13255,11 @@ types:
   post:
     description: Deletes the specified set of tags from the specified set of resources. This call is designed to follow a <code>DescribeTags</code> request. For more information about tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Delete Tags
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteTags
     body:
       application/json: DeleteTagsRequest
     responses:
@@ -12933,6 +13278,11 @@ types:
   post:
     description: Deletes the specified EBS volume. The volume must be in the <code>available</code> state (not attached to an instance). <note> The volume may remain in the <code>deleting</code> state for several minutes. </note> For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html">Deleting an Amazon EBS Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Delete Volume
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteVolume
     body:
       application/json: DeleteVolumeRequest
     responses:
@@ -12951,6 +13301,11 @@ types:
   post:
     description: Deletes the specified VPC. You must detach or delete all gateways and resources that are associated with the VPC before you can delete it. For example, you must terminate all instances running in the VPC, delete all security groups associated with the VPC (except the default one), delete all route tables associated with the VPC (except the default one), and so on.
     displayName: Delete Vpc
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteVpc
     body:
       application/json: DeleteVpcRequest
     responses:
@@ -12969,6 +13324,11 @@ types:
   post:
     description: Deletes one or more specified VPC endpoints. Deleting the endpoint also deletes the endpoint routes in the route tables that were associated with the endpoint.
     displayName: Delete Vpc Endpoints
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteVpcEndpoints
     body:
       application/json: DeleteVpcEndpointsRequest
     responses:
@@ -12990,6 +13350,11 @@ types:
       in the <code>active</code> state. The owner of the requester VPC can delete
       a VPC peering connection in the <code>pending-acceptance</code> state. '
     displayName: Delete Vpc Peering Connection
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteVpcPeeringConnection
     body:
       application/json: DeleteVpcPeeringConnectionRequest
     responses:
@@ -13008,6 +13373,11 @@ types:
   post:
     description: Deletes the specified VPN connection. If you're deleting the VPC and its associated components, we recommend that you detach the virtual private gateway from the VPC and delete the VPC before deleting the VPN connection. If you believe that the tunnel credentials for your VPN connection have been compromised, you can delete the VPN connection and create a new one that has new keys, without needing to delete the VPC or virtual private gateway. If you create a new VPN connection, you must reconfigure the customer gateway using the new configuration information returned with the new VPN connection ID.
     displayName: Delete Vpn Connection
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteVpnConnection
     body:
       application/json: DeleteVpnConnectionRequest
     responses:
@@ -13026,6 +13396,11 @@ types:
   post:
     description: Deletes the specified static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.
     displayName: Delete Vpn Connection Route
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteVpnConnectionRoute
     body:
       application/json: DeleteVpnConnectionRouteRequest
     responses:
@@ -13044,6 +13419,11 @@ types:
   post:
     description: Deletes the specified virtual private gateway. We recommend that before you delete a virtual private gateway, you detach it from the VPC and delete the VPN connection. Note that you don't need to delete the virtual private gateway if you plan to delete and recreate the VPN connection between your VPC and your network.
     displayName: Delete Vpn Gateway
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteVpnGateway
     body:
       application/json: DeleteVpnGatewayRequest
     responses:
@@ -13062,6 +13442,11 @@ types:
   post:
     description: Deregisters the specified AMI. After you deregister an AMI, it can't be used to launch new instances. This command does not delete the AMI.
     displayName: Deregister Image
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeregisterImage
     body:
       application/json: DeregisterImageRequest
     responses:
@@ -13090,6 +13475,11 @@ types:
       The maximum number of Elastic IP addresses that you can allocate for use with
       EC2-VPC. </li> </ul>'
     displayName: Describe Account Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeAccountAttributes
     body:
       application/json: DescribeAccountAttributesRequest
     responses:
@@ -13108,6 +13498,11 @@ types:
   post:
     description: Describes one or more of your Elastic IP addresses. An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Describe Addresses
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeAddresses
     body:
       application/json: DescribeAddressesRequest
     responses:
@@ -13126,6 +13521,11 @@ types:
   post:
     description: Describes one or more of the Availability Zones that are available to you. The results include zones only for the region you're currently using. If there is an event impacting an Availability Zone, you can use this request to view the state and any provided message for that Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">Regions and Availability Zones</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Describe Availability Zones
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeAvailabilityZones
     body:
       application/json: DescribeAvailabilityZonesRequest
     responses:
@@ -13144,6 +13544,11 @@ types:
   post:
     description: Describes one or more of your bundling tasks. <note>Completed bundle tasks are listed for only a limited time. If your bundle task is no longer in the list, you can still register an AMI from it. Just use <code>RegisterImage</code> with the Amazon S3 bucket name and image manifest name you provided to the bundle task.</note>
     displayName: Describe Bundle Tasks
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeBundleTasks
     body:
       application/json: DescribeBundleTasksRequest
     responses:
@@ -13162,6 +13567,11 @@ types:
   post:
     description: Describes one or more of your linked EC2-Classic instances. This request only returns information about EC2-Classic instances linked to a VPC through ClassicLink; you cannot use this request to return information about other instances.
     displayName: Describe Classic Link Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeClassicLinkInstances
     body:
       application/json: DescribeClassicLinkInstancesRequest
     responses:
@@ -13180,6 +13590,11 @@ types:
   post:
     description: Describes one or more of your conversion tasks. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UploadingYourInstancesandVolumes.html">Using the Command Line Tools to Import Your Virtual Machine to Amazon EC2</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For information about the import manifest referenced by this API action, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html">VM Import Manifest</a>.
     displayName: Describe Conversion Tasks
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeConversionTasks
     body:
       application/json: DescribeConversionTasksRequest
     responses:
@@ -13198,6 +13613,11 @@ types:
   post:
     description: Describes one or more of your VPN customer gateways. For more information about VPN customer gateways, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a Hardware Virtual Private Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Describe Customer Gateways
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeCustomerGateways
     body:
       application/json: DescribeCustomerGatewaysRequest
     responses:
@@ -13216,6 +13636,11 @@ types:
   post:
     description: Describes one or more of your DHCP options sets. For more information about DHCP options sets, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html">DHCP Options Sets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Describe Dhcp Options
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDhcpOptions
     body:
       application/json: DescribeDhcpOptionsRequest
     responses:
@@ -13234,6 +13659,11 @@ types:
   post:
     description: Describes one or more of your export tasks.
     displayName: Describe Export Tasks
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeExportTasks
     body:
       application/json: DescribeExportTasksRequest
     responses:
@@ -13252,6 +13682,11 @@ types:
   post:
     description: Describes one or more flow logs. To view the information in your flow logs (the log streams for the network interfaces), you must use the CloudWatch Logs console or the CloudWatch Logs API.
     displayName: Describe Flow Logs
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeFlowLogs
     body:
       application/json: DescribeFlowLogsRequest
     responses:
@@ -13270,6 +13705,11 @@ types:
   post:
     description: Describes one or more of your Dedicated hosts. The results describe only the Dedicated hosts in the region you're currently using. All listed instances consume capacity on your Dedicated host. Dedicated hosts that have recently been released will be listed with the state <code>released</code>.
     displayName: Describe Hosts
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeHosts
     body:
       application/json: DescribeHostsRequest
     responses:
@@ -13299,6 +13739,11 @@ types:
       these settings and provided that they have permission to use the relevant <code>Describe</code>
       command for the resource type.'
     displayName: Describe Id Format
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeIdFormat
     body:
       application/json: DescribeIdFormatRequest
     responses:
@@ -13317,6 +13762,11 @@ types:
   post:
     description: Describes the specified attribute of the specified AMI. You can specify only one attribute at a time.
     displayName: Describe Image Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeImageAttribute
     body:
       application/json: DescribeImageAttributeRequest
     responses:
@@ -13335,6 +13785,11 @@ types:
   post:
     description: Describes one or more of the images (AMIs, AKIs, and ARIs) available to you. Images available to you include public images, private images that you own, and private images owned by other AWS accounts but for which you have explicit launch permissions. <note>Deregistered images are included in the returned results for an unspecified interval after deregistration.</note>
     displayName: Describe Images
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeImages
     body:
       application/json: DescribeImagesRequest
     responses:
@@ -13353,6 +13808,11 @@ types:
   post:
     description: Displays details about an import virtual machine or import snapshot tasks that are already created.
     displayName: Describe Import Image Tasks
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeImportImageTasks
     body:
       application/json: DescribeImportImageTasksRequest
     responses:
@@ -13371,6 +13831,11 @@ types:
   post:
     description: Describes your import snapshot tasks.
     displayName: Describe Import Snapshot Tasks
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeImportSnapshotTasks
     body:
       application/json: DescribeImportSnapshotTasksRequest
     responses:
@@ -13394,6 +13859,11 @@ types:
       | <code>blockDeviceMapping</code> | <code>productCodes</code> | <code>sourceDestCheck</code>
       | <code>groupSet</code> | <code>ebsOptimized</code> | <code>sriovNetSupport</code>'
     displayName: Describe Instance Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeInstanceAttribute
     body:
       application/json: DescribeInstanceAttributeRequest
     responses:
@@ -13426,6 +13896,11 @@ types:
       you launch them through their termination. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Instance
       Lifecycle</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. </li> </ul>'
     displayName: Describe Instance Status
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeInstanceStatus
     body:
       application/json: DescribeInstanceStatusRequest
     responses:
@@ -13444,6 +13919,11 @@ types:
   post:
     description: Describes one or more of your instances. If you specify one or more instance IDs, Amazon EC2 returns information for those instances. If you do not specify instance IDs, Amazon EC2 returns information for all relevant instances. If you specify an instance ID that is not valid, an error is returned. If you specify an instance that you do not own, it is not included in the returned results. Recently terminated instances might appear in the returned results. This interval is usually less than one hour.
     displayName: Describe Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeInstances
     body:
       application/json: DescribeInstancesRequest
     responses:
@@ -13462,6 +13942,11 @@ types:
   post:
     description: Describes one or more of your Internet gateways.
     displayName: Describe Internet Gateways
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeInternetGateways
     body:
       application/json: DescribeInternetGatewaysRequest
     responses:
@@ -13480,6 +13965,11 @@ types:
   post:
     description: Describes one or more of your key pairs. For more information about key pairs, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Describe Key Pairs
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeKeyPairs
     body:
       application/json: DescribeKeyPairsRequest
     responses:
@@ -13498,6 +13988,11 @@ types:
   post:
     description: Describes your Elastic IP addresses that are being moved to the EC2-VPC platform, or that are being restored to the EC2-Classic platform. This request does not return information about any other Elastic IP addresses in your account.
     displayName: Describe Moving Addresses
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeMovingAddresses
     body:
       application/json: DescribeMovingAddressesRequest
     responses:
@@ -13516,6 +14011,11 @@ types:
   post:
     description: Describes one or more of the your NAT gateways.
     displayName: Describe Nat Gateways
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeNatGateways
     body:
       application/json: DescribeNatGatewaysRequest
     responses:
@@ -13534,6 +14034,11 @@ types:
   post:
     description: Describes one or more of your network ACLs. For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Describe Network Acls
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeNetworkAcls
     body:
       application/json: DescribeNetworkAclsRequest
     responses:
@@ -13552,6 +14057,11 @@ types:
   post:
     description: Describes a network interface attribute. You can specify only one attribute at a time.
     displayName: Describe Network Interface Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeNetworkInterfaceAttribute
     body:
       application/json: DescribeNetworkInterfaceAttributeRequest
     responses:
@@ -13570,6 +14080,11 @@ types:
   post:
     description: Describes one or more of your network interfaces.
     displayName: Describe Network Interfaces
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeNetworkInterfaces
     body:
       application/json: DescribeNetworkInterfacesRequest
     responses:
@@ -13588,6 +14103,11 @@ types:
   post:
     description: Describes one or more of your placement groups. For more information about placement groups and cluster instances, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html">Cluster Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Describe Placement Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribePlacementGroups
     body:
       application/json: DescribePlacementGroupsRequest
     responses:
@@ -13606,6 +14126,11 @@ types:
   post:
     description: Describes available AWS services in a prefix list format, which includes the prefix list name and prefix list ID of the service and the IP address range for the service. A prefix list ID is required for creating an outbound security group rule that allows traffic from a VPC to access an AWS service through a VPC endpoint.
     displayName: Describe Prefix Lists
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribePrefixLists
     body:
       application/json: DescribePrefixListsRequest
     responses:
@@ -13624,6 +14149,11 @@ types:
   post:
     description: Describes one or more regions that are currently available to you. For a list of the regions supported by Amazon EC2, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region">Regions and Endpoints</a>.
     displayName: Describe Regions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeRegions
     body:
       application/json: DescribeRegionsRequest
     responses:
@@ -13642,6 +14172,11 @@ types:
   post:
     description: Describes one or more of the Reserved Instances that you purchased. For more information about Reserved Instances, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html">Reserved Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Describe Reserved Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeReservedInstances
     body:
       application/json: DescribeReservedInstancesRequest
     responses:
@@ -13660,6 +14195,11 @@ types:
   post:
     description: Describes your account's Reserved Instance listings in the Reserved Instance Marketplace. The Reserved Instance Marketplace matches sellers who want to resell Reserved Instance capacity that they no longer need with buyers who want to purchase additional capacity. Reserved Instances bought and sold through the Reserved Instance Marketplace work like any other Reserved Instances.  As a seller, you choose to list some or all of your Reserved Instances, and you specify the upfront price to receive for them. Your Reserved Instances are then listed in the Reserved Instance Marketplace and are available for purchase.  As a buyer, you specify the configuration of the Reserved Instance to purchase, and the Marketplace matches what you're searching for with what's available. The Marketplace first sells the lowest priced Reserved Instances to you, and continues to sell available Reserved Instance listings to you until your demand is met. You are charged based on the total price of all of the listings that you purchase. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved Instance Marketplace</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Describe Reserved Instances Listings
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeReservedInstancesListings
     body:
       application/json: DescribeReservedInstancesListingsRequest
     responses:
@@ -13678,6 +14218,11 @@ types:
   post:
     description: Describes the modifications made to your Reserved Instances. If no parameter is specified, information about all your Reserved Instances modification requests is returned. If a modification ID is specified, only information about the specific modification is returned. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html">Modifying Reserved Instances</a> in the Amazon Elastic Compute Cloud User Guide.
     displayName: Describe Reserved Instances Modifications
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeReservedInstancesModifications
     body:
       application/json: DescribeReservedInstancesModificationsRequest
     responses:
@@ -13696,6 +14241,11 @@ types:
   post:
     description: Describes Reserved Instance offerings that are available for purchase. With Reserved Instances, you purchase the right to launch instances for a period of time. During that time period, you do not receive insufficient capacity errors, and you pay a lower usage rate than the rate charged for On-Demand instances for the actual time used. If you have listed your own Reserved Instances for sale in the Reserved Instance Marketplace, they will be excluded from these results. This is to ensure that you do not purchase your own Reserved Instances. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved Instance Marketplace</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Describe Reserved Instances Offerings
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeReservedInstancesOfferings
     body:
       application/json: DescribeReservedInstancesOfferingsRequest
     responses:
@@ -13714,6 +14264,11 @@ types:
   post:
     description: Describes one or more of your route tables.  Each subnet in your VPC must be associated with a route table. If a subnet is not explicitly associated with any route table, it is implicitly associated with the main route table. This command does not return the subnet ID for implicit associations. For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Describe Route Tables
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeRouteTables
     body:
       application/json: DescribeRouteTablesRequest
     responses:
@@ -13732,6 +14287,11 @@ types:
   post:
     description: Finds available schedules that meet the specified criteria. You can search for an available schedule no more than 3 months in advance. You must meet the minimum required duration of 1,200 hours per year. For example, the minimum daily schedule is 4 hours, the minimum weekly schedule is 24 hours, and the minimum monthly schedule is 100 hours. After you find a schedule that meets your needs, call <a>PurchaseScheduledInstances</a> to purchase Scheduled Instances with that schedule.
     displayName: Describe Scheduled Instance Availability
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeScheduledInstanceAvailability
     body:
       application/json: DescribeScheduledInstanceAvailabilityRequest
     responses:
@@ -13750,6 +14310,11 @@ types:
   post:
     description: Describes one or more of your Scheduled Instances.
     displayName: Describe Scheduled Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeScheduledInstances
     body:
       application/json: DescribeScheduledInstancesRequest
     responses:
@@ -13770,6 +14335,11 @@ types:
       connection that are referencing the security groups you''ve specified in this
       request. '
     displayName: Describe Security Group References
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSecurityGroupReferences
     body:
       application/json: DescribeSecurityGroupReferencesRequest
     responses:
@@ -13788,6 +14358,11 @@ types:
   post:
     description: Describes one or more of your security groups. A security group is for use with instances either in the EC2-Classic platform or in a specific VPC. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Amazon EC2 Security Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i> and <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Describe Security Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSecurityGroups
     body:
       application/json: DescribeSecurityGroupsRequest
     responses:
@@ -13806,6 +14381,11 @@ types:
   post:
     description: Describes the specified attribute of the specified snapshot. You can specify only one attribute at a time. For more information about EBS snapshots, see <a href='http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html'>Amazon EBS Snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Describe Snapshot Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSnapshotAttribute
     body:
       application/json: DescribeSnapshotAttributeRequest
     responses:
@@ -13855,6 +14435,11 @@ types:
       remaining results. For more information about EBS snapshots, see <a href=''http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html''>Amazon
       EBS Snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.'
     displayName: Describe Snapshots
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSnapshots
     body:
       application/json: DescribeSnapshotsRequest
     responses:
@@ -13873,6 +14458,11 @@ types:
   post:
     description: Describes the data feed for Spot instances. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html">Spot Instance Data Feed</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Describe Spot Datafeed Subscription
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSpotDatafeedSubscription
     body:
       application/json: DescribeSpotDatafeedSubscriptionRequest
     responses:
@@ -13891,6 +14481,11 @@ types:
   post:
     description: Describes the running instances for the specified Spot fleet.
     displayName: Describe Spot Fleet Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSpotFleetInstances
     body:
       application/json: DescribeSpotFleetInstancesRequest
     responses:
@@ -13909,6 +14504,11 @@ types:
   post:
     description: Describes the events for the specified Spot fleet request during the specified time. Spot fleet events are delayed by up to 30 seconds before they can be described. This ensures that you can query by the last evaluated time and not miss a recorded event.
     displayName: Describe Spot Fleet Request History
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSpotFleetRequestHistory
     body:
       application/json: DescribeSpotFleetRequestHistoryRequest
     responses:
@@ -13927,6 +14527,11 @@ types:
   post:
     description: Describes your Spot fleet requests.
     displayName: Describe Spot Fleet Requests
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSpotFleetRequests
     body:
       application/json: DescribeSpotFleetRequestsRequest
     responses:
@@ -13945,6 +14550,11 @@ types:
   post:
     description: Describes the Spot instance requests that belong to your account. Spot instances are instances that Amazon EC2 launches when the bid price that you specify exceeds the current Spot price. Amazon EC2 periodically sets the Spot price based on available Spot instance capacity and current Spot instance requests. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html">Spot Instance Requests</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. You can use <code>DescribeSpotInstanceRequests</code> to find a running Spot instance by examining the response. If the status of the Spot instance is <code>fulfilled</code>, the instance ID appears in the response and contains the identifier of the instance. Alternatively, you can use <a>DescribeInstances</a> with a filter to look for instances where the instance lifecycle is <code>spot</code>.
     displayName: Describe Spot Instance Requests
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSpotInstanceRequests
     body:
       application/json: DescribeSpotInstanceRequestsRequest
     responses:
@@ -13963,6 +14573,11 @@ types:
   post:
     description: Describes the Spot price history. The prices returned are listed in chronological order, from the oldest to the most recent, for up to the past 90 days. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html">Spot Instance Pricing History</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. When you specify a start and end time, this operation returns the prices of the instance types within the time range that you specified and the time when the price changed. The price is valid within the time period that you specified; the response merely indicates the last time that the price changed.
     displayName: Describe Spot Price History
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSpotPriceHistory
     body:
       application/json: DescribeSpotPriceHistoryRequest
     responses:
@@ -13984,6 +14599,11 @@ types:
       group in a peer VPC, or a security group in a peer VPC for which the VPC peering
       connection has been deleted. '
     displayName: Describe Stale Security Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeStaleSecurityGroups
     body:
       application/json: DescribeStaleSecurityGroupsRequest
     responses:
@@ -14002,6 +14622,11 @@ types:
   post:
     description: Describes one or more of your subnets. For more information about subnets, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">Your VPC and Subnets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Describe Subnets
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSubnets
     body:
       application/json: DescribeSubnetsRequest
     responses:
@@ -14020,6 +14645,11 @@ types:
   post:
     description: Describes one or more of the tags for your EC2 resources. For more information about tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Describe Tags
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeTags
     body:
       application/json: DescribeTagsRequest
     responses:
@@ -14038,6 +14668,11 @@ types:
   post:
     description: Describes the specified attribute of the specified volume. You can specify only one attribute at a time. For more information about EBS volumes, see <a href='http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html'>Amazon EBS Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Describe Volume Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVolumeAttribute
     body:
       application/json: DescribeVolumeAttributeRequest
     responses:
@@ -14085,6 +14720,11 @@ types:
       volumes in the <code>error</code> state (for example, when a volume is incapable
       of accepting I/O.) </note>'
     displayName: Describe Volume Status
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVolumeStatus
     body:
       application/json: DescribeVolumeStatusRequest
     responses:
@@ -14103,6 +14743,11 @@ types:
   post:
     description: Describes the specified EBS volumes. If you are describing a long list of volumes, you can paginate the output to make the list more manageable. The <code>MaxResults</code> parameter sets the maximum number of results returned in a single page. If the list of results exceeds your <code>MaxResults</code> value, then that number of results is returned along with a <code>NextToken</code> value that can be passed to a subsequent <code>DescribeVolumes</code> request to retrieve the remaining results. For more information about EBS volumes, see <a href='http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html'>Amazon EBS Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Describe Volumes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVolumes
     body:
       application/json: DescribeVolumesRequest
     responses:
@@ -14121,6 +14766,11 @@ types:
   post:
     description: Describes the specified attribute of the specified VPC. You can specify only one attribute at a time.
     displayName: Describe Vpc Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVpcAttribute
     body:
       application/json: DescribeVpcAttributeRequest
     responses:
@@ -14139,6 +14789,11 @@ types:
   post:
     description: 'Describes the ClassicLink status of one or more VPCs. '
     displayName: Describe Vpc Classic Link
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVpcClassicLink
     body:
       application/json: DescribeVpcClassicLinkRequest
     responses:
@@ -14157,6 +14812,11 @@ types:
   post:
     description: Describes the ClassicLink DNS support status of one or more VPCs. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information about ClassicLink, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the Amazon Elastic Compute Cloud User Guide.
     displayName: Describe Vpc Classic Link Dns Support
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVpcClassicLinkDnsSupport
     body:
       application/json: DescribeVpcClassicLinkDnsSupportRequest
     responses:
@@ -14175,6 +14835,11 @@ types:
   post:
     description: Describes all supported AWS services that can be specified when creating a VPC endpoint.
     displayName: Describe Vpc Endpoint Services
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVpcEndpointServices
     body:
       application/json: DescribeVpcEndpointServicesRequest
     responses:
@@ -14193,6 +14858,11 @@ types:
   post:
     description: Describes one or more of your VPC endpoints.
     displayName: Describe Vpc Endpoints
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVpcEndpoints
     body:
       application/json: DescribeVpcEndpointsRequest
     responses:
@@ -14211,6 +14881,11 @@ types:
   post:
     description: Describes one or more of your VPC peering connections.
     displayName: Describe Vpc Peering Connections
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVpcPeeringConnections
     body:
       application/json: DescribeVpcPeeringConnectionsRequest
     responses:
@@ -14229,6 +14904,11 @@ types:
   post:
     description: Describes one or more of your VPCs.
     displayName: Describe Vpcs
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVpcs
     body:
       application/json: DescribeVpcsRequest
     responses:
@@ -14247,6 +14927,11 @@ types:
   post:
     description: Describes one or more of your VPN connections. For more information about VPN connections, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding a Hardware Virtual Private Gateway to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Describe Vpn Connections
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVpnConnections
     body:
       application/json: DescribeVpnConnectionsRequest
     responses:
@@ -14265,6 +14950,11 @@ types:
   post:
     description: Describes one or more of your virtual private gateways. For more information about virtual private gateways, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html">Adding an IPsec Hardware VPN to Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Describe Vpn Gateways
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeVpnGateways
     body:
       application/json: DescribeVpnGatewaysRequest
     responses:
@@ -14283,6 +14973,11 @@ types:
   post:
     description: Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the instance has been unlinked, the VPC security groups are no longer associated with it. An instance is automatically unlinked from a VPC when it's stopped.
     displayName: Detach Classic Link Vpc
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DetachClassicLinkVpc
     body:
       application/json: DetachClassicLinkVpcRequest
     responses:
@@ -14301,6 +14996,11 @@ types:
   post:
     description: Detaches an Internet gateway from a VPC, disabling connectivity between the Internet and the VPC. The VPC must not contain any running instances with Elastic IP addresses.
     displayName: Detach Internet Gateway
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DetachInternetGateway
     body:
       application/json: DetachInternetGatewayRequest
     responses:
@@ -14319,6 +15019,11 @@ types:
   post:
     description: Detaches a network interface from an instance.
     displayName: Detach Network Interface
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DetachNetworkInterface
     body:
       application/json: DetachNetworkInterfaceRequest
     responses:
@@ -14337,6 +15042,11 @@ types:
   post:
     description: Detaches an EBS volume from an instance. Make sure to unmount any file systems on the device within your operating system before detaching the volume. Failure to do so results in the volume being stuck in a busy state while detaching. If an Amazon EBS volume is the root device of an instance, it can't be detached while the instance is running. To detach the root volume, stop the instance first. When a volume with an AWS Marketplace product code is detached from an instance, the product code is no longer associated with the instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html">Detaching an Amazon EBS Volume</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Detach Volume
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DetachVolume
     body:
       application/json: DetachVolumeRequest
     responses:
@@ -14355,6 +15065,11 @@ types:
   post:
     description: Detaches a virtual private gateway from a VPC. You do this if you're planning to turn off the VPC and not use it anymore. You can confirm a virtual private gateway has been completely detached from a VPC by describing the virtual private gateway (any attachments to the virtual private gateway are also described). You must wait for the attachment's state to switch to <code>detached</code> before you can delete the VPC or attach a different VPC to the virtual private gateway.
     displayName: Detach Vpn Gateway
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DetachVpnGateway
     body:
       application/json: DetachVpnGatewayRequest
     responses:
@@ -14373,6 +15088,11 @@ types:
   post:
     description: Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC.
     displayName: Disable Vgw Route Propagation
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisableVgwRoutePropagation
     body:
       application/json: DisableVgwRoutePropagationRequest
     responses:
@@ -14391,6 +15111,11 @@ types:
   post:
     description: Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC that has EC2-Classic instances linked to it.
     displayName: Disable Vpc Classic Link
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisableVpcClassicLink
     body:
       application/json: DisableVpcClassicLinkRequest
     responses:
@@ -14409,6 +15134,11 @@ types:
   post:
     description: Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames resolve to public IP addresses when addressed between a linked EC2-Classic instance and instances in the VPC to which it's linked. For more information about ClassicLink, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the Amazon Elastic Compute Cloud User Guide.
     displayName: Disable Vpc Classic Link Dns Support
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisableVpcClassicLinkDnsSupport
     body:
       application/json: DisableVpcClassicLinkDnsSupportRequest
     responses:
@@ -14427,6 +15157,11 @@ types:
   post:
     description: Disassociates an Elastic IP address from the instance or network interface it's associated with. An Elastic IP address is for use in either the EC2-Classic platform or in a VPC. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error.
     displayName: Disassociate Address
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisassociateAddress
     body:
       application/json: DisassociateAddressRequest
     responses:
@@ -14445,6 +15180,11 @@ types:
   post:
     description: Disassociates a subnet from a route table. After you perform this action, the subnet no longer uses the routes in the route table. Instead, it uses the routes in the VPC's main route table. For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Disassociate Route Table
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisassociateRouteTable
     body:
       application/json: DisassociateRouteTableRequest
     responses:
@@ -14463,6 +15203,11 @@ types:
   post:
     description: Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.
     displayName: Enable Vgw Route Propagation
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - EnableVgwRoutePropagation
     body:
       application/json: EnableVgwRoutePropagationRequest
     responses:
@@ -14481,6 +15226,11 @@ types:
   post:
     description: Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent.
     displayName: Enable Volume I O
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - EnableVolumeIO
     body:
       application/json: EnableVolumeIORequest
     responses:
@@ -14499,6 +15249,11 @@ types:
   post:
     description: Enables a VPC for ClassicLink. You can then link EC2-Classic instances to your ClassicLink-enabled VPC to allow communication over private IP addresses. You cannot enable your VPC for ClassicLink if any of your VPC's route tables have existing routes for address ranges within the <code>10.0.0.0/8</code> IP address range, excluding local routes for VPCs in the <code>10.0.0.0/16</code> and <code>10.1.0.0/16</code> IP address ranges. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the Amazon Elastic Compute Cloud User Guide.
     displayName: Enable Vpc Classic Link
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - EnableVpcClassicLink
     body:
       application/json: EnableVpcClassicLinkRequest
     responses:
@@ -14517,6 +15272,11 @@ types:
   post:
     description: Enables a VPC to support DNS hostname resolution for ClassicLink. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information about ClassicLink, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the Amazon Elastic Compute Cloud User Guide.
     displayName: Enable Vpc Classic Link Dns Support
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - EnableVpcClassicLinkDnsSupport
     body:
       application/json: EnableVpcClassicLinkDnsSupportRequest
     responses:
@@ -14535,6 +15295,11 @@ types:
   post:
     description: Gets the console output for the specified instance. Instances do not have a physical monitor through which you can view their console output. They also lack physical controls that allow you to power up, reboot, or shut them down. To allow these actions, we provide them through the Amazon EC2 API and command line interface. Instance console output is buffered and posted shortly after instance boot, reboot, and termination. Amazon EC2 preserves the most recent 64 KB output which is available for at least one hour after the most recent post. For Linux instances, the instance console output displays the exact console output that would normally be displayed on a physical monitor attached to a computer. This output is buffered because the instance produces it and then posts it to a store where the instance's owner can retrieve it. For Windows instances, the instance console output includes output from the EC2Config service.
     displayName: Get Console Output
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetConsoleOutput
     body:
       application/json: GetConsoleOutputRequest
     responses:
@@ -14553,6 +15318,11 @@ types:
   post:
     description: Retrieve a JPG-format screenshot of a running instance to help with troubleshooting. The returned content is base64-encoded.
     displayName: Get Console Screenshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetConsoleScreenshot
     body:
       application/json: GetConsoleScreenshotRequest
     responses:
@@ -14571,6 +15341,11 @@ types:
   post:
     description: Retrieves the encrypted administrator password for an instance running Windows. The Windows password is generated at boot if the <code>EC2Config</code> service plugin, <code>Ec2SetPassword</code>, is enabled. This usually only happens the first time an AMI is launched, and then <code>Ec2SetPassword</code> is automatically disabled. The password is not generated for rebundled AMIs unless <code>Ec2SetPassword</code> is enabled before bundling. The password is encrypted using the key pair that you specified when you launched the instance. You must provide the corresponding key pair file. Password generation and encryption takes a few moments. We recommend that you wait up to 15 minutes after launching an instance before trying to retrieve the generated password.
     displayName: Get Password Data
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetPasswordData
     body:
       application/json: GetPasswordDataRequest
     responses:
@@ -14589,6 +15364,11 @@ types:
   post:
     description: Import single or multi-volume disk images or EBS snapshots into an Amazon Machine Image (AMI).
     displayName: Import Image
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ImportImage
     body:
       application/json: ImportImageRequest
     responses:
@@ -14607,6 +15387,11 @@ types:
   post:
     description: Creates an import instance task using metadata from the specified disk image. <code>ImportInstance</code> only supports single-volume VMs. To import multi-volume VMs, use <a>ImportImage</a>. After importing the image, you then upload it using the <code>ec2-import-volume</code> command in the EC2 command line tools. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UploadingYourInstancesandVolumes.html">Using the Command Line Tools to Import Your Virtual Machine to Amazon EC2</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For information about the import manifest referenced by this API action, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html">VM Import Manifest</a>.
     displayName: Import Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ImportInstance
     body:
       application/json: ImportInstanceRequest
     responses:
@@ -14625,6 +15410,11 @@ types:
   post:
     description: Imports the public key from an RSA key pair that you created with a third-party tool. Compare this with <a>CreateKeyPair</a>, in which AWS creates the key pair and gives the keys to you (AWS keeps a copy of the public key). With ImportKeyPair, you create the key pair and give AWS just the public key. The private key is never transferred between you and AWS. For more information about key pairs, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Import Key Pair
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ImportKeyPair
     body:
       application/json: ImportKeyPairRequest
     responses:
@@ -14643,6 +15433,11 @@ types:
   post:
     description: Imports a disk into an EBS snapshot.
     displayName: Import Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ImportSnapshot
     body:
       application/json: ImportSnapshotRequest
     responses:
@@ -14661,6 +15456,11 @@ types:
   post:
     description: Creates an import volume task using metadata from the specified disk image. After importing the image, you then upload it using the <code>ec2-import-volume</code> command in the Amazon EC2 command-line interface (CLI) tools. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UploadingYourInstancesandVolumes.html">Using the Command Line Tools to Import Your Virtual Machine to Amazon EC2</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For information about the import manifest referenced by this API action, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html">VM Import Manifest</a>.
     displayName: Import Volume
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ImportVolume
     body:
       application/json: ImportVolumeRequest
     responses:
@@ -14679,6 +15479,11 @@ types:
   post:
     description: Modify the auto-placement setting of a Dedicated host. When auto-placement is enabled, AWS will place instances that you launch with a tenancy of <code>host</code>, but without targeting a specific host ID, onto any available Dedicated host in your account which has auto-placement enabled. When auto-placement is disabled, you need to provide a host ID if you want the instance to launch onto a specific host. If no host ID is provided, the instance will be launched onto a suitable host which has auto-placement enabled.
     displayName: Modify Hosts
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyHosts
     body:
       application/json: ModifyHostsRequest
     responses:
@@ -14710,6 +15515,11 @@ types:
       regardless of these settings and provided that they have permission to use the
       relevant <code>Describe</code> command for the resource type.'
     displayName: Modify Id Format
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyIdFormat
     body:
       application/json: ModifyIdFormatRequest
     responses:
@@ -14728,6 +15538,11 @@ types:
   post:
     description: Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time. <note>AWS Marketplace product codes cannot be modified. Images with an AWS Marketplace product code cannot be made public.</note>
     displayName: Modify Image Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyImageAttribute
     body:
       application/json: ModifyImageAttributeRequest
     responses:
@@ -14746,6 +15561,11 @@ types:
   post:
     description: Modifies the specified attribute of the specified instance. You can specify only one attribute at a time. To modify some attributes, the instance must be stopped. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html">Modifying Attributes of a Stopped Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Modify Instance Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyInstanceAttribute
     body:
       application/json: ModifyInstanceAttributeRequest
     responses:
@@ -14764,6 +15584,11 @@ types:
   post:
     description: Set the instance affinity value for a specific stopped instance and modify the instance tenancy setting. Instance affinity is disabled by default. When instance affinity is <code>host</code> and it is not associated with a specific Dedicated host, the next time it is launched it will automatically be associated with the host it lands on. This relationship will persist if the instance is stopped/started, or rebooted. You can modify the host ID associated with a stopped instance. If a stopped instance has a new host ID association, the instance will target that host when restarted. You can modify the tenancy of a stopped instance with a tenancy of <code>host</code> or <code>dedicated</code>. Affinity, hostID, and tenancy are not required parameters, but at least one of them must be specified in the request. Affinity and tenancy can be modified in the same request, but tenancy can only be modified on instances that are stopped.
     displayName: Modify Instance Placement
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyInstancePlacement
     body:
       application/json: ModifyInstancePlacementRequest
     responses:
@@ -14782,6 +15607,11 @@ types:
   post:
     description: Modifies the specified network interface attribute. You can specify only one attribute at a time.
     displayName: Modify Network Interface Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyNetworkInterfaceAttribute
     body:
       application/json: ModifyNetworkInterfaceAttributeRequest
     responses:
@@ -14800,6 +15630,11 @@ types:
   post:
     description: Modifies the Availability Zone, instance count, instance type, or network platform (EC2-Classic or EC2-VPC) of your Reserved Instances. The Reserved Instances to be modified must be identical, except for Availability Zone, network platform, and instance type. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html">Modifying Reserved Instances</a> in the Amazon Elastic Compute Cloud User Guide.
     displayName: Modify Reserved Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyReservedInstances
     body:
       application/json: ModifyReservedInstancesRequest
     responses:
@@ -14818,6 +15653,11 @@ types:
   post:
     description: Adds or removes permission settings for the specified snapshot. You may add or remove specified AWS account IDs from a snapshot's list of create volume permissions, but you cannot do both in a single API call. If you need to both add and remove account IDs for a snapshot, you must use multiple API calls. For more information on modifying snapshot permissions, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html">Sharing Snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. <note> Snapshots with AWS Marketplace product codes cannot be made public. </note>
     displayName: Modify Snapshot Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifySnapshotAttribute
     body:
       application/json: ModifySnapshotAttributeRequest
     responses:
@@ -14836,6 +15676,11 @@ types:
   post:
     description: Modifies the specified Spot fleet request. While the Spot fleet request is being modified, it is in the <code>modifying</code> state. To scale up your Spot fleet, increase its target capacity. The Spot fleet launches the additional Spot instances according to the allocation strategy for the Spot fleet request. If the allocation strategy is <code>lowestPrice</code>, the Spot fleet launches instances using the Spot pool with the lowest price. If the allocation strategy is <code>diversified</code>, the Spot fleet distributes the instances across the Spot pools. To scale down your Spot fleet, decrease its target capacity. First, the Spot fleet cancels any open bids that exceed the new target capacity. You can request that the Spot fleet terminate Spot instances until the size of the fleet no longer exceeds the new target capacity. If the allocation strategy is <code>lowestPrice</code>, the Spot fleet terminates the instances with the highest price per unit. If the allocation strategy is <code>diversified</code>, the Spot fleet terminates instances across the Spot pools. Alternatively, you can request that the Spot fleet keep the fleet at its current size, but not replace any Spot instances that are interrupted or that you terminate manually.
     displayName: Modify Spot Fleet Request
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifySpotFleetRequest
     body:
       application/json: ModifySpotFleetRequestRequest
     responses:
@@ -14854,6 +15699,11 @@ types:
   post:
     description: Modifies a subnet attribute.
     displayName: Modify Subnet Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifySubnetAttribute
     body:
       application/json: ModifySubnetAttributeRequest
     responses:
@@ -14872,6 +15722,11 @@ types:
   post:
     description: Modifies a volume attribute. By default, all I/O operations for the volume are suspended when the data on the volume is determined to be potentially inconsistent, to prevent undetectable, latent data corruption. The I/O access to the volume can be resumed by first enabling I/O access and then checking the data consistency on your volume. You can change the default behavior to resume I/O operations. We recommend that you change this only for boot volumes or for volumes that are stateless or disposable.
     displayName: Modify Volume Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyVolumeAttribute
     body:
       application/json: ModifyVolumeAttributeRequest
     responses:
@@ -14890,6 +15745,11 @@ types:
   post:
     description: Modifies the specified attribute of the specified VPC.
     displayName: Modify Vpc Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyVpcAttribute
     body:
       application/json: ModifyVpcAttributeRequest
     responses:
@@ -14908,6 +15768,11 @@ types:
   post:
     description: Modifies attributes of a specified VPC endpoint. You can modify the policy associated with the endpoint, and you can add and remove route tables associated with the endpoint.
     displayName: Modify Vpc Endpoint
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyVpcEndpoint
     body:
       application/json: ModifyVpcEndpointRequest
     responses:
@@ -14937,6 +15802,11 @@ types:
       options in the same request. To confirm which VPC is the accepter and requester
       for a VPC peering connection, use the <a>DescribeVpcPeeringConnections</a> command.'
     displayName: Modify Vpc Peering Connection Options
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ModifyVpcPeeringConnectionOptions
     body:
       application/json: ModifyVpcPeeringConnectionOptionsRequest
     responses:
@@ -14955,6 +15825,11 @@ types:
   post:
     description: Enables monitoring for a running instance. For more information about monitoring instances, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances and Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Monitor Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - MonitorInstances
     body:
       application/json: MonitorInstancesRequest
     responses:
@@ -14979,6 +15854,11 @@ types:
       You cannot move an Elastic IP address that was originally allocated for use
       in the EC2-VPC platform to the EC2-Classic platform. '
     displayName: Move Address To Vpc
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - MoveAddressToVpc
     body:
       application/json: MoveAddressToVpcRequest
     responses:
@@ -14997,6 +15877,11 @@ types:
   post:
     description: Purchases a Reserved Instance for use with your account. With Reserved Instances, you obtain a capacity reservation for a certain instance configuration over a specified period of time and pay a lower hourly rate compared to On-Demand instance pricing. Use <a>DescribeReservedInstancesOfferings</a> to get a list of Reserved Instance offerings that match your specifications. After you've purchased a Reserved Instance, you can check for your new Reserved Instance with <a>DescribeReservedInstances</a>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html">Reserved Instances</a> and <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved Instance Marketplace</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Purchase Reserved Instances Offering
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PurchaseReservedInstancesOffering
     body:
       application/json: PurchaseReservedInstancesOfferingRequest
     responses:
@@ -15015,6 +15900,11 @@ types:
   post:
     description: Purchases one or more Scheduled Instances with the specified schedule. Scheduled Instances enable you to purchase Amazon EC2 compute capacity by the hour for a one-year term. Before you can purchase a Scheduled Instance, you must call <a>DescribeScheduledInstanceAvailability</a> to check for available schedules and obtain a purchase token. After you purchase a Scheduled Instance, you must call <a>RunScheduledInstances</a> during each scheduled time period. After you purchase a Scheduled Instance, you can't cancel, modify, or resell your purchase.
     displayName: Purchase Scheduled Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PurchaseScheduledInstances
     body:
       application/json: PurchaseScheduledInstancesRequest
     responses:
@@ -15033,6 +15923,11 @@ types:
   post:
     description: Requests a reboot of one or more instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored. If an instance does not cleanly shut down within four minutes, Amazon EC2 performs a hard reboot. For more information about troubleshooting, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html">Getting Console Output and Rebooting Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Reboot Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RebootInstances
     body:
       application/json: RebootInstancesRequest
     responses:
@@ -15051,6 +15946,11 @@ types:
   post:
     description: Registers an AMI. When you're creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html">Creating Your Own AMIs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. <note>For Amazon EBS-backed instances, <a>CreateImage</a> creates and registers the AMI in a single request, so you don't have to register the AMI yourself.</note> You can also use <code>RegisterImage</code> to create an Amazon EBS-backed Linux AMI from a snapshot of a root device volume. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_LaunchingInstanceFromSnapshot.html">Launching an Instance from a Snapshot</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. <important> Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise Server (SLES), use the EC2 <code>billingProduct</code> code associated with an AMI to verify subscription status for package updates. Creating an AMI from an EBS snapshot does not maintain this billing code, and subsequent instances launched from such an AMI will not be able to connect to package update infrastructure. Similarly, although you can create a Windows AMI from a snapshot, you can't successfully launch an instance from the AMI. To create Windows AMIs or to create AMIs for Linux operating systems that must retain AMI billing codes to work properly, see <a>CreateImage</a>. </important> If needed, you can deregister an AMI at any time. Any modifications you make to an AMI backed by an instance store volume invalidates its registration. If you make changes to an image, deregister the previous image and register the new image. <note>You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.</note>
     displayName: Register Image
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterImage
     body:
       application/json: RegisterImageRequest
     responses:
@@ -15069,6 +15969,11 @@ types:
   post:
     description: Rejects a VPC peering connection request. The VPC peering connection must be in the <code>pending-acceptance</code> state. Use the <a>DescribeVpcPeeringConnections</a> request to view your outstanding VPC peering connection requests. To delete an active VPC peering connection, or to delete a VPC peering connection request that you initiated, use <a>DeleteVpcPeeringConnection</a>.
     displayName: Reject Vpc Peering Connection
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RejectVpcPeeringConnection
     body:
       application/json: RejectVpcPeeringConnectionRequest
     responses:
@@ -15087,6 +15992,11 @@ types:
   post:
     description: Releases the specified Elastic IP address. After releasing an Elastic IP address, it is released to the IP address pool and might be unavailable to you. Be sure to update your DNS records and any servers or devices that communicate with the address. If you attempt to release an Elastic IP address that you already released, you'll get an <code>AuthFailure</code> error if the address is already allocated to another AWS account. [EC2-Classic, default VPC] Releasing an Elastic IP address automatically disassociates it from any instance that it's associated with. To disassociate an Elastic IP address without releasing it, use <a>DisassociateAddress</a>. [Nondefault VPC] You must use <a>DisassociateAddress</a> to disassociate the Elastic IP address before you try to release it. Otherwise, Amazon EC2 returns an error (<code>InvalidIPAddress.InUse</code>).
     displayName: Release Address
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ReleaseAddress
     body:
       application/json: ReleaseAddressRequest
     responses:
@@ -15105,6 +16015,11 @@ types:
   post:
     description: When you no longer want to use a Dedicated host it can be released. On-Demand billing is stopped and the host goes into <code>released</code> state. The host ID of Dedicated hosts that have been released can no longer be specified in another request, e.g., ModifyHosts. You must stop or terminate all instances on a host before it can be released. When Dedicated hosts are released, it make take some time for them to stop counting toward your limit and you may receive capacity errors when trying to allocate new Dedicated hosts. Try waiting a few minutes, and then try again.  Released hosts will still appear in a DescribeHosts response.
     displayName: Release Hosts
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ReleaseHosts
     body:
       application/json: ReleaseHostsRequest
     responses:
@@ -15123,6 +16038,11 @@ types:
   post:
     description: Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Replace Network Acl Association
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ReplaceNetworkAclAssociation
     body:
       application/json: ReplaceNetworkAclAssociationRequest
     responses:
@@ -15141,6 +16061,11 @@ types:
   post:
     description: Replaces an entry (rule) in a network ACL. For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Replace Network Acl Entry
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ReplaceNetworkAclEntry
     body:
       application/json: ReplaceNetworkAclEntryRequest
     responses:
@@ -15163,6 +16088,11 @@ types:
       more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route
       Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.'
     displayName: Replace Route
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ReplaceRoute
     body:
       application/json: ReplaceRouteRequest
     responses:
@@ -15181,6 +16111,11 @@ types:
   post:
     description: Changes the route table associated with a given subnet in a VPC. After the operation completes, the subnet uses the routes in the new route table it's associated with. For more information about route tables, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>. You can also use ReplaceRouteTableAssociation to change which table is the main route table in the VPC. You just specify the main route table's association ID and the route table to be the new main route table.
     displayName: Replace Route Table Association
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ReplaceRouteTableAssociation
     body:
       application/json: ReplaceRouteTableAssociationRequest
     responses:
@@ -15199,6 +16134,11 @@ types:
   post:
     description: Submits feedback about the status of an instance. The instance must be in the <code>running</code> state. If your experience with the instance differs from the instance status returned by <a>DescribeInstanceStatus</a>, use <a>ReportInstanceStatus</a> to report your experience with the instance. Amazon EC2 collects this information to improve the accuracy of status checks. Use of this action does not change the value returned by <a>DescribeInstanceStatus</a>.
     displayName: Report Instance Status
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ReportInstanceStatus
     body:
       application/json: ReportInstanceStatusRequest
     responses:
@@ -15217,6 +16157,11 @@ types:
   post:
     description: Creates a Spot fleet request. You can submit a single request that includes multiple launch specifications that vary by instance type, AMI, Availability Zone, or subnet. By default, the Spot fleet requests Spot instances in the Spot pool where the price per unit is the lowest. Each launch specification can include its own instance weighting that reflects the value of the instance type to your application workload. Alternatively, you can specify that the Spot fleet distribute the target capacity across the Spot pools included in its launch specifications. By ensuring that the Spot instances in your Spot fleet are in different Spot pools, you can improve the availability of your fleet. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html">Spot Fleet Requests</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Request Spot Fleet
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RequestSpotFleet
     body:
       application/json: RequestSpotFleetRequest
     responses:
@@ -15235,6 +16180,11 @@ types:
   post:
     description: Creates a Spot instance request. Spot instances are instances that Amazon EC2 launches when the bid price that you specify exceeds the current Spot price. Amazon EC2 periodically sets the Spot price based on available Spot Instance capacity and current Spot instance requests. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html">Spot Instance Requests</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Request Spot Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RequestSpotInstances
     body:
       application/json: RequestSpotInstancesRequest
     responses:
@@ -15253,6 +16203,11 @@ types:
   post:
     description: Resets an attribute of an AMI to its default value. <note> The productCodes attribute can't be reset. </note>
     displayName: Reset Image Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ResetImageAttribute
     body:
       application/json: ResetImageAttributeRequest
     responses:
@@ -15271,6 +16226,11 @@ types:
   post:
     description: Resets an attribute of an instance to its default value. To reset the <code>kernel</code> or <code>ramdisk</code>, the instance must be in a stopped state. To reset the <code>sourceDestCheck</code>, the instance can be either running or stopped. The <code>sourceDestCheck</code> attribute controls whether source/destination checking is enabled. The default value is <code>true</code>, which means checking is enabled. This value must be <code>false</code> for a NAT instance to perform NAT. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html">NAT Instances</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
     displayName: Reset Instance Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ResetInstanceAttribute
     body:
       application/json: ResetInstanceAttributeRequest
     responses:
@@ -15289,6 +16249,11 @@ types:
   post:
     description: Resets a network interface attribute. You can specify only one attribute at a time.
     displayName: Reset Network Interface Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ResetNetworkInterfaceAttribute
     body:
       application/json: ResetNetworkInterfaceAttributeRequest
     responses:
@@ -15307,6 +16272,11 @@ types:
   post:
     description: Resets permission settings for the specified snapshot. For more information on modifying snapshot permissions, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html">Sharing Snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Reset Snapshot Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ResetSnapshotAttribute
     body:
       application/json: ResetSnapshotAttributeRequest
     responses:
@@ -15328,6 +16298,11 @@ types:
       IP address that was originally allocated for use in EC2-VPC. The Elastic IP
       address must not be associated with an instance or network interface. '
     displayName: Restore Address To Classic
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RestoreAddressToClassic
     body:
       application/json: RestoreAddressToClassicRequest
     responses:
@@ -15354,6 +16329,11 @@ types:
       Rule changes are propagated to instances within the security group as quickly
       as possible. However, a small delay might occur.'
     displayName: Revoke Security Group Egress
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RevokeSecurityGroupEgress
     body:
       application/json: RevokeSecurityGroupEgressRequest
     responses:
@@ -15372,6 +16352,11 @@ types:
   post:
     description: Removes one or more ingress rules from a security group. The values that you specify in the revoke request (for example, ports) must match the existing rule's values for the rule to be removed. Each rule consists of the protocol and the CIDR range or source security group. For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code. Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.
     displayName: Revoke Security Group Ingress
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RevokeSecurityGroupIngress
     body:
       application/json: RevokeSecurityGroupIngressRequest
     responses:
@@ -15390,6 +16375,11 @@ types:
   post:
     description: Launches the specified number of instances using an AMI for which you have permissions. When you launch an instance, it enters the <code>pending</code> state. After the instance is ready for you, it enters the <code>running</code> state. To check the state of your instance, call <a>DescribeInstances</a>. To ensure faster instance launches, break up large requests into smaller batches. For example, create five separate launch requests for 100 instances each instead of one launch request for 500 instances. To tag your instance, ensure that it is <code>running</code> as <a>CreateTags</a> requires a resource ID. For more information about tagging, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Amazon EC2 Resources</a>. If you don't specify a security group when launching an instance, Amazon EC2 uses the default security group. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. [EC2-VPC only accounts] If you don't specify a subnet in the request, we choose a default subnet from your default VPC for you.  [EC2-Classic accounts] If you're launching into EC2-Classic and you don't specify an Availability Zone, we choose one for you. Linux instances have access to the public key of the key pair at boot. You can use this key to provide secure access to the instance. Amazon EC2 public images use this feature to provide secure access without passwords. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. You can provide optional user data when launching an instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. If any of the AMIs have a product code attached for which the user has not subscribed, <code>RunInstances</code> fails. Some instance types can only be launched into a VPC. If you do not have a default VPC, or if you do not specify a subnet ID in the request, <code>RunInstances</code> fails. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types">Instance Types Available Only in a VPC</a>. For more information about troubleshooting, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_InstanceStraightToTerminated.html">What To Do If An Instance Immediately Terminates</a>, and <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html">Troubleshooting Connecting to Your Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Run Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RunInstances
     body:
       application/json: RunInstancesRequest
     responses:
@@ -15408,6 +16398,11 @@ types:
   post:
     description: Launches the specified Scheduled Instances. Before you can launch a Scheduled Instance, you must purchase it and obtain an identifier using <a>PurchaseScheduledInstances</a>. You must launch a Scheduled Instance during its scheduled time period. You can't stop or reboot a Scheduled Instance, but you can terminate it as needed. If you terminate a Scheduled Instance before the current scheduled time period ends, you can launch it again after a few minutes. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html">Scheduled Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Run Scheduled Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RunScheduledInstances
     body:
       application/json: RunScheduledInstancesRequest
     responses:
@@ -15426,6 +16421,11 @@ types:
   post:
     description: Starts an Amazon EBS-backed AMI that you've previously stopped. Instances that use Amazon EBS volumes as their root devices can be quickly stopped and started. When an instance is stopped, the compute resources are released and you are not billed for hourly instance usage. However, your root partition Amazon EBS volume remains, continues to persist your data, and you are charged for Amazon EBS volume usage. You can restart your instance at any time. Each time you transition an instance from stopped to started, Amazon EC2 charges a full instance hour, even if transitions happen multiple times within a single hour. Before stopping an instance, make sure it is in a state from which it can be restarted. Stopping an instance does not preserve data stored in RAM. Performing this operation on an instance that uses an instance store as its root device returns an error. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html">Stopping Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Start Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StartInstances
     body:
       application/json: StartInstancesRequest
     responses:
@@ -15444,6 +16444,11 @@ types:
   post:
     description: Stops an Amazon EBS-backed instance.  We don't charge hourly usage for a stopped instance, or data transfer fees; however, your root partition Amazon EBS volume remains, continues to persist your data, and you are charged for Amazon EBS volume usage. Each time you transition an instance from stopped to started, Amazon EC2 charges a full instance hour, even if transitions happen multiple times within a single hour. You can't start or stop Spot instances, and you can't stop instance store-backed instances. When you stop an instance, we shut it down. You can restart your instance at any time. Before stopping an instance, make sure it is in a state from which it can be restarted. Stopping an instance does not preserve data stored in RAM. Stopping an instance is different to rebooting or terminating it. For example, when you stop an instance, the root device and any other devices attached to the instance persist. When you terminate an instance, the root device and any other devices attached during the instance launch are automatically deleted. For more information about the differences between rebooting, stopping, and terminating instances, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Instance Lifecycle</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. When you stop an instance, we attempt to shut it down forcibly after a short while. If your instance appears stuck in the stopping state after a period of time, there may be an issue with the underlying host computer. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html">Troubleshooting Stopping Your Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Stop Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StopInstances
     body:
       application/json: StopInstancesRequest
     responses:
@@ -15462,6 +16467,11 @@ types:
   post:
     description: Shuts down one or more instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds. Terminated instances remain visible after termination (for approximately one hour). By default, Amazon EC2 deletes all EBS volumes that were attached when the instance launched. Volumes attached after instance launch continue running. You can stop, start, and terminate EBS-backed instances. You can only terminate instance store-backed instances. What happens to an instance differs if you stop it or terminate it. For example, when you stop an instance, the root device and any other devices attached to the instance persist. When you terminate an instance, any attached EBS volumes with the <code>DeleteOnTermination</code> block device mapping parameter set to <code>true</code> are automatically deleted. For more information about the differences between stopping and terminating instances, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Instance Lifecycle</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>. For more information about troubleshooting, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html">Troubleshooting Terminating Your Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Terminate Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - TerminateInstances
     body:
       application/json: TerminateInstancesRequest
     responses:
@@ -15480,6 +16490,11 @@ types:
   post:
     description: Unassigns one or more secondary private IP addresses from a network interface.
     displayName: Unassign Private Ip Addresses
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UnassignPrivateIpAddresses
     body:
       application/json: UnassignPrivateIpAddressesRequest
     responses:
@@ -15498,6 +16513,11 @@ types:
   post:
     description: Disables monitoring for a running instance. For more information about monitoring instances, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring Your Instances and Volumes</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
     displayName: Unmonitor Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UnmonitorInstances
     body:
       application/json: UnmonitorInstancesRequest
     responses:

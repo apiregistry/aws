@@ -1944,6 +1944,11 @@ types:
       delete:
         description: The CancelJob operation cancels an unfinished job. <note>You can only cancel a job that has a status of <code>Submitted</code>. To prevent a pipeline from starting to process a job while you're getting the job identifier, use <a>UpdatePipelineStatus</a> to temporarily pause the pipeline.</note>
         displayName: Cancel Job
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - CancelJob
         responses:
           202:
             body:
@@ -1959,6 +1964,11 @@ types:
       get:
         description: The ReadJob operation returns detailed information about a job.
         displayName: Read Job
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - ReadJob
         responses:
           200:
             body:
@@ -1977,6 +1987,11 @@ types:
         4s), you currently must use the Elastic Transcoder API to list the jobs (as
         opposed to the AWS Console).'
       displayName: Create Job
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - CreateJob
       body:
         application/json: CreateJobRequest
       responses:
@@ -2002,6 +2017,11 @@ types:
       get:
         description: The ReadPreset operation gets detailed information about a preset.
         displayName: Read Preset
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - ReadPreset
         responses:
           200:
             body:
@@ -2015,6 +2035,11 @@ types:
       delete:
         description: The DeletePreset operation removes a preset that you've added in an AWS region. <note> You can't delete the default presets that are included with Elastic Transcoder. </note>
         displayName: Delete Preset
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - DeletePreset
         responses:
           202:
             body:
@@ -2041,6 +2066,11 @@ types:
         publication <i>Recommendation ITU-T H.264: Advanced video coding for generic
         audiovisual services</i>.'
       displayName: Create Preset
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - CreatePreset
       body:
         application/json: CreatePresetRequest
       responses:
@@ -2057,6 +2087,10 @@ types:
       description: The ListPresets operation gets a list of the default presets included with Elastic Transcoder and the presets that you've added in an AWS region.
       displayName: List Presets
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListPresets
         Ascending?:
           type: Ascending
           description: <p>To list presets in chronological order by the date and time that they were created, enter <code>true</code>. To list presets in reverse chronological order, enter <code>false</code>.</p>
@@ -2082,6 +2116,10 @@ types:
         description: The ListJobsByPipeline operation gets a list of the jobs currently in a pipeline. Elastic Transcoder returns all of the jobs currently in the specified pipeline. The response body contains one element for each job that satisfies the search criteria.
         displayName: List Jobs By Pipeline
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - ListJobsByPipeline
           Ascending?:
             type: Ascending
             description: <p> To list jobs in chronological order by the date and time that they were submitted, enter <code>true</code>. To list jobs in reverse chronological order, enter <code>false</code>. </p>
@@ -2117,6 +2155,11 @@ types:
             more time to get the job IDs for the jobs that you want to cancel, and
             to send a <a>CancelJob</a> request. '
           displayName: Update Pipeline Status
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - UpdatePipelineStatus
           body:
             application/json:
               type: object
@@ -2144,6 +2187,11 @@ types:
         post:
           description: With the UpdatePipelineNotifications operation, you can update Amazon Simple Notification Service (Amazon SNS) notifications for a pipeline. When you update notifications for a pipeline, Elastic Transcoder returns the values that you specified in the request.
           displayName: Update Pipeline Notifications
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - UpdatePipelineNotifications
           body:
             application/json:
               type: object
@@ -2184,6 +2232,11 @@ types:
       get:
         description: The ReadPipeline operation gets detailed information about a pipeline.
         displayName: Read Pipeline
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - ReadPipeline
         responses:
           200:
             body:
@@ -2201,6 +2254,11 @@ types:
           Transcoder has not started to process are affected in addition to jobs that
           you submit after you change settings. </important> '
         displayName: Update Pipeline
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - UpdatePipeline
         body:
           application/json:
             type: object
@@ -2340,6 +2398,11 @@ types:
           (doesn''t contain any active jobs). If the pipeline is currently in use,
           <code>DeletePipeline</code> returns an error. '
         displayName: Delete Pipeline
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - DeletePipeline
         responses:
           202:
             body:
@@ -2356,6 +2419,10 @@ types:
       description: The ListPipelines operation gets a list of the pipelines associated with the current AWS account.
       displayName: List Pipelines
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListPipelines
         Ascending?:
           type: Ascending
           description: <p>To list pipelines in chronological order by the date and time that they were created, enter <code>true</code>. To list pipelines in reverse chronological order, enter <code>false</code>.</p>
@@ -2373,6 +2440,11 @@ types:
     post:
       description: The CreatePipeline operation creates a pipeline with settings that you specify.
       displayName: Create Pipeline
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - CreatePipeline
       body:
         application/json: CreatePipelineRequest
       responses:
@@ -2401,6 +2473,10 @@ types:
         description: The ListJobsByStatus operation gets a list of jobs that have a specified status. The response body contains one element for each job that satisfies the search criteria.
         displayName: List Jobs By Status
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - ListJobsByStatus
           Ascending?:
             type: Ascending
             description: <p> To list jobs in chronological order by the date and time that they were submitted, enter <code>true</code>. To list jobs in reverse chronological order, enter <code>false</code>. </p>
@@ -2422,6 +2498,11 @@ types:
     post:
       description: The TestRole operation tests the IAM role used to create the pipeline. The <code>TestRole</code> action lets you determine whether the IAM role you are using has sufficient permissions to let Elastic Transcoder perform tasks associated with the transcoding process. The action attempts to assume the specified IAM role, checks read access to the input and output buckets, and tries to send a test notification to Amazon SNS topics that you specify.
       displayName: Test Role
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - TestRole
       body:
         application/json: TestRoleRequest
       responses:

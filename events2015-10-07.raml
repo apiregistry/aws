@@ -466,6 +466,11 @@ types:
       events might still continue to match to the deleted rule. Please allow a short
       period of time for changes to take effect. '
     displayName: Delete Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteRule
     body:
       application/json: DeleteRuleRequest
     responses:
@@ -486,6 +491,11 @@ types:
   post:
     description: Describes the details of the specified rule.
     displayName: Describe Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeRule
     body:
       application/json: DescribeRuleRequest
     responses:
@@ -509,6 +519,11 @@ types:
       a rule, incoming events might still continue to match to the disabled rule.
       Please allow a short period of time for changes to take effect. '
     displayName: Disable Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisableRule
     body:
       application/json: DisableRuleRequest
     responses:
@@ -532,6 +547,11 @@ types:
       to a newly enabled rule. Please allow a short period of time for changes to
       take effect. '
     displayName: Enable Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - EnableRule
     body:
       application/json: EnableRuleRequest
     responses:
@@ -552,6 +572,11 @@ types:
   post:
     description: Lists the names of the rules that the given target is put to. You can see which of the rules in Amazon CloudWatch Events can invoke a specific target in your account. If you have more rules in your account than the given limit, the results will be paginated. In that case, use the next token returned in the response and repeat ListRulesByTarget until the NextToken in the response is returned as null.
     displayName: List Rule Names By Target
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListRuleNamesByTarget
     body:
       application/json: ListRuleNamesByTargetRequest
     responses:
@@ -572,6 +597,11 @@ types:
   post:
     description: Lists the Amazon CloudWatch Events rules in your account. You can either list all the rules or you can provide a prefix to match to the rule names. If you have more rules in your account than the given limit, the results will be paginated. In that case, use the next token returned in the response and repeat ListRules until the NextToken in the response is returned as null.
     displayName: List Rules
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListRules
     body:
       application/json: ListRulesRequest
     responses:
@@ -592,6 +622,11 @@ types:
   post:
     description: Lists of targets assigned to the rule.
     displayName: List Targets By Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListTargetsByRule
     body:
       application/json: ListTargetsByRuleRequest
     responses:
@@ -612,6 +647,11 @@ types:
   post:
     description: Sends custom events to Amazon CloudWatch Events so that they can be matched to rules.
     displayName: Put Events
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutEvents
     body:
       application/json: PutEventsRequest
     responses:
@@ -644,6 +684,11 @@ types:
       use the correct ARN characters when creating event patterns so that they match
       the ARN syntax in the event you want to match. '
     displayName: Put Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutRule
     body:
       application/json: PutRuleRequest
     responses:
@@ -684,6 +729,11 @@ types:
       targets might not be immediately invoked. Please allow a short period of time
       for changes to take effect. '
     displayName: Put Targets
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutTargets
     body:
       application/json: PutTargetsRequest
     responses:
@@ -707,6 +757,11 @@ types:
       when the associated rule triggers, removed targets might still continue to be
       invoked. Please allow a short period of time for changes to take effect. '
     displayName: Remove Targets
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RemoveTargets
     body:
       application/json: RemoveTargetsRequest
     responses:
@@ -731,6 +786,11 @@ types:
       rules. Be sure to use the correct ARN characters when creating event patterns
       so that they match the ARN syntax in the event you want to match. '
     displayName: Test Event Pattern
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - TestEventPattern
     body:
       application/json: TestEventPatternRequest
     responses:

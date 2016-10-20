@@ -910,6 +910,11 @@ types:
       permissions to perform the <code>kinesisanalytics:AddApplicationInput</code>
       action.'
     displayName: Add Application Input
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AddApplicationInput
     body:
       application/json: AddApplicationInputRequest
     responses:
@@ -930,6 +935,11 @@ types:
   post:
     description: Adds an external destination to your Amazon Kinesis Analytics application. If you want Amazon Kinesis Analytics to deliver data from an in-application stream within your application to an external destination (such as an Amazon Kinesis stream or a Firehose delivery stream), you add the relevant configuration to your application using this operation. You can configure one or more outputs for your application. Each output configuration maps an in-application stream and an external destination.  You can use one of the output configurations to deliver data from your in-application error stream to an external destination so that you can analyze the errors. For conceptual information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html">Understanding Application Output (Destination)</a>.   Note that any configuration update, including adding a streaming source using this operation, results in a new version of the application. You can use the <a>DescribeApplication</a> operation to find the current application version. For the limits on the number of application inputs and outputs you can configure, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>. This operation requires permissions to perform the <code>kinesisanalytics:AddApplicationOutput</code> action.
     displayName: Add Application Output
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AddApplicationOutput
     body:
       application/json: AddApplicationOutputRequest
     responses:
@@ -960,6 +970,11 @@ types:
       operation requires permissions to perform the <code>kinesisanalytics:AddApplicationOutput</code>
       action. '
     displayName: Add Application Reference Data Source
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AddApplicationReferenceDataSource
     body:
       application/json: AddApplicationReferenceDataSourceRequest
     responses:
@@ -1000,6 +1015,11 @@ types:
       <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html">Getting
       Started</a>. '
     displayName: Create Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateApplication
     body:
       application/json: CreateApplicationRequest
     responses:
@@ -1020,6 +1040,11 @@ types:
   post:
     description: Deletes the specified application. Amazon Kinesis Analytics halts application execution and deletes the application, including any application artifacts (such as in-application streams, reference table, and application code). This operation requires permissions to perform the <code>kinesisanalytics:DeleteApplication</code> action.
     displayName: Delete Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteApplication
     body:
       application/json: DeleteApplicationRequest
     responses:
@@ -1040,6 +1065,11 @@ types:
   post:
     description: Deletes output destination configuration from your application configuration. Amazon Kinesis Analytics will no longer write data from the corresponding in-application stream to the external output destination. This operation requires permissions to perform the <code>kinesisanalytics:DeleteApplicationOutput</code> action.
     displayName: Delete Application Output
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteApplicationOutput
     body:
       application/json: DeleteApplicationOutputRequest
     responses:
@@ -1060,6 +1090,11 @@ types:
   post:
     description: Deletes a reference data source configuration from the specified application configuration. If the application is running, Amazon Kinesis Analytics immediately removes the in-application table that you created using the <a>AddApplicationReferenceDataSource</a> operation.  This operation requires permissions to perform the <code>kinesisanalytics.DeleteApplicationReferenceDataSource</code> action.
     displayName: Delete Application Reference Data Source
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteApplicationReferenceDataSource
     body:
       application/json: DeleteApplicationReferenceDataSourceRequest
     responses:
@@ -1085,6 +1120,11 @@ types:
       to get the current application versionId, which you need to call other operations
       such as <code>Update</code>. '
     displayName: Describe Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeApplication
     body:
       application/json: DescribeApplicationRequest
     responses:
@@ -1114,6 +1154,11 @@ types:
       and show it in the console user interface.   This operation requires permissions
       to perform the <code>kinesisanalytics:DiscoverInputSchema</code> action. '
     displayName: Discover Input Schema
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DiscoverInputSchema
     body:
       application/json: DiscoverInputSchemaRequest
     responses:
@@ -1134,6 +1179,11 @@ types:
   post:
     description: Returns a list of Amazon Kinesis Analytics applications in your account. For each application, the response includes the application name, Amazon Resource Name (ARN), and status. If the response returns the <code>HasMoreApplications</code> value as true, you can send another request by adding the <code>ExclusiveStartApplicationName</code> in the request body, and set the value of this to the last application name from the previous response.  If you want detailed information about a specific application, use <a>DescribeApplication</a>. This operation requires permissions to perform the <code>kinesisanalytics:ListApplications</code> action.
     displayName: List Applications
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListApplications
     body:
       application/json: ListApplicationsRequest
     responses:
@@ -1152,6 +1202,11 @@ types:
   post:
     description: Starts the specified Amazon Kinesis Analytics application. After creating an application, you must exclusively call this operation to start your application. After the application starts, it begins consuming the input data, processes it, and writes the output to the configured destination.  The application status must be <code>READY</code> for you to start an application. You can get the application status in the console or using the <a>DescribeApplication</a> operation. After you start the application, you can stop the application from processing the input by calling the <a>StopApplication</a> operation. This operation requires permissions to perform the <code>kinesisanalytics:StartApplication</code> action.
     displayName: Start Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StartApplication
     body:
       application/json: StartApplicationRequest
     responses:
@@ -1172,6 +1227,11 @@ types:
   post:
     description: Stops the application from processing input data. You can stop an application only if it is in the running state. You can use the <a>DescribeApplication</a> operation to find the application state. After the application is stopped, Amazon Kinesis Analytics stops reading data from the input, the application stops processing data, and there is no output written to the destination.  This operation requires permissions to perform the <code>kinesisanalytics:StopApplication</code> action.
     displayName: Stop Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StopApplication
     body:
       application/json: StopApplicationRequest
     responses:
@@ -1192,6 +1252,11 @@ types:
   post:
     description: Updates an existing Kinesis Analytics application. Using this API, you can update application code, input configuration, and output configuration.  Note that Kinesis Analytics updates the <code>CurrentApplicationVersionId</code> each time you update your application.  This opeation requires permission for the <code>kinesisanalytics:UpdateApplication</code> action.
     displayName: Update Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateApplication
     body:
       application/json: UpdateApplicationRequest
     responses:

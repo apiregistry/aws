@@ -506,6 +506,11 @@ types:
   post:
     description: Returns information about one or more repositories. <note>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</note>
     displayName: Batch Get Repositories
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - BatchGetRepositories
     body:
       application/json: BatchGetRepositoriesInput
     responses:
@@ -526,6 +531,11 @@ types:
   post:
     description: Creates a new branch in a repository and points the branch to a commit. <note>Calling the create branch operation does not set a repository's default branch. To do this, call the update default branch operation.</note>
     displayName: Create Branch
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateBranch
     body:
       application/json: CreateBranchInput
     responses:
@@ -546,6 +556,11 @@ types:
   post:
     description: Creates a new, empty repository.
     displayName: Create Repository
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateRepository
     body:
       application/json: CreateRepositoryInput
     responses:
@@ -566,6 +581,11 @@ types:
   post:
     description: Deletes a repository. If a specified repository was already deleted, a null repository ID will be returned. <important>Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future push calls to the deleted repository will fail.</important>
     displayName: Delete Repository
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteRepository
     body:
       application/json: DeleteRepositoryInput
     responses:
@@ -586,6 +606,11 @@ types:
   post:
     description: Returns information about a repository branch, including its name and the last commit ID.
     displayName: Get Branch
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetBranch
     body:
       application/json: GetBranchInput
     responses:
@@ -606,6 +631,11 @@ types:
   post:
     description: Returns information about a commit, including commit message and committer information.
     displayName: Get Commit
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetCommit
     body:
       application/json: GetCommitInput
     responses:
@@ -626,6 +656,11 @@ types:
   post:
     description: Returns information about a repository. <note>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</note>
     displayName: Get Repository
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetRepository
     body:
       application/json: GetRepositoryInput
     responses:
@@ -646,6 +681,11 @@ types:
   post:
     description: Gets information about triggers configured for a repository.
     displayName: Get Repository Triggers
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetRepositoryTriggers
     body:
       application/json: GetRepositoryTriggersInput
     responses:
@@ -666,6 +706,11 @@ types:
   post:
     description: Gets information about one or more branches in a repository.
     displayName: List Branches
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListBranches
     body:
       application/json: ListBranchesInput
     responses:
@@ -686,6 +731,11 @@ types:
   post:
     description: Gets information about one or more repositories.
     displayName: List Repositories
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListRepositories
     body:
       application/json: ListRepositoriesInput
     responses:
@@ -706,6 +756,11 @@ types:
   post:
     description: Replaces all triggers for a repository. This can be used to create or delete triggers.
     displayName: Put Repository Triggers
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutRepositoryTriggers
     body:
       application/json: PutRepositoryTriggersInput
     responses:
@@ -726,6 +781,11 @@ types:
   post:
     description: Tests the functionality of repository triggers by sending information to the trigger target. If real data is available in the repository, the test will send data from the last commit. If no data is available, sample data will be generated.
     displayName: Test Repository Triggers
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - TestRepositoryTriggers
     body:
       application/json: TestRepositoryTriggersInput
     responses:
@@ -746,6 +806,11 @@ types:
   post:
     description: Sets or changes the default branch name for the specified repository. <note>If you use this operation to change the default branch name to the current default branch name, a success message is returned even though the default branch did not change.</note>
     displayName: Update Default Branch
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateDefaultBranch
     body:
       application/json: UpdateDefaultBranchInput
     responses:
@@ -766,6 +831,11 @@ types:
   post:
     description: Sets or changes the comment or description for a repository. <note>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</note>
     displayName: Update Repository Description
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateRepositoryDescription
     body:
       application/json: UpdateRepositoryDescriptionInput
     responses:
@@ -786,6 +856,11 @@ types:
   post:
     description: Renames a repository. The repository name must be unique across the calling AWS account. In addition, repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. The suffix ".git" is prohibited. For a full description of the limits on repository names, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a> in the AWS CodeCommit User Guide.
     displayName: Update Repository Name
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateRepositoryName
     body:
       application/json: UpdateRepositoryNameInput
     responses:

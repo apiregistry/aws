@@ -2908,6 +2908,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Count Closed Workflow Executions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CountClosedWorkflowExecutions
     body:
       application/json: CountClosedWorkflowExecutionsInput
     responses:
@@ -2945,6 +2950,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Count Open Workflow Executions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CountOpenWorkflowExecutions
     body:
       application/json: CountOpenWorkflowExecutionsInput
     responses:
@@ -2979,6 +2989,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Count Pending Activity Tasks
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CountPendingActivityTasks
     body:
       application/json: CountPendingActivityTasksInput
     responses:
@@ -3013,6 +3028,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Count Pending Decision Tasks
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CountPendingDecisionTasks
     body:
       application/json: CountPendingDecisionTasksInput
     responses:
@@ -3051,6 +3071,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Deprecate Activity Type
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeprecateActivityType
     body:
       application/json: DeprecateActivityTypeInput
     responses:
@@ -3087,6 +3112,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Deprecate Domain
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeprecateDomain
     body:
       application/json: DeprecateDomainInput
     responses:
@@ -3126,6 +3156,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Deprecate Workflow Type
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeprecateWorkflowType
     body:
       application/json: DeprecateWorkflowTypeInput
     responses:
@@ -3161,6 +3196,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Describe Activity Type
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeActivityType
     body:
       application/json: DescribeActivityTypeInput
     responses:
@@ -3191,6 +3231,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Describe Domain
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDomain
     body:
       application/json: DescribeDomainInput
     responses:
@@ -3223,6 +3268,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Describe Workflow Execution
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeWorkflowExecution
     body:
       application/json: DescribeWorkflowExecutionInput
     responses:
@@ -3259,6 +3309,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Describe Workflow Type
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeWorkflowType
     body:
       application/json: DescribeWorkflowTypeInput
     responses:
@@ -3293,6 +3348,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Get Workflow Execution History
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetWorkflowExecutionHistory
     body:
       application/json: GetWorkflowExecutionHistoryInput
     responses:
@@ -3327,6 +3387,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: List Activity Types
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListActivityTypes
     body:
       application/json: ListActivityTypesInput
     responses:
@@ -3366,6 +3431,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: List Closed Workflow Executions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListClosedWorkflowExecutions
     body:
       application/json: ListClosedWorkflowExecutionsInput
     responses:
@@ -3401,6 +3471,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: List Domains
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListDomains
     body:
       application/json: ListDomainsInput
     responses:
@@ -3440,6 +3515,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: List Open Workflow Executions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListOpenWorkflowExecutions
     body:
       application/json: ListOpenWorkflowExecutionsInput
     responses:
@@ -3471,6 +3551,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: List Workflow Types
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListWorkflowTypes
     body:
       application/json: ListWorkflowTypesInput
     responses:
@@ -3512,6 +3597,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Poll For Activity Task
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PollForActivityTask
     body:
       application/json: PollForActivityTaskInput
     responses:
@@ -3561,6 +3651,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Poll For Decision Task
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PollForDecisionTask
     body:
       application/json: PollForDecisionTaskInput
     responses:
@@ -3611,6 +3706,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Record Activity Task Heartbeat
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RecordActivityTaskHeartbeat
     body:
       application/json: RecordActivityTaskHeartbeatInput
     responses:
@@ -3649,6 +3749,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Register Activity Type
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterActivityType
     body:
       application/json: RegisterActivityTypeInput
     responses:
@@ -3679,6 +3784,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Register Domain
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterDomain
     body:
       application/json: RegisterDomainInput
     responses:
@@ -3718,6 +3828,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Register Workflow Type
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterWorkflowType
     body:
       application/json: RegisterWorkflowTypeInput
     responses:
@@ -3756,6 +3871,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Request Cancel Workflow Execution
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RequestCancelWorkflowExecution
     body:
       application/json: RequestCancelWorkflowExecutionInput
     responses:
@@ -3797,6 +3917,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Respond Activity Task Canceled
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RespondActivityTaskCanceled
     body:
       application/json: RespondActivityTaskCanceledInput
     responses:
@@ -3838,6 +3963,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Respond Activity Task Completed
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RespondActivityTaskCompleted
     body:
       application/json: RespondActivityTaskCompletedInput
     responses:
@@ -3876,6 +4006,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Respond Activity Task Failed
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RespondActivityTaskFailed
     body:
       application/json: RespondActivityTaskFailedInput
     responses:
@@ -3896,6 +4031,11 @@ types:
   post:
     description: Used by deciders to tell the service that the <a>DecisionTask</a> identified by the <code>taskToken</code> has successfully completed. The <code>decisions</code> argument specifies the list of decisions made while processing the task. A <code>DecisionTaskCompleted</code> event is added to the workflow history. The <code>executionContext</code> specified is attached to the event in the workflow execution history. <b>Access Control</b> If an IAM policy grants permission to use <code>RespondDecisionTaskCompleted</code>, it can express permissions for the list of decisions in the <code>decisions</code> parameter. Each of the decisions has one or more parameters, much like a regular API call. To allow for policies to be as readable as possible, you can express permissions on decisions as if they were actual API calls, including applying conditions to some parameters. For more information, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.
     displayName: Respond Decision Task Completed
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RespondDecisionTaskCompleted
     body:
       application/json: RespondDecisionTaskCompletedInput
     responses:
@@ -3933,6 +4073,11 @@ types:
       example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Signal Workflow Execution
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SignalWorkflowExecution
     body:
       application/json: SignalWorkflowExecutionInput
     responses:
@@ -3974,6 +4119,11 @@ types:
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Start Workflow Execution
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StartWorkflowExecution
     body:
       application/json: StartWorkflowExecutionInput
     responses:
@@ -4013,6 +4163,11 @@ types:
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
     displayName: Terminate Workflow Execution
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - TerminateWorkflowExecution
     body:
       application/json: TerminateWorkflowExecutionInput
     responses:

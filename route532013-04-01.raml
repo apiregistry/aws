@@ -1689,6 +1689,11 @@ types:
     get:
       description: Gets the number of traffic policy instances that are associated with the current AWS account. To get the number of traffic policy instances, send a <code>GET</code> request to the <code>/2013-04-01/trafficpolicyinstancecount</code> resource.
       displayName: Get Traffic Policy Instance Count
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - GetTrafficPolicyInstanceCount
       body:
         application/xml: GetTrafficPolicyInstanceCountRequest
       responses:
@@ -1729,6 +1734,10 @@ types:
           </li> </ul>'
         displayName: List Traffic Policy Instances By Policy
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - ListTrafficPolicyInstancesByPolicy
           id:
             type: TrafficPolicyId
             description: <p>The ID of the traffic policy for which you want to list traffic policy instances.</p>
@@ -1786,6 +1795,10 @@ types:
           </li> </ul>'
         displayName: List Traffic Policy Instances By Hosted Zone
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - ListTrafficPolicyInstancesByHostedZone
           id:
             type: ResourceId
             description: <p>The ID of the hosted zone for which you want to list traffic policy instances.</p>
@@ -1833,6 +1846,10 @@ types:
         all three elements are omitted from the response. </li> </ul>'
       displayName: List Traffic Policy Instances
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListTrafficPolicyInstances
         hostedzoneid?:
           type: ResourceId
           description: <p>For the first request to <code>ListTrafficPolicyInstances</code>, omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get the next group of <code>MaxItems</code> traffic policy instances, submit another <code>ListTrafficPolicyInstances</code> request. For the value of <code>HostedZoneIdMarker</code>, specify the value of <code>HostedZoneIdMarker</code> from the previous response, which is the hosted zone ID of the first traffic policy instance in the next group of <code>MaxItems</code> traffic policy instances.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
@@ -1867,6 +1884,10 @@ types:
           description: Gets the list of ChangeBatches in a given time period for a given hosted zone and RRSet.
           displayName: List Change Batches By R R Set
           queryParameters:
+            Action:
+              type: string
+              enum:
+              - ListChangeBatchesByRRSet
             rrSet_name:
               type: DNSName
               description: <p>The name of the RRSet that you want to see changes for.</p>
@@ -1901,6 +1922,11 @@ types:
         post:
           description: Disassociates a VPC from a Amazon Route 53 private hosted zone.  Send a <code>POST</code> request to the <code>/<i>Amazon Route 53 API version</i>/hostedzone/<i>hosted zone ID</i>/disassociatevpc</code> resource. The request body must include an XML document with a <code>DisassociateVPCFromHostedZoneRequest</code> element. The response returns the <code>DisassociateVPCFromHostedZoneResponse</code> element. <important> You can only disassociate a VPC from a private hosted zone when two or more VPCs are associated with that hosted zone. You cannot convert a private hosted zone into a public hosted zone. </important>
           displayName: Disassociate V P C From Hosted Zone
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - DisassociateVPCFromHostedZone
           body:
             application/xml:
               type: object
@@ -1999,6 +2025,11 @@ types:
             number of characters in the Value element of the resource record set being
             created. </note> For more information on transactional changes, see <a>ChangeResourceRecordSets</a>.'
           displayName: Change Resource Record Sets
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - ChangeResourceRecordSets
           body:
             application/xml:
               type: object
@@ -2017,6 +2048,10 @@ types:
         get:
           displayName: List Resource Record Sets
           queryParameters:
+            Action:
+              type: string
+              enum:
+              - ListResourceRecordSets
             name?:
               type: DNSName
               description: <p>The first name in the lexicographic ordering of domain names that you want the <code>ListResourceRecordSets</code> request to list.</p>
@@ -2057,6 +2092,10 @@ types:
           description: Gets the list of ChangeBatches in a given time period for a given hosted zone.
           displayName: List Change Batches By Hosted Zone
           queryParameters:
+            Action:
+              type: string
+              enum:
+              - ListChangeBatchesByHostedZone
             startDate:
               type: Date
               description: <p>The start of the time period you want to see changes for.</p>
@@ -2082,6 +2121,11 @@ types:
         post:
           description: Associates an Amazon VPC with a private hosted zone.  <important> The VPC and the hosted zone must already exist, and you must have created a private hosted zone. You cannot convert a public hosted zone into a private hosted zone. </important> Send a <code>POST</code> request to the <code>/<i>Amazon Route 53 API version</i>/hostedzone/<i>hosted zone ID</i>/associatevpc</code> resource. The request body must include an XML document with a <code>AssociateVPCWithHostedZoneRequest</code> element. The response returns the <code>AssociateVPCWithHostedZoneResponse</code> element. <note> If you used different accounts to create the hosted zone and to create the Amazon VPCs that you want to associate with the hosted zone, we need to update account permissions for you. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zone-private-associate-vpcs-different-accounts.html">Associating Amazon VPCs and Private Hosted Zones That You Create with Different AWS Accounts</a> in the Amazon Route 53 Developer Guide. </note>
           displayName: Associate V P C With Hosted Zone
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - AssociateVPCWithHostedZone
           body:
             application/xml:
               type: object
@@ -2106,6 +2150,11 @@ types:
           to the <code>/<i>Amazon Route 53 API version</i>/hostedzone/<i>hosted zone
           ID</i> </code> resource. '
         displayName: Get Hosted Zone
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetHostedZone
         responses:
           200:
             body:
@@ -2118,6 +2167,11 @@ types:
         description: 'Updates the hosted zone comment. Send a <code>POST</code> request
           to the <code>/2013-04-01/hostedzone/<i>hosted zone ID</i> </code> resource. '
         displayName: Update Hosted Zone Comment
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - UpdateHostedZoneComment
         body:
           application/xml:
             type: object
@@ -2136,6 +2190,11 @@ types:
       delete:
         description: Deletes a hosted zone. Send a <code>DELETE</code> request to the <code>/<i>Amazon Route 53 API version</i>/hostedzone/<i>hosted zone ID</i> </code> resource. <important> Delete a hosted zone only if there are no resource record sets other than the default SOA record and NS resource record sets. If the hosted zone contains other resource record sets, delete them before deleting the hosted zone. If you try to delete a hosted zone that contains other resource record sets, Amazon Route 53 denies your request with a <code>HostedZoneNotEmpty</code> error. For information about deleting records from your hosted zone, see <a>ChangeResourceRecordSets</a>. </important>
         displayName: Delete Hosted Zone
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - DeleteHostedZone
         responses:
           200:
             body:
@@ -2167,6 +2226,10 @@ types:
         in the previous request. </li> </ul>'
       displayName: List Hosted Zones
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListHostedZones
         marker?:
           type: PageMarker
           description: <p>(Optional) If you have more hosted zones than the value of <code>maxitems</code>, <code>ListHostedZones</code> returns only the first <code>maxitems</code> hosted zones. To get the next group of <code>maxitems</code> hosted zones, submit another request to <code>ListHostedZones</code>. For the value of marker, specify the value of the <code>NextMarker</code> element that was returned in the previous response.</p> <p>Hosted zones are listed in the order in which they were created.</p>
@@ -2210,6 +2273,11 @@ types:
         Route 53 would assign those 4 NS records for the zone, instead of alloting
         a new one.'
       displayName: Create Hosted Zone
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - CreateHostedZone
       body:
         application/xml: CreateHostedZoneRequest
       responses:
@@ -2252,6 +2320,11 @@ types:
             request to the <code>/2013-04-01/healthcheck/<i>health check ID</i>/status</code>
             resource. You can use this call to get a health check''s current status. '
           displayName: Get Health Check Status
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetHealthCheckStatus
           responses:
             200:
               body:
@@ -2265,6 +2338,11 @@ types:
         get:
           description: If you want to learn why a health check is currently failing or why it failed most recently (if at all), you can get the failure reason for the most recent failure. Send a <code>GET</code> request to the <code>/<i>Amazon Route 53 API version</i>/healthcheck/<i>health check ID</i>/lastfailurereason</code> resource.
           displayName: Get Health Check Last Failure Reason
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetHealthCheckLastFailureReason
           responses:
             200:
               body:
@@ -2276,6 +2354,11 @@ types:
       delete:
         description: Deletes a health check. Send a <code>DELETE</code> request to the <code>/2013-04-01/healthcheck/<i>health check ID</i> </code> resource. <important> Amazon Route 53 does not prevent you from deleting a health check even if the health check is associated with one or more resource record sets. If you delete a health check and you don't update the associated resource record sets, the future status of the health check cannot be predicted and may change. This will affect the routing of DNS queries for your DNS failover configuration. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html#health-checks-deleting.html">Replacing and Deleting Health Checks</a> in the Amazon Route 53 Developer Guide. </important>
         displayName: Delete Health Check
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - DeleteHealthCheck
         responses:
           200:
             body:
@@ -2287,6 +2370,11 @@ types:
       post:
         description: Updates an existing health check. Send a <code>POST</code> request to the <code>/<i>Amazon Route 53 API version</i>/healthcheck/<i>health check ID</i> </code> resource. The request body must include an XML document with an <code>UpdateHealthCheckRequest</code> element. For more information about updating health checks, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html">Creating, Updating, and Deleting Health Checks</a> in the Amazon Route 53 Developer Guide.
         displayName: Update Health Check
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - UpdateHealthCheck
         body:
           application/xml:
             type: object
@@ -2344,6 +2432,11 @@ types:
       get:
         description: Gets information about a specified health check. Send a <code>GET</code> request to the <code>/2013-04-01/healthcheck/<i>health check ID</i> </code> resource. For more information about using the console to perform this operation, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html">Amazon Route 53 Health Checks and DNS Failover</a> in the Amazon Route 53 Developer Guide.
         displayName: Get Health Check
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetHealthCheck
         responses:
           200:
             body:
@@ -2379,6 +2472,11 @@ types:
         and alarms by using the CloudWatch console, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html">Amazon
         CloudWatch Developer Guide</a>. </li> </ul>'
       displayName: Create Health Check
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - CreateHealthCheck
       body:
         application/xml: CreateHealthCheckRequest
       responses:
@@ -2402,6 +2500,10 @@ types:
       description: Retrieve a list of your health checks. Send a <code>GET</code> request to the <code>/2013-04-01/healthcheck</code> resource. The response to this request includes a <code>HealthChecks</code> element with zero or more <code>HealthCheck</code> child elements. By default, the list of health checks is displayed on a single page. You can control the length of the page that is displayed by using the <code>MaxItems</code> parameter. You can use the <code>Marker</code> parameter to control the health check that the list begins with. For information about listing health checks using the Amazon Route 53 console, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html">Amazon Route 53 Health Checks and DNS Failover</a>.
       displayName: List Health Checks
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListHealthChecks
         marker?:
           type: PageMarker
           description: <p>If the response to a <code>ListHealthChecks</code> is more than one page, marker is the health check ID for the first health check on the next page of results. For more information, see <a>ListHealthChecksResponse$MaxItems</a>.</p>
@@ -2429,6 +2531,11 @@ types:
           </li> <li>  <code>INSYNC</code> indicates that the changes have replicated
           to all Amazon Route 53 DNS servers.  </li> </ul>'
         displayName: Get Change
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetChange
         responses:
           200:
             body:
@@ -2448,6 +2555,11 @@ types:
       delete:
         description: Deletes a reusable delegation set. Send a <code>DELETE</code> request to the <code>/2013-04-01/delegationset/<i>delegation set ID</i> </code> resource. <important>  You can delete a reusable delegation set only if there are no associated hosted zones. </important> To verify that the reusable delegation set is not associated with any hosted zones, run the <a>GetReusableDelegationSet</a> action and specify the ID of the reusable delegation set that you want to delete.
         displayName: Delete Reusable Delegation Set
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - DeleteReusableDelegationSet
         responses:
           200:
             body:
@@ -2457,6 +2569,11 @@ types:
       get:
         description: Retrieves the reusable delegation set. Send a <code>GET</code> request to the <code>/2013-04-01/delegationset/<i>delegation set ID</i> </code> resource.
         displayName: Get Reusable Delegation Set
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetReusableDelegationSet
         responses:
           200:
             body:
@@ -2466,6 +2583,11 @@ types:
     post:
       description: Creates a delegation set (a group of four anem servers) that can be reused by multiple hosted zones. If a hosted zoned ID is specified, <code>CreateReusableDelegationSet</code> marks the delegation set associated with that zone as reusable Send a <code>POST</code> request to the <code>/<i>Amazon Route 53 API version</i>/delegationset</code> resource. The request body must include an XML document with a <code>CreateReusableDelegationSetRequest</code> element. <note> A reusable delegation set cannot be associated with a private hosted zone/ </note> For more information, including a procedure on how to create and configure a reusable delegation set (also known as white label name servers), see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html">Configuring White Label Name Servers</a>.
       displayName: Create Reusable Delegation Set
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - CreateReusableDelegationSet
       body:
         application/xml: CreateReusableDelegationSetRequest
       responses:
@@ -2487,6 +2609,10 @@ types:
       description: To retrieve a list of your reusable delegation sets, send a <code>GET</code> request to the <code>/2013-04-01/delegationset</code> resource. The response to this request includes a <code>DelegationSets</code> element with zero, one, or multiple <code>DelegationSet</code> child elements. By default, the list of delegation sets is displayed on a single page. You can control the length of the page that is displayed by using the <code>MaxItems</code> parameter. You can use the <code>Marker</code> parameter to control the delegation set that the list begins with.  <note>  Amazon Route 53 returns a maximum of 100 items. If you set MaxItems to a value greater than 100, Amazon Route 53 returns only the first 100. </note>
       displayName: List Reusable Delegation Sets
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListReusableDelegationSets
         marker?:
           type: PageMarker
           description: <p>If you're making the second or subsequent call to <code>ListReusableDelegationSets</code>, the <code>Marker</code> element matches the value that you specified in the <code>marker</code> parameter in the previous request.</p>
@@ -2504,6 +2630,10 @@ types:
     get:
       displayName: Test D N S Answer
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - TestDNSAnswer
         hostedzoneid:
           type: ResourceId
         recordname:
@@ -2536,6 +2666,10 @@ types:
         are listed in alphabetical order immediately after the corresponding country. '
       displayName: List Geo Locations
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListGeoLocations
         startcontinentcode?:
           type: GeoLocationContinentCode
           description: <p>The code for the continent with which you want to start listing locations that Amazon Route 53 supports for geolocation. If Amazon Route 53 has already returned a page or more of results, if <code>IsTruncated</code> is true, and if <code>NextContinentCode</code> from the previous response has a value, enter that value in <code>StartContinentCode</code> to return the next page of results.</p> <p>Include <code>StartContinentCode</code> only if you want to list continents. Don't include <code>StartContinentCode</code> when you're listing countries or countries with their subdivisions.</p>
@@ -2571,6 +2705,11 @@ types:
         delete:
           description: Deletes a traffic policy. Send a <code>DELETE</code> request to the <code>/<i>Amazon Route 53 API version</i>/trafficpolicy</code> resource.
           displayName: Delete Traffic Policy
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - DeleteTrafficPolicy
           responses:
             200:
               body:
@@ -2582,6 +2721,11 @@ types:
         post:
           description: Updates the comment for a specified traffic policy version. Send a <code>POST</code> request to the <code>/<i>Amazon Route 53 API version</i>/trafficpolicy/</code> resource. The request body must include a document with an <code>UpdateTrafficPolicyCommentRequest</code> element.
           displayName: Update Traffic Policy Comment
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - UpdateTrafficPolicyComment
           body:
             application/xml:
               type: object
@@ -2600,6 +2744,11 @@ types:
         get:
           description: Gets information about a specific traffic policy version. Send a <code>GET</code> request to the <code>/<i>Amazon Route 53 API version</i>/trafficpolicy</code> resource.
           displayName: Get Traffic Policy
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetTrafficPolicy
           responses:
             200:
               body:
@@ -2611,6 +2760,11 @@ types:
       post:
         description: Creates a new version of an existing traffic policy. When you create a new version of a traffic policy, you specify the ID of the traffic policy that you want to update and a JSON-formatted document that describes the new version. You use traffic policies to create multiple DNS resource record sets for one domain name (such as example.com) or one subdomain name (such as www.example.com). You can create a maximum of 1000 versions of a traffic policy. If you reach the limit and need to create another version, you'll need to start a new traffic policy. Send a <code>POST</code> request to the <code>/<i>Amazon Route 53 version</i>/trafficpolicy/</code> resource. The request body includes a document with a <code>CreateTrafficPolicyVersionRequest</code> element. The response returns the <code>CreateTrafficPolicyVersionResponse</code> element, which contains information about the new version of the traffic policy.
         displayName: Create Traffic Policy Version
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - CreateTrafficPolicyVersion
         body:
           application/xml:
             type: object
@@ -2640,6 +2794,11 @@ types:
     post:
       description: Creates a traffic policy, which you use to create multiple DNS resource record sets for one domain name (such as example.com) or one subdomain name (such as www.example.com). Send a <code>POST</code> request to the <code>/<i>Amazon Route 53 API version</i>/trafficpolicy</code> resource. The request body must include a document with a <code>CreateTrafficPolicyRequest</code> element. The response includes the <code>CreateTrafficPolicyResponse</code> element, which contains information about the new traffic policy.
       displayName: Create Traffic Policy
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - CreateTrafficPolicy
       body:
         application/xml: CreateTrafficPolicyRequest
       responses:
@@ -2692,6 +2851,10 @@ types:
             current response. </li> </ul>'
           displayName: List Traffic Policy Versions
           queryParameters:
+            Action:
+              type: string
+              enum:
+              - ListTrafficPolicyVersions
             trafficpolicyversion?:
               type: TrafficPolicyVersionMarker
               description: <p>For your first request to <code>ListTrafficPolicyVersions</code>, do not include the <code>TrafficPolicyVersionMarker</code> parameter.</p> <p>If you have more traffic policy versions than the value of <code>MaxItems</code>, <code>ListTrafficPolicyVersions</code> returns only the first group of <code>MaxItems</code> versions. To get the next group of <code>MaxItems</code> traffic policy versions, submit another request to <code>ListTrafficPolicyVersions</code>. For the value of <code>TrafficPolicyVersionMarker</code>, specify the value of the <code>TrafficPolicyVersionMarker</code> element that was returned in the previous response.</p> <p>Traffic policy versions are listed in sequential order.</p>
@@ -2730,6 +2893,10 @@ types:
         that produced the current response. </li> </ul>'
       displayName: List Traffic Policies
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListTrafficPolicies
         trafficpolicyid?:
           type: TrafficPolicyId
           description: <p>(Conditional) For your first request to <code>ListTrafficPolicies</code>, do not include the <code>TrafficPolicyIdMarker</code> parameter.</p> <p>If you have more traffic policies than the value of <code>MaxItems</code>, <code>ListTrafficPolicies</code> returns only the first <code>MaxItems</code> traffic policies. To get the next group of <code>MaxItems</code> policies, submit another request to <code>ListTrafficPolicies</code>. For the value of <code>TrafficPolicyIdMarker</code>, specify the value of the <code>TrafficPolicyIdMarker</code> element that was returned in the previous response.</p> <p>Policies are listed in the order in which they were created.</p>
@@ -2757,6 +2924,11 @@ types:
         displayName: Change Tags For Resource
         get:
           displayName: List Tags For Resource
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - ListTagsForResource
           responses:
             200:
               body:
@@ -2767,6 +2939,11 @@ types:
               description: NoSuchHealthCheck | NoSuchHostedZone
         post:
           displayName: Change Tags For Resource
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - ChangeTagsForResource
           body:
             application/xml:
               type: object
@@ -2787,6 +2964,11 @@ types:
               description: NoSuchHealthCheck | NoSuchHostedZone
       post:
         displayName: List Tags For Resources
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - ListTagsForResources
         body:
           application/xml:
             type: object
@@ -2829,6 +3011,11 @@ types:
           Amazon Route 53 deletes the old group of resource record sets that are associated
           with the root resource record set name. </li> </ol>'
         displayName: Update Traffic Policy Instance
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - UpdateTrafficPolicyInstance
         body:
           application/xml:
             type: object
@@ -2853,6 +3040,11 @@ types:
       get:
         description: Gets information about a specified traffic policy instance. Send a <code>GET</code> request to the <code>/<i>Amazon Route 53 API version</i>/trafficpolicyinstance</code> resource. <note> After you submit a <code>CreateTrafficPolicyInstance</code> or an <code>UpdateTrafficPolicyInstance</code> request, there's a brief delay while Amazon Route 53 creates the resource record sets that are specified in the traffic policy definition. For more information, see the <code>State</code> response element. </note> <note> In the Amazon Route 53 console, traffic policy instances are known as policy records. </note>
         displayName: Get Traffic Policy Instance
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetTrafficPolicyInstance
         responses:
           200:
             body:
@@ -2864,6 +3056,11 @@ types:
       delete:
         description: Deletes a traffic policy instance and all of the resource record sets that Amazon Route 53 created when you created the instance. Send a <code>DELETE</code> request to the <code>/<i>Amazon Route 53 API version</i>/trafficpolicy/<i>traffic policy instance ID</i> </code> resource. <note> In the Amazon Route 53 console, traffic policy instances are known as policy records. </note>
         displayName: Delete Traffic Policy Instance
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - DeleteTrafficPolicyInstance
         responses:
           200:
             body:
@@ -2875,6 +3072,11 @@ types:
     post:
       description: Creates resource record sets in a specified hosted zone based on the settings in a specified traffic policy version. In addition, <code>CreateTrafficPolicyInstance</code> associates the resource record sets with a specified domain name (such as example.com) or subdomain name (such as www.example.com). Amazon Route 53 responds to DNS queries for the domain or subdomain name by using the resource record sets that <code>CreateTrafficPolicyInstance</code> created. Send a <code>POST</code> request to the <code>/<i>Amazon Route 53 API version</i>/trafficpolicyinstance</code> resource. The request body must include a document with a <code>CreateTrafficPolicyRequest</code> element. The response returns the <code>CreateTrafficPolicyInstanceResponse</code> element, which contains information about the traffic policy instance.
       displayName: Create Traffic Policy Instance
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - CreateTrafficPolicyInstance
       body:
         application/xml: CreateTrafficPolicyInstanceRequest
       responses:
@@ -2904,6 +3106,10 @@ types:
         continentcode | countrycode | countrycode and subdivisioncode.'
       displayName: Get Geo Location
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - GetGeoLocation
         continentcode?:
           type: GeoLocationContinentCode
           description: '<p>Amazon Route 53 supports the following contintent codes:</p>
@@ -2965,6 +3171,10 @@ types:
         parameters, respectively. </li> </ul>'
       displayName: List Hosted Zones By Name
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListHostedZonesByName
         dnsname?:
           type: DNSName
           description: <p>(Optional) For your first request to <code>ListHostedZonesByName</code>, include the <code>dnsname</code> parameter only if you want to specify the name of the first hosted zone in the response. If you don't include the <code>dnsname</code> parameter, Amazon Route 53 returns all of the hosted zones that were created by the current AWS account, in ASCII order. For subsequent requests, include both <code>dnsname</code> and <code>hostedzoneid</code> parameters. For <code>dnsname</code>, specify the value of <code>NextDNSName</code> from the previous response.</p>
@@ -2985,6 +3195,11 @@ types:
     get:
       description: Retrieves a count of all your hosted zones. Send a <code>GET</code> request to the <code>/2013-04-01/hostedzonecount</code> resource.
       displayName: Get Hosted Zone Count
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - GetHostedZoneCount
       body:
         application/xml: GetHostedZoneCountRequest
       responses:
@@ -3003,6 +3218,11 @@ types:
       get:
         description: Returns the status and changes of a change batch request.
         displayName: Get Change Details
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetChangeDetails
         responses:
           200:
             body:
@@ -3016,6 +3236,11 @@ types:
     get:
       description: To retrieve a count of all your health checks, send a <code>GET</code> request to the <code>/2013-04-01/healthcheckcount</code> resource.
       displayName: Get Health Check Count
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - GetHealthCheckCount
       body:
         application/xml: GetHealthCheckCountRequest
       responses:
@@ -3027,6 +3252,11 @@ types:
     get:
       description: Retrieves a list of the IP ranges used by Amazon Route 53 health checkers to check the health of your resources. Send a <code>GET</code> request to the <code>/<i>Amazon Route 53 API version</i>/checkeripranges</code> resource. Use these IP addresses to configure router and firewall rules to allow health checkers to check the health of your resources.
       displayName: Get Checker Ip Ranges
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - GetCheckerIpRanges
       body:
         application/xml: GetCheckerIpRangesRequest
       responses:

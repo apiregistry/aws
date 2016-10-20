@@ -994,6 +994,11 @@ types:
           put:
             description: Update an origin access identity.
             displayName: Update Cloud Front Origin Access Identity2016_01_28
+            queryParameters:
+              Action:
+                type: string
+                enum:
+                - UpdateCloudFrontOriginAccessIdentity2016_01_28
             headers:
               If-Match?:
                 type: string
@@ -1027,6 +1032,11 @@ types:
           get:
             description: Get the configuration information about an origin access identity.
             displayName: Get Cloud Front Origin Access Identity Config2016_01_28
+            queryParameters:
+              Action:
+                type: string
+                enum:
+                - GetCloudFrontOriginAccessIdentityConfig2016_01_28
             responses:
               200:
                 headers:
@@ -1045,6 +1055,11 @@ types:
         get:
           description: Get the information about an origin access identity.
           displayName: Get Cloud Front Origin Access Identity2016_01_28
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetCloudFrontOriginAccessIdentity2016_01_28
           responses:
             200:
               headers:
@@ -1063,6 +1078,11 @@ types:
         delete:
           description: Delete an origin access identity.
           displayName: Delete Cloud Front Origin Access Identity2016_01_28
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - DeleteCloudFrontOriginAccessIdentity2016_01_28
           headers:
             If-Match?:
               type: string
@@ -1086,6 +1106,10 @@ types:
         description: List origin access identities.
         displayName: List Cloud Front Origin Access Identities2016_01_28
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - ListCloudFrontOriginAccessIdentities2016_01_28
           Marker?:
             type: string
             description: Use this when paginating results to indicate where to begin in your list of origin access identities. The results include identities in the list that occur after the marker. To get the next page of results, set the Marker to the value of the NextMarker from the current page's response (which is also the ID of the last identity on that page).
@@ -1103,6 +1127,11 @@ types:
       post:
         description: Create a new origin access identity.
         displayName: Create Cloud Front Origin Access Identity2016_01_28
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - CreateCloudFrontOriginAccessIdentity2016_01_28
         body:
           application/xml:
             type: CloudFrontOriginAccessIdentityConfig
@@ -1140,6 +1169,11 @@ types:
         put:
           description: Update a streaming distribution.
           displayName: Update Streaming Distribution2016_01_28
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - UpdateStreamingDistribution2016_01_28
           headers:
             If-Match?:
               type: string
@@ -1175,6 +1209,11 @@ types:
         get:
           description: Get the configuration information about a streaming distribution.
           displayName: Get Streaming Distribution Config2016_01_28
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetStreamingDistributionConfig2016_01_28
           responses:
             200:
               headers:
@@ -1193,6 +1232,11 @@ types:
       get:
         description: Get the information about a streaming distribution.
         displayName: Get Streaming Distribution2016_01_28
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetStreamingDistribution2016_01_28
         responses:
           200:
             headers:
@@ -1211,6 +1255,11 @@ types:
       delete:
         description: Delete a streaming distribution.
         displayName: Delete Streaming Distribution2016_01_28
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - DeleteStreamingDistribution2016_01_28
         headers:
           If-Match?:
             type: string
@@ -1233,6 +1282,11 @@ types:
     post:
       description: Create a new streaming distribution.
       displayName: Create Streaming Distribution2016_01_28
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - CreateStreamingDistribution2016_01_28
       body:
         application/xml:
           type: StreamingDistributionConfig
@@ -1263,6 +1317,10 @@ types:
       description: List streaming distributions.
       displayName: List Streaming Distributions2016_01_28
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListStreamingDistributions2016_01_28
         Marker?:
           type: string
           description: Use this when paginating results to indicate where to begin in your list of streaming distributions. The results include distributions in the list that occur after the marker. To get the next page of results, set the Marker to the value of the NextMarker from the current page's response (which is also the ID of the last distribution on that page).
@@ -1290,6 +1348,11 @@ types:
         put:
           description: Update a distribution.
           displayName: Update Distribution2016_01_28
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - UpdateDistribution2016_01_28
           headers:
             If-Match?:
               type: string
@@ -1325,6 +1388,11 @@ types:
         get:
           description: Get the configuration information about a distribution.
           displayName: Get Distribution Config2016_01_28
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetDistributionConfig2016_01_28
           responses:
             200:
               headers:
@@ -1343,6 +1411,11 @@ types:
       get:
         description: Get the information about a distribution.
         displayName: Get Distribution2016_01_28
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetDistribution2016_01_28
         responses:
           200:
             headers:
@@ -1361,6 +1434,11 @@ types:
       delete:
         description: Delete a distribution.
         displayName: Delete Distribution2016_01_28
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - DeleteDistribution2016_01_28
         headers:
           If-Match?:
             type: string
@@ -1396,6 +1474,11 @@ types:
           get:
             description: Get the information about an invalidation.
             displayName: Get Invalidation2016_01_28
+            queryParameters:
+              Action:
+                type: string
+                enum:
+                - GetInvalidation2016_01_28
             responses:
               200:
                 body:
@@ -1410,6 +1493,10 @@ types:
           description: List invalidation batches.
           displayName: List Invalidations2016_01_28
           queryParameters:
+            Action:
+              type: string
+              enum:
+              - ListInvalidations2016_01_28
             Marker?:
               type: string
               description: Use this parameter when paginating results to indicate where to begin in your list of invalidation batches. Because the results are returned in decreasing order from most recent to oldest, the most recent results are on the first page, the second page will contain earlier results, and so on. To get the next page of results, set the Marker to the value of the NextMarker from the current page's response. This value is the same as the ID of the last invalidation batch on that page.
@@ -1431,6 +1518,11 @@ types:
         post:
           description: Create a new invalidation.
           displayName: Create Invalidation2016_01_28
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - CreateInvalidation2016_01_28
           body:
             application/xml:
               type: InvalidationBatch
@@ -1458,6 +1550,11 @@ types:
     post:
       description: Create a new distribution.
       displayName: Create Distribution2016_01_28
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - CreateDistribution2016_01_28
       body:
         application/xml:
           type: DistributionConfig
@@ -1490,6 +1587,10 @@ types:
       description: List distributions.
       displayName: List Distributions2016_01_28
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListDistributions2016_01_28
         Marker?:
           type: string
           description: Use Marker and MaxItems to control pagination of results. If you have more than MaxItems distributions that satisfy the request, the response includes a NextMarker element. To get the next page of results, submit another request. For the value of Marker, specify the value of NextMarker from the last response. (For the first request, omit Marker.)
@@ -1515,6 +1616,10 @@ types:
         description: List the distributions that are associated with a specified AWS WAF web ACL.
         displayName: List Distributions By Web A C L Id2016_01_28
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - ListDistributionsByWebACLId2016_01_28
           Marker?:
             type: string
             description: Use Marker and MaxItems to control pagination of results. If you have more than MaxItems distributions that satisfy the request, the response includes a NextMarker element. To get the next page of results, submit another request. For the value of Marker, specify the value of NextMarker from the last response. (For the first request, omit Marker.)

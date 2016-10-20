@@ -1553,6 +1553,11 @@ types:
   post:
     description: Adds tags to on-premises instances.
     displayName: Add Tags To On Premises Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AddTagsToOnPremisesInstances
     body:
       application/json: AddTagsToOnPremisesInstancesInput
     responses:
@@ -1573,6 +1578,11 @@ types:
   post:
     description: Gets information about one or more application revisions.
     displayName: Batch Get Application Revisions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - BatchGetApplicationRevisions
     body:
       application/json: BatchGetApplicationRevisionsInput
     responses:
@@ -1593,6 +1603,11 @@ types:
   post:
     description: Gets information about one or more applications.
     displayName: Batch Get Applications
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - BatchGetApplications
     body:
       application/json: BatchGetApplicationsInput
     responses:
@@ -1613,6 +1628,11 @@ types:
   post:
     description: Get information about one or more deployment groups.
     displayName: Batch Get Deployment Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - BatchGetDeploymentGroups
     body:
       application/json: BatchGetDeploymentGroupsInput
     responses:
@@ -1633,6 +1653,11 @@ types:
   post:
     description: Gets information about one or more instance that are part of a deployment group.
     displayName: Batch Get Deployment Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - BatchGetDeploymentInstances
     body:
       application/json: BatchGetDeploymentInstancesInput
     responses:
@@ -1653,6 +1678,11 @@ types:
   post:
     description: Gets information about one or more deployments.
     displayName: Batch Get Deployments
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - BatchGetDeployments
     body:
       application/json: BatchGetDeploymentsInput
     responses:
@@ -1673,6 +1703,11 @@ types:
   post:
     description: Gets information about one or more on-premises instances.
     displayName: Batch Get On Premises Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - BatchGetOnPremisesInstances
     body:
       application/json: BatchGetOnPremisesInstancesInput
     responses:
@@ -1693,6 +1728,11 @@ types:
   post:
     description: Creates an application.
     displayName: Create Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateApplication
     body:
       application/json: CreateApplicationInput
     responses:
@@ -1713,6 +1753,11 @@ types:
   post:
     description: Deploys an application revision through the specified deployment group.
     displayName: Create Deployment
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDeployment
     body:
       application/json: CreateDeploymentInput
     responses:
@@ -1733,6 +1778,11 @@ types:
   post:
     description: Creates a deployment configuration.
     displayName: Create Deployment Config
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDeploymentConfig
     body:
       application/json: CreateDeploymentConfigInput
     responses:
@@ -1753,6 +1803,11 @@ types:
   post:
     description: Creates a deployment group to which application revisions will be deployed.
     displayName: Create Deployment Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDeploymentGroup
     body:
       application/json: CreateDeploymentGroupInput
     responses:
@@ -1773,6 +1828,11 @@ types:
   post:
     description: Deletes an application.
     displayName: Delete Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteApplication
     body:
       application/json: DeleteApplicationInput
     responses:
@@ -1793,6 +1853,11 @@ types:
   post:
     description: Deletes a deployment configuration. <note> A deployment configuration cannot be deleted if it is currently in use. Predefined configurations cannot be deleted. </note>
     displayName: Delete Deployment Config
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDeploymentConfig
     body:
       application/json: DeleteDeploymentConfigInput
     responses:
@@ -1813,6 +1878,11 @@ types:
   post:
     description: Deletes a deployment group.
     displayName: Delete Deployment Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDeploymentGroup
     body:
       application/json: DeleteDeploymentGroupInput
     responses:
@@ -1833,6 +1903,11 @@ types:
   post:
     description: Deregisters an on-premises instance.
     displayName: Deregister On Premises Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeregisterOnPremisesInstance
     body:
       application/json: DeregisterOnPremisesInstanceInput
     responses:
@@ -1853,6 +1928,11 @@ types:
   post:
     description: Gets information about an application.
     displayName: Get Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetApplication
     body:
       application/json: GetApplicationInput
     responses:
@@ -1873,6 +1953,11 @@ types:
   post:
     description: Gets information about an application revision.
     displayName: Get Application Revision
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetApplicationRevision
     body:
       application/json: GetApplicationRevisionInput
     responses:
@@ -1893,6 +1978,11 @@ types:
   post:
     description: Gets information about a deployment.
     displayName: Get Deployment
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetDeployment
     body:
       application/json: GetDeploymentInput
     responses:
@@ -1913,6 +2003,11 @@ types:
   post:
     description: Gets information about a deployment configuration.
     displayName: Get Deployment Config
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetDeploymentConfig
     body:
       application/json: GetDeploymentConfigInput
     responses:
@@ -1933,6 +2028,11 @@ types:
   post:
     description: Gets information about a deployment group.
     displayName: Get Deployment Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetDeploymentGroup
     body:
       application/json: GetDeploymentGroupInput
     responses:
@@ -1953,6 +2053,11 @@ types:
   post:
     description: Gets information about an instance as part of a deployment.
     displayName: Get Deployment Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetDeploymentInstance
     body:
       application/json: GetDeploymentInstanceInput
     responses:
@@ -1973,6 +2078,11 @@ types:
   post:
     description: Gets information about an on-premises instance.
     displayName: Get On Premises Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetOnPremisesInstance
     body:
       application/json: GetOnPremisesInstanceInput
     responses:
@@ -1993,6 +2103,11 @@ types:
   post:
     description: Lists information about revisions for an application.
     displayName: List Application Revisions
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListApplicationRevisions
     body:
       application/json: ListApplicationRevisionsInput
     responses:
@@ -2013,6 +2128,11 @@ types:
   post:
     description: Lists the applications registered with the applicable IAM user or AWS account.
     displayName: List Applications
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListApplications
     body:
       application/json: ListApplicationsInput
     responses:
@@ -2033,6 +2153,11 @@ types:
   post:
     description: Lists the deployment configurations with the applicable IAM user or AWS account.
     displayName: List Deployment Configs
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListDeploymentConfigs
     body:
       application/json: ListDeploymentConfigsInput
     responses:
@@ -2053,6 +2178,11 @@ types:
   post:
     description: Lists the deployment groups for an application registered with the applicable IAM user or AWS account.
     displayName: List Deployment Groups
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListDeploymentGroups
     body:
       application/json: ListDeploymentGroupsInput
     responses:
@@ -2073,6 +2203,11 @@ types:
   post:
     description: Lists the instance for a deployment associated with the applicable IAM user or AWS account.
     displayName: List Deployment Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListDeploymentInstances
     body:
       application/json: ListDeploymentInstancesInput
     responses:
@@ -2093,6 +2228,11 @@ types:
   post:
     description: Lists the deployments in a deployment group for an application registered with the applicable IAM user or AWS account.
     displayName: List Deployments
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListDeployments
     body:
       application/json: ListDeploymentsInput
     responses:
@@ -2113,6 +2253,11 @@ types:
   post:
     description: Gets a list of names for one or more on-premises instances. Unless otherwise specified, both registered and deregistered on-premises instance names will be listed. To list only registered or deregistered on-premises instance names, use the registration status parameter.
     displayName: List On Premises Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListOnPremisesInstances
     body:
       application/json: ListOnPremisesInstancesInput
     responses:
@@ -2133,6 +2278,11 @@ types:
   post:
     description: Registers with AWS CodeDeploy a revision for the specified application.
     displayName: Register Application Revision
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterApplicationRevision
     body:
       application/json: RegisterApplicationRevisionInput
     responses:
@@ -2153,6 +2303,11 @@ types:
   post:
     description: Registers an on-premises instance.
     displayName: Register On Premises Instance
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterOnPremisesInstance
     body:
       application/json: RegisterOnPremisesInstanceInput
     responses:
@@ -2173,6 +2328,11 @@ types:
   post:
     description: Removes one or more tags from one or more on-premises instances.
     displayName: Remove Tags From On Premises Instances
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RemoveTagsFromOnPremisesInstances
     body:
       application/json: RemoveTagsFromOnPremisesInstancesInput
     responses:
@@ -2193,6 +2353,11 @@ types:
   post:
     description: Attempts to stop an ongoing deployment.
     displayName: Stop Deployment
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StopDeployment
     body:
       application/json: StopDeploymentInput
     responses:
@@ -2213,6 +2378,11 @@ types:
   post:
     description: Changes the name of an application.
     displayName: Update Application
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateApplication
     body:
       application/json: UpdateApplicationInput
     responses:
@@ -2233,6 +2403,11 @@ types:
   post:
     description: Changes information about a deployment group.
     displayName: Update Deployment Group
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateDeploymentGroup
     body:
       application/json: UpdateDeploymentGroupInput
     responses:

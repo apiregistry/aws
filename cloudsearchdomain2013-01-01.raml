@@ -337,6 +337,11 @@ types:
           information about uploading data for indexing, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/uploading-data.html">Uploading
           Data</a> in the <i>Amazon CloudSearch Developer Guide</i>. '
         displayName: Upload Documents
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - UploadDocuments
         headers:
           Content-Type:
             type: ContentType
@@ -370,6 +375,10 @@ types:
         the Amazon CloudSearch console. '
       displayName: Suggest
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - Suggest
         q:
           type: Query
           description: <p>Specifies the string for which you want to get suggestions.</p>
@@ -407,6 +416,10 @@ types:
         the Amazon CloudSearch console. '
       displayName: Search
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - Search
         cursor?:
           type: Cursor
           description: <p>Retrieves a cursor value you can use to page through large result sets. Use the <code>size</code> parameter to control the number of hits to include in each response. You can specify either the <code>cursor</code> or <code>start</code> parameter in a request; they are mutually exclusive. To get the first cursor, set the cursor value to <code>initial</code>. In subsequent requests, specify the cursor value returned in the hits section of the response. </p> <p>For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/paginating-results.html">Paginating Results</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>

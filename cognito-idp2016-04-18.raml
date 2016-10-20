@@ -2007,6 +2007,11 @@ types:
   post:
     description: Adds additional user attributes to the user pool schema.
     displayName: Add Custom Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AddCustomAttributes
     body:
       application/json: AddCustomAttributesRequest
     responses:
@@ -2027,6 +2032,11 @@ types:
   post:
     description: Confirms user registration as an admin without using a confirmation code. Works on any user.
     displayName: Admin Confirm Sign Up
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminConfirmSignUp
     body:
       application/json: AdminConfirmSignUpRequest
     responses:
@@ -2047,6 +2057,11 @@ types:
   post:
     description: Creates a new user in the specified user pool and sends a welcome message via email or phone (SMS). This message is based on a template that you configured in your call to CreateUserPool or UpdateUserPool. This template includes your custom sign-up instructions and placeholders for user name and temporary password. Requires developer credentials.
     displayName: Admin Create User
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminCreateUser
     body:
       application/json: AdminCreateUserRequest
     responses:
@@ -2067,6 +2082,11 @@ types:
   post:
     description: Deletes a user as an administrator. Works on any user.
     displayName: Admin Delete User
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminDeleteUser
     body:
       application/json: AdminDeleteUserRequest
     responses:
@@ -2087,6 +2107,11 @@ types:
   post:
     description: Deletes the user attributes in a user pool as an administrator. Works on any user.
     displayName: Admin Delete User Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminDeleteUserAttributes
     body:
       application/json: AdminDeleteUserAttributesRequest
     responses:
@@ -2107,6 +2132,11 @@ types:
   post:
     description: Disables the specified user as an administrator. Works on any user.
     displayName: Admin Disable User
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminDisableUser
     body:
       application/json: AdminDisableUserRequest
     responses:
@@ -2127,6 +2157,11 @@ types:
   post:
     description: Enables the specified user as an administrator. Works on any user.
     displayName: Admin Enable User
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminEnableUser
     body:
       application/json: AdminEnableUserRequest
     responses:
@@ -2147,6 +2182,11 @@ types:
   post:
     description: Forgets the device, as an administrator.
     displayName: Admin Forget Device
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminForgetDevice
     body:
       application/json: AdminForgetDeviceRequest
     responses:
@@ -2167,6 +2207,11 @@ types:
   post:
     description: Gets the device, as an administrator.
     displayName: Admin Get Device
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminGetDevice
     body:
       application/json: AdminGetDeviceRequest
     responses:
@@ -2187,6 +2232,11 @@ types:
   post:
     description: Gets the specified user by user name in a user pool as an administrator. Works on any user.
     displayName: Admin Get User
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminGetUser
     body:
       application/json: AdminGetUserRequest
     responses:
@@ -2207,6 +2257,11 @@ types:
   post:
     description: Initiates the authentication flow, as an administrator.
     displayName: Admin Initiate Auth
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminInitiateAuth
     body:
       application/json: AdminInitiateAuthRequest
     responses:
@@ -2227,6 +2282,11 @@ types:
   post:
     description: Lists devices, as an administrator.
     displayName: Admin List Devices
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminListDevices
     body:
       application/json: AdminListDevicesRequest
     responses:
@@ -2247,6 +2307,11 @@ types:
   post:
     description: Resets the specified user's password in a user pool as an administrator. Works on any user. When a developer calls this API, the current password is invalidated, so it must be changed. If a user tries to sign in after the API is called, the app will get a PasswordResetRequiredException exception back and should direct the user down the flow to reset the password, which is the same as the forgot password flow. In addition, if the user pool has phone verification selected and a verified phone number exists for the user, or if email verification is selected and a verified email exists for the user, calling this API will also result in sending a message to the end user with the code to change their password.
     displayName: Admin Reset User Password
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminResetUserPassword
     body:
       application/json: AdminResetUserPasswordRequest
     responses:
@@ -2267,6 +2332,11 @@ types:
   post:
     description: Responds to an authentication challenge, as an administrator.
     displayName: Admin Respond To Auth Challenge
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminRespondToAuthChallenge
     body:
       application/json: AdminRespondToAuthChallengeRequest
     responses:
@@ -2287,6 +2357,11 @@ types:
   post:
     description: Sets all the user settings for a specified user name. Works on any user.
     displayName: Admin Set User Settings
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminSetUserSettings
     body:
       application/json: AdminSetUserSettingsRequest
     responses:
@@ -2307,6 +2382,11 @@ types:
   post:
     description: Updates the device status as an administrator.
     displayName: Admin Update Device Status
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminUpdateDeviceStatus
     body:
       application/json: AdminUpdateDeviceStatusRequest
     responses:
@@ -2327,6 +2407,11 @@ types:
   post:
     description: Updates the specified user's attributes, including developer attributes, as an administrator. Works on any user.
     displayName: Admin Update User Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminUpdateUserAttributes
     body:
       application/json: AdminUpdateUserAttributesRequest
     responses:
@@ -2347,6 +2432,11 @@ types:
   post:
     description: Signs out users from all devices, as an administrator.
     displayName: Admin User Global Sign Out
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AdminUserGlobalSignOut
     body:
       application/json: AdminUserGlobalSignOutRequest
     responses:
@@ -2367,6 +2457,11 @@ types:
   post:
     description: Changes the password for a specified user in a user pool.
     displayName: Change Password
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ChangePassword
     body:
       application/json: ChangePasswordRequest
     responses:
@@ -2387,6 +2482,11 @@ types:
   post:
     description: Confirms tracking of the device. This API call is the call that beings device tracking.
     displayName: Confirm Device
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ConfirmDevice
     body:
       application/json: ConfirmDeviceRequest
     responses:
@@ -2407,6 +2507,11 @@ types:
   post:
     description: Allows a user to enter a code provided when they reset their password to update their password.
     displayName: Confirm Forgot Password
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ConfirmForgotPassword
     body:
       application/json: ConfirmForgotPasswordRequest
     responses:
@@ -2427,6 +2532,11 @@ types:
   post:
     description: Confirms registration of a user and handles the existing alias from a previous user.
     displayName: Confirm Sign Up
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ConfirmSignUp
     body:
       application/json: ConfirmSignUpRequest
     responses:
@@ -2447,6 +2557,11 @@ types:
   post:
     description: Creates the user import job.
     displayName: Create User Import Job
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateUserImportJob
     body:
       application/json: CreateUserImportJobRequest
     responses:
@@ -2467,6 +2582,11 @@ types:
   post:
     description: Creates a new Amazon Cognito user pool and sets the password policy for the pool.
     displayName: Create User Pool
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateUserPool
     body:
       application/json: CreateUserPoolRequest
     responses:
@@ -2487,6 +2607,11 @@ types:
   post:
     description: Creates the user pool client.
     displayName: Create User Pool Client
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateUserPoolClient
     body:
       application/json: CreateUserPoolClientRequest
     responses:
@@ -2507,6 +2632,11 @@ types:
   post:
     description: Allows a user to delete one's self.
     displayName: Delete User
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteUser
     body:
       application/json: DeleteUserRequest
     responses:
@@ -2527,6 +2657,11 @@ types:
   post:
     description: Deletes the attributes for a user.
     displayName: Delete User Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteUserAttributes
     body:
       application/json: DeleteUserAttributesRequest
     responses:
@@ -2547,6 +2682,11 @@ types:
   post:
     description: Deletes the specified Amazon Cognito user pool.
     displayName: Delete User Pool
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteUserPool
     body:
       application/json: DeleteUserPoolRequest
     responses:
@@ -2567,6 +2707,11 @@ types:
   post:
     description: Allows the developer to delete the user pool client.
     displayName: Delete User Pool Client
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteUserPoolClient
     body:
       application/json: DeleteUserPoolClientRequest
     responses:
@@ -2587,6 +2732,11 @@ types:
   post:
     description: Describes the user import job.
     displayName: Describe User Import Job
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeUserImportJob
     body:
       application/json: DescribeUserImportJobRequest
     responses:
@@ -2607,6 +2757,11 @@ types:
   post:
     description: Returns the configuration information and metadata of the specified user pool.
     displayName: Describe User Pool
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeUserPool
     body:
       application/json: DescribeUserPoolRequest
     responses:
@@ -2627,6 +2782,11 @@ types:
   post:
     description: Client method for returning the configuration information and metadata of the specified user pool client.
     displayName: Describe User Pool Client
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeUserPoolClient
     body:
       application/json: DescribeUserPoolClientRequest
     responses:
@@ -2647,6 +2807,11 @@ types:
   post:
     description: Forgets the specified device.
     displayName: Forget Device
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ForgetDevice
     body:
       application/json: ForgetDeviceRequest
     responses:
@@ -2667,6 +2832,11 @@ types:
   post:
     description: Retrieves the password for the specified client ID or username.
     displayName: Forgot Password
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ForgotPassword
     body:
       application/json: ForgotPasswordRequest
     responses:
@@ -2687,6 +2857,11 @@ types:
   post:
     description: Gets the header information for the .csv file to be used as input for the user import job.
     displayName: Get C S V Header
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetCSVHeader
     body:
       application/json: GetCSVHeaderRequest
     responses:
@@ -2707,6 +2882,11 @@ types:
   post:
     description: Gets the device.
     displayName: Get Device
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetDevice
     body:
       application/json: GetDeviceRequest
     responses:
@@ -2727,6 +2907,11 @@ types:
   post:
     description: Gets the user attributes and metadata for a user.
     displayName: Get User
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetUser
     body:
       application/json: GetUserRequest
     responses:
@@ -2747,6 +2932,11 @@ types:
   post:
     description: Gets the user attribute verification code for the specified attribute name.
     displayName: Get User Attribute Verification Code
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetUserAttributeVerificationCode
     body:
       application/json: GetUserAttributeVerificationCodeRequest
     responses:
@@ -2767,6 +2957,11 @@ types:
   post:
     description: Signs out users from all devices.
     displayName: Global Sign Out
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GlobalSignOut
     body:
       application/json: GlobalSignOutRequest
     responses:
@@ -2787,6 +2982,11 @@ types:
   post:
     description: Initiates the authentication flow.
     displayName: Initiate Auth
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - InitiateAuth
     body:
       application/json: InitiateAuthRequest
     responses:
@@ -2807,6 +3007,11 @@ types:
   post:
     description: Lists the devices.
     displayName: List Devices
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListDevices
     body:
       application/json: ListDevicesRequest
     responses:
@@ -2827,6 +3032,11 @@ types:
   post:
     description: Lists the user import jobs.
     displayName: List User Import Jobs
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListUserImportJobs
     body:
       application/json: ListUserImportJobsRequest
     responses:
@@ -2847,6 +3057,11 @@ types:
   post:
     description: Lists the clients that have been created for the specified user pool.
     displayName: List User Pool Clients
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListUserPoolClients
     body:
       application/json: ListUserPoolClientsRequest
     responses:
@@ -2867,6 +3082,11 @@ types:
   post:
     description: Lists the user pools associated with an AWS account.
     displayName: List User Pools
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListUserPools
     body:
       application/json: ListUserPoolsRequest
     responses:
@@ -2887,6 +3107,11 @@ types:
   post:
     description: Lists the users in the Amazon Cognito user pool.
     displayName: List Users
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListUsers
     body:
       application/json: ListUsersRequest
     responses:
@@ -2907,6 +3132,11 @@ types:
   post:
     description: Resends the confirmation (for confirmation of registration) to a specific user in the user pool.
     displayName: Resend Confirmation Code
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ResendConfirmationCode
     body:
       application/json: ResendConfirmationCodeRequest
     responses:
@@ -2927,6 +3157,11 @@ types:
   post:
     description: Responds to the authentication challenge.
     displayName: Respond To Auth Challenge
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RespondToAuthChallenge
     body:
       application/json: RespondToAuthChallengeRequest
     responses:
@@ -2947,6 +3182,11 @@ types:
   post:
     description: Sets the user settings like multi-factor authentication (MFA). If MFA is to be removed for a particular attribute pass the attribute with code delivery as null. If null list is passed, all MFA options are removed.
     displayName: Set User Settings
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SetUserSettings
     body:
       application/json: SetUserSettingsRequest
     responses:
@@ -2967,6 +3207,11 @@ types:
   post:
     description: Registers the user in the specified user pool and creates a user name, password, and user attributes.
     displayName: Sign Up
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - SignUp
     body:
       application/json: SignUpRequest
     responses:
@@ -2987,6 +3232,11 @@ types:
   post:
     description: Starts the user import.
     displayName: Start User Import Job
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StartUserImportJob
     body:
       application/json: StartUserImportJobRequest
     responses:
@@ -3007,6 +3257,11 @@ types:
   post:
     description: Stops the user import job.
     displayName: Stop User Import Job
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StopUserImportJob
     body:
       application/json: StopUserImportJobRequest
     responses:
@@ -3027,6 +3282,11 @@ types:
   post:
     description: Updates the device status.
     displayName: Update Device Status
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateDeviceStatus
     body:
       application/json: UpdateDeviceStatusRequest
     responses:
@@ -3047,6 +3307,11 @@ types:
   post:
     description: Allows a user to update a specific attribute (one at a time).
     displayName: Update User Attributes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateUserAttributes
     body:
       application/json: UpdateUserAttributesRequest
     responses:
@@ -3067,6 +3332,11 @@ types:
   post:
     description: Updates the specified user pool with the specified attributes.
     displayName: Update User Pool
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateUserPool
     body:
       application/json: UpdateUserPoolRequest
     responses:
@@ -3087,6 +3357,11 @@ types:
   post:
     description: Allows the developer to update the specified user pool client and password policy.
     displayName: Update User Pool Client
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateUserPoolClient
     body:
       application/json: UpdateUserPoolClientRequest
     responses:
@@ -3107,6 +3382,11 @@ types:
   post:
     description: Verifies the specified user attributes in the user pool.
     displayName: Verify User Attribute
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - VerifyUserAttribute
     body:
       application/json: VerifyUserAttributeRequest
     responses:

@@ -1612,6 +1612,11 @@ types:
       see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS
       WAF Developer Guide</a>.'
     displayName: Create Byte Match Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateByteMatchSet
     body:
       application/json: CreateByteMatchSetRequest
     responses:
@@ -1647,6 +1652,11 @@ types:
       href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF Developer
       Guide</a>.'
     displayName: Create I P Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateIPSet
     body:
       application/json: CreateIPSetRequest
     responses:
@@ -1691,6 +1701,11 @@ types:
       how to use the AWS WAF API to allow or block HTTP requests, see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS
       WAF Developer Guide</a>.'
     displayName: Create Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateRule
     body:
       application/json: CreateRuleRequest
     responses:
@@ -1727,6 +1742,11 @@ types:
       to allow or block HTTP requests, see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS
       WAF Developer Guide</a>.'
     displayName: Create Size Constraint Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateSizeConstraintSet
     body:
       application/json: CreateSizeConstraintSetRequest
     responses:
@@ -1760,6 +1780,11 @@ types:
       to allow or block HTTP requests, see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS
       WAF Developer Guide</a>.'
     displayName: Create Sql Injection Match Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateSqlInjectionMatchSet
     body:
       application/json: CreateSqlInjectionMatchSetRequest
     responses:
@@ -1802,6 +1827,11 @@ types:
       href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF Developer
       Guide</a>.'
     displayName: Create Web A C L
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateWebACL
     body:
       application/json: CreateWebACLRequest
     responses:
@@ -1835,6 +1865,11 @@ types:
       allow or block HTTP requests, see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS
       WAF Developer Guide</a>.'
     displayName: Create Xss Match Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateXssMatchSet
     body:
       application/json: CreateXssMatchSetRequest
     responses:
@@ -1864,6 +1899,11 @@ types:
       request. </li> <li> Submit a <code>DeleteByteMatchSet</code> request. </li>
       </ol>'
     displayName: Delete Byte Match Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteByteMatchSet
     body:
       application/json: DeleteByteMatchSetRequest
     responses:
@@ -1892,6 +1932,11 @@ types:
       in the <code>ChangeToken</code> parameter of a <code>DeleteIPSet</code> request.
       </li> <li> Submit a <code>DeleteIPSet</code> request. </li> </ol>'
     displayName: Delete I P Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteIPSet
     body:
       application/json: DeleteIPSetRequest
     responses:
@@ -1921,6 +1966,11 @@ types:
       of a <code>DeleteRule</code> request. </li> <li> Submit a <code>DeleteRule</code>
       request. </li> </ol>'
     displayName: Delete Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteRule
     body:
       application/json: DeleteRuleRequest
     responses:
@@ -1951,6 +2001,11 @@ types:
       request. </li> <li> Submit a <code>DeleteSizeConstraintSet</code> request. </li>
       </ol>'
     displayName: Delete Size Constraint Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteSizeConstraintSet
     body:
       application/json: DeleteSizeConstraintSetRequest
     responses:
@@ -1981,6 +2036,11 @@ types:
       request. </li> <li> Submit a <code>DeleteSqlInjectionMatchSet</code> request.
       </li> </ol>'
     displayName: Delete Sql Injection Match Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteSqlInjectionMatchSet
     body:
       application/json: DeleteSqlInjectionMatchSetRequest
     responses:
@@ -2007,6 +2067,11 @@ types:
       <code>ChangeToken</code> parameter of a <code>DeleteWebACL</code> request. </li>
       <li> Submit a <code>DeleteWebACL</code> request. </li> </ol>'
     displayName: Delete Web A C L
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteWebACL
     body:
       application/json: DeleteWebACLRequest
     responses:
@@ -2036,6 +2101,11 @@ types:
       of a <code>DeleteXssMatchSet</code> request. </li> <li> Submit a <code>DeleteXssMatchSet</code>
       request. </li> </ol>'
     displayName: Delete Xss Match Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteXssMatchSet
     body:
       application/json: DeleteXssMatchSetRequest
     responses:
@@ -2056,6 +2126,11 @@ types:
   post:
     description: Returns the <a>ByteMatchSet</a> specified by <code>ByteMatchSetId</code>.
     displayName: Get Byte Match Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetByteMatchSet
     body:
       application/json: GetByteMatchSetRequest
     responses:
@@ -2076,6 +2151,11 @@ types:
   post:
     description: When you want to create, update, or delete AWS WAF objects, get a change token and include the change token in the create, update, or delete request. Change tokens ensure that your application doesn't submit conflicting requests to AWS WAF. Each create, update, or delete request must use a unique change token. If your application submits a <code>GetChangeToken</code> request and then submits a second <code>GetChangeToken</code> request before submitting a create, update, or delete request, the second <code>GetChangeToken</code> request returns the same value as the first <code>GetChangeToken</code> request. When you use a change token in a create, update, or delete request, the status of the change token changes to <code>PENDING</code>, which indicates that AWS WAF is propagating the change to all AWS WAF servers. Use <code>GetChangeTokenStatus</code> to determine the status of your change token.
     displayName: Get Change Token
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetChangeToken
     body:
       application/json: GetChangeTokenRequest
     responses:
@@ -2102,6 +2182,11 @@ types:
       AWS WAF is propagating the create, update, or delete request to all AWS WAF
       servers. </li> <li>  <code>IN_SYNC</code>: Propagation is complete. </li> </ul>'
     displayName: Get Change Token Status
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetChangeTokenStatus
     body:
       application/json: GetChangeTokenStatusRequest
     responses:
@@ -2122,6 +2207,11 @@ types:
   post:
     description: Returns the <a>IPSet</a> that is specified by <code>IPSetId</code>.
     displayName: Get I P Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetIPSet
     body:
       application/json: GetIPSetRequest
     responses:
@@ -2142,6 +2232,11 @@ types:
   post:
     description: Returns the <a>Rule</a> that is specified by the <code>RuleId</code> that you included in the <code>GetRule</code> request.
     displayName: Get Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetRule
     body:
       application/json: GetRuleRequest
     responses:
@@ -2162,6 +2257,11 @@ types:
   post:
     description: Gets detailed information about a specified number of requests--a sample--that AWS WAF randomly selects from among the first 5,000 requests that your AWS resource received during a time range that you choose. You can specify a sample size of up to 100 requests, and you can specify any time range in the previous three hours.  <code>GetSampledRequests</code> returns a time range, which is usually the time range that you specified. However, if your resource (such as a CloudFront distribution) received 5,000 requests before the specified time range elapsed, <code>GetSampledRequests</code> returns an updated time range. This new time range indicates the actual period during which AWS WAF selected the requests in the sample.
     displayName: Get Sampled Requests
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetSampledRequests
     body:
       application/json: GetSampledRequestsRequest
     responses:
@@ -2182,6 +2282,11 @@ types:
   post:
     description: Returns the <a>SizeConstraintSet</a> specified by <code>SizeConstraintSetId</code>.
     displayName: Get Size Constraint Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetSizeConstraintSet
     body:
       application/json: GetSizeConstraintSetRequest
     responses:
@@ -2202,6 +2307,11 @@ types:
   post:
     description: Returns the <a>SqlInjectionMatchSet</a> that is specified by <code>SqlInjectionMatchSetId</code>.
     displayName: Get Sql Injection Match Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetSqlInjectionMatchSet
     body:
       application/json: GetSqlInjectionMatchSetRequest
     responses:
@@ -2222,6 +2332,11 @@ types:
   post:
     description: Returns the <a>WebACL</a> that is specified by <code>WebACLId</code>.
     displayName: Get Web A C L
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetWebACL
     body:
       application/json: GetWebACLRequest
     responses:
@@ -2242,6 +2357,11 @@ types:
   post:
     description: Returns the <a>XssMatchSet</a> that is specified by <code>XssMatchSetId</code>.
     displayName: Get Xss Match Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetXssMatchSet
     body:
       application/json: GetXssMatchSetRequest
     responses:
@@ -2262,6 +2382,11 @@ types:
   post:
     description: Returns an array of <a>ByteMatchSetSummary</a> objects.
     displayName: List Byte Match Sets
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListByteMatchSets
     body:
       application/json: ListByteMatchSetsRequest
     responses:
@@ -2282,6 +2407,11 @@ types:
   post:
     description: Returns an array of <a>IPSetSummary</a> objects in the response.
     displayName: List I P Sets
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListIPSets
     body:
       application/json: ListIPSetsRequest
     responses:
@@ -2302,6 +2432,11 @@ types:
   post:
     description: Returns an array of <a>RuleSummary</a> objects.
     displayName: List Rules
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListRules
     body:
       application/json: ListRulesRequest
     responses:
@@ -2322,6 +2457,11 @@ types:
   post:
     description: Returns an array of <a>SizeConstraintSetSummary</a> objects.
     displayName: List Size Constraint Sets
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListSizeConstraintSets
     body:
       application/json: ListSizeConstraintSetsRequest
     responses:
@@ -2342,6 +2482,11 @@ types:
   post:
     description: Returns an array of <a>SqlInjectionMatchSet</a> objects.
     displayName: List Sql Injection Match Sets
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListSqlInjectionMatchSets
     body:
       application/json: ListSqlInjectionMatchSetsRequest
     responses:
@@ -2362,6 +2507,11 @@ types:
   post:
     description: Returns an array of <a>WebACLSummary</a> objects in the response.
     displayName: List Web A C Ls
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListWebACLs
     body:
       application/json: ListWebACLsRequest
     responses:
@@ -2382,6 +2532,11 @@ types:
   post:
     description: Returns an array of <a>XssMatchSet</a> objects.
     displayName: List Xss Match Sets
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListXssMatchSets
     body:
       application/json: ListXssMatchSetsRequest
     responses:
@@ -2427,6 +2582,11 @@ types:
       see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS
       WAF Developer Guide</a>.'
     displayName: Update Byte Match Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateByteMatchSet
     body:
       application/json: UpdateByteMatchSetRequest
     responses:
@@ -2476,6 +2636,11 @@ types:
       HTTP requests, see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS
       WAF Developer Guide</a>.'
     displayName: Update I P Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateIPSet
     body:
       application/json: UpdateIPSetRequest
     responses:
@@ -2520,6 +2685,11 @@ types:
       href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF Developer
       Guide</a>.'
     displayName: Update Rule
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateRule
     body:
       application/json: UpdateRuleRequest
     responses:
@@ -2567,6 +2737,11 @@ types:
       HTTP requests, see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS
       WAF Developer Guide</a>.'
     displayName: Update Size Constraint Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateSizeConstraintSet
     body:
       application/json: UpdateSizeConstraintSetRequest
     responses:
@@ -2607,6 +2782,11 @@ types:
       the AWS WAF API to allow or block HTTP requests, see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS
       WAF Developer Guide</a>.'
     displayName: Update Sql Injection Match Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateSqlInjectionMatchSet
     body:
       application/json: UpdateSqlInjectionMatchSetRequest
     responses:
@@ -2662,6 +2842,11 @@ types:
       the AWS WAF API to allow or block HTTP requests, see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS
       WAF Developer Guide</a>.'
     displayName: Update Web A C L
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateWebACL
     body:
       application/json: UpdateWebACLRequest
     responses:
@@ -2703,6 +2888,11 @@ types:
       block HTTP requests, see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS
       WAF Developer Guide</a>.'
     displayName: Update Xss Match Set
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateXssMatchSet
     body:
       application/json: UpdateXssMatchSetRequest
     responses:

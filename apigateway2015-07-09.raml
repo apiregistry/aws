@@ -1246,6 +1246,11 @@ types:
     get:
       description: Gets information about the current <a>ClientCertificate</a> resource.
       displayName: Get Client Certificate
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - GetClientCertificate
       responses:
         200:
           body:
@@ -1259,6 +1264,11 @@ types:
     delete:
       description: Deletes the <a>ClientCertificate</a> resource.
       displayName: Delete Client Certificate
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - DeleteClientCertificate
       responses:
         202:
           body:
@@ -1274,6 +1284,11 @@ types:
     patch:
       description: Changes information about an <a>ClientCertificate</a> resource.
       displayName: Update Client Certificate
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - UpdateClientCertificate
       body:
         application/json:
           type: object
@@ -1296,6 +1311,11 @@ types:
   post:
     description: Generates a <a>ClientCertificate</a> resource.
     displayName: Generate Client Certificate
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GenerateClientCertificate
     body:
       application/json: GenerateClientCertificateRequest
     responses:
@@ -1310,6 +1330,10 @@ types:
     description: Gets a collection of <a>ClientCertificate</a> resources.
     displayName: Get Client Certificates
     queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetClientCertificates
       position?:
         type: String
         description: <p>The position of the current <a>ClientCertificate</a> resource in the collection to get information about.</p>
@@ -1345,6 +1369,11 @@ types:
         get:
           description: Describe a <a>BasePathMapping</a> resource.
           displayName: Get Base Path Mapping
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetBasePathMapping
           responses:
             200:
               body:
@@ -1358,6 +1387,11 @@ types:
         patch:
           description: Changes information about the <a>BasePathMapping</a> resource.
           displayName: Update Base Path Mapping
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - UpdateBasePathMapping
           body:
             application/json:
               type: object
@@ -1382,6 +1416,11 @@ types:
         delete:
           description: Deletes the <a>BasePathMapping</a> resource.
           displayName: Delete Base Path Mapping
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - DeleteBasePathMapping
           responses:
             202:
               body:
@@ -1396,6 +1435,10 @@ types:
         description: Represents a collection of <a>BasePathMapping</a> resources.
         displayName: Get Base Path Mappings
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetBasePathMappings
           position?:
             type: String
             description: <p>The position of the current <a>BasePathMapping</a> resource in the collection to get information about.</p>
@@ -1415,6 +1458,11 @@ types:
       post:
         description: Creates a new <a>BasePathMapping</a> resource.
         displayName: Create Base Path Mapping
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - CreateBasePathMapping
         body:
           application/json:
             type: object
@@ -1445,6 +1493,11 @@ types:
     delete:
       description: Deletes the <a>DomainName</a> resource.
       displayName: Delete Domain Name
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - DeleteDomainName
       responses:
         202:
           body:
@@ -1458,6 +1511,11 @@ types:
     patch:
       description: Changes information about the <a>DomainName</a> resource.
       displayName: Update Domain Name
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - UpdateDomainName
       body:
         application/json:
           type: object
@@ -1482,6 +1540,11 @@ types:
     get:
       description: Represents a domain name that is contained in a simpler, more intuitive URL that can be called.
       displayName: Get Domain Name
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - GetDomainName
       responses:
         200:
           body:
@@ -1498,6 +1561,10 @@ types:
     description: Represents a collection of <a>DomainName</a> resources.
     displayName: Get Domain Names
     queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetDomainNames
       position?:
         type: String
         description: <p>The position of the current domain names to get information about.</p>
@@ -1517,6 +1584,11 @@ types:
   post:
     description: Creates a new domain name.
     displayName: Create Domain Name
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDomainName
     body:
       application/json: CreateDomainNameRequest
     responses:
@@ -1558,6 +1630,10 @@ types:
               description: Exports a deployed version of a <a>RestApi</a> in a specified format.
               displayName: Get Export
               queryParameters:
+                Action:
+                  type: string
+                  enum:
+                  - GetExport
                 parameters?:
                   type: MapOfStringToString
                   description: '<p>A key-value map of query string parameters that
@@ -1604,6 +1680,10 @@ types:
               description: Generates a client SDK for a <a>RestApi</a> and <a>Stage</a>.
               displayName: Get Sdk
               queryParameters:
+                Action:
+                  type: string
+                  enum:
+                  - GetSdk
                 parameters?:
                   type: MapOfStringToString
                   description: <p>A key-value map of query string parameters that specify properties of the SDK, depending on the requested <code>sdkType</code>. For <code>sdkType</code> of <code>objectivec</code>, a parameter named <code>classPrefix</code> is required. For <code>sdkType</code> of <code>android</code>, parameters named <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and <code>invokerPackage</code> are required.</p>
@@ -1634,6 +1714,11 @@ types:
             delete:
               description: Flushes a stage's cache.
               displayName: Flush Stage Cache
+              queryParameters:
+                Action:
+                  type: string
+                  enum:
+                  - FlushStageCache
               responses:
                 202:
                   body:
@@ -1651,6 +1736,11 @@ types:
             delete:
               description: Flushes all authorizer cache entries on a stage.
               displayName: Flush Stage Authorizers Cache
+              queryParameters:
+                Action:
+                  type: string
+                  enum:
+                  - FlushStageAuthorizersCache
               responses:
                 202:
                   body:
@@ -1666,6 +1756,11 @@ types:
         patch:
           description: Changes information about a <a>Stage</a> resource.
           displayName: Update Stage
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - UpdateStage
           body:
             application/json:
               type: object
@@ -1690,6 +1785,11 @@ types:
         delete:
           description: Deletes a <a>Stage</a> resource.
           displayName: Delete Stage
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - DeleteStage
           responses:
             202:
               body:
@@ -1705,6 +1805,11 @@ types:
         get:
           description: Gets information about a <a>Stage</a> resource.
           displayName: Get Stage
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetStage
           responses:
             200:
               body:
@@ -1719,6 +1824,10 @@ types:
         description: Gets information about one or more <a>Stage</a> resources.
         displayName: Get Stages
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetStages
           deploymentId?:
             type: String
             description: <p>The stages' deployment identifiers.</p>
@@ -1736,6 +1845,11 @@ types:
         description: 'Creates a new <a>Stage</a> resource that references a pre-existing
           <a>Deployment</a> for the API. '
         displayName: Create Stage
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - CreateStage
         body:
           application/json:
             type: object
@@ -1785,6 +1899,11 @@ types:
           get:
             description: Generates a sample mapping template that can be used to transform a payload into the structure of a model.
             displayName: Get Model Template
+            queryParameters:
+              Action:
+                type: string
+                enum:
+                - GetModelTemplate
             responses:
               200:
                 body:
@@ -1801,6 +1920,10 @@ types:
           description: Describes an existing model defined for a <a>RestApi</a> resource.
           displayName: Get Model
           queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetModel
             flatten?:
               type: Boolean
               description: <p>A query parameter of a Boolean value to resolve (<code>true</code>) all external model references and returns a flattened model schema or not (<code>false</code>) The default is <code>false</code>.</p>
@@ -1817,6 +1940,11 @@ types:
         patch:
           description: Changes information about a model.
           displayName: Update Model
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - UpdateModel
           body:
             application/json:
               type: object
@@ -1841,6 +1969,11 @@ types:
         delete:
           description: Deletes a model.
           displayName: Delete Model
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - DeleteModel
           responses:
             202:
               body:
@@ -1858,6 +1991,11 @@ types:
       post:
         description: Adds a new <a>Model</a> resource to an existing <a>RestApi</a> resource.
         displayName: Create Model
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - CreateModel
         body:
           application/json:
             type: object
@@ -1892,6 +2030,10 @@ types:
         description: Describes existing <a>Models</a> defined for a <a>RestApi</a> resource.
         displayName: Get Models
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetModels
           position?:
             type: String
             description: <p>The position of the next set of results in the <a>Models</a> resource to get information about.</p>
@@ -1937,6 +2079,11 @@ types:
                   get:
                     description: Represents a get integration response.
                     displayName: Get Integration Response
+                    queryParameters:
+                      Action:
+                        type: string
+                        enum:
+                        - GetIntegrationResponse
                     responses:
                       200:
                         body:
@@ -1950,6 +2097,11 @@ types:
                   patch:
                     description: Represents an update integration response.
                     displayName: Update Integration Response
+                    queryParameters:
+                      Action:
+                        type: string
+                        enum:
+                        - UpdateIntegrationResponse
                     body:
                       application/json:
                         type: object
@@ -1974,6 +2126,11 @@ types:
                   delete:
                     description: Represents a delete integration response.
                     displayName: Delete Integration Response
+                    queryParameters:
+                      Action:
+                        type: string
+                        enum:
+                        - DeleteIntegrationResponse
                     responses:
                       204:
                         body:
@@ -1991,6 +2148,11 @@ types:
                   put:
                     description: Represents a put integration.
                     displayName: Put Integration Response
+                    queryParameters:
+                      Action:
+                        type: string
+                        enum:
+                        - PutIntegrationResponse
                     body:
                       application/json:
                         type: object
@@ -2021,6 +2183,11 @@ types:
               patch:
                 description: Represents an update integration.
                 displayName: Update Integration
+                queryParameters:
+                  Action:
+                    type: string
+                    enum:
+                    - UpdateIntegration
                 body:
                   application/json:
                     type: object
@@ -2045,6 +2212,11 @@ types:
               delete:
                 description: Represents a delete integration.
                 displayName: Delete Integration
+                queryParameters:
+                  Action:
+                    type: string
+                    enum:
+                    - DeleteIntegration
                 responses:
                   204:
                     body:
@@ -2060,6 +2232,11 @@ types:
               get:
                 description: Represents a get integration.
                 displayName: Get Integration
+                queryParameters:
+                  Action:
+                    type: string
+                    enum:
+                    - GetIntegration
                 responses:
                   200:
                     body:
@@ -2073,6 +2250,11 @@ types:
               put:
                 description: Represents a put integration.
                 displayName: Put Integration
+                queryParameters:
+                  Action:
+                    type: string
+                    enum:
+                    - PutIntegration
                 body:
                   application/json:
                     type: object
@@ -2142,6 +2324,11 @@ types:
                 put:
                   description: Adds a <a>MethodResponse</a> to an existing <a>Method</a> resource.
                   displayName: Put Method Response
+                  queryParameters:
+                    Action:
+                      type: string
+                      enum:
+                      - PutMethodResponse
                   body:
                     application/json:
                       type: object
@@ -2169,6 +2356,11 @@ types:
                 patch:
                   description: Updates an existing <a>MethodResponse</a> resource.
                   displayName: Update Method Response
+                  queryParameters:
+                    Action:
+                      type: string
+                      enum:
+                      - UpdateMethodResponse
                   body:
                     application/json:
                       type: object
@@ -2193,6 +2385,11 @@ types:
                 delete:
                   description: Deletes an existing <a>MethodResponse</a> resource.
                   displayName: Delete Method Response
+                  queryParameters:
+                    Action:
+                      type: string
+                      enum:
+                      - DeleteMethodResponse
                   responses:
                     204:
                       body:
@@ -2210,6 +2407,11 @@ types:
                 get:
                   description: Describes a <a>MethodResponse</a> resource.
                   displayName: Get Method Response
+                  queryParameters:
+                    Action:
+                      type: string
+                      enum:
+                      - GetMethodResponse
                   responses:
                     200:
                       body:
@@ -2223,6 +2425,11 @@ types:
             put:
               description: Add a method to an existing <a>Resource</a> resource.
               displayName: Put Method
+              queryParameters:
+                Action:
+                  type: string
+                  enum:
+                  - PutMethod
               body:
                 application/json:
                   type: object
@@ -2259,6 +2466,11 @@ types:
             post:
               description: Simulate the execution of a <a>Method</a> in your <a>RestApi</a> with headers, parameters, and an incoming request body.
               displayName: Test Invoke Method
+              queryParameters:
+                Action:
+                  type: string
+                  enum:
+                  - TestInvokeMethod
               body:
                 application/json:
                   type: object
@@ -2293,6 +2505,11 @@ types:
             get:
               description: Describe an existing <a>Method</a> resource.
               displayName: Get Method
+              queryParameters:
+                Action:
+                  type: string
+                  enum:
+                  - GetMethod
               responses:
                 200:
                   body:
@@ -2306,6 +2523,11 @@ types:
             patch:
               description: Updates an existing <a>Method</a> resource.
               displayName: Update Method
+              queryParameters:
+                Action:
+                  type: string
+                  enum:
+                  - UpdateMethod
               body:
                 application/json:
                   type: object
@@ -2330,6 +2552,11 @@ types:
             delete:
               description: Deletes an existing <a>Method</a> resource.
               displayName: Delete Method
+              queryParameters:
+                Action:
+                  type: string
+                  enum:
+                  - DeleteMethod
               responses:
                 204:
                   body:
@@ -2345,6 +2572,11 @@ types:
         patch:
           description: Changes information about a <a>Resource</a> resource.
           displayName: Update Resource
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - UpdateResource
           body:
             application/json:
               type: object
@@ -2369,6 +2601,11 @@ types:
         get:
           description: Lists information about a resource.
           displayName: Get Resource
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetResource
           responses:
             200:
               body:
@@ -2382,6 +2619,11 @@ types:
         delete:
           description: Deletes a <a>Resource</a> resource.
           displayName: Delete Resource
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - DeleteResource
           responses:
             202:
               body:
@@ -2405,6 +2647,11 @@ types:
         post:
           description: Creates a <a>Resource</a> resource.
           displayName: Create Resource
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - CreateResource
           body:
             application/json:
               type: object
@@ -2430,6 +2677,10 @@ types:
         description: Lists information about a collection of <a>Resource</a> resources.
         displayName: Get Resources
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetResources
           position?:
             type: String
             description: <p>The position of the next set of results in the current <a>Resources</a> resource to get information about.</p>
@@ -2459,6 +2710,11 @@ types:
         patch:
           description: Changes information about a <a>Deployment</a> resource.
           displayName: Update Deployment
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - UpdateDeployment
           body:
             application/json:
               type: object
@@ -2483,6 +2739,11 @@ types:
         delete:
           description: Deletes a <a>Deployment</a> resource. Deleting a deployment will only succeed if there are no <a>Stage</a> resources associated with it.
           displayName: Delete Deployment
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - DeleteDeployment
           responses:
             202:
               body:
@@ -2498,6 +2759,11 @@ types:
         get:
           description: Gets information about a <a>Deployment</a> resource.
           displayName: Get Deployment
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetDeployment
           responses:
             200:
               body:
@@ -2513,6 +2779,11 @@ types:
       post:
         description: Creates a <a>Deployment</a> resource, which makes a specified <a>RestApi</a> callable over the internet.
         displayName: Create Deployment
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - CreateDeployment
         body:
           application/json:
             type: object
@@ -2555,6 +2826,10 @@ types:
         description: Gets information about a <a>Deployments</a> collection.
         displayName: Get Deployments
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetDeployments
           position?:
             type: String
             description: <p>The position of the current <a>Deployment</a> resource in the collection to get information about.</p>
@@ -2584,6 +2859,11 @@ types:
         get:
           description: Describe an existing <a>Authorizer</a> resource. <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html">AWS CLI</a></div>
           displayName: Get Authorizer
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetAuthorizer
           responses:
             200:
               body:
@@ -2597,6 +2877,11 @@ types:
         patch:
           description: Updates an existing <a>Authorizer</a> resource. <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html">AWS CLI</a></div>
           displayName: Update Authorizer
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - UpdateAuthorizer
           body:
             application/json:
               type: object
@@ -2619,6 +2904,11 @@ types:
         delete:
           description: Deletes an existing <a>Authorizer</a> resource. <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/delete-authorizer.html">AWS CLI</a></div>
           displayName: Delete Authorizer
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - DeleteAuthorizer
           responses:
             202:
               body:
@@ -2636,6 +2926,11 @@ types:
         post:
           description: Simulate the execution of an <a>Authorizer</a> in your <a>RestApi</a> with headers, parameters, and an incoming request body. <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorizers</a> </div>
           displayName: Test Invoke Authorizer
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - TestInvokeAuthorizer
           body:
             application/json:
               type: object
@@ -2670,6 +2965,11 @@ types:
       post:
         description: Adds a new <a>Authorizer</a> resource to an existing <a>RestApi</a> resource. <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html">AWS CLI</a></div>
         displayName: Create Authorizer
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - CreateAuthorizer
         body:
           application/json:
             type: object
@@ -2717,6 +3017,10 @@ types:
         description: Describe an existing <a>Authorizers</a> resource. <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html">AWS CLI</a></div>
         displayName: Get Authorizers
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetAuthorizers
           position?:
             type: String
             description: <p>If not all <a>Authorizer</a> resources in the response were present, the position will specify where to start the next page of results.</p>
@@ -2738,6 +3042,11 @@ types:
     delete:
       description: Deletes the specified API.
       displayName: Delete Rest Api
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - DeleteRestApi
       responses:
         202:
           body:
@@ -2753,6 +3062,11 @@ types:
     patch:
       description: Changes information about the specified API.
       displayName: Update Rest Api
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - UpdateRestApi
       body:
         application/json:
           type: object
@@ -2778,6 +3092,10 @@ types:
       description: A feature of the Amazon API Gateway control service for updating an existing API with an input of external API definitions. The update can take the form of merging the supplied definition into the existing API or overwriting the existing API.
       displayName: Put Rest Api
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - PutRestApi
         mode?:
           type: PutMode
           description: <p>The <code>mode</code> query parameter to specify the update mode. Valid values are "merge" and "overwrite". By default, the update mode is "merge".</p>
@@ -2808,6 +3126,11 @@ types:
     get:
       description: Lists the <a>RestApi</a> resource in the collection.
       displayName: Get Rest Api
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - GetRestApi
       responses:
         200:
           body:
@@ -2821,6 +3144,11 @@ types:
   post:
     description: Creates a new <a>RestApi</a> resource.
     displayName: Create Rest Api
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateRestApi
     body:
       application/json: CreateRestApiRequest
     responses:
@@ -2837,6 +3165,10 @@ types:
     description: Lists the <a>RestApis</a> resources for your collection.
     displayName: Get Rest Apis
     queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetRestApis
       position?:
         type: String
         description: <p>The position of the current <a>RestApis</a> resource in the collection to get information about.</p>
@@ -2864,6 +3196,11 @@ types:
     delete:
       description: Deletes the <a>ApiKey</a> resource.
       displayName: Delete Api Key
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - DeleteApiKey
       responses:
         202:
           body:
@@ -2878,6 +3215,10 @@ types:
       description: Gets information about the current <a>ApiKey</a> resource.
       displayName: Get Api Key
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - GetApiKey
         includeValue?:
           type: Boolean
           description: <p>A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the key value.</p>
@@ -2894,6 +3235,11 @@ types:
     patch:
       description: Changes information about an <a>ApiKey</a> resource.
       displayName: Update Api Key
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - UpdateApiKey
       body:
         application/json:
           type: object
@@ -2918,6 +3264,11 @@ types:
   post:
     description: Create an <a>ApiKey</a> resource.  <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html">AWS CLI</a></div>
     displayName: Create Api Key
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateApiKey
     body:
       application/json: CreateApiKeyRequest
     responses:
@@ -2938,6 +3289,10 @@ types:
     description: Gets information about the current <a>ApiKeys</a> resource.
     displayName: Get Api Keys
     queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetApiKeys
       position?:
         type: String
         description: <p>The position of the current <a>ApiKeys</a> resource to get information about.</p>
@@ -2981,6 +3336,11 @@ types:
           patch:
             description: Grants a temporary extension to the reamining quota of a usage plan associated with a specified API key.
             displayName: Update Usage
+            queryParameters:
+              Action:
+                type: string
+                enum:
+                - UpdateUsage
             body:
               application/json:
                 type: object
@@ -3003,6 +3363,11 @@ types:
         get:
           description: Gets a usage plan key of a given key identifier.
           displayName: Get Usage Plan Key
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - GetUsagePlanKey
           responses:
             200:
               body:
@@ -3018,6 +3383,11 @@ types:
         delete:
           description: Deletes a usage plan key and remove the underlying API key from the associated usage plan.
           displayName: Delete Usage Plan Key
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - DeleteUsagePlanKey
           responses:
             202:
               body:
@@ -3035,6 +3405,11 @@ types:
       post:
         description: Creates a usage plan key for adding an existing API key to a usage plan.
         displayName: Create Usage Plan Key
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - CreateUsagePlanKey
         body:
           application/json:
             type: object
@@ -3063,6 +3438,10 @@ types:
         description: Gets all the usage plan keys representing the API keys added to a specified usage plan.
         displayName: Get Usage Plan Keys
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetUsagePlanKeys
           position?:
             type: String
             description: <p>A query parameter specifying the zero-based index specifying the position of a usage plan key.</p>
@@ -3090,6 +3469,10 @@ types:
         description: Gets the usage data of a usage plan in a specified time interval.
         displayName: Get Usage
         queryParameters:
+          Action:
+            type: string
+            enum:
+            - GetUsage
           keyId?:
             type: String
             description: <p>The Id of the API key associated with the resultant usage data.</p>
@@ -3120,6 +3503,11 @@ types:
     patch:
       description: Updates a usage plan of a given plan Id.
       displayName: Update Usage Plan
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - UpdateUsagePlan
       body:
         application/json:
           type: object
@@ -3144,6 +3532,11 @@ types:
     delete:
       description: Deletes a usage plan of a given plan Id.
       displayName: Delete Usage Plan
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - DeleteUsagePlan
       responses:
         202:
           body:
@@ -3159,6 +3552,11 @@ types:
     get:
       description: Gets a usage plan of a given plan identifier.
       displayName: Get Usage Plan
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - GetUsagePlan
       responses:
         200:
           body:
@@ -3175,6 +3573,11 @@ types:
     description: 'Creates a usage plan with the throttle and quota limits, as well
       as the associated API stages, specified in the payload. '
     displayName: Create Usage Plan
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateUsagePlan
     body:
       application/json: CreateUsagePlanRequest
     responses:
@@ -3193,6 +3596,10 @@ types:
     description: Gets all the usage plans of the caller's account.
     displayName: Get Usage Plans
     queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetUsagePlans
       position?:
         type: String
         description: <p>The zero-based array index specifying the position of the to-be-retrieved <a>UsagePlan</a> resource.</p>
@@ -3220,6 +3627,10 @@ types:
     description: A feature of the Amazon API Gateway control service for creating a new API from an external API definition file.
     displayName: Import Rest Api
     queryParameters:
+      Action:
+        type: string
+        enum:
+        - ImportRestApi
       failonwarnings?:
         type: Boolean
         description: <p>A query parameter to indicate whether to rollback the API creation (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
@@ -3247,6 +3658,11 @@ types:
   patch:
     description: Changes information about the current <a>Account</a> resource.
     displayName: Update Account
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateAccount
     body:
       application/json: UpdateAccountRequest
     responses:
@@ -3264,6 +3680,11 @@ types:
   get:
     description: Gets information about the current <a>Account</a> resource.
     displayName: Get Account
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetAccount
     body:
       application/json: GetAccountRequest
     responses:
@@ -3282,6 +3703,10 @@ types:
     description: Import API keys from an external source, such as a CSV-formatted file.
     displayName: Import Api Keys
     queryParameters:
+      Action:
+        type: string
+        enum:
+        - ImportApiKeys
       format:
         type: ApiKeysFormat
         description: <p>A query parameter to specify the input format to imported API keys. Currently, only the <code>csv</code> format is supported.</p>

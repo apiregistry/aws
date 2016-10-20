@@ -1363,6 +1363,11 @@ types:
       address block. You can also use <i>AddIpRoutes</i> to facilitate routing traffic
       that uses public IP ranges from your Microsoft AD on AWS to a peer VPC. '
     displayName: Add Ip Routes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AddIpRoutes
     body:
       application/json: AddIpRoutesRequest
     responses:
@@ -1383,6 +1388,11 @@ types:
   post:
     description: Adds or overwrites one or more tags for the specified Amazon Directory Services directory. Each directory can have a maximum of 10 tags. Each tag consists of a key and optional value. Tag keys must be unique to each resource.
     displayName: Add Tags To Resource
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AddTagsToResource
     body:
       application/json: AddTagsToResourceRequest
     responses:
@@ -1403,6 +1413,11 @@ types:
   post:
     description: Creates an AD Connector to connect to an on-premises directory.
     displayName: Connect Directory
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ConnectDirectory
     body:
       application/json: ConnectDirectoryRequest
     responses:
@@ -1423,6 +1438,11 @@ types:
   post:
     description: Creates an alias for a directory and assigns the alias to the directory. The alias is used to construct the access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. <important> After an alias has been created, it cannot be deleted or reused, so this operation should only be used when absolutely necessary. </important>
     displayName: Create Alias
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateAlias
     body:
       application/json: CreateAliasRequest
     responses:
@@ -1443,6 +1463,11 @@ types:
   post:
     description: Creates a computer account in the specified directory, and joins the computer to the directory.
     displayName: Create Computer
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateComputer
     body:
       application/json: CreateComputerRequest
     responses:
@@ -1463,6 +1488,11 @@ types:
   post:
     description: Creates a conditional forwarder associated with your AWS directory. Conditional forwarders are required in order to set up a trust relationship with another domain. The conditional forwarder points to the trusted domain.
     displayName: Create Conditional Forwarder
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateConditionalForwarder
     body:
       application/json: CreateConditionalForwarderRequest
     responses:
@@ -1483,6 +1513,11 @@ types:
   post:
     description: Creates a Simple AD directory.
     displayName: Create Directory
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateDirectory
     body:
       application/json: CreateDirectoryRequest
     responses:
@@ -1503,6 +1538,11 @@ types:
   post:
     description: Creates a Microsoft AD in the AWS cloud.
     displayName: Create Microsoft A D
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateMicrosoftAD
     body:
       application/json: CreateMicrosoftADRequest
     responses:
@@ -1523,6 +1563,11 @@ types:
   post:
     description: Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS cloud. <note> You cannot take snapshots of AD Connector directories. </note>
     displayName: Create Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateSnapshot
     body:
       application/json: CreateSnapshotRequest
     responses:
@@ -1543,6 +1588,11 @@ types:
   post:
     description: AWS Directory Service for Microsoft Active Directory allows you to configure trust relationships. For example, you can establish a trust between your Microsoft AD in the AWS cloud, and your existing on-premises Microsoft Active Directory. This would allow you to provide users and groups access to resources in either domain, with a single set of credentials. This action initiates the creation of the AWS side of a trust relationship between a Microsoft AD in the AWS cloud and an external domain.
     displayName: Create Trust
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateTrust
     body:
       application/json: CreateTrustRequest
     responses:
@@ -1563,6 +1613,11 @@ types:
   post:
     description: Deletes a conditional forwarder that has been set up for your AWS directory.
     displayName: Delete Conditional Forwarder
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteConditionalForwarder
     body:
       application/json: DeleteConditionalForwarderRequest
     responses:
@@ -1583,6 +1638,11 @@ types:
   post:
     description: Deletes an AWS Directory Service directory.
     displayName: Delete Directory
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteDirectory
     body:
       application/json: DeleteDirectoryRequest
     responses:
@@ -1603,6 +1663,11 @@ types:
   post:
     description: Deletes a directory snapshot.
     displayName: Delete Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteSnapshot
     body:
       application/json: DeleteSnapshotRequest
     responses:
@@ -1623,6 +1688,11 @@ types:
   post:
     description: Deletes an existing trust relationship between your Microsoft AD in the AWS cloud and an external domain.
     displayName: Delete Trust
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteTrust
     body:
       application/json: DeleteTrustRequest
     responses:
@@ -1643,6 +1713,11 @@ types:
   post:
     description: Removes the specified directory as a publisher to the specified SNS topic.
     displayName: Deregister Event Topic
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeregisterEventTopic
     body:
       application/json: DeregisterEventTopicRequest
     responses:
@@ -1663,6 +1738,11 @@ types:
   post:
     description: Obtains information about the conditional forwarders for this account. If no input parameters are provided for RemoteDomainNames, this request describes all conditional forwarders for the specified directory ID.
     displayName: Describe Conditional Forwarders
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeConditionalForwarders
     body:
       application/json: DescribeConditionalForwardersRequest
     responses:
@@ -1683,6 +1763,11 @@ types:
   post:
     description: Obtains information about the directories that belong to this account. You can retrieve information about specific directories by passing the directory identifiers in the <i>DirectoryIds</i> parameter. Otherwise, all directories that belong to the current account are returned. This operation supports pagination with the use of the <i>NextToken</i> request and response parameters. If more results are available, the <i>DescribeDirectoriesResult.NextToken</i> member contains a token that you pass in the next call to <a>DescribeDirectories</a> to retrieve the next set of items. You can also specify a maximum number of return results with the <i>Limit</i> parameter.
     displayName: Describe Directories
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeDirectories
     body:
       application/json: DescribeDirectoriesRequest
     responses:
@@ -1703,6 +1788,11 @@ types:
   post:
     description: Obtains information about which SNS topics receive status messages from the specified directory. If no input parameters are provided, such as DirectoryId or TopicName, this request describes all of the associations in the account.
     displayName: Describe Event Topics
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeEventTopics
     body:
       application/json: DescribeEventTopicsRequest
     responses:
@@ -1723,6 +1813,11 @@ types:
   post:
     description: Obtains information about the directory snapshots that belong to this account. This operation supports pagination with the use of the <i>NextToken</i> request and response parameters. If more results are available, the <i>DescribeSnapshots.NextToken</i> member contains a token that you pass in the next call to <a>DescribeSnapshots</a> to retrieve the next set of items. You can also specify a maximum number of return results with the <i>Limit</i> parameter.
     displayName: Describe Snapshots
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeSnapshots
     body:
       application/json: DescribeSnapshotsRequest
     responses:
@@ -1743,6 +1838,11 @@ types:
   post:
     description: Obtains information about the trust relationships for this account. If no input parameters are provided, such as DirectoryId or TrustIds, this request describes all the trust relationships belonging to the account.
     displayName: Describe Trusts
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeTrusts
     body:
       application/json: DescribeTrustsRequest
     responses:
@@ -1763,6 +1863,11 @@ types:
   post:
     description: Disables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector directory.
     displayName: Disable Radius
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisableRadius
     body:
       application/json: DisableRadiusRequest
     responses:
@@ -1783,6 +1888,11 @@ types:
   post:
     description: Disables single-sign on for a directory.
     displayName: Disable Sso
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisableSso
     body:
       application/json: DisableSsoRequest
     responses:
@@ -1803,6 +1913,11 @@ types:
   post:
     description: Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector directory.
     displayName: Enable Radius
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - EnableRadius
     body:
       application/json: EnableRadiusRequest
     responses:
@@ -1823,6 +1938,11 @@ types:
   post:
     description: Enables single-sign on for a directory.
     displayName: Enable Sso
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - EnableSso
     body:
       application/json: EnableSsoRequest
     responses:
@@ -1843,6 +1963,11 @@ types:
   post:
     description: Obtains directory limit information for the current region.
     displayName: Get Directory Limits
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetDirectoryLimits
     body:
       application/json: GetDirectoryLimitsRequest
     responses:
@@ -1863,6 +1988,11 @@ types:
   post:
     description: Obtains the manual snapshot limits for a directory.
     displayName: Get Snapshot Limits
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetSnapshotLimits
     body:
       application/json: GetSnapshotLimitsRequest
     responses:
@@ -1883,6 +2013,11 @@ types:
   post:
     description: Lists the address blocks that you have added to a directory.
     displayName: List Ip Routes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListIpRoutes
     body:
       application/json: ListIpRoutesRequest
     responses:
@@ -1903,6 +2038,11 @@ types:
   post:
     description: Lists all tags on an Amazon Directory Services directory.
     displayName: List Tags For Resource
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListTagsForResource
     body:
       application/json: ListTagsForResourceRequest
     responses:
@@ -1923,6 +2063,11 @@ types:
   post:
     description: Associates a directory with an SNS topic. This establishes the directory as a publisher to the specified SNS topic. You can then receive email or text (SMS) messages when the status of your directory changes. You get notified if your directory goes from an Active status to an Impaired or Inoperable status. You also receive a notification when the directory returns to an Active status.
     displayName: Register Event Topic
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RegisterEventTopic
     body:
       application/json: RegisterEventTopicRequest
     responses:
@@ -1943,6 +2088,11 @@ types:
   post:
     description: Removes IP address blocks from a directory.
     displayName: Remove Ip Routes
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RemoveIpRoutes
     body:
       application/json: RemoveIpRoutesRequest
     responses:
@@ -1963,6 +2113,11 @@ types:
   post:
     description: Removes tags from an Amazon Directory Services directory.
     displayName: Remove Tags From Resource
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RemoveTagsFromResource
     body:
       application/json: RemoveTagsFromResourceRequest
     responses:
@@ -1983,6 +2138,11 @@ types:
   post:
     description: Restores a directory using an existing directory snapshot. When you restore a directory from a snapshot, any changes made to the directory after the snapshot date are overwritten. This action returns as soon as the restore operation is initiated. You can monitor the progress of the restore operation by calling the <a>DescribeDirectories</a> operation with the directory identifier. When the <b>DirectoryDescription.Stage</b> value changes to <code>Active</code>, the restore operation is complete.
     displayName: Restore From Snapshot
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RestoreFromSnapshot
     body:
       application/json: RestoreFromSnapshotRequest
     responses:
@@ -2003,6 +2163,11 @@ types:
   post:
     description: Updates a conditional forwarder that has been set up for your AWS directory.
     displayName: Update Conditional Forwarder
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateConditionalForwarder
     body:
       application/json: UpdateConditionalForwarderRequest
     responses:
@@ -2023,6 +2188,11 @@ types:
   post:
     description: Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector directory.
     displayName: Update Radius
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdateRadius
     body:
       application/json: UpdateRadiusRequest
     responses:
@@ -2043,6 +2213,11 @@ types:
   post:
     description: AWS Directory Service for Microsoft Active Directory allows you to configure and verify trust relationships. This action verifies a trust relationship between your Microsoft AD in the AWS cloud and an external domain.
     displayName: Verify Trust
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - VerifyTrust
     body:
       application/json: VerifyTrustRequest
     responses:

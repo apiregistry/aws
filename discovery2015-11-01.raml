@@ -509,6 +509,11 @@ types:
   post:
     description: Creates one or more tags for configuration items. Tags are metadata that help you categorize IT assets. This API accepts a list of multiple configuration items.
     displayName: Create Tags
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateTags
     body:
       application/json: CreateTagsRequest
     responses:
@@ -529,6 +534,11 @@ types:
   post:
     description: Deletes the association between configuration items and one or more tags. This API accepts a list of multiple configuration items.
     displayName: Delete Tags
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteTags
     body:
       application/json: DeleteTagsRequest
     responses:
@@ -549,6 +559,11 @@ types:
   post:
     description: Lists AWS agents by ID or lists all agents associated with your user account if you did not specify an agent ID.
     displayName: Describe Agents
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeAgents
     body:
       application/json: DescribeAgentsRequest
     responses:
@@ -569,6 +584,11 @@ types:
   post:
     description: Retrieves a list of attributes for a specific configuration ID. For example, the output for a <i>server</i> configuration item includes a list of attributes about the server, including host name, operating system, number of network cards, etc.
     displayName: Describe Configurations
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeConfigurations
     body:
       application/json: DescribeConfigurationsRequest
     responses:
@@ -589,6 +609,11 @@ types:
   post:
     description: Retrieves the status of a given export process. You can retrieve status from a maximum of 100 processes.
     displayName: Describe Export Configurations
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeExportConfigurations
     body:
       application/json: DescribeExportConfigurationsRequest
     responses:
@@ -609,6 +634,11 @@ types:
   post:
     description: Retrieves a list of configuration items that are tagged with a specific tag. Or retrieves a list of all tags assigned to a specific configuration item.
     displayName: Describe Tags
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DescribeTags
     body:
       application/json: DescribeTagsRequest
     responses:
@@ -629,6 +659,11 @@ types:
   post:
     description: Exports all discovered configuration data to an Amazon S3 bucket or an application that enables you to view and evaluate the data. Data includes tags and tag associations, processes, connections, servers, and system performance. This API returns an export ID which you can query using the <i>GetExportStatus</i> API. The system imposes a limit of two configuration exports in six hours.
     displayName: Export Configurations
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ExportConfigurations
     responses:
       200:
         body:
@@ -647,6 +682,11 @@ types:
   post:
     description: Retrieves a list of configurations items according to the criteria you specify in a filter. The filter criteria identify relationship requirements.
     displayName: List Configurations
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListConfigurations
     body:
       application/json: ListConfigurationsRequest
     responses:
@@ -667,6 +707,11 @@ types:
   post:
     description: Instructs the specified agents to start collecting data. Agents can reside on host servers or virtual machines in your data center.
     displayName: Start Data Collection By Agent Ids
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StartDataCollectionByAgentIds
     body:
       application/json: StartDataCollectionByAgentIdsRequest
     responses:
@@ -687,6 +732,11 @@ types:
   post:
     description: Instructs the specified agents to stop collecting data.
     displayName: Stop Data Collection By Agent Ids
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StopDataCollectionByAgentIds
     body:
       application/json: StopDataCollectionByAgentIdsRequest
     responses:

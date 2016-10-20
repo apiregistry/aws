@@ -1458,6 +1458,11 @@ types:
   post:
     description: Returns information about a specified job and whether that job has been received by the job worker. Only used for custom actions.
     displayName: Acknowledge Job
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AcknowledgeJob
     body:
       application/json: AcknowledgeJobInput
     responses:
@@ -1478,6 +1483,11 @@ types:
   post:
     description: Confirms a job worker has received the specified job. Only used for partner actions.
     displayName: Acknowledge Third Party Job
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - AcknowledgeThirdPartyJob
     body:
       application/json: AcknowledgeThirdPartyJobInput
     responses:
@@ -1498,6 +1508,11 @@ types:
   post:
     description: Creates a new custom action that can be used in all pipelines associated with the AWS account. Only used for custom actions.
     displayName: Create Custom Action Type
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreateCustomActionType
     body:
       application/json: CreateCustomActionTypeInput
     responses:
@@ -1518,6 +1533,11 @@ types:
   post:
     description: Creates a pipeline.
     displayName: Create Pipeline
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - CreatePipeline
     body:
       application/json: CreatePipelineInput
     responses:
@@ -1538,6 +1558,11 @@ types:
   post:
     description: Marks a custom action as deleted. PollForJobs for the custom action will fail after the action is marked for deletion. Only used for custom actions. <important> You cannot recreate a custom action after it has been deleted unless you increase the version number of the action. </important>
     displayName: Delete Custom Action Type
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeleteCustomActionType
     body:
       application/json: DeleteCustomActionTypeInput
     responses:
@@ -1558,6 +1583,11 @@ types:
   post:
     description: Deletes the specified pipeline.
     displayName: Delete Pipeline
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DeletePipeline
     body:
       application/json: DeletePipelineInput
     responses:
@@ -1578,6 +1608,11 @@ types:
   post:
     description: Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline.
     displayName: Disable Stage Transition
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - DisableStageTransition
     body:
       application/json: DisableStageTransitionInput
     responses:
@@ -1598,6 +1633,11 @@ types:
   post:
     description: Enables artifacts in a pipeline to transition to a stage in a pipeline.
     displayName: Enable Stage Transition
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - EnableStageTransition
     body:
       application/json: EnableStageTransitionInput
     responses:
@@ -1618,6 +1658,11 @@ types:
   post:
     description: Returns information about a job. Only used for custom actions. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action. </important>
     displayName: Get Job Details
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetJobDetails
     body:
       application/json: GetJobDetailsInput
     responses:
@@ -1638,6 +1683,11 @@ types:
   post:
     description: Returns the metadata, structure, stages, and actions of a pipeline. Can be used to return the entire structure of a pipeline in JSON format, which can then be modified and used to update the pipeline structure with <a>UpdatePipeline</a>.
     displayName: Get Pipeline
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetPipeline
     body:
       application/json: GetPipelineInput
     responses:
@@ -1658,6 +1708,11 @@ types:
   post:
     description: Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline.
     displayName: Get Pipeline Execution
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetPipelineExecution
     body:
       application/json: GetPipelineExecutionInput
     responses:
@@ -1678,6 +1733,11 @@ types:
   post:
     description: Returns information about the state of a pipeline, including the stages and actions.
     displayName: Get Pipeline State
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetPipelineState
     body:
       application/json: GetPipelineStateInput
     responses:
@@ -1698,6 +1758,11 @@ types:
   post:
     description: Requests the details of a job for a third party action. Only used for partner actions. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action. </important>
     displayName: Get Third Party Job Details
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - GetThirdPartyJobDetails
     body:
       application/json: GetThirdPartyJobDetailsInput
     responses:
@@ -1718,6 +1783,11 @@ types:
   post:
     description: Gets a summary of all AWS CodePipeline action types associated with your account.
     displayName: List Action Types
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListActionTypes
     body:
       application/json: ListActionTypesInput
     responses:
@@ -1738,6 +1808,11 @@ types:
   post:
     description: Gets a summary of all of the pipelines associated with your account.
     displayName: List Pipelines
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - ListPipelines
     body:
       application/json: ListPipelinesInput
     responses:
@@ -1758,6 +1833,11 @@ types:
   post:
     description: Returns information about any jobs for AWS CodePipeline to act upon. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action. </important>
     displayName: Poll For Jobs
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PollForJobs
     body:
       application/json: PollForJobsInput
     responses:
@@ -1778,6 +1858,11 @@ types:
   post:
     description: Determines whether there are any third party jobs for a job worker to act on. Only used for partner actions. <important> When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. </important>
     displayName: Poll For Third Party Jobs
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PollForThirdPartyJobs
     body:
       application/json: PollForThirdPartyJobsInput
     responses:
@@ -1798,6 +1883,11 @@ types:
   post:
     description: Provides information to AWS CodePipeline about new revisions to a source.
     displayName: Put Action Revision
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutActionRevision
     body:
       application/json: PutActionRevisionInput
     responses:
@@ -1818,6 +1908,11 @@ types:
   post:
     description: Provides the response to a manual approval request to AWS CodePipeline. Valid responses include Approved and Rejected.
     displayName: Put Approval Result
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutApprovalResult
     body:
       application/json: PutApprovalResultInput
     responses:
@@ -1838,6 +1933,11 @@ types:
   post:
     description: Represents the failure of a job as returned to the pipeline by a job worker. Only used for custom actions.
     displayName: Put Job Failure Result
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutJobFailureResult
     body:
       application/json: PutJobFailureResultInput
     responses:
@@ -1858,6 +1958,11 @@ types:
   post:
     description: Represents the success of a job as returned to the pipeline by a job worker. Only used for custom actions.
     displayName: Put Job Success Result
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutJobSuccessResult
     body:
       application/json: PutJobSuccessResultInput
     responses:
@@ -1878,6 +1983,11 @@ types:
   post:
     description: Represents the failure of a third party job as returned to the pipeline by a job worker. Only used for partner actions.
     displayName: Put Third Party Job Failure Result
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutThirdPartyJobFailureResult
     body:
       application/json: PutThirdPartyJobFailureResultInput
     responses:
@@ -1898,6 +2008,11 @@ types:
   post:
     description: Represents the success of a third party job as returned to the pipeline by a job worker. Only used for partner actions.
     displayName: Put Third Party Job Success Result
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - PutThirdPartyJobSuccessResult
     body:
       application/json: PutThirdPartyJobSuccessResultInput
     responses:
@@ -1918,6 +2033,11 @@ types:
   post:
     description: Resumes the pipeline execution by retrying the last failed actions in a stage.
     displayName: Retry Stage Execution
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - RetryStageExecution
     body:
       application/json: RetryStageExecutionInput
     responses:
@@ -1938,6 +2058,11 @@ types:
   post:
     description: Starts the specified pipeline. Specifically, it begins processing the latest commit to the source location specified as part of the pipeline.
     displayName: Start Pipeline Execution
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - StartPipelineExecution
     body:
       application/json: StartPipelineExecutionInput
     responses:
@@ -1958,6 +2083,11 @@ types:
   post:
     description: Updates a specified pipeline with edits or changes to its structure. Use a JSON file with the pipeline structure in conjunction with UpdatePipeline to provide the full structure of the pipeline. Updating the pipeline increases the version number of the pipeline by 1.
     displayName: Update Pipeline
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - UpdatePipeline
     body:
       application/json: UpdatePipelineInput
     responses:

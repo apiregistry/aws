@@ -59,6 +59,11 @@ types:
     description: 'API to emit metering records. For identical requests, the API is
       idempotent. It simply returns the metering record ID. '
     displayName: Meter Usage
+    queryParameters:
+      Action:
+        type: string
+        enum:
+        - MeterUsage
     body:
       application/json: MeterUsageRequest
     responses:

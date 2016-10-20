@@ -463,6 +463,11 @@ types:
           get:
             description: Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options.
             displayName: Describe Elasticsearch Domain Config
+            queryParameters:
+              Action:
+                type: string
+                enum:
+                - DescribeElasticsearchDomainConfig
             responses:
               200:
                 body:
@@ -477,6 +482,11 @@ types:
             description: 'Modifies the cluster configuration of the specified Elasticsearch
               domain, setting as setting the instance type and the number of instances. '
             displayName: Update Elasticsearch Domain Config
+            queryParameters:
+              Action:
+                type: string
+                enum:
+                - UpdateElasticsearchDomainConfig
             body:
               application/json:
                 type: object
@@ -509,6 +519,11 @@ types:
         delete:
           description: Permanently deletes the specified Elasticsearch domain and all of its data. Once a domain is deleted, it cannot be recovered.
           displayName: Delete Elasticsearch Domain
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - DeleteElasticsearchDomain
           responses:
             200:
               body:
@@ -522,6 +537,11 @@ types:
         get:
           description: Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN.
           displayName: Describe Elasticsearch Domain
+          queryParameters:
+            Action:
+              type: string
+              enum:
+              - DescribeElasticsearchDomain
           responses:
             200:
               body:
@@ -535,6 +555,11 @@ types:
       post:
         description: Creates a new Elasticsearch domain. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>.
         displayName: Create Elasticsearch Domain
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - CreateElasticsearchDomain
         body:
           application/json: CreateElasticsearchDomainRequest
         responses:
@@ -552,6 +577,11 @@ types:
       post:
         description: Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN.
         displayName: Describe Elasticsearch Domains
+        queryParameters:
+          Action:
+            type: string
+            enum:
+            - DescribeElasticsearchDomains
         body:
           application/json: DescribeElasticsearchDomainsRequest
         responses:
@@ -568,6 +598,10 @@ types:
       description: Returns all tags for the given Elasticsearch domain.
       displayName: List Tags
       queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListTags
         arn:
           type: ARN
           description: <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags are attached that you want to view.</p>
@@ -584,6 +618,11 @@ types:
     post:
       description: Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value pairs. An Elasticsearch domain may have up to 10 tags. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging" target="_blank"> Tagging Amazon Elasticsearch Service Domains for more information.</a>
       displayName: Add Tags
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - AddTags
       body:
         application/json: AddTagsRequest
       responses:
@@ -602,6 +641,11 @@ types:
       description: 'Returns the name of all Elasticsearch domains owned by the current
         user''s account. '
       displayName: List Domain Names
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - ListDomainNames
       responses:
         200:
           body:
@@ -613,6 +657,11 @@ types:
     post:
       description: Removes the specified set of tags from the specified Elasticsearch domain.
       displayName: Remove Tags
+      queryParameters:
+        Action:
+          type: string
+          enum:
+          - RemoveTags
       body:
         application/json: RemoveTagsRequest
       responses:
