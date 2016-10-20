@@ -34,6 +34,9 @@ description: '  Welcome to the <i>AWS OpsWorks API Reference</i>. This guide pro
   </note>'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   AgentVersions:
     type: array
@@ -2893,6 +2896,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Assign a registered instance to a layer. <ul> <li> You can assign
@@ -2904,6 +2908,7 @@ types:
       that explicitly grants permissions. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Assign Instance
     body:
       application/json: AssignInstanceRequest
     responses:
@@ -2918,6 +2923,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Assigns one of the stack''s registered Amazon EBS volumes to a specified
@@ -2930,6 +2936,7 @@ types:
       explicitly grants permissions. For more information on user permissions, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Assign Volume
     body:
       application/json: AssignVolumeRequest
     responses:
@@ -2944,6 +2951,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Associates one of the stack''s registered Elastic IP addresses with
@@ -2954,6 +2962,7 @@ types:
       explicitly grants permissions. For more information on user permissions, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Associate Elastic Ip
     body:
       application/json: AssociateElasticIpRequest
     responses:
@@ -2968,6 +2977,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Attaches an Elastic Load Balancing load balancer to a specified
@@ -2980,6 +2990,7 @@ types:
       stack, or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Attach Elastic Load Balancer
     body:
       application/json: AttachElasticLoadBalancerRequest
     responses:
@@ -2994,6 +3005,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates a clone of a specified stack. For more information, see
@@ -3003,6 +3015,7 @@ types:
       an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Clone Stack
     body:
       application/json: CloneStackRequest
     responses:
@@ -3017,6 +3030,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates an app for a specified stack. For more information, see
@@ -3025,6 +3039,7 @@ types:
       have a Manage permissions level for the stack, or an attached policy that explicitly
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Create App
     body:
       application/json: CreateAppRequest
     responses:
@@ -3039,6 +3054,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Runs deployment or stack commands. For more information, see <a
@@ -3049,6 +3065,7 @@ types:
       policy that explicitly grants permissions. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Create Deployment
     body:
       application/json: CreateDeploymentRequest
     responses:
@@ -3063,6 +3080,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates an instance in a specified stack. For more information,
@@ -3072,6 +3090,7 @@ types:
       policy that explicitly grants permissions. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Create Instance
     body:
       application/json: CreateInstanceRequest
     responses:
@@ -3086,6 +3105,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates a layer. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html">How
@@ -3099,6 +3119,7 @@ types:
       stack, or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Create Layer
     body:
       application/json: CreateLayerRequest
     responses:
@@ -3113,6 +3134,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates a new stack. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html">Create
@@ -3120,6 +3142,7 @@ types:
       must have an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Create Stack
     body:
       application/json: CreateStackRequest
     responses:
@@ -3134,12 +3157,14 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates a new user profile.  <b>Required Permissions</b>: To use
       this action, an IAM user must have an attached policy that explicitly grants
       permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Create User Profile
     body:
       application/json: CreateUserProfileRequest
     responses:
@@ -3154,6 +3179,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deletes a specified app.  <b>Required Permissions</b>: To use this
@@ -3161,6 +3187,7 @@ types:
       attached policy that explicitly grants permissions. For more information on
       user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Delete App
     body:
       application/json: DeleteAppRequest
     responses:
@@ -3175,6 +3202,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deletes a specified instance, which terminates the associated Amazon
@@ -3185,6 +3213,7 @@ types:
       explicitly grants permissions. For more information on user permissions, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Delete Instance
     body:
       application/json: DeleteInstanceRequest
     responses:
@@ -3199,6 +3228,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deletes a specified layer. You must first stop and then delete all
@@ -3209,6 +3239,7 @@ types:
       policy that explicitly grants permissions. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Delete Layer
     body:
       application/json: DeleteLayerRequest
     responses:
@@ -3223,6 +3254,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deletes a specified stack. You must first delete all instances,
@@ -3233,6 +3265,7 @@ types:
       explicitly grants permissions. For more information on user permissions, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Delete Stack
     body:
       application/json: DeleteStackRequest
     responses:
@@ -3247,12 +3280,14 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deletes a user profile.  <b>Required Permissions</b>: To use this
       action, an IAM user must have an attached policy that explicitly grants permissions.
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Delete User Profile
     body:
       application/json: DeleteUserProfileRequest
     responses:
@@ -3267,6 +3302,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deregisters a specified Amazon ECS cluster from a stack. For more
@@ -3275,6 +3311,7 @@ types:
       IAM user must have a Manage permissions level for the stack or an attached policy
       that explicitly grants permissions. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html</a>.'
+    displayName: Deregister Ecs Cluster
     body:
       application/json: DeregisterEcsClusterRequest
     responses:
@@ -3289,6 +3326,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deregisters a specified Elastic IP address. The address can then
@@ -3298,6 +3336,7 @@ types:
       explicitly grants permissions. For more information on user permissions, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Deregister Elastic Ip
     body:
       application/json: DeregisterElasticIpRequest
     responses:
@@ -3312,6 +3351,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deregister a registered Amazon EC2 or on-premises instance. This
@@ -3321,6 +3361,7 @@ types:
       level for the stack or an attached policy that explicitly grants permissions.
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Deregister Instance
     body:
       application/json: DeregisterInstanceRequest
     responses:
@@ -3335,6 +3376,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deregisters an Amazon RDS instance.  <b>Required Permissions</b>:
@@ -3342,6 +3384,7 @@ types:
       stack, or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Deregister Rds Db Instance
     body:
       application/json: DeregisterRdsDbInstanceRequest
     responses:
@@ -3356,6 +3399,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deregisters an Amazon EBS volume. The volume can then be registered
@@ -3365,6 +3409,7 @@ types:
       explicitly grants permissions. For more information on user permissions, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Deregister Volume
     body:
       application/json: DeregisterVolumeRequest
     responses:
@@ -3379,9 +3424,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Describes the available AWS OpsWorks agent versions. You must specify a stack ID or a configuration manager. <code>DescribeAgentVersions</code> returns a list of available agent versions for the specified stack or configuration manager.
+    displayName: Describe Agent Versions
     body:
       application/json: DescribeAgentVersionsRequest
     responses:
@@ -3396,6 +3443,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Requests a description of a specified set of apps. <note> You must
@@ -3404,6 +3452,7 @@ types:
       level for the stack, or an attached policy that explicitly grants permissions.
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Apps
     body:
       application/json: DescribeAppsRequest
     responses:
@@ -3418,6 +3467,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describes the results of specified commands. <note> You must specify
@@ -3426,6 +3476,7 @@ types:
       for the stack, or an attached policy that explicitly grants permissions. For
       more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Commands
     body:
       application/json: DescribeCommandsRequest
     responses:
@@ -3440,6 +3491,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Requests a description of a specified set of deployments. <note>
@@ -3448,6 +3500,7 @@ types:
       level for the stack, or an attached policy that explicitly grants permissions.
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Deployments
     body:
       application/json: DescribeDeploymentsRequest
     responses:
@@ -3462,6 +3515,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describes Amazon ECS clusters that are registered with a stack.
@@ -3473,6 +3527,7 @@ types:
       policy that explicitly grants permission. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Ecs Clusters
     body:
       application/json: DescribeEcsClustersRequest
     responses:
@@ -3487,6 +3542,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describes <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic
@@ -3495,6 +3551,7 @@ types:
       Manage permissions level for the stack, or an attached policy that explicitly
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Elastic Ips
     body:
       application/json: DescribeElasticIpsRequest
     responses:
@@ -3509,6 +3566,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describes a stack''s Elastic Load Balancing instances. <note> You
@@ -3517,6 +3575,7 @@ types:
       level for the stack, or an attached policy that explicitly grants permissions.
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Elastic Load Balancers
     body:
       application/json: DescribeElasticLoadBalancersRequest
     responses:
@@ -3531,6 +3590,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Requests a description of a set of instances. <note> You must specify
@@ -3539,6 +3599,7 @@ types:
       for the stack, or an attached policy that explicitly grants permissions. For
       more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Instances
     body:
       application/json: DescribeInstancesRequest
     responses:
@@ -3553,6 +3614,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Requests a description of one or more layers in a specified stack.
@@ -3561,6 +3623,7 @@ types:
       Manage permissions level for the stack, or an attached policy that explicitly
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Layers
     body:
       application/json: DescribeLayersRequest
     responses:
@@ -3575,6 +3638,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describes load-based auto scaling configurations for specified layers.
@@ -3583,6 +3647,7 @@ types:
       Manage permissions level for the stack, or an attached policy that explicitly
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Load Based Auto Scaling
     body:
       application/json: DescribeLoadBasedAutoScalingRequest
     responses:
@@ -3597,6 +3662,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describes a user''s SSH information.  <b>Required Permissions</b>:
@@ -3604,6 +3670,7 @@ types:
       policy that explicitly grants permissions. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe My User Profile
     responses:
       200:
         body:
@@ -3614,6 +3681,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describes the permissions for a specified stack.  <b>Required Permissions</b>:
@@ -3621,6 +3689,7 @@ types:
       stack, or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Permissions
     body:
       application/json: DescribePermissionsRequest
     responses:
@@ -3635,6 +3704,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describe an instance''s RAID arrays. <note> You must specify at
@@ -3643,6 +3713,7 @@ types:
       the stack, or an attached policy that explicitly grants permissions. For more
       information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Raid Arrays
     body:
       application/json: DescribeRaidArraysRequest
     responses:
@@ -3657,6 +3728,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describes Amazon RDS instances.  <b>Required Permissions</b>: To
@@ -3664,6 +3736,7 @@ types:
       level for the stack, or an attached policy that explicitly grants permissions.
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Rds Db Instances
     body:
       application/json: DescribeRdsDbInstancesRequest
     responses:
@@ -3678,6 +3751,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describes AWS OpsWorks service errors.  <b>Required Permissions</b>:
@@ -3685,6 +3759,7 @@ types:
       level for the stack, or an attached policy that explicitly grants permissions.
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Service Errors
     body:
       application/json: DescribeServiceErrorsRequest
     responses:
@@ -3699,6 +3774,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Requests a description of a stack''s provisioning parameters.  <b>Required
@@ -3706,6 +3782,7 @@ types:
       Manage permissions level for the stack or an attached policy that explicitly
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Stack Provisioning Parameters
     body:
       application/json: DescribeStackProvisioningParametersRequest
     responses:
@@ -3720,6 +3797,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describes the number of layers and apps in a specified stack, and
@@ -3729,6 +3807,7 @@ types:
       an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Stack Summary
     body:
       application/json: DescribeStackSummaryRequest
     responses:
@@ -3743,6 +3822,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Requests a description of one or more stacks.  <b>Required Permissions</b>:
@@ -3750,6 +3830,7 @@ types:
       level for the stack, or an attached policy that explicitly grants permissions.
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Stacks
     body:
       application/json: DescribeStacksRequest
     responses:
@@ -3764,6 +3845,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describes time-based auto scaling configurations for specified instances.
@@ -3772,6 +3854,7 @@ types:
       Manage permissions level for the stack, or an attached policy that explicitly
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Time Based Auto Scaling
     body:
       application/json: DescribeTimeBasedAutoScalingRequest
     responses:
@@ -3786,12 +3869,14 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describe specified users.  <b>Required Permissions</b>: To use this
       action, an IAM user must have an attached policy that explicitly grants permissions.
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe User Profiles
     body:
       application/json: DescribeUserProfilesRequest
     responses:
@@ -3806,6 +3891,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Describes an instance''s Amazon EBS volumes. <note> You must specify
@@ -3814,6 +3900,7 @@ types:
       for the stack, or an attached policy that explicitly grants permissions. For
       more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Describe Volumes
     body:
       application/json: DescribeVolumesRequest
     responses:
@@ -3828,6 +3915,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Detaches a specified Elastic Load Balancing instance from its layer.  <b>Required
@@ -3835,6 +3923,7 @@ types:
       level for the stack, or an attached policy that explicitly grants permissions.
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Detach Elastic Load Balancer
     body:
       application/json: DetachElasticLoadBalancerRequest
     responses:
@@ -3849,6 +3938,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Disassociates an Elastic IP address from its instance. The address
@@ -3858,6 +3948,7 @@ types:
       explicitly grants permissions. For more information on user permissions, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Disassociate Elastic Ip
     body:
       application/json: DisassociateElasticIpRequest
     responses:
@@ -3872,6 +3963,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Gets a generated host name for the specified layer, based on the
@@ -3880,6 +3972,7 @@ types:
       policy that explicitly grants permissions. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Get Hostname Suggestion
     body:
       application/json: GetHostnameSuggestionRequest
     responses:
@@ -3894,9 +3987,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: <note> This action can be used only with Windows stacks. </note> Grants RDP access to a Windows instance for a specified time period.
+    displayName: Grant Access
     body:
       application/json: GrantAccessRequest
     responses:
@@ -3911,6 +4006,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Reboots a specified instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html">Starting,
@@ -3919,6 +4015,7 @@ types:
       or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Reboot Instance
     body:
       application/json: RebootInstanceRequest
     responses:
@@ -3933,6 +4030,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Registers a specified Amazon ECS cluster with a stack. You can register
@@ -3943,6 +4041,7 @@ types:
       that explicitly grants permissions. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">
       Managing User Permissions</a>.'
+    displayName: Register Ecs Cluster
     body:
       application/json: RegisterEcsClusterRequest
     responses:
@@ -3957,6 +4056,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Registers an Elastic IP address with a specified stack. An address
@@ -3968,6 +4068,7 @@ types:
       explicitly grants permissions. For more information on user permissions, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Register Elastic Ip
     body:
       application/json: RegisterElasticIpRequest
     responses:
@@ -3982,6 +4083,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Registers instances with a specified stack that were created outside
@@ -3996,6 +4098,7 @@ types:
       level for the stack or an attached policy that explicitly grants permissions.
       For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Register Instance
     body:
       application/json: RegisterInstanceRequest
     responses:
@@ -4010,6 +4113,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Registers an Amazon RDS instance with a stack.  <b>Required Permissions</b>:
@@ -4017,6 +4121,7 @@ types:
       stack, or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Register Rds Db Instance
     body:
       application/json: RegisterRdsDbInstanceRequest
     responses:
@@ -4031,6 +4136,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Registers an Amazon EBS volume with a specified stack. A volume
@@ -4042,6 +4148,7 @@ types:
       explicitly grants permissions. For more information on user permissions, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Register Volume
     body:
       application/json: RegisterVolumeRequest
     responses:
@@ -4056,6 +4163,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Specify the load-based auto scaling configuration for a specified
@@ -4068,6 +4176,7 @@ types:
       a Manage permissions level for the stack, or an attached policy that explicitly
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Set Load Based Auto Scaling
     body:
       application/json: SetLoadBasedAutoScalingRequest
     responses:
@@ -4082,6 +4191,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Specifies a user''s permissions. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html">Security
@@ -4090,6 +4200,7 @@ types:
       that explicitly grants permissions. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Set Permission
     body:
       application/json: SetPermissionRequest
     responses:
@@ -4104,6 +4215,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Specify the time-based auto scaling configuration for a specified
@@ -4113,6 +4225,7 @@ types:
       stack, or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Set Time Based Auto Scaling
     body:
       application/json: SetTimeBasedAutoScalingRequest
     responses:
@@ -4127,6 +4240,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Starts a specified instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html">Starting,
@@ -4135,6 +4249,7 @@ types:
       or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Start Instance
     body:
       application/json: StartInstanceRequest
     responses:
@@ -4149,6 +4264,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Starts a stack''s instances.  <b>Required Permissions</b>: To use
@@ -4156,6 +4272,7 @@ types:
       or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Start Stack
     body:
       application/json: StartStackRequest
     responses:
@@ -4170,6 +4287,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Stops a specified instance. When you stop a standard instance, the
@@ -4181,6 +4299,7 @@ types:
       or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Stop Instance
     body:
       application/json: StopInstanceRequest
     responses:
@@ -4195,6 +4314,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Stops a specified stack.  <b>Required Permissions</b>: To use this
@@ -4202,6 +4322,7 @@ types:
       attached policy that explicitly grants permissions. For more information on
       user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Stop Stack
     body:
       application/json: StopStackRequest
     responses:
@@ -4216,6 +4337,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Unassigns a registered instance from all of it''s layers. The instance
@@ -4226,6 +4348,7 @@ types:
       that explicitly grants permissions. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Unassign Instance
     body:
       application/json: UnassignInstanceRequest
     responses:
@@ -4240,6 +4363,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Unassigns an assigned Amazon EBS volume. The volume remains registered
@@ -4249,6 +4373,7 @@ types:
       explicitly grants permissions. For more information on user permissions, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Unassign Volume
     body:
       application/json: UnassignVolumeRequest
     responses:
@@ -4263,6 +4388,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Updates a specified app.  <b>Required Permissions</b>: To use this
@@ -4270,6 +4396,7 @@ types:
       or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Update App
     body:
       application/json: UpdateAppRequest
     responses:
@@ -4284,6 +4411,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Updates a registered Elastic IP address''s name. For more information,
@@ -4293,6 +4421,7 @@ types:
       explicitly grants permissions. For more information on user permissions, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Update Elastic Ip
     body:
       application/json: UpdateElasticIpRequest
     responses:
@@ -4307,6 +4436,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Updates a specified instance.  <b>Required Permissions</b>: To use
@@ -4314,6 +4444,7 @@ types:
       or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Update Instance
     body:
       application/json: UpdateInstanceRequest
     responses:
@@ -4328,6 +4459,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Updates a specified layer.  <b>Required Permissions</b>: To use
@@ -4335,6 +4467,7 @@ types:
       or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Update Layer
     body:
       application/json: UpdateLayerRequest
     responses:
@@ -4349,6 +4482,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Updates a user''s SSH public key.  <b>Required Permissions</b>:
@@ -4356,6 +4490,7 @@ types:
       policy that explicitly grants permissions. For more information on user permissions,
       see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Update My User Profile
     body:
       application/json: UpdateMyUserProfileRequest
     responses:
@@ -4370,6 +4505,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Updates an Amazon RDS instance.  <b>Required Permissions</b>: To
@@ -4377,6 +4513,7 @@ types:
       or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Update Rds Db Instance
     body:
       application/json: UpdateRdsDbInstanceRequest
     responses:
@@ -4391,6 +4528,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Updates a specified stack.  <b>Required Permissions</b>: To use
@@ -4398,6 +4536,7 @@ types:
       or an attached policy that explicitly grants permissions. For more information
       on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Update Stack
     body:
       application/json: UpdateStackRequest
     responses:
@@ -4412,12 +4551,14 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Updates a specified user profile.  <b>Required Permissions</b>:
       To use this action, an IAM user must have an attached policy that explicitly
       grants permissions. For more information on user permissions, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Update User Profile
     body:
       application/json: UpdateUserProfileRequest
     responses:
@@ -4432,6 +4573,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Updates an Amazon EBS volume''s name or mount point. For more information,
@@ -4441,6 +4583,7 @@ types:
       explicitly grants permissions. For more information on user permissions, see
       <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing
       User Permissions</a>.'
+    displayName: Update Volume
     body:
       application/json: UpdateVolumeRequest
     responses:

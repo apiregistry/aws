@@ -11,6 +11,9 @@ description: '   <b>Overview</b>    <a href="https://aws.amazon.com/servicecatal
   Service Catalog User Guide</a>  </li> </ul>'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   AcceptLanguage:
     type: string
@@ -850,9 +853,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves information about a specified product. This operation is functionally identical to <a>DescribeProductView</a> except that it takes as input <code>ProductId</code> instead of <code>ProductViewId</code>.
+    displayName: Describe Product
     body:
       application/json: DescribeProductInput
     responses:
@@ -867,9 +872,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves information about a specified product. This operation is functionally identical to <a>DescribeProduct</a> except that it takes as input <code>ProductViewId</code> instead of <code>ProductId</code>.
+    displayName: Describe Product View
     body:
       application/json: DescribeProductViewInput
     responses:
@@ -884,9 +891,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Provides information about parameters required to provision a specified product in a specified manner. Use this operation to obtain the list of <code>ProvisioningArtifactParameters</code> parameters available to call the <a>ProvisionProduct</a> operation for the specified product.
+    displayName: Describe Provisioning Parameters
     body:
       application/json: DescribeProvisioningParametersInput
     responses:
@@ -901,11 +910,13 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Retrieves a paginated list of the full details of a specific request.
       Use this operation after calling a request operation (<a>ProvisionProduct</a>,
       <a>TerminateProvisionedProduct</a>, or <a>UpdateProvisionedProduct</a>). '
+    displayName: Describe Record
     body:
       application/json: DescribeRecordInput
     responses:
@@ -920,9 +931,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a paginated list of all paths to a specified product. A path is how the user has access to a specified product, and is necessary when provisioning a product. A path also determines the constraints put on the product.
+    displayName: List Launch Paths
     body:
       application/json: ListLaunchPathsInput
     responses:
@@ -937,9 +950,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a paginated list of all performed requests, in the form of RecordDetails objects that are filtered as specified.
+    displayName: List Record History
     body:
       application/json: ListRecordHistoryInput
     responses:
@@ -954,9 +969,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Requests a <i>Provision</i> of a specified product. A <i>ProvisionedProduct</i> is a resourced instance for a product. For example, provisioning a CloudFormation-template-backed product results in launching a CloudFormation stack and all the underlying resources that come with it.  You can check the status of this request using the <a>DescribeRecord</a> operation.
+    displayName: Provision Product
     body:
       application/json: ProvisionProductInput
     responses:
@@ -971,10 +988,12 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns a paginated list of all the ProvisionedProduct objects that
       are currently available (not terminated). '
+    displayName: Scan Provisioned Products
     body:
       application/json: ScanProvisionedProductsInput
     responses:
@@ -989,9 +1008,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a paginated list all of the <code>Products</code> objects to which the caller has access.  The output of this operation can be used as input for other operations, such as <a>DescribeProductView</a>.
+    displayName: Search Products
     body:
       application/json: SearchProductsInput
     responses:
@@ -1006,9 +1027,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Requests termination of an existing ProvisionedProduct object. If there are <code>Tags</code> associated with the object, they are terminated when the ProvisionedProduct object is terminated.  This operation does not delete any records associated with the ProvisionedProduct object. You can check the status of this request using the <a>DescribeRecord</a> operation.
+    displayName: Terminate Provisioned Product
     body:
       application/json: TerminateProvisionedProductInput
     responses:
@@ -1023,9 +1046,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Requests updates to the configuration of an existing ProvisionedProduct object. If there are tags associated with the object, they cannot be updated or added with this operation. Depending on the specific updates requested, this operation may update with no interruption, with some interruption, or replace the ProvisionedProduct object entirely.  You can check the status of this request using the <a>DescribeRecord</a> operation.
+    displayName: Update Provisioned Product
     body:
       application/json: UpdateProvisionedProductInput
     responses:

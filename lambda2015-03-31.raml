@@ -8,6 +8,9 @@ description: '   <b>Overview</b>   This is the <i>AWS Lambda API Reference</i>. 
   Lambda: How it Works</a> in the <i>AWS Lambda Developer Guide</i>.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   Action:
     type: string
@@ -428,28 +431,22 @@ types:
   /functions:
     /{FunctionName}:
       uriParameters:
-        FunctionName?:
+        FunctionName:
           type: FunctionName
           description: <p>Lambda function whose resource policy you want to remove a permission from.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
       /policy:
         /{StatementId}:
           uriParameters:
-            StatementId?:
+            StatementId:
               type: StatementId
               description: <p>Statement ID of the permission to remove.</p>
           delete:
             description: You can remove individual permissions from an resource policy associated with a Lambda function by providing a statement ID that you provided when you added the permission. If you are using versioning, the permissions you remove are specific to the Lambda function version or alias you specify in the <code>AddPermission</code> request via the <code>Qualifier</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  Note that removal of a permission will cause an active event source to lose permission to the function. You need permission for the <code>lambda:RemovePermission</code> action.
+            displayName: Remove Permission
             queryParameters:
-              Qualifier:
+              Qualifier?:
                 type: Qualifier
                 description: <p>You can specify this optional parameter to remove permission associated with a specific function version or function alias. If you don't specify this parameter, the API removes permission associated with the unqualified function ARN.</p>
-            headers:
-              FunctionName?:
-                type: FunctionName
-                description: <p>Lambda function whose resource policy you want to remove a permission from.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
-              StatementId?:
-                type: StatementId
-                description: <p>Statement ID of the permission to remove.</p>
             responses:
               204:
                 body:
@@ -471,14 +468,11 @@ types:
             Lambda Function Versioning and Aliases</a>.  For information about adding
             permissions, see <a>AddPermission</a>. You need permission for the <code>lambda:GetPolicy
             action.</code> '
+          displayName: Get Policy
           queryParameters:
-            Qualifier:
+            Qualifier?:
               type: Qualifier
               description: <p>You can specify this optional query parameter to specify a function version or an alias name in which case this API will return all permissions associated with the specific qualified ARN. If you don't provide this parameter, the API will return permissions that apply to the unqualified function ARN.</p>
-          headers:
-            FunctionName?:
-              type: FunctionName
-              description: <p>Function name whose resource policy you want to retrieve.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
           responses:
             200:
               body:
@@ -505,34 +499,31 @@ types:
             parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
             Lambda Function Versioning and Aliases</a>.  This operation requires permission
             for the <code>lambda:AddPermission</code> action.'
+          displayName: Add Permission
           queryParameters:
-            Qualifier:
+            Qualifier?:
               type: Qualifier
               description: <p>You can use this optional query parameter to describe a qualified ARN using a function version or an alias name. The permission will then apply to the specific qualified ARN. For example, if you specify function version 2 as the qualifier, then permission applies only when request is made using qualified function ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:2</code> </p> <p>If you specify an alias name, for example <code>PROD</code>, then the permission is valid only for requests made using the alias ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:PROD</code> </p> <p>If the qualifier is not specified, the permission is valid only when requests is made using unqualified function ARN.</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name</code> </p>
-          headers:
-            FunctionName?:
-              type: FunctionName
-              description: <p>Name of the Lambda function whose resource policy you are updating by adding a new permission.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
           body:
             application/json:
               type: object
               properties:
-                StatementId:
+                StatementId?:
                   type: StatementId
                   description: <p>A unique statement identifier.</p>
-                Action:
+                Action?:
                   type: Action
                   description: <p>The AWS Lambda action you want to allow in this statement. Each Lambda action is a string starting with <code>lambda:</code> followed by the API name . For example, <code>lambda:CreateFunction</code>. You can use wildcard (<code>lambda:*</code>) to grant permission for all AWS Lambda actions. </p>
-                Principal:
+                Principal?:
                   type: Principal
                   description: <p>The principal who is getting this permission. It can be Amazon S3 service Principal (<code>s3.amazonaws.com</code>) if you want Amazon S3 to invoke the function, an AWS account ID if you are granting cross-account permission, or any valid AWS service principal such as <code>sns.amazonaws.com</code>. For example, you might want to allow a custom application in another AWS account to push events to AWS Lambda by invoking your function. </p>
-                SourceArn?:
+                SourceArn:
                   type: Arn
                   description: <p>This is optional; however, when granting Amazon S3 permission to invoke your function, you should specify this field with the Amazon Resource Name (ARN) as its value. This ensures that only events generated from the specified source can invoke the function.</p> <important><p>If you add a permission for the Amazon S3 principal without providing the source ARN, any AWS account that creates a mapping to your function ARN can send events to invoke your Lambda function from Amazon S3.</p> </important>
-                SourceAccount?:
+                SourceAccount:
                   type: SourceOwner
                   description: <p>This parameter is used for S3 and SES only. The AWS account ID (without a hyphen) of the source owner. For example, if the <code>SourceArn</code> identifies a bucket, then this is the bucket owner's account ID. You can use this additional condition to ensure the bucket you specify is owned by a specific account (it is possible the bucket owner deleted the bucket and some other AWS account created the bucket). You can also use this condition to specify all sources (that is, you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
-                EventSourceToken?:
+                EventSourceToken:
                   type: EventSourceToken
                   description: <p>A unique token that must be supplied by the principal invoking the function. This is currently only used for Alexa Smart Home functions.</p>
           responses:
@@ -552,18 +543,12 @@ types:
       /aliases:
         /{Name}:
           uriParameters:
-            Name?:
+            Name:
               type: Alias
               description: <p>Name of the alias to delete.</p>
           delete:
             description: Deletes the specified Lambda function alias. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. This requires permission for the lambda:DeleteAlias action.
-            headers:
-              FunctionName?:
-                type: FunctionName
-                description: <p>The Lambda function name for which the alias is created. Deleting an alias does not delete the function version to which it is pointing.</p>
-              Name?:
-                type: Alias
-                description: <p>Name of the alias to delete.</p>
+            displayName: Delete Alias
             responses:
               204:
                 body:
@@ -576,21 +561,15 @@ types:
                 description: TooManyRequestsException
           put:
             description: Using this API you can update the function version to which the alias points and the alias description. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. This requires permission for the lambda:UpdateAlias action.
-            headers:
-              FunctionName?:
-                type: FunctionName
-                description: <p>The function name for which the alias is created.</p>
-              Name?:
-                type: Alias
-                description: <p>The alias name.</p>
+            displayName: Update Alias
             body:
               application/json:
                 type: object
                 properties:
-                  FunctionVersion?:
+                  FunctionVersion:
                     type: Version
                     description: <p>Using this parameter you can change the Lambda function version to which the alias points.</p>
-                  Description?:
+                  Description:
                     type: Description
                     description: <p>You can change the description of the alias using this parameter.</p>
             responses:
@@ -607,13 +586,7 @@ types:
                 description: TooManyRequestsException
           get:
             description: Returns the specified alias information such as the alias ARN, description, and function version it is pointing to. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. This requires permission for the <code>lambda:GetAlias</code> action.
-            headers:
-              FunctionName?:
-                type: FunctionName
-                description: <p>Function name for which the alias is created. An alias is a subresource that exists only in the context of an existing Lambda function so you must specify the function name.</p>
-              Name?:
-                type: Alias
-                description: <p>Name of the alias for which you want to retrieve information.</p>
+            displayName: Get Alias
             responses:
               200:
                 body:
@@ -628,20 +601,17 @@ types:
                 description: TooManyRequestsException
         get:
           description: Returns list of aliases created for a Lambda function. For each alias, the response includes information such as the alias ARN, description, alias name, and the function version to which it points. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. This requires permission for the lambda:ListAliases action.
+          displayName: List Aliases
           queryParameters:
-            FunctionVersion:
+            FunctionVersion?:
               type: Version
               description: <p>If you specify this optional parameter, the API returns only the aliases that are pointing to the specific Lambda function version, otherwise the API returns all of the aliases created for the Lambda function.</p>
-            Marker:
+            Marker?:
               type: String
               description: <p>Optional string. An opaque pagination token returned from a previous <code>ListAliases</code> operation. If present, indicates where to continue the listing.</p>
-            MaxItems:
+            MaxItems?:
               type: MaxListItems
               description: <p>Optional integer. Specifies the maximum number of aliases to return in response. This parameter value must be greater than 0.</p>
-          headers:
-            FunctionName?:
-              type: FunctionName
-              description: <p>Lambda function name for which the alias is created.</p>
           responses:
             200:
               body:
@@ -656,21 +626,18 @@ types:
               description: TooManyRequestsException
         post:
           description: Creates an alias that points to the specified Lambda function version. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">Introduction to AWS Lambda Aliases</a>. Alias names are unique for a given function. This requires permission for the lambda:CreateAlias action.
-          headers:
-            FunctionName?:
-              type: FunctionName
-              description: <p>Name of the Lambda function for which you want to create an alias.</p>
+          displayName: Create Alias
           body:
             application/json:
               type: object
               properties:
-                Name:
+                Name?:
                   type: Alias
                   description: <p>Name for the alias you are creating.</p>
-                FunctionVersion:
+                FunctionVersion?:
                   type: Version
                   description: <p>Lambda function version for which you are creating the alias.</p>
-                Description?:
+                Description:
                   type: Description
                   description: <p>Description of the alias.</p>
           responses:
@@ -690,32 +657,29 @@ types:
       /configuration:
         put:
           description: Updates the configuration parameters for the specified Lambda function by using the values provided in the request. You provide only the parameters you want to change. This operation must only be used on an existing Lambda function and cannot be used to update the function's code. If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:UpdateFunctionConfiguration</code> action.
-          headers:
-            FunctionName?:
-              type: FunctionName
-              description: <p>The name of the Lambda function.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+          displayName: Update Function Configuration
           body:
             application/json:
               type: object
               properties:
-                Role?:
+                Role:
                   type: RoleArn
                   description: <p>The Amazon Resource Name (ARN) of the IAM role that Lambda will assume when it executes your function.</p>
-                Handler?:
+                Handler:
                   type: Handler
                   description: <p>The function that Lambda calls to begin executing your function. For Node.js, it is the <code>module-name.export</code> value in your function. </p>
-                Description?:
+                Description:
                   type: Description
                   description: <p>A short user-defined function description. AWS Lambda does not use this value. Assign a meaningful description as you see fit.</p>
-                Timeout?:
+                Timeout:
                   type: Timeout
                   description: <p>The function execution time at which AWS Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
-                MemorySize?:
+                MemorySize:
                   type: MemorySize
                   description: <p>The amount of memory, in MB, your Lambda function is given. AWS Lambda uses this memory size to infer the amount of CPU allocated to your function. Your function use-case determines your CPU and memory requirements. For example, a database operation might need less memory compared to an image processing function. The default value is 128 MB. The value must be a multiple of 64 MB.</p>
-                VpcConfig?:
+                VpcConfig:
                   type: VpcConfig
-                Runtime?:
+                Runtime:
                   type: Runtime
                   description: <p>The runtime environment for the Lambda function.</p> <p>To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use earlier runtime (v0.10.42), set the value to "nodejs".</p>
           responses:
@@ -732,14 +696,11 @@ types:
               description: TooManyRequestsException
         get:
           description: Returns the configuration information of the Lambda function. This the same information you provided as parameters when uploading the function by using <a>CreateFunction</a>. If you are using the versioning feature, you can retrieve this information for a specific function version by using the optional <code>Qualifier</code> parameter and specifying the function version or alias that points to it. If you don't provide it, the API returns information about the $LATEST version of the function. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. This operation requires permission for the <code>lambda:GetFunctionConfiguration</code> operation.
+          displayName: Get Function Configuration
           queryParameters:
-            Qualifier:
+            Qualifier?:
               type: Qualifier
               description: <p>Using this optional parameter you can specify a function version or an alias name. If you specify function version, the API uses qualified function ARN and returns information about the specific function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points.</p> <p>If you don't specify this parameter, the API uses unqualified function ARN, and returns information about the <code>$LATEST</code> function version.</p>
-          headers:
-            FunctionName?:
-              type: FunctionName
-              description: <p>The name of the Lambda function for which you want to retrieve the configuration information.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
           responses:
             200:
               body:
@@ -760,18 +721,15 @@ types:
             The code and configuration cannot be modified after publication. For information
             about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
             Lambda Function Versioning and Aliases</a>. '
-          headers:
-            FunctionName?:
-              type: FunctionName
-              description: <p>The Lambda function name. You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+          displayName: Publish Version
           body:
             application/json:
               type: object
               properties:
-                CodeSha256?:
+                CodeSha256:
                   type: String
                   description: <p>The SHA256 hash of the deployment package you want to publish. This provides validation on the code you are publishing. If you provide this parameter value must match the SHA256 of the $LATEST version for the publication to succeed.</p>
-                Description?:
+                Description:
                   type: Description
                   description: <p>The description for the version you are publishing. If not provided, AWS Lambda copies the description from the $LATEST version.</p>
           responses:
@@ -790,17 +748,14 @@ types:
           description: 'List all versions of a function. For information about the
             versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
             Lambda Function Versioning and Aliases</a>. '
+          displayName: List Versions By Function
           queryParameters:
-            Marker:
+            Marker?:
               type: String
               description: <p> Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code> operation. If present, indicates where to continue the listing. </p>
-            MaxItems:
+            MaxItems?:
               type: MaxListItems
               description: <p>Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This parameter value must be greater than 0.</p>
-          headers:
-            FunctionName?:
-              type: FunctionName
-              description: <p>Function name whose versions to list. You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
           responses:
             200:
               body:
@@ -816,21 +771,19 @@ types:
       /invocations:
         post:
           description: Invokes a specific Lambda function. If you are using the versioning feature, you can invoke the specific function version by providing function version or alias name that is pointing to the function version using the <code>Qualifier</code> parameter in the request. If you don't provide the <code>Qualifier</code> parameter, the <code>$LATEST</code> version of the Lambda function is invoked. Invocations occur at least once in response to an event and functions must be idempotent to handle this. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:InvokeFunction</code> action.
+          displayName: Invoke
           queryParameters:
-            Qualifier:
+            Qualifier?:
               type: Qualifier
               description: <p>You can use this optional parameter to specify a Lambda function version or alias name. If you specify a function version, the API uses the qualified function ARN to invoke a specific Lambda function. If you specify an alias name, the API uses the alias ARN to invoke the Lambda function version to which the alias points.</p> <p>If you don't provide this parameter, then the API uses unqualified function ARN which results in invocation of the <code>$LATEST</code> version.</p>
           headers:
-            FunctionName?:
-              type: FunctionName
-              description: <p>The Lambda function name.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
-            X-Amz-Invocation-Type:
+            X-Amz-Invocation-Type?:
               type: InvocationType
               description: <p>By default, the <code>Invoke</code> API assumes <code>RequestResponse</code> invocation type. You can optionally request asynchronous execution by specifying <code>Event</code> as the <code>InvocationType</code>. You can also use this parameter to request AWS Lambda to not execute the function but do some verification, such as if the caller is authorized to invoke the function and if the inputs are valid. You request this by specifying <code>DryRun</code> as the <code>InvocationType</code>. This is useful in a cross-account scenario when you want to verify access to a function without running it. </p>
-            X-Amz-Log-Type:
+            X-Amz-Log-Type?:
               type: LogType
               description: <p>You can set this optional parameter to <code>Tail</code> in the request only if you specify the <code>InvocationType</code> parameter with value <code>RequestResponse</code>. In this case, AWS Lambda returns the base64-encoded last 4 KB of log data produced by your Lambda function in the <code>x-amz-log-result</code> header. </p>
-            X-Amz-Client-Context:
+            X-Amz-Client-Context?:
               type: String
               description: <p>Using the <code>ClientContext</code> you can pass client-specific information to the Lambda function you are invoking. You can then process the client information in your Lambda function as you choose through the context variable. For an example of a <code>ClientContext</code> JSON, see <a href="http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html">PutEvents</a> in the <i>Amazon Mobile Analytics API Reference and User Guide</i>.</p> <p>The ClientContext JSON must be base64-encoded.</p>
           body:
@@ -840,10 +793,10 @@ types:
           responses:
             200:
               headers:
-                X-Amz-Function-Error:
+                X-Amz-Function-Error?:
                   type: String
                   description: <p>Indicates whether an error occurred while executing the Lambda function. If an error occurred this field will have one of two values; <code>Handled</code> or <code>Unhandled</code>. <code>Handled</code> errors are errors that are reported by the function while the <code>Unhandled</code> errors are those detected and reported by AWS Lambda. Unhandled errors include out of memory errors and function timeouts. For information about how to report an <code>Handled</code> error, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html">Programming Model</a>. </p>
-                X-Amz-Log-Result:
+                X-Amz-Log-Result?:
                   type: String
                   description: <p> It is the base64-encoded logs for the Lambda function invocation. This is present only if the invocation type is <code>RequestResponse</code> and the logs were requested. </p>
               body:
@@ -867,27 +820,24 @@ types:
       /code:
         put:
           description: Updates the code for the specified Lambda function. This operation must only be used on an existing Lambda function and cannot be used to update the function configuration. If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:UpdateFunctionCode</code> action.
-          headers:
-            FunctionName?:
-              type: FunctionName
-              description: <p>The existing Lambda function name whose code you want to replace.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+          displayName: Update Function Code
           body:
             application/json:
               type: object
               properties:
-                ZipFile?:
+                ZipFile:
                   type: Blob
                   description: <p>The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, go to <a href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
-                S3Bucket?:
+                S3Bucket:
                   type: S3Bucket
                   description: <p>Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS region where you are creating the Lambda function.</p>
-                S3Key?:
+                S3Key:
                   type: S3Key
                   description: <p>The Amazon S3 object (the deployment package) key name you want to upload.</p>
-                S3ObjectVersion?:
+                S3ObjectVersion:
                   type: S3ObjectVersion
                   description: <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
-                Publish?:
+                Publish:
                   type: Boolean
                   description: <p>This boolean parameter can be used to request AWS Lambda to update the Lambda function and publish a version as an atomic operation.</p>
           responses:
@@ -904,14 +854,11 @@ types:
               description: TooManyRequestsException
       delete:
         description: Deletes the specified Lambda function code and configuration. If you are using the versioning feature and you don't specify a function version in your <code>DeleteFunction</code> request, AWS Lambda will delete the function, including all its versions, and any aliases pointing to the function versions. To delete a specific function version, you must provide the function version via the <code>Qualifier</code> parameter. For information about function versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  When you delete a function the associated resource policy is also deleted. You will need to delete the event source mappings explicitly. This operation requires permission for the <code>lambda:DeleteFunction</code> action.
+        displayName: Delete Function
         queryParameters:
-          Qualifier:
+          Qualifier?:
             type: Qualifier
             description: <p>Using this optional parameter you can specify a function version (but not the <code>$LATEST</code> version) to direct AWS Lambda to delete a specific function version. If the function version has one or more aliases pointing to it, you will get an error because you cannot have aliases pointing to it. You can delete any function version but not the <code>$LATEST</code>, that is, you cannot specify <code>$LATEST</code> as the value of this parameter. The <code>$LATEST</code> version can be deleted only when you want to delete all the function versions and aliases.</p> <p>You can only specify a function version, not an alias name, using this parameter. You cannot delete a function version using its alias.</p> <p>If you don't specify this parameter, AWS Lambda will delete the function, including all of its versions and aliases.</p>
-        headers:
-          FunctionName?:
-            type: FunctionName
-            description: <p>The Lambda function to delete.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
         responses:
           204:
             body:
@@ -928,14 +875,11 @@ types:
             description: ResourceConflictException
       get:
         description: Returns the configuration information of the Lambda function and a presigned URL link to the .zip file you uploaded with <a>CreateFunction</a> so you can download the .zip file. Note that the URL is valid for up to 10 minutes. The configuration information is the same information you provided as parameters when uploading the function. Using the optional <code>Qualifier</code> parameter, you can specify a specific function version for which you want this information. If you don't specify this parameter, the API uses unqualified function ARN which return information about the <code>$LATEST</code> version of the Lambda function. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>. This operation requires permission for the <code>lambda:GetFunction</code> action.
+        displayName: Get Function
         queryParameters:
-          Qualifier:
+          Qualifier?:
             type: Qualifier
             description: <p>Using this optional parameter to specify a function version or an alias name. If you specify function version, the API uses qualified function ARN for the request and returns information about the specific Lambda function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points. If you don't provide this parameter, the API uses unqualified function ARN and returns information about the <code>$LATEST</code> version of the Lambda function.</p>
-        headers:
-          FunctionName?:
-            type: FunctionName
-            description: <p>The Lambda function name.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
         responses:
           200:
             body:
@@ -950,6 +894,7 @@ types:
             description: InvalidParameterValueException
     post:
       description: Creates a new Lambda function. The function metadata is created from the request parameters, and the code for the function is provided by a .zip file in the request body. If the function name already exists, the operation will fail. Note that the function name is case-sensitive.  If you are using versioning, you can also publish a version of the Lambda function you are creating using the <code>Publish</code> parameter. For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:CreateFunction</code> action.
+      displayName: Create Function
       body:
         application/json: CreateFunctionRequest
       responses:
@@ -974,11 +919,12 @@ types:
         feature, the response returns list of $LATEST versions of your functions.
         For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
         Lambda Function Versioning and Aliases</a>. '
+      displayName: List Functions
       queryParameters:
-        Marker:
+        Marker?:
           type: String
           description: <p>Optional string. An opaque pagination token returned from a previous <code>ListFunctions</code> operation. If present, indicates where to continue the listing. </p>
-        MaxItems:
+        MaxItems?:
           type: MaxListItems
           description: <p>Optional integer. Specifies the maximum number of AWS Lambda functions to return in response. This parameter value must be greater than 0.</p>
       responses:
@@ -992,15 +938,12 @@ types:
   /event-source-mappings:
     /{UUID}:
       uriParameters:
-        UUID?:
+        UUID:
           type: String
           description: <p>The event source mapping ID.</p>
       delete:
         description: Removes an event source mapping. This means AWS Lambda will no longer invoke the function for events in the associated source. This operation requires permission for the <code>lambda:DeleteEventSourceMapping</code> action.
-        headers:
-          UUID?:
-            type: String
-            description: <p>The event source mapping ID.</p>
+        displayName: Delete Event Source Mapping
         responses:
           202:
             body:
@@ -1015,21 +958,18 @@ types:
             description: TooManyRequestsException
       put:
         description: You can update an event source mapping. This is useful if you want to change the parameters of the existing mapping without losing your position in the stream. You can change which function will receive the stream records, but to change the stream itself, you must create a new mapping. If you are using the versioning feature, you can update the event source mapping to map to a specific Lambda function version or alias as described in the <code>FunctionName</code> parameter. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  If you disable the event source mapping, AWS Lambda stops polling. If you enable again, it will resume polling from the time it had stopped polling, so you don't lose processing of any records. However, if you delete event source mapping and create it again, it will reset. This operation requires permission for the <code>lambda:UpdateEventSourceMapping</code> action.
-        headers:
-          UUID?:
-            type: String
-            description: <p>The event source mapping identifier.</p>
+        displayName: Update Event Source Mapping
         body:
           application/json:
             type: object
             properties:
-              FunctionName?:
+              FunctionName:
                 type: FunctionName
                 description: <p>The Lambda function to which you want the stream records sent.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). </p> <p>If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length.</p>
-              Enabled?:
+              Enabled:
                 type: Enabled
                 description: <p>Specifies whether AWS Lambda should actively poll the stream or not. If disabled, AWS Lambda will not poll the stream.</p>
-              BatchSize?:
+              BatchSize:
                 type: BatchSize
                 description: <p>The maximum number of stream records that can be sent to your Lambda function for a single invocation.</p>
         responses:
@@ -1048,10 +988,7 @@ types:
             description: ResourceConflictException
       get:
         description: Returns configuration information for the specified event source mapping (see <a>CreateEventSourceMapping</a>). This operation requires permission for the <code>lambda:GetEventSourceMapping</code> action.
-        headers:
-          UUID?:
-            type: String
-            description: <p>The AWS Lambda assigned ID of the event source mapping.</p>
+        displayName: Get Event Source Mapping
         responses:
           200:
             body:
@@ -1082,6 +1019,7 @@ types:
         about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
         Lambda Function Versioning and Aliases</a>.  This operation requires permission
         for the <code>lambda:CreateEventSourceMapping</code> action.'
+      displayName: Create Event Source Mapping
       body:
         application/json: CreateEventSourceMappingRequest
       responses:
@@ -1100,17 +1038,18 @@ types:
           description: ResourceNotFoundException
     get:
       description: Returns a list of event source mappings you created using the <code>CreateEventSourceMapping</code> (see <a>CreateEventSourceMapping</a>).  For each mapping, the API returns configuration information. You can optionally specify filters to retrieve specific event source mappings. If you are using the versioning feature, you can get list of event source mappings for a specific Lambda function version or an alias as described in the <code>FunctionName</code> parameter. For information about the versioning feature, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a>.  This operation requires permission for the <code>lambda:ListEventSourceMappings</code> action.
+      displayName: List Event Source Mappings
       queryParameters:
-        EventSourceArn:
+        EventSourceArn?:
           type: Arn
           description: <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter is optional.)</p>
-        FunctionName:
+        FunctionName?:
           type: FunctionName
           description: <p>The name of the Lambda function.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
-        Marker:
+        Marker?:
           type: String
           description: <p>Optional string. An opaque pagination token returned from a previous <code>ListEventSourceMappings</code> operation. If present, specifies to continue the list from where the returning call left off. </p>
-        MaxItems:
+        MaxItems?:
           type: MaxListItems
           description: <p>Optional integer. Specifies the maximum number of event sources to return in response. This value must be greater than 0.</p>
       responses:
@@ -1129,16 +1068,13 @@ types:
   /functions:
     /{FunctionName}:
       uriParameters:
-        FunctionName?:
+        FunctionName:
           type: FunctionName
           description: <p>The Lambda function name.</p>
       /invoke-async:
         post:
           description: <important>This API is deprecated. We recommend you use <code>Invoke</code> API (see <a>Invoke</a>). </important> Submits an invocation request to AWS Lambda. Upon receiving the request, Lambda executes the specified function asynchronously. To see the logs generated by the Lambda function execution, see the CloudWatch Logs console. This operation requires permission for the <code>lambda:InvokeFunction</code> action.
-          headers:
-            FunctionName?:
-              type: FunctionName
-              description: <p>The Lambda function name.</p>
+          displayName: Invoke Async
           body:
             application/json:
               type: BlobStream

@@ -6,6 +6,9 @@ description: ' AWS Device Farm is a service that enables mobile app developers t
   in the cloud.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   AWSAccountNumber:
     type: string
@@ -1966,9 +1969,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a device pool.
+    displayName: Create Device Pool
     body:
       application/json: CreateDevicePoolRequest
     responses:
@@ -1983,9 +1988,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a new project.
+    displayName: Create Project
     body:
       application/json: CreateProjectRequest
     responses:
@@ -2000,9 +2007,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Specifies and starts a remote access session.
+    displayName: Create Remote Access Session
     body:
       application/json: CreateRemoteAccessSessionRequest
     responses:
@@ -2017,9 +2026,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Uploads an app or test scripts.
+    displayName: Create Upload
     body:
       application/json: CreateUploadRequest
     responses:
@@ -2034,9 +2045,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a device pool given the pool ARN. Does not allow deletion of curated pools owned by the system.
+    displayName: Delete Device Pool
     body:
       application/json: DeleteDevicePoolRequest
     responses:
@@ -2051,9 +2064,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes an AWS Device Farm project, given the project ARN.  <b>Note</b> Deleting this resource does not stop an in-progress run.
+    displayName: Delete Project
     body:
       application/json: DeleteProjectRequest
     responses:
@@ -2068,9 +2083,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a completed remote access session and its results.
+    displayName: Delete Remote Access Session
     body:
       application/json: DeleteRemoteAccessSessionRequest
     responses:
@@ -2085,9 +2102,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes the run, given the run ARN.  <b>Note</b> Deleting this resource does not stop an in-progress run.
+    displayName: Delete Run
     body:
       application/json: DeleteRunRequest
     responses:
@@ -2102,9 +2121,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes an upload given the upload ARN.
+    displayName: Delete Upload
     body:
       application/json: DeleteUploadRequest
     responses:
@@ -2119,9 +2140,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns the number of unmetered iOS and/or unmetered Android devices that have been purchased by the account.
+    displayName: Get Account Settings
     body:
       application/json: GetAccountSettingsRequest
     responses:
@@ -2136,9 +2159,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about a unique device type.
+    displayName: Get Device
     body:
       application/json: GetDeviceRequest
     responses:
@@ -2153,9 +2178,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about a device pool.
+    displayName: Get Device Pool
     body:
       application/json: GetDevicePoolRequest
     responses:
@@ -2170,9 +2197,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about compatibility with a device pool.
+    displayName: Get Device Pool Compatibility
     body:
       application/json: GetDevicePoolCompatibilityRequest
     responses:
@@ -2187,9 +2216,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about a job.
+    displayName: Get Job
     body:
       application/json: GetJobRequest
     responses:
@@ -2204,9 +2235,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets the current status and future status of all offerings purchased by an AWS account. The response indicates how many offerings are currently available and the offerings that will be available in the next period. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
+    displayName: Get Offering Status
     body:
       application/json: GetOfferingStatusRequest
     responses:
@@ -2221,9 +2254,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about a project.
+    displayName: Get Project
     body:
       application/json: GetProjectRequest
     responses:
@@ -2238,9 +2273,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a link to a currently running remote access session.
+    displayName: Get Remote Access Session
     body:
       application/json: GetRemoteAccessSessionRequest
     responses:
@@ -2255,9 +2292,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about a run.
+    displayName: Get Run
     body:
       application/json: GetRunRequest
     responses:
@@ -2272,9 +2311,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about a suite.
+    displayName: Get Suite
     body:
       application/json: GetSuiteRequest
     responses:
@@ -2289,9 +2330,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about a test.
+    displayName: Get Test
     body:
       application/json: GetTestRequest
     responses:
@@ -2306,9 +2349,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about an upload.
+    displayName: Get Upload
     body:
       application/json: GetUploadRequest
     responses:
@@ -2323,9 +2368,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Installs an application to the device in a remote access session. For Android applications, the file must be in .apk format. For iOS applications, the file must be in .ipa format.
+    displayName: Install To Remote Access Session
     body:
       application/json: InstallToRemoteAccessSessionRequest
     responses:
@@ -2340,9 +2387,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about artifacts.
+    displayName: List Artifacts
     body:
       application/json: ListArtifactsRequest
     responses:
@@ -2357,9 +2406,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about device pools.
+    displayName: List Device Pools
     body:
       application/json: ListDevicePoolsRequest
     responses:
@@ -2374,9 +2425,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about unique device types.
+    displayName: List Devices
     body:
       application/json: ListDevicesRequest
     responses:
@@ -2391,9 +2444,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about jobs.
+    displayName: List Jobs
     body:
       application/json: ListJobsRequest
     responses:
@@ -2408,9 +2463,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account. The list is paginated and ordered by a descending timestamp (most recent transactions are first). The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
+    displayName: List Offering Transactions
     body:
       application/json: ListOfferingTransactionsRequest
     responses:
@@ -2425,9 +2482,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a list of products or offerings that the user can manage through the API. Each offering record indicates the recurring price per unit and the frequency for that offering. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
+    displayName: List Offerings
     body:
       application/json: ListOfferingsRequest
     responses:
@@ -2442,9 +2501,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about projects.
+    displayName: List Projects
     body:
       application/json: ListProjectsRequest
     responses:
@@ -2459,9 +2520,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a list of all currently running remote access sessions.
+    displayName: List Remote Access Sessions
     body:
       application/json: ListRemoteAccessSessionsRequest
     responses:
@@ -2476,9 +2539,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about runs, given an AWS Device Farm project ARN.
+    displayName: List Runs
     body:
       application/json: ListRunsRequest
     responses:
@@ -2493,9 +2558,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about samples, given an AWS Device Farm project ARN
+    displayName: List Samples
     body:
       application/json: ListSamplesRequest
     responses:
@@ -2510,9 +2577,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about suites.
+    displayName: List Suites
     body:
       application/json: ListSuitesRequest
     responses:
@@ -2527,9 +2596,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about tests.
+    displayName: List Tests
     body:
       application/json: ListTestsRequest
     responses:
@@ -2544,9 +2615,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about unique problems.
+    displayName: List Unique Problems
     body:
       application/json: ListUniqueProblemsRequest
     responses:
@@ -2561,9 +2634,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about uploads, given an AWS Device Farm project ARN.
+    displayName: List Uploads
     body:
       application/json: ListUploadsRequest
     responses:
@@ -2578,9 +2653,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Immediately purchases offerings for an AWS account. Offerings renew with the latest total purchased quantity for an offering, unless the renewal was overridden. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
+    displayName: Purchase Offering
     body:
       application/json: PurchaseOfferingRequest
     responses:
@@ -2595,9 +2672,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Explicitly sets the quantity of devices to renew for an offering, starting from the <code>effectiveDate</code> of the next period. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.
+    displayName: Renew Offering
     body:
       application/json: RenewOfferingRequest
     responses:
@@ -2612,9 +2691,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Schedules a run.
+    displayName: Schedule Run
     body:
       application/json: ScheduleRunRequest
     responses:
@@ -2629,9 +2710,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Ends a specified remote access session.
+    displayName: Stop Remote Access Session
     body:
       application/json: StopRemoteAccessSessionRequest
     responses:
@@ -2646,9 +2729,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Initiates a stop request for the current test run. AWS Device Farm will immediately stop the run on devices where tests have not started executing, and you will not be billed for these devices. On devices where tests have started executing, Setup Suite and Teardown Suite tests will run to completion before stopping execution on those devices. You will be billed for Setup, Teardown, and any tests that were in progress or already completed.
+    displayName: Stop Run
     body:
       application/json: StopRunRequest
     responses:
@@ -2663,9 +2748,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Modifies the name, description, and rules in a device pool given the attributes and the pool ARN. Rule updates are all-or-nothing, meaning they can only be updated as a whole (or not at all).
+    displayName: Update Device Pool
     body:
       application/json: UpdateDevicePoolRequest
     responses:
@@ -2680,9 +2767,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Modifies the specified project name, given the project ARN and a new name.
+    displayName: Update Project
     body:
       application/json: UpdateProjectRequest
     responses:

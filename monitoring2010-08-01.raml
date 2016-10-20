@@ -15,6 +15,9 @@ description: ' Amazon CloudWatch monitors your Amazon Web Services (AWS) resourc
   and operational health.'
 mediaType:
 - application/xml
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   ActionPrefix:
     type: string
@@ -804,9 +807,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes all specified alarms. In the event of an error, no alarms are deleted.
+    displayName: Delete Alarms
     body:
       application/xml: DeleteAlarmsInput
     responses:
@@ -821,9 +826,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves history for the specified alarm. Filter alarms by date range or item type. If an alarm name is not specified, Amazon CloudWatch returns histories for all of the owner's alarms. <note> Amazon CloudWatch retains the history of an alarm for two weeks, whether or not you delete the alarm. </note>
+    displayName: Describe Alarm History
     body:
       application/xml: DescribeAlarmHistoryInput
     responses:
@@ -838,9 +845,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves alarms with the specified names. If no name is specified, all alarms for the user are returned. Alarms can be retrieved by using only a prefix for the alarm name, the alarm state, or a prefix for any action.
+    displayName: Describe Alarms
     body:
       application/xml: DescribeAlarmsInput
     responses:
@@ -855,9 +864,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves all alarms for a single metric. Specify a statistic, period, or unit to filter the set of alarms further.
+    displayName: Describe Alarms For Metric
     body:
       application/xml: DescribeAlarmsForMetricInput
     responses:
@@ -870,9 +881,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Disables actions for the specified alarms. When an alarm's actions are disabled the alarm's state may change, but none of the alarm's actions will execute.
+    displayName: Disable Alarm Actions
     body:
       application/xml: DisableAlarmActionsInput
     responses:
@@ -885,9 +898,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Enables actions for the specified alarms.
+    displayName: Enable Alarm Actions
     body:
       application/xml: EnableAlarmActionsInput
     responses:
@@ -900,6 +915,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Gets statistics for the specified metric.  The maximum number of
@@ -925,6 +941,7 @@ types:
       use to send metrics to CloudWatch, go to <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon
       CloudWatch Metrics, Namespaces, and Dimensions Reference</a> in the <i>Amazon
       CloudWatch Developer Guide</i>. '
+    displayName: Get Metric Statistics
     body:
       application/xml: GetMetricStatisticsInput
     responses:
@@ -941,6 +958,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: ' Returns a list of valid metrics stored for the AWS account owner.
@@ -951,6 +969,7 @@ types:
       create a metric with <a>PutMetricData</a>, allow up to fifteen minutes for the
       metric to appear in calls to <code>ListMetrics</code>. Statistics about the
       metric, however, are available sooner using <a>GetMetricStatistics</a>. </note>'
+    displayName: List Metrics
     body:
       application/xml: ListMetricsInput
     responses:
@@ -967,6 +986,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates or updates an alarm and associates it with the specified
@@ -996,6 +1016,7 @@ types:
       using temporary security credentials granted using the AWS Security Token Service
       (AWS STS), you cannot stop or terminate an Amazon EC2 instance using alarm actions.
       </note>'
+    displayName: Put Metric Alarm
     body:
       application/xml: PutMetricAlarmInput
     responses:
@@ -1010,6 +1031,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: ' Publishes metric data points to Amazon CloudWatch. Amazon CloudWatch
@@ -1025,6 +1047,7 @@ types:
       values (e.g., NaN, +Infinity, -Infinity) are not supported. </important> Data
       that is timestamped 24 hours or more in the past may take in excess of 48 hours
       to become available from submission time using <code>GetMetricStatistics</code>.'
+    displayName: Put Metric Data
     body:
       application/xml: PutMetricDataInput
     responses:
@@ -1041,6 +1064,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: ' Temporarily sets the state of an alarm for testing purposes. When
@@ -1051,6 +1075,7 @@ types:
       alarm returns to its actual state (often within seconds). Because the alarm
       state change happens very quickly, it is typically only visible in the alarm''s
       <b>History</b> tab in the Amazon CloudWatch console or through <code>DescribeAlarmHistory</code>. '
+    displayName: Set Alarm State
     body:
       application/xml: SetAlarmStateInput
     responses:

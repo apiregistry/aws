@@ -26,6 +26,9 @@ description: ' You can use Amazon CloudWatch Logs to monitor, store, and access 
   can then access the raw log data when you need it. </li> </ul>'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   AccessPolicy:
     type: string
@@ -868,9 +871,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Cancels an export task if it is in <code>PENDING</code> or <code>RUNNING</code> state.
+    displayName: Cancel Export Task
     body:
       application/json: CancelExportTaskRequest
     responses:
@@ -885,9 +890,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates an <code>ExportTask</code> which allows you to efficiently export data from a Log Group to your Amazon S3 bucket. This is an asynchronous call. If all the required information is provided, this API will initiate an export task and respond with the task Id. Once started, <code>DescribeExportTasks</code> can be used to get the status of an export task. You can only have one active (<code>RUNNING</code> or <code>PENDING</code>) export task at a time, per account. You can export logs from multiple log groups or multiple time ranges to the same Amazon S3 bucket. To separate out log data for each export task, you can specify a prefix that will be used as the Amazon S3 key prefix for all exported objects.
+    displayName: Create Export Task
     body:
       application/json: CreateExportTaskRequest
     responses:
@@ -902,6 +909,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates a new log group with the specified name. The name of the
@@ -910,6 +918,7 @@ types:
       naming a log group: <ul> <li> Log group names can be between 1 and 512 characters
       long. </li> <li> Allowed characters are a-z, A-Z, 0-9, ''_'' (underscore), ''-''
       (hyphen), ''/'' (forward slash), and ''.'' (period). </li> </ul>'
+    displayName: Create Log Group
     body:
       application/json: CreateLogGroupRequest
     responses:
@@ -924,6 +933,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates a new log stream in the specified log group. The name of
@@ -932,6 +942,7 @@ types:
       guidelines when naming a log stream: <ul> <li> Log stream names can be between
       1 and 512 characters long. </li> <li> The '':'' colon character is not allowed.
       </li> </ul>'
+    displayName: Create Log Stream
     body:
       application/json: CreateLogStreamRequest
     responses:
@@ -946,9 +957,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes the destination with the specified name and eventually disables all the subscription filters that publish to it. This will not delete the physical resource encapsulated by the destination.
+    displayName: Delete Destination
     body:
       application/json: DeleteDestinationRequest
     responses:
@@ -963,9 +976,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes the log group with the specified name and permanently deletes all the archived log events associated with it.
+    displayName: Delete Log Group
     body:
       application/json: DeleteLogGroupRequest
     responses:
@@ -980,9 +995,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a log stream and permanently deletes all the archived log events associated with it.
+    displayName: Delete Log Stream
     body:
       application/json: DeleteLogStreamRequest
     responses:
@@ -997,9 +1014,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a metric filter associated with the specified log group.
+    displayName: Delete Metric Filter
     body:
       application/json: DeleteMetricFilterRequest
     responses:
@@ -1014,9 +1033,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes the retention policy of the specified log group. Log events would not expire if they belong to log groups without a retention policy.
+    displayName: Delete Retention Policy
     body:
       application/json: DeleteRetentionPolicyRequest
     responses:
@@ -1031,9 +1052,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a subscription filter associated with the specified log group.
+    displayName: Delete Subscription Filter
     body:
       application/json: DeleteSubscriptionFilterRequest
     responses:
@@ -1048,9 +1071,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns all the destinations that are associated with the AWS account making the request. The list returned in the response is ASCII-sorted by destination name. By default, this operation returns up to 50 destinations. If there are more destinations to list, the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of destinations returned in the response by specifying the <code>limit</code> parameter in the request.
+    displayName: Describe Destinations
     body:
       application/json: DescribeDestinationsRequest
     responses:
@@ -1065,9 +1090,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns all the export tasks that are associated with the AWS account making the request. The export tasks can be filtered based on <code>TaskId</code> or <code>TaskStatus</code>. By default, this operation returns up to 50 export tasks that satisfy the specified filters. If there are more export tasks to list, the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of export tasks returned in the response by specifying the <code>limit</code> parameter in the request.
+    displayName: Describe Export Tasks
     body:
       application/json: DescribeExportTasksRequest
     responses:
@@ -1082,9 +1109,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns all the log groups that are associated with the AWS account making the request. The list returned in the response is ASCII-sorted by log group name. By default, this operation returns up to 50 log groups. If there are more log groups to list, the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of log groups returned in the response by specifying the <code>limit</code> parameter in the request.
+    displayName: Describe Log Groups
     body:
       application/json: DescribeLogGroupsRequest
     responses:
@@ -1099,9 +1128,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns all the log streams that are associated with the specified log group. The list returned in the response is ASCII-sorted by log stream name. By default, this operation returns up to 50 log streams. If there are more log streams to list, the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of log streams returned in the response by specifying the <code>limit</code> parameter in the request. This operation has a limit of five transactions per second, after which transactions are throttled.
+    displayName: Describe Log Streams
     body:
       application/json: DescribeLogStreamsRequest
     responses:
@@ -1116,9 +1147,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns all the metrics filters associated with the specified log group. The list returned in the response is ASCII-sorted by filter name. By default, this operation returns up to 50 metric filters. If there are more metric filters to list, the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of metric filters returned in the response by specifying the <code>limit</code> parameter in the request.
+    displayName: Describe Metric Filters
     body:
       application/json: DescribeMetricFiltersRequest
     responses:
@@ -1133,9 +1166,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns all the subscription filters associated with the specified log group. The list returned in the response is ASCII-sorted by filter name. By default, this operation returns up to 50 subscription filters. If there are more subscription filters to list, the response would contain a <code>nextToken</code> value in the response body. You can also limit the number of subscription filters returned in the response by specifying the <code>limit</code> parameter in the request.
+    displayName: Describe Subscription Filters
     body:
       application/json: DescribeSubscriptionFiltersRequest
     responses:
@@ -1150,9 +1185,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves log events, optionally filtered by a filter pattern from the specified log group. You can provide an optional time range to filter the results on the event <code>timestamp</code>. You can limit the streams searched to an explicit list of <code>logStreamNames</code>. By default, this operation returns as much matching log events as can fit in a response size of 1MB, up to 10,000 log events, or all the events found within a time-bounded scan window. If the response includes a <code>nextToken</code>, then there is more data to search, and the search can be resumed with a new request providing the nextToken. The response will contain a list of <code>searchedLogStreams</code> that contains information about which streams were searched in the request and whether they have been searched completely or require further pagination. The <code>limit</code> parameter in the request can be used to specify the maximum number of events to return in a page.
+    displayName: Filter Log Events
     body:
       application/json: FilterLogEventsRequest
     responses:
@@ -1167,9 +1204,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves log events from the specified log stream. You can provide an optional time range to filter the results on the event <code>timestamp</code>. By default, this operation returns as much log events as can fit in a response size of 1MB, up to 10,000 log events. The response will always include a <code>nextForwardToken</code> and a <code>nextBackwardToken</code> in the response body. You can use any of these tokens in subsequent <code>GetLogEvents</code> requests to paginate through events in either forward or backward direction. You can also limit the number of log events returned in the response by specifying the <code>limit</code> parameter in the request.
+    displayName: Get Log Events
     body:
       application/json: GetLogEventsRequest
     responses:
@@ -1184,9 +1223,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates or updates a <code>Destination</code>. A destination encapsulates a physical resource (such as a Kinesis stream) and allows you to subscribe to a real-time stream of log events of a different account, ingested through <code>PutLogEvents</code> requests. Currently, the only supported physical resource is a Amazon Kinesis stream belonging to the same account as the destination. A destination controls what is written to its Amazon Kinesis stream through an access policy. By default, PutDestination does not set any access policy with the destination, which means a cross-account user will not be able to call <code>PutSubscriptionFilter</code> against this destination. To enable that, the destination owner must call <code>PutDestinationPolicy</code> after PutDestination.
+    displayName: Put Destination
     body:
       application/json: PutDestinationRequest
     responses:
@@ -1201,9 +1242,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates or updates an access policy associated with an existing <code>Destination</code>. An access policy is an <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html">IAM policy document</a> that is used to authorize claims to register a subscription filter against a given destination.
+    displayName: Put Destination Policy
     body:
       application/json: PutDestinationPolicyRequest
     responses:
@@ -1218,6 +1261,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Uploads a batch of log events to the specified log stream. Every
@@ -1234,6 +1278,7 @@ types:
       </li> <li> The maximum number of log events in a batch is 10,000. </li> <li>
       A batch of log events in a single PutLogEvents request cannot span more than
       24 hours. Otherwise, the PutLogEvents operation will fail. </li> </ul>'
+    displayName: Put Log Events
     body:
       application/json: PutLogEventsRequest
     responses:
@@ -1248,9 +1293,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates or updates a metric filter and associates it with the specified log group. Metric filters allow you to configure rules to extract metric data from log events ingested through <code>PutLogEvents</code> requests. The maximum number of metric filters that can be associated with a log group is 100.
+    displayName: Put Metric Filter
     body:
       application/json: PutMetricFilterRequest
     responses:
@@ -1265,9 +1312,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Sets the retention of the specified log group. A retention policy allows you to configure the number of days you want to retain log events in the specified log group.
+    displayName: Put Retention Policy
     body:
       application/json: PutRetentionPolicyRequest
     responses:
@@ -1282,6 +1331,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates or updates a subscription filter and associates it with
@@ -1296,6 +1346,7 @@ types:
       <li> An AWS Lambda function belonging to the same account as the subscription
       filter, for same-account delivery. </li> </ul> Currently there can only be one
       subscription filter associated with a log group.'
+    displayName: Put Subscription Filter
     body:
       application/json: PutSubscriptionFilterRequest
     responses:
@@ -1310,9 +1361,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Tests the filter pattern of a metric filter against a sample of log event messages. You can use this operation to validate the correctness of a metric filter pattern.
+    displayName: Test Metric Filter
     body:
       application/json: TestMetricFilterRequest
     responses:

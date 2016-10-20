@@ -7,6 +7,9 @@ description: ' Amazon Elastic MapReduce (Amazon EMR) is a web service that makes
   log file analysis, machine learning, scientific simulation, and data warehousing.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   ActionOnFailure:
     type: string
@@ -1586,9 +1589,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: AddInstanceGroups adds an instance group to a running cluster.
+    displayName: Add Instance Groups
     body:
       application/json: AddInstanceGroupsInput
     responses:
@@ -1603,6 +1608,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'AddJobFlowSteps adds new steps to a running job flow. A maximum
@@ -1622,6 +1628,7 @@ types:
       and all Hadoop jobs started while the step was running must have completed and
       run successfully. You can only add steps to a job flow that is in one of the
       following states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.'
+    displayName: Add Job Flow Steps
     body:
       application/json: AddJobFlowStepsInput
     responses:
@@ -1636,12 +1643,14 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Adds tags to an Amazon EMR resource. Tags make it easier to associate
       clusters in various ways, such as grouping clusters to track your Amazon EMR
       resource allocation costs. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging
       Amazon EMR Resources</a>. '
+    displayName: Add Tags
     body:
       application/json: AddTagsInput
     responses:
@@ -1656,9 +1665,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a security configuration using EMR Security Configurations, which are stored in the service. Security Configurations enable you to more easily create a configuration, reuse it, and apply it whenever a cluster is created.
+    displayName: Create Security Configuration
     body:
       application/json: CreateSecurityConfigurationInput
     responses:
@@ -1673,9 +1684,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a security configuration.
+    displayName: Delete Security Configuration
     body:
       application/json: DeleteSecurityConfigurationInput
     responses:
@@ -1690,9 +1703,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Provides cluster-level details including status, hardware and software configuration, VPC settings, and so on. For information about the cluster steps, see <a>ListSteps</a>.
+    displayName: Describe Cluster
     body:
       application/json: DescribeClusterInput
     responses:
@@ -1707,6 +1722,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: ' This API is deprecated and will eventually be removed. We recommend
@@ -1721,6 +1737,7 @@ types:
       the last two months that are in one of the following states: <code>RUNNING</code>,
       <code>WAITING</code>, <code>SHUTTING_DOWN</code>, <code>STARTING</code>  </li>
       </ul> Amazon Elastic MapReduce can return a maximum of 512 job flow descriptions.'
+    displayName: Describe Job Flows
     body:
       application/json: DescribeJobFlowsInput
     responses:
@@ -1735,9 +1752,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Provides the details of a security configuration by returning the configuration JSON.
+    displayName: Describe Security Configuration
     body:
       application/json: DescribeSecurityConfigurationInput
     responses:
@@ -1752,9 +1771,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Provides more detail about the cluster step.
+    displayName: Describe Step
     body:
       application/json: DescribeStepInput
     responses:
@@ -1769,9 +1790,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Provides information about the bootstrap actions associated with a cluster.
+    displayName: List Bootstrap Actions
     body:
       application/json: ListBootstrapActionsInput
     responses:
@@ -1786,9 +1809,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Provides the status of all clusters visible to this AWS account. Allows you to filter the list of clusters based on certain criteria; for example, filtering by cluster creation date and time or by status. This call returns a maximum of 50 clusters per call, but returns a marker to track the paging of the cluster list across multiple ListClusters calls.
+    displayName: List Clusters
     body:
       application/json: ListClustersInput
     responses:
@@ -1803,9 +1828,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Provides all available details about the instance groups in a cluster.
+    displayName: List Instance Groups
     body:
       application/json: ListInstanceGroupsInput
     responses:
@@ -1820,9 +1847,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Provides information about the cluster instances that Amazon EMR provisions on behalf of a user when it creates the cluster. For example, this operation indicates when the EC2 instances reach the Ready state, when instances become available to Amazon EMR to use for jobs, and the IP addresses for cluster instances, etc.
+    displayName: List Instances
     body:
       application/json: ListInstancesInput
     responses:
@@ -1837,9 +1866,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists all the security configurations visible to this account, providing their creation dates and times, and their names. This call returns a maximum of 50 clusters per call, but returns a marker to track the paging of the cluster list across multiple ListSecurityConfigurations calls.
+    displayName: List Security Configurations
     body:
       application/json: ListSecurityConfigurationsInput
     responses:
@@ -1854,9 +1885,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Provides a list of steps for the cluster.
+    displayName: List Steps
     body:
       application/json: ListStepsInput
     responses:
@@ -1871,9 +1904,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group. The input parameters include the new target instance count for the group and the instance group ID. The call will either succeed or fail atomically.
+    displayName: Modify Instance Groups
     body:
       application/json: ModifyInstanceGroupsInput
     responses:
@@ -1888,6 +1923,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Removes tags from an Amazon EMR resource. Tags make it easier to
@@ -1895,6 +1931,7 @@ types:
       Amazon EMR resource allocation costs. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging
       Amazon EMR Resources</a>.  The following example removes the stack tag with
       value Prod from a cluster:'
+    displayName: Remove Tags
     body:
       application/json: RemoveTagsInput
     responses:
@@ -1909,6 +1946,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: ' RunJobFlow creates and starts running a new job flow. The job flow
@@ -1930,6 +1968,7 @@ types:
       More than 256 Steps to a Job Flow</a> in the <i>Amazon Elastic MapReduce Developer''s
       Guide</i>. For long running job flows, we recommend that you periodically store
       your results.'
+    displayName: Run Job Flow
     body:
       application/json: RunJobFlowInput
     responses:
@@ -1944,6 +1983,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'SetTerminationProtection locks a job flow so the Amazon EC2 instances
@@ -1960,6 +2000,7 @@ types:
       more information, go to <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/UsingEMR_TerminationProtection.html">Protecting
       a Job Flow from Termination</a> in the <i>Amazon Elastic MapReduce Developer''s
       Guide.</i> '
+    displayName: Set Termination Protection
     body:
       application/json: SetTerminationProtectionInput
     responses:
@@ -1974,9 +2015,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Sets whether all AWS Identity and Access Management (IAM) users under your account can access the specified job flows. This action works on running job flows. You can also set the visibility of a job flow when you launch it using the <code>VisibleToAllUsers</code> parameter of <a>RunJobFlow</a>. The SetVisibleToAllUsers action can be called only by an IAM user who created the job flow or the AWS account that owns the job flow.
+    displayName: Set Visible To All Users
     body:
       application/json: SetVisibleToAllUsersInput
     responses:
@@ -1991,9 +2034,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: TerminateJobFlows shuts a list of job flows down. When a job flow is shut down, any step not yet completed is canceled and the EC2 instances on which the job flow is running are stopped. Any log files not already saved are uploaded to Amazon S3 if a LogUri was specified when the job flow was created. The maximum number of JobFlows allowed is 10. The call to TerminateJobFlows is asynchronous. Depending on the configuration of the job flow, it may take up to 5-20 minutes for the job flow to completely terminate and release allocated resources, such as Amazon EC2 instances.
+    displayName: Terminate Job Flows
     body:
       application/json: TerminateJobFlowsInput
     responses:

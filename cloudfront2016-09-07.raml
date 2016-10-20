@@ -7,6 +7,9 @@ description: '  Amazon CloudFront is a global content delivery network (CDN) ser
   an easy way to accelerate content to end users with no minimum usage commitments.'
 mediaType:
 - application/xml
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   AliasList:
     type: array
@@ -1105,24 +1108,18 @@ types:
   /distribution:
     /{DistributionId}:
       uriParameters:
-        DistributionId?:
+        DistributionId:
           type: string
           description: The distribution's id.
       /invalidation:
         /{Id}:
           uriParameters:
-            Id?:
+            Id:
               type: string
               description: The invalidation's id.
           get:
             description: Get the information about an invalidation.
-            headers:
-              DistributionId?:
-                type: string
-                description: The distribution's id.
-              Id?:
-                type: string
-                description: The invalidation's id.
+            displayName: Get Invalidation2016_09_07
             responses:
               200:
                 body:
@@ -1135,17 +1132,14 @@ types:
                 description: AccessDenied
         get:
           description: List invalidation batches.
+          displayName: List Invalidations2016_09_07
           queryParameters:
-            Marker:
+            Marker?:
               type: string
               description: Use this parameter when paginating results to indicate where to begin in your list of invalidation batches. Because the results are returned in decreasing order from most recent to oldest, the most recent results are on the first page, the second page will contain earlier results, and so on. To get the next page of results, set the Marker to the value of the NextMarker from the current page's response. This value is the same as the ID of the last invalidation batch on that page.
-            MaxItems:
+            MaxItems?:
               type: string
               description: The maximum number of invalidation batches you want in the response body.
-          headers:
-            DistributionId?:
-              type: string
-              description: The distribution's id.
           responses:
             200:
               body:
@@ -1160,10 +1154,7 @@ types:
               description: AccessDenied
         post:
           description: Create a new invalidation.
-          headers:
-            DistributionId?:
-              type: string
-              description: The distribution's id.
+          displayName: Create Invalidation2016_09_07
           body:
             application/xml:
               type: InvalidationBatch
@@ -1173,7 +1164,7 @@ types:
           responses:
             201:
               headers:
-                Location:
+                Location?:
                   type: string
                   description: The fully qualified URI of the distribution and invalidation batch request, including the Invalidation ID.
               body:
@@ -1190,20 +1181,17 @@ types:
               description: BatchTooLarge
     /{Id}:
       uriParameters:
-        Id?:
+        Id:
           type: string
           description: The distribution id.
       /config:
         get:
           description: Get the configuration information about a distribution.
-          headers:
-            Id?:
-              type: string
-              description: The distribution's id.
+          displayName: Get Distribution Config2016_09_07
           responses:
             200:
               headers:
-                ETag:
+                ETag?:
                   type: string
                   description: 'The current version of the configuration. For example:
                     E2QWRUHAPOMQZL.'
@@ -1217,11 +1205,9 @@ types:
               description: AccessDenied
         put:
           description: Update a distribution.
+          displayName: Update Distribution2016_09_07
           headers:
-            Id?:
-              type: string
-              description: The distribution's id.
-            If-Match:
+            If-Match?:
               type: string
               description: 'The value of the ETag header you received when retrieving
                 the distribution''s configuration. For example: E2QWRUHAPOMQZL.'
@@ -1234,7 +1220,7 @@ types:
           responses:
             200:
               headers:
-                ETag:
+                ETag?:
                   type: string
                   description: 'The current version of the configuration. For example:
                     E2QWRUHAPOMQZL.'
@@ -1254,11 +1240,9 @@ types:
               description: PreconditionFailed
       delete:
         description: Delete a distribution.
+        displayName: Delete Distribution2016_09_07
         headers:
-          Id?:
-            type: string
-            description: The distribution id.
-          If-Match:
+          If-Match?:
             type: string
             description: 'The value of the ETag header you received when you disabled
               the distribution. For example: E2QWRUHAPOMQZL.'
@@ -1278,14 +1262,11 @@ types:
             description: PreconditionFailed
       get:
         description: Get the information about a distribution.
-        headers:
-          Id?:
-            type: string
-            description: The distribution's id.
+        displayName: Get Distribution2016_09_07
         responses:
           200:
             headers:
-              ETag:
+              ETag?:
                 type: string
                 description: 'The current version of the distribution''s information.
                   For example: E2QWRUHAPOMQZL.'
@@ -1299,6 +1280,7 @@ types:
             description: AccessDenied
     post:
       description: Create a new distribution.
+      displayName: Create Distribution2016_09_07
       body:
         application/xml:
           type: DistributionConfig
@@ -1308,11 +1290,11 @@ types:
       responses:
         201:
           headers:
-            Location:
+            Location?:
               type: string
               description: 'The fully qualified URI of the new distribution resource
                 just created. For example: https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5.'
-            ETag:
+            ETag?:
               type: string
               description: The current version of the distribution created.
           body:
@@ -1329,11 +1311,12 @@ types:
           description: NoSuchOrigin
     get:
       description: List distributions.
+      displayName: List Distributions2016_09_07
       queryParameters:
-        Marker:
+        Marker?:
           type: string
           description: Use Marker and MaxItems to control pagination of results. If you have more than MaxItems distributions that satisfy the request, the response includes a NextMarker element. To get the next page of results, submit another request. For the value of Marker, specify the value of NextMarker from the last response. (For the first request, omit Marker.)
-        MaxItems:
+        MaxItems?:
           type: string
           description: The maximum number of distributions that you want CloudFront to return in the response body. The maximum and default values are both 100.
       responses:
@@ -1348,17 +1331,15 @@ types:
     /cloudfront:
       /{Id}:
         uriParameters:
-          Id?:
+          Id:
             type: string
             description: The identity's id.
         /config:
           put:
             description: Update an origin access identity.
+            displayName: Update Cloud Front Origin Access Identity2016_09_07
             headers:
-              Id?:
-                type: string
-                description: The identity's id.
-              If-Match:
+              If-Match?:
                 type: string
                 description: 'The value of the ETag header you received when retrieving
                   the identity''s configuration. For example: E2QWRUHAPOMQZL.'
@@ -1371,7 +1352,7 @@ types:
             responses:
               200:
                 headers:
-                  ETag:
+                  ETag?:
                     type: string
                     description: 'The current version of the configuration. For example:
                       E2QWRUHAPOMQZL.'
@@ -1389,14 +1370,11 @@ types:
                 description: PreconditionFailed
           get:
             description: Get the configuration information about an origin access identity.
-            headers:
-              Id?:
-                type: string
-                description: The identity's id.
+            displayName: Get Cloud Front Origin Access Identity Config2016_09_07
             responses:
               200:
                 headers:
-                  ETag:
+                  ETag?:
                     type: string
                     description: 'The current version of the configuration. For example:
                       E2QWRUHAPOMQZL.'
@@ -1410,14 +1388,11 @@ types:
                 description: AccessDenied
         get:
           description: Get the information about an origin access identity.
-          headers:
-            Id?:
-              type: string
-              description: The identity's id.
+          displayName: Get Cloud Front Origin Access Identity2016_09_07
           responses:
             200:
               headers:
-                ETag:
+                ETag?:
                   type: string
                   description: 'The current version of the origin access identity''s
                     information. For example: E2QWRUHAPOMQZL.'
@@ -1431,11 +1406,9 @@ types:
               description: AccessDenied
         delete:
           description: Delete an origin access identity.
+          displayName: Delete Cloud Front Origin Access Identity2016_09_07
           headers:
-            Id?:
-              type: string
-              description: The origin access identity's id.
-            If-Match:
+            If-Match?:
               type: string
               description: 'The value of the ETag header you received from a previous
                 GET or PUT request. For example: E2QWRUHAPOMQZL.'
@@ -1455,6 +1428,7 @@ types:
               description: CloudFrontOriginAccessIdentityInUse
       post:
         description: Create a new origin access identity.
+        displayName: Create Cloud Front Origin Access Identity2016_09_07
         body:
           application/xml:
             type: CloudFrontOriginAccessIdentityConfig
@@ -1464,11 +1438,11 @@ types:
         responses:
           201:
             headers:
-              Location:
+              Location?:
                 type: string
                 description: 'The fully qualified URI of the new origin access identity
                   just created. For example: https://cloudfront.amazonaws.com/2010-11-01/origin-access-identity/cloudfront/E74FTE3AJFJ256A.'
-              ETag:
+              ETag?:
                 type: string
                 description: The current version of the origin access identity created.
             body:
@@ -1481,11 +1455,12 @@ types:
             description: MissingBody | TooManyCloudFrontOriginAccessIdentities | InvalidArgument | InconsistentQuantities
       get:
         description: List origin access identities.
+        displayName: List Cloud Front Origin Access Identities2016_09_07
         queryParameters:
-          Marker:
+          Marker?:
             type: string
             description: Use this when paginating results to indicate where to begin in your list of origin access identities. The results include identities in the list that occur after the marker. To get the next page of results, set the Marker to the value of the NextMarker from the current page's response (which is also the ID of the last identity on that page).
-          MaxItems:
+          MaxItems?:
             type: string
             description: The maximum number of origin access identities you want in the response body.
         responses:
@@ -1499,20 +1474,17 @@ types:
   /streaming-distribution:
     /{Id}:
       uriParameters:
-        Id?:
+        Id:
           type: string
           description: The distribution id.
       /config:
         get:
           description: Get the configuration information about a streaming distribution.
-          headers:
-            Id?:
-              type: string
-              description: The streaming distribution's id.
+          displayName: Get Streaming Distribution Config2016_09_07
           responses:
             200:
               headers:
-                ETag:
+                ETag?:
                   type: string
                   description: 'The current version of the configuration. For example:
                     E2QWRUHAPOMQZL.'
@@ -1526,11 +1498,9 @@ types:
               description: AccessDenied
         put:
           description: Update a streaming distribution.
+          displayName: Update Streaming Distribution2016_09_07
           headers:
-            Id?:
-              type: string
-              description: The streaming distribution's id.
-            If-Match:
+            If-Match?:
               type: string
               description: 'The value of the ETag header you received when retrieving
                 the streaming distribution''s configuration. For example: E2QWRUHAPOMQZL.'
@@ -1543,7 +1513,7 @@ types:
           responses:
             200:
               headers:
-                ETag:
+                ETag?:
                   type: string
                   description: 'The current version of the configuration. For example:
                     E2QWRUHAPOMQZL.'
@@ -1563,11 +1533,9 @@ types:
               description: PreconditionFailed
       delete:
         description: Delete a streaming distribution.
+        displayName: Delete Streaming Distribution2016_09_07
         headers:
-          Id?:
-            type: string
-            description: The distribution id.
-          If-Match:
+          If-Match?:
             type: string
             description: 'The value of the ETag header you received when you disabled
               the streaming distribution. For example: E2QWRUHAPOMQZL.'
@@ -1587,14 +1555,11 @@ types:
             description: PreconditionFailed
       get:
         description: Get the information about a streaming distribution.
-        headers:
-          Id?:
-            type: string
-            description: The streaming distribution's id.
+        displayName: Get Streaming Distribution2016_09_07
         responses:
           200:
             headers:
-              ETag:
+              ETag?:
                 type: string
                 description: 'The current version of the streaming distribution''s
                   information. For example: E2QWRUHAPOMQZL.'
@@ -1608,6 +1573,7 @@ types:
             description: AccessDenied
     post:
       description: Create a new streaming distribution.
+      displayName: Create Streaming Distribution2016_09_07
       body:
         application/xml:
           type: StreamingDistributionConfig
@@ -1617,11 +1583,11 @@ types:
       responses:
         201:
           headers:
-            Location:
+            Location?:
               type: string
               description: 'The fully qualified URI of the new streaming distribution
                 resource just created. For example: https://cloudfront.amazonaws.com/2010-11-01/streaming-distribution/EGTXBD79H29TRA8.'
-            ETag:
+            ETag?:
               type: string
               description: The current version of the streaming distribution created.
           body:
@@ -1636,11 +1602,12 @@ types:
           description: AccessDenied
     get:
       description: List streaming distributions.
+      displayName: List Streaming Distributions2016_09_07
       queryParameters:
-        Marker:
+        Marker?:
           type: string
           description: Use this when paginating results to indicate where to begin in your list of streaming distributions. The results include distributions in the list that occur after the marker. To get the next page of results, set the Marker to the value of the NextMarker from the current page's response (which is also the ID of the last distribution on that page).
-        MaxItems:
+        MaxItems?:
           type: string
           description: The maximum number of streaming distributions you want in the response body.
       responses:
@@ -1654,8 +1621,9 @@ types:
   /tagging?Operation=Tag:
     post:
       description: Add tags to a CloudFront resource.
+      displayName: Tag Resource2016_09_07
       queryParameters:
-        Resource?:
+        Resource:
           type: ResourceARN
           description: An ARN of a CloudFront resource.
       body:
@@ -1677,6 +1645,7 @@ types:
   /streaming-distribution?WithTags:
     post:
       description: Create a new streaming distribution with tags.
+      displayName: Create Streaming Distribution With Tags2016_09_07
       body:
         application/xml:
           type: StreamingDistributionConfigWithTags
@@ -1686,11 +1655,11 @@ types:
       responses:
         201:
           headers:
-            Location:
+            Location?:
               type: string
               description: 'The fully qualified URI of the new streaming distribution
                 resource just created. For example: https://cloudfront.amazonaws.com/2010-11-01/streaming-distribution/EGTXBD79H29TRA8.'
-            ETag:
+            ETag?:
               type: string
               description: The current version of the streaming distribution created.
           body:
@@ -1706,6 +1675,7 @@ types:
   /distribution?WithTags:
     post:
       description: Create a new distribution with tags.
+      displayName: Create Distribution With Tags2016_09_07
       body:
         application/xml:
           type: DistributionConfigWithTags
@@ -1715,11 +1685,11 @@ types:
       responses:
         201:
           headers:
-            Location:
+            Location?:
               type: string
               description: 'The fully qualified URI of the new distribution resource
                 just created. For example: https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5.'
-            ETag:
+            ETag?:
               type: string
               description: The current version of the distribution created.
           body:
@@ -1737,22 +1707,19 @@ types:
   /distributionsByWebACLId:
     /{WebACLId}:
       uriParameters:
-        WebACLId?:
+        WebACLId:
           type: string
           description: The Id of the AWS WAF web ACL for which you want to list the associated distributions. If you specify "null" for the Id, the request returns a list of the distributions that aren't associated with a web ACL.
       get:
         description: List the distributions that are associated with a specified AWS WAF web ACL.
+        displayName: List Distributions By Web A C L Id2016_09_07
         queryParameters:
-          Marker:
+          Marker?:
             type: string
             description: Use Marker and MaxItems to control pagination of results. If you have more than MaxItems distributions that satisfy the request, the response includes a NextMarker element. To get the next page of results, submit another request. For the value of Marker, specify the value of NextMarker from the last response. (For the first request, omit Marker.)
-          MaxItems:
+          MaxItems?:
             type: string
             description: The maximum number of distributions that you want CloudFront to return in the response body. The maximum and default values are both 100.
-        headers:
-          WebACLId?:
-            type: string
-            description: The Id of the AWS WAF web ACL for which you want to list the associated distributions. If you specify "null" for the Id, the request returns a list of the distributions that aren't associated with a web ACL.
         responses:
           200:
             body:
@@ -1764,8 +1731,9 @@ types:
   /tagging:
     get:
       description: List tags for a CloudFront resource.
+      displayName: List Tags For Resource2016_09_07
       queryParameters:
-        Resource?:
+        Resource:
           type: ResourceARN
           description: An ARN of a CloudFront resource.
       responses:
@@ -1783,8 +1751,9 @@ types:
   /tagging?Operation=Untag:
     post:
       description: Remove tags from a CloudFront resource.
+      displayName: Untag Resource2016_09_07
       queryParameters:
-        Resource?:
+        Resource:
           type: ResourceARN
           description: An ARN of a CloudFront resource.
       body:

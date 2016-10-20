@@ -13,6 +13,9 @@ description: '  The Amazon Simple Workflow Service (Amazon SWF) makes it easy to
   SWF Developer Guide</a>.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   ActivityId:
     type: string
@@ -2882,6 +2885,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns the number of closed workflow executions within the given
@@ -2902,6 +2906,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Count Closed Workflow Executions
     body:
       application/json: CountClosedWorkflowExecutionsInput
     responses:
@@ -2916,6 +2921,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns the number of open workflow executions within the given
@@ -2936,6 +2942,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Count Open Workflow Executions
     body:
       application/json: CountOpenWorkflowExecutionsInput
     responses:
@@ -2950,6 +2957,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns the estimated number of activity tasks in the specified
@@ -2967,6 +2975,7 @@ types:
       attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Count Pending Activity Tasks
     body:
       application/json: CountPendingActivityTasksInput
     responses:
@@ -2981,6 +2990,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns the estimated number of decision tasks in the specified
@@ -2998,6 +3008,7 @@ types:
       attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Count Pending Decision Tasks
     body:
       application/json: CountPendingDecisionTasksInput
     responses:
@@ -3012,6 +3023,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deprecates the specified <i>activity type</i>. After an activity
@@ -3033,6 +3045,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Deprecate Activity Type
     body:
       application/json: DeprecateActivityTypeInput
     responses:
@@ -3047,6 +3060,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deprecates the specified domain. After a domain has been deprecated
@@ -3066,6 +3080,7 @@ types:
       event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Deprecate Domain
     body:
       application/json: DeprecateDomainInput
     responses:
@@ -3080,6 +3095,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deprecates the specified <i>workflow type</i>. After a workflow
@@ -3102,6 +3118,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Deprecate Workflow Type
     body:
       application/json: DeprecateWorkflowTypeInput
     responses:
@@ -3116,6 +3133,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns information about the specified activity type. This includes
@@ -3134,6 +3152,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Describe Activity Type
     body:
       application/json: DescribeActivityTypeInput
     responses:
@@ -3148,6 +3167,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns information about the specified domain, including description
@@ -3161,6 +3181,7 @@ types:
       The associated event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Describe Domain
     body:
       application/json: DescribeDomainInput
     responses:
@@ -3175,6 +3196,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns information about the specified workflow execution including
@@ -3190,6 +3212,7 @@ types:
       The associated event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Describe Workflow Execution
     body:
       application/json: DescribeWorkflowExecutionInput
     responses:
@@ -3204,6 +3227,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns information about the specified <i>workflow type</i>. This
@@ -3223,6 +3247,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Describe Workflow Type
     body:
       application/json: DescribeWorkflowTypeInput
     responses:
@@ -3237,6 +3262,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns the history of the specified workflow execution. The results
@@ -3254,6 +3280,7 @@ types:
       event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Get Workflow Execution History
     body:
       application/json: GetWorkflowExecutionHistoryInput
     responses:
@@ -3268,6 +3295,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns information about all activities registered in the specified
@@ -3285,6 +3313,7 @@ types:
       The associated event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: List Activity Types
     body:
       application/json: ListActivityTypesInput
     responses:
@@ -3299,6 +3328,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns a list of closed workflow executions in the specified domain
@@ -3321,6 +3351,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: List Closed Workflow Executions
     body:
       application/json: ListClosedWorkflowExecutionsInput
     responses:
@@ -3335,6 +3366,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns the list of domains registered in the account. The results
@@ -3353,6 +3385,7 @@ types:
       event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: List Domains
     body:
       application/json: ListDomainsInput
     responses:
@@ -3367,6 +3400,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns a list of open workflow executions in the specified domain
@@ -3389,6 +3423,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: List Open Workflow Executions
     body:
       application/json: ListOpenWorkflowExecutionsInput
     responses:
@@ -3403,6 +3438,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns information about workflow types in the specified domain.
@@ -3417,6 +3453,7 @@ types:
       The associated event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: List Workflow Types
     body:
       application/json: ListWorkflowTypesInput
     responses:
@@ -3431,6 +3468,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Used by workers to get an <a>ActivityTask</a> from the specified
@@ -3455,6 +3493,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Poll For Activity Task
     body:
       application/json: PollForActivityTaskInput
     responses:
@@ -3469,6 +3508,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Used by deciders to get a <a>DecisionTask</a> from the specified
@@ -3501,6 +3541,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Poll For Decision Task
     body:
       application/json: PollForDecisionTaskInput
     responses:
@@ -3515,6 +3556,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Used by activity workers to report to the service that the <a>ActivityTask</a>
@@ -3548,6 +3590,7 @@ types:
       The associated event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Record Activity Task Heartbeat
     body:
       application/json: RecordActivityTaskHeartbeatInput
     responses:
@@ -3562,6 +3605,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Registers a new <i>activity type</i> along with its configuration
@@ -3583,6 +3627,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Register Activity Type
     body:
       application/json: RegisterActivityTypeInput
     responses:
@@ -3597,6 +3642,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Registers a new domain. <b>Access Control</b> You can use IAM policies
@@ -3610,6 +3656,7 @@ types:
       The associated event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Register Domain
     body:
       application/json: RegisterDomainInput
     responses:
@@ -3624,6 +3671,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Registers a new <i>workflow type</i> and its configuration settings
@@ -3646,6 +3694,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Register Workflow Type
     body:
       application/json: RegisterWorkflowTypeInput
     responses:
@@ -3660,6 +3709,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Records a <code>WorkflowExecutionCancelRequested</code> event in
@@ -3681,6 +3731,7 @@ types:
       The associated event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Request Cancel Workflow Execution
     body:
       application/json: RequestCancelWorkflowExecutionInput
     responses:
@@ -3695,6 +3746,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Used by workers to tell the service that the <a>ActivityTask</a>
@@ -3719,6 +3771,7 @@ types:
       The associated event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Respond Activity Task Canceled
     body:
       application/json: RespondActivityTaskCanceledInput
     responses:
@@ -3733,6 +3786,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Used by workers to tell the service that the <a>ActivityTask</a>
@@ -3757,6 +3811,7 @@ types:
       The associated event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Respond Activity Task Completed
     body:
       application/json: RespondActivityTaskCompletedInput
     responses:
@@ -3771,6 +3826,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Used by workers to tell the service that the <a>ActivityTask</a>
@@ -3792,6 +3848,7 @@ types:
       The associated event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Respond Activity Task Failed
     body:
       application/json: RespondActivityTaskFailedInput
     responses:
@@ -3806,9 +3863,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Used by deciders to tell the service that the <a>DecisionTask</a> identified by the <code>taskToken</code> has successfully completed. The <code>decisions</code> argument specifies the list of decisions made while processing the task. A <code>DecisionTaskCompleted</code> event is added to the workflow history. The <code>executionContext</code> specified is attached to the event in the workflow execution history. <b>Access Control</b> If an IAM policy grants permission to use <code>RespondDecisionTaskCompleted</code>, it can express permissions for the list of decisions in the <code>decisions</code> parameter. Each of the decisions has one or more parameters, much like a regular API call. To allow for policies to be as readable as possible, you can express permissions on decisions as if they were actual API calls, including applying conditions to some parameters. For more information, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.
+    displayName: Respond Decision Task Completed
     body:
       application/json: RespondDecisionTaskCompletedInput
     responses:
@@ -3823,6 +3882,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Records a <code>WorkflowExecutionSignaled</code> event in the workflow
@@ -3843,6 +3903,7 @@ types:
       <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and
       example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Signal Workflow Execution
     body:
       application/json: SignalWorkflowExecutionInput
     responses:
@@ -3857,6 +3918,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Starts an execution of the workflow type in the specified domain
@@ -3881,6 +3943,7 @@ types:
       be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see
       <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Start Workflow Execution
     body:
       application/json: StartWorkflowExecutionInput
     responses:
@@ -3895,6 +3958,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Records a <code>WorkflowExecutionTerminated</code> event and forces
@@ -3917,6 +3981,7 @@ types:
       The associated event attribute''s <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED.
       For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
       IAM to Manage Access to Amazon SWF Workflows</a>.'
+    displayName: Terminate Workflow Execution
     body:
       application/json: TerminateWorkflowExecutionInput
     responses:

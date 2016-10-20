@@ -7,6 +7,9 @@ description: '  Amazon API Gateway helps developers deliver robust, secure, and 
   or other publicly addressable web services that are hosted outside of AWS.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   ApiKeysFormat:
     type: string
@@ -1235,15 +1238,12 @@ types:
 /clientcertificates:
   /{clientcertificate_id}:
     uriParameters:
-      clientcertificate_id?:
+      clientcertificate_id:
         type: String
         description: <p>The identifier of the <a>ClientCertificate</a> resource to be described.</p>
     get:
       description: Gets information about the current <a>ClientCertificate</a> resource.
-      headers:
-        clientcertificate_id?:
-          type: String
-          description: <p>The identifier of the <a>ClientCertificate</a> resource to be described.</p>
+      displayName: Get Client Certificate
       responses:
         200:
           body:
@@ -1256,10 +1256,7 @@ types:
           description: TooManyRequestsException
     delete:
       description: Deletes the <a>ClientCertificate</a> resource.
-      headers:
-        clientcertificate_id?:
-          type: String
-          description: <p>The identifier of the <a>ClientCertificate</a> resource to be deleted.</p>
+      displayName: Delete Client Certificate
       responses:
         202:
           body:
@@ -1274,15 +1271,12 @@ types:
           description: NotFoundException
     patch:
       description: Changes information about an <a>ClientCertificate</a> resource.
-      headers:
-        clientcertificate_id?:
-          type: String
-          description: <p>The identifier of the <a>ClientCertificate</a> resource to be updated.</p>
+      displayName: Update Client Certificate
       body:
         application/json:
           type: object
           properties:
-            patchOperations?:
+            patchOperations:
               type: ListOfPatchOperation
               description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
       responses:
@@ -1299,6 +1293,7 @@ types:
           description: NotFoundException
   post:
     description: Generates a <a>ClientCertificate</a> resource.
+    displayName: Generate Client Certificate
     body:
       application/json: GenerateClientCertificateRequest
     responses:
@@ -1311,11 +1306,12 @@ types:
         description: TooManyRequestsException | LimitExceededException
   get:
     description: Gets a collection of <a>ClientCertificate</a> resources.
+    displayName: Get Client Certificates
     queryParameters:
-      position:
+      position?:
         type: String
         description: <p>The position of the current <a>ClientCertificate</a> resource in the collection to get information about.</p>
-      limit:
+      limit?:
         type: NullableInteger
         description: <p>The maximum number of <a>ClientCertificate</a> resources in the collection to get information about. The default limit is 25. It should be an integer between 1 - 500.</p>
     responses:
@@ -1331,24 +1327,18 @@ types:
 /domainnames:
   /{domain_name}:
     uriParameters:
-      domain_name?:
+      domain_name:
         type: String
         description: <p>The name of the <a>DomainName</a> resource to be deleted.</p>
     /basepathmappings:
       /{base_path}:
         uriParameters:
-          base_path?:
+          base_path:
             type: String
             description: <p>The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.</p>
         get:
           description: Describe a <a>BasePathMapping</a> resource.
-          headers:
-            domain_name?:
-              type: String
-              description: <p>The domain name of the <a>BasePathMapping</a> resource to be described.</p>
-            base_path?:
-              type: String
-              description: <p>The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.</p>
+          displayName: Get Base Path Mapping
           responses:
             200:
               body:
@@ -1361,18 +1351,12 @@ types:
               description: TooManyRequestsException
         patch:
           description: Changes information about the <a>BasePathMapping</a> resource.
-          headers:
-            domain_name?:
-              type: String
-              description: <p>The domain name of the <a>BasePathMapping</a> resource to change.</p>
-            base_path?:
-              type: String
-              description: <p>The base path of the <a>BasePathMapping</a> resource to change.</p>
+          displayName: Update Base Path Mapping
           body:
             application/json:
               type: object
               properties:
-                patchOperations?:
+                patchOperations:
                   type: ListOfPatchOperation
                   description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
           responses:
@@ -1391,13 +1375,7 @@ types:
               description: TooManyRequestsException
         delete:
           description: Deletes the <a>BasePathMapping</a> resource.
-          headers:
-            domain_name?:
-              type: String
-              description: <p>The domain name of the <a>BasePathMapping</a> resource to delete.</p>
-            base_path?:
-              type: String
-              description: <p>The base path name of the <a>BasePathMapping</a> resource to delete.</p>
+          displayName: Delete Base Path Mapping
           responses:
             202:
               body:
@@ -1410,17 +1388,14 @@ types:
               description: TooManyRequestsException
       get:
         description: Represents a collection of <a>BasePathMapping</a> resources.
+        displayName: Get Base Path Mappings
         queryParameters:
-          position:
+          position?:
             type: String
             description: <p>The position of the current <a>BasePathMapping</a> resource in the collection to get information about.</p>
-          limit:
+          limit?:
             type: NullableInteger
             description: <p>The maximum number of <a>BasePathMapping</a> resources in the collection to get information about. The default limit is 25. It should be an integer between 1 - 500.</p>
-        headers:
-          domain_name?:
-            type: String
-            description: <p>The domain name of a <a>BasePathMapping</a> resource.</p>
         responses:
           200:
             body:
@@ -1433,21 +1408,18 @@ types:
             description: TooManyRequestsException
       post:
         description: Creates a new <a>BasePathMapping</a> resource.
-        headers:
-          domain_name?:
-            type: String
-            description: <p>The domain name of the <a>BasePathMapping</a> resource to create.</p>
+        displayName: Create Base Path Mapping
         body:
           application/json:
             type: object
             properties:
-              basePath?:
+              basePath:
                 type: String
                 description: <p>The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify a base path name after the domain name.</p>
-              restApiId:
+              restApiId?:
                 type: String
                 description: <p>The name of the API that you want to apply this mapping to.</p>
-              stage?:
+              stage:
                 type: String
                 description: <p>The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want callers to explicitly specify the stage name after any base path name.</p>
         responses:
@@ -1466,10 +1438,7 @@ types:
             description: TooManyRequestsException
     delete:
       description: Deletes the <a>DomainName</a> resource.
-      headers:
-        domain_name?:
-          type: String
-          description: <p>The name of the <a>DomainName</a> resource to be deleted.</p>
+      displayName: Delete Domain Name
       responses:
         202:
           body:
@@ -1482,15 +1451,12 @@ types:
           description: TooManyRequestsException
     patch:
       description: Changes information about the <a>DomainName</a> resource.
-      headers:
-        domain_name?:
-          type: String
-          description: <p>The name of the <a>DomainName</a> resource to be changed.</p>
+      displayName: Update Domain Name
       body:
         application/json:
           type: object
           properties:
-            patchOperations?:
+            patchOperations:
               type: ListOfPatchOperation
               description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
       responses:
@@ -1509,10 +1475,7 @@ types:
           description: TooManyRequestsException
     get:
       description: Represents a domain name that is contained in a simpler, more intuitive URL that can be called.
-      headers:
-        domain_name?:
-          type: String
-          description: <p>The name of the <a>DomainName</a> resource.</p>
+      displayName: Get Domain Name
       responses:
         200:
           body:
@@ -1527,11 +1490,12 @@ types:
           description: TooManyRequestsException
   get:
     description: Represents a collection of <a>DomainName</a> resources.
+    displayName: Get Domain Names
     queryParameters:
-      position:
+      position?:
         type: String
         description: <p>The position of the current domain names to get information about.</p>
-      limit:
+      limit?:
         type: NullableInteger
         description: <p>The maximum number of <a>DomainName</a> resources in the collection to get information about. The default limit is 25. It should be an integer between 1 - 500.</p>
     responses:
@@ -1546,6 +1510,7 @@ types:
         description: TooManyRequestsException
   post:
     description: Creates a new domain name.
+    displayName: Create Domain Name
     body:
       application/json: CreateDomainNameRequest
     responses:
@@ -1563,25 +1528,26 @@ types:
 /restapis:
   /{restapi_id}:
     uriParameters:
-      restapi_id?:
+      restapi_id:
         type: String
         description: <p>The identifier of the <a>RestApi</a> to be exported.</p>
     /stages:
       /{stage_name}:
         uriParameters:
-          stage_name?:
+          stage_name:
             type: String
             description: <p>The name of the <a>Stage</a> that will be exported.</p>
         /exports:
           /{export_type}:
             uriParameters:
-              export_type?:
+              export_type:
                 type: String
                 description: <p>The type of export. Currently only 'swagger' is supported.</p>
             get:
               description: Exports a deployed version of a <a>RestApi</a> in a specified format.
+              displayName: Get Export
               queryParameters:
-                parameters:
+                parameters?:
                   type: MapOfStringToString
                   description: '<p>A key-value map of query string parameters that
                     specify properties of the export, depending on the requested <code>exportType</code>.
@@ -1592,25 +1558,16 @@ types:
                     extensions. <code>postman</code> will export the API with Postman
                     extensions, allowing for import to the Postman tool</p>'
               headers:
-                restapi_id?:
-                  type: String
-                  description: <p>The identifier of the <a>RestApi</a> to be exported.</p>
-                stage_name?:
-                  type: String
-                  description: <p>The name of the <a>Stage</a> that will be exported.</p>
-                export_type?:
-                  type: String
-                  description: <p>The type of export. Currently only 'swagger' is supported.</p>
-                Accept:
+                Accept?:
                   type: String
                   description: <p>The content-type of the export, for example <code>application/json</code>. Currently <code>application/json</code> and <code>application/yaml</code> are supported for <code>exportType</code> of <code>swagger</code>. This should be specified in the <code>Accept</code> header for direct API requests.</p>
               responses:
                 200:
                   headers:
-                    Content-Type:
+                    Content-Type?:
                       type: String
                       description: <p>The content-type header value in the HTTP response. This will correspond to a valid 'accept' type in the request.</p>
-                    Content-Disposition:
+                    Content-Disposition?:
                       type: String
                       description: <p>The content-disposition header value in the HTTP response.</p>
                   body:
@@ -1628,32 +1585,23 @@ types:
         /sdks:
           /{sdk_type}:
             uriParameters:
-              sdk_type?:
+              sdk_type:
                 type: String
                 description: <p>The language for the generated SDK. Currently <code>javascript</code>, <code>android</code>, and <code>objectivec</code> (for iOS) are supported.</p>
             get:
               description: Generates a client SDK for a <a>RestApi</a> and <a>Stage</a>.
+              displayName: Get Sdk
               queryParameters:
-                parameters:
+                parameters?:
                   type: MapOfStringToString
                   description: <p>A key-value map of query string parameters that specify properties of the SDK, depending on the requested <code>sdkType</code>. For <code>sdkType</code> of <code>objectivec</code>, a parameter named <code>classPrefix</code> is required. For <code>sdkType</code> of <code>android</code>, parameters named <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and <code>invokerPackage</code> are required.</p>
-              headers:
-                restapi_id?:
-                  type: String
-                  description: <p>The identifier of the <a>RestApi</a> that the SDK will use.</p>
-                stage_name?:
-                  type: String
-                  description: <p>The name of the <a>Stage</a> that the SDK will use.</p>
-                sdk_type?:
-                  type: String
-                  description: <p>The language for the generated SDK. Currently <code>javascript</code>, <code>android</code>, and <code>objectivec</code> (for iOS) are supported.</p>
               responses:
                 200:
                   headers:
-                    Content-Type:
+                    Content-Type?:
                       type: String
                       description: <p>The content-type header value in the HTTP response.</p>
-                    Content-Disposition:
+                    Content-Disposition?:
                       type: String
                       description: <p>The content-disposition header value in the HTTP response.</p>
                   body:
@@ -1672,13 +1620,7 @@ types:
           /data:
             delete:
               description: Flushes a stage's cache.
-              headers:
-                restapi_id?:
-                  type: String
-                  description: <p>The API identifier of the stage to flush its cache.</p>
-                stage_name?:
-                  type: String
-                  description: <p>The name of the stage to flush its cache.</p>
+              displayName: Flush Stage Cache
               responses:
                 202:
                   body:
@@ -1694,13 +1636,7 @@ types:
           /authorizers:
             delete:
               description: Flushes all authorizer cache entries on a stage.
-              headers:
-                restapi_id?:
-                  type: String
-                  description: <p>The API identifier of the stage to flush.</p>
-                stage_name?:
-                  type: String
-                  description: <p>The name of the stage to flush.</p>
+              displayName: Flush Stage Authorizers Cache
               responses:
                 202:
                   body:
@@ -1715,18 +1651,12 @@ types:
                   description: TooManyRequestsException
         patch:
           description: Changes information about a <a>Stage</a> resource.
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to change information about.</p>
-            stage_name?:
-              type: String
-              description: <p>The name of the <a>Stage</a> resource to change information about.</p>
+          displayName: Update Stage
           body:
             application/json:
               type: object
               properties:
-                patchOperations?:
+                patchOperations:
                   type: ListOfPatchOperation
                   description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
           responses:
@@ -1745,13 +1675,7 @@ types:
               description: TooManyRequestsException
         delete:
           description: Deletes a <a>Stage</a> resource.
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to delete.</p>
-            stage_name?:
-              type: String
-              description: <p>The name of the <a>Stage</a> resource to delete.</p>
+          displayName: Delete Stage
           responses:
             202:
               body:
@@ -1766,13 +1690,7 @@ types:
               description: BadRequestException
         get:
           description: Gets information about a <a>Stage</a> resource.
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to get information about.</p>
-            stage_name?:
-              type: String
-              description: <p>The name of the <a>Stage</a> resource to get information about.</p>
+          displayName: Get Stage
           responses:
             200:
               body:
@@ -1785,14 +1703,11 @@ types:
               description: TooManyRequestsException
       get:
         description: Gets information about one or more <a>Stage</a> resources.
+        displayName: Get Stages
         queryParameters:
-          deploymentId:
+          deploymentId?:
             type: String
             description: <p>The stages' deployment identifiers.</p>
-        headers:
-          restapi_id?:
-            type: String
-            description: <p>The stages' API identifiers.</p>
         responses:
           200:
             body:
@@ -1806,30 +1721,27 @@ types:
       post:
         description: 'Creates a new <a>Stage</a> resource that references a pre-existing
           <a>Deployment</a> for the API. '
-        headers:
-          restapi_id?:
-            type: String
-            description: <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to create.</p>
+        displayName: Create Stage
         body:
           application/json:
             type: object
             properties:
-              stageName:
+              stageName?:
                 type: String
                 description: <p>The name for the <a>Stage</a> resource.</p>
-              deploymentId:
+              deploymentId?:
                 type: String
                 description: <p>The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.</p>
-              description?:
+              description:
                 type: String
                 description: <p>The description of the <a>Stage</a> resource.</p>
-              cacheClusterEnabled?:
+              cacheClusterEnabled:
                 type: Boolean
                 description: <p>Whether cache clustering is enabled for the stage.</p>
-              cacheClusterSize?:
+              cacheClusterSize:
                 type: CacheClusterSize
                 description: <p>The stage's cache cluster size.</p>
-              variables?:
+              variables:
                 type: MapOfStringToString
                 description: <p>A map that defines the stage variables for the new <a>Stage</a> resource. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
         responses:
@@ -1849,19 +1761,13 @@ types:
     /models:
       /{model_name}:
         uriParameters:
-          model_name?:
+          model_name:
             type: String
             description: <p>The name of the model as an identifier.</p>
         /default_template:
           get:
             description: Generates a sample mapping template that can be used to transform a payload into the structure of a model.
-            headers:
-              restapi_id?:
-                type: String
-                description: <p>The ID of the <a>RestApi</a> under which the model exists.</p>
-              model_name?:
-                type: String
-                description: <p>The name of the model for which to generate a template.</p>
+            displayName: Get Model Template
             responses:
               200:
                 body:
@@ -1876,17 +1782,11 @@ types:
                 description: TooManyRequestsException
         get:
           description: Describes an existing model defined for a <a>RestApi</a> resource.
+          displayName: Get Model
           queryParameters:
-            flatten:
+            flatten?:
               type: Boolean
               description: <p>A query parameter of a Boolean value to resolve (<code>true</code>) all external model references and returns a flattened model schema or not (<code>false</code>) The default is <code>false</code>.</p>
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The <a>RestApi</a> identifier under which the <a>Model</a> exists.</p>
-            model_name?:
-              type: String
-              description: <p>The name of the model as an identifier.</p>
           responses:
             200:
               body:
@@ -1899,18 +1799,12 @@ types:
               description: TooManyRequestsException
         patch:
           description: Changes information about a model.
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The <a>RestApi</a> identifier under which the model exists.</p>
-            model_name?:
-              type: String
-              description: <p>The name of the model to update.</p>
+          displayName: Update Model
           body:
             application/json:
               type: object
               properties:
-                patchOperations?:
+                patchOperations:
                   type: ListOfPatchOperation
                   description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
           responses:
@@ -1929,13 +1823,7 @@ types:
               description: TooManyRequestsException
         delete:
           description: Deletes a model.
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The <a>RestApi</a> under which the model will be deleted.</p>
-            model_name?:
-              type: String
-              description: <p>The name of the model to delete.</p>
+          displayName: Delete Model
           responses:
             202:
               body:
@@ -1952,24 +1840,21 @@ types:
               description: ConflictException
       post:
         description: Adds a new <a>Model</a> resource to an existing <a>RestApi</a> resource.
-        headers:
-          restapi_id?:
-            type: String
-            description: <p>The <a>RestApi</a> identifier under which the <a>Model</a> will be created.</p>
+        displayName: Create Model
         body:
           application/json:
             type: object
             properties:
-              name:
+              name?:
                 type: String
                 description: <p>The name of the model.</p>
-              description?:
+              description:
                 type: String
                 description: <p>The description of the model.</p>
-              schema?:
+              schema:
                 type: String
                 description: <p>The schema for the model. For <code>application/json</code> models, this should be <a href="http://json-schema.org/documentation.html" target="_blank">JSON-schema draft v4</a> model.</p>
-              contentType:
+              contentType?:
                 type: String
                 description: <p>The content-type for the model.</p>
         responses:
@@ -1988,17 +1873,14 @@ types:
             description: LimitExceededException | TooManyRequestsException
       get:
         description: Describes existing <a>Models</a> defined for a <a>RestApi</a> resource.
+        displayName: Get Models
         queryParameters:
-          position:
+          position?:
             type: String
             description: <p>The position of the next set of results in the <a>Models</a> resource to get information about.</p>
-          limit:
+          limit?:
             type: NullableInteger
             description: <p>The maximum number of models in the collection to get information about. The default limit is 25. It should be an integer between 1 - 500.</p>
-        headers:
-          restapi_id?:
-            type: String
-            description: <p>The <a>RestApi</a> identifier.</p>
         responses:
           200:
             body:
@@ -2014,37 +1896,25 @@ types:
     /resources:
       /{resource_id}:
         uriParameters:
-          resource_id?:
+          resource_id:
             type: String
             description: <p>The <a>Resource</a> identifier for the new <a>Method</a> resource.</p>
         /methods:
           /{http_method}:
             uriParameters:
-              http_method?:
+              http_method:
                 type: String
                 description: <p>Specifies the method request's HTTP method type.</p>
             /integration:
               /responses:
                 /{status_code}:
                   uriParameters:
-                    status_code?:
+                    status_code:
                       type: StatusCode
                       description: <p>Specifies a get integration response request's status code.</p>
                   get:
                     description: Represents a get integration response.
-                    headers:
-                      restapi_id?:
-                        type: String
-                        description: <p>Specifies a get integration response request's API identifier.</p>
-                      resource_id?:
-                        type: String
-                        description: <p>Specifies a get integration response request's resource identifier.</p>
-                      http_method?:
-                        type: String
-                        description: <p>Specifies a get integration response request's HTTP method.</p>
-                      status_code?:
-                        type: StatusCode
-                        description: <p>Specifies a get integration response request's status code.</p>
+                    displayName: Get Integration Response
                     responses:
                       200:
                         body:
@@ -2057,24 +1927,12 @@ types:
                         description: TooManyRequestsException
                   patch:
                     description: Represents an update integration response.
-                    headers:
-                      restapi_id?:
-                        type: String
-                        description: <p>Specifies an update integration response request's API identifier.</p>
-                      resource_id?:
-                        type: String
-                        description: <p>Specifies an update integration response request's resource identifier.</p>
-                      http_method?:
-                        type: String
-                        description: <p>Specifies an update integration response request's HTTP method.</p>
-                      status_code?:
-                        type: StatusCode
-                        description: <p>Specifies an update integration response request's status code.</p>
+                    displayName: Update Integration Response
                     body:
                       application/json:
                         type: object
                         properties:
-                          patchOperations?:
+                          patchOperations:
                             type: ListOfPatchOperation
                             description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
                     responses:
@@ -2093,19 +1951,7 @@ types:
                         description: TooManyRequestsException
                   delete:
                     description: Represents a delete integration response.
-                    headers:
-                      restapi_id?:
-                        type: String
-                        description: <p>Specifies a delete integration response request's API identifier.</p>
-                      resource_id?:
-                        type: String
-                        description: <p>Specifies a delete integration response request's resource identifier.</p>
-                      http_method?:
-                        type: String
-                        description: <p>Specifies a delete integration response request's HTTP method.</p>
-                      status_code?:
-                        type: StatusCode
-                        description: <p>Specifies a delete integration response request's status code.</p>
+                    displayName: Delete Integration Response
                     responses:
                       204:
                         body:
@@ -2122,30 +1968,18 @@ types:
                         description: ConflictException
                   put:
                     description: Represents a put integration.
-                    headers:
-                      restapi_id?:
-                        type: String
-                        description: <p>Specifies a put integration response request's API identifier.</p>
-                      resource_id?:
-                        type: String
-                        description: <p>Specifies a put integration response request's resource identifier.</p>
-                      http_method?:
-                        type: String
-                        description: <p>Specifies a put integration response request's HTTP method.</p>
-                      status_code?:
-                        type: StatusCode
-                        description: <p>Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
+                    displayName: Put Integration Response
                     body:
                       application/json:
                         type: object
                         properties:
-                          selectionPattern?:
+                          selectionPattern:
                             type: String
                             description: <p>Specifies the selection pattern of a put integration response.</p>
-                          responseParameters?:
+                          responseParameters:
                             type: MapOfStringToString
                             description: <p>A key-value map specifying response parameters that are passed to the method response from the back end. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The mapped non-static value must match the pattern of <code>integration.response.header.{name}</code> or <code>integration.response.body.{JSON-expression}</code>, where <code>name</code> must be a valid and unique response header name and <code>JSON-expression</code> a valid JSON expression without the <code>$</code> prefix.</p>
-                          responseTemplates?:
+                          responseTemplates:
                             type: MapOfStringToString
                             description: <p>Specifies a put integration response's templates.</p>
                     responses:
@@ -2164,21 +1998,12 @@ types:
                         description: ConflictException
               patch:
                 description: Represents an update integration.
-                headers:
-                  restapi_id?:
-                    type: String
-                    description: <p>Represents an update integration request's API identifier.</p>
-                  resource_id?:
-                    type: String
-                    description: <p>Represents an update integration request's resource identifier.</p>
-                  http_method?:
-                    type: String
-                    description: <p>Represents an update integration request's HTTP method.</p>
+                displayName: Update Integration
                 body:
                   application/json:
                     type: object
                     properties:
-                      patchOperations?:
+                      patchOperations:
                         type: ListOfPatchOperation
                         description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
                 responses:
@@ -2197,16 +2022,7 @@ types:
                     description: ConflictException
               delete:
                 description: Represents a delete integration.
-                headers:
-                  restapi_id?:
-                    type: String
-                    description: <p>Specifies a delete integration request's API identifier.</p>
-                  resource_id?:
-                    type: String
-                    description: <p>Specifies a delete integration request's resource identifier.</p>
-                  http_method?:
-                    type: String
-                    description: <p>Specifies a delete integration request's HTTP method.</p>
+                displayName: Delete Integration
                 responses:
                   204:
                     body:
@@ -2221,16 +2037,7 @@ types:
                     description: ConflictException
               get:
                 description: Represents a get integration.
-                headers:
-                  restapi_id?:
-                    type: String
-                    description: <p>Specifies a get integration request's API identifier.</p>
-                  resource_id?:
-                    type: String
-                    description: <p>Specifies a get integration request's resource identifier</p>
-                  http_method?:
-                    type: String
-                    description: <p>Specifies a get integration request's HTTP method.</p>
+                displayName: Get Integration
                 responses:
                   200:
                     body:
@@ -2243,39 +2050,30 @@ types:
                     description: TooManyRequestsException
               put:
                 description: Represents a put integration.
-                headers:
-                  restapi_id?:
-                    type: String
-                    description: <p>Specifies a put integration request's API identifier.</p>
-                  resource_id?:
-                    type: String
-                    description: <p>Specifies a put integration request's resource ID.</p>
-                  http_method?:
-                    type: String
-                    description: <p>Specifies a put integration request's HTTP method.</p>
+                displayName: Put Integration
                 body:
                   application/json:
                     type: object
                     properties:
-                      type:
+                      type?:
                         type: IntegrationType
                         description: <p>Specifies a put integration input's type.</p>
-                      httpMethod?:
+                      httpMethod:
                         type: String
                         description: <p>Specifies a put integration HTTP method. When the integration type is HTTP or AWS, this field is required.</p>
-                      uri?:
+                      uri:
                         type: String
                         description: <p>Specifies a put integration input's Uniform Resource Identifier (URI). When the integration type is HTTP or AWS, this field is required. For integration with Lambda as an AWS service proxy, this value is of the 'arn:aws:apigateway:&lt;region&gt;:lambda:path/2015-03-31/functions/&lt;functionArn&gt;/invocations' format.</p>
-                      credentials?:
+                      credentials:
                         type: String
                         description: <p>Specifies whether credentials are required for a put integration.</p>
-                      requestParameters?:
+                      requestParameters:
                         type: MapOfStringToString
                         description: <p>A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> must be a valid and unique method request parameter name.</p>
-                      requestTemplates?:
+                      requestTemplates:
                         type: MapOfStringToString
                         description: <p>Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.</p>
-                      passthroughBehavior?:
+                      passthroughBehavior:
                         type: String
                         description: '<p>Specifies the pass-through behavior for incoming
                           requests based on the Content-Type header in the request,
@@ -2292,10 +2090,10 @@ types:
                           However if there is at least one content type defined, unmapped
                           content types will be rejected with the same 415 response.</p></li>
                           </ul>'
-                      cacheNamespace?:
+                      cacheNamespace:
                         type: String
                         description: <p>Specifies a put integration input's cache namespace.</p>
-                      cacheKeyParameters?:
+                      cacheKeyParameters:
                         type: ListOfString
                         description: <p>Specifies a put integration input's cache key parameters.</p>
                 responses:
@@ -2315,32 +2113,20 @@ types:
             /responses:
               /{status_code}:
                 uriParameters:
-                  status_code?:
+                  status_code:
                     type: StatusCode
                     description: <p>The method response's status code.</p>
                 put:
                   description: Adds a <a>MethodResponse</a> to an existing <a>Method</a> resource.
-                  headers:
-                    restapi_id?:
-                      type: String
-                      description: <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
-                    resource_id?:
-                      type: String
-                      description: <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
-                    http_method?:
-                      type: String
-                      description: <p>The HTTP verb of the <a>Method</a> resource.</p>
-                    status_code?:
-                      type: StatusCode
-                      description: <p>The method response's status code.</p>
+                  displayName: Put Method Response
                   body:
                     application/json:
                       type: object
                       properties:
-                        responseParameters?:
+                        responseParameters:
                           type: MapOfStringToBoolean
                           description: <p>A key-value map specifying required or optional response parameters that Amazon API Gateway can send back to the caller. A key defines a method response header name and the associated value is a Boolean flag indicating whether the method response parameter is required or not. The method response header names must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in <code>integration.response.header.{name}</code>, a static value enclosed within a pair of single quotes (e.g., <code>'application/json'</code>), or a JSON expression from the back-end response payload in the form of <code>integration.response.body.{JSON-expression}</code>, where <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.)</p>
-                        responseModels?:
+                        responseModels:
                           type: MapOfStringToString
                           description: <p>Specifies the <a>Model</a> resources used for the response's content type. Response models are represented as a key/value map, with a content type as the key and a <a>Model</a> name as the value.</p>
                   responses:
@@ -2359,24 +2145,12 @@ types:
                       description: BadRequestException
                 patch:
                   description: Updates an existing <a>MethodResponse</a> resource.
-                  headers:
-                    restapi_id?:
-                      type: String
-                      description: <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
-                    resource_id?:
-                      type: String
-                      description: <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
-                    http_method?:
-                      type: String
-                      description: <p>The HTTP verb of the <a>Method</a> resource.</p>
-                    status_code?:
-                      type: StatusCode
-                      description: <p>The status code for the <a>MethodResponse</a> resource.</p>
+                  displayName: Update Method Response
                   body:
                     application/json:
                       type: object
                       properties:
-                        patchOperations?:
+                        patchOperations:
                           type: ListOfPatchOperation
                           description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
                   responses:
@@ -2395,19 +2169,7 @@ types:
                       description: BadRequestException
                 delete:
                   description: Deletes an existing <a>MethodResponse</a> resource.
-                  headers:
-                    restapi_id?:
-                      type: String
-                      description: <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
-                    resource_id?:
-                      type: String
-                      description: <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
-                    http_method?:
-                      type: String
-                      description: <p>The HTTP verb of the <a>Method</a> resource.</p>
-                    status_code?:
-                      type: StatusCode
-                      description: <p>The status code identifier for the <a>MethodResponse</a> resource.</p>
+                  displayName: Delete Method Response
                   responses:
                     204:
                       body:
@@ -2424,19 +2186,7 @@ types:
                       description: ConflictException
                 get:
                   description: Describes a <a>MethodResponse</a> resource.
-                  headers:
-                    restapi_id?:
-                      type: String
-                      description: <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
-                    resource_id?:
-                      type: String
-                      description: <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
-                    http_method?:
-                      type: String
-                      description: <p>The HTTP verb of the <a>Method</a> resource.</p>
-                    status_code?:
-                      type: StatusCode
-                      description: <p>The status code for the <a>MethodResponse</a> resource.</p>
+                  displayName: Get Method Response
                   responses:
                     200:
                       body:
@@ -2449,33 +2199,24 @@ types:
                       description: TooManyRequestsException
             put:
               description: Add a method to an existing <a>Resource</a> resource.
-              headers:
-                restapi_id?:
-                  type: String
-                  description: <p>The <a>RestApi</a> identifier for the new <a>Method</a> resource.</p>
-                resource_id?:
-                  type: String
-                  description: <p>The <a>Resource</a> identifier for the new <a>Method</a> resource.</p>
-                http_method?:
-                  type: String
-                  description: <p>Specifies the method request's HTTP method type.</p>
+              displayName: Put Method
               body:
                 application/json:
                   type: object
                   properties:
-                    authorizationType:
+                    authorizationType?:
                       type: String
                       description: <p>Specifies the type of authorization used for the method.</p>
-                    authorizerId?:
+                    authorizerId:
                       type: String
                       description: <p>Specifies the identifier of an <a>Authorizer</a> to use on this Method, if the type is CUSTOM.</p>
-                    apiKeyRequired?:
+                    apiKeyRequired:
                       type: Boolean
                       description: <p>Specifies whether the method required a valid <a>ApiKey</a>.</p>
-                    requestParameters?:
+                    requestParameters:
                       type: MapOfStringToBoolean
                       description: <p>A key-value map defining required or optional method request parameters that can be accepted by Amazon API Gateway. A key defines a method request parameter name matching the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (<code>true</code>) or optional (<code>false</code>). The method request parameter names defined here are available in <a>Integration</a> to be mapped to integration request parameters or body-mapping templates.</p>
-                    requestModels?:
+                    requestModels:
                       type: MapOfStringToString
                       description: <p>Specifies the <a>Model</a> resources used for the request's content type. Request models are represented as a key/value map, with a content type as the key and a <a>Model</a> name as the value.</p>
               responses:
@@ -2494,33 +2235,24 @@ types:
                   description: LimitExceededException | TooManyRequestsException
             post:
               description: Simulate the execution of a <a>Method</a> in your <a>RestApi</a> with headers, parameters, and an incoming request body.
-              headers:
-                restapi_id?:
-                  type: String
-                  description: <p>Specifies a test invoke method request's API identifier.</p>
-                resource_id?:
-                  type: String
-                  description: <p>Specifies a test invoke method request's resource ID.</p>
-                http_method?:
-                  type: String
-                  description: <p>Specifies a test invoke method request's HTTP method.</p>
+              displayName: Test Invoke Method
               body:
                 application/json:
                   type: object
                   properties:
-                    pathWithQueryString?:
+                    pathWithQueryString:
                       type: String
                       description: <p>The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.</p>
-                    body?:
+                    body:
                       type: String
                       description: <p>The simulated request body of an incoming invocation request.</p>
-                    headers?:
+                    headers:
                       type: MapOfHeaderValues
                       description: <p>A key-value map of headers to simulate an incoming invocation request.</p>
-                    clientCertificateId?:
+                    clientCertificateId:
                       type: String
                       description: <p>A <a>ClientCertificate</a> identifier to use in the test invocation. API Gateway will use the certificate when making the HTTPS request to the defined back-end endpoint.</p>
-                    stageVariables?:
+                    stageVariables:
                       type: MapOfStringToString
                       description: <p>A key-value map of stage variables to simulate an invocation on a deployed <a>Stage</a>.</p>
               responses:
@@ -2537,16 +2269,7 @@ types:
                   description: TooManyRequestsException
             get:
               description: Describe an existing <a>Method</a> resource.
-              headers:
-                restapi_id?:
-                  type: String
-                  description: <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
-                resource_id?:
-                  type: String
-                  description: <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
-                http_method?:
-                  type: String
-                  description: <p>Specifies the method request's HTTP method type.</p>
+              displayName: Get Method
               responses:
                 200:
                   body:
@@ -2559,21 +2282,12 @@ types:
                   description: TooManyRequestsException
             patch:
               description: Updates an existing <a>Method</a> resource.
-              headers:
-                restapi_id?:
-                  type: String
-                  description: <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
-                resource_id?:
-                  type: String
-                  description: <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
-                http_method?:
-                  type: String
-                  description: <p>The HTTP verb of the <a>Method</a> resource.</p>
+              displayName: Update Method
               body:
                 application/json:
                   type: object
                   properties:
-                    patchOperations?:
+                    patchOperations:
                       type: ListOfPatchOperation
                       description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
               responses:
@@ -2592,16 +2306,7 @@ types:
                   description: TooManyRequestsException
             delete:
               description: Deletes an existing <a>Method</a> resource.
-              headers:
-                restapi_id?:
-                  type: String
-                  description: <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
-                resource_id?:
-                  type: String
-                  description: <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
-                http_method?:
-                  type: String
-                  description: <p>The HTTP verb of the <a>Method</a> resource.</p>
+              displayName: Delete Method
               responses:
                 204:
                   body:
@@ -2616,18 +2321,12 @@ types:
                   description: ConflictException
         patch:
           description: Changes information about a <a>Resource</a> resource.
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The <a>RestApi</a> identifier for the <a>Resource</a> resource.</p>
-            resource_id?:
-              type: String
-              description: <p>The identifier of the <a>Resource</a> resource.</p>
+          displayName: Update Resource
           body:
             application/json:
               type: object
               properties:
-                patchOperations?:
+                patchOperations:
                   type: ListOfPatchOperation
                   description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
           responses:
@@ -2646,13 +2345,7 @@ types:
               description: TooManyRequestsException
         get:
           description: Lists information about a resource.
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The <a>RestApi</a> identifier for the resource.</p>
-            resource_id?:
-              type: String
-              description: <p>The identifier for the <a>Resource</a> resource.</p>
+          displayName: Get Resource
           responses:
             200:
               body:
@@ -2665,13 +2358,7 @@ types:
               description: TooManyRequestsException
         delete:
           description: Deletes a <a>Resource</a> resource.
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The <a>RestApi</a> identifier for the <a>Resource</a> resource.</p>
-            resource_id?:
-              type: String
-              description: <p>The identifier of the <a>Resource</a> resource.</p>
+          displayName: Delete Resource
           responses:
             202:
               body:
@@ -2688,23 +2375,17 @@ types:
               description: TooManyRequestsException
       /{parent_id}:
         uriParameters:
-          parent_id?:
+          parent_id:
             type: String
             description: <p>The parent resource's identifier.</p>
         post:
           description: Creates a <a>Resource</a> resource.
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The identifier of the <a>RestApi</a> for the resource. </p>
-            parent_id?:
-              type: String
-              description: <p>The parent resource's identifier.</p>
+          displayName: Create Resource
           body:
             application/json:
               type: object
               properties:
-                pathPart:
+                pathPart?:
                   type: String
                   description: <p>The last path segment for this resource.</p>
           responses:
@@ -2723,17 +2404,14 @@ types:
               description: BadRequestException
       get:
         description: Lists information about a collection of <a>Resource</a> resources.
+        displayName: Get Resources
         queryParameters:
-          position:
+          position?:
             type: String
             description: <p>The position of the next set of results in the current <a>Resources</a> resource to get information about.</p>
-          limit:
+          limit?:
             type: NullableInteger
             description: <p>The maximum number of <a>Resource</a> resources in the collection to get information about. The default limit is 25. It should be an integer between 1 - 500.</p>
-        headers:
-          restapi_id?:
-            type: String
-            description: <p>The <a>RestApi</a> identifier for the Resource.</p>
         responses:
           200:
             body:
@@ -2749,23 +2427,17 @@ types:
     /deployments:
       /{deployment_id}:
         uriParameters:
-          deployment_id?:
+          deployment_id:
             type: String
             description: <p>The replacement identifier for the <a>Deployment</a> resource to change information about.</p>
         patch:
           description: Changes information about a <a>Deployment</a> resource.
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The replacement identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to change information about.</p>
-            deployment_id?:
-              type: String
-              description: <p>The replacement identifier for the <a>Deployment</a> resource to change information about.</p>
+          displayName: Update Deployment
           body:
             application/json:
               type: object
               properties:
-                patchOperations?:
+                patchOperations:
                   type: ListOfPatchOperation
                   description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
           responses:
@@ -2784,13 +2456,7 @@ types:
               description: ServiceUnavailableException
         delete:
           description: Deletes a <a>Deployment</a> resource. Deleting a deployment will only succeed if there are no <a>Stage</a> resources associated with it.
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to delete.</p>
-            deployment_id?:
-              type: String
-              description: <p>The identifier of the <a>Deployment</a> resource to delete.</p>
+          displayName: Delete Deployment
           responses:
             202:
               body:
@@ -2805,13 +2471,7 @@ types:
               description: TooManyRequestsException
         get:
           description: Gets information about a <a>Deployment</a> resource.
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to get information about.</p>
-            deployment_id?:
-              type: String
-              description: <p>The identifier of the <a>Deployment</a> resource to get information about.</p>
+          displayName: Get Deployment
           responses:
             200:
               body:
@@ -2826,30 +2486,27 @@ types:
               description: ServiceUnavailableException
       post:
         description: Creates a <a>Deployment</a> resource, which makes a specified <a>RestApi</a> callable over the internet.
-        headers:
-          restapi_id?:
-            type: String
-            description: <p>The <a>RestApi</a> resource identifier for the <a>Deployment</a> resource to create.</p>
+        displayName: Create Deployment
         body:
           application/json:
             type: object
             properties:
-              stageName:
+              stageName?:
                 type: String
                 description: <p>The name of the <a>Stage</a> resource for the <a>Deployment</a> resource to create.</p>
-              stageDescription?:
+              stageDescription:
                 type: String
                 description: <p>The description of the <a>Stage</a> resource for the <a>Deployment</a> resource to create.</p>
-              description?:
+              description:
                 type: String
                 description: <p>The description for the <a>Deployment</a> resource to create.</p>
-              cacheClusterEnabled?:
+              cacheClusterEnabled:
                 type: NullableBoolean
                 description: <p>Enables a cache cluster for the <a>Stage</a> resource specified in the input.</p>
-              cacheClusterSize?:
+              cacheClusterSize:
                 type: CacheClusterSize
                 description: <p>Specifies the cache cluster size for the <a>Stage</a> resource specified in the input, if a cache cluster is enabled.</p>
-              variables?:
+              variables:
                 type: MapOfStringToString
                 description: <p>A map that defines the stage variables for the <a>Stage</a> resource that is associated with the new deployment. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
         responses:
@@ -2870,17 +2527,14 @@ types:
             description: ServiceUnavailableException
       get:
         description: Gets information about a <a>Deployments</a> collection.
+        displayName: Get Deployments
         queryParameters:
-          position:
+          position?:
             type: String
             description: <p>The position of the current <a>Deployment</a> resource in the collection to get information about.</p>
-          limit:
+          limit?:
             type: NullableInteger
             description: <p>The maximum number of <a>Deployment</a> resources in the collection to get information about. The default limit is 25. It should be an integer between 1 - 500.</p>
-        headers:
-          restapi_id?:
-            type: String
-            description: <p>The identifier of the <a>RestApi</a> resource for the collection of <a>Deployment</a> resources to get information about.</p>
         responses:
           200:
             body:
@@ -2896,18 +2550,12 @@ types:
     /authorizers:
       /{authorizer_id}:
         uriParameters:
-          authorizer_id?:
+          authorizer_id:
             type: String
             description: <p>The identifier of the <a>Authorizer</a> resource.</p>
         get:
           description: Describe an existing <a>Authorizer</a> resource. <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html">AWS CLI</a></div>
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
-            authorizer_id?:
-              type: String
-              description: <p>The identifier of the <a>Authorizer</a> resource.</p>
+          displayName: Get Authorizer
           responses:
             200:
               body:
@@ -2920,18 +2568,12 @@ types:
               description: TooManyRequestsException
         patch:
           description: Updates an existing <a>Authorizer</a> resource. <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html">AWS CLI</a></div>
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
-            authorizer_id?:
-              type: String
-              description: <p>The identifier of the <a>Authorizer</a> resource.</p>
+          displayName: Update Authorizer
           body:
             application/json:
               type: object
               properties:
-                patchOperations?:
+                patchOperations:
                   type: ListOfPatchOperation
                   description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
           responses:
@@ -2948,13 +2590,7 @@ types:
               description: TooManyRequestsException
         delete:
           description: Deletes an existing <a>Authorizer</a> resource. <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/delete-authorizer.html">AWS CLI</a></div>
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
-            authorizer_id?:
-              type: String
-              description: <p>The identifier of the <a>Authorizer</a> resource.</p>
+          displayName: Delete Authorizer
           responses:
             202:
               body:
@@ -2971,30 +2607,24 @@ types:
               description: ConflictException
         post:
           description: Simulate the execution of an <a>Authorizer</a> in your <a>RestApi</a> with headers, parameters, and an incoming request body. <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorizers</a> </div>
-          headers:
-            restapi_id?:
-              type: String
-              description: <p>Specifies a test invoke authorizer request's <a>RestApi</a> identifier.</p>
-            authorizer_id?:
-              type: String
-              description: <p>Specifies a test invoke authorizer request's <a>Authorizer</a> ID.</p>
+          displayName: Test Invoke Authorizer
           body:
             application/json:
               type: object
               properties:
-                headers?:
+                headers:
                   type: MapOfHeaderValues
                   description: <p>[Required] A key-value map of headers to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, should be specified.</p>
-                pathWithQueryString?:
+                pathWithQueryString:
                   type: String
                   description: <p>[Optional] The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.</p>
-                body?:
+                body:
                   type: String
                   description: <p>[Optional] The simulated request body of an incoming invocation request.</p>
-                stageVariables?:
+                stageVariables:
                   type: MapOfStringToString
                   description: <p>A key-value map of stage variables to simulate an invocation on a deployed <a>Stage</a>.</p>
-                additionalContext?:
+                additionalContext:
                   type: MapOfStringToString
                   description: <p>[Optional] A key-value map of additional context variables.</p>
           responses:
@@ -3011,39 +2641,36 @@ types:
               description: TooManyRequestsException
       post:
         description: Adds a new <a>Authorizer</a> resource to an existing <a>RestApi</a> resource. <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html">AWS CLI</a></div>
-        headers:
-          restapi_id?:
-            type: String
-            description: <p>The <a>RestApi</a> identifier under which the <a>Authorizer</a> will be created.</p>
+        displayName: Create Authorizer
         body:
           application/json:
             type: object
             properties:
-              name:
+              name?:
                 type: String
                 description: <p>[Required] The name of the authorizer.</p>
-              type:
+              type?:
                 type: AuthorizerType
                 description: <p>[Required] The type of the authorizer.</p>
-              providerARNs?:
+              providerARNs:
                 type: ListOfARNs
                 description: <p>A list of the Cognito Your User Pool authorizer's provider ARNs.</p>
-              authType?:
+              authType:
                 type: String
                 description: <p>Optional customer-defined field, used in Swagger imports/exports. Has no functional impact.</p>
-              authorizerUri?:
+              authorizerUri:
                 type: String
                 description: <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI).</p>
-              authorizerCredentials?:
+              authorizerCredentials:
                 type: String
                 description: <p>Specifies the credentials required for the authorizer, if any.</p>
-              identitySource:
+              identitySource?:
                 type: String
                 description: <p>[Required] The source of the identity in an incoming request.</p>
-              identityValidationExpression?:
+              identityValidationExpression:
                 type: String
                 description: <p>A validation expression for the incoming identity.</p>
-              authorizerResultTtlInSeconds?:
+              authorizerResultTtlInSeconds:
                 type: NullableInteger
                 description: <p>The TTL of cached authorizer results.</p>
         responses:
@@ -3060,17 +2687,14 @@ types:
             description: LimitExceededException | TooManyRequestsException
       get:
         description: Describe an existing <a>Authorizers</a> resource. <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html">AWS CLI</a></div>
+        displayName: Get Authorizers
         queryParameters:
-          position:
+          position?:
             type: String
             description: <p>If not all <a>Authorizer</a> resources in the response were present, the position will specify where to start the next page of results.</p>
-          limit:
+          limit?:
             type: NullableInteger
             description: <p>Limit the number of <a>Authorizer</a> resources in the response.</p>
-        headers:
-          restapi_id?:
-            type: String
-            description: <p>The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.</p>
         responses:
           200:
             body:
@@ -3085,10 +2709,7 @@ types:
             description: TooManyRequestsException
     delete:
       description: Deletes the specified API.
-      headers:
-        restapi_id?:
-          type: String
-          description: <p>The ID of the <a>RestApi</a> you want to delete.</p>
+      displayName: Delete Rest Api
       responses:
         202:
           body:
@@ -3103,15 +2724,12 @@ types:
           description: BadRequestException
     patch:
       description: Changes information about the specified API.
-      headers:
-        restapi_id?:
-          type: String
-          description: <p>The ID of the <a>RestApi</a> you want to update.</p>
+      displayName: Update Rest Api
       body:
         application/json:
           type: object
           properties:
-            patchOperations?:
+            patchOperations:
               type: ListOfPatchOperation
               description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
       responses:
@@ -3130,20 +2748,17 @@ types:
           description: TooManyRequestsException
     put:
       description: A feature of the Amazon API Gateway control service for updating an existing API with an input of external API definitions. The update can take the form of merging the supplied definition into the existing API or overwriting the existing API.
+      displayName: Put Rest Api
       queryParameters:
-        mode:
+        mode?:
           type: PutMode
           description: <p>The <code>mode</code> query parameter to specify the update mode. Valid values are "merge" and "overwrite". By default, the update mode is "merge".</p>
-        failonwarnings:
+        failonwarnings?:
           type: Boolean
           description: <p>A query parameter to indicate whether to rollback the API update (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
-        parameters:
+        parameters?:
           type: MapOfStringToString
           description: <p>Custom headers supplied as part of the request. </p>
-      headers:
-        restapi_id?:
-          type: String
-          description: <p>The identifier of the <a>RestApi</a> to be updated. </p>
       body:
         application/json:
           type: Blob
@@ -3164,10 +2779,7 @@ types:
           description: ConflictException
     get:
       description: Lists the <a>RestApi</a> resource in the collection.
-      headers:
-        restapi_id?:
-          type: String
-          description: <p>The identifier of the <a>RestApi</a> resource.</p>
+      displayName: Get Rest Api
       responses:
         200:
           body:
@@ -3180,6 +2792,7 @@ types:
           description: TooManyRequestsException
   post:
     description: Creates a new <a>RestApi</a> resource.
+    displayName: Create Rest Api
     body:
       application/json: CreateRestApiRequest
     responses:
@@ -3194,11 +2807,12 @@ types:
         description: BadRequestException
   get:
     description: Lists the <a>RestApis</a> resources for your collection.
+    displayName: Get Rest Apis
     queryParameters:
-      position:
+      position?:
         type: String
         description: <p>The position of the current <a>RestApis</a> resource in the collection to get information about.</p>
-      limit:
+      limit?:
         type: NullableInteger
         description: <p>The maximum number of <a>RestApi</a> resources in the collection to get information about. The default limit is 25. It should be an integer between 1 - 500.</p>
     responses:
@@ -3214,15 +2828,12 @@ types:
 /apikeys:
   /{api_Key}:
     uriParameters:
-      api_Key?:
+      api_Key:
         type: String
         description: <p>The identifier of the <a>ApiKey</a> resource to be deleted.</p>
     delete:
       description: Deletes the <a>ApiKey</a> resource.
-      headers:
-        api_Key?:
-          type: String
-          description: <p>The identifier of the <a>ApiKey</a> resource to be deleted.</p>
+      displayName: Delete Api Key
       responses:
         202:
           body:
@@ -3235,14 +2846,11 @@ types:
           description: TooManyRequestsException
     get:
       description: Gets information about the current <a>ApiKey</a> resource.
+      displayName: Get Api Key
       queryParameters:
-        includeValue:
+        includeValue?:
           type: Boolean
           description: <p>A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the key value.</p>
-      headers:
-        api_Key?:
-          type: String
-          description: <p>The identifier of the <a>ApiKey</a> resource.</p>
       responses:
         200:
           body:
@@ -3255,15 +2863,12 @@ types:
           description: TooManyRequestsException
     patch:
       description: Changes information about an <a>ApiKey</a> resource.
-      headers:
-        api_Key?:
-          type: String
-          description: <p>The identifier of the <a>ApiKey</a> resource to be updated.</p>
+      displayName: Update Api Key
       body:
         application/json:
           type: object
           properties:
-            patchOperations?:
+            patchOperations:
               type: ListOfPatchOperation
               description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
       responses:
@@ -3282,6 +2887,7 @@ types:
           description: ConflictException
   post:
     description: Create an <a>ApiKey</a> resource.  <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html">AWS CLI</a></div>
+    displayName: Create Api Key
     body:
       application/json: CreateApiKeyRequest
     responses:
@@ -3300,17 +2906,18 @@ types:
         description: ConflictException
   get:
     description: Gets information about the current <a>ApiKeys</a> resource.
+    displayName: Get Api Keys
     queryParameters:
-      position:
+      position?:
         type: String
         description: <p>The position of the current <a>ApiKeys</a> resource to get information about.</p>
-      limit:
+      limit?:
         type: NullableInteger
         description: <p>The maximum number of <a>ApiKeys</a> to get information about.</p>
-      name:
+      name?:
         type: String
         description: <p>The name of queried API keys.</p>
-      includeValues:
+      includeValues?:
         type: Boolean
         description: <p>A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains key values.</p>
     responses:
@@ -3326,30 +2933,24 @@ types:
 /usageplans:
   /{usageplanId}:
     uriParameters:
-      usageplanId?:
+      usageplanId:
         type: String
         description: <p>The Id of the to-be-updated usage plan.</p>
     /keys:
       /{keyId}:
         uriParameters:
-          keyId?:
+          keyId:
             type: String
             description: <p>The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.</p>
         /usage:
           patch:
             description: Grants a temporary extension to the reamining quota of a usage plan associated with a specified API key.
-            headers:
-              usageplanId?:
-                type: String
-                description: <p>The Id of the usage plan associated with the usage data.</p>
-              keyId?:
-                type: String
-                description: <p>The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.</p>
+            displayName: Update Usage
             body:
               application/json:
                 type: object
                 properties:
-                  patchOperations?:
+                  patchOperations:
                     type: ListOfPatchOperation
                     description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
             responses:
@@ -3366,13 +2967,7 @@ types:
                 description: NotFoundException
         get:
           description: Gets a usage plan key of a given key identifier.
-          headers:
-            usageplanId?:
-              type: String
-              description: <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
-            keyId?:
-              type: String
-              description: <p>The key Id of the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
+          displayName: Get Usage Plan Key
           responses:
             200:
               body:
@@ -3387,13 +2982,7 @@ types:
               description: TooManyRequestsException
         delete:
           description: Deletes a usage plan key and remove the underlying API key from the associated usage plan.
-          headers:
-            usageplanId?:
-              type: String
-              description: <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-deleted <a>UsagePlanKey</a> resource representing a plan customer.</p>
-            keyId?:
-              type: String
-              description: <p>The Id of the <a>UsagePlanKey</a> resource to be deleted.</p>
+          displayName: Delete Usage Plan Key
           responses:
             202:
               body:
@@ -3410,18 +2999,15 @@ types:
               description: TooManyRequestsException
       post:
         description: Creates a usage plan key for adding an existing API key to a usage plan.
-        headers:
-          usageplanId?:
-            type: String
-            description: <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-created <a>UsagePlanKey</a> resource representing a plan customer.</p>
+        displayName: Create Usage Plan Key
         body:
           application/json:
             type: object
             properties:
-              keyId:
+              keyId?:
                 type: String
                 description: <p>The identifier of a <a>UsagePlanKey</a> resource for a plan customer.</p>
-              keyType:
+              keyType?:
                 type: String
                 description: <p>The type of a <a>UsagePlanKey</a> resource for a plan customer.</p>
         responses:
@@ -3440,20 +3026,17 @@ types:
             description: TooManyRequestsException
       get:
         description: Gets all the usage plan keys representing the API keys added to a specified usage plan.
+        displayName: Get Usage Plan Keys
         queryParameters:
-          position:
+          position?:
             type: String
             description: <p>A query parameter specifying the zero-based index specifying the position of a usage plan key.</p>
-          limit:
+          limit?:
             type: NullableInteger
             description: <p>A query parameter specifying the maximum number usage plan keys returned by the GET request.</p>
-          name:
+          name?:
             type: String
             description: <p>A query parameter specifying the name of the to-be-returned usage plan keys.</p>
-        headers:
-          usageplanId?:
-            type: String
-            description: <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
         responses:
           200:
             body:
@@ -3469,26 +3052,23 @@ types:
     /usage:
       get:
         description: Gets the usage data of a usage plan in a specified time interval.
+        displayName: Get Usage
         queryParameters:
-          keyId:
+          keyId?:
             type: String
             description: <p>The Id of the API key associated with the resultant usage data.</p>
-          startDate?:
+          startDate:
             type: String
             description: <p>The starting date (e.g., 2016-01-01) of the usage data.</p>
-          endDate?:
+          endDate:
             type: String
             description: <p>The ending date (e.g., 2016-12-31) of the usage data.</p>
-          position:
+          position?:
             type: String
             description: <p>Position</p>
-          limit:
+          limit?:
             type: NullableInteger
             description: <p>The maximum number of results to be returned.</p>
-        headers:
-          usageplanId?:
-            type: String
-            description: <p>The Id of the usage plan associated with the usage data.</p>
         responses:
           200:
             body:
@@ -3503,15 +3083,12 @@ types:
             description: TooManyRequestsException
     patch:
       description: Updates a usage plan of a given plan Id.
-      headers:
-        usageplanId?:
-          type: String
-          description: <p>The Id of the to-be-updated usage plan.</p>
+      displayName: Update Usage Plan
       body:
         application/json:
           type: object
           properties:
-            patchOperations?:
+            patchOperations:
               type: ListOfPatchOperation
               description: <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
       responses:
@@ -3530,10 +3107,7 @@ types:
           description: ConflictException
     delete:
       description: Deletes a usage plan of a given plan Id.
-      headers:
-        usageplanId?:
-          type: String
-          description: <p>The Id of the to-be-deleted usage plan.</p>
+      displayName: Delete Usage Plan
       responses:
         202:
           body:
@@ -3548,10 +3122,7 @@ types:
           description: NotFoundException
     get:
       description: Gets a usage plan of a given plan identifier.
-      headers:
-        usageplanId?:
-          type: String
-          description: <p>The identifier of the <a>UsagePlan</a> resource to be retrieved.</p>
+      displayName: Get Usage Plan
       responses:
         200:
           body:
@@ -3567,6 +3138,7 @@ types:
   post:
     description: 'Creates a usage plan with the throttle and quota limits, as well
       as the associated API stages, specified in the payload. '
+    displayName: Create Usage Plan
     body:
       application/json: CreateUsagePlanRequest
     responses:
@@ -3583,14 +3155,15 @@ types:
         description: ConflictException
   get:
     description: Gets all the usage plans of the caller's account.
+    displayName: Get Usage Plans
     queryParameters:
-      position:
+      position?:
         type: String
         description: <p>The zero-based array index specifying the position of the to-be-retrieved <a>UsagePlan</a> resource.</p>
-      keyId:
+      keyId?:
         type: String
         description: <p>The identifier of the API key associated with the usage plans.</p>
-      limit:
+      limit?:
         type: NullableInteger
         description: <p>The number of <a>UsagePlan</a> resources to be returned as the result.</p>
     responses:
@@ -3608,11 +3181,12 @@ types:
 /restapis?mode=import:
   post:
     description: A feature of the Amazon API Gateway control service for creating a new API from an external API definition file.
+    displayName: Import Rest Api
     queryParameters:
-      failonwarnings:
+      failonwarnings?:
         type: Boolean
         description: <p>A query parameter to indicate whether to rollback the API creation (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
-      parameters:
+      parameters?:
         type: MapOfStringToString
         description: <p>Custom header parameters as part of the request.</p>
     body:
@@ -3634,6 +3208,7 @@ types:
 /account:
   patch:
     description: Changes information about the current <a>Account</a> resource.
+    displayName: Update Account
     body:
       application/json: UpdateAccountRequest
     responses:
@@ -3650,6 +3225,7 @@ types:
         description: TooManyRequestsException
   get:
     description: Gets information about the current <a>Account</a> resource.
+    displayName: Get Account
     body:
       application/json: GetAccountRequest
     responses:
@@ -3665,11 +3241,12 @@ types:
 /apikeys?mode=import:
   post:
     description: Import API keys from an external source, such as a CSV-formatted file.
+    displayName: Import Api Keys
     queryParameters:
-      format?:
+      format:
         type: ApiKeysFormat
         description: <p>A query parameter to specify the input format to imported API keys. Currently, only the <code>csv</code> format is supported.</p>
-      failonwarnings:
+      failonwarnings?:
         type: Boolean
         description: <p>A query parameter to indicate whether to rollback <a>ApiKey</a> importation (<code>true</code>) or not (<code>false</code>) when error is encountered.</p>
     body:

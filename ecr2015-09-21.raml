@@ -9,6 +9,9 @@ description: ' Amazon EC2 Container Registry (Amazon ECR) is a managed AWS Docke
   Developers can use the Docker CLI to author and manage images.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   Arn:
     type: string
@@ -602,9 +605,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Check the availability of multiple image layers in a specified registry and repository. <note> This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the <code>docker</code> CLI to pull, tag, and push images. </note>
+    displayName: Batch Check Layer Availability
     body:
       application/json: BatchCheckLayerAvailabilityRequest
     responses:
@@ -619,9 +624,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a list of specified images within a specified repository. Images are specified with either <code>imageTag</code> or <code>imageDigest</code>.
+    displayName: Batch Delete Image
     body:
       application/json: BatchDeleteImageRequest
     responses:
@@ -636,9 +643,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets detailed information for specified images within a specified repository. Images are specified with either <code>imageTag</code> or <code>imageDigest</code>.
+    displayName: Batch Get Image
     body:
       application/json: BatchGetImageRequest
     responses:
@@ -653,9 +662,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Inform Amazon ECR that the image layer upload for a specified registry, repository name, and upload ID, has completed. You can optionally provide a <code>sha256</code> digest of the image layer for data validation purposes. <note> This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the <code>docker</code> CLI to pull, tag, and push images. </note>
+    displayName: Complete Layer Upload
     body:
       application/json: CompleteLayerUploadRequest
     responses:
@@ -670,9 +681,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates an image repository.
+    displayName: Create Repository
     body:
       application/json: CreateRepositoryRequest
     responses:
@@ -687,9 +700,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes an existing image repository. If a repository contains images, you must use the <code>force</code> option to delete it.
+    displayName: Delete Repository
     body:
       application/json: DeleteRepositoryRequest
     responses:
@@ -704,9 +719,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes the repository policy from a specified repository.
+    displayName: Delete Repository Policy
     body:
       application/json: DeleteRepositoryPolicyRequest
     responses:
@@ -721,9 +738,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Describes image repositories in a registry.
+    displayName: Describe Repositories
     body:
       application/json: DescribeRepositoriesRequest
     responses:
@@ -738,9 +757,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves a token that is valid for a specified registry for 12 hours. This command allows you to use the <code>docker</code> CLI to push and pull images with Amazon ECR. If you do not specify a registry, the default registry is assumed. The <code>authorizationToken</code> returned for each registry specified is a base64 encoded string that can be decoded and used in a <code>docker login</code> command to authenticate to a registry. The AWS CLI offers an <code>aws ecr get-login</code> command that simplifies the login process.
+    displayName: Get Authorization Token
     body:
       application/json: GetAuthorizationTokenRequest
     responses:
@@ -755,9 +776,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer. You can only get URLs for image layers that are referenced in an image. <note> This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the <code>docker</code> CLI to pull, tag, and push images. </note>
+    displayName: Get Download Url For Layer
     body:
       application/json: GetDownloadUrlForLayerRequest
     responses:
@@ -772,9 +795,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves the repository policy for a specified repository.
+    displayName: Get Repository Policy
     body:
       application/json: GetRepositoryPolicyRequest
     responses:
@@ -789,9 +814,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Notify Amazon ECR that you intend to upload an image layer. <note> This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the <code>docker</code> CLI to pull, tag, and push images. </note>
+    displayName: Initiate Layer Upload
     body:
       application/json: InitiateLayerUploadRequest
     responses:
@@ -806,9 +833,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists all the image IDs for a given repository. You can filter images based on whether or not they are tagged by setting the <code>tagStatus</code> parameter to <code>TAGGED</code> or <code>UNTAGGED</code>. For example, you can filter your results to return only <code>UNTAGGED</code> images and then pipe that result to a <a>BatchDeleteImage</a> operation to delete them. Or, you can filter your results to return only <code>TAGGED</code> images to list all of the tags in your repository.
+    displayName: List Images
     body:
       application/json: ListImagesRequest
     responses:
@@ -823,9 +852,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates or updates the image manifest associated with an image. <note> This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the <code>docker</code> CLI to pull, tag, and push images. </note>
+    displayName: Put Image
     body:
       application/json: PutImageRequest
     responses:
@@ -840,9 +871,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Applies a repository policy on a specified repository to control access permissions.
+    displayName: Set Repository Policy
     body:
       application/json: SetRepositoryPolicyRequest
     responses:
@@ -857,9 +890,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Uploads an image layer part to Amazon ECR. <note> This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers. Use the <code>docker</code> CLI to pull, tag, and push images. </note>
+    displayName: Upload Layer Part
     body:
       application/json: UploadLayerPartRequest
     responses:

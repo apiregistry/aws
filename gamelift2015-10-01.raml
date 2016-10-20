@@ -48,6 +48,9 @@ description: '  Welcome to the <i>Amazon GameLift API Reference</i>. Amazon Game
   History</a> page.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   AliasId:
     type: string
@@ -1560,6 +1563,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates an alias for a fleet. You can use an alias to anonymize
@@ -1573,6 +1577,7 @@ types:
       description. If successful, a new alias record is returned, including an alias
       ID, which you can reference when creating a game session. To reassign the alias
       to another fleet ID, call <a>UpdateAlias</a>.'
+    displayName: Create Alias
     body:
       application/json: CreateAliasInput
     responses:
@@ -1587,9 +1592,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Initializes a new build record and generates information required to upload a game build to Amazon GameLift. Once the build record has been created and its status is <code>INITIALIZED</code>, you can upload your game build. <important> Do not use this API action unless you are using your own Amazon Simple Storage Service (Amazon S3) client and need to manually upload your build files. Instead, to create a build, use the CLI command <code>upload-build</code>, which creates a new build record and uploads the build files in one step. (See the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html">Amazon GameLift Developer Guide</a> help on packaging and uploading your build.)  </important> To create a new build, identify the operating system of the game server binaries. All game servers in a build must use the same operating system. Optionally, specify a build name and version; this metadata is stored with other properties in the build record and is displayed in the GameLift console (it is not visible to players). If successful, this action returns the newly created build record along with the Amazon S3 storage location and AWS account credentials. Use the location and credentials to upload your game build.
+    displayName: Create Build
     body:
       application/json: CreateBuildInput
     responses:
@@ -1604,6 +1611,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates a new fleet to run your game servers. A fleet is a set of
@@ -1636,6 +1644,7 @@ types:
       that allow access to incoming traffic.</li> <li> <a>UpdateRuntimeConfiguration</a>
       -- Change how server processes are launched in the fleet, including launch path,
       launch parameters, and the number of concurrent processes.</li> </ul>'
+    displayName: Create Fleet
     body:
       application/json: CreateFleetInput
     responses:
@@ -1650,9 +1659,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a multiplayer game session for players. This action creates a game session record and assigns the new session to an instance in the specified fleet, which initializes a new server process to host the game session. A fleet must be in an <code>ACTIVE</code> status before a game session can be created in it. To create a game session, specify either a fleet ID or an alias ID and indicate the maximum number of players the game session allows. You can also provide a name and a set of properties for your game (optional). If successful, a <a>GameSession</a> object is returned containing session properties, including an IP address. By default, newly created game sessions are set to accept adding any new players to the game session. Use <a>UpdateGameSession</a> to change the creation policy.
+    displayName: Create Game Session
     body:
       application/json: CreateGameSessionInput
     responses:
@@ -1667,6 +1678,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Adds a player to a game session and creates a player session record.
@@ -1675,6 +1687,7 @@ types:
       added to the session. To create a player session, specify a game session ID
       and player ID. If successful, the player is added to the game session and a
       new <a>PlayerSession</a> object is returned. '
+    displayName: Create Player Session
     body:
       application/json: CreatePlayerSessionInput
     responses:
@@ -1689,6 +1702,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Adds a group of players to a game session. Similar to <a>CreatePlayerSession</a>,
@@ -1699,6 +1713,7 @@ types:
       create player sessions, specify a game session ID and a list of player IDs.
       If successful, the players are added to the game session and a set of new <a>PlayerSession</a>
       objects is returned. '
+    displayName: Create Player Sessions
     body:
       application/json: CreatePlayerSessionsInput
     responses:
@@ -1713,9 +1728,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes an alias. This action removes all record of the alias; game clients attempting to access a server process using the deleted alias receive an error. To delete an alias, specify the alias ID to be deleted.
+    displayName: Delete Alias
     body:
       application/json: DeleteAliasInput
     responses:
@@ -1730,9 +1747,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a build. This action permanently deletes the build record and any uploaded build files. To delete a build, specify its ID. Deleting a build does not affect the status of any active fleets using the build, but you can no longer create new fleets with the deleted build.
+    displayName: Delete Build
     body:
       application/json: DeleteBuildInput
     responses:
@@ -1747,9 +1766,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes everything related to a fleet. Before deleting a fleet, you must set the fleet's desired capacity to zero. See <a>UpdateFleetCapacity</a>. This action removes the fleet's resources and the fleet record. Once a fleet is deleted, you can no longer use that fleet.
+    displayName: Delete Fleet
     body:
       application/json: DeleteFleetInput
     responses:
@@ -1764,11 +1785,13 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deletes a fleet scaling policy. This action means that the policy
       is no longer in force and removes all record of it. To delete a scaling policy,
       specify both the scaling policy name and the fleet ID it is associated with. '
+    displayName: Delete Scaling Policy
     body:
       application/json: DeleteScalingPolicyInput
     responses:
@@ -1783,9 +1806,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves properties for a specified alias. To get the alias, specify an alias ID. If successful, an <a>Alias</a> object is returned.
+    displayName: Describe Alias
     body:
       application/json: DescribeAliasInput
     responses:
@@ -1800,9 +1825,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves properties for a build. To get a build record, specify a build ID. If successful, an object containing the build properties is returned.
+    displayName: Describe Build
     body:
       application/json: DescribeBuildInput
     responses:
@@ -1817,6 +1844,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Retrieves the following information for the specified EC2 instance
@@ -1825,6 +1853,7 @@ types:
       limits vary depending on region. Available regions for GameLift can be found
       in the AWS Management Console for GameLift (see the drop-down list in the upper
       right corner).'
+    displayName: Describe E C2 Instance Limits
     body:
       application/json: DescribeEC2InstanceLimitsInput
     responses:
@@ -1839,9 +1868,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves fleet properties, including metadata, status, and configuration, for one or more fleets. You can request attributes for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>FleetAttributes</a> object is returned for each requested fleet ID. When specifying a list of fleet IDs, attribute objects are returned only for fleets that currently exist.  <note> Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed. </note>
+    displayName: Describe Fleet Attributes
     body:
       application/json: DescribeFleetAttributesInput
     responses:
@@ -1856,9 +1887,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves the current status of fleet capacity for one or more fleets. This information includes the number of instances that have been requested for the fleet and the number currently active. You can request capacity for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>FleetCapacity</a> object is returned for each requested fleet ID. When specifying a list of fleet IDs, attribute objects are returned only for fleets that currently exist.  <note> Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed. </note>
+    displayName: Describe Fleet Capacity
     body:
       application/json: DescribeFleetCapacityInput
     responses:
@@ -1873,9 +1906,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves entries from the specified fleet's event log. You can specify a time range to limit the result set. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a collection of event log entries matching the request are returned.
+    displayName: Describe Fleet Events
     body:
       application/json: DescribeFleetEventsInput
     responses:
@@ -1890,9 +1925,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves the inbound connection permissions for a fleet. Connection permissions include a range of IP addresses and port settings that incoming traffic can use to access server processes in the fleet. To get a fleet's inbound connection permissions, specify a fleet ID. If successful, a collection of <a>IpPermission</a> objects is returned for the requested fleet ID. If the requested fleet has been deleted, the result set is empty.
+    displayName: Describe Fleet Port Settings
     body:
       application/json: DescribeFleetPortSettingsInput
     responses:
@@ -1907,9 +1944,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves utilization statistics for one or more fleets. You can request utilization data for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a <a>FleetUtilization</a> object is returned for each requested fleet ID. When specifying a list of fleet IDs, utilization objects are returned only for fleets that currently exist.  <note> Some API actions may limit the number of fleet IDs allowed in one request. If a request exceeds this limit, the request fails and the error message includes the maximum allowed. </note>
+    displayName: Describe Fleet Utilization
     body:
       application/json: DescribeFleetUtilizationInput
     responses:
@@ -1924,6 +1963,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Retrieves properties, including the protection policy in force,
@@ -1936,6 +1976,7 @@ types:
       pagination parameters to retrieve results as a set of sequential pages. If successful,
       a <a>GameSessionDetail</a> object is returned for each session matching the
       request.'
+    displayName: Describe Game Session Details
     body:
       application/json: DescribeGameSessionDetailsInput
     responses:
@@ -1950,6 +1991,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Retrieves properties for one or more game sessions. This action
@@ -1961,6 +2003,7 @@ types:
       session status. Use the pagination parameters to retrieve results as a set of
       sequential pages. If successful, a <a>GameSession</a> object is returned for
       each session matching the request.'
+    displayName: Describe Game Sessions
     body:
       application/json: DescribeGameSessionsInput
     responses:
@@ -1975,6 +2018,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Retrieves properties for one or more player sessions. This action
@@ -1987,6 +2031,7 @@ types:
       a player ID. You can filter this request by player session status. Use the pagination
       parameters to retrieve results as a set of sequential pages. If successful,
       a <a>PlayerSession</a> object is returned for each session matching the request.'
+    displayName: Describe Player Sessions
     body:
       application/json: DescribePlayerSessionsInput
     responses:
@@ -2001,9 +2046,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves the current runtime configuration for the specified fleet. The runtime configuration tells GameLift how to launch server processes on instances in the fleet.
+    displayName: Describe Runtime Configuration
     body:
       application/json: DescribeRuntimeConfigurationInput
     responses:
@@ -2018,9 +2065,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves all scaling policies applied to a fleet.  To get a fleet's scaling policies, specify the fleet ID. You can filter this request by policy status, such as to retrieve only active scaling policies. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, set of <a>ScalingPolicy</a> objects is returned for the fleet.
+    displayName: Describe Scaling Policies
     body:
       application/json: DescribeScalingPoliciesInput
     responses:
@@ -2035,9 +2084,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves the location of stored game session logs for a specified game session. When a game session is terminated, Amazon GameLift automatically stores the logs in Amazon S3. Use this URL to download the logs. <note> See the <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift">AWS Service Limits</a> page for maximum log file sizes. Log files that exceed this limit are not saved. </note>
+    displayName: Get Game Session Log Url
     body:
       application/json: GetGameSessionLogUrlInput
     responses:
@@ -2052,9 +2103,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves a collection of alias records for this AWS account. You can filter the result set by alias name and/or routing strategy type. Use the pagination parameters to retrieve results in sequential pages.  <note> Aliases are not listed in any particular order. </note>
+    displayName: List Aliases
     body:
       application/json: ListAliasesInput
     responses:
@@ -2069,9 +2122,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves build records for all builds associated with the AWS account in use. You can limit results to builds that are in a specific status by using the <code>Status</code> parameter. Use the pagination parameters to retrieve results in a set of sequential pages.  <note> Build records are not listed in any particular order. </note>
+    displayName: List Builds
     body:
       application/json: ListBuildsInput
     responses:
@@ -2086,9 +2141,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves a collection of fleet records for this AWS account. You can filter the result set by build ID. Use the pagination parameters to retrieve results in sequential pages.  <note> Fleet records are not listed in any particular order. </note>
+    displayName: List Fleets
     body:
       application/json: ListFleetsInput
     responses:
@@ -2103,6 +2160,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates or updates a scaling policy for a fleet. An active scaling
@@ -2121,6 +2179,7 @@ types:
       for this action are required. If successful, the policy name is returned. Scaling
       policies cannot be suspended or made inactive. To stop enforcing a scaling policy,
       call <a>DeleteScalingPolicy</a>.'
+    displayName: Put Scaling Policy
     body:
       application/json: PutScalingPolicyInput
     responses:
@@ -2135,9 +2194,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves a fresh set of upload credentials and the assigned Amazon S3 storage location for a specific build. Valid credentials are required to upload your game build files to Amazon S3. <important> Call this action only if you need credentials for a build created with <code><a>CreateBuild</a></code>. This is a rare situation; in most cases, builds are created using the CLI command <code>upload-build</code>, which creates a build record and also uploads build files.  </important> Upload credentials are returned when you create the build, but they have a limited lifespan. You can get fresh credentials and use them to re-upload game files until the status of that build changes to <code>READY</code>. Once this happens, you must create a brand new build.
+    displayName: Request Upload Credentials
     body:
       application/json: RequestUploadCredentialsInput
     responses:
@@ -2152,10 +2213,12 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Retrieves the fleet ID that a specified alias is currently pointing
       to. '
+    displayName: Resolve Alias
     body:
       application/json: ResolveAliasInput
     responses:
@@ -2170,6 +2233,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Retrieves a list of game sessions in a fleet that match a set of
@@ -2201,6 +2265,7 @@ types:
       change quickly as players join sessions and others drop out. Results should
       be considered a snapshot in time. Be sure to refresh search results often, and
       handle sessions that fill up before a player can join.  </note>'
+    displayName: Search Game Sessions
     body:
       application/json: SearchGameSessionsInput
     responses:
@@ -2215,9 +2280,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates properties for an alias. To update properties, specify the alias ID to be updated and provide the information to be changed. To reassign an alias to another fleet, provide an updated routing strategy. If successful, the updated alias record is returned.
+    displayName: Update Alias
     body:
       application/json: UpdateAliasInput
     responses:
@@ -2232,12 +2299,14 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Updates metadata in a build record, including the build name and
       version. To update the metadata, specify the build ID to update and provide
       the new values. If successful, a build object containing the updated metadata
       is returned. '
+    displayName: Update Build
     body:
       application/json: UpdateBuildInput
     responses:
@@ -2252,9 +2321,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates fleet properties, including name and description, for a fleet. To update metadata, specify the fleet ID and the property values you want to change. If successful, the fleet ID for the updated fleet is returned.
+    displayName: Update Fleet Attributes
     body:
       application/json: UpdateFleetAttributesInput
     responses:
@@ -2269,9 +2340,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates capacity settings for a fleet. Use this action to specify the number of EC2 instances (hosts) that you want this fleet to contain. Before calling this action, you may want to call <a>DescribeEC2InstanceLimits</a> to get the maximum capacity based on the fleet's EC2 instance type. If you're using autoscaling (see <a>PutScalingPolicy</a>), you may want to specify a minimum and/or maximum capacity. If you don't provide these, autoscaling can set capacity anywhere between zero and the <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift">service limits</a>. To update fleet capacity, specify the fleet ID and the number of instances you want the fleet to host. If successful, Amazon GameLift starts or terminates instances so that the fleet's active instance count matches the desired instance count. You can view a fleet's current capacity information by calling <a>DescribeFleetCapacity</a>. If the desired instance count is higher than the instance type's limit, the "Limit Exceeded" exception occurs.
+    displayName: Update Fleet Capacity
     body:
       application/json: UpdateFleetCapacityInput
     responses:
@@ -2286,9 +2359,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates port settings for a fleet. To update settings, specify the fleet ID to be updated and list the permissions you want to update. List the permissions you want to add in <code>InboundPermissionAuthorizations</code>, and permissions you want to remove in <code>InboundPermissionRevocations</code>. Permissions to be removed must match existing fleet permissions. If successful, the fleet ID for the updated fleet is returned.
+    displayName: Update Fleet Port Settings
     body:
       application/json: UpdateFleetPortSettingsInput
     responses:
@@ -2303,6 +2378,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Updates game session properties. This includes the session name,
@@ -2311,6 +2387,7 @@ types:
       creation policy, which controls whether or not new players can join the session.
       To update a game session, specify the game session ID and the values you want
       to change. If successful, an updated <a>GameSession</a> object is returned. '
+    displayName: Update Game Session
     body:
       application/json: UpdateGameSessionInput
     responses:
@@ -2325,9 +2402,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates the current runtime configuration for the specified fleet, which tells GameLift how to launch server processes on instances in the fleet. You can update a fleet's runtime configuration at any time after the fleet is created; it does not need to be in an <code>ACTIVE</code> status. To update runtime configuration, specify the fleet ID and provide a <code>RuntimeConfiguration</code> object with the updated collection of server process configurations. Each instance in a GameLift fleet checks regularly for an updated runtime configuration and changes how it launches server processes to comply with the latest version. Existing server processes are not affected by the update; they continue to run until they end, while GameLift simply adds new server processes to fit the current runtime configuration. As a result, the runtime configuration changes are applied gradually as existing processes shut down and new processes are launched in GameLift's normal process recycling activity.
+    displayName: Update Runtime Configuration
     body:
       application/json: UpdateRuntimeConfigurationInput
     responses:

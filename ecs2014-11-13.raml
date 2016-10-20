@@ -13,6 +13,9 @@ description: ' Amazon EC2 Container Service (Amazon ECS) is a highly scalable, f
   management systems or worry about scaling your management infrastructure.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   AgentUpdateStatus:
     type: string
@@ -1382,9 +1385,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a new Amazon ECS cluster. By default, your account receives a <code>default</code> cluster when you launch your first container instance. However, you can create your own cluster with a unique name with the <code>CreateCluster</code> action.
+    displayName: Create Cluster
     body:
       application/json: CreateClusterRequest
     responses:
@@ -1399,6 +1404,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Runs and maintains a desired number of tasks from a specified task
@@ -1440,6 +1446,7 @@ types:
       </li> <li> Place the new service task on a valid container instance in an optimal
       Availability Zone (based on the previous steps), favoring container instances
       with the fewest number of running tasks for this service. </li> </ul>'
+    displayName: Create Service
     body:
       application/json: CreateServiceRequest
     responses:
@@ -1454,9 +1461,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes the specified cluster. You must deregister all container instances from this cluster before you may delete it. You can list the container instances in a cluster with <a>ListContainerInstances</a> and deregister them with <a>DeregisterContainerInstance</a>.
+    displayName: Delete Cluster
     body:
       application/json: DeleteClusterRequest
     responses:
@@ -1471,9 +1480,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a specified service within a cluster. You can delete a service if you have no running tasks in it and the desired task count is zero. If the service is actively maintaining tasks, you cannot delete it, and you must update the service to a desired task count of zero. For more information, see <a>UpdateService</a>. <note> When you delete a service, if there are still running tasks that require cleanup, the service status moves from <code>ACTIVE</code> to <code>DRAINING</code>, and the service is no longer visible in the console or in <a>ListServices</a> API operations. After the tasks have stopped, then the service status moves from <code>DRAINING</code> to <code>INACTIVE</code>. Services in the <code>DRAINING</code> or <code>INACTIVE</code> status can still be viewed with <a>DescribeServices</a> API operations; however, in the future, <code>INACTIVE</code> services may be cleaned up and purged from Amazon ECS record keeping, and <a>DescribeServices</a> API operations on those services will return a <code>ServiceNotFoundException</code> error. </note>
+    displayName: Delete Service
     body:
       application/json: DeleteServiceRequest
     responses:
@@ -1488,9 +1499,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deregisters an Amazon ECS container instance from the specified cluster. This instance is no longer available to run tasks. If you intend to use the container instance for some other purpose after deregistration, you should stop all of the tasks running on the container instance before deregistration to avoid any orphaned tasks from consuming resources. Deregistering a container instance removes the instance from a cluster, but it does not terminate the EC2 instance; if you are finished using the instance, be sure to terminate it in the Amazon EC2 console to stop billing. <note> If you terminate a running container instance with a connected Amazon ECS container agent, the agent automatically deregisters the instance from your cluster (stopped container instances or instances with disconnected agents are not automatically deregistered when terminated). </note>
+    displayName: Deregister Container Instance
     body:
       application/json: DeregisterContainerInstanceRequest
     responses:
@@ -1505,9 +1518,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deregisters the specified task definition by family and revision. Upon deregistration, the task definition is marked as <code>INACTIVE</code>. Existing tasks and services that reference an <code>INACTIVE</code> task definition continue to run without disruption. Existing services that reference an <code>INACTIVE</code> task definition can still scale up or down by modifying the service's desired count. You cannot use an <code>INACTIVE</code> task definition to run new tasks or create new services, and you cannot update an existing service to reference an <code>INACTIVE</code> task definition (although there may be up to a 10 minute window following deregistration where these restrictions have not yet taken effect).
+    displayName: Deregister Task Definition
     body:
       application/json: DeregisterTaskDefinitionRequest
     responses:
@@ -1522,9 +1537,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Describes one or more of your clusters.
+    displayName: Describe Clusters
     body:
       application/json: DescribeClustersRequest
     responses:
@@ -1539,9 +1556,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Describes Amazon EC2 Container Service container instances. Returns metadata about registered and remaining resources on each container instance requested.
+    displayName: Describe Container Instances
     body:
       application/json: DescribeContainerInstancesRequest
     responses:
@@ -1556,9 +1575,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Describes the specified services running in your cluster.
+    displayName: Describe Services
     body:
       application/json: DescribeServicesRequest
     responses:
@@ -1573,9 +1594,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Describes a task definition. You can specify a <code>family</code> and <code>revision</code> to find information about a specific task definition, or you can simply specify the family to find the latest <code>ACTIVE</code> revision in that family. <note> You can only describe <code>INACTIVE</code> task definitions while an active task or service references them. </note>
+    displayName: Describe Task Definition
     body:
       application/json: DescribeTaskDefinitionRequest
     responses:
@@ -1590,9 +1613,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Describes a specified task or tasks.
+    displayName: Describe Tasks
     body:
       application/json: DescribeTasksRequest
     responses:
@@ -1607,9 +1632,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: <note> This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the agent. </note> Returns an endpoint for the Amazon EC2 Container Service agent to poll for updates.
+    displayName: Discover Poll Endpoint
     body:
       application/json: DiscoverPollEndpointRequest
     responses:
@@ -1624,9 +1651,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a list of existing clusters.
+    displayName: List Clusters
     body:
       application/json: ListClustersRequest
     responses:
@@ -1641,9 +1670,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a list of container instances in a specified cluster.
+    displayName: List Container Instances
     body:
       application/json: ListContainerInstancesRequest
     responses:
@@ -1658,9 +1689,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the services that are running in a specified cluster.
+    displayName: List Services
     body:
       application/json: ListServicesRequest
     responses:
@@ -1675,9 +1708,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a list of task definition families that are registered to your account (which may include task definition families that no longer have any <code>ACTIVE</code> task definition revisions). You can filter out task definition families that do not contain any <code>ACTIVE</code> task definition revisions by setting the <code>status</code> parameter to <code>ACTIVE</code>. You can also filter the results with the <code>familyPrefix</code> parameter.
+    displayName: List Task Definition Families
     body:
       application/json: ListTaskDefinitionFamiliesRequest
     responses:
@@ -1692,9 +1727,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a list of task definitions that are registered to your account. You can filter the results by family name with the <code>familyPrefix</code> parameter or by status with the <code>status</code> parameter.
+    displayName: List Task Definitions
     body:
       application/json: ListTaskDefinitionsRequest
     responses:
@@ -1709,6 +1746,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns a list of tasks for a specified cluster. You can filter
@@ -1717,6 +1755,7 @@ types:
       and <code>desiredStatus</code> parameters. Recently-stopped tasks might appear
       in the returned results. Currently, stopped tasks appear in the returned results
       for at least one hour. '
+    displayName: List Tasks
     body:
       application/json: ListTasksRequest
     responses:
@@ -1731,9 +1770,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: <note> This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the agent. </note> Registers an EC2 instance into the specified cluster. This instance becomes available to place containers on.
+    displayName: Register Container Instance
     body:
       application/json: RegisterContainerInstanceRequest
     responses:
@@ -1748,9 +1789,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Registers a new task definition from the supplied <code>family</code> and <code>containerDefinitions</code>. Optionally, you can add data volumes to your containers with the <code>volumes</code> parameter. For more information about task definition parameters and defaults, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task Definitions</a> in the <i>Amazon EC2 Container Service Developer Guide</i>. You can specify an IAM role for your task with the <code>taskRoleArn</code> parameter. When you specify an IAM role for a task, its containers can then use the latest versions of the AWS CLI or SDKs to make API requests to the AWS services that are specified in the IAM policy associated with the role. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">IAM Roles for Tasks</a> in the <i>Amazon EC2 Container Service Developer Guide</i>. You can specify a Docker networking mode for the containers in your task definition with the <code>networkMode</code> parameter. The available network modes correspond to those described in <a href="https://docs.docker.com/engine/reference/run/#/network-settings">Network settings</a> in the Docker run reference.
+    displayName: Register Task Definition
     body:
       application/json: RegisterTaskDefinitionRequest
     responses:
@@ -1765,9 +1808,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Start a task using random placement and the default Amazon ECS scheduler. To use your own scheduler or place a task on a specific container instance, use <code>StartTask</code> instead. <important> The <code>count</code> parameter is limited to 10 tasks per call. </important>
+    displayName: Run Task
     body:
       application/json: RunTaskRequest
     responses:
@@ -1782,9 +1827,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Starts a new task from the specified task definition on the specified container instance or instances. To use the default Amazon ECS scheduler to place your task, use <code>RunTask</code> instead. <important> The list of container instances to start tasks on is limited to 10. </important>
+    displayName: Start Task
     body:
       application/json: StartTaskRequest
     responses:
@@ -1799,9 +1846,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Stops a running task. When <a>StopTask</a> is called on a task, the equivalent of <code>docker stop</code> is issued to the containers running in the task. This results in a <code>SIGTERM</code> and a 30-second timeout, after which <code>SIGKILL</code> is sent and the containers are forcibly stopped. If the container handles the <code>SIGTERM</code> gracefully and exits within 30 seconds from receiving it, no <code>SIGKILL</code> is sent.
+    displayName: Stop Task
     body:
       application/json: StopTaskRequest
     responses:
@@ -1816,9 +1865,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: <note> This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the agent. </note> Sent to acknowledge that a container changed states.
+    displayName: Submit Container State Change
     body:
       application/json: SubmitContainerStateChangeRequest
     responses:
@@ -1833,9 +1884,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: <note> This action is only used by the Amazon EC2 Container Service agent, and it is not intended for use outside of the agent. </note> Sent to acknowledge that a task changed states.
+    displayName: Submit Task State Change
     body:
       application/json: SubmitTaskStateChangeRequest
     responses:
@@ -1850,9 +1903,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates the Amazon ECS container agent on a specified container instance. Updating the Amazon ECS container agent does not interrupt running tasks or services on the container instance. The process for updating the agent differs depending on whether your container instance was launched with the Amazon ECS-optimized AMI or another operating system.  <code>UpdateContainerAgent</code> requires the Amazon ECS-optimized AMI or Amazon Linux with the <code>ecs-init</code> service installed and running. For help updating the Amazon ECS container agent on other operating systems, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent">Manually Updating the Amazon ECS Container Agent</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.
+    displayName: Update Container Agent
     body:
       application/json: UpdateContainerAgentRequest
     responses:
@@ -1867,6 +1922,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Modifies the desired count, deployment configuration, or task definition
@@ -1908,6 +1964,7 @@ types:
       for placement. </li> <li> Place the new service task on a valid container instance
       in an optimal Availability Zone (based on the previous steps), favoring container
       instances with the fewest number of running tasks for this service. </li> </ul>'
+    displayName: Update Service
     body:
       application/json: UpdateServiceRequest
     responses:

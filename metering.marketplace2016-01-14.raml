@@ -7,6 +7,9 @@ description: '  This reference provides descriptions of the low-level AWS Market
   Submits the metering record for a Marketplace product. </li> </ul>'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   Boolean:
     type: boolean
@@ -54,6 +57,7 @@ types:
   post:
     description: 'API to emit metering records. For identical requests, the API is
       idempotent. It simply returns the metering record ID. '
+    displayName: Meter Usage
     body:
       application/json: MeterUsageRequest
     responses:

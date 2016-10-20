@@ -15,6 +15,9 @@ description: ' Amazon CloudWatch Events helps you to respond to state changes in
   CloudWatch Developer Guide</a>. '
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   Boolean:
     type: boolean
@@ -454,12 +457,14 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Deletes a rule. You must remove all targets from a rule using <a>RemoveTargets</a>
       before you can delete the rule.  <b>Note:</b> When you delete a rule, incoming
       events might still continue to match to the deleted rule. Please allow a short
       period of time for changes to take effect. '
+    displayName: Delete Rule
     body:
       application/json: DeleteRuleRequest
     responses:
@@ -474,9 +479,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Describes the details of the specified rule.
+    displayName: Describe Rule
     body:
       application/json: DescribeRuleRequest
     responses:
@@ -491,12 +498,14 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Disables a rule. A disabled rule won''t match any events, and won''t
       self-trigger if it has a schedule expression.  <b>Note:</b> When you disable
       a rule, incoming events might still continue to match to the disabled rule.
       Please allow a short period of time for changes to take effect. '
+    displayName: Disable Rule
     body:
       application/json: DisableRuleRequest
     responses:
@@ -511,12 +520,14 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Enables a rule. If the rule does not exist, the operation fails.  <b>Note:</b>
       When you enable a rule, incoming events might not immediately start matching
       to a newly enabled rule. Please allow a short period of time for changes to
       take effect. '
+    displayName: Enable Rule
     body:
       application/json: EnableRuleRequest
     responses:
@@ -531,9 +542,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the names of the rules that the given target is put to. You can see which of the rules in Amazon CloudWatch Events can invoke a specific target in your account. If you have more rules in your account than the given limit, the results will be paginated. In that case, use the next token returned in the response and repeat ListRulesByTarget until the NextToken in the response is returned as null.
+    displayName: List Rule Names By Target
     body:
       application/json: ListRuleNamesByTargetRequest
     responses:
@@ -548,9 +561,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the Amazon CloudWatch Events rules in your account. You can either list all the rules or you can provide a prefix to match to the rule names. If you have more rules in your account than the given limit, the results will be paginated. In that case, use the next token returned in the response and repeat ListRules until the NextToken in the response is returned as null.
+    displayName: List Rules
     body:
       application/json: ListRulesRequest
     responses:
@@ -565,9 +580,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists of targets assigned to the rule.
+    displayName: List Targets By Rule
     body:
       application/json: ListTargetsByRuleRequest
     responses:
@@ -582,9 +599,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Sends custom events to Amazon CloudWatch Events so that they can be matched to rules.
+    displayName: Put Events
     body:
       application/json: PutEventsRequest
     responses:
@@ -599,6 +618,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates or updates a rule. Rules are enabled by default, or based
@@ -614,6 +634,7 @@ types:
       CloudWatch Events uses an exact match in event patterns and rules. Be sure to
       use the correct ARN characters when creating event patterns so that they match
       the ARN syntax in the event you want to match. '
+    displayName: Put Rule
     body:
       application/json: PutRuleRequest
     responses:
@@ -628,6 +649,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Adds target(s) to a rule. Targets are the resources that can be
@@ -651,6 +673,7 @@ types:
       When you add targets to a rule, when the associated rule triggers, new or updated
       targets might not be immediately invoked. Please allow a short period of time
       for changes to take effect. '
+    displayName: Put Targets
     body:
       application/json: PutTargetsRequest
     responses:
@@ -665,12 +688,14 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Removes target(s) from a rule so that when the rule is triggered,
       those targets will no longer be invoked.  <b>Note:</b> When you remove a target,
       when the associated rule triggers, removed targets might still continue to be
       invoked. Please allow a short period of time for changes to take effect. '
+    displayName: Remove Targets
     body:
       application/json: RemoveTargetsRequest
     responses:
@@ -685,6 +710,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Tests whether an event pattern matches the provided event.  <b>Note:</b>
@@ -692,6 +718,7 @@ types:
       (ARNs). However, CloudWatch Events uses an exact match in event patterns and
       rules. Be sure to use the correct ARN characters when creating event patterns
       so that they match the ARN syntax in the event you want to match. '
+    displayName: Test Event Pattern
     body:
       application/json: TestEventPatternRequest
     responses:

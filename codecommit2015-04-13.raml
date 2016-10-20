@@ -29,6 +29,9 @@ description: '  This is the <i>AWS CodeCommit API Reference</i>. This reference 
   CodeCommit User Guide</a>.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   AccountId:
     type: string
@@ -497,9 +500,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns information about one or more repositories. <note>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</note>
+    displayName: Batch Get Repositories
     body:
       application/json: BatchGetRepositoriesInput
     responses:
@@ -514,9 +519,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a new branch in a repository and points the branch to a commit. <note>Calling the create branch operation does not set a repository's default branch. To do this, call the update default branch operation.</note>
+    displayName: Create Branch
     body:
       application/json: CreateBranchInput
     responses:
@@ -531,9 +538,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a new, empty repository.
+    displayName: Create Repository
     body:
       application/json: CreateRepositoryInput
     responses:
@@ -548,9 +557,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a repository. If a specified repository was already deleted, a null repository ID will be returned. <important>Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future push calls to the deleted repository will fail.</important>
+    displayName: Delete Repository
     body:
       application/json: DeleteRepositoryInput
     responses:
@@ -565,9 +576,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns information about a repository branch, including its name and the last commit ID.
+    displayName: Get Branch
     body:
       application/json: GetBranchInput
     responses:
@@ -582,9 +595,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns information about a commit, including commit message and committer information.
+    displayName: Get Commit
     body:
       application/json: GetCommitInput
     responses:
@@ -599,9 +614,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns information about a repository. <note>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</note>
+    displayName: Get Repository
     body:
       application/json: GetRepositoryInput
     responses:
@@ -616,9 +633,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about triggers configured for a repository.
+    displayName: Get Repository Triggers
     body:
       application/json: GetRepositoryTriggersInput
     responses:
@@ -633,9 +652,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about one or more branches in a repository.
+    displayName: List Branches
     body:
       application/json: ListBranchesInput
     responses:
@@ -650,9 +671,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about one or more repositories.
+    displayName: List Repositories
     body:
       application/json: ListRepositoriesInput
     responses:
@@ -667,9 +690,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Replaces all triggers for a repository. This can be used to create or delete triggers.
+    displayName: Put Repository Triggers
     body:
       application/json: PutRepositoryTriggersInput
     responses:
@@ -684,9 +709,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Tests the functionality of repository triggers by sending information to the trigger target. If real data is available in the repository, the test will send data from the last commit. If no data is available, sample data will be generated.
+    displayName: Test Repository Triggers
     body:
       application/json: TestRepositoryTriggersInput
     responses:
@@ -701,9 +728,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Sets or changes the default branch name for the specified repository. <note>If you use this operation to change the default branch name to the current default branch name, a success message is returned even though the default branch did not change.</note>
+    displayName: Update Default Branch
     body:
       application/json: UpdateDefaultBranchInput
     responses:
@@ -718,9 +747,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Sets or changes the comment or description for a repository. <note>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</note>
+    displayName: Update Repository Description
     body:
       application/json: UpdateRepositoryDescriptionInput
     responses:
@@ -735,9 +766,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Renames a repository. The repository name must be unique across the calling AWS account. In addition, repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. The suffix ".git" is prohibited. For a full description of the limits on repository names, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a> in the AWS CodeCommit User Guide.
+    displayName: Update Repository Name
     body:
       application/json: UpdateRepositoryNameInput
     responses:

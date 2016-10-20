@@ -31,6 +31,9 @@ description: '   <b>Overview</b>   This reference guide provides descriptions of
   AWS CodeDeploy APIs to get, list, and register application revisions. </li> </ul>'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   AlarmList:
     type: array
@@ -1544,9 +1547,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Adds tags to on-premises instances.
+    displayName: Add Tags To On Premises Instances
     body:
       application/json: AddTagsToOnPremisesInstancesInput
     responses:
@@ -1561,9 +1566,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about one or more application revisions.
+    displayName: Batch Get Application Revisions
     body:
       application/json: BatchGetApplicationRevisionsInput
     responses:
@@ -1578,9 +1585,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about one or more applications.
+    displayName: Batch Get Applications
     body:
       application/json: BatchGetApplicationsInput
     responses:
@@ -1595,9 +1604,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Get information about one or more deployment groups.
+    displayName: Batch Get Deployment Groups
     body:
       application/json: BatchGetDeploymentGroupsInput
     responses:
@@ -1612,9 +1623,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about one or more instance that are part of a deployment group.
+    displayName: Batch Get Deployment Instances
     body:
       application/json: BatchGetDeploymentInstancesInput
     responses:
@@ -1629,9 +1642,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about one or more deployments.
+    displayName: Batch Get Deployments
     body:
       application/json: BatchGetDeploymentsInput
     responses:
@@ -1646,9 +1661,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about one or more on-premises instances.
+    displayName: Batch Get On Premises Instances
     body:
       application/json: BatchGetOnPremisesInstancesInput
     responses:
@@ -1663,9 +1680,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates an application.
+    displayName: Create Application
     body:
       application/json: CreateApplicationInput
     responses:
@@ -1680,9 +1699,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deploys an application revision through the specified deployment group.
+    displayName: Create Deployment
     body:
       application/json: CreateDeploymentInput
     responses:
@@ -1697,9 +1718,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a deployment configuration.
+    displayName: Create Deployment Config
     body:
       application/json: CreateDeploymentConfigInput
     responses:
@@ -1714,9 +1737,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a deployment group to which application revisions will be deployed.
+    displayName: Create Deployment Group
     body:
       application/json: CreateDeploymentGroupInput
     responses:
@@ -1731,9 +1756,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes an application.
+    displayName: Delete Application
     body:
       application/json: DeleteApplicationInput
     responses:
@@ -1748,9 +1775,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a deployment configuration. <note> A deployment configuration cannot be deleted if it is currently in use. Predefined configurations cannot be deleted. </note>
+    displayName: Delete Deployment Config
     body:
       application/json: DeleteDeploymentConfigInput
     responses:
@@ -1765,9 +1794,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a deployment group.
+    displayName: Delete Deployment Group
     body:
       application/json: DeleteDeploymentGroupInput
     responses:
@@ -1782,9 +1813,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deregisters an on-premises instance.
+    displayName: Deregister On Premises Instance
     body:
       application/json: DeregisterOnPremisesInstanceInput
     responses:
@@ -1799,9 +1832,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about an application.
+    displayName: Get Application
     body:
       application/json: GetApplicationInput
     responses:
@@ -1816,9 +1851,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about an application revision.
+    displayName: Get Application Revision
     body:
       application/json: GetApplicationRevisionInput
     responses:
@@ -1833,9 +1870,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about a deployment.
+    displayName: Get Deployment
     body:
       application/json: GetDeploymentInput
     responses:
@@ -1850,9 +1889,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about a deployment configuration.
+    displayName: Get Deployment Config
     body:
       application/json: GetDeploymentConfigInput
     responses:
@@ -1867,9 +1908,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about a deployment group.
+    displayName: Get Deployment Group
     body:
       application/json: GetDeploymentGroupInput
     responses:
@@ -1884,9 +1927,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about an instance as part of a deployment.
+    displayName: Get Deployment Instance
     body:
       application/json: GetDeploymentInstanceInput
     responses:
@@ -1901,9 +1946,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets information about an on-premises instance.
+    displayName: Get On Premises Instance
     body:
       application/json: GetOnPremisesInstanceInput
     responses:
@@ -1918,9 +1965,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists information about revisions for an application.
+    displayName: List Application Revisions
     body:
       application/json: ListApplicationRevisionsInput
     responses:
@@ -1935,9 +1984,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the applications registered with the applicable IAM user or AWS account.
+    displayName: List Applications
     body:
       application/json: ListApplicationsInput
     responses:
@@ -1952,9 +2003,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the deployment configurations with the applicable IAM user or AWS account.
+    displayName: List Deployment Configs
     body:
       application/json: ListDeploymentConfigsInput
     responses:
@@ -1969,9 +2022,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the deployment groups for an application registered with the applicable IAM user or AWS account.
+    displayName: List Deployment Groups
     body:
       application/json: ListDeploymentGroupsInput
     responses:
@@ -1986,9 +2041,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the instance for a deployment associated with the applicable IAM user or AWS account.
+    displayName: List Deployment Instances
     body:
       application/json: ListDeploymentInstancesInput
     responses:
@@ -2003,9 +2060,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the deployments in a deployment group for an application registered with the applicable IAM user or AWS account.
+    displayName: List Deployments
     body:
       application/json: ListDeploymentsInput
     responses:
@@ -2020,9 +2079,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets a list of names for one or more on-premises instances. Unless otherwise specified, both registered and deregistered on-premises instance names will be listed. To list only registered or deregistered on-premises instance names, use the registration status parameter.
+    displayName: List On Premises Instances
     body:
       application/json: ListOnPremisesInstancesInput
     responses:
@@ -2037,9 +2098,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Registers with AWS CodeDeploy a revision for the specified application.
+    displayName: Register Application Revision
     body:
       application/json: RegisterApplicationRevisionInput
     responses:
@@ -2054,9 +2117,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Registers an on-premises instance.
+    displayName: Register On Premises Instance
     body:
       application/json: RegisterOnPremisesInstanceInput
     responses:
@@ -2071,9 +2136,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Removes one or more tags from one or more on-premises instances.
+    displayName: Remove Tags From On Premises Instances
     body:
       application/json: RemoveTagsFromOnPremisesInstancesInput
     responses:
@@ -2088,9 +2155,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Attempts to stop an ongoing deployment.
+    displayName: Stop Deployment
     body:
       application/json: StopDeploymentInput
     responses:
@@ -2105,9 +2174,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Changes the name of an application.
+    displayName: Update Application
     body:
       application/json: UpdateApplicationInput
     responses:
@@ -2122,9 +2193,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Changes information about a deployment group.
+    displayName: Update Deployment Group
     body:
       application/json: UpdateDeploymentGroupInput
     responses:

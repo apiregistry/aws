@@ -36,6 +36,9 @@ description: '  The AWS Security Token Service (STS) is a web service that enabl
   CloudTrail User Guide</a>.'
 mediaType:
 - application/xml
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   Audience:
     type: string
@@ -529,6 +532,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns a set of temporary security credentials (consisting of an
@@ -600,6 +604,7 @@ types:
       and <code>TokenCode</code> parameters. The <code>SerialNumber</code> value identifies
       the user''s hardware or virtual MFA device. The <code>TokenCode</code> is the
       time-based one-time password (TOTP) that the MFA devices produces. '
+    displayName: Assume Role
     body:
       application/xml: AssumeRoleRequest
     responses:
@@ -616,6 +621,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns a set of temporary security credentials for users who have
@@ -670,6 +676,7 @@ types:
       a Relying Party and Claims</a> in the <i>IAM User Guide</i>.  </li> <li>  <a
       href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html">Creating
       a Role for SAML 2.0 Federation</a> in the <i>IAM User Guide</i>.  </li> </ul>'
+    displayName: Assume Role With S A M L
     body:
       application/xml: AssumeRoleWithSAMLRequest
     responses:
@@ -686,6 +693,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns a set of temporary security credentials for users who have
@@ -756,6 +764,7 @@ types:
       Identity Federation with Mobile Applications</a>. This article discusses web
       identity federation and shows an example of how to use web identity federation
       to get access to content in Amazon S3.  </li> </ul>'
+    displayName: Assume Role With Web Identity
     body:
       application/xml: AssumeRoleWithWebIdentityRequest
     responses:
@@ -772,6 +781,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Decodes additional information about the authorization status of
@@ -794,6 +804,7 @@ types:
       <li> The principal who made the request. </li> <li> The requested action. </li>
       <li> The requested resource. </li> <li> The values of condition keys in the
       context of the user''s request. </li> </ul>'
+    displayName: Decode Authorization Message
     body:
       application/xml: DecodeAuthorizationMessageRequest
     responses:
@@ -808,9 +819,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns details about the IAM identity whose credentials are used to call the API.
+    displayName: Get Caller Identity
     body:
       application/xml: GetCallerIdentityRequest
     responses:
@@ -823,6 +836,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns a set of temporary security credentials (consisting of an
@@ -884,6 +898,7 @@ types:
       for GetFederationToken</a>. For information about using <code>GetFederationToken</code>
       to create temporary security credentials, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken">GetFederationToken—Federation
       Through a Custom Identity Broker</a>. '
+    displayName: Get Federation Token
     body:
       application/xml: GetFederationTokenRequest
     responses:
@@ -900,6 +915,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns a set of temporary credentials for an AWS account or IAM
@@ -938,6 +954,7 @@ types:
       user.  For more information about using <code>GetSessionToken</code> to create
       temporary credentials, go to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken">Temporary
       Credentials for Users in Untrusted Environments</a> in the <i>IAM User Guide</i>. '
+    displayName: Get Session Token
     body:
       application/xml: GetSessionTokenRequest
     responses:

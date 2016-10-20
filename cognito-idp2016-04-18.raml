@@ -8,6 +8,9 @@ description: ' Using the Amazon Cognito Your User Pools API, you can create a us
   Amazon Cognito Documentation.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   AdminCreateUserUnusedAccountValidityDaysType:
     type: integer
@@ -1998,9 +2001,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Adds additional user attributes to the user pool schema.
+    displayName: Add Custom Attributes
     body:
       application/json: AddCustomAttributesRequest
     responses:
@@ -2015,9 +2020,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Confirms user registration as an admin without using a confirmation code. Works on any user.
+    displayName: Admin Confirm Sign Up
     body:
       application/json: AdminConfirmSignUpRequest
     responses:
@@ -2032,9 +2039,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a new user in the specified user pool and sends a welcome message via email or phone (SMS). This message is based on a template that you configured in your call to CreateUserPool or UpdateUserPool. This template includes your custom sign-up instructions and placeholders for user name and temporary password. Requires developer credentials.
+    displayName: Admin Create User
     body:
       application/json: AdminCreateUserRequest
     responses:
@@ -2049,9 +2058,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a user as an administrator. Works on any user.
+    displayName: Admin Delete User
     body:
       application/json: AdminDeleteUserRequest
     responses:
@@ -2066,9 +2077,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes the user attributes in a user pool as an administrator. Works on any user.
+    displayName: Admin Delete User Attributes
     body:
       application/json: AdminDeleteUserAttributesRequest
     responses:
@@ -2083,9 +2096,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Disables the specified user as an administrator. Works on any user.
+    displayName: Admin Disable User
     body:
       application/json: AdminDisableUserRequest
     responses:
@@ -2100,9 +2115,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Enables the specified user as an administrator. Works on any user.
+    displayName: Admin Enable User
     body:
       application/json: AdminEnableUserRequest
     responses:
@@ -2117,9 +2134,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Forgets the device, as an administrator.
+    displayName: Admin Forget Device
     body:
       application/json: AdminForgetDeviceRequest
     responses:
@@ -2134,9 +2153,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets the device, as an administrator.
+    displayName: Admin Get Device
     body:
       application/json: AdminGetDeviceRequest
     responses:
@@ -2151,9 +2172,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets the specified user by user name in a user pool as an administrator. Works on any user.
+    displayName: Admin Get User
     body:
       application/json: AdminGetUserRequest
     responses:
@@ -2168,9 +2191,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Initiates the authentication flow, as an administrator.
+    displayName: Admin Initiate Auth
     body:
       application/json: AdminInitiateAuthRequest
     responses:
@@ -2185,9 +2210,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists devices, as an administrator.
+    displayName: Admin List Devices
     body:
       application/json: AdminListDevicesRequest
     responses:
@@ -2202,9 +2229,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Resets the specified user's password in a user pool as an administrator. Works on any user. When a developer calls this API, the current password is invalidated, so it must be changed. If a user tries to sign in after the API is called, the app will get a PasswordResetRequiredException exception back and should direct the user down the flow to reset the password, which is the same as the forgot password flow. In addition, if the user pool has phone verification selected and a verified phone number exists for the user, or if email verification is selected and a verified email exists for the user, calling this API will also result in sending a message to the end user with the code to change their password.
+    displayName: Admin Reset User Password
     body:
       application/json: AdminResetUserPasswordRequest
     responses:
@@ -2219,9 +2248,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Responds to an authentication challenge, as an administrator.
+    displayName: Admin Respond To Auth Challenge
     body:
       application/json: AdminRespondToAuthChallengeRequest
     responses:
@@ -2236,9 +2267,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Sets all the user settings for a specified user name. Works on any user.
+    displayName: Admin Set User Settings
     body:
       application/json: AdminSetUserSettingsRequest
     responses:
@@ -2253,9 +2286,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates the device status as an administrator.
+    displayName: Admin Update Device Status
     body:
       application/json: AdminUpdateDeviceStatusRequest
     responses:
@@ -2270,9 +2305,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates the specified user's attributes, including developer attributes, as an administrator. Works on any user.
+    displayName: Admin Update User Attributes
     body:
       application/json: AdminUpdateUserAttributesRequest
     responses:
@@ -2287,9 +2324,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Signs out users from all devices, as an administrator.
+    displayName: Admin User Global Sign Out
     body:
       application/json: AdminUserGlobalSignOutRequest
     responses:
@@ -2304,9 +2343,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Changes the password for a specified user in a user pool.
+    displayName: Change Password
     body:
       application/json: ChangePasswordRequest
     responses:
@@ -2321,9 +2362,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Confirms tracking of the device. This API call is the call that beings device tracking.
+    displayName: Confirm Device
     body:
       application/json: ConfirmDeviceRequest
     responses:
@@ -2338,9 +2381,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Allows a user to enter a code provided when they reset their password to update their password.
+    displayName: Confirm Forgot Password
     body:
       application/json: ConfirmForgotPasswordRequest
     responses:
@@ -2355,9 +2400,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Confirms registration of a user and handles the existing alias from a previous user.
+    displayName: Confirm Sign Up
     body:
       application/json: ConfirmSignUpRequest
     responses:
@@ -2372,9 +2419,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates the user import job.
+    displayName: Create User Import Job
     body:
       application/json: CreateUserImportJobRequest
     responses:
@@ -2389,9 +2438,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a new Amazon Cognito user pool and sets the password policy for the pool.
+    displayName: Create User Pool
     body:
       application/json: CreateUserPoolRequest
     responses:
@@ -2406,9 +2457,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates the user pool client.
+    displayName: Create User Pool Client
     body:
       application/json: CreateUserPoolClientRequest
     responses:
@@ -2423,9 +2476,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Allows a user to delete one's self.
+    displayName: Delete User
     body:
       application/json: DeleteUserRequest
     responses:
@@ -2440,9 +2495,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes the attributes for a user.
+    displayName: Delete User Attributes
     body:
       application/json: DeleteUserAttributesRequest
     responses:
@@ -2457,9 +2514,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes the specified Amazon Cognito user pool.
+    displayName: Delete User Pool
     body:
       application/json: DeleteUserPoolRequest
     responses:
@@ -2474,9 +2533,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Allows the developer to delete the user pool client.
+    displayName: Delete User Pool Client
     body:
       application/json: DeleteUserPoolClientRequest
     responses:
@@ -2491,9 +2552,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Describes the user import job.
+    displayName: Describe User Import Job
     body:
       application/json: DescribeUserImportJobRequest
     responses:
@@ -2508,9 +2571,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns the configuration information and metadata of the specified user pool.
+    displayName: Describe User Pool
     body:
       application/json: DescribeUserPoolRequest
     responses:
@@ -2525,9 +2590,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Client method for returning the configuration information and metadata of the specified user pool client.
+    displayName: Describe User Pool Client
     body:
       application/json: DescribeUserPoolClientRequest
     responses:
@@ -2542,9 +2609,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Forgets the specified device.
+    displayName: Forget Device
     body:
       application/json: ForgetDeviceRequest
     responses:
@@ -2559,9 +2628,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Retrieves the password for the specified client ID or username.
+    displayName: Forgot Password
     body:
       application/json: ForgotPasswordRequest
     responses:
@@ -2576,9 +2647,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets the header information for the .csv file to be used as input for the user import job.
+    displayName: Get C S V Header
     body:
       application/json: GetCSVHeaderRequest
     responses:
@@ -2593,9 +2666,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets the device.
+    displayName: Get Device
     body:
       application/json: GetDeviceRequest
     responses:
@@ -2610,9 +2685,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets the user attributes and metadata for a user.
+    displayName: Get User
     body:
       application/json: GetUserRequest
     responses:
@@ -2627,9 +2704,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Gets the user attribute verification code for the specified attribute name.
+    displayName: Get User Attribute Verification Code
     body:
       application/json: GetUserAttributeVerificationCodeRequest
     responses:
@@ -2644,9 +2723,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Signs out users from all devices.
+    displayName: Global Sign Out
     body:
       application/json: GlobalSignOutRequest
     responses:
@@ -2661,9 +2742,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Initiates the authentication flow.
+    displayName: Initiate Auth
     body:
       application/json: InitiateAuthRequest
     responses:
@@ -2678,9 +2761,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the devices.
+    displayName: List Devices
     body:
       application/json: ListDevicesRequest
     responses:
@@ -2695,9 +2780,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the user import jobs.
+    displayName: List User Import Jobs
     body:
       application/json: ListUserImportJobsRequest
     responses:
@@ -2712,9 +2799,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the clients that have been created for the specified user pool.
+    displayName: List User Pool Clients
     body:
       application/json: ListUserPoolClientsRequest
     responses:
@@ -2729,9 +2818,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the user pools associated with an AWS account.
+    displayName: List User Pools
     body:
       application/json: ListUserPoolsRequest
     responses:
@@ -2746,9 +2837,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Lists the users in the Amazon Cognito user pool.
+    displayName: List Users
     body:
       application/json: ListUsersRequest
     responses:
@@ -2763,9 +2856,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Resends the confirmation (for confirmation of registration) to a specific user in the user pool.
+    displayName: Resend Confirmation Code
     body:
       application/json: ResendConfirmationCodeRequest
     responses:
@@ -2780,9 +2875,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Responds to the authentication challenge.
+    displayName: Respond To Auth Challenge
     body:
       application/json: RespondToAuthChallengeRequest
     responses:
@@ -2797,9 +2894,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Sets the user settings like multi-factor authentication (MFA). If MFA is to be removed for a particular attribute pass the attribute with code delivery as null. If null list is passed, all MFA options are removed.
+    displayName: Set User Settings
     body:
       application/json: SetUserSettingsRequest
     responses:
@@ -2814,9 +2913,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Registers the user in the specified user pool and creates a user name, password, and user attributes.
+    displayName: Sign Up
     body:
       application/json: SignUpRequest
     responses:
@@ -2831,9 +2932,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Starts the user import.
+    displayName: Start User Import Job
     body:
       application/json: StartUserImportJobRequest
     responses:
@@ -2848,9 +2951,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Stops the user import job.
+    displayName: Stop User Import Job
     body:
       application/json: StopUserImportJobRequest
     responses:
@@ -2865,9 +2970,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates the device status.
+    displayName: Update Device Status
     body:
       application/json: UpdateDeviceStatusRequest
     responses:
@@ -2882,9 +2989,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Allows a user to update a specific attribute (one at a time).
+    displayName: Update User Attributes
     body:
       application/json: UpdateUserAttributesRequest
     responses:
@@ -2899,9 +3008,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates the specified user pool with the specified attributes.
+    displayName: Update User Pool
     body:
       application/json: UpdateUserPoolRequest
     responses:
@@ -2916,9 +3027,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Allows the developer to update the specified user pool client and password policy.
+    displayName: Update User Pool Client
     body:
       application/json: UpdateUserPoolClientRequest
     responses:
@@ -2933,9 +3046,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Verifies the specified user attributes in the user pool.
+    displayName: Verify User Attribute
     body:
       application/json: VerifyUserAttributeRequest
     responses:

@@ -11,6 +11,9 @@ description: '  AWS IoT provides secure, bi-directional communication between In
   Guide</a>.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   ActionList:
     type: array
@@ -1236,15 +1239,12 @@ types:
 /cacertificate:
   /{caCertificateId}:
     uriParameters:
-      caCertificateId?:
+      caCertificateId:
         type: CertificateId
         description: <p>The ID of the certificate to delete.</p>
     delete:
       description: Deletes a registered CA certificate.
-      headers:
-        caCertificateId?:
-          type: CertificateId
-          description: <p>The ID of the certificate to delete.</p>
+      displayName: Delete C A Certificate
       responses:
         200:
           body:
@@ -1265,10 +1265,7 @@ types:
           description: ResourceNotFoundException
     get:
       description: Describes a registered CA certificate.
-      headers:
-        caCertificateId?:
-          type: CertificateId
-          description: <p>The CA certificate identifier.</p>
+      displayName: Describe C A Certificate
       responses:
         200:
           body:
@@ -1287,18 +1284,15 @@ types:
           description: ResourceNotFoundException
     put:
       description: Updates a registered CA certificate.
+      displayName: Update C A Certificate
       queryParameters:
-        newStatus:
+        newStatus?:
           type: CACertificateStatus
           description: <p>The updated status of the CA certificate.</p> <p><b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
-        newAutoRegistrationStatus:
+        newAutoRegistrationStatus?:
           type: AutoRegistrationStatus
           description: '<p>The new value for the auto registration status. Valid values
             are: "ENABLE" or "DISABLE".</p>'
-      headers:
-        caCertificateId?:
-          type: CertificateId
-          description: <p>The CA certificate identifier.</p>
       responses:
         200:
           body:
@@ -1317,21 +1311,22 @@ types:
           description: InternalFailureException
   post:
     description: Registers a CA certificate with AWS IoT. This CA certificate can then be used to sign device certificates, which can be then registered with AWS IoT. You can register up to 10 CA certificates per AWS account that have the same subject field and public key. This enables you to have up to 10 certificate authorities sign your device certificates. If you have more than one CA certificate registered, make sure you pass the CA certificate when you register your device certificates with the RegisterCertificate API.
+    displayName: Register C A Certificate
     queryParameters:
-      setAsActive:
+      setAsActive?:
         type: SetAsActive
         description: <p>A boolean value that specifies if the CA certificate is set to active.</p>
-      allowAutoRegistration:
+      allowAutoRegistration?:
         type: AllowAutoRegistration
         description: <p>Allows this CA certificate to be used for auto registration of device certificates.</p>
     body:
       application/json:
         type: object
         properties:
-          caCertificate:
+          caCertificate?:
             type: CertificatePem
             description: <p>The CA certificate.</p>
-          verificationCertificate:
+          verificationCertificate?:
             type: CertificatePem
             description: <p>The private key verification certificate.</p>
     responses:
@@ -1355,25 +1350,22 @@ types:
 /certificates-by-ca:
   /{caCertificateId}:
     uriParameters:
-      caCertificateId?:
+      caCertificateId:
         type: CertificateId
         description: <p>The ID of the CA certificate. This operation will list all registered device certificate that were signed by this CA certificate. </p>
     get:
       description: List the device certificates signed by the specified CA certificate.
+      displayName: List Certificates By C A
       queryParameters:
-        pageSize:
+        pageSize?:
           type: PageSize
           description: <p>The result page size.</p>
-        marker:
+        marker?:
           type: Marker
           description: <p>The marker for the next set of results.</p>
-        isAscendingOrder:
+        isAscendingOrder?:
           type: AscendingOrder
           description: <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
-      headers:
-        caCertificateId?:
-          type: CertificateId
-          description: <p>The ID of the CA certificate. This operation will list all registered device certificate that were signed by this CA certificate. </p>
       responses:
         200:
           body:
@@ -1391,21 +1383,18 @@ types:
 /thing-types:
   /{thingTypeName}:
     uriParameters:
-      thingTypeName?:
+      thingTypeName:
         type: ThingTypeName
         description: <p>The name of the thing type.</p>
     /deprecate:
       post:
         description: Deprecates a thing type. You can not associate new things with deprecated thing type.
-        headers:
-          thingTypeName?:
-            type: ThingTypeName
-            description: <p>The name of the thing type to deprecate.</p>
+        displayName: Deprecate Thing Type
         body:
           application/json:
             type: object
             properties:
-              undoDeprecate?:
+              undoDeprecate:
                 type: UndoDeprecate
                 description: <p>Whether to undeprecate a deprecated thing type. If <b>true</b>, the thing type will not be deprecated anymore and you can associate it with things.</p>
         responses:
@@ -1426,10 +1415,7 @@ types:
             description: InternalFailureException
     delete:
       description: Deletes the specified thing type . You cannot delete a thing type if it has things associated with it. To delete a thing type, first mark it as deprecated by calling <a>DeprecateThingType</a>, then remove any associated things by calling <a>UpdateThing</a> to change the thing type on any associated thing, and finally use <a>DeleteThingType</a> to delete the thing type.
-      headers:
-        thingTypeName?:
-          type: ThingTypeName
-          description: <p>The name of the thing type.</p>
+      displayName: Delete Thing Type
       responses:
         200:
           body:
@@ -1448,10 +1434,7 @@ types:
           description: InternalFailureException
     get:
       description: Gets information about the specified thing type.
-      headers:
-        thingTypeName?:
-          type: ThingTypeName
-          description: <p>The name of the thing type.</p>
+      displayName: Describe Thing Type
       responses:
         200:
           body:
@@ -1470,15 +1453,12 @@ types:
           description: InternalFailureException
     post:
       description: Creates a new thing type.
-      headers:
-        thingTypeName?:
-          type: ThingTypeName
-          description: <p>The name of the thing type.</p>
+      displayName: Create Thing Type
       body:
         application/json:
           type: object
           properties:
-            thingTypeProperties?:
+            thingTypeProperties:
               type: ThingTypeProperties
               description: <p>The ThingTypeProperties for the thing type to create. It contains information about the new thing type including a description, and a list of searchable thing attribute names.</p>
       responses:
@@ -1499,14 +1479,15 @@ types:
           description: ResourceAlreadyExistsException
   get:
     description: Lists the existing thing types.
+    displayName: List Thing Types
     queryParameters:
-      nextToken:
+      nextToken?:
         type: NextToken
         description: <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
-      maxResults:
+      maxResults?:
         type: MaxResults
         description: <p>The maximum number of results to return in this operation.</p>
-      thingTypeName:
+      thingTypeName?:
         type: ThingTypeName
         description: <p>The name of the thing type.</p>
     responses:
@@ -1526,16 +1507,14 @@ types:
 /principal-policies:
   /{policyName}:
     uriParameters:
-      policyName?:
+      policyName:
         type: PolicyName
         description: <p>The name of the policy to detach.</p>
     delete:
       description: Removes the specified policy from the specified certificate.
+      displayName: Detach Principal Policy
       headers:
-        policyName?:
-          type: PolicyName
-          description: <p>The name of the policy to detach.</p>
-        x-amzn-iot-principal?:
+        x-amzn-iot-principal:
           type: Principal
           description: <p>The principal.</p> <p>If the principal is a certificate, specify the certificate ARN. If the principal is an Amazon Cognito identity, specify the identity ID.</p>
       responses:
@@ -1556,11 +1535,9 @@ types:
           description: InternalFailureException
     put:
       description: Attaches the specified policy to the specified principal (certificate or other credential).
+      displayName: Attach Principal Policy
       headers:
-        policyName?:
-          type: PolicyName
-          description: <p>The policy name.</p>
-        x-amzn-iot-principal?:
+        x-amzn-iot-principal:
           type: Principal
           description: <p>The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon Cognito ID.</p>
       responses:
@@ -1583,18 +1560,19 @@ types:
           description: LimitExceededException
   get:
     description: Lists the policies attached to the specified principal. If you use an Cognito identity, the ID must be in <a href="http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax">AmazonCognito Identity format</a>.
+    displayName: List Principal Policies
     queryParameters:
-      marker:
+      marker?:
         type: Marker
         description: <p>The marker for the next set of results.</p>
-      pageSize:
+      pageSize?:
         type: PageSize
         description: <p>The result page size.</p>
-      isAscendingOrder:
+      isAscendingOrder?:
         type: AscendingOrder
         description: <p>Specifies the order for results. If true, results are returned in ascending creation order.</p>
     headers:
-      x-amzn-iot-principal?:
+      x-amzn-iot-principal:
         type: Principal
         description: <p>The principal.</p>
     responses:
@@ -1616,15 +1594,12 @@ types:
 /certificates:
   /{certificateId}:
     uriParameters:
-      certificateId?:
+      certificateId:
         type: CertificateId
         description: <p>The ID of the certificate.</p>
     get:
       description: Gets information about the specified certificate.
-      headers:
-        certificateId?:
-          type: CertificateId
-          description: <p>The ID of the certificate.</p>
+      displayName: Describe Certificate
       responses:
         200:
           body:
@@ -1643,14 +1618,11 @@ types:
           description: ResourceNotFoundException
     put:
       description: Updates the status of the specified certificate. This operation is idempotent. Moving a certificate from the ACTIVE state (including REVOKED) will not disconnect currently connected devices, but these devices will be unable to reconnect. The ACTIVE state is required to authenticate devices connecting to AWS IoT using a certificate.
+      displayName: Update Certificate
       queryParameters:
-        newStatus?:
+        newStatus:
           type: CertificateStatus
           description: <p>The new status.</p> <p><b>Note:</b> Setting the status to PENDING_TRANSFER will result in an exception being thrown. PENDING_TRANSFER is a status used internally by AWS IoT. It is not intended for developer use.</p> <p><b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
-      headers:
-        certificateId?:
-          type: CertificateId
-          description: <p>The ID of the certificate.</p>
       responses:
         200:
           body:
@@ -1671,10 +1643,7 @@ types:
           description: InternalFailureException
     delete:
       description: Deletes the specified certificate. A certificate cannot be deleted if it has a policy attached to it or if its status is set to ACTIVE. To delete a certificate, first use the <a>DetachPrincipalPolicy</a> API to detach all policies. Next, use the <a>UpdateCertificate</a> API to set the certificate to the INACTIVE status.
-      headers:
-        certificateId?:
-          type: CertificateId
-          description: <p>The ID of the certificate.</p>
+      displayName: Delete Certificate
       responses:
         200:
           body:
@@ -1697,14 +1666,15 @@ types:
           description: ResourceNotFoundException
   get:
     description: Lists the certificates registered in your AWS account. The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.
+    displayName: List Certificates
     queryParameters:
-      pageSize:
+      pageSize?:
         type: PageSize
         description: <p>The result page size.</p>
-      marker:
+      marker?:
         type: Marker
         description: <p>The marker for the next set of results.</p>
-      isAscendingOrder:
+      isAscendingOrder?:
         type: AscendingOrder
         description: <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
     responses:
@@ -1743,15 +1713,16 @@ types:
       certificates for all CSRs in my-csr-directory is:   &gt; forfiles /p my-csr-directory
       /c "cmd /c aws iot create-certificate-from-csr --certificate-signing-request
       file://@path"'
+    displayName: Create Certificate From Csr
     queryParameters:
-      setAsActive:
+      setAsActive?:
         type: SetAsActive
         description: <p>Specifies whether the certificate is active.</p>
     body:
       application/json:
         type: object
         properties:
-          certificateSigningRequest:
+          certificateSigningRequest?:
             type: CertificateSigningRequest
             description: <p>The certificate signing request (CSR).</p>
     responses:
@@ -1772,15 +1743,16 @@ types:
   /things:
     get:
       description: Lists the things associated with the specified principal.
+      displayName: List Principal Things
       queryParameters:
-        nextToken:
+        nextToken?:
           type: NextToken
           description: <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
-        maxResults:
+        maxResults?:
           type: MaxResults
           description: <p>The maximum number of results to return in this operation.</p>
       headers:
-        x-amzn-principal?:
+        x-amzn-principal:
           type: Principal
           description: <p>The principal.</p>
       responses:
@@ -1802,16 +1774,13 @@ types:
 /rules:
   /{ruleName}:
     uriParameters:
-      ruleName?:
+      ruleName:
         type: RuleName
         description: <p>The name of the rule to disable.</p>
     /disable:
       post:
         description: Disables the specified rule.
-        headers:
-          ruleName?:
-            type: RuleName
-            description: <p>The name of the rule to disable.</p>
+        displayName: Disable Topic Rule
         responses:
           200:
             body:
@@ -1827,10 +1796,7 @@ types:
     /enable:
       post:
         description: Enables the specified rule.
-        headers:
-          ruleName?:
-            type: RuleName
-            description: <p>The name of the topic rule to enable.</p>
+        displayName: Enable Topic Rule
         responses:
           200:
             body:
@@ -1845,10 +1811,7 @@ types:
             description: UnauthorizedException
     delete:
       description: Deletes the specified rule.
-      headers:
-        ruleName?:
-          type: RuleName
-          description: <p>The name of the rule.</p>
+      displayName: Delete Topic Rule
       responses:
         200:
           body:
@@ -1863,10 +1826,7 @@ types:
           description: UnauthorizedException
     get:
       description: Gets information about the specified rule.
-      headers:
-        ruleName?:
-          type: RuleName
-          description: <p>The name of the rule.</p>
+      displayName: Get Topic Rule
       responses:
         200:
           body:
@@ -1881,10 +1841,7 @@ types:
           description: UnauthorizedException
     post:
       description: Creates a rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.
-      headers:
-        ruleName?:
-          type: RuleName
-          description: <p>The name of the rule.</p>
+      displayName: Create Topic Rule
       body:
         application/json:
           type: TopicRulePayload
@@ -1903,10 +1860,7 @@ types:
           description: ServiceUnavailableException
     patch:
       description: Replaces the specified rule. You must specify all parameters for the new rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.
-      headers:
-        ruleName?:
-          type: RuleName
-          description: <p>The name of the rule.</p>
+      displayName: Replace Topic Rule
       body:
         application/json:
           type: TopicRulePayload
@@ -1925,17 +1879,18 @@ types:
           description: UnauthorizedException
   get:
     description: Lists the rules for the specific topic.
+    displayName: List Topic Rules
     queryParameters:
-      topic:
+      topic?:
         type: Topic
         description: <p>The topic.</p>
-      maxResults:
+      maxResults?:
         type: MaxResults
         description: <p>The maximum number of results to return.</p>
-      nextToken:
+      nextToken?:
         type: NextToken
         description: <p>A token used to retrieve the next value.</p>
-      ruleDisabled:
+      ruleDisabled?:
         type: IsDisabled
         description: <p>Specifies whether the rule is disabled.</p>
     responses:
@@ -1951,14 +1906,15 @@ types:
 /cacertificates:
   get:
     description: Lists the CA certificates registered for your AWS account. The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.
+    displayName: List C A Certificates
     queryParameters:
-      pageSize:
+      pageSize?:
         type: PageSize
         description: <p>The result page size.</p>
-      marker:
+      marker?:
         type: Marker
         description: <p>The marker for the next set of results.</p>
-      isAscendingOrder:
+      isAscendingOrder?:
         type: AscendingOrder
         description: <p>Determines the order of the results.</p>
     responses:
@@ -1978,6 +1934,7 @@ types:
 /registrationcode:
   delete:
     description: Deletes a CA certificate registration code.
+    displayName: Delete Registration Code
     body:
       application/json: DeleteRegistrationCodeRequest
     responses:
@@ -1996,6 +1953,7 @@ types:
         description: InternalFailureException
   get:
     description: Gets a registration code used to register a CA certificate with AWS IoT.
+    displayName: Get Registration Code
     body:
       application/json: GetRegistrationCodeRequest
     responses:
@@ -2015,17 +1973,15 @@ types:
 /things:
   /{thingName}:
     uriParameters:
-      thingName?:
+      thingName:
         type: ThingName
         description: <p>The name of the thing to create.</p>
     /principals:
       put:
         description: Attaches the specified principal to the specified thing.
+        displayName: Attach Thing Principal
         headers:
-          thingName?:
-            type: ThingName
-            description: <p>The name of the thing.</p>
-          x-amzn-principal?:
+          x-amzn-principal:
             type: Principal
             description: <p>The principal, such as a certificate or other credential.</p>
         responses:
@@ -2046,11 +2002,9 @@ types:
             description: InternalFailureException
       delete:
         description: Detaches the specified principal from the specified thing.
+        displayName: Detach Thing Principal
         headers:
-          thingName?:
-            type: ThingName
-            description: <p>The name of the thing.</p>
-          x-amzn-principal?:
+          x-amzn-principal:
             type: Principal
             description: <p>If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon Cognito identity, this value must be the ID of the Amazon Cognito identity.</p>
         responses:
@@ -2071,10 +2025,7 @@ types:
             description: InternalFailureException
       get:
         description: Lists the principals associated with the specified thing.
-        headers:
-          thingName?:
-            type: ThingName
-            description: <p>The name of the thing.</p>
+        displayName: List Thing Principals
         responses:
           200:
             body:
@@ -2093,18 +2044,15 @@ types:
             description: ResourceNotFoundException
     post:
       description: Creates a thing record in the thing registry.
-      headers:
-        thingName?:
-          type: ThingName
-          description: <p>The name of the thing to create.</p>
+      displayName: Create Thing
       body:
         application/json:
           type: object
           properties:
-            thingTypeName?:
+            thingTypeName:
               type: ThingTypeName
               description: <p>The name of the thing type associated with the new thing.</p>
-            attributePayload?:
+            attributePayload:
               type: AttributePayload
               description: <p>The attribute payload, which consists of up to three name/value pairs in a JSON document. For example:</p> <p><code>{\"attributes\":{\"string1\":\"string2\"}})</code></p>
       responses:
@@ -2127,24 +2075,21 @@ types:
           description: ResourceNotFoundException
     patch:
       description: Updates the data for a thing.
-      headers:
-        thingName?:
-          type: ThingName
-          description: <p>The name of the thing to update.</p>
+      displayName: Update Thing
       body:
         application/json:
           type: object
           properties:
-            thingTypeName?:
+            thingTypeName:
               type: ThingTypeName
               description: <p>The name of the thing type.</p>
-            attributePayload?:
+            attributePayload:
               type: AttributePayload
               description: <p>A list of thing attributes, a JSON string containing name-value pairs. For example:</p> <p><code>{\"attributes\":{\"name1\":\"value2\"}})</code></p> <p>This data is used to add new attributes or update existing attributes.</p>
-            expectedVersion?:
+            expectedVersion:
               type: OptionalVersion
               description: <p>The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the <code>UpdateThing</code> request is rejected with a <code>VersionConflictException</code>.</p>
-            removeThingType?:
+            removeThingType:
               type: RemoveThingType
               description: <p>Remove a thing type association. If <b>true</b>, the assocation is removed.</p>
       responses:
@@ -2167,14 +2112,11 @@ types:
           description: ResourceNotFoundException
     delete:
       description: Deletes the specified thing.
+      displayName: Delete Thing
       queryParameters:
-        expectedVersion:
+        expectedVersion?:
           type: OptionalVersion
           description: <p>The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the <code>DeleteThing</code> request is rejected with a <code>VersionConflictException</code>.</p>
-      headers:
-        thingName?:
-          type: ThingName
-          description: <p>The name of the thing to delete.</p>
       responses:
         200:
           body:
@@ -2195,10 +2137,7 @@ types:
           description: InternalFailureException
     get:
       description: Gets information about the specified thing.
-      headers:
-        thingName?:
-          type: ThingName
-          description: <p>The name of the thing.</p>
+      displayName: Describe Thing
       responses:
         200:
           body:
@@ -2220,20 +2159,21 @@ types:
       parameters to filter your things. For example, calling <code>ListThings</code>
       with attributeName=Color and attributeValue=Red retrieves all things in the
       registry that contain an attribute <b>Color</b> with the value <b>Red</b>. '
+    displayName: List Things
     queryParameters:
-      nextToken:
+      nextToken?:
         type: NextToken
         description: <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
-      maxResults:
+      maxResults?:
         type: MaxResults
         description: <p>The maximum number of results to return in this operation.</p>
-      attributeName:
+      attributeName?:
         type: AttributeName
         description: <p>The attribute name used to search for things.</p>
-      attributeValue:
+      attributeValue?:
         type: AttributeValue
         description: <p>The attribute value used to search for things.</p>
-      thingTypeName:
+      thingTypeName?:
         type: ThingTypeName
         description: <p>The name of the thing type used to search for things.</p>
     responses:
@@ -2253,24 +2193,18 @@ types:
 /policies:
   /{policyName}:
     uriParameters:
-      policyName?:
+      policyName:
         type: PolicyName
         description: <p>The policy name.</p>
     /version:
       /{policyVersionId}:
         uriParameters:
-          policyVersionId?:
+          policyVersionId:
             type: PolicyVersionId
             description: <p>The policy version ID.</p>
         patch:
           description: Sets the specified version of the specified policy as the policy's default (operative) version. This action affects all certificates to which the policy is attached. To list the principals the policy is attached to, use the ListPrincipalPolicy API.
-          headers:
-            policyName?:
-              type: PolicyName
-              description: <p>The policy name.</p>
-            policyVersionId?:
-              type: PolicyVersionId
-              description: <p>The policy version ID.</p>
+          displayName: Set Default Policy Version
           responses:
             200:
               body:
@@ -2289,13 +2223,7 @@ types:
               description: InternalFailureException
         delete:
           description: Deletes the specified version of the specified policy. You cannot delete the default version of a policy using this API. To delete the default version of a policy, use <a>DeletePolicy</a>. To find out which version of a policy is marked as the default version, use ListPolicyVersions.
-          headers:
-            policyName?:
-              type: PolicyName
-              description: <p>The name of the policy.</p>
-            policyVersionId?:
-              type: PolicyVersionId
-              description: <p>The policy version ID.</p>
+          displayName: Delete Policy Version
           responses:
             200:
               body:
@@ -2316,13 +2244,7 @@ types:
               description: InternalFailureException
         get:
           description: Gets information about the specified policy version.
-          headers:
-            policyName?:
-              type: PolicyName
-              description: <p>The name of the policy.</p>
-            policyVersionId?:
-              type: PolicyVersionId
-              description: <p>The policy version ID.</p>
+          displayName: Get Policy Version
           responses:
             200:
               body:
@@ -2341,19 +2263,16 @@ types:
               description: InternalFailureException
       post:
         description: Creates a new version of the specified AWS IoT policy. To update a policy, create a new policy version. A managed policy can have up to five versions. If the policy has five versions, you must use <a>DeletePolicyVersion</a> to delete an existing version before you create a new one. Optionally, you can set the new version as the policy's default version. The default version is the operative version (that is, the version that is in effect for the certificates to which the policy is attached).
+        displayName: Create Policy Version
         queryParameters:
-          setAsDefault:
+          setAsDefault?:
             type: SetAsDefault
             description: <p>Specifies whether the policy version is set as the default. When this parameter is true, the new policy version becomes the operative version (that is, the version that is in effect for the certificates to which the policy is attached).</p>
-        headers:
-          policyName?:
-            type: PolicyName
-            description: <p>The policy name.</p>
         body:
           application/json:
             type: object
             properties:
-              policyDocument:
+              policyDocument?:
                 type: PolicyDocument
                 description: <p>The JSON document that describes the policy. Minimum length of 1. Maximum length of 2048, excluding whitespaces</p>
         responses:
@@ -2376,10 +2295,7 @@ types:
             description: InternalFailureException
       get:
         description: Lists the versions of the specified policy and identifies the default version.
-        headers:
-          policyName?:
-            type: PolicyName
-            description: <p>The policy name.</p>
+        displayName: List Policy Versions
         responses:
           200:
             body:
@@ -2398,10 +2314,7 @@ types:
             description: InternalFailureException
     get:
       description: Gets information about the specified policy with the policy document of the default version.
-      headers:
-        policyName?:
-          type: PolicyName
-          description: <p>The name of the policy.</p>
+      displayName: Get Policy
       responses:
         200:
           body:
@@ -2420,10 +2333,7 @@ types:
           description: InternalFailureException
     delete:
       description: Deletes the specified policy. A policy cannot be deleted if it has non-default versions or it is attached to any certificate. To delete a policy, use the DeletePolicyVersion API to delete all non-default versions of the policy; use the DetachPrincipalPolicy API to detach the policy from any certificate; and then use the DeletePolicy API to delete the policy. When a policy is deleted using DeletePolicy, its default version is deleted with it.
-      headers:
-        policyName?:
-          type: PolicyName
-          description: <p>The name of the policy to delete.</p>
+      displayName: Delete Policy
       responses:
         200:
           body:
@@ -2444,15 +2354,12 @@ types:
           description: InternalFailureException
     post:
       description: Creates an AWS IoT policy. The created policy is the default version for the policy. This operation creates a policy version with a version identifier of <b>1</b> and sets <b>1</b> as the policy's default version.
-      headers:
-        policyName?:
-          type: PolicyName
-          description: <p>The policy name.</p>
+      displayName: Create Policy
       body:
         application/json:
           type: object
           properties:
-            policyDocument:
+            policyDocument?:
               type: PolicyDocument
               description: <p>The JSON document that describes the policy. <b>policyDocument</b> must have a minimum length of 1, with a maximum length of 2048, excluding whitespace.</p>
       responses:
@@ -2473,14 +2380,15 @@ types:
           description: InternalFailureException
   get:
     description: Lists your policies.
+    displayName: List Policies
     queryParameters:
-      marker:
+      marker?:
         type: Marker
         description: <p>The marker for the next set of results.</p>
-      pageSize:
+      pageSize?:
         type: PageSize
         description: <p>The result page size.</p>
-      isAscendingOrder:
+      isAscendingOrder?:
         type: AscendingOrder
         description: <p>Specifies the order for results. If true, the results are returned in ascending creation order.</p>
     responses:
@@ -2500,6 +2408,7 @@ types:
 /loggingOptions:
   post:
     description: Sets the logging options.
+    displayName: Set Logging Options
     body:
       application/json:
         type: LoggingOptionsPayload
@@ -2516,6 +2425,7 @@ types:
         description: ServiceUnavailableException
   get:
     description: Gets the logging options.
+    displayName: Get Logging Options
     body:
       application/json: GetLoggingOptionsRequest
     responses:
@@ -2531,20 +2441,17 @@ types:
 /reject-certificate-transfer:
   /{certificateId}:
     uriParameters:
-      certificateId?:
+      certificateId:
         type: CertificateId
         description: <p>The ID of the certificate.</p>
     patch:
       description: Rejects a pending certificate transfer. After AWS IoT rejects a certificate transfer, the certificate status changes from <b>PENDING_TRANSFER</b> to <b>INACTIVE</b>. To check for pending certificate transfers, call <a>ListCertificates</a> to enumerate your certificates. This operation can only be called by the transfer destination. After it is called, the certificate will be returned to the source's account in the INACTIVE state.
-      headers:
-        certificateId?:
-          type: CertificateId
-          description: <p>The ID of the certificate.</p>
+      displayName: Reject Certificate Transfer
       body:
         application/json:
           type: object
           properties:
-            rejectReason?:
+            rejectReason:
               type: Message
               description: <p>The reason the certificate transfer was rejected.</p>
       responses:
@@ -2568,18 +2475,19 @@ types:
 /policy-principals:
   get:
     description: Lists the principals associated with the specified policy.
+    displayName: List Policy Principals
     queryParameters:
-      marker:
+      marker?:
         type: Marker
         description: <p>The marker for the next set of results.</p>
-      pageSize:
+      pageSize?:
         type: PageSize
         description: <p>The result page size.</p>
-      isAscendingOrder:
+      isAscendingOrder?:
         type: AscendingOrder
         description: <p>Specifies the order for results. If true, the results are returned in ascending creation order.</p>
     headers:
-      x-amzn-iot-policy?:
+      x-amzn-iot-policy:
         type: PolicyName
         description: <p>The policy name.</p>
     responses:
@@ -2601,6 +2509,7 @@ types:
 /endpoint:
   get:
     description: Returns a unique endpoint specific to the AWS account making the call.
+    displayName: Describe Endpoint
     body:
       application/json: DescribeEndpointRequest
     responses:
@@ -2616,19 +2525,16 @@ types:
 /accept-certificate-transfer:
   /{certificateId}:
     uriParameters:
-      certificateId?:
+      certificateId:
         type: CertificateId
         description: <p>The ID of the certificate.</p>
     patch:
       description: Accepts a pending certificate transfer. The default state of the certificate is INACTIVE. To check for pending certificate transfers, call <a>ListCertificates</a> to enumerate your certificates.
+      displayName: Accept Certificate Transfer
       queryParameters:
-        setAsActive:
+        setAsActive?:
           type: SetAsActive
           description: <p>Specifies whether the certificate is active.</p>
-      headers:
-        certificateId?:
-          type: CertificateId
-          description: <p>The ID of the certificate.</p>
       responses:
         200:
           body:
@@ -2650,15 +2556,12 @@ types:
 /cancel-certificate-transfer:
   /{certificateId}:
     uriParameters:
-      certificateId?:
+      certificateId:
         type: CertificateId
         description: <p>The ID of the certificate.</p>
     patch:
       description: Cancels a pending transfer for the specified certificate. <b>Note</b> Only the transfer source account can use this operation to cancel a transfer. (Transfer destinations can use <a>RejectCertificateTransfer</a> instead.) After transfer, AWS IoT returns the certificate to the source account in the INACTIVE state. After the destination account has accepted the transfer, the transfer cannot be cancelled. After a certificate transfer is cancelled, the status of the certificate changes from PENDING_TRANSFER to INACTIVE.
-      headers:
-        certificateId?:
-          type: CertificateId
-          description: <p>The ID of the certificate.</p>
+      displayName: Cancel Certificate Transfer
       responses:
         200:
           body:
@@ -2680,14 +2583,15 @@ types:
 /certificates-out-going:
   get:
     description: Lists certificates that are being transfered but not yet accepted.
+    displayName: List Outgoing Certificates
     queryParameters:
-      pageSize:
+      pageSize?:
         type: PageSize
         description: <p>The result page size.</p>
-      marker:
+      marker?:
         type: Marker
         description: <p>The marker for the next set of results.</p>
-      isAscendingOrder:
+      isAscendingOrder?:
         type: AscendingOrder
         description: <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
     responses:
@@ -2707,24 +2611,21 @@ types:
 /transfer-certificate:
   /{certificateId}:
     uriParameters:
-      certificateId?:
+      certificateId:
         type: CertificateId
         description: <p>The ID of the certificate.</p>
     patch:
       description: Transfers the specified certificate to the specified AWS account. You can cancel the transfer until it is acknowledged by the recipient. No notification is sent to the transfer destination's account. It is up to the caller to notify the transfer target. The certificate being transferred must not be in the ACTIVE state. You can use the UpdateCertificate API to deactivate it. The certificate must not have any policies attached to it. You can use the DetachPrincipalPolicy API to detach them.
+      displayName: Transfer Certificate
       queryParameters:
-        targetAwsAccount?:
+        targetAwsAccount:
           type: AwsAccountId
           description: <p>The AWS account.</p>
-      headers:
-        certificateId?:
-          type: CertificateId
-          description: <p>The ID of the certificate.</p>
       body:
         application/json:
           type: object
           properties:
-            transferMessage?:
+            transferMessage:
               type: Message
               description: <p>The transfer message.</p>
       responses:
@@ -2750,8 +2651,9 @@ types:
 /keys-and-certificate:
   post:
     description: Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued public key. <b>Note</b> This is the only time AWS IoT issues the private key for this certificate, so it is important to keep it in a secure location.
+    displayName: Create Keys And Certificate
     queryParameters:
-      setAsActive:
+      setAsActive?:
         type: SetAsActive
         description: <p>Specifies whether the certificate is active.</p>
     responses:
@@ -2772,21 +2674,22 @@ types:
   /register:
     post:
       description: Registers a device certificate with AWS IoT. If you have more than one CA certificate that has the same subject field, you must specify the CA certificate that was used to sign the device certificate being registered.
+      displayName: Register Certificate
       queryParameters:
-        setAsActive:
+        setAsActive?:
           type: SetAsActiveFlag
           description: <p>A boolean value that specifies if the CA certificate is set to active.</p>
       body:
         application/json:
           type: object
           properties:
-            certificatePem:
+            certificatePem?:
               type: CertificatePem
               description: <p>The certificate data, in PEM format.</p>
-            caCertificatePem?:
+            caCertificatePem:
               type: CertificatePem
               description: <p>The CA certificate used to sign the device certificate being registered.</p>
-            status?:
+            status:
               type: CertificateStatus
       responses:
         200:

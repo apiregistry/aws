@@ -4,6 +4,9 @@ version: '2015-07-01'
 description: Provides AWS Marketplace business intelligence data on-demand.
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   DataSetPublicationDate:
     type: datetime
@@ -172,6 +175,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Given a data set type and data set publication date, asynchronously
@@ -184,6 +188,7 @@ types:
       be overwritten by the new file. Requires a Role with an attached permissions
       policy providing Allow permissions for the following actions: s3:PutObject,
       s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.'
+    displayName: Generate Data Set
     body:
       application/json: GenerateDataSetRequest
     responses:
@@ -198,6 +203,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Given a data set type and a from date, asynchronously publishes
@@ -211,6 +217,7 @@ types:
       an attached permissions policy providing Allow permissions for the following
       actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
       iam:GetRolePolicy.'
+    displayName: Start Support Data Export
     body:
       application/json: StartSupportDataExportRequest
     responses:

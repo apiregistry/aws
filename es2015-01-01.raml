@@ -8,6 +8,9 @@ description: '  Use the Amazon Elasticsearch configuration API to create, config
   target="_blank">Regions and Endpoints</a>.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   ARN:
     type: string
@@ -450,16 +453,13 @@ types:
     /domain:
       /{DomainName}:
         uriParameters:
-          DomainName?:
+          DomainName:
             type: DomainName
             description: <p>The Elasticsearch domain that you want to get information about.</p>
         /config:
           get:
             description: Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options.
-            headers:
-              DomainName?:
-                type: DomainName
-                description: <p>The Elasticsearch domain that you want to get information about.</p>
+            displayName: Describe Elasticsearch Domain Config
             responses:
               200:
                 body:
@@ -473,27 +473,24 @@ types:
           post:
             description: 'Modifies the cluster configuration of the specified Elasticsearch
               domain, setting as setting the instance type and the number of instances. '
-            headers:
-              DomainName?:
-                type: DomainName
-                description: <p>The name of the Elasticsearch domain that you are updating. </p>
+            displayName: Update Elasticsearch Domain Config
             body:
               application/json:
                 type: object
                 properties:
-                  ElasticsearchClusterConfig?:
+                  ElasticsearchClusterConfig:
                     type: ElasticsearchClusterConfig
                     description: <p>The type and number of instances to instantiate for the domain cluster.</p>
-                  EBSOptions?:
+                  EBSOptions:
                     type: EBSOptions
                     description: <p>Specify the type and size of the EBS volume that you want to use. </p>
-                  SnapshotOptions?:
+                  SnapshotOptions:
                     type: SnapshotOptions
                     description: <p>Option to set the time, in UTC format, for the daily automated snapshot. Default value is <code>0</code> hours. </p>
-                  AdvancedOptions?:
+                  AdvancedOptions:
                     type: AdvancedOptions
                     description: <p>Modifies the advanced option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</p>
-                  AccessPolicies?:
+                  AccessPolicies:
                     type: PolicyDocument
                     description: <p>IAM access policy as a JSON-formatted string.</p>
             responses:
@@ -508,10 +505,7 @@ types:
                 description: InvalidTypeException | LimitExceededException | ResourceNotFoundException
         delete:
           description: Permanently deletes the specified Elasticsearch domain and all of its data. Once a domain is deleted, it cannot be recovered.
-          headers:
-            DomainName?:
-              type: DomainName
-              description: <p>The name of the Elasticsearch domain that you want to permanently delete.</p>
+          displayName: Delete Elasticsearch Domain
           responses:
             200:
               body:
@@ -524,10 +518,7 @@ types:
               description: ResourceNotFoundException
         get:
           description: Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN.
-          headers:
-            DomainName?:
-              type: DomainName
-              description: <p>The name of the Elasticsearch domain for which you want information.</p>
+          displayName: Describe Elasticsearch Domain
           responses:
             200:
               body:
@@ -540,6 +531,7 @@ types:
               description: ResourceNotFoundException
       post:
         description: Creates a new Elasticsearch domain. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>.
+        displayName: Create Elasticsearch Domain
         body:
           application/json: CreateElasticsearchDomainRequest
         responses:
@@ -555,6 +547,7 @@ types:
     /domain-info:
       post:
         description: Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN.
+        displayName: Describe Elasticsearch Domains
         body:
           application/json: DescribeElasticsearchDomainsRequest
         responses:
@@ -568,8 +561,9 @@ types:
   /tags:
     get:
       description: Returns all tags for the given Elasticsearch domain.
+      displayName: List Tags
       queryParameters:
-        arn?:
+        arn:
           type: ARN
           description: <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags are attached that you want to view.</p>
       responses:
@@ -584,6 +578,7 @@ types:
           description: InternalException
     post:
       description: Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value pairs. An Elasticsearch domain may have up to 10 tags. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging" target="_blank"> Tagging Amazon Elasticsearch Service Domains for more information.</a>
+      displayName: Add Tags
       body:
         application/json: AddTagsRequest
       responses:
@@ -600,6 +595,7 @@ types:
     get:
       description: 'Returns the name of all Elasticsearch domains owned by the current
         user''s account. '
+      displayName: List Domain Names
       responses:
         200:
           body:
@@ -609,6 +605,7 @@ types:
   /tags-removal:
     post:
       description: Removes the specified set of tags from the specified Elasticsearch domain.
+      displayName: Remove Tags
       body:
         application/json: RemoveTagsRequest
       responses:

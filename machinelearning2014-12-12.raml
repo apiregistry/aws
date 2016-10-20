@@ -4,6 +4,9 @@ version: '2014-12-12'
 description: Definition of the public APIs exposed by Amazon Machine Learning
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   Algorithm:
     type: string
@@ -1989,9 +1992,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Adds one or more tags to an object, up to a limit of 10. Each tag consists of a key and an optional value. If you add a tag using a key that is already associated with the ML object, <code>AddTags</code> updates the tag's value.
+    displayName: Add Tags
     body:
       application/json: AddTagsInput
     responses:
@@ -2010,9 +2015,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Generates predictions for a group of observations. The observations to process exist in one or more data files referenced by a <code>DataSource</code>. This operation creates a new <code>BatchPrediction</code>, and uses an <code>MLModel</code> and the data files referenced by the <code>DataSource</code> as information sources.  <code>CreateBatchPrediction</code> is an asynchronous operation. In response to <code>CreateBatchPrediction</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>BatchPrediction</code> status to <code>PENDING</code>. After the <code>BatchPrediction</code> completes, Amazon ML sets the status to <code>COMPLETED</code>.  You can poll for status updates by using the <a>GetBatchPrediction</a> operation and checking the <code>Status</code> parameter of the result. After the <code>COMPLETED</code> status appears, the results are available in the location specified by the <code>OutputUri</code> parameter.
+    displayName: Create Batch Prediction
     body:
       application/json: CreateBatchPredictionInput
     responses:
@@ -2029,6 +2036,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates a <code>DataSource</code> object from an <a href="http://aws.amazon.com/rds/">
@@ -2045,6 +2053,7 @@ types:
       the input source, it sets the <code>Status</code> parameter to <code>FAILED</code>
       and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code>
       operation response. '
+    displayName: Create Data Source From R D S
     body:
       application/json: CreateDataSourceFromRDSInput
     responses:
@@ -2061,9 +2070,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a <code>DataSource</code> from a database hosted on an Amazon Redshift cluster. A <code>DataSource</code> references data that can be used to perform either <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations. <code>CreateDataSourceFromRedshift</code> is an asynchronous operation. In response to <code>CreateDataSourceFromRedshift</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>DataSource</code> status to <code>PENDING</code>. After the <code>DataSource</code> is created and ready for use, Amazon ML sets the <code>Status</code> parameter to <code>COMPLETED</code>. <code>DataSource</code> in <code>COMPLETED</code> or <code>PENDING</code> states can be used to perform only <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations.   If Amazon ML can't accept the input source, it sets the <code>Status</code> parameter to <code>FAILED</code> and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code> operation response.  The observations should be contained in the database hosted on an Amazon Redshift cluster and should be specified by a <code>SelectSqlQuery</code> query. Amazon ML executes an <code>Unload</code> command in Amazon Redshift to transfer the result set of the <code>SelectSqlQuery</code> query to <code>S3StagingLocation</code>. After the <code>DataSource</code> has been created, it's ready for use in evaluations and batch predictions. If you plan to use the <code>DataSource</code> to train an <code>MLModel</code>, the <code>DataSource</code> also requires a recipe. A recipe describes how each input variable will be used in training an <code>MLModel</code>. Will the variable be included or excluded from training? Will the variable be manipulated; for example, will it be combined with another variable or will it be split apart into word combinations? The recipe provides answers to these questions. <?oxy_insert_start author="laurama" timestamp="20160406T153842-0700">You can't change an existing datasource, but you can copy and modify the settings from an existing Amazon Redshift datasource to create a new datasource. To do so, call <code>GetDataSource</code> for an existing datasource and copy the values to a <code>CreateDataSource</code> call. Change the settings that you want to change and make sure that all required fields have the appropriate values. <?oxy_insert_end>
+    displayName: Create Data Source From Redshift
     body:
       application/json: CreateDataSourceFromRedshiftInput
     responses:
@@ -2080,9 +2091,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a <code>DataSource</code> object. A <code>DataSource</code> references data that can be used to perform <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations. <code>CreateDataSourceFromS3</code> is an asynchronous operation. In response to <code>CreateDataSourceFromS3</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>DataSource</code> status to <code>PENDING</code>. After the <code>DataSource</code> has been created and is ready for use, Amazon ML sets the <code>Status</code> parameter to <code>COMPLETED</code>. <code>DataSource</code> in the <code>COMPLETED</code> or <code>PENDING</code> state can be used to perform only <code>CreateMLModel</code>, <code>CreateEvaluation</code> or <code>CreateBatchPrediction</code> operations.   If Amazon ML can't accept the input source, it sets the <code>Status</code> parameter to <code>FAILED</code> and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code> operation response.  The observation data used in a <code>DataSource</code> should be ready to use; that is, it should have a consistent structure, and missing data values should be kept to a minimum. The observation data must reside in one or more .csv files in an Amazon Simple Storage Service (Amazon S3) location, along with a schema that describes the data items by name and type. The same schema must be used for all of the data files referenced by the <code>DataSource</code>.  After the <code>DataSource</code> has been created, it's ready to use in evaluations and batch predictions. If you plan to use the <code>DataSource</code> to train an <code>MLModel</code>, the <code>DataSource</code> also needs a recipe. A recipe describes how each input variable will be used in training an <code>MLModel</code>. Will the variable be included or excluded from training? Will the variable be manipulated; for example, will it be combined with another variable or will it be split apart into word combinations? The recipe provides answers to these questions.
+    displayName: Create Data Source From S3
     body:
       application/json: CreateDataSourceFromS3Input
     responses:
@@ -2099,6 +2112,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates a new <code>Evaluation</code> of an <code>MLModel</code>.
@@ -2117,6 +2131,7 @@ types:
       and ready for use, Amazon ML sets the status to <code>COMPLETED</code>.  You
       can use the <code>GetEvaluation</code> operation to check progress of the evaluation
       during the creation operation.'
+    displayName: Create Evaluation
     body:
       application/json: CreateEvaluationInput
     responses:
@@ -2133,6 +2148,7 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Creates a new <code>MLModel</code> using the <code>DataSource</code>
@@ -2148,6 +2164,7 @@ types:
       with computed statistics, which can be created by setting <code>ComputeStatistics</code>
       to <code>true</code> in <code>CreateDataSourceFromRDS</code>, <code>CreateDataSourceFromS3</code>,
       or <code>CreateDataSourceFromRedshift</code> operations. '
+    displayName: Create M L Model
     body:
       application/json: CreateMLModelInput
     responses:
@@ -2164,9 +2181,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Creates a real-time endpoint for the <code>MLModel</code>. The endpoint contains the URI of the <code>MLModel</code>; that is, the location to send real-time prediction requests for the specified <code>MLModel</code>.
+    displayName: Create Realtime Endpoint
     body:
       application/json: CreateRealtimeEndpointInput
     responses:
@@ -2185,9 +2204,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Assigns the DELETED status to a <code>BatchPrediction</code>, rendering it unusable. After using the <code>DeleteBatchPrediction</code> operation, you can use the <a>GetBatchPrediction</a> operation to verify that the status of the <code>BatchPrediction</code> changed to DELETED. <b>Caution:</b> The result of the <code>DeleteBatchPrediction</code> operation is irreversible.
+    displayName: Delete Batch Prediction
     body:
       application/json: DeleteBatchPredictionInput
     responses:
@@ -2206,9 +2227,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Assigns the DELETED status to a <code>DataSource</code>, rendering it unusable. After using the <code>DeleteDataSource</code> operation, you can use the <a>GetDataSource</a> operation to verify that the status of the <code>DataSource</code> changed to DELETED. <b>Caution:</b> The results of the <code>DeleteDataSource</code> operation are irreversible.
+    displayName: Delete Data Source
     body:
       application/json: DeleteDataSourceInput
     responses:
@@ -2227,9 +2250,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Assigns the <code>DELETED</code> status to an <code>Evaluation</code>, rendering it unusable. After invoking the <code>DeleteEvaluation</code> operation, you can use the <code>GetEvaluation</code> operation to verify that the status of the <code>Evaluation</code> changed to <code>DELETED</code>. <caution><title>Caution</title> The results of the <code>DeleteEvaluation</code> operation are irreversible.</caution>
+    displayName: Delete Evaluation
     body:
       application/json: DeleteEvaluationInput
     responses:
@@ -2248,9 +2273,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Assigns the <code>DELETED</code> status to an <code>MLModel</code>, rendering it unusable. After using the <code>DeleteMLModel</code> operation, you can use the <code>GetMLModel</code> operation to verify that the status of the <code>MLModel</code> changed to DELETED. <b>Caution:</b> The result of the <code>DeleteMLModel</code> operation is irreversible.
+    displayName: Delete M L Model
     body:
       application/json: DeleteMLModelInput
     responses:
@@ -2269,9 +2296,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes a real time endpoint of an <code>MLModel</code>.
+    displayName: Delete Realtime Endpoint
     body:
       application/json: DeleteRealtimeEndpointInput
     responses:
@@ -2290,9 +2319,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Deletes the specified tags associated with an ML object. After this operation is complete, you can't recover deleted tags. If you specify a tag that doesn't exist, Amazon ML ignores it.
+    displayName: Delete Tags
     body:
       application/json: DeleteTagsInput
     responses:
@@ -2311,9 +2342,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a list of <code>BatchPrediction</code> operations that match the search criteria in the request.
+    displayName: Describe Batch Predictions
     body:
       application/json: DescribeBatchPredictionsInput
     responses:
@@ -2330,9 +2363,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a list of <code>DataSource</code> that match the search criteria in the request.
+    displayName: Describe Data Sources
     body:
       application/json: DescribeDataSourcesInput
     responses:
@@ -2349,9 +2384,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a list of <code>DescribeEvaluations</code> that match the search criteria in the request.
+    displayName: Describe Evaluations
     body:
       application/json: DescribeEvaluationsInput
     responses:
@@ -2368,9 +2405,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a list of <code>MLModel</code> that match the search criteria in the request.
+    displayName: Describe M L Models
     body:
       application/json: DescribeMLModelsInput
     responses:
@@ -2387,9 +2426,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Describes one or more of the tags for your Amazon ML object.
+    displayName: Describe Tags
     body:
       application/json: DescribeTagsInput
     responses:
@@ -2408,9 +2449,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a <code>BatchPrediction</code> that includes detailed metadata, status, and data file information for a <code>Batch Prediction</code> request.
+    displayName: Get Batch Prediction
     body:
       application/json: GetBatchPredictionInput
     responses:
@@ -2429,9 +2472,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns a <code>DataSource</code> that includes metadata and data file information, as well as the current status of the <code>DataSource</code>. <code>GetDataSource</code> provides results in normal or verbose format. The verbose format adds the schema description and the list of files pointed to by the DataSource to the normal format.
+    displayName: Get Data Source
     body:
       application/json: GetDataSourceInput
     responses:
@@ -2450,9 +2495,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Returns an <code>Evaluation</code> that includes metadata as well as the current status of the <code>Evaluation</code>.
+    displayName: Get Evaluation
     body:
       application/json: GetEvaluationInput
     responses:
@@ -2471,11 +2518,13 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: 'Returns an <code>MLModel</code> that includes detailed metadata,
       data source information, and the current status of the <code>MLModel</code>.
       <code>GetMLModel</code> provides results in normal or verbose format. '
+    displayName: Get M L Model
     body:
       application/json: GetMLModelInput
     responses:
@@ -2494,9 +2543,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Generates a prediction for the observation using the specified <code>ML Model</code>. <note><title>Note</title> Not all response parameters will be populated. Whether a response parameter is populated depends on the type of model requested.</note>
+    displayName: Predict
     body:
       application/json: PredictInput
     responses:
@@ -2517,9 +2568,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates the <code>BatchPredictionName</code> of a <code>BatchPrediction</code>. You can use the <code>GetBatchPrediction</code> operation to view the contents of the updated data element.
+    displayName: Update Batch Prediction
     body:
       application/json: UpdateBatchPredictionInput
     responses:
@@ -2538,9 +2591,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates the <code>DataSourceName</code> of a <code>DataSource</code>. You can use the <code>GetDataSource</code> operation to view the contents of the updated data element.
+    displayName: Update Data Source
     body:
       application/json: UpdateDataSourceInput
     responses:
@@ -2559,9 +2614,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates the <code>EvaluationName</code> of an <code>Evaluation</code>. You can use the <code>GetEvaluation</code> operation to view the contents of the updated data element.
+    displayName: Update Evaluation
     body:
       application/json: UpdateEvaluationInput
     responses:
@@ -2580,9 +2637,11 @@ types:
       type: string
       enum:
       - ''
+      (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
   post:
     description: Updates the <code>MLModelName</code> and the <code>ScoreThreshold</code> of an <code>MLModel</code>. You can use the <code>GetMLModel</code> operation to view the contents of the updated data element.
+    displayName: Update M L Model
     body:
       application/json: UpdateMLModelInput
     responses:

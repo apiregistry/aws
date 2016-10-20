@@ -4,6 +4,9 @@ version: '2012-09-25'
 description: '  The AWS Elastic Transcoder Service.'
 mediaType:
 - application/json
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+  extras: https://raw.githubusercontent.com/apiregistry/typesExtras/master/typeExtras.raml
 types:
   AccessControl:
     type: string
@@ -1933,15 +1936,12 @@ types:
   /jobs:
     /{Id}:
       uriParameters:
-        Id?:
+        Id:
           type: Id
           description: <p>The identifier of the job that you want to cancel. </p> <p>To get a list of the jobs (including their <code>jobId</code>) that have a status of <code>Submitted</code>, use the <a>ListJobsByStatus</a> API action.</p>
       delete:
         description: The CancelJob operation cancels an unfinished job. <note>You can only cancel a job that has a status of <code>Submitted</code>. To prevent a pipeline from starting to process a job while you're getting the job identifier, use <a>UpdatePipelineStatus</a> to temporarily pause the pipeline.</note>
-        headers:
-          Id?:
-            type: Id
-            description: <p>The identifier of the job that you want to cancel. </p> <p>To get a list of the jobs (including their <code>jobId</code>) that have a status of <code>Submitted</code>, use the <a>ListJobsByStatus</a> API action.</p>
+        displayName: Cancel Job
         responses:
           202:
             body:
@@ -1956,10 +1956,7 @@ types:
             description: AccessDeniedException
       get:
         description: The ReadJob operation returns detailed information about a job.
-        headers:
-          Id?:
-            type: Id
-            description: <p>The identifier of the job for which you want to get detailed information.</p>
+        displayName: Read Job
         responses:
           200:
             body:
@@ -1977,6 +1974,7 @@ types:
         example, one output for the Kindle Fire and another output for the Apple iPhone
         4s), you currently must use the Elastic Transcoder API to list the jobs (as
         opposed to the AWS Console).'
+      displayName: Create Job
       body:
         application/json: CreateJobRequest
       responses:
@@ -1994,15 +1992,12 @@ types:
   /presets:
     /{Id}:
       uriParameters:
-        Id?:
+        Id:
           type: Id
           description: <p>The identifier of the preset for which you want to get detailed information.</p>
       get:
         description: The ReadPreset operation gets detailed information about a preset.
-        headers:
-          Id?:
-            type: Id
-            description: <p>The identifier of the preset for which you want to get detailed information.</p>
+        displayName: Read Preset
         responses:
           200:
             body:
@@ -2015,10 +2010,7 @@ types:
             description: AccessDeniedException
       delete:
         description: The DeletePreset operation removes a preset that you've added in an AWS region. <note> You can't delete the default presets that are included with Elastic Transcoder. </note>
-        headers:
-          Id?:
-            type: Id
-            description: <p>The identifier of the preset for which you want to get detailed information.</p>
+        displayName: Delete Preset
         responses:
           202:
             body:
@@ -2044,6 +2036,7 @@ types:
         format. For more information, see the International Telecommunication Union
         publication <i>Recommendation ITU-T H.264: Advanced video coding for generic
         audiovisual services</i>.'
+      displayName: Create Preset
       body:
         application/json: CreatePresetRequest
       responses:
@@ -2058,11 +2051,12 @@ types:
           description: LimitExceededException
     get:
       description: The ListPresets operation gets a list of the default presets included with Elastic Transcoder and the presets that you've added in an AWS region.
+      displayName: List Presets
       queryParameters:
-        Ascending:
+        Ascending?:
           type: Ascending
           description: <p>To list presets in chronological order by the date and time that they were created, enter <code>true</code>. To list presets in reverse chronological order, enter <code>false</code>.</p>
-        PageToken:
+        PageToken?:
           type: Id
           description: <p>When Elastic Transcoder returns more than one page of results, use <code>pageToken</code> in subsequent <code>GET</code> requests to get each successive page of results. </p>
       responses:
@@ -2076,22 +2070,19 @@ types:
   /jobsByPipeline:
     /{PipelineId}:
       uriParameters:
-        PipelineId?:
+        PipelineId:
           type: Id
           description: <p> The ID of the pipeline for which you want to get job information. </p>
       get:
         description: The ListJobsByPipeline operation gets a list of the jobs currently in a pipeline. Elastic Transcoder returns all of the jobs currently in the specified pipeline. The response body contains one element for each job that satisfies the search criteria.
+        displayName: List Jobs By Pipeline
         queryParameters:
-          Ascending:
+          Ascending?:
             type: Ascending
             description: <p> To list jobs in chronological order by the date and time that they were submitted, enter <code>true</code>. To list jobs in reverse chronological order, enter <code>false</code>. </p>
-          PageToken:
+          PageToken?:
             type: Id
             description: <p> When Elastic Transcoder returns more than one page of results, use <code>pageToken</code> in subsequent <code>GET</code> requests to get each successive page of results. </p>
-        headers:
-          PipelineId?:
-            type: Id
-            description: <p> The ID of the pipeline for which you want to get job information. </p>
         responses:
           200:
             body:
@@ -2105,7 +2096,7 @@ types:
   /pipelines:
     /{Id}:
       uriParameters:
-        Id?:
+        Id:
           type: Id
           description: <p>The identifier of the pipeline to read.</p>
       /status:
@@ -2117,15 +2108,12 @@ types:
             them; if you pause the pipeline to which you submitted the jobs, you have
             more time to get the job IDs for the jobs that you want to cancel, and
             to send a <a>CancelJob</a> request. '
-          headers:
-            Id?:
-              type: Id
-              description: <p>The identifier of the pipeline to update.</p>
+          displayName: Update Pipeline Status
           body:
             application/json:
               type: object
               properties:
-                Status:
+                Status?:
                   type: PipelineStatus
                   description: '<p>The desired status of the pipeline:</p> <ul> <li>
                     <code>Active</code>: The pipeline is processing jobs.</li> <li>
@@ -2146,15 +2134,12 @@ types:
       /notifications:
         post:
           description: With the UpdatePipelineNotifications operation, you can update Amazon Simple Notification Service (Amazon SNS) notifications for a pipeline. When you update notifications for a pipeline, Elastic Transcoder returns the values that you specified in the request.
-          headers:
-            Id?:
-              type: Id
-              description: <p> The identifier of the pipeline for which you want to change notification settings. </p>
+          displayName: Update Pipeline Notifications
           body:
             application/json:
               type: object
               properties:
-                Notifications:
+                Notifications?:
                   type: Notifications
                   description: '<p>The topic ARN for the Amazon Simple Notification
                     Service (Amazon SNS) topic that you want to notify to report job
@@ -2189,10 +2174,7 @@ types:
               description: AccessDeniedException
       get:
         description: The ReadPipeline operation gets detailed information about a pipeline.
-        headers:
-          Id?:
-            type: Id
-            description: <p>The identifier of the pipeline to read.</p>
+        displayName: Read Pipeline
         responses:
           200:
             body:
@@ -2209,31 +2191,28 @@ types:
           take effect immediately. Jobs that you have already submitted and that Elastic
           Transcoder has not started to process are affected in addition to jobs that
           you submit after you change settings. </important> '
-        headers:
-          Id?:
-            type: Id
-            description: <p>The ID of the pipeline that you want to update.</p>
+        displayName: Update Pipeline
         body:
           application/json:
             type: object
             properties:
-              Name?:
+              Name:
                 type: Name
                 description: '<p>The name of the pipeline. We recommend that the name
                   be unique within the AWS account, but uniqueness is not enforced.</p>
                   <p>Constraints: Maximum 40 characters</p>'
-              InputBucket?:
+              InputBucket:
                 type: BucketName
                 description: <p>The Amazon S3 bucket in which you saved the media files that you want to transcode and the graphics that you want to use as watermarks.</p>
-              Role?:
+              Role:
                 type: Role
                 description: <p>The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to use to transcode jobs for this pipeline.</p>
-              AwsKmsKeyArn?:
+              AwsKmsKeyArn:
                 type: KeyArn
                 description: <p>The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.</p> <p>If you use either <code>S3</code> or <code>S3-AWS-KMS</code> as your <code>Encryption:Mode</code>, you don't need to provide a key with your job because a default key, known as an AWS-KMS key, is created for you automatically. You need to provide an AWS-KMS key only if you want to use a non-default AWS-KMS key, or if you are using an <code>Encryption:Mode</code> of <code>AES-PKCS7</code>, <code>AES-CTR</code>, or <code>AES-GCM</code>.</p>
-              Notifications?:
+              Notifications:
                 type: Notifications
-              ContentConfig?:
+              ContentConfig:
                 type: PipelineOutputConfig
                 description: '<p>The optional <code>ContentConfig</code> object specifies
                   information about the Amazon S3 bucket in which you want Elastic
@@ -2286,7 +2265,7 @@ types:
                   Amazon S3 storage class, <code>Standard</code> or <code>ReducedRedundancy</code>,
                   that you want Elastic Transcoder to assign to the video files and
                   playlists that it stores in your Amazon S3 bucket.</li> </ul>'
-              ThumbnailConfig?:
+              ThumbnailConfig:
                 type: PipelineOutputConfig
                 description: '<p>The <code>ThumbnailConfig</code> object specifies
                   several values, including the Amazon S3 bucket in which you want
@@ -2351,10 +2330,7 @@ types:
           delete a pipeline that has never been used or that is not currently in use
           (doesn''t contain any active jobs). If the pipeline is currently in use,
           <code>DeletePipeline</code> returns an error. '
-        headers:
-          Id?:
-            type: Id
-            description: <p>The identifier of the pipeline that you want to delete.</p>
+        displayName: Delete Pipeline
         responses:
           202:
             body:
@@ -2369,11 +2345,12 @@ types:
             description: AccessDeniedException
     get:
       description: The ListPipelines operation gets a list of the pipelines associated with the current AWS account.
+      displayName: List Pipelines
       queryParameters:
-        Ascending:
+        Ascending?:
           type: Ascending
           description: <p>To list pipelines in chronological order by the date and time that they were created, enter <code>true</code>. To list pipelines in reverse chronological order, enter <code>false</code>.</p>
-        PageToken:
+        PageToken?:
           type: Id
           description: <p>When Elastic Transcoder returns more than one page of results, use <code>pageToken</code> in subsequent <code>GET</code> requests to get each successive page of results. </p>
       responses:
@@ -2386,6 +2363,7 @@ types:
           description: AccessDeniedException
     post:
       description: The CreatePipeline operation creates a pipeline with settings that you specify.
+      displayName: Create Pipeline
       body:
         application/json: CreatePipelineRequest
       responses:
@@ -2403,7 +2381,7 @@ types:
   /jobsByStatus:
     /{Status}:
       uriParameters:
-        Status?:
+        Status:
           type: JobStatus
           description: '<p>To get information about all of the jobs associated with
             the current AWS account that have a given status, specify the following
@@ -2411,20 +2389,14 @@ types:
             <code>Canceled</code>, or <code>Error</code>.</p>'
       get:
         description: The ListJobsByStatus operation gets a list of jobs that have a specified status. The response body contains one element for each job that satisfies the search criteria.
+        displayName: List Jobs By Status
         queryParameters:
-          Ascending:
+          Ascending?:
             type: Ascending
             description: <p> To list jobs in chronological order by the date and time that they were submitted, enter <code>true</code>. To list jobs in reverse chronological order, enter <code>false</code>. </p>
-          PageToken:
+          PageToken?:
             type: Id
             description: <p> When Elastic Transcoder returns more than one page of results, use <code>pageToken</code> in subsequent <code>GET</code> requests to get each successive page of results. </p>
-        headers:
-          Status?:
-            type: JobStatus
-            description: '<p>To get information about all of the jobs associated with
-              the current AWS account that have a given status, specify the following
-              status: <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>,
-              <code>Canceled</code>, or <code>Error</code>.</p>'
         responses:
           200:
             body:
@@ -2438,6 +2410,7 @@ types:
   /roleTests:
     post:
       description: The TestRole operation tests the IAM role used to create the pipeline. The <code>TestRole</code> action lets you determine whether the IAM role you are using has sufficient permissions to let Elastic Transcoder perform tasks associated with the transcoding process. The action attempts to assume the specified IAM role, checks read access to the input and output buckets, and tries to send a test notification to Amazon SNS topics that you specify.
+      displayName: Test Role
       body:
         application/json: TestRoleRequest
       responses:
