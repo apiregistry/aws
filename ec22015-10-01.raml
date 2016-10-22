@@ -12430,10 +12430,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Create Network Acl Entry
+  displayName: Create Network AclEntry
   post:
     description: Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules. We recommend that you leave room between the rule numbers (for example, 100, 110, 120, ...), and not number them one right after the other (for example, 101, 102, 103, ...). This makes it easier to add a rule between existing ones without having to renumber the rules. After you add an entry, you can't modify it; you must either replace it, or create an entry and delete the old one. For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
-    displayName: Create Network Acl Entry
+    displayName: Create Network AclEntry
     queryParameters:
       Action:
         type: string
@@ -13044,10 +13044,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Delete Network Acl Entry
+  displayName: Delete Network AclEntry
   post:
     description: Deletes the specified ingress or egress entry (rule) from the specified network ACL.
-    displayName: Delete Network Acl Entry
+    displayName: Delete Network AclEntry
     queryParameters:
       Action:
         type: string
@@ -13724,7 +13724,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Describe Id Format
+  displayName: Describe IdFormat
   post:
     description: 'Describes the ID format settings for your resources on a per-region
       basis, for example, to view which resource types are enabled for longer IDs.
@@ -13738,7 +13738,7 @@ types:
       Resources created with longer IDs are visible to all IAM users, regardless of
       these settings and provided that they have permission to use the relevant <code>Describe</code>
       command for the resource type.'
-    displayName: Describe Id Format
+    displayName: Describe IdFormat
     queryParameters:
       Action:
         type: string
@@ -14808,10 +14808,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Describe Vpc Classic Link Dns Support
+  displayName: Describe Vpc Classic LinkDns Support
   post:
     description: Describes the ClassicLink DNS support status of one or more VPCs. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information about ClassicLink, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the Amazon Elastic Compute Cloud User Guide.
-    displayName: Describe Vpc Classic Link Dns Support
+    displayName: Describe Vpc Classic LinkDns Support
     queryParameters:
       Action:
         type: string
@@ -15130,10 +15130,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Disable Vpc Classic Link Dns Support
+  displayName: Disable Vpc Classic LinkDns Support
   post:
     description: Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames resolve to public IP addresses when addressed between a linked EC2-Classic instance and instances in the VPC to which it's linked. For more information about ClassicLink, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the Amazon Elastic Compute Cloud User Guide.
-    displayName: Disable Vpc Classic Link Dns Support
+    displayName: Disable Vpc Classic LinkDns Support
     queryParameters:
       Action:
         type: string
@@ -15268,10 +15268,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Enable Vpc Classic Link Dns Support
+  displayName: Enable Vpc Classic LinkDns Support
   post:
     description: Enables a VPC to support DNS hostname resolution for ClassicLink. If enabled, the DNS hostname of a linked EC2-Classic instance resolves to its private IP address when addressed from an instance in the VPC to which it's linked. Similarly, the DNS hostname of an instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic instance. For more information about ClassicLink, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the Amazon Elastic Compute Cloud User Guide.
-    displayName: Enable Vpc Classic Link Dns Support
+    displayName: Enable Vpc Classic LinkDns Support
     queryParameters:
       Action:
         type: string
@@ -15498,7 +15498,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Modify Id Format
+  displayName: Modify IdFormat
   post:
     description: 'Modifies the ID format for the specified resource on a per-region
       basis. You can specify that resources should receive longer IDs (17-character
@@ -15514,7 +15514,7 @@ types:
       Guide</i>.  Resources created with longer IDs are visible to all IAM users,
       regardless of these settings and provided that they have permission to use the
       relevant <code>Describe</code> command for the resource type.'
-    displayName: Modify Id Format
+    displayName: Modify IdFormat
     queryParameters:
       Action:
         type: string
@@ -16034,10 +16034,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Replace Network Acl Association
+  displayName: Replace Network AclAssociation
   post:
     description: Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
-    displayName: Replace Network Acl Association
+    displayName: Replace Network AclAssociation
     queryParameters:
       Action:
         type: string
@@ -16057,10 +16057,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Replace Network Acl Entry
+  displayName: Replace Network AclEntry
   post:
     description: Replaces an entry (rule) in a network ACL. For more information about network ACLs, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html">Network ACLs</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
-    displayName: Replace Network Acl Entry
+    displayName: Replace Network AclEntry
     queryParameters:
       Action:
         type: string

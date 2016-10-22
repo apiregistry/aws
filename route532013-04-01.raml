@@ -1765,7 +1765,7 @@ types:
           404:
             description: NoSuchTrafficPolicyInstance | NoSuchTrafficPolicy
     /hostedzone:
-      displayName: List Traffic Policy Instances By Hosted Zone
+      displayName: List Traffic Policy Instances By HostedZone
       get:
         description: 'Gets information about the traffic policy instances that you
           created in a specified hosted zone. <note> After you submit an <code>UpdateTrafficPolicyInstance</code>
@@ -1793,7 +1793,7 @@ types:
           values in the corresponding request parameters. If <code>IsTruncated</code>
           is <code>false</code>, all three elements are omitted from the response.
           </li> </ul>'
-        displayName: List Traffic Policy Instances By Hosted Zone
+        displayName: List Traffic Policy Instances By HostedZone
         queryParameters:
           Action:
             type: string
@@ -1879,10 +1879,10 @@ types:
           description: <p>The ID of the hosted zone that you want to see changes for.</p>
       displayName: Delete Hosted Zone
       /rrsChanges:
-        displayName: List Change Batches By R R Set
+        displayName: List Change Batches By R RSet
         get:
           description: Gets the list of ChangeBatches in a given time period for a given hosted zone and RRSet.
-          displayName: List Change Batches By R R Set
+          displayName: List Change Batches By R RSet
           queryParameters:
             Action:
               type: string
@@ -1918,10 +1918,10 @@ types:
             400:
               description: InvalidInput
       /disassociatevpc:
-        displayName: Disassociate V P C From Hosted Zone
+        displayName: Disassociate V PC FromHosted Zone
         post:
           description: Disassociates a VPC from a Amazon Route 53 private hosted zone.  Send a <code>POST</code> request to the <code>/<i>Amazon Route 53 API version</i>/hostedzone/<i>hosted zone ID</i>/disassociatevpc</code> resource. The request body must include an XML document with a <code>DisassociateVPCFromHostedZoneRequest</code> element. The response returns the <code>DisassociateVPCFromHostedZoneResponse</code> element. <important> You can only disassociate a VPC from a private hosted zone when two or more VPCs are associated with that hosted zone. You cannot convert a private hosted zone into a public hosted zone. </important>
-          displayName: Disassociate V P C From Hosted Zone
+          displayName: Disassociate V PC FromHosted Zone
           queryParameters:
             Action:
               type: string
@@ -2117,10 +2117,10 @@ types:
             400:
               description: InvalidInput
       /associatevpc:
-        displayName: Associate V P C With Hosted Zone
+        displayName: Associate V PC WithHosted Zone
         post:
           description: Associates an Amazon VPC with a private hosted zone.  <important> The VPC and the hosted zone must already exist, and you must have created a private hosted zone. You cannot convert a public hosted zone into a private hosted zone. </important> Send a <code>POST</code> request to the <code>/<i>Amazon Route 53 API version</i>/hostedzone/<i>hosted zone ID</i>/associatevpc</code> resource. The request body must include an XML document with a <code>AssociateVPCWithHostedZoneRequest</code> element. The response returns the <code>AssociateVPCWithHostedZoneResponse</code> element. <note> If you used different accounts to create the hosted zone and to create the Amazon VPCs that you want to associate with the hosted zone, we need to update account permissions for you. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zone-private-associate-vpcs-different-accounts.html">Associating Amazon VPCs and Private Hosted Zones That You Create with Different AWS Accounts</a> in the Amazon Route 53 Developer Guide. </note>
-          displayName: Associate V P C With Hosted Zone
+          displayName: Associate V PC WithHosted Zone
           queryParameters:
             Action:
               type: string
@@ -2334,10 +2334,10 @@ types:
             400:
               description: InvalidInput
       /lastfailurereason:
-        displayName: Get Health Check Last Failure Reason
+        displayName: Get Health Check LastFailure Reason
         get:
           description: If you want to learn why a health check is currently failing or why it failed most recently (if at all), you can get the failure reason for the most recent failure. Send a <code>GET</code> request to the <code>/<i>Amazon Route 53 API version</i>/healthcheck/<i>health check ID</i>/lastfailurereason</code> resource.
-          displayName: Get Health Check Last Failure Reason
+          displayName: Get Health Check LastFailure Reason
           queryParameters:
             Action:
               type: string
@@ -2626,9 +2626,9 @@ types:
         400:
           description: InvalidInput
   /testdnsanswer:
-    displayName: Test D N S Answer
+    displayName: Test D NS Answer
     get:
-      displayName: Test D N S Answer
+      displayName: Test D NS Answer
       queryParameters:
         Action:
           type: string
@@ -2915,15 +2915,15 @@ types:
         ResourceType:
           type: TagResourceType
           description: <p>The type of the resource.</p> <ul> <li> <p>The resource type for health checks is <code>healthcheck</code>.</p> </li> <li> <p>The resource type for hosted zones is <code>hostedzone</code>.</p> </li> </ul>
-      displayName: List Tags For Resources
+      displayName: List Tags ForResources
       /{ResourceId}:
         uriParameters:
           ResourceId:
             type: TagResourceId
             description: <p>The ID of the resource for which you want to retrieve tags.</p>
-        displayName: Change Tags For Resource
+        displayName: Change Tags ForResource
         get:
-          displayName: List Tags For Resource
+          displayName: List Tags ForResource
           queryParameters:
             Action:
               type: string
@@ -2938,7 +2938,7 @@ types:
             404:
               description: NoSuchHealthCheck | NoSuchHostedZone
         post:
-          displayName: Change Tags For Resource
+          displayName: Change Tags ForResource
           queryParameters:
             Action:
               type: string
@@ -2963,7 +2963,7 @@ types:
             404:
               description: NoSuchHealthCheck | NoSuchHostedZone
       post:
-        displayName: List Tags For Resources
+        displayName: List Tags ForResources
         queryParameters:
           Action:
             type: string

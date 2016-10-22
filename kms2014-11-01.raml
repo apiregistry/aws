@@ -1063,10 +1063,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Delete Imported Key Material
+  displayName: Delete Imported KeyMaterial
   post:
     description: Deletes key material that you previously imported and makes the specified customer master key (CMK) unusable. For more information about importing key material into AWS KMS, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>. When the specified CMK is in the <code>PendingDeletion</code> state, this operation does not change the CMK's state. Otherwise, it changes the CMK's state to <code>PendingImport</code>. After you delete key material, you can use <a>ImportKeyMaterial</a> to reimport the same key material into the CMK.
-    displayName: Delete Imported Key Material
+    displayName: Delete Imported KeyMaterial
     queryParameters:
       Action:
         type: string
@@ -1303,10 +1303,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Generate Data Key Without Plaintext
+  displayName: Generate Data KeyWithout Plaintext
   post:
     description: Returns a data encryption key encrypted under a customer master key (CMK). This operation is identical to <a>GenerateDataKey</a> but returns only the encrypted copy of the data key. This operation is useful in a system that has multiple components with different degrees of trust. For example, consider a system that stores encrypted data in containers. Each container stores the encrypted data and an encrypted copy of the data key. One component of the system, called the <i>control plane</i>, creates new containers. When it creates a new container, it uses this operation (<code>GenerateDataKeyWithoutPlaintext</code>) to get an encrypted data key and then stores it in the container. Later, a different component of the system, called the <i>data plane</i>, puts encrypted data into the containers. To do this, it passes the encrypted data key to the <a>Decrypt</a> operation, then uses the returned plaintext data key to encrypt data, and finally stores the encrypted data in the container. In this system, the control plane never sees the plaintext data key.
-    displayName: Generate Data Key Without Plaintext
+    displayName: Generate Data KeyWithout Plaintext
     queryParameters:
       Action:
         type: string
@@ -1403,10 +1403,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Get Parameters For Import
+  displayName: Get Parameters ForImport
   post:
     description: Returns the items you need in order to import key material into AWS KMS from your existing key management infrastructure. For more information about importing key material into AWS KMS, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in the <i>AWS Key Management Service Developer Guide</i>. You must specify the key ID of the customer master key (CMK) into which you will import key material. This CMK's <code>Origin</code> must be <code>EXTERNAL</code>. You must also specify the wrapping algorithm and type of wrapping key (public key) that you will use to encrypt the key material. This operation returns a public key and an import token. Use the public key to encrypt the key material. Store the import token to send with a subsequent <a>ImportKeyMaterial</a> request. The public key and import token from the same response must be used together. These items are valid for 24 hours, after which they cannot be used for a subsequent <a>ImportKeyMaterial</a> request. To retrieve new ones, send another <code>GetParametersForImport</code> request.
-    displayName: Get Parameters For Import
+    displayName: Get Parameters ForImport
     queryParameters:
       Action:
         type: string

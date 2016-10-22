@@ -2050,7 +2050,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Create Data Source From R D S
+  displayName: Create Data Source FromR D S
   post:
     description: 'Creates a <code>DataSource</code> object from an <a href="http://aws.amazon.com/rds/">
       Amazon Relational Database Service</a> (Amazon RDS). A <code>DataSource</code>
@@ -2066,7 +2066,7 @@ types:
       the input source, it sets the <code>Status</code> parameter to <code>FAILED</code>
       and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code>
       operation response. '
-    displayName: Create Data Source From R D S
+    displayName: Create Data Source FromR D S
     queryParameters:
       Action:
         type: string
@@ -2090,10 +2090,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Create Data Source From Redshift
+  displayName: Create Data Source FromRedshift
   post:
     description: Creates a <code>DataSource</code> from a database hosted on an Amazon Redshift cluster. A <code>DataSource</code> references data that can be used to perform either <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations. <code>CreateDataSourceFromRedshift</code> is an asynchronous operation. In response to <code>CreateDataSourceFromRedshift</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>DataSource</code> status to <code>PENDING</code>. After the <code>DataSource</code> is created and ready for use, Amazon ML sets the <code>Status</code> parameter to <code>COMPLETED</code>. <code>DataSource</code> in <code>COMPLETED</code> or <code>PENDING</code> states can be used to perform only <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations.   If Amazon ML can't accept the input source, it sets the <code>Status</code> parameter to <code>FAILED</code> and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code> operation response.  The observations should be contained in the database hosted on an Amazon Redshift cluster and should be specified by a <code>SelectSqlQuery</code> query. Amazon ML executes an <code>Unload</code> command in Amazon Redshift to transfer the result set of the <code>SelectSqlQuery</code> query to <code>S3StagingLocation</code>. After the <code>DataSource</code> has been created, it's ready for use in evaluations and batch predictions. If you plan to use the <code>DataSource</code> to train an <code>MLModel</code>, the <code>DataSource</code> also requires a recipe. A recipe describes how each input variable will be used in training an <code>MLModel</code>. Will the variable be included or excluded from training? Will the variable be manipulated; for example, will it be combined with another variable or will it be split apart into word combinations? The recipe provides answers to these questions. <?oxy_insert_start author="laurama" timestamp="20160406T153842-0700">You can't change an existing datasource, but you can copy and modify the settings from an existing Amazon Redshift datasource to create a new datasource. To do so, call <code>GetDataSource</code> for an existing datasource and copy the values to a <code>CreateDataSource</code> call. Change the settings that you want to change and make sure that all required fields have the appropriate values. <?oxy_insert_end>
-    displayName: Create Data Source From Redshift
+    displayName: Create Data Source FromRedshift
     queryParameters:
       Action:
         type: string
@@ -2117,10 +2117,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Create Data Source From S3
+  displayName: Create Data Source FromS3
   post:
     description: Creates a <code>DataSource</code> object. A <code>DataSource</code> references data that can be used to perform <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations. <code>CreateDataSourceFromS3</code> is an asynchronous operation. In response to <code>CreateDataSourceFromS3</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>DataSource</code> status to <code>PENDING</code>. After the <code>DataSource</code> has been created and is ready for use, Amazon ML sets the <code>Status</code> parameter to <code>COMPLETED</code>. <code>DataSource</code> in the <code>COMPLETED</code> or <code>PENDING</code> state can be used to perform only <code>CreateMLModel</code>, <code>CreateEvaluation</code> or <code>CreateBatchPrediction</code> operations.   If Amazon ML can't accept the input source, it sets the <code>Status</code> parameter to <code>FAILED</code> and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code> operation response.  The observation data used in a <code>DataSource</code> should be ready to use; that is, it should have a consistent structure, and missing data values should be kept to a minimum. The observation data must reside in one or more .csv files in an Amazon Simple Storage Service (Amazon S3) location, along with a schema that describes the data items by name and type. The same schema must be used for all of the data files referenced by the <code>DataSource</code>.  After the <code>DataSource</code> has been created, it's ready to use in evaluations and batch predictions. If you plan to use the <code>DataSource</code> to train an <code>MLModel</code>, the <code>DataSource</code> also needs a recipe. A recipe describes how each input variable will be used in training an <code>MLModel</code>. Will the variable be included or excluded from training? Will the variable be manipulated; for example, will it be combined with another variable or will it be split apart into word combinations? The recipe provides answers to these questions.
-    displayName: Create Data Source From S3
+    displayName: Create Data Source FromS3
     queryParameters:
       Action:
         type: string
@@ -2186,7 +2186,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Create M L Model
+  displayName: Create M LModel
   post:
     description: 'Creates a new <code>MLModel</code> using the <code>DataSource</code>
       and the recipe as information sources.  An <code>MLModel</code> is nearly immutable.
@@ -2201,7 +2201,7 @@ types:
       with computed statistics, which can be created by setting <code>ComputeStatistics</code>
       to <code>true</code> in <code>CreateDataSourceFromRDS</code>, <code>CreateDataSourceFromS3</code>,
       or <code>CreateDataSourceFromRedshift</code> operations. '
-    displayName: Create M L Model
+    displayName: Create M LModel
     queryParameters:
       Action:
         type: string
@@ -2341,10 +2341,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Delete M L Model
+  displayName: Delete M LModel
   post:
     description: Assigns the <code>DELETED</code> status to an <code>MLModel</code>, rendering it unusable. After using the <code>DeleteMLModel</code> operation, you can use the <code>GetMLModel</code> operation to verify that the status of the <code>MLModel</code> changed to DELETED. <b>Caution:</b> The result of the <code>DeleteMLModel</code> operation is irreversible.
-    displayName: Delete M L Model
+    displayName: Delete M LModel
     queryParameters:
       Action:
         type: string
@@ -2509,10 +2509,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Describe M L Models
+  displayName: Describe M LModels
   post:
     description: Returns a list of <code>MLModel</code> that match the search criteria in the request.
-    displayName: Describe M L Models
+    displayName: Describe M LModels
     queryParameters:
       Action:
         type: string
@@ -2652,12 +2652,12 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Get M L Model
+  displayName: Get M LModel
   post:
     description: 'Returns an <code>MLModel</code> that includes detailed metadata,
       data source information, and the current status of the <code>MLModel</code>.
       <code>GetMLModel</code> provides results in normal or verbose format. '
-    displayName: Get M L Model
+    displayName: Get M LModel
     queryParameters:
       Action:
         type: string
@@ -2801,10 +2801,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Update M L Model
+  displayName: Update M LModel
   post:
     description: Updates the <code>MLModelName</code> and the <code>ScoreThreshold</code> of an <code>MLModel</code>. You can use the <code>GetMLModel</code> operation to view the contents of the updated data element.
-    displayName: Update M L Model
+    displayName: Update M LModel
     queryParameters:
       Action:
         type: string

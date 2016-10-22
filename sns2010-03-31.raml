@@ -880,10 +880,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Check If Phone Number Is Opted Out
+  displayName: Check IfPhone Number Is OptedOut
   post:
     description: Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from your account. You cannot send SMS messages to a number that is opted out. To resume sending messages, you can opt in the number by using the <code>OptInPhoneNumber</code> action.
-    displayName: Check If Phone Number Is Opted Out
+    displayName: Check IfPhone Number Is OptedOut
     queryParameters:
       Action:
         type: string
@@ -1227,10 +1227,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Get S M S Attributes
+  displayName: Get S MS Attributes
   post:
     description: Returns the settings for sending SMS messages from your account. These settings are set with the <code>SetSMSAttributes</code> action.
-    displayName: Get S M S Attributes
+    displayName: Get S MS Attributes
     queryParameters:
       Action:
         type: string
@@ -1516,10 +1516,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Opt In Phone Number
+  displayName: Opt InPhone Number
   post:
     description: Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number. You can opt in a phone number only once every 30 days.
-    displayName: Opt In Phone Number
+    displayName: Opt InPhone Number
     queryParameters:
       Action:
         type: string
@@ -1688,10 +1688,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Set S M S Attributes
+  displayName: Set S MS Attributes
   post:
     description: Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports. You can override some of these settings for a single message when you use the <code>Publish</code> action with the <code>MessageAttributes.entry.N</code> parameter. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html">Sending an SMS Message</a> in the <i>Amazon SNS Developer Guide</i>.
-    displayName: Set S M S Attributes
+    displayName: Set S MS Attributes
     queryParameters:
       Action:
         type: string

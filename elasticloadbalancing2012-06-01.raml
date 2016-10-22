@@ -1536,10 +1536,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Create L B Cookie Stickiness Policy
+  displayName: Create L BCookie Stickiness Policy
   post:
     description: Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser (user-agent) or a specified expiration period. This policy can be associated only with HTTP/HTTPS listeners. When a load balancer implements this policy, the load balancer uses a special cookie to track the instance for each request. When the load balancer receives a request, it first checks to see if this cookie is present in the request. If so, the load balancer sends the request to the application server specified in the cookie. If not, the load balancer sends the request to a server that is chosen based on the existing load-balancing algorithm. A cookie is inserted into the response for binding subsequent requests from the same user to that server. The validity of the cookie is based on the cookie expiration time, which is specified in the policy configuration. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration">Duration-Based Session Stickiness</a> in the <i>Classic Load Balancers Guide</i>.
-    displayName: Create L B Cookie Stickiness Policy
+    displayName: Create L BCookie Stickiness Policy
     queryParameters:
       Action:
         type: string
@@ -1719,10 +1719,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Deregister Instances From Load Balancer
+  displayName: Deregister Instances From LoadBalancer
   post:
     description: Deregisters the specified instances from the specified load balancer. After the instance is deregistered, it no longer receives traffic from the load balancer. You can use <a>DescribeLoadBalancers</a> to verify that the instance is deregistered from the load balancer. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html">Register or De-Register EC2 Instances</a> in the <i>Classic Load Balancers Guide</i>.
-    displayName: Deregister Instances From Load Balancer
+    displayName: Deregister Instances From LoadBalancer
     queryParameters:
       Action:
         type: string
@@ -1894,10 +1894,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Detach Load Balancer From Subnets
+  displayName: Detach Load Balancer FromSubnets
   post:
     description: Removes the specified subnets from the set of configured subnets for the load balancer. After a subnet is removed, all EC2 instances registered with the load balancer in the removed subnet go into the <code>OutOfService</code> state. Then, the load balancer balances the traffic among the remaining routable subnets.
-    displayName: Detach Load Balancer From Subnets
+    displayName: Detach Load Balancer FromSubnets
     queryParameters:
       Action:
         type: string
@@ -2010,10 +2010,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Register Instances With Load Balancer
+  displayName: Register Instances With LoadBalancer
   post:
     description: Adds the specified instances to the specified load balancer. The instance must be a running instance in the same network as the load balancer (EC2-Classic or the same VPC). If you have EC2-Classic instances and a load balancer in a VPC with ClassicLink enabled, you can link the EC2-Classic instances to that VPC and then register the linked EC2-Classic instances with the load balancer in the VPC. Note that <code>RegisterInstanceWithLoadBalancer</code> completes when the request has been registered. Instance registration takes a little time to complete. To check the state of the registered instances, use <a>DescribeLoadBalancers</a> or <a>DescribeInstanceHealth</a>. After the instance is registered, it starts receiving traffic and requests from the load balancer. Any instance that is not in one of the Availability Zones registered for the load balancer is moved to the <code>OutOfService</code> state. If an Availability Zone is added to the load balancer later, any instances registered with the load balancer move to the <code>InService</code> state. To deregister instances from a load balancer, use <a>DeregisterInstancesFromLoadBalancer</a>. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html">Register or De-Register EC2 Instances</a> in the <i>Classic Load Balancers Guide</i>.
-    displayName: Register Instances With Load Balancer
+    displayName: Register Instances With LoadBalancer
     queryParameters:
       Action:
         type: string

@@ -1633,7 +1633,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Create I P Set
+  displayName: Create I PSet
   post:
     description: 'Creates an <a>IPSet</a>, which you use to specify which web requests
       you want to allow or block based on the IP addresses that the requests originate
@@ -1651,7 +1651,7 @@ types:
       about how to use the AWS WAF API to allow or block HTTP requests, see the <a
       href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF Developer
       Guide</a>.'
-    displayName: Create I P Set
+    displayName: Create I PSet
     queryParameters:
       Action:
         type: string
@@ -1920,7 +1920,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Delete I P Set
+  displayName: Delete I PSet
   post:
     description: 'Permanently deletes an <a>IPSet</a>. You can''t delete an <code>IPSet</code>
       if it''s still used in any <code>Rules</code> or if it still includes any IP
@@ -1931,7 +1931,7 @@ types:
       </li> <li> Use <a>GetChangeToken</a> to get the change token that you provide
       in the <code>ChangeToken</code> parameter of a <code>DeleteIPSet</code> request.
       </li> <li> Submit a <code>DeleteIPSet</code> request. </li> </ol>'
-    displayName: Delete I P Set
+    displayName: Delete I PSet
     queryParameters:
       Action:
         type: string
@@ -2203,10 +2203,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Get I P Set
+  displayName: Get I PSet
   post:
     description: Returns the <a>IPSet</a> that is specified by <code>IPSetId</code>.
-    displayName: Get I P Set
+    displayName: Get I PSet
     queryParameters:
       Action:
         type: string
@@ -2403,10 +2403,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: List I P Sets
+  displayName: List I PSets
   post:
     description: Returns an array of <a>IPSetSummary</a> objects in the response.
-    displayName: List I P Sets
+    displayName: List I PSets
     queryParameters:
       Action:
         type: string
@@ -2603,7 +2603,7 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Update I P Set
+  displayName: Update I PSet
   post:
     description: 'Inserts or deletes <a>IPSetDescriptor</a> objects in an <code>IPSet</code>.
       For each <code>IPSetDescriptor</code> object, you specify the following values:  <ul>
@@ -2635,7 +2635,7 @@ types:
       one. For more information about how to use the AWS WAF API to allow or block
       HTTP requests, see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/">AWS
       WAF Developer Guide</a>.'
-    displayName: Update I P Set
+    displayName: Update I PSet
     queryParameters:
       Action:
         type: string

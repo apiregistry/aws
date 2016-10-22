@@ -1885,10 +1885,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Describe Active Receipt Rule Set
+  displayName: Describe Active Receipt RuleSet
   post:
     description: Returns the metadata and receipt rules for the receipt rule set that is currently active. For information about setting up receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
-    displayName: Describe Active Receipt Rule Set
+    displayName: Describe Active Receipt RuleSet
     queryParameters:
       Action:
         type: string
@@ -1994,10 +1994,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Get Identity Mail From Domain Attributes
+  displayName: Get Identity Mail FromDomain Attributes
   post:
     description: Returns the custom MAIL FROM attributes for a list of identities (email addresses and/or domains). This action is throttled at one request per second and can only get custom MAIL FROM attributes for up to 100 identities at a time.
-    displayName: Get Identity Mail From Domain Attributes
+    displayName: Get Identity Mail FromDomain Attributes
     queryParameters:
       Action:
         type: string
@@ -2421,10 +2421,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Set Active Receipt Rule Set
+  displayName: Set Active Receipt RuleSet
   post:
     description: Sets the specified receipt rule set as the active receipt rule set. <note> To disable your email-receiving through Amazon SES completely, you can call this API with RuleSetName set to null. </note> For information about managing receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html">Amazon SES Developer Guide</a>. This action is throttled at one request per second.
-    displayName: Set Active Receipt Rule Set
+    displayName: Set Active Receipt RuleSet
     queryParameters:
       Action:
         type: string
@@ -2526,10 +2526,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Set Identity Mail From Domain
+  displayName: Set Identity Mail FromDomain
   post:
     description: Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain). <important> To send emails using the specified MAIL FROM domain, you must add an MX record to your MAIL FROM domain's DNS settings. If you want your emails to pass Sender Policy Framework (SPF) checks, you must also add or update an SPF record. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html">Amazon SES Developer Guide</a>. </important> This action is throttled at one request per second.
-    displayName: Set Identity Mail From Domain
+    displayName: Set Identity Mail FromDomain
     queryParameters:
       Action:
         type: string

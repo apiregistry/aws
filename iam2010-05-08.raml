@@ -3943,10 +3943,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Add Client I D To Open I D Connect Provider
+  displayName: Add Client I D To Open I DConnectProvider
   post:
     description: Adds a new client ID (also known as audience) to the list of client IDs already registered for the specified IAM OpenID Connect (OIDC) provider resource. This action is idempotent; it does not fail or return an error if you add an existing client ID to the provider.
-    displayName: Add Client I D To Open I D Connect Provider
+    displayName: Add Client I D To Open I DConnectProvider
     queryParameters:
       Action:
         type: string
@@ -4435,10 +4435,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Create S A M L Provider
+  displayName: Create S AM LProvider
   post:
     description: Creates an IAM resource that describes an identity provider (IdP) that supports SAML 2.0. The SAML provider resource that you create with this operation can be used as a principal in an IAM role's trust policy to enable federated users who sign-in using the SAML IdP to assume the role. You can create an IAM role that supports Web-based single sign-on (SSO) to the AWS Management Console or one that supports API access to AWS. When you create the SAML provider resource, you upload an a SAML metadata document that you get from your IdP and that includes the issuer's name, expiration information, and keys that can be used to validate the SAML authentication response (assertions) that the IdP sends. You must generate the metadata document using the identity management software that is used as your organization's IdP. <note>  This operation requires <a href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4</a>. </note>  For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-saml.html">Enabling SAML 2.0 Federated Users to Access the AWS Management Console</a> and <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html">About SAML 2.0-based Federation</a> in the <i>IAM User Guide</i>.
-    displayName: Create S A M L Provider
+    displayName: Create S AM LProvider
     queryParameters:
       Action:
         type: string
@@ -4493,10 +4493,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Create Virtual M F A Device
+  displayName: Create Virtual M F ADevice
   post:
     description: Creates a new virtual MFA device for the AWS account. After creating the virtual MFA, use <a>EnableMFADevice</a> to attach the MFA device to an IAM user. For more information about creating and working with virtual MFA devices, go to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html">Using a Virtual MFA Device</a> in the <i>IAM User Guide</i>. For information about limits on the number of MFA devices you can create, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html">Limitations on Entities</a> in the <i>IAM User Guide</i>. <important> The seed information contained in the QR code and the Base32 string should be treated like any other secret access information, such as your AWS access keys or your passwords. After you provision your virtual device, you should ensure that the information is destroyed following secure procedures. </important>
-    displayName: Create Virtual M F A Device
+    displayName: Create Virtual M F ADevice
     queryParameters:
       Action:
         type: string
@@ -4520,10 +4520,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Deactivate M F A Device
+  displayName: Deactivate M FA Device
   post:
     description: Deactivates the specified MFA device and removes it from association with the user name for which it was originally enabled. For more information about creating and working with virtual MFA devices, go to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html">Using a Virtual MFA Device</a> in the <i>IAM User Guide</i>.
-    displayName: Deactivate M F A Device
+    displayName: Deactivate M FA Device
     queryParameters:
       Action:
         type: string
@@ -4915,10 +4915,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Delete S A M L Provider
+  displayName: Delete S AM LProvider
   post:
     description: Deletes a SAML provider resource in IAM. Deleting the provider resource from IAM does not update any roles that reference the SAML provider resource's ARN as a principal in their trust policies. Any attempt to assume a role that references a non-existent provider resource ARN fails. <note>  This operation requires <a href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4</a>. </note>
-    displayName: Delete S A M L Provider
+    displayName: Delete S AM LProvider
     queryParameters:
       Action:
         type: string
@@ -4946,10 +4946,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Delete S S H Public Key
+  displayName: Delete S SH Public Key
   post:
     description: Deletes the specified SSH public key. The SSH public key deleted by this action is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html">Set up AWS CodeCommit for SSH Connections</a> in the <i>AWS CodeCommit User Guide</i>.
-    displayName: Delete S S H Public Key
+    displayName: Delete S SH Public Key
     queryParameters:
       Action:
         type: string
@@ -5087,10 +5087,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Delete Virtual M F A Device
+  displayName: Delete Virtual M F ADevice
   post:
     description: Deletes a virtual MFA device. <note>  You must deactivate a user's virtual MFA device before you can delete it. For information about deactivating MFA devices, see <a>DeactivateMFADevice</a>.  </note>
-    displayName: Delete Virtual M F A Device
+    displayName: Delete Virtual M F ADevice
     queryParameters:
       Action:
         type: string
@@ -5209,10 +5209,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Enable M F A Device
+  displayName: Enable M FA Device
   post:
     description: Enables the specified MFA device and associates it with the specified IAM user. When enabled, the MFA device is required for every subsequent login by the IAM user associated with the device.
-    displayName: Enable M F A Device
+    displayName: Enable M FA Device
     queryParameters:
       Action:
         type: string
@@ -5267,10 +5267,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Get Access Key Last Used
+  displayName: Get Access KeyLast Used
   post:
     description: Retrieves information about when the specified access key was last used. The information includes the date and time of last use, along with the AWS service and region that were specified in the last request made with that key.
-    displayName: Get Access Key Last Used
+    displayName: Get Access KeyLast Used
     queryParameters:
       Action:
         type: string
@@ -5700,10 +5700,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Get S A M L Provider
+  displayName: Get S AM LProvider
   post:
     description: Returns the SAML provider metadocument that was uploaded when the IAM SAML provider resource object was created or updated. <note> This operation requires <a href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4</a>. </note>
-    displayName: Get S A M L Provider
+    displayName: Get S AM LProvider
     queryParameters:
       Action:
         type: string
@@ -5729,10 +5729,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Get S S H Public Key
+  displayName: Get S SH Public Key
   post:
     description: Retrieves the specified SSH public key, including metadata about the key. The SSH public key retrieved by this action is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html">Set up AWS CodeCommit for SSH Connections</a> in the <i>AWS CodeCommit User Guide</i>.
-    displayName: Get S S H Public Key
+    displayName: Get S SH Public Key
     queryParameters:
       Action:
         type: string
@@ -5979,10 +5979,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: List Entities For Policy
+  displayName: List Entities ForPolicy
   post:
     description: Lists all IAM users, groups, and roles that the specified managed policy is attached to. You can use the optional <code>EntityFilter</code> parameter to limit the results to a particular type of entity (users, groups, or roles). For example, to list only the roles that are attached to the specified policy, set <code>EntityFilter</code> to <code>Role</code>. You can paginate the results using the <code>MaxItems</code> and <code>Marker</code> parameters.
-    displayName: List Entities For Policy
+    displayName: List Entities ForPolicy
     queryParameters:
       Action:
         type: string
@@ -6060,10 +6060,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: List Groups For User
+  displayName: List Groups ForUser
   post:
     description: Lists the IAM groups that the specified IAM user belongs to. You can paginate the results using the <code>MaxItems</code> and <code>Marker</code> parameters.
-    displayName: List Groups For User
+    displayName: List Groups ForUser
     queryParameters:
       Action:
         type: string
@@ -6139,10 +6139,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: List M F A Devices
+  displayName: List M FA Devices
   post:
     description: Lists the MFA devices for an IAM user. If the request includes a IAM user name, then this action lists all the MFA devices associated with the specified user. If you do not specify a user name, IAM determines the user name implicitly based on the AWS access key ID signing the request for this API. You can paginate the results using the <code>MaxItems</code> and <code>Marker</code> parameters.
-    displayName: List M F A Devices
+    displayName: List M FA Devices
     queryParameters:
       Action:
         type: string
@@ -6297,10 +6297,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: List S A M L Providers
+  displayName: List S AM LProviders
   post:
     description: Lists the SAML provider resource objects defined in IAM in the account. <note>  This operation requires <a href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4</a>. </note>
-    displayName: List S A M L Providers
+    displayName: List S AM LProviders
     queryParameters:
       Action:
         type: string
@@ -6322,10 +6322,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: List S S H Public Keys
+  displayName: List S SH Public Keys
   post:
     description: Returns information about the SSH public keys associated with the specified IAM user. If there are none, the action returns an empty list. The SSH public keys returned by this action are used only for authenticating the IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html">Set up AWS CodeCommit for SSH Connections</a> in the <i>AWS CodeCommit User Guide</i>. Although each user is limited to a small number of keys, you can still paginate the results using the <code>MaxItems</code> and <code>Marker</code> parameters.
-    displayName: List S S H Public Keys
+    displayName: List S SH Public Keys
     queryParameters:
       Action:
         type: string
@@ -6451,10 +6451,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: List Virtual M F A Devices
+  displayName: List Virtual M F ADevices
   post:
     description: Lists the virtual MFA devices defined in the AWS account by assignment status. If you do not specify an assignment status, the action returns a list of all virtual MFA devices. Assignment status can be <code>Assigned</code>, <code>Unassigned</code>, or <code>Any</code>. You can paginate the results using the <code>MaxItems</code> and <code>Marker</code> parameters.
-    displayName: List Virtual M F A Devices
+    displayName: List Virtual M F ADevices
     queryParameters:
       Action:
         type: string
@@ -6567,10 +6567,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Remove Client I D From Open I D Connect Provider
+  displayName: Remove Client I D From Open I DConnectProvider
   post:
     description: Removes the specified client ID (also known as audience) from the list of client IDs registered for the specified IAM OpenID Connect (OIDC) provider resource object. This action is idempotent; it does not fail or return an error if you try to remove a client ID that does not exist.
-    displayName: Remove Client I D From Open I D Connect Provider
+    displayName: Remove Client I D From Open I DConnectProvider
     queryParameters:
       Action:
         type: string
@@ -6654,10 +6654,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Resync M F A Device
+  displayName: Resync M FA Device
   post:
     description: Synchronizes the specified MFA device with its IAM resource object on the AWS servers. For more information about creating and working with virtual MFA devices, go to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html">Using a Virtual MFA Device</a> in the <i>IAM User Guide</i>.
-    displayName: Resync M F A Device
+    displayName: Resync M FA Device
     queryParameters:
       Action:
         type: string
@@ -6952,10 +6952,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Update S A M L Provider
+  displayName: Update S AM LProvider
   post:
     description: Updates the metadata document for an existing SAML provider resource object. <note> This operation requires <a href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4</a>. </note>
-    displayName: Update S A M L Provider
+    displayName: Update S AM LProvider
     queryParameters:
       Action:
         type: string
@@ -6983,10 +6983,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Update S S H Public Key
+  displayName: Update S SH Public Key
   post:
     description: Sets the status of an IAM user's SSH public key to active or inactive. SSH public keys that are inactive cannot be used for authentication. This action can be used to disable a user's SSH public key as part of a key rotation work flow. The SSH public key affected by this action is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html">Set up AWS CodeCommit for SSH Connections</a> in the <i>AWS CodeCommit User Guide</i>.
-    displayName: Update S S H Public Key
+    displayName: Update S SH Public Key
     queryParameters:
       Action:
         type: string
@@ -7095,10 +7095,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Upload S S H Public Key
+  displayName: Upload S SH Public Key
   post:
     description: Uploads an SSH public key and associates it with the specified IAM user. The SSH public key uploaded by this action can be used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html">Set up AWS CodeCommit for SSH Connections</a> in the <i>AWS CodeCommit User Guide</i>.
-    displayName: Upload S S H Public Key
+    displayName: Upload S SH Public Key
     queryParameters:
       Action:
         type: string

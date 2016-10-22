@@ -1237,16 +1237,16 @@ types:
     type: object
     description: <p>The output from the UpdateThing operation.</p>
 /cacertificate:
-  displayName: Register C A Certificate
+  displayName: Register C ACertificate
   /{caCertificateId}:
     uriParameters:
       caCertificateId:
         type: CertificateId
         description: <p>The ID of the certificate to delete.</p>
-    displayName: Update C A Certificate
+    displayName: Update C ACertificate
     delete:
       description: Deletes a registered CA certificate.
-      displayName: Delete C A Certificate
+      displayName: Delete C ACertificate
       queryParameters:
         Action:
           type: string
@@ -1272,7 +1272,7 @@ types:
           description: ResourceNotFoundException
     get:
       description: Describes a registered CA certificate.
-      displayName: Describe C A Certificate
+      displayName: Describe C ACertificate
       queryParameters:
         Action:
           type: string
@@ -1296,7 +1296,7 @@ types:
           description: ResourceNotFoundException
     put:
       description: Updates a registered CA certificate.
-      displayName: Update C A Certificate
+      displayName: Update C ACertificate
       queryParameters:
         Action:
           type: string
@@ -1327,7 +1327,7 @@ types:
           description: InternalFailureException
   post:
     description: Registers a CA certificate with AWS IoT. This CA certificate can then be used to sign device certificates, which can be then registered with AWS IoT. You can register up to 10 CA certificates per AWS account that have the same subject field and public key. This enables you to have up to 10 certificate authorities sign your device certificates. If you have more than one CA certificate registered, make sure you pass the CA certificate when you register your device certificates with the RegisterCertificate API.
-    displayName: Register C A Certificate
+    displayName: Register C ACertificate
     queryParameters:
       Action:
         type: string
@@ -1373,10 +1373,10 @@ types:
       caCertificateId:
         type: CertificateId
         description: <p>The ID of the CA certificate. This operation will list all registered device certificate that were signed by this CA certificate. </p>
-    displayName: List Certificates By C A
+    displayName: List Certificates By CA
     get:
       description: List the device certificates signed by the specified CA certificate.
-      displayName: List Certificates By C A
+      displayName: List Certificates By CA
       queryParameters:
         Action:
           type: string
@@ -2039,10 +2039,10 @@ types:
       503:
         description: ServiceUnavailableException
 /cacertificates:
-  displayName: List C A Certificates
+  displayName: List C ACertificates
   get:
     description: Lists the CA certificates registered for your AWS account. The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.
-    displayName: List C A Certificates
+    displayName: List C ACertificates
     queryParameters:
       Action:
         type: string
@@ -2937,10 +2937,10 @@ types:
         500:
           description: InternalFailureException
 /keys-and-certificate:
-  displayName: Create Keys And Certificate
+  displayName: Create Keys AndCertificate
   post:
     description: Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued public key. <b>Note</b> This is the only time AWS IoT issues the private key for this certificate, so it is important to keep it in a secure location.
-    displayName: Create Keys And Certificate
+    displayName: Create Keys AndCertificate
     queryParameters:
       Action:
         type: string

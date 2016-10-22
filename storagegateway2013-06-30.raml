@@ -1879,10 +1879,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Create Cachedi S C S I Volume
+  displayName: Create Cachedi S C SI Volume
   post:
     description: Creates a cached volume on a specified cached gateway. This operation is supported only for the gateway-cached volume architecture. <note>Cache storage must be allocated to the gateway before you can create a cached volume. Use the <a>AddCache</a> operation to add cache storage to a gateway.  </note> In the request, you must specify the gateway, size of the volume in bytes, the iSCSI target name, an IP address on which to expose the target, and a unique client token. In response, AWS Storage Gateway creates the volume and returns information about it such as the volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN that initiators can use to connect to the volume target.
-    displayName: Create Cachedi S C S I Volume
+    displayName: Create Cachedi S C SI Volume
     queryParameters:
       Action:
         type: string
@@ -1954,10 +1954,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Create Storedi S C S I Volume
+  displayName: Create Storedi S C SI Volume
   post:
     description: Creates a volume on a specified gateway. This operation is supported only for the gateway-stored volume architecture. The size of the volume to create is inferred from the disk size. You can choose to preserve existing data on the disk, create volume from an existing snapshot, or create an empty volume. If you choose to create an empty gateway volume, then any existing data on the disk is erased. In the request you must specify the gateway and the disk information on which you are creating the volume. In response, AWS Storage Gateway creates the volume and returns volume information such as the volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN that initiators can use to connect to the volume target.
-    displayName: Create Storedi S C S I Volume
+    displayName: Create Storedi S C SI Volume
     queryParameters:
       Action:
         type: string
@@ -2254,10 +2254,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Describe Cachedi S C S I Volumes
+  displayName: Describe Cachedi S C SI Volumes
   post:
     description: Returns a description of the gateway volumes specified in the request. This operation is supported only for the gateway-cached volume architecture. The list of gateway volumes in the request must be from one gateway. In the response Amazon Storage Gateway returns volume information sorted by volume Amazon Resource Name (ARN).
-    displayName: Describe Cachedi S C S I Volumes
+    displayName: Describe Cachedi S C SI Volumes
     queryParameters:
       Action:
         type: string
@@ -2379,10 +2379,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Describe Storedi S C S I Volumes
+  displayName: Describe Storedi S C SI Volumes
   post:
     description: Returns the description of the gateway volumes specified in the request. The list of gateway volumes in the request must be from one gateway. In the response Amazon Storage Gateway returns volume information sorted by volume ARNs.
-    displayName: Describe Storedi S C S I Volumes
+    displayName: Describe Storedi S C SI Volumes
     queryParameters:
       Action:
         type: string
@@ -2504,10 +2504,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Describe V T L Devices
+  displayName: Describe V TL Devices
   post:
     description: Returns a description of virtual tape library (VTL) devices for the specified gateway. In the response, AWS Storage Gateway returns VTL device information. The list of VTL devices must be from one gateway.
-    displayName: Describe V T L Devices
+    displayName: Describe V TL Devices
     queryParameters:
       Action:
         type: string
@@ -2636,10 +2636,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: List Tags For Resource
+  displayName: List Tags ForResource
   post:
     description: Lists the tags that have been added to the specified resource.
-    displayName: List Tags For Resource
+    displayName: List Tags ForResource
     queryParameters:
       Action:
         type: string
@@ -3086,10 +3086,10 @@ types:
       - ''
       (extras.syntetic): true
       description: This url parameter exists only to differentiate different operations on the same url
-  displayName: Update V T L Device Type
+  displayName: Update V TL Device Type
   post:
     description: Updates the type of medium changer in a gateway-VTL. When you activate a gateway-VTL, you select a medium changer type for the gateway-VTL. This operation enables you to select a different type of medium changer after a gateway-VTL is activated.
-    displayName: Update V T L Device Type
+    displayName: Update V TL Device Type
     queryParameters:
       Action:
         type: string
