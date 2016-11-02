@@ -4069,6 +4069,11 @@ types:
         description: ClusterParameterGroupNotFound
       400:
         description: InvalidTagFault
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: ParameterGroups
 /{DescribeClusterParameters}:
   uriParameters:
     DescribeClusterParameters?:
@@ -4094,6 +4099,11 @@ types:
           application/xml: ClusterParameterGroupDetails
       404:
         description: ClusterParameterGroupNotFound
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: Parameters
 /{DescribeClusterSecurityGroups}:
   uriParameters:
     DescribeClusterSecurityGroups?:
@@ -4121,6 +4131,11 @@ types:
         description: ClusterSecurityGroupNotFound
       400:
         description: InvalidTagFault
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: ClusterSecurityGroups
 /{DescribeClusterSnapshots}:
   uriParameters:
     DescribeClusterSnapshots?:
@@ -4148,6 +4163,11 @@ types:
         description: ClusterSnapshotNotFound
       400:
         description: InvalidTagFault
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: Snapshots
 /{DescribeClusterSubnetGroups}:
   uriParameters:
     DescribeClusterSubnetGroups?:
@@ -4173,6 +4193,11 @@ types:
           application/xml: ClusterSubnetGroupMessage
       400:
         description: ClusterSubnetGroupNotFoundFault
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: ClusterSubnetGroups
 /{DescribeClusterVersions}:
   uriParameters:
     DescribeClusterVersions?:
@@ -4196,6 +4221,11 @@ types:
       200:
         body:
           application/xml: ClusterVersionsMessage
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: ClusterVersions
 /{DescribeClusters}:
   uriParameters:
     DescribeClusters?:
@@ -4223,6 +4253,11 @@ types:
         description: ClusterNotFound
       400:
         description: InvalidTagFault
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: Clusters
 /{DescribeDefaultClusterParameters}:
   uriParameters:
     DescribeDefaultClusterParameters?:
@@ -4246,6 +4281,11 @@ types:
       200:
         body:
           application/xml: DescribeDefaultClusterParametersResult
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: DefaultClusterParameters.Marker
+      limitKey: MaxRecords
+      resultKey: DefaultClusterParameters.Parameters
 /{DescribeEventCategories}:
   uriParameters:
     DescribeEventCategories?:
@@ -4294,6 +4334,11 @@ types:
           application/xml: EventSubscriptionsMessage
       404:
         description: SubscriptionNotFound
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: EventSubscriptionsList
 /{DescribeEvents}:
   uriParameters:
     DescribeEvents?:
@@ -4317,6 +4362,11 @@ types:
       200:
         body:
           application/xml: EventsMessage
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: Events
 /{DescribeHsmClientCertificates}:
   uriParameters:
     DescribeHsmClientCertificates?:
@@ -4342,6 +4392,11 @@ types:
           application/xml: HsmClientCertificateMessage
       400:
         description: HsmClientCertificateNotFoundFault
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: HsmClientCertificates
 /{DescribeHsmConfigurations}:
   uriParameters:
     DescribeHsmConfigurations?:
@@ -4367,6 +4422,11 @@ types:
           application/xml: HsmConfigurationMessage
       400:
         description: HsmConfigurationNotFoundFault
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: HsmConfigurations
 /{DescribeLoggingStatus}:
   uriParameters:
     DescribeLoggingStatus?:
@@ -4415,6 +4475,11 @@ types:
       200:
         body:
           application/xml: OrderableClusterOptionsMessage
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: OrderableClusterOptions
 /{DescribeReservedNodeOfferings}:
   uriParameters:
     DescribeReservedNodeOfferings?:
@@ -4442,6 +4507,11 @@ types:
         description: ReservedNodeOfferingNotFound
       400:
         description: UnsupportedOperation
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: ReservedNodeOfferings
 /{DescribeReservedNodes}:
   uriParameters:
     DescribeReservedNodes?:
@@ -4467,6 +4537,11 @@ types:
           application/xml: ReservedNodesMessage
       404:
         description: ReservedNodeNotFound
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: ReservedNodes
 /{DescribeResize}:
   uriParameters:
     DescribeResize?:

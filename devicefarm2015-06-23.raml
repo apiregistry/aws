@@ -2338,6 +2338,10 @@ types:
           application/json: GetOfferingStatusResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: current,nextPeriod
 /{GetProject}:
   uriParameters:
     GetProject?:
@@ -2538,6 +2542,10 @@ types:
           application/json: ListArtifactsResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: artifacts
 /{ListDevicePools}:
   uriParameters:
     ListDevicePools?:
@@ -2563,6 +2571,10 @@ types:
           application/json: ListDevicePoolsResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: devicePools
 /{ListDevices}:
   uriParameters:
     ListDevices?:
@@ -2588,6 +2600,10 @@ types:
           application/json: ListDevicesResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: devices
 /{ListJobs}:
   uriParameters:
     ListJobs?:
@@ -2613,6 +2629,10 @@ types:
           application/json: ListJobsResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: jobs
 /{ListOfferingTransactions}:
   uriParameters:
     ListOfferingTransactions?:
@@ -2638,6 +2658,10 @@ types:
           application/json: ListOfferingTransactionsResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: offeringTransactions
 /{ListOfferings}:
   uriParameters:
     ListOfferings?:
@@ -2663,6 +2687,10 @@ types:
           application/json: ListOfferingsResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: offerings
 /{ListProjects}:
   uriParameters:
     ListProjects?:
@@ -2688,6 +2716,10 @@ types:
           application/json: ListProjectsResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: projects
 /{ListRemoteAccessSessions}:
   uriParameters:
     ListRemoteAccessSessions?:
@@ -2738,6 +2770,10 @@ types:
           application/json: ListRunsResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: runs
 /{ListSamples}:
   uriParameters:
     ListSamples?:
@@ -2763,6 +2799,10 @@ types:
           application/json: ListSamplesResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: samples
 /{ListSuites}:
   uriParameters:
     ListSuites?:
@@ -2788,6 +2828,10 @@ types:
           application/json: ListSuitesResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: suites
 /{ListTests}:
   uriParameters:
     ListTests?:
@@ -2813,6 +2857,10 @@ types:
           application/json: ListTestsResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: tests
 /{ListUniqueProblems}:
   uriParameters:
     ListUniqueProblems?:
@@ -2838,6 +2886,10 @@ types:
           application/json: ListUniqueProblemsResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: uniqueProblems
 /{ListUploads}:
   uriParameters:
     ListUploads?:
@@ -2863,6 +2915,10 @@ types:
           application/json: ListUploadsResult
       400:
         description: ArgumentException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: uploads
 /{PurchaseOffering}:
   uriParameters:
     PurchaseOffering?:

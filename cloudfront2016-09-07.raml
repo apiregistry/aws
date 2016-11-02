@@ -1164,6 +1164,12 @@ types:
               description: NoSuchDistribution
             403:
               description: AccessDenied
+          (extras.Pagination):
+            inputToken: Marker
+            outputToken: InvalidationList.NextMarker
+            limitKey: MaxItems
+            moreResults: InvalidationList.IsTruncated
+            resultKey: InvalidationList.Items
         post:
           description: Create a new invalidation.
           displayName: Create Invalidation2016_09_07
@@ -1375,6 +1381,12 @@ types:
               description: The DistributionList type.
         400:
           description: InvalidArgument
+      (extras.Pagination):
+        inputToken: Marker
+        outputToken: DistributionList.NextMarker
+        limitKey: MaxItems
+        moreResults: DistributionList.IsTruncated
+        resultKey: DistributionList.Items
   /origin-access-identity:
     /cloudfront:
       displayName: List Cloud Front Origin Access Identities2016_09_07
@@ -1551,6 +1563,12 @@ types:
                 description: The CloudFrontOriginAccessIdentityList type.
           400:
             description: InvalidArgument
+        (extras.Pagination):
+          inputToken: Marker
+          outputToken: CloudFrontOriginAccessIdentityList.NextMarker
+          limitKey: MaxItems
+          moreResults: CloudFrontOriginAccessIdentityList.IsTruncated
+          resultKey: CloudFrontOriginAccessIdentityList.Items
   /streaming-distribution:
     displayName: List Streaming Distributions2016_09_07
     /{Id}:
@@ -1730,6 +1748,12 @@ types:
               description: The StreamingDistributionList type.
         400:
           description: InvalidArgument
+      (extras.Pagination):
+        inputToken: Marker
+        outputToken: StreamingDistributionList.NextMarker
+        limitKey: MaxItems
+        moreResults: StreamingDistributionList.IsTruncated
+        resultKey: StreamingDistributionList.Items
   /tagging?Operation=Tag:
     displayName: Tag Resource2016_09_07
     post:

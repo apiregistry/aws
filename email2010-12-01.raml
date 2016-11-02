@@ -2143,6 +2143,11 @@ types:
       200:
         body:
           application/xml: ListIdentitiesResponse
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxItems
+      resultKey: Identities
 /{ListIdentityPolicies}:
   uriParameters:
     ListIdentityPolicies?:
@@ -2233,6 +2238,8 @@ types:
       200:
         body:
           application/xml: ListVerifiedEmailAddressesResponse
+    (extras.Pagination):
+      resultKey: VerifiedEmailAddresses
 /{PutIdentityPolicy}:
   uriParameters:
     PutIdentityPolicy?:

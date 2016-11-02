@@ -3599,6 +3599,8 @@ types:
           application/json: DescribeAppsResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: Apps
 /{DescribeCommands}:
   uriParameters:
     DescribeCommands?:
@@ -3629,6 +3631,8 @@ types:
           application/json: DescribeCommandsResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: Commands
 /{DescribeDeployments}:
   uriParameters:
     DescribeDeployments?:
@@ -3659,6 +3663,8 @@ types:
           application/json: DescribeDeploymentsResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: Deployments
 /{DescribeEcsClusters}:
   uriParameters:
     DescribeEcsClusters?:
@@ -3692,6 +3698,11 @@ types:
           application/json: DescribeEcsClustersResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: EcsClusters
 /{DescribeElasticIps}:
   uriParameters:
     DescribeElasticIps?:
@@ -3722,6 +3733,8 @@ types:
           application/json: DescribeElasticIpsResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: ElasticIps
 /{DescribeElasticLoadBalancers}:
   uriParameters:
     DescribeElasticLoadBalancers?:
@@ -3752,6 +3765,8 @@ types:
           application/json: DescribeElasticLoadBalancersResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: ElasticLoadBalancers
 /{DescribeInstances}:
   uriParameters:
     DescribeInstances?:
@@ -3782,6 +3797,8 @@ types:
           application/json: DescribeInstancesResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: Instances
 /{DescribeLayers}:
   uriParameters:
     DescribeLayers?:
@@ -3812,6 +3829,8 @@ types:
           application/json: DescribeLayersResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: Layers
 /{DescribeLoadBasedAutoScaling}:
   uriParameters:
     DescribeLoadBasedAutoScaling?:
@@ -3842,6 +3861,8 @@ types:
           application/json: DescribeLoadBasedAutoScalingResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: LoadBasedAutoScalingConfigurations
 /{DescribeMyUserProfile}:
   uriParameters:
     DescribeMyUserProfile?:
@@ -3896,6 +3917,8 @@ types:
           application/json: DescribePermissionsResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: Permissions
 /{DescribeRaidArrays}:
   uriParameters:
     DescribeRaidArrays?:
@@ -3926,6 +3949,8 @@ types:
           application/json: DescribeRaidArraysResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: RaidArrays
 /{DescribeRdsDbInstances}:
   uriParameters:
     DescribeRdsDbInstances?:
@@ -3984,6 +4009,8 @@ types:
           application/json: DescribeServiceErrorsResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: ServiceErrors
 /{DescribeStackProvisioningParameters}:
   uriParameters:
     DescribeStackProvisioningParameters?:
@@ -4073,6 +4100,8 @@ types:
           application/json: DescribeStacksResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: Stacks
 /{DescribeTimeBasedAutoScaling}:
   uriParameters:
     DescribeTimeBasedAutoScaling?:
@@ -4103,6 +4132,8 @@ types:
           application/json: DescribeTimeBasedAutoScalingResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: TimeBasedAutoScalingConfigurations
 /{DescribeUserProfiles}:
   uriParameters:
     DescribeUserProfiles?:
@@ -4131,6 +4162,8 @@ types:
           application/json: DescribeUserProfilesResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: UserProfiles
 /{DescribeVolumes}:
   uriParameters:
     DescribeVolumes?:
@@ -4161,6 +4194,8 @@ types:
           application/json: DescribeVolumesResult
       400:
         description: ValidationException
+    (extras.Pagination):
+      resultKey: Volumes
 /{DetachElasticLoadBalancer}:
   uriParameters:
     DetachElasticLoadBalancer?:

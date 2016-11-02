@@ -397,6 +397,11 @@ types:
             application/json: ListFunctionsResponse
         500:
           description: ServiceException
+      (extras.Pagination):
+        inputToken: Marker
+        outputToken: NextMarker
+        limitKey: MaxItems
+        resultKey: Functions
   /event-source-mappings:
     displayName: Add Event Source
     /{UUID}:
@@ -471,6 +476,11 @@ types:
           description: ResourceNotFoundException
         400:
           description: InvalidParameterValueException
+      (extras.Pagination):
+        inputToken: Marker
+        outputToken: NextMarker
+        limitKey: MaxItems
+        resultKey: EventSources
     post:
       description: 'Identifies a stream as an event source for an AWS Lambda function.
         It can be either an Amazon Kinesis stream or a Amazon DynamoDB stream. AWS

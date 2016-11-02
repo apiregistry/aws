@@ -916,6 +916,11 @@ types:
           application/json: DescribeCasesResponse
       400:
         description: InternalServerError
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: maxResults
+      resultKey: cases
 /{DescribeCommunications}:
   uriParameters:
     DescribeCommunications?:
@@ -941,6 +946,11 @@ types:
           application/json: DescribeCommunicationsResponse
       400:
         description: InternalServerError
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: maxResults
+      resultKey: communications
 /{DescribeServices}:
   uriParameters:
     DescribeServices?:
@@ -966,6 +976,8 @@ types:
           application/json: DescribeServicesResponse
       400:
         description: InternalServerError
+    (extras.Pagination):
+      resultKey: services
 /{DescribeSeverityLevels}:
   uriParameters:
     DescribeSeverityLevels?:
@@ -1018,6 +1030,8 @@ types:
           application/json: DescribeTrustedAdvisorCheckRefreshStatusesResponse
       400:
         description: InternalServerError
+    (extras.Pagination):
+      resultKey: statuses
 /{DescribeTrustedAdvisorCheckResult}:
   uriParameters:
     DescribeTrustedAdvisorCheckResult?:
@@ -1077,6 +1091,8 @@ types:
           application/json: DescribeTrustedAdvisorCheckSummariesResponse
       400:
         description: InternalServerError
+    (extras.Pagination):
+      resultKey: summaries
 /{DescribeTrustedAdvisorChecks}:
   uriParameters:
     DescribeTrustedAdvisorChecks?:

@@ -2259,6 +2259,9 @@ types:
           application/json: BatchGetItemOutput
       400:
         description: ProvisionedThroughputExceededException
+    (extras.Pagination):
+      inputToken: RequestItems
+      outputToken: UnprocessedKeys
 /{BatchWriteItem}:
   uriParameters:
     BatchWriteItem?:
@@ -2556,6 +2559,11 @@ types:
           application/json: ListTablesOutput
       400:
         description: InternalServerError
+    (extras.Pagination):
+      inputToken: ExclusiveStartTableName
+      outputToken: LastEvaluatedTableName
+      limitKey: Limit
+      resultKey: TableNames
 /{PutItem}:
   uriParameters:
     PutItem?:
@@ -2606,6 +2614,11 @@ types:
           application/json: QueryOutput
       400:
         description: ProvisionedThroughputExceededException
+    (extras.Pagination):
+      inputToken: ExclusiveStartKey
+      outputToken: LastEvaluatedKey
+      limitKey: Limit
+      resultKey: Items
 /{Scan}:
   uriParameters:
     Scan?:
@@ -2631,6 +2644,11 @@ types:
           application/json: ScanOutput
       400:
         description: ProvisionedThroughputExceededException
+    (extras.Pagination):
+      inputToken: ExclusiveStartKey
+      outputToken: LastEvaluatedKey
+      limitKey: Limit
+      resultKey: Items
 /{UpdateItem}:
   uriParameters:
     UpdateItem?:

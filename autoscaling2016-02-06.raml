@@ -489,6 +489,11 @@ types:
           application/json: DescribeScalableTargetsResponse
       400:
         description: ValidationException
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: ScalableTargets
 /{DescribeScalingActivities}:
   uriParameters:
     DescribeScalingActivities?:
@@ -514,6 +519,11 @@ types:
           application/json: DescribeScalingActivitiesResponse
       400:
         description: ValidationException
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: ScalingActivities
 /{DescribeScalingPolicies}:
   uriParameters:
     DescribeScalingPolicies?:
@@ -539,6 +549,11 @@ types:
           application/json: DescribeScalingPoliciesResponse
       400:
         description: ValidationException
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: ScalingPolicies
 /{PutScalingPolicy}:
   uriParameters:
     PutScalingPolicy?:

@@ -475,6 +475,12 @@ types:
           application/xml: ListJobsOutput
       400:
         description: InvalidParameterException | InvalidAccessKeyIdException | InvalidVersionException
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Jobs[-1].JobId
+      moreResults: IsTruncated
+      limitKey: MaxJobs
+      resultKey: Jobs
 /?Operation=GetShippingLabel:
   displayName: Get Shipping Label
   post:

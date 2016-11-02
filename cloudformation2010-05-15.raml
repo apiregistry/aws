@@ -2039,6 +2039,10 @@ types:
       200:
         body:
           application/xml: DescribeStackEventsOutput
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: StackEvents
 /{DescribeStackResource}:
   uriParameters:
     DescribeStackResource?:
@@ -2085,6 +2089,8 @@ types:
       200:
         body:
           application/xml: DescribeStackResourcesOutput
+    (extras.Pagination):
+      resultKey: StackResources
 /{DescribeStacks}:
   uriParameters:
     DescribeStacks?:
@@ -2108,6 +2114,10 @@ types:
       200:
         body:
           application/xml: DescribeStacksOutput
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: Stacks
 /{EstimateTemplateCost}:
   uriParameters:
     EstimateTemplateCost?:
@@ -2273,6 +2283,10 @@ types:
       200:
         body:
           application/xml: ListStackResourcesOutput
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: StackResourceSummaries
 /{ListStacks}:
   uriParameters:
     ListStacks?:
@@ -2296,6 +2310,10 @@ types:
       200:
         body:
           application/xml: ListStacksOutput
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: StackSummaries
 /{SetStackPolicy}:
   uriParameters:
     SetStackPolicy?:

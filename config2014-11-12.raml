@@ -1658,6 +1658,11 @@ types:
           application/json: GetResourceConfigHistoryResponse
       400:
         description: ValidationException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: limit
+      resultKey: configurationItems
 /{ListDiscoveredResources}:
   uriParameters:
     ListDiscoveredResources?:

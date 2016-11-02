@@ -868,6 +868,11 @@ types:
           application/json: DescribeObjectsOutput
       400:
         description: InternalServiceError
+    (extras.Pagination):
+      inputToken: marker
+      outputToken: marker
+      moreResults: hasMoreResults
+      resultKey: pipelineObjects
 /{DescribePipelines}:
   uriParameters:
     DescribePipelines?:
@@ -893,6 +898,8 @@ types:
           application/json: DescribePipelinesOutput
       400:
         description: PipelineNotFoundException
+    (extras.Pagination):
+      resultKey: pipelineDescriptionList
 /{EvaluateExpression}:
   uriParameters:
     EvaluateExpression?:
@@ -968,6 +975,11 @@ types:
           application/json: ListPipelinesOutput
       400:
         description: InternalServiceError
+    (extras.Pagination):
+      inputToken: marker
+      outputToken: marker
+      moreResults: hasMoreResults
+      resultKey: pipelineIdList
 /{PollForTask}:
   uriParameters:
     PollForTask?:
@@ -1064,6 +1076,12 @@ types:
           application/json: QueryObjectsOutput
       400:
         description: PipelineNotFoundException
+    (extras.Pagination):
+      inputToken: marker
+      outputToken: marker
+      moreResults: hasMoreResults
+      limitKey: limit
+      resultKey: ids
 /{RemoveTags}:
   uriParameters:
     RemoveTags?:

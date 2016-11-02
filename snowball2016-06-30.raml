@@ -631,6 +631,11 @@ types:
           application/json: DescribeAddressesResult
       400:
         description: InvalidResourceException
+    (extras.Pagination):
+      limitKey: MaxResults
+      outputToken: NextToken
+      inputToken: NextToken
+      resultKey: Addresses
 /{DescribeJob}:
   uriParameters:
     DescribeJob?:
@@ -752,6 +757,11 @@ types:
       200:
         body:
           application/json: ListJobsResult
+    (extras.Pagination):
+      limitKey: MaxResults
+      outputToken: NextToken
+      inputToken: NextToken
+      resultKey: JobListEntries
 /{UpdateJob}:
   uriParameters:
     UpdateJob?:

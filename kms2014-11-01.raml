@@ -1470,6 +1470,12 @@ types:
           application/json: ListAliasesResponse
       400:
         description: DependencyTimeoutException
+    (extras.Pagination):
+      limitKey: Limit
+      inputToken: Marker
+      outputToken: NextMarker
+      moreResults: Truncated
+      resultKey: Aliases
 /{ListGrants}:
   uriParameters:
     ListGrants?:
@@ -1495,6 +1501,12 @@ types:
           application/json: ListGrantsResponse
       400:
         description: NotFoundException
+    (extras.Pagination):
+      limitKey: Limit
+      inputToken: Marker
+      outputToken: NextMarker
+      moreResults: Truncated
+      resultKey: Grants
 /{ListKeyPolicies}:
   uriParameters:
     ListKeyPolicies?:
@@ -1520,6 +1532,12 @@ types:
           application/json: ListKeyPoliciesResponse
       400:
         description: NotFoundException
+    (extras.Pagination):
+      limitKey: Limit
+      inputToken: Marker
+      outputToken: NextMarker
+      moreResults: Truncated
+      resultKey: PolicyNames
 /{ListKeys}:
   uriParameters:
     ListKeys?:
@@ -1545,6 +1563,12 @@ types:
           application/json: ListKeysResponse
       400:
         description: DependencyTimeoutException
+    (extras.Pagination):
+      limitKey: Limit
+      inputToken: Marker
+      outputToken: NextMarker
+      moreResults: Truncated
+      resultKey: Keys
 /{ListRetirableGrants}:
   uriParameters:
     ListRetirableGrants?:

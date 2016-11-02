@@ -1150,6 +1150,11 @@ types:
           application/json: DescribeDestinationsResponse
       400:
         description: InvalidParameterException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: limit
+      resultKey: destinations
 /{DescribeExportTasks}:
   uriParameters:
     DescribeExportTasks?:
@@ -1200,6 +1205,11 @@ types:
           application/json: DescribeLogGroupsResponse
       400:
         description: InvalidParameterException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: limit
+      resultKey: logGroups
 /{DescribeLogStreams}:
   uriParameters:
     DescribeLogStreams?:
@@ -1225,6 +1235,11 @@ types:
           application/json: DescribeLogStreamsResponse
       400:
         description: InvalidParameterException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: limit
+      resultKey: logStreams
 /{DescribeMetricFilters}:
   uriParameters:
     DescribeMetricFilters?:
@@ -1250,6 +1265,11 @@ types:
           application/json: DescribeMetricFiltersResponse
       400:
         description: InvalidParameterException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: limit
+      resultKey: metricFilters
 /{DescribeSubscriptionFilters}:
   uriParameters:
     DescribeSubscriptionFilters?:
@@ -1275,6 +1295,11 @@ types:
           application/json: DescribeSubscriptionFiltersResponse
       400:
         description: InvalidParameterException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: limit
+      resultKey: subscriptionFilters
 /{FilterLogEvents}:
   uriParameters:
     FilterLogEvents?:
@@ -1300,6 +1325,11 @@ types:
           application/json: FilterLogEventsResponse
       400:
         description: InvalidParameterException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: limit
+      resultKey: events,searchedLogStreams
 /{GetLogEvents}:
   uriParameters:
     GetLogEvents?:
@@ -1325,6 +1355,11 @@ types:
           application/json: GetLogEventsResponse
       400:
         description: InvalidParameterException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextForwardToken
+      limitKey: limit
+      resultKey: events
 /{PutDestination}:
   uriParameters:
     PutDestination?:

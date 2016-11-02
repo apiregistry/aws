@@ -2438,6 +2438,12 @@ types:
                 StorageClass:
                   type: StorageClass
                   description: The class of storage used to store the object.
+      (extras.Pagination):
+        moreResults: IsTruncated
+        limitKey: MaxParts
+        outputToken: NextPartNumberMarker
+        inputToken: PartNumberMarker
+        resultKey: Parts
   /{Key}?uploads:
     uriParameters:
       Key:
@@ -2579,6 +2585,14 @@ types:
           application/xml: ListObjectsOutput
       400:
         description: NoSuchBucket
+    (extras.Pagination):
+      moreResults: IsTruncated
+      limitKey: MaxKeys
+      outputToken: NextMarker || Contents[-1].Key
+      inputToken: Marker
+      resultKey:
+      - Contents
+      - CommonPrefixes
   delete:
     description: Deletes the bucket. All objects (including all object versions and Delete Markers) in the bucket must be deleted before the bucket itself can be deleted.
     displayName: Delete Bucket
@@ -2827,6 +2841,19 @@ types:
       200:
         body:
           application/xml: ListObjectVersionsOutput
+    (extras.Pagination):
+      moreResults: IsTruncated
+      limitKey: MaxKeys
+      outputToken:
+      - NextKeyMarker
+      - NextVersionIdMarker
+      inputToken:
+      - KeyMarker
+      - VersionIdMarker
+      resultKey:
+      - Versions
+      - DeleteMarkers
+      - CommonPrefixes
 /{Bucket}?policy:
   uriParameters:
     Bucket:
@@ -3064,6 +3091,18 @@ types:
       200:
         body:
           application/xml: ListMultipartUploadsOutput
+    (extras.Pagination):
+      limitKey: MaxUploads
+      moreResults: IsTruncated
+      outputToken:
+      - NextKeyMarker
+      - NextUploadIdMarker
+      inputToken:
+      - KeyMarker
+      - UploadIdMarker
+      resultKey:
+      - Uploads
+      - CommonPrefixes
 /{Bucket}?location:
   uriParameters:
     Bucket:
@@ -3270,6 +3309,8 @@ types:
       200:
         body:
           application/xml: ListBucketsOutput
+    (extras.Pagination):
+      resultKey: Buckets
 /{Bucket}?delete:
   uriParameters:
     Bucket:
@@ -3451,6 +3492,13 @@ types:
           application/xml: ListObjectsV2Output
       400:
         description: NoSuchBucket
+    (extras.Pagination):
+      limitKey: MaxKeys
+      outputToken: NextContinuationToken
+      inputToken: ContinuationToken
+      resultKey:
+      - Contents
+      - CommonPrefixes
 /{Bucket}?notification{PutBucketNotification}:
   uriParameters:
     PutBucketNotification?:

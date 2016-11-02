@@ -731,6 +731,12 @@ types:
           application/json: DescribeStreamOutput
       400:
         description: ResourceNotFoundException
+    (extras.Pagination):
+      inputToken: ExclusiveStartShardId
+      limitKey: Limit
+      moreResults: StreamDescription.HasMoreShards
+      outputToken: StreamDescription.Shards[-1].ShardId
+      resultKey: StreamDescription.Shards
 /{DisableEnhancedMonitoring}:
   uriParameters:
     DisableEnhancedMonitoring?:
@@ -881,6 +887,12 @@ types:
           application/json: ListStreamsOutput
       400:
         description: LimitExceededException
+    (extras.Pagination):
+      inputToken: ExclusiveStartStreamName
+      limitKey: Limit
+      moreResults: HasMoreStreams
+      outputToken: StreamNames[-1]
+      resultKey: StreamNames
 /{ListTagsForStream}:
   uriParameters:
     ListTagsForStream?:

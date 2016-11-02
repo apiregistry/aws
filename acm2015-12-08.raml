@@ -481,6 +481,11 @@ types:
       200:
         body:
           application/json: ListCertificatesResponse
+    (extras.Pagination):
+      limitKey: MaxItems
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: CertificateSummaryList
 /{ListTagsForCertificate}:
   uriParameters:
     ListTagsForCertificate?:

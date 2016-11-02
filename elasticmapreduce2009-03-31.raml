@@ -1788,6 +1788,8 @@ types:
           application/json: DescribeJobFlowsOutput
       400:
         description: InternalServerError
+    (extras.Pagination):
+      resultKey: JobFlows
 /{DescribeSecurityConfiguration}:
   uriParameters:
     DescribeSecurityConfiguration?:
@@ -1863,6 +1865,10 @@ types:
           application/json: ListBootstrapActionsOutput
       400:
         description: InternalServerException
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      resultKey: BootstrapActions
 /{ListClusters}:
   uriParameters:
     ListClusters?:
@@ -1888,6 +1894,10 @@ types:
           application/json: ListClustersOutput
       400:
         description: InternalServerException
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      resultKey: Clusters
 /{ListInstanceGroups}:
   uriParameters:
     ListInstanceGroups?:
@@ -1913,6 +1923,10 @@ types:
           application/json: ListInstanceGroupsOutput
       400:
         description: InternalServerException
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      resultKey: InstanceGroups
 /{ListInstances}:
   uriParameters:
     ListInstances?:
@@ -1938,6 +1952,10 @@ types:
           application/json: ListInstancesOutput
       400:
         description: InternalServerException
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      resultKey: Instances
 /{ListSecurityConfigurations}:
   uriParameters:
     ListSecurityConfigurations?:
@@ -1988,6 +2006,10 @@ types:
           application/json: ListStepsOutput
       400:
         description: InternalServerException
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      resultKey: Steps
 /{ModifyInstanceGroups}:
   uriParameters:
     ModifyInstanceGroups?:

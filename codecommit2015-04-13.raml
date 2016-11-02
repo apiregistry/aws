@@ -719,6 +719,10 @@ types:
           application/json: ListBranchesOutput
       400:
         description: RepositoryNameRequiredException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: branches
 /{ListRepositories}:
   uriParameters:
     ListRepositories?:
@@ -744,6 +748,10 @@ types:
           application/json: ListRepositoriesOutput
       400:
         description: InvalidSortByException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: repositories
 /{PutRepositoryTriggers}:
   uriParameters:
     PutRepositoryTriggers?:

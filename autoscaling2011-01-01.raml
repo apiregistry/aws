@@ -2732,6 +2732,11 @@ types:
         description: InvalidNextToken
       500:
         description: ResourceContention
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxRecords
+      resultKey: AutoScalingGroups
 /{DescribeAutoScalingInstances}:
   uriParameters:
     DescribeAutoScalingInstances?:
@@ -2759,6 +2764,11 @@ types:
         description: InvalidNextToken
       500:
         description: ResourceContention
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxRecords
+      resultKey: AutoScalingInstances
 /{DescribeAutoScalingNotificationTypes}:
   uriParameters:
     DescribeAutoScalingNotificationTypes?:
@@ -2809,6 +2819,11 @@ types:
         description: InvalidNextToken
       500:
         description: ResourceContention
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxRecords
+      resultKey: LaunchConfigurations
 /{DescribeLifecycleHookTypes}:
   uriParameters:
     DescribeLifecycleHookTypes?:
@@ -2957,6 +2972,11 @@ types:
         description: InvalidNextToken
       500:
         description: ResourceContention
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxRecords
+      resultKey: NotificationConfigurations
 /{DescribePolicies}:
   uriParameters:
     DescribePolicies?:
@@ -2984,6 +3004,11 @@ types:
         description: InvalidNextToken
       500:
         description: ResourceContention
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxRecords
+      resultKey: ScalingPolicies
 /{DescribeScalingActivities}:
   uriParameters:
     DescribeScalingActivities?:
@@ -3011,6 +3036,11 @@ types:
         description: InvalidNextToken
       500:
         description: ResourceContention
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxRecords
+      resultKey: Activities
 /{DescribeScalingProcessTypes}:
   uriParameters:
     DescribeScalingProcessTypes?:
@@ -3061,6 +3091,11 @@ types:
         description: InvalidNextToken
       500:
         description: ResourceContention
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxRecords
+      resultKey: ScheduledUpdateGroupActions
 /{DescribeTags}:
   uriParameters:
     DescribeTags?:
@@ -3088,6 +3123,11 @@ types:
         description: InvalidNextToken
       500:
         description: ResourceContention
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxRecords
+      resultKey: Tags
 /{DescribeTerminationPolicyTypes}:
   uriParameters:
     DescribeTerminationPolicyTypes?:

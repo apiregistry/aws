@@ -13871,6 +13871,8 @@ types:
       200:
         body:
           application/json: DescribeAccountAttributesResult
+    (extras.Pagination):
+      resultKey: AccountAttributes
 /{DescribeAddresses}:
   uriParameters:
     DescribeAddresses?:
@@ -13894,6 +13896,8 @@ types:
       200:
         body:
           application/json: DescribeAddressesResult
+    (extras.Pagination):
+      resultKey: Addresses
 /{DescribeAvailabilityZones}:
   uriParameters:
     DescribeAvailabilityZones?:
@@ -13917,6 +13921,8 @@ types:
       200:
         body:
           application/json: DescribeAvailabilityZonesResult
+    (extras.Pagination):
+      resultKey: AvailabilityZones
 /{DescribeBundleTasks}:
   uriParameters:
     DescribeBundleTasks?:
@@ -13940,6 +13946,8 @@ types:
       200:
         body:
           application/json: DescribeBundleTasksResult
+    (extras.Pagination):
+      resultKey: BundleTasks
 /{DescribeClassicLinkInstances}:
   uriParameters:
     DescribeClassicLinkInstances?:
@@ -13986,6 +13994,8 @@ types:
       200:
         body:
           application/json: DescribeConversionTasksResult
+    (extras.Pagination):
+      resultKey: ConversionTasks
 /{DescribeCustomerGateways}:
   uriParameters:
     DescribeCustomerGateways?:
@@ -14009,6 +14019,8 @@ types:
       200:
         body:
           application/json: DescribeCustomerGatewaysResult
+    (extras.Pagination):
+      resultKey: CustomerGateways
 /{DescribeDhcpOptions}:
   uriParameters:
     DescribeDhcpOptions?:
@@ -14032,6 +14044,8 @@ types:
       200:
         body:
           application/json: DescribeDhcpOptionsResult
+    (extras.Pagination):
+      resultKey: DhcpOptions
 /{DescribeExportTasks}:
   uriParameters:
     DescribeExportTasks?:
@@ -14055,6 +14069,8 @@ types:
       200:
         body:
           application/json: DescribeExportTasksResult
+    (extras.Pagination):
+      resultKey: ExportTasks
 /{DescribeFlowLogs}:
   uriParameters:
     DescribeFlowLogs?:
@@ -14265,6 +14281,8 @@ types:
       200:
         body:
           application/json: DescribeImagesResult
+    (extras.Pagination):
+      resultKey: Images
 /{DescribeImportImageTasks}:
   uriParameters:
     DescribeImportImageTasks?:
@@ -14376,6 +14394,11 @@ types:
       200:
         body:
           application/json: DescribeInstanceStatusResult
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: InstanceStatuses
 /{DescribeInstances}:
   uriParameters:
     DescribeInstances?:
@@ -14399,6 +14422,11 @@ types:
       200:
         body:
           application/json: DescribeInstancesResult
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: Reservations
 /{DescribeInternetGateways}:
   uriParameters:
     DescribeInternetGateways?:
@@ -14422,6 +14450,8 @@ types:
       200:
         body:
           application/json: DescribeInternetGatewaysResult
+    (extras.Pagination):
+      resultKey: InternetGateways
 /{DescribeKeyPairs}:
   uriParameters:
     DescribeKeyPairs?:
@@ -14445,6 +14475,8 @@ types:
       200:
         body:
           application/json: DescribeKeyPairsResult
+    (extras.Pagination):
+      resultKey: KeyPairs
 /{DescribeMovingAddresses}:
   uriParameters:
     DescribeMovingAddresses?:
@@ -14514,6 +14546,8 @@ types:
       200:
         body:
           application/json: DescribeNetworkAclsResult
+    (extras.Pagination):
+      resultKey: NetworkAcls
 /{DescribeNetworkInterfaceAttribute}:
   uriParameters:
     DescribeNetworkInterfaceAttribute?:
@@ -14560,6 +14594,8 @@ types:
       200:
         body:
           application/json: DescribeNetworkInterfacesResult
+    (extras.Pagination):
+      resultKey: NetworkInterfaces
 /{DescribePlacementGroups}:
   uriParameters:
     DescribePlacementGroups?:
@@ -14583,6 +14619,8 @@ types:
       200:
         body:
           application/json: DescribePlacementGroupsResult
+    (extras.Pagination):
+      resultKey: PlacementGroups
 /{DescribePrefixLists}:
   uriParameters:
     DescribePrefixLists?:
@@ -14629,6 +14667,8 @@ types:
       200:
         body:
           application/json: DescribeRegionsResult
+    (extras.Pagination):
+      resultKey: Regions
 /{DescribeReservedInstances}:
   uriParameters:
     DescribeReservedInstances?:
@@ -14652,6 +14692,8 @@ types:
       200:
         body:
           application/json: DescribeReservedInstancesResult
+    (extras.Pagination):
+      resultKey: ReservedInstances
 /{DescribeReservedInstancesListings}:
   uriParameters:
     DescribeReservedInstancesListings?:
@@ -14675,6 +14717,8 @@ types:
       200:
         body:
           application/json: DescribeReservedInstancesListingsResult
+    (extras.Pagination):
+      resultKey: ReservedInstancesListings
 /{DescribeReservedInstancesModifications}:
   uriParameters:
     DescribeReservedInstancesModifications?:
@@ -14698,6 +14742,10 @@ types:
       200:
         body:
           application/json: DescribeReservedInstancesModificationsResult
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: ReservedInstancesModifications
 /{DescribeReservedInstancesOfferings}:
   uriParameters:
     DescribeReservedInstancesOfferings?:
@@ -14721,6 +14769,11 @@ types:
       200:
         body:
           application/json: DescribeReservedInstancesOfferingsResult
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: ReservedInstancesOfferings
 /{DescribeRouteTables}:
   uriParameters:
     DescribeRouteTables?:
@@ -14744,6 +14797,8 @@ types:
       200:
         body:
           application/json: DescribeRouteTablesResult
+    (extras.Pagination):
+      resultKey: RouteTables
 /{DescribeScheduledInstanceAvailability}:
   uriParameters:
     DescribeScheduledInstanceAvailability?:
@@ -14838,6 +14893,8 @@ types:
       200:
         body:
           application/json: DescribeSecurityGroupsResult
+    (extras.Pagination):
+      resultKey: SecurityGroups
 /{DescribeSnapshotAttribute}:
   uriParameters:
     DescribeSnapshotAttribute?:
@@ -14916,6 +14973,11 @@ types:
       200:
         body:
           application/json: DescribeSnapshotsResult
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: Snapshots
 /{DescribeSpotDatafeedSubscription}:
   uriParameters:
     DescribeSpotDatafeedSubscription?:
@@ -15008,6 +15070,11 @@ types:
       200:
         body:
           application/json: DescribeSpotFleetRequestsResponse
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: SpotFleetRequestConfigs
 /{DescribeSpotInstanceRequests}:
   uriParameters:
     DescribeSpotInstanceRequests?:
@@ -15031,6 +15098,8 @@ types:
       200:
         body:
           application/json: DescribeSpotInstanceRequestsResult
+    (extras.Pagination):
+      resultKey: SpotInstanceRequests
 /{DescribeSpotPriceHistory}:
   uriParameters:
     DescribeSpotPriceHistory?:
@@ -15054,6 +15123,11 @@ types:
       200:
         body:
           application/json: DescribeSpotPriceHistoryResult
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: SpotPriceHistory
 /{DescribeStaleSecurityGroups}:
   uriParameters:
     DescribeStaleSecurityGroups?:
@@ -15103,6 +15177,8 @@ types:
       200:
         body:
           application/json: DescribeSubnetsResult
+    (extras.Pagination):
+      resultKey: Subnets
 /{DescribeTags}:
   uriParameters:
     DescribeTags?:
@@ -15126,6 +15202,11 @@ types:
       200:
         body:
           application/json: DescribeTagsResult
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: Tags
 /{DescribeVolumeAttribute}:
   uriParameters:
     DescribeVolumeAttribute?:
@@ -15201,6 +15282,11 @@ types:
       200:
         body:
           application/json: DescribeVolumeStatusResult
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: VolumeStatuses
 /{DescribeVolumes}:
   uriParameters:
     DescribeVolumes?:
@@ -15224,6 +15310,11 @@ types:
       200:
         body:
           application/json: DescribeVolumesResult
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: Volumes
 /{DescribeVpcAttribute}:
   uriParameters:
     DescribeVpcAttribute?:
@@ -15362,6 +15453,8 @@ types:
       200:
         body:
           application/json: DescribeVpcPeeringConnectionsResult
+    (extras.Pagination):
+      resultKey: VpcPeeringConnections
 /{DescribeVpcs}:
   uriParameters:
     DescribeVpcs?:
@@ -15385,6 +15478,8 @@ types:
       200:
         body:
           application/json: DescribeVpcsResult
+    (extras.Pagination):
+      resultKey: Vpcs
 /{DescribeVpnConnections}:
   uriParameters:
     DescribeVpnConnections?:
@@ -15408,6 +15503,8 @@ types:
       200:
         body:
           application/json: DescribeVpnConnectionsResult
+    (extras.Pagination):
+      resultKey: VpnConnections
 /{DescribeVpnGateways}:
   uriParameters:
     DescribeVpnGateways?:
@@ -15431,6 +15528,8 @@ types:
       200:
         body:
           application/json: DescribeVpnGatewaysResult
+    (extras.Pagination):
+      resultKey: VpnGateways
 /{DetachClassicLinkVpc}:
   uriParameters:
     DetachClassicLinkVpc?:

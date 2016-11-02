@@ -610,6 +610,11 @@ types:
           application/xml: ListDomainsResult
       400:
         description: InvalidParameterValue
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxNumberOfDomains
+      resultKey: DomainNames
 /{PutAttributes}:
   uriParameters:
     PutAttributes?:
@@ -700,3 +705,7 @@ types:
         description: InvalidParameterValue
       408:
         description: RequestTimeout
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: Items

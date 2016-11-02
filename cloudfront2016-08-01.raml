@@ -1221,6 +1221,12 @@ types:
               description: The StreamingDistributionList type.
         400:
           description: InvalidArgument
+      (extras.Pagination):
+        inputToken: Marker
+        outputToken: StreamingDistributionList.NextMarker
+        limitKey: MaxItems
+        moreResults: StreamingDistributionList.IsTruncated
+        resultKey: StreamingDistributionList.Items
     post:
       description: Create a new streaming distribution.
       displayName: Create Streaming Distribution2016_08_01
@@ -1435,6 +1441,12 @@ types:
               description: NoSuchDistribution
             403:
               description: AccessDenied
+          (extras.Pagination):
+            inputToken: Marker
+            outputToken: InvalidationList.NextMarker
+            limitKey: MaxItems
+            moreResults: InvalidationList.IsTruncated
+            resultKey: InvalidationList.Items
         post:
           description: Create a new invalidation.
           displayName: Create Invalidation2016_08_01
@@ -1489,6 +1501,12 @@ types:
               description: The DistributionList type.
         400:
           description: InvalidArgument
+      (extras.Pagination):
+        inputToken: Marker
+        outputToken: DistributionList.NextMarker
+        limitKey: MaxItems
+        moreResults: DistributionList.IsTruncated
+        resultKey: DistributionList.Items
     post:
       description: Create a new distribution.
       displayName: Create Distribution2016_08_01
@@ -1669,6 +1687,12 @@ types:
                 description: The CloudFrontOriginAccessIdentityList type.
           400:
             description: InvalidArgument
+        (extras.Pagination):
+          inputToken: Marker
+          outputToken: CloudFrontOriginAccessIdentityList.NextMarker
+          limitKey: MaxItems
+          moreResults: CloudFrontOriginAccessIdentityList.IsTruncated
+          resultKey: CloudFrontOriginAccessIdentityList.Items
       post:
         description: Create a new origin access identity.
         displayName: Create Cloud Front Origin Access Identity2016_08_01

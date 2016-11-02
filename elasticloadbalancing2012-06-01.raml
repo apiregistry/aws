@@ -1761,6 +1761,8 @@ types:
           application/xml: DescribeEndPointStateOutput
       400:
         description: LoadBalancerNotFound
+    (extras.Pagination):
+      resultKey: InstanceStates
 /{DescribeLoadBalancerAttributes}:
   uriParameters:
     DescribeLoadBalancerAttributes?:
@@ -1811,6 +1813,8 @@ types:
           application/xml: DescribeLoadBalancerPoliciesOutput
       400:
         description: LoadBalancerNotFound
+    (extras.Pagination):
+      resultKey: PolicyDescriptions
 /{DescribeLoadBalancerPolicyTypes}:
   uriParameters:
     DescribeLoadBalancerPolicyTypes?:
@@ -1836,6 +1840,8 @@ types:
           application/xml: DescribeLoadBalancerPolicyTypesOutput
       400:
         description: PolicyTypeNotFound
+    (extras.Pagination):
+      resultKey: PolicyTypeDescriptions
 /{DescribeLoadBalancers}:
   uriParameters:
     DescribeLoadBalancers?:
@@ -1861,6 +1867,10 @@ types:
           application/xml: DescribeAccessPointsOutput
       400:
         description: LoadBalancerNotFound
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: NextMarker
+      resultKey: LoadBalancerDescriptions
 /{DescribeTags}:
   uriParameters:
     DescribeTags?:

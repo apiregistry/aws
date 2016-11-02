@@ -2817,6 +2817,8 @@ types:
       200:
         body:
           application/xml: ApplicationVersionDescriptionsMessage
+    (extras.Pagination):
+      resultKey: ApplicationVersions
 /{DescribeApplications}:
   uriParameters:
     DescribeApplications?:
@@ -2840,6 +2842,8 @@ types:
       200:
         body:
           application/xml: ApplicationDescriptionsMessage
+    (extras.Pagination):
+      resultKey: Applications
 /{DescribeConfigurationOptions}:
   uriParameters:
     DescribeConfigurationOptions?:
@@ -2869,6 +2873,8 @@ types:
           application/xml: ConfigurationOptionsDescription
       400:
         description: TooManyBucketsException
+    (extras.Pagination):
+      resultKey: Options
 /{DescribeConfigurationSettings}:
   uriParameters:
     DescribeConfigurationSettings?:
@@ -3024,6 +3030,8 @@ types:
       200:
         body:
           application/xml: EnvironmentDescriptionsMessage
+    (extras.Pagination):
+      resultKey: Environments
 /{DescribeEvents}:
   uriParameters:
     DescribeEvents?:
@@ -3047,6 +3055,11 @@ types:
       200:
         body:
           application/xml: EventDescriptionsMessage
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxRecords
+      resultKey: Events
 /{DescribeInstancesHealth}:
   uriParameters:
     DescribeInstancesHealth?:
@@ -3093,6 +3106,8 @@ types:
       200:
         body:
           application/xml: ListAvailableSolutionStacksResultMessage
+    (extras.Pagination):
+      resultKey: SolutionStacks
 /{RebuildEnvironment}:
   uriParameters:
     RebuildEnvironment?:

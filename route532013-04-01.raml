@@ -2086,6 +2086,12 @@ types:
               description: NoSuchHostedZone
             400:
               description: InvalidInput
+          (extras.Pagination):
+            moreResults: IsTruncated
+            limitKey: MaxItems
+            resultKey: ResourceRecordSets
+            inputToken: StartRecordName,StartRecordType,StartRecordIdentifier
+            outputToken: NextRecordName,NextRecordType,NextRecordIdentifier
       /changes:
         displayName: List Change Batches By Hosted Zone
         get:
@@ -2244,6 +2250,12 @@ types:
             application/xml: ListHostedZonesResponse
         400:
           description: InvalidInput | NoSuchDelegationSet | DelegationSetNotReusable
+      (extras.Pagination):
+        inputToken: Marker
+        outputToken: NextMarker
+        moreResults: IsTruncated
+        limitKey: MaxItems
+        resultKey: HostedZones
     post:
       description: 'Creates a new public hosted zone, used to specify how the Domain
         Name System (DNS) routes traffic on the Internet for a domain, such as example.com,
@@ -2516,6 +2528,12 @@ types:
             application/xml: ListHealthChecksResponse
         400:
           description: InvalidInput | IncompatibleVersion
+      (extras.Pagination):
+        inputToken: Marker
+        outputToken: NextMarker
+        moreResults: IsTruncated
+        limitKey: MaxItems
+        resultKey: HealthChecks
   /change:
     /{Id}:
       uriParameters:

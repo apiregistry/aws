@@ -1053,6 +1053,8 @@ types:
           application/json: Connections
       400:
         description: DirectConnectServerException
+    (extras.Pagination):
+      resultKey: connections
 /{DescribeConnectionsOnInterconnect}:
   uriParameters:
     DescribeConnectionsOnInterconnect?:
@@ -1078,6 +1080,8 @@ types:
           application/json: Connections
       400:
         description: DirectConnectServerException
+    (extras.Pagination):
+      resultKey: connections
 /{DescribeInterconnectLoa}:
   uriParameters:
     DescribeInterconnectLoa?:
@@ -1128,6 +1132,8 @@ types:
           application/json: Interconnects
       400:
         description: DirectConnectServerException
+    (extras.Pagination):
+      resultKey: interconnects
 /{DescribeLocations}:
   uriParameters:
     DescribeLocations?:
@@ -1151,6 +1157,8 @@ types:
           application/json: Locations
       400:
         description: DirectConnectServerException
+    (extras.Pagination):
+      resultKey: locations
 /{DescribeVirtualGateways}:
   uriParameters:
     DescribeVirtualGateways?:
@@ -1174,6 +1182,8 @@ types:
           application/json: VirtualGateways
       400:
         description: DirectConnectServerException
+    (extras.Pagination):
+      resultKey: virtualGateways
 /{DescribeVirtualInterfaces}:
   uriParameters:
     DescribeVirtualInterfaces?:
@@ -1199,3 +1209,5 @@ types:
           application/json: VirtualInterfaces
       400:
         description: DirectConnectServerException
+    (extras.Pagination):
+      resultKey: virtualInterfaces

@@ -1770,6 +1770,10 @@ types:
           application/xml: DescribeListenersOutput
       400:
         description: ListenerNotFound
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: NextMarker
+      resultKey: Listeners
 /{DescribeLoadBalancerAttributes}:
   uriParameters:
     DescribeLoadBalancerAttributes?:
@@ -1820,6 +1824,10 @@ types:
           application/xml: DescribeLoadBalancersOutput
       400:
         description: LoadBalancerNotFound
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: NextMarker
+      resultKey: LoadBalancers
 /{DescribeRules}:
   uriParameters:
     DescribeRules?:
@@ -1950,6 +1958,10 @@ types:
           application/xml: DescribeTargetGroupsOutput
       400:
         description: LoadBalancerNotFound
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: NextMarker
+      resultKey: TargetGroups
 /{DescribeTargetHealth}:
   uriParameters:
     DescribeTargetHealth?:

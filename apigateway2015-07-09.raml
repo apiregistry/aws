@@ -1350,6 +1350,11 @@ types:
         description: UnauthorizedException
       429:
         description: TooManyRequestsException
+    (extras.Pagination):
+      inputToken: position
+      outputToken: position
+      limitKey: limit
+      resultKey: items
 /domainnames:
   displayName: Create Domain Name
   /{domain_name}:
@@ -1455,6 +1460,11 @@ types:
             description: NotFoundException
           429:
             description: TooManyRequestsException
+        (extras.Pagination):
+          inputToken: position
+          outputToken: position
+          limitKey: limit
+          resultKey: items
       post:
         description: Creates a new <a>BasePathMapping</a> resource.
         displayName: Create Base Path Mapping
@@ -1581,6 +1591,11 @@ types:
         description: UnauthorizedException
       429:
         description: TooManyRequestsException
+    (extras.Pagination):
+      inputToken: position
+      outputToken: position
+      limitKey: limit
+      resultKey: items
   post:
     description: Creates a new domain name.
     displayName: Create Domain Name
@@ -2052,6 +2067,11 @@ types:
             description: NotFoundException
           429:
             description: TooManyRequestsException
+        (extras.Pagination):
+          inputToken: position
+          outputToken: position
+          limitKey: limit
+          resultKey: items
     /resources:
       displayName: Get Resources
       /{resource_id}:
@@ -2699,6 +2719,11 @@ types:
             description: NotFoundException
           429:
             description: TooManyRequestsException
+        (extras.Pagination):
+          inputToken: position
+          outputToken: position
+          limitKey: limit
+          resultKey: items
     /deployments:
       displayName: Get Deployments
       /{deployment_id}:
@@ -2848,6 +2873,11 @@ types:
             description: TooManyRequestsException
           503:
             description: ServiceUnavailableException
+        (extras.Pagination):
+          inputToken: position
+          outputToken: position
+          limitKey: limit
+          resultKey: items
     /authorizers:
       displayName: Get Authorizers
       /{authorizer_id}:
@@ -3185,6 +3215,11 @@ types:
         description: UnauthorizedException
       429:
         description: TooManyRequestsException
+    (extras.Pagination):
+      inputToken: position
+      outputToken: position
+      limitKey: limit
+      resultKey: items
 /apikeys:
   displayName: Get Api Keys
   /{api_Key}:
@@ -3315,6 +3350,11 @@ types:
         description: UnauthorizedException
       429:
         description: TooManyRequestsException
+    (extras.Pagination):
+      inputToken: position
+      outputToken: position
+      limitKey: limit
+      resultKey: items
 /usageplans:
   displayName: Get Usage Plans
   /{usageplanId}:
@@ -3463,6 +3503,11 @@ types:
             description: NotFoundException
           429:
             description: TooManyRequestsException
+        (extras.Pagination):
+          inputToken: position
+          outputToken: position
+          limitKey: limit
+          resultKey: items
     /usage:
       displayName: Get Usage
       get:
@@ -3500,6 +3545,11 @@ types:
             description: NotFoundException
           429:
             description: TooManyRequestsException
+        (extras.Pagination):
+          inputToken: position
+          outputToken: position
+          limitKey: limit
+          resultKey: items
     patch:
       description: Updates a usage plan of a given plan Id.
       displayName: Update Usage Plan
@@ -3621,6 +3671,11 @@ types:
         description: TooManyRequestsException
       409:
         description: ConflictException
+    (extras.Pagination):
+      inputToken: position
+      outputToken: position
+      limitKey: limit
+      resultKey: items
 /restapis?mode=import:
   displayName: Import Rest Api
   post:

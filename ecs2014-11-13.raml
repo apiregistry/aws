@@ -1742,6 +1742,11 @@ types:
           application/json: ListClustersResponse
       400:
         description: ServerException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: maxResults
+      resultKey: clusterArns
 /{ListContainerInstances}:
   uriParameters:
     ListContainerInstances?:
@@ -1767,6 +1772,11 @@ types:
           application/json: ListContainerInstancesResponse
       400:
         description: ServerException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: maxResults
+      resultKey: containerInstanceArns
 /{ListServices}:
   uriParameters:
     ListServices?:
@@ -1792,6 +1802,11 @@ types:
           application/json: ListServicesResponse
       400:
         description: ServerException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: maxResults
+      resultKey: serviceArns
 /{ListTaskDefinitionFamilies}:
   uriParameters:
     ListTaskDefinitionFamilies?:
@@ -1817,6 +1832,11 @@ types:
           application/json: ListTaskDefinitionFamiliesResponse
       400:
         description: ServerException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: maxResults
+      resultKey: families
 /{ListTaskDefinitions}:
   uriParameters:
     ListTaskDefinitions?:
@@ -1842,6 +1862,11 @@ types:
           application/json: ListTaskDefinitionsResponse
       400:
         description: ServerException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: maxResults
+      resultKey: taskDefinitionArns
 /{ListTasks}:
   uriParameters:
     ListTasks?:
@@ -1872,6 +1897,11 @@ types:
           application/json: ListTasksResponse
       400:
         description: ServerException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: maxResults
+      resultKey: taskArns
 /{RegisterContainerInstance}:
   uriParameters:
     RegisterContainerInstance?:

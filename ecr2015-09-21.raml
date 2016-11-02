@@ -799,6 +799,11 @@ types:
           application/json: DescribeRepositoriesResponse
       400:
         description: ServerException
+    (extras.Pagination):
+      resultKey: repositories
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: maxResults
 /{GetAuthorizationToken}:
   uriParameters:
     GetAuthorizationToken?:
@@ -924,6 +929,11 @@ types:
           application/json: ListImagesResponse
       400:
         description: ServerException
+    (extras.Pagination):
+      resultKey: imageIds
+      inputToken: nextToken
+      outputToken: nextToken
+      limitKey: maxResults
 /{PutImage}:
   uriParameters:
     PutImage?:

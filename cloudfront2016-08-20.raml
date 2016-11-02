@@ -1185,6 +1185,12 @@ types:
               description: NoSuchDistribution
             403:
               description: AccessDenied
+          (extras.Pagination):
+            inputToken: Marker
+            outputToken: InvalidationList.NextMarker
+            limitKey: MaxItems
+            moreResults: InvalidationList.IsTruncated
+            resultKey: InvalidationList.Items
     /{Id}:
       uriParameters:
         Id:
@@ -1328,6 +1334,12 @@ types:
               description: The DistributionList type.
         400:
           description: InvalidArgument
+      (extras.Pagination):
+        inputToken: Marker
+        outputToken: DistributionList.NextMarker
+        limitKey: MaxItems
+        moreResults: DistributionList.IsTruncated
+        resultKey: DistributionList.Items
     post:
       description: Create a new distribution.
       displayName: Create Distribution2016_08_20
@@ -1540,6 +1552,12 @@ types:
                 description: The CloudFrontOriginAccessIdentityList type.
           400:
             description: InvalidArgument
+        (extras.Pagination):
+          inputToken: Marker
+          outputToken: CloudFrontOriginAccessIdentityList.NextMarker
+          limitKey: MaxItems
+          moreResults: CloudFrontOriginAccessIdentityList.IsTruncated
+          resultKey: CloudFrontOriginAccessIdentityList.Items
   /tagging?Operation=Untag:
     displayName: Untag Resource2016_08_20
     post:
@@ -1748,6 +1766,12 @@ types:
               description: The StreamingDistributionList type.
         400:
           description: InvalidArgument
+      (extras.Pagination):
+        inputToken: Marker
+        outputToken: StreamingDistributionList.NextMarker
+        limitKey: MaxItems
+        moreResults: StreamingDistributionList.IsTruncated
+        resultKey: StreamingDistributionList.Items
   /streaming-distribution?WithTags:
     displayName: Create Streaming Distribution WithTags2016_08_20
     post:

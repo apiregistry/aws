@@ -1641,6 +1641,11 @@ types:
           application/json: DescribeActivationsResult
       400:
         description: InvalidFilter
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: ActivationList
 /{DescribeAssociation}:
   uriParameters:
     DescribeAssociation?:
@@ -1748,6 +1753,11 @@ types:
           application/json: DescribeInstanceInformationResult
       400:
         description: InternalServerError
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: InstanceInformationList
 /{GetDocument}:
   uriParameters:
     GetDocument?:
@@ -1798,6 +1808,11 @@ types:
           application/json: ListAssociationsResult
       400:
         description: InternalServerError
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: Associations
 /{ListCommandInvocations}:
   uriParameters:
     ListCommandInvocations?:
@@ -1823,6 +1838,11 @@ types:
           application/json: ListCommandInvocationsResult
       400:
         description: InternalServerError
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: CommandInvocations
 /{ListCommands}:
   uriParameters:
     ListCommands?:
@@ -1848,6 +1868,11 @@ types:
           application/json: ListCommandsResult
       400:
         description: InternalServerError
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: Commands
 /{ListDocuments}:
   uriParameters:
     ListDocuments?:
@@ -1873,6 +1898,11 @@ types:
           application/json: ListDocumentsResult
       400:
         description: InternalServerError
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxResults
+      resultKey: DocumentIdentifiers
 /{ListTagsForResource}:
   uriParameters:
     ListTagsForResource?:

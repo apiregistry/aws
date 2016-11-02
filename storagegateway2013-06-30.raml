@@ -2271,6 +2271,8 @@ types:
           application/json: DescribeCachediSCSIVolumesOutput
       400:
         description: InvalidGatewayRequestException
+    (extras.Pagination):
+      resultKey: CachediSCSIVolumes
 /{DescribeChapCredentials}:
   uriParameters:
     DescribeChapCredentials?:
@@ -2396,6 +2398,8 @@ types:
           application/json: DescribeStorediSCSIVolumesOutput
       400:
         description: InvalidGatewayRequestException
+    (extras.Pagination):
+      resultKey: StorediSCSIVolumes
 /{DescribeTapeArchives}:
   uriParameters:
     DescribeTapeArchives?:
@@ -2421,6 +2425,11 @@ types:
           application/json: DescribeTapeArchivesOutput
       400:
         description: InvalidGatewayRequestException
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: Limit
+      outputToken: Marker
+      resultKey: TapeArchives
 /{DescribeTapeRecoveryPoints}:
   uriParameters:
     DescribeTapeRecoveryPoints?:
@@ -2446,6 +2455,11 @@ types:
           application/json: DescribeTapeRecoveryPointsOutput
       400:
         description: InvalidGatewayRequestException
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: Limit
+      outputToken: Marker
+      resultKey: TapeRecoveryPointInfos
 /{DescribeTapes}:
   uriParameters:
     DescribeTapes?:
@@ -2471,6 +2485,11 @@ types:
           application/json: DescribeTapesOutput
       400:
         description: InvalidGatewayRequestException
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: Limit
+      outputToken: Marker
+      resultKey: Tapes
 /{DescribeUploadBuffer}:
   uriParameters:
     DescribeUploadBuffer?:
@@ -2521,6 +2540,11 @@ types:
           application/json: DescribeVTLDevicesOutput
       400:
         description: InvalidGatewayRequestException
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: Limit
+      outputToken: Marker
+      resultKey: VTLDevices
 /{DescribeWorkingStorage}:
   uriParameters:
     DescribeWorkingStorage?:
@@ -2596,6 +2620,11 @@ types:
           application/json: ListGatewaysOutput
       400:
         description: InvalidGatewayRequestException
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: Limit
+      outputToken: Marker
+      resultKey: Gateways
 /{ListLocalDisks}:
   uriParameters:
     ListLocalDisks?:
@@ -2628,6 +2657,8 @@ types:
           application/json: ListLocalDisksOutput
       400:
         description: InvalidGatewayRequestException
+    (extras.Pagination):
+      resultKey: Disks
 /{ListTagsForResource}:
   uriParameters:
     ListTagsForResource?:
@@ -2728,6 +2759,8 @@ types:
           application/json: ListVolumeRecoveryPointsOutput
       400:
         description: InvalidGatewayRequestException
+    (extras.Pagination):
+      resultKey: VolumeRecoveryPointInfos
 /{ListVolumes}:
   uriParameters:
     ListVolumes?:
@@ -2753,6 +2786,11 @@ types:
           application/json: ListVolumesOutput
       400:
         description: InvalidGatewayRequestException
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: Limit
+      outputToken: Marker
+      resultKey: VolumeInfos
 /{RemoveTagsFromResource}:
   uriParameters:
     RemoveTagsFromResource?:

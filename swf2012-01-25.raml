@@ -3361,6 +3361,11 @@ types:
           application/json: History
       400:
         description: UnknownResourceFault
+    (extras.Pagination):
+      limitKey: maximumPageSize
+      inputToken: nextPageToken
+      outputToken: nextPageToken
+      resultKey: events
 /{ListActivityTypes}:
   uriParameters:
     ListActivityTypes?:
@@ -3400,6 +3405,11 @@ types:
           application/json: ActivityTypeInfos
       400:
         description: OperationNotPermittedFault
+    (extras.Pagination):
+      limitKey: maximumPageSize
+      inputToken: nextPageToken
+      outputToken: nextPageToken
+      resultKey: typeInfos
 /{ListClosedWorkflowExecutions}:
   uriParameters:
     ListClosedWorkflowExecutions?:
@@ -3444,6 +3454,11 @@ types:
           application/json: WorkflowExecutionInfos
       400:
         description: UnknownResourceFault
+    (extras.Pagination):
+      limitKey: maximumPageSize
+      inputToken: nextPageToken
+      outputToken: nextPageToken
+      resultKey: executionInfos
 /{ListDomains}:
   uriParameters:
     ListDomains?:
@@ -3484,6 +3499,11 @@ types:
           application/json: DomainInfos
       400:
         description: OperationNotPermittedFault
+    (extras.Pagination):
+      limitKey: maximumPageSize
+      inputToken: nextPageToken
+      outputToken: nextPageToken
+      resultKey: domainInfos
 /{ListOpenWorkflowExecutions}:
   uriParameters:
     ListOpenWorkflowExecutions?:
@@ -3528,6 +3548,11 @@ types:
           application/json: WorkflowExecutionInfos
       400:
         description: UnknownResourceFault
+    (extras.Pagination):
+      limitKey: maximumPageSize
+      inputToken: nextPageToken
+      outputToken: nextPageToken
+      resultKey: executionInfos
 /{ListWorkflowTypes}:
   uriParameters:
     ListWorkflowTypes?:
@@ -3564,6 +3589,11 @@ types:
           application/json: WorkflowTypeInfos
       400:
         description: OperationNotPermittedFault
+    (extras.Pagination):
+      limitKey: maximumPageSize
+      inputToken: nextPageToken
+      outputToken: nextPageToken
+      resultKey: typeInfos
 /{PollForActivityTask}:
   uriParameters:
     PollForActivityTask?:
@@ -3664,6 +3694,11 @@ types:
           application/json: DecisionTask
       400:
         description: UnknownResourceFault
+    (extras.Pagination):
+      limitKey: maximumPageSize
+      inputToken: nextPageToken
+      outputToken: nextPageToken
+      resultKey: events
 /{RecordActivityTaskHeartbeat}:
   uriParameters:
     RecordActivityTaskHeartbeat?:

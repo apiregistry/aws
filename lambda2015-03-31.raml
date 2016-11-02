@@ -1025,6 +1025,11 @@ types:
           description: ServiceException
         429:
           description: TooManyRequestsException
+      (extras.Pagination):
+        inputToken: Marker
+        outputToken: NextMarker
+        limitKey: MaxItems
+        resultKey: Functions
   /event-source-mappings:
     displayName: List Event Source Mappings
     /{UUID}:
@@ -1180,6 +1185,11 @@ types:
           description: InvalidParameterValueException
         429:
           description: TooManyRequestsException
+      (extras.Pagination):
+        inputToken: Marker
+        outputToken: NextMarker
+        limitKey: MaxItems
+        resultKey: EventSourceMappings
 /2014-11-13:
   /functions:
     /{FunctionName}:

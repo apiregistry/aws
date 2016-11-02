@@ -1351,6 +1351,10 @@ types:
         description: AuthorizationError
       404:
         description: NotFound
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: Endpoints
 /{ListPhoneNumbersOptedOut}:
   uriParameters:
     ListPhoneNumbersOptedOut?:
@@ -1419,6 +1423,10 @@ types:
         description: InternalError
       403:
         description: AuthorizationError
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: PlatformApplications
 /{ListSubscriptions}:
   uriParameters:
     ListSubscriptions?:
@@ -1448,6 +1456,10 @@ types:
         description: InternalError
       403:
         description: AuthorizationError
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: Subscriptions
 /{ListSubscriptionsByTopic}:
   uriParameters:
     ListSubscriptionsByTopic?:
@@ -1479,6 +1491,10 @@ types:
         description: NotFound
       403:
         description: AuthorizationError
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: Subscriptions
 /{ListTopics}:
   uriParameters:
     ListTopics?:
@@ -1508,6 +1524,10 @@ types:
         description: InternalError
       403:
         description: AuthorizationError
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: Topics
 /{OptInPhoneNumber}:
   uriParameters:
     OptInPhoneNumber?:

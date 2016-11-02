@@ -2954,6 +2954,11 @@ types:
         description: CacheClusterNotFound
       400:
         description: InvalidParameterValue
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: CacheClusters
 /{DescribeCacheEngineVersions}:
   uriParameters:
     DescribeCacheEngineVersions?:
@@ -2977,6 +2982,11 @@ types:
       200:
         body:
           application/xml: CacheEngineVersionMessage
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: CacheEngineVersions
 /{DescribeCacheParameterGroups}:
   uriParameters:
     DescribeCacheParameterGroups?:
@@ -3004,6 +3014,11 @@ types:
         description: CacheParameterGroupNotFound
       400:
         description: InvalidParameterValue
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: CacheParameterGroups
 /{DescribeCacheParameters}:
   uriParameters:
     DescribeCacheParameters?:
@@ -3031,6 +3046,11 @@ types:
         description: CacheParameterGroupNotFound
       400:
         description: InvalidParameterValue
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: Parameters
 /{DescribeCacheSecurityGroups}:
   uriParameters:
     DescribeCacheSecurityGroups?:
@@ -3058,6 +3078,11 @@ types:
         description: CacheSecurityGroupNotFound
       400:
         description: InvalidParameterValue
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: CacheSecurityGroups
 /{DescribeCacheSubnetGroups}:
   uriParameters:
     DescribeCacheSubnetGroups?:
@@ -3083,6 +3108,11 @@ types:
           application/xml: CacheSubnetGroupMessage
       400:
         description: CacheSubnetGroupNotFoundFault
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: CacheSubnetGroups
 /{DescribeEngineDefaultParameters}:
   uriParameters:
     DescribeEngineDefaultParameters?:
@@ -3108,6 +3138,11 @@ types:
           application/xml: DescribeEngineDefaultParametersResult
       400:
         description: InvalidParameterValue
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: EngineDefaults.Marker
+      limitKey: MaxRecords
+      resultKey: EngineDefaults.Parameters
 /{DescribeEvents}:
   uriParameters:
     DescribeEvents?:
@@ -3133,6 +3168,11 @@ types:
           application/xml: EventsMessage
       400:
         description: InvalidParameterValue
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: Events
 /{DescribeReplicationGroups}:
   uriParameters:
     DescribeReplicationGroups?:
@@ -3160,6 +3200,11 @@ types:
         description: ReplicationGroupNotFoundFault
       400:
         description: InvalidParameterValue
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: ReplicationGroups
 /{DescribeReservedCacheNodes}:
   uriParameters:
     DescribeReservedCacheNodes?:
@@ -3187,6 +3232,11 @@ types:
         description: ReservedCacheNodeNotFound
       400:
         description: InvalidParameterValue
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: ReservedCacheNodes
 /{DescribeReservedCacheNodesOfferings}:
   uriParameters:
     DescribeReservedCacheNodesOfferings?:
@@ -3214,6 +3264,11 @@ types:
         description: ReservedCacheNodesOfferingNotFound
       400:
         description: InvalidParameterValue
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: ReservedCacheNodesOfferings
 /{DescribeSnapshots}:
   uriParameters:
     DescribeSnapshots?:
@@ -3241,6 +3296,11 @@ types:
         description: CacheClusterNotFound
       400:
         description: InvalidParameterValue
+    (extras.Pagination):
+      inputToken: Marker
+      outputToken: Marker
+      limitKey: MaxRecords
+      resultKey: Snapshots
 /{ListAllowedNodeTypeModifications}:
   uriParameters:
     ListAllowedNodeTypeModifications?:

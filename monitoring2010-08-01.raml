@@ -851,6 +851,11 @@ types:
           application/xml: DescribeAlarmHistoryOutput
       400:
         description: InvalidNextToken
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxRecords
+      resultKey: AlarmHistoryItems
 /{DescribeAlarms}:
   uriParameters:
     DescribeAlarms?:
@@ -876,6 +881,11 @@ types:
           application/xml: DescribeAlarmsOutput
       400:
         description: InvalidNextToken
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      limitKey: MaxRecords
+      resultKey: MetricAlarms
 /{DescribeAlarmsForMetric}:
   uriParameters:
     DescribeAlarmsForMetric?:
@@ -899,6 +909,8 @@ types:
       200:
         body:
           application/xml: DescribeAlarmsForMetricOutput
+    (extras.Pagination):
+      resultKey: MetricAlarms
 /{DisableAlarmActions}:
   uriParameters:
     DisableAlarmActions?:
@@ -1028,6 +1040,10 @@ types:
         description: InternalServiceError
       400:
         description: InvalidParameterValue
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: Metrics
 /{PutMetricAlarm}:
   uriParameters:
     PutMetricAlarm?:

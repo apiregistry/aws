@@ -5309,6 +5309,12 @@ types:
           application/xml: GetAccountAuthorizationDetailsResponse
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: UserDetailList,GroupDetailList,RoleDetailList,Policies
 /{GetAccountPasswordPolicy}:
   uriParameters:
     GetAccountPasswordPolicy?:
@@ -5467,6 +5473,12 @@ types:
         description: NoSuchEntity
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: Users
 /{GetGroupPolicy}:
   uriParameters:
     GetGroupPolicy?:
@@ -5856,6 +5868,12 @@ types:
         description: NoSuchEntity
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: AccessKeyMetadata
 /{ListAccountAliases}:
   uriParameters:
     ListAccountAliases?:
@@ -5884,6 +5902,12 @@ types:
           application/xml: ListAccountAliasesResponse
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: AccountAliases
 /{ListAttachedGroupPolicies}:
   uriParameters:
     ListAttachedGroupPolicies?:
@@ -5913,6 +5937,12 @@ types:
         description: InvalidInput
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: AttachedPolicies
 /{ListAttachedRolePolicies}:
   uriParameters:
     ListAttachedRolePolicies?:
@@ -5942,6 +5972,12 @@ types:
         description: InvalidInput
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: AttachedPolicies
 /{ListAttachedUserPolicies}:
   uriParameters:
     ListAttachedUserPolicies?:
@@ -5971,6 +6007,12 @@ types:
         description: InvalidInput
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: AttachedPolicies
 /{ListEntitiesForPolicy}:
   uriParameters:
     ListEntitiesForPolicy?:
@@ -6000,6 +6042,12 @@ types:
         description: InvalidInput
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: PolicyGroups,PolicyUsers,PolicyRoles
 /{ListGroupPolicies}:
   uriParameters:
     ListGroupPolicies?:
@@ -6027,6 +6075,12 @@ types:
         description: NoSuchEntity
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: PolicyNames
 /{ListGroups}:
   uriParameters:
     ListGroups?:
@@ -6052,6 +6106,12 @@ types:
           application/xml: ListGroupsResponse
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: Groups
 /{ListGroupsForUser}:
   uriParameters:
     ListGroupsForUser?:
@@ -6079,6 +6139,12 @@ types:
         description: NoSuchEntity
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: Groups
 /{ListInstanceProfiles}:
   uriParameters:
     ListInstanceProfiles?:
@@ -6104,6 +6170,12 @@ types:
           application/xml: ListInstanceProfilesResponse
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: InstanceProfiles
 /{ListInstanceProfilesForRole}:
   uriParameters:
     ListInstanceProfilesForRole?:
@@ -6131,6 +6203,12 @@ types:
         description: NoSuchEntity
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: InstanceProfiles
 /{ListMFADevices}:
   uriParameters:
     ListMFADevices?:
@@ -6158,6 +6236,12 @@ types:
         description: NoSuchEntity
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: MFADevices
 /{ListOpenIDConnectProviders}:
   uriParameters:
     ListOpenIDConnectProviders?:
@@ -6208,6 +6292,12 @@ types:
           application/xml: ListPoliciesResponse
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: Policies
 /{ListPolicyVersions}:
   uriParameters:
     ListPolicyVersions?:
@@ -6237,6 +6327,12 @@ types:
         description: InvalidInput
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: Versions
 /{ListRolePolicies}:
   uriParameters:
     ListRolePolicies?:
@@ -6264,6 +6360,12 @@ types:
         description: NoSuchEntity
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: PolicyNames
 /{ListRoles}:
   uriParameters:
     ListRoles?:
@@ -6289,6 +6391,12 @@ types:
           application/xml: ListRolesResponse
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: Roles
 /{ListSAMLProviders}:
   uriParameters:
     ListSAMLProviders?:
@@ -6314,6 +6422,8 @@ types:
           application/xml: ListSAMLProvidersResponse
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      resultKey: SAMLProviderList
 /{ListSSHPublicKeys}:
   uriParameters:
     ListSSHPublicKeys?:
@@ -6339,6 +6449,12 @@ types:
           application/xml: ListSSHPublicKeysResponse
       404:
         description: NoSuchEntity
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: SSHPublicKeys
 /{ListServerCertificates}:
   uriParameters:
     ListServerCertificates?:
@@ -6364,6 +6480,12 @@ types:
           application/xml: ListServerCertificatesResponse
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: ServerCertificateMetadataList
 /{ListSigningCertificates}:
   uriParameters:
     ListSigningCertificates?:
@@ -6391,6 +6513,12 @@ types:
         description: NoSuchEntity
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: Certificates
 /{ListUserPolicies}:
   uriParameters:
     ListUserPolicies?:
@@ -6418,6 +6546,12 @@ types:
         description: NoSuchEntity
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: PolicyNames
 /{ListUsers}:
   uriParameters:
     ListUsers?:
@@ -6443,6 +6577,12 @@ types:
           application/xml: ListUsersResponse
       500:
         description: ServiceFailure
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: Users
 /{ListVirtualMFADevices}:
   uriParameters:
     ListVirtualMFADevices?:
@@ -6466,6 +6606,12 @@ types:
       200:
         body:
           application/xml: ListVirtualMFADevicesResponse
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: VirtualMFADevices
 /{PutGroupPolicy}:
   uriParameters:
     PutGroupPolicy?:
@@ -6735,6 +6881,12 @@ types:
         description: InvalidInput
       500:
         description: PolicyEvaluation
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: EvaluationResults
 /{SimulatePrincipalPolicy}:
   uriParameters:
     SimulatePrincipalPolicy?:
@@ -6764,6 +6916,12 @@ types:
         description: InvalidInput
       500:
         description: PolicyEvaluation
+    (extras.Pagination):
+      inputToken: Marker
+      limitKey: MaxItems
+      moreResults: IsTruncated
+      outputToken: Marker
+      resultKey: EvaluationResults
 /{UpdateAccessKey}:
   uriParameters:
     UpdateAccessKey?:

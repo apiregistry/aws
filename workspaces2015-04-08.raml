@@ -858,6 +858,10 @@ types:
           application/json: DescribeWorkspaceBundlesResult
       400:
         description: InvalidParameterValuesException
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: Bundles
 /{DescribeWorkspaceDirectories}:
   uriParameters:
     DescribeWorkspaceDirectories?:
@@ -883,6 +887,10 @@ types:
           application/json: DescribeWorkspaceDirectoriesResult
       400:
         description: InvalidParameterValuesException
+    (extras.Pagination):
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: Directories
 /{DescribeWorkspaces}:
   uriParameters:
     DescribeWorkspaces?:
@@ -908,6 +916,11 @@ types:
           application/json: DescribeWorkspacesResult
       400:
         description: InvalidParameterValuesException
+    (extras.Pagination):
+      limitKey: Limit
+      inputToken: NextToken
+      outputToken: NextToken
+      resultKey: Workspaces
 /{DescribeWorkspacesConnectionStatus}:
   uriParameters:
     DescribeWorkspacesConnectionStatus?:

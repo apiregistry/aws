@@ -2116,6 +2116,10 @@ types:
           application/json: ListApplicationRevisionsOutput
       400:
         description: ApplicationDoesNotExistException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: revisions
 /{ListApplications}:
   uriParameters:
     ListApplications?:
@@ -2141,6 +2145,10 @@ types:
           application/json: ListApplicationsOutput
       400:
         description: InvalidNextTokenException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: applications
 /{ListDeploymentConfigs}:
   uriParameters:
     ListDeploymentConfigs?:
@@ -2166,6 +2174,10 @@ types:
           application/json: ListDeploymentConfigsOutput
       400:
         description: InvalidNextTokenException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: deploymentConfigsList
 /{ListDeploymentGroups}:
   uriParameters:
     ListDeploymentGroups?:
@@ -2191,6 +2203,10 @@ types:
           application/json: ListDeploymentGroupsOutput
       400:
         description: ApplicationNameRequiredException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: deploymentGroups
 /{ListDeploymentInstances}:
   uriParameters:
     ListDeploymentInstances?:
@@ -2216,6 +2232,10 @@ types:
           application/json: ListDeploymentInstancesOutput
       400:
         description: DeploymentIdRequiredException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: instancesList
 /{ListDeployments}:
   uriParameters:
     ListDeployments?:
@@ -2241,6 +2261,10 @@ types:
           application/json: ListDeploymentsOutput
       400:
         description: ApplicationNameRequiredException
+    (extras.Pagination):
+      inputToken: nextToken
+      outputToken: nextToken
+      resultKey: deployments
 /{ListOnPremisesInstances}:
   uriParameters:
     ListOnPremisesInstances?:

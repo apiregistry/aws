@@ -1744,6 +1744,11 @@ types:
           application/json: ListDomainsResponse
       400:
         description: InvalidInput
+    (extras.Pagination):
+      limitKey: MaxItems
+      inputToken: Marker
+      outputToken: NextPageMarker
+      resultKey: Domains
 /{ListOperations}:
   uriParameters:
     ListOperations?:
@@ -1769,6 +1774,11 @@ types:
           application/json: ListOperationsResponse
       400:
         description: InvalidInput
+    (extras.Pagination):
+      limitKey: MaxItems
+      inputToken: Marker
+      outputToken: NextPageMarker
+      resultKey: Operations
 /{ListTagsForDomain}:
   uriParameters:
     ListTagsForDomain?:
