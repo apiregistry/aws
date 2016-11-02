@@ -1068,10 +1068,12 @@ types:
         description: Specify the minimum version of the SSL protocol that you want CloudFront to use, SSLv3 or TLSv1, for HTTPS connections. CloudFront will serve your objects only to browsers or devices that support at least the SSL version that you specify. The TLSv1 protocol is more secure, so we recommend that you specify SSLv3 only if your users are using browsers or devices that don't support TLSv1. If you're using a custom certificate (if you specify a value for IAMCertificateId) and if you're using dedicated IP (if you specify vip for SSLSupportMethod), you can choose SSLv3 or TLSv1 as the MinimumProtocolVersion. If you're using a custom certificate (if you specify a value for IAMCertificateId) and if you're using SNI (if you specify sni-only for SSLSupportMethod), you must specify TLSv1 for MinimumProtocolVersion.
       Certificate?:
         type: string
+        (commons.Depricated): null
         description: 'Note: this field is deprecated. Please use one of [ACMCertificateArn,
           IAMCertificateId, CloudFrontDefaultCertificate].'
       CertificateSource?:
         type: CertificateSource
+        (commons.Depricated): null
         description: 'Note: this field is deprecated. Please use one of [ACMCertificateArn,
           IAMCertificateId, CloudFrontDefaultCertificate].'
     description: A complex type that contains information about viewer certificates for this distribution.

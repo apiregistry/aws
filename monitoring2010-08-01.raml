@@ -331,6 +331,14 @@ types:
         description: <p>The standard unit used for the datapoint.</p>
     xml:
       namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    (extras.XmlOrder):
+    - Timestamp
+    - SampleCount
+    - Average
+    - Sum
+    - Minimum
+    - Maximum
+    - Unit
     description: <p> The <code>Datapoint</code> data type encapsulates the statistical data that Amazon CloudWatch computes from metric data. </p>
   DeleteAlarmsInput:
     type: object
@@ -457,6 +465,9 @@ types:
         description: <p>The value representing the dimension measurement</p>
     xml:
       namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    (extras.XmlOrder):
+    - Name
+    - Value
     description: <p> The <code>Dimension</code> data type further expands on the identity of a metric using a Name, Value pair. </p> <p>For examples that use one or more dimensions, see <a>PutMetricData</a>.</p>
   DimensionFilter:
     type: object
@@ -559,6 +570,9 @@ types:
         description: <p>A string that marks the start of the next batch of returned results.</p>
     xml:
       namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    (extras.XmlOrder):
+    - Metrics
+    - NextToken
     description: <p> The output for <a>ListMetrics</a>. </p>
   Metric:
     type: object
@@ -574,6 +588,10 @@ types:
         description: <p>A list of dimensions associated with the metric.</p>
     xml:
       namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    (extras.XmlOrder):
+    - Namespace
+    - MetricName
+    - Dimensions
     description: <p> The <code>Metric</code> data type contains information about a specific metric. If you call <a>ListMetrics</a>, Amazon CloudWatch returns information contained by this data type. </p> <p>The example in the Examples section publishes two metrics named buffers and latency. Both metrics are in the examples namespace. Both metrics have two dimensions, InstanceID and InstanceType.</p>
   MetricAlarm:
     type: object
@@ -643,6 +661,28 @@ types:
         description: <p> The arithmetic operation to use when comparing the specified <code>Statistic</code> and <code>Threshold</code>. The specified <code>Statistic</code> value is used as the first operand. </p>
     xml:
       namespace: http://monitoring.amazonaws.com/doc/2010-08-01/
+    (extras.XmlOrder):
+    - AlarmName
+    - AlarmArn
+    - AlarmDescription
+    - AlarmConfigurationUpdatedTimestamp
+    - ActionsEnabled
+    - OKActions
+    - AlarmActions
+    - InsufficientDataActions
+    - StateValue
+    - StateReason
+    - StateReasonData
+    - StateUpdatedTimestamp
+    - MetricName
+    - Namespace
+    - Statistic
+    - Dimensions
+    - Period
+    - Unit
+    - EvaluationPeriods
+    - Threshold
+    - ComparisonOperator
     description: <p> The <a>MetricAlarm</a> data type represents an alarm. You can use <a>PutMetricAlarm</a> to create or update an alarm. </p>
   MetricDatum:
     type: object

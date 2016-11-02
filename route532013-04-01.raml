@@ -28,6 +28,7 @@ types:
     minItems: 1
     items:
       type: ChangeBatchRecord
+    (commons.Depricated): null
   ChangeStatus:
     type: string
     enum:
@@ -78,6 +79,7 @@ types:
   Date:
     type: string
     maxLength: 256
+    (commons.Depricated): null
   DelegationSetNameServers:
     type: array
     minItems: 1
@@ -644,6 +646,7 @@ types:
       Changes?:
         type: Changes
         description: <p>A list of changes made in the ChangeBatch.</p>
+    (commons.Depricated): null
     description: <p>A complex type that lists the changes and information for a ChangeBatch.</p>
   ChangeInfo:
     type: object
@@ -864,6 +867,7 @@ types:
       ChangeBatchRecord:
         type: ChangeBatchRecord
         description: <p>A complex type that contains information about the specified change batch, including the change batch ID, the status of the change, and the contained changes.</p>
+    (commons.Depricated): null
     description: <p>A complex type that contains the <code>ChangeBatchRecord</code> element.</p>
   GetChangeResponse:
     type: object
@@ -1162,6 +1166,7 @@ types:
       NextMarker?:
         type: PageMarker
         description: <p>The next page marker.</p>
+    (commons.Depricated): null
     description: <p>A complex type containing the response information for the request.</p>
   ListChangeBatchesByRRSetResponse:
     type: object
@@ -1181,6 +1186,7 @@ types:
       NextMarker?:
         type: PageMarker
         description: <p>The next page marker.</p>
+    (commons.Depricated): null
     description: <p>The input for a ListChangeBatchesByRRSet request.</p>
   ListGeoLocationsResponse:
     type: object
